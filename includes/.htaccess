@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName "/home/user2029331/public_html/"
+AuthUserFile /home/user2029331/passleg.passwd
+<Limit GET POST>
+	require valid-user
+</Limit>

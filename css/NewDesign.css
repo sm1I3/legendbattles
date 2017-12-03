@@ -1,0 +1,211 @@
+FIELDSET {
+	/*behavior: url(/js/PIE/PIE.htc);*/
+	border: solid 1px #gray;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	padding: 6px 6px;
+	margin: 1px 0px;
+}
+FIELDSET#base{
+	/*behavior: url(/js/PIE/PIE.htc);*/
+	border: solid 1px #gray;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+.fieldstat{
+	/*behavior: url(/js/PIE/PIE.htc);*/
+	border: solid 1px #gray; -moz-border-radius: 5px; width: 57px;  vertical-align: middle; -webkit-border-radius: 5px;	border-radius: 5px; padding: 0px 3px; margin: 5px 5px;
+}
+LEGEND#base{
+	color: #BABABA;
+	font-size: 12px;
+}
+.field{
+	/*behavior: url(/js/PIE/PIE.htc);*/
+	border: solid 1px #gray;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	padding: 6px 6px;
+	margin: 1px 0px;
+}
+LEGEND {
+	color: #BABABA;
+	font-size: 12px;
+	padding: 0em .5em;
+}
+.hedderup {
+	width:100%;
+	height:11px;
+	max-height:11px;
+	background:url('/ch/1.png') 0px 0px;
+}
+.hedderbottom {
+	width:100%;
+	height:11px;
+	max-height:11px;
+	background:url('/ch/1.png') 0px 11px;
+}
+
+
+/*input:hover {
+	background-position: 0px -20px;	
+}*/
+
+.menu-character {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-inf.png);
+	width: 86px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #red; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-inventar {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-inv.png);
+	width: 90px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-buildings {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-buildings.png);
+	width: 90px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-location {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-loc.png);
+	width: 75px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-nature {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-nature.png);
+	width: 75px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-back {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-back.png);
+	width: 64px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-quest {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-quest.png);
+	width: 68px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-map {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-map.png);
+	width: 56px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-fish {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-fish.png);
+	width: 68px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-les {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-les.png);
+	width: 97px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-navi {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-navi.png);
+	width: 86px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-portal {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-tele.png);
+	width: 75px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-priman {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-priman.png);
+	width: 187px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-edit {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-edit.png);
+	width: 82px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-grass {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-grass.png);
+	width: 107px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-enter {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-enter.png);
+	width: 66px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-drink {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-drink.png);
+	width: 58px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-refresh {
+	background-image: url(http://img.legendbattles.ru/image/NewDesign/menu-refresh.png);
+	width: 75px;
+	height: 17px;
+	BACKGROUND-COLOR: transparent;
+	BORDER-BOTTOM: #DECFA6 0px solid; BORDER-LEFT: #DECFA6 0px solid; BORDER-RIGHT: #DECFA6 0px solid; BORDER-TOP: #DECFA6 0px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica;
+}
+.menu-attack {
+	BACKGROUND: #ffffff; BORDER-BOTTOM: #DECFA6 1px solid; BORDER-LEFT: #DECFA6 1px solid; BORDER-RIGHT: #DECFA6 1px solid; BORDER-TOP: #DECFA6 1px solid; COLOR: #333; CURSOR: pointer; FONT: 14px Tahoma,Verdana,Helvetica; FONT-WEIGHT: bold;
+	width: 70px;
+	height: 10px;
+	height: 20px;
+	BACKGROUND-COLOR: transparent;
+}
+.menu-character:hover{background-position: 0px -19px;}
+.menu-inventar:hover{background-position: 0px -19px;}
+.menu-buildings:hover{background-position: 0px -19px;}
+.menu-location:hover{background-position: 0px -19px;}
+.menu-nature:hover{background-position: 0px -19px;}
+.menu-back:hover{background-position: 0px -19px;}
+.menu-quest:hover{background-position: 0px -19px;}
+.menu-map:hover{background-position: 0px -19px;}
+.menu-fish:hover{background-position: 0px -19px;}
+.menu-les:hover{background-position: 0px -19px;}
+.menu-navi:hover{background-position: 0px -19px;}
+.menu-portal:hover{background-position: 0px -19px;}
+.menu-priman:hover{background-position: 0px -19px;}
+.menu-edit:hover{background-position: 0px -19px;}
+.menu-grass:hover{background-position: 0px -19px;}
+.menu-enter:hover{background-position: 0px -19px;}
+.menu-drink:hover{background-position: 0px -19px;}
+.menu-refresh:hover{background-position: 0px -17px;}
+
+.button.small{
+padding: 4px 12px;
+}

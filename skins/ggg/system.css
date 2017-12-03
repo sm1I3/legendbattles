@@ -1,0 +1,15 @@
+#stooltipmsg {left:-400px; max-width: 400px;}
+.stooltip {
+  position: absolute; width: auto; z-index: 10000; background: transparent !important;
+  min-width: 30px; min-height: 0px;
+}
+#stooltiptext {
+  padding: 0px 10px;
+  font: 11px tahoma; text-align: left;
+}
+#stooltip_e1 {position: absolute;display: block; width: 43px; height: 43px; background: url(/css/system/hint_cul.png) no-repeat center center;top: -8px;left: -8px;}
+#stooltip_e2 {position: absolute;display: block; width: 43px; height: 43px; background: url(/css/system/hint_cur.png) no-repeat center center;top: -8px;right: -8px;}
+#stooltip_e3 {position: absolute;display: block; width: 43px; height: 43px; background: url(/css/system/hint_cdl.png) no-repeat center center;bottom: -8px;left: -8px;}
+#stooltip_e4 {position: absolute;display: block; width: 43px; height: 43px; background: url(/css/system/hint_cdr.png) no-repeat center center;bottom: -8px;right: -8px;}
+#stooltip_e5 {border: 1px #f5e7ad solid;}
+#stooltip_e6 {margin: 0px; padding: 5px 7px; background: url(/css/system/hintbg.png) repeat;border: 1px #946e25 solid;}

@@ -1,0 +1,856 @@
+/* ====== Index Page Decor ====== */
+
+.b-index-decor {
+	background-position: 50% 0;
+	background-repeat: no-repeat;
+}
+
+.b-index-decor_left {
+	min-height: 293px;
+	padding: 6px 0 0;
+	background-image: url('../images/bg-pattern-left.png');
+}
+
+.b-index-decor_right {
+	min-height: 174px;
+	padding: 1px 0 0;
+	background-image: url('../images/bg-pattern-right.png');
+}
+
+/* ====== /Index Page Decor ====== */
+
+
+/* ====== Banner Frame ====== */
+
+.b-banner-frame {
+	position: relative;
+	margin: 0 8px;
+	padding: 8px;
+	min-height: 100px;
+}
+
+.b-banner-frame_2 {
+	margin: 0;
+}
+
+	.b-banner-frame__tl,
+	.b-banner-frame__tr,
+	.b-banner-frame__bl,
+	.b-banner-frame__br {
+		position: absolute;
+		z-index: 2;
+		width: 44px;
+		height: 44px;
+		background-image: url('../images/frames/banner-corners.png');
+		background-repeat: no-repeat;
+	}
+
+	.b-banner-frame__tl-2,
+	.b-banner-frame__tr-2,
+	.b-banner-frame__bl-2,
+	.b-banner-frame__br-2 {
+		width: 7px;
+		height: 7px;
+		background-image: url('../images/frames/banner-corners-2.png');
+	}
+
+	.b-banner-frame__tl {
+		top: -3px;
+		left: -1px;
+		background-position: 0 0;
+	}
+
+	.b-banner-frame__tl-2 {
+		top: 0;
+		left: 0;
+	}
+
+	.b-banner-frame__tr {
+		top: -3px;
+		right: -1px;
+		background-position: 100% 0;
+	}
+
+	.b-banner-frame__tr-2 {
+		top: 0;
+		right: 0;
+	}
+
+	.b-banner-frame__bl {
+		bottom: -3px;
+		left: -1px;
+		background-position: 0 100%;
+	}
+
+	.b-banner-frame__bl-2 {
+		bottom: 0;
+		left: 0;
+	}
+
+	.b-banner-frame__br {
+		bottom: -3px;
+		right: -1px;
+		background-position: 100% 100%;
+	}
+
+	.b-banner-frame__br-2 {
+		bottom: 0;
+		right: 0;
+	}
+
+	.b-banner-frame__l,
+	.b-banner-frame__r {
+		position: absolute;
+		z-index: 2;
+		top: 41px;
+		bottom: 41px;
+		width: 10px;
+		background-image: url('../images/frames/banner-lr.png');
+		background-repeat: repeat-y;
+	}
+
+	.b-banner-frame__l-2,
+	.b-banner-frame__r-2 {
+		top: 7px;
+		bottom: 7px;
+	}
+
+	.b-banner-frame__l {
+		left: 0;
+		background-position: 0 0;
+	}
+
+	.b-banner-frame__r {
+		right: 0;
+		background-position: 100% 0;
+	}
+
+	.b-banner-frame__t,
+	.b-banner-frame__b {
+		position: absolute;
+		z-index: 2;
+		left: 43px;
+		right: 43px;
+		height: 10px;
+		background-image: url('../images/frames/banner-tb.png');
+		background-repeat: repeat-x;
+	}
+
+	.b-banner-frame__t-2,
+	.b-banner-frame__b-2 {
+		left: 7px;
+		right: 7px;
+	}
+
+	.b-banner-frame__t {
+		top: 0;
+		background-position: 0 0;
+	}
+
+	.b-banner-frame__b {
+		bottom: 0;
+		background-position: 0 100%;
+	}
+
+	.b-banner-frame__decor-l,
+	.b-banner-frame__decor-r {
+		position: absolute;
+		z-index: 2;
+		top: 50%;
+		width: 10px;
+		height: 16px;
+		margin: -8px 0 0;
+		background-image: url('../images/frames/banner-decor-lr.png');
+		background-repeat: no-repeat;
+	}
+
+	.b-banner-frame__decor-l {
+		left: -8px;
+		background-position: 0 0;
+	}
+
+	.b-banner-frame__decor-r {
+		right: -8px;
+		background-position: 100% 0;
+	}
+
+	.b-banner-frame__cont {
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+	}
+
+		.b-banner-flash__link {
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			display: block;
+			overflow: hidden;
+			text-indent: -9999px;
+		}
+
+.b-banner-link {
+
+}
+
+	.b-banner-link__img {
+		display: block;
+	}
+
+.b-banner-switch {
+	position: absolute;
+	z-index: 3;
+	top: 2px;
+	left: 30px;
+}
+
+	.b-banner-switch__item {
+		float: left;
+		width: 22px;
+		height: 29px;
+		margin: 0 -1px 0 0;
+		font-weight: bold;
+		font-size: 1.1em;
+		line-height: 27px;
+		text-align: center;
+		text-decoration: none;
+		text-shadow: 0 0 5px #000, 0 0 3px #000;
+		color: #e0a456;
+		background: url('../images/buttons/banner-flag.png') no-repeat;
+	}
+
+	.b-banner-switch__item:hover,
+	.b-banner-switch__item_active {
+		text-decoration: none;
+		background-position: 0 -29px;
+	}
+
+/* ====== /Banner Frame ====== */
+
+
+/* ====== Submenu ====== */
+
+.b-submenu {
+	/*display: table; Safari fix (uncomment if needed)
+	width: 100%;*/
+	margin: 12px 0 0;
+	text-align: center;
+	font-size: 0;
+}
+
+	.b-submenu__item {
+		display: inline-block;
+		position: relative;
+		width: 103px;
+		height: 98px;
+		margin: 0 5px;
+		vertical-align: top;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+		.b-submenu__bg {
+			display: block;
+			width: 103px;
+			height: 78px;
+		}
+
+		.b-submenu__item:hover .b-submenu__bg,
+		.b-submenu__item_active .b-submenu__bg {
+			background-position: 0 -78px;
+		}
+
+		.b-submenu__item_newbie .b-submenu__bg {
+			background-image: url('../images/buttons/submenu-newbie.png');
+			background-repeat: no-repeat;
+		}
+
+		.b-submenu__item_media .b-submenu__bg {
+			background-image: url('../images/buttons/submenu-media.png');
+			background-repeat: no-repeat;
+		}
+		
+		.b-submenu__item_media.disabled .b-submenu__bg {
+			background-image: url('../images/buttons/submenu-media-disabled.png');
+		}
+
+		.b-submenu__item_support .b-submenu__bg {
+			background-image: url('../images/buttons/submenu-support.png');
+			background-repeat: no-repeat;
+		}
+
+		.b-submenu__item_services .b-submenu__bg {
+			background-image: url('../images/buttons/submenu-services.png');
+			background-repeat: no-repeat;
+		}
+
+		.b-submenu__item_update .b-submenu__bg {
+			background-image: url('../images/buttons/submenu-update.png');
+			background-repeat: no-repeat;
+		}
+
+		.b-submenu__button {
+			position: absolute;
+			left: -4px;
+			bottom: 0;
+			width: 95px;
+			height: 27px;
+			padding: 0 0 0 17px;
+			font-size: 12px;
+			line-height: 23px;
+			text-align: center;
+			text-shadow: 0 0 5px #000, 0 0 3px #000, 0 0 3px #000;
+			color: #e0a456;
+			background: url('../images/buttons/red-2.png') 0 0 no-repeat;
+		}
+
+			.b-submenu__button-inner {
+				display: block;
+				height: 27px;
+				padding: 0 17px 0 0;
+				font-size: 1.1em;
+				background: url('../images/buttons/red-2.png') 100% -27px no-repeat;
+			}
+
+		.b-submenu__info {
+			position: absolute;
+			top: -3px;
+			right: -7px;
+			height: 29px;
+			padding: 0 0 0 13px;
+			background: url('../images/bg-submenu-info.png') 0 0 no-repeat;
+		}
+
+			.b-submenu__info-inner {
+				display: block;
+				height: 29px;
+				padding: 0 13px 0 0;
+				font-weight: bold;
+				font-size: 14px;
+				line-height: 21px;
+				text-shadow: 0 0 2px #000, 0 0 2px #000, 0 0 2px #000;
+				color: #e0a456;
+				background: url('../images/bg-submenu-info.png') 100% -29px no-repeat;
+			}
+
+/* ====== /Submenu ====== */
+
+
+/* ====== News Item ======= */
+
+.b-news-item {
+	padding: 0 30px;
+}
+
+	.b-news-item__header {
+		margin: 10px 0 0;
+	}
+
+		.b-news-item__datetime {
+			float: right;
+			position: relative;
+			height: 16px;
+			margin: 5px 0 0 10px;
+			padding: 0 0 0 9px;
+			background: url('../images/bg-news-datetime.png') 0 0 no-repeat;
+		}
+
+			.b-news-item__datetime-inner {
+				display: block;
+				height: 16px;
+				padding: 0 25px 0 16px;
+				font-weight: bold;
+				font-size: 1.1em;
+				line-height: 15px;
+				color: #6a5549;
+				background: url('../images/bg-news-datetime.png') 100% -16px no-repeat;
+			}
+
+			.b-news-item__datetime .b-icon-32x32 {
+				position: absolute;
+				left: 1px;
+				bottom: 1px;
+			}
+
+		.b-news-item__head {
+			overflow: hidden;
+			font-weight: bold;
+			font-size: 1.4em;
+			color: #7e1d0a;
+		}
+
+		.b-news-item__head_green {
+			color: #51660f;
+		}
+
+		.b-news-item__head_orange {
+			color: #d13b00;
+		}
+
+/* ====== /News Item ======= */
+
+
+/* ====== News Footer ====== */
+
+.b-news-footer {
+	position: relative;
+	margin: 10px 0 0;
+	padding: 11px 2px 11px 1px;
+}
+
+.b-news-footer_soc {
+	margin: 0 0 3px 0;
+}
+
+	.b-news-footer__t,
+	.b-news-footer__b {
+		position: absolute;
+		left: 15px;
+		right: 15px;
+		background: url('../images/frames/news-footer-tb.png') repeat-x;
+	}
+
+	.b-news-footer__t {
+		top: 0;
+		height: 11px;
+		background-position: 0 0;
+	}
+
+	.b-news-footer__b {
+		bottom: 0;
+		height: 11px;
+		background-position: 0 -11px;
+	}
+
+	.b-news-footer__tl,
+	.b-news-footer__tr,
+	.b-news-footer__bl,
+	.b-news-footer__br {
+		position: absolute;
+		width: 15px;
+		height: 11px;
+		background: url('../images/frames/news-footer-corners.png') no-repeat;
+	}
+
+	.b-news-footer__tl {
+		top: 0;
+		left: 0;
+		background-position: 0 0;
+	}
+
+	.b-news-footer__tr {
+		top: 0;
+		right: 0;
+		background-position: 100% 0;
+	}
+
+	.b-news-footer__bl {
+		bottom: 0;
+		left: 0;
+		background-position: 0 100%;
+	}
+
+	.b-news-footer__br {
+		bottom: 0;
+		right: 0;
+		background-position: 100% 100%;
+	}
+
+	.b-news-footer__ct,
+	.b-news-footer__cb {
+		position: absolute;
+		z-index: 2;
+		left: 50%;
+		width: 14px;
+		height: 10px;
+		margin-left: -7px;
+		background: url('../images/frames/news-footer-center.png') no-repeat;
+	}
+
+	.b-news-footer__ct {
+		top: 0;
+		background-position: 0 0;
+	}
+
+	.b-news-footer__cb {
+		bottom: 0;
+		background-position: 0 -10px;
+	}
+
+	.b-news-footer__cont {
+		position: relative;
+		z-index: 1;
+		padding: 0 15px;
+		background: url('../images/frames/news-footer-bg.png');
+
+		//zoom: 1; /* IE 7 fix */
+	}
+
+	.b-news-footer_soc .b-news-footer__cont {
+		position: relative;
+		width: 238px;
+		min-height: 13px;
+	}
+
+		.b-news-footer__more {
+			float: left;
+		}
+
+			.b-news-footer__more-link {
+				font-size: 1.2em;
+				color: #7e1d0a;
+			}
+
+		.b-news-footer__comments {
+			float: right;
+		}
+
+			.b-news-footer__comments-link {
+				font-size: 1.2em;
+				color: #7e1d0a;
+			}
+
+/* ====== /News Footer ====== */
+
+
+/* ====== News More ====== */
+
+.b-news-more {
+	min-height: 120px;
+	background: url('../images/bg-news-more.png') 50% no-repeat;
+}
+
+/* ====== /News More ====== */
+
+
+/* ====== Enter Game ====== */
+
+.b-button-red-large_enter-game {
+	display: block;
+	margin: 10px 0 0 10px;
+	padding: 0 0 0 80px;
+	background: url('../images/buttons/red-4-icons.png') 0 0 no-repeat;
+}
+
+.b-button-red-large_enter-game:hover {
+	background-position: 0 -68px;
+}
+
+	.b-button-red-large_enter-game .b-button-red-large__inner {
+		width: 170px;
+		padding-left: 8px;
+	}
+
+/* ====== /Enter Game ====== */
+
+
+/* ====== Download Client ====== */
+
+.b-button-blue-large_download {
+	display: block;
+	margin: 3px 0 0 10px;
+	padding: 0 0 0 80px;
+	background: url('../images/buttons/blue-4-icons.png') 0 0 no-repeat;
+}
+
+.b-button-blue-large_download:hover {
+	background-position: 0 -68px;
+}
+
+	.b-button-blue-large_download .b-button-blue-large__inner {
+		width: 170px;
+		padding-left: 8px;
+	}
+
+/* ====== /Download Client ====== */
+
+
+/* ====== Great Battles ====== */
+
+.b-great-battles {
+	position: relative;
+	height: 52px;
+	margin: 10px 20px 0;
+}
+
+	.b-great-battles__frame {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 52px;
+		background: url('../images/frames/great-battles-rating.png') 0 0 no-repeat;
+	}
+
+		.b-great-battles__frame-inner {
+			display: block;
+			height: 52px;
+			margin: 0 0 0 40px;
+			background: url('../images/frames/great-battles-rating.png') 100% -52px no-repeat;
+		}
+
+	.b-great-battles__ratings {
+		position: relative;
+		z-index: 2;
+		margin: 0 33px;
+		padding: 12px 0 0;
+	}
+
+		.b-great-battles__ratings-l,
+		.b-great-battles__ratings-r {
+			height: 28px;
+			background: url('../images/bg-great-battles-rating.png') repeat-x;
+		}
+
+		.b-great-battles__ratings-l {
+			position: relative;
+			float: left;
+			width: 50%;
+			background-position: 0 0;
+		}
+
+		.b-great-battles__ratings-r {
+			overflow: hidden;
+			background-position: 0 -28px;
+		}
+
+	.b-great-battles__arrow {
+		position: absolute;
+		z-index: 1;
+		top: -10px;
+		right: -9px;
+		width: 17px;
+		height: 28px;
+		background: url('../images/bg-great-battles-arrow.png') no-repeat;
+	}
+
+	.b-great-battles__human-ico,
+	.b-great-battles__magmar-ico {
+		position: absolute;
+		z-index: 3;
+		top: 7px;
+		width: 39px;
+		height: 38px;
+		background: url('../images/bg-great-battles-races.png') no-repeat;
+	}
+
+	.b-great-battles__human-ico {
+		left: 3px;
+		background-position: 0 0;
+	}
+
+	.b-great-battles__magmar-ico {
+		right: 3px;
+		background-position: 0 -38px;
+	}
+
+	.b-great-battles__rating {
+		position: absolute;
+		z-index: 4;
+		bottom: 1px;
+		height: 18px;
+		padding: 0 0 0 11px;
+		background: url('../images/bg-great-battles-numbers.png') no-repeat;
+	}
+
+	.b-great-battles__rating_human {
+		left: 31px;
+	}
+
+	.b-great-battles__rating_magmar {
+		right: 31px;
+		background-position: 0 -36px;
+	}
+
+		.b-great-battles__rating-inner {
+			display: inline-block;
+			min-width: 60px;
+			height: 18px;
+			padding: 0 11px 0 0;
+			font-size: 1.2em;
+			line-height: 16px;
+			text-align: center;
+			text-shadow: 0 0 1px #000, 0 0 1px #000;
+			color: #dcaa4d;
+			background: url('../images/bg-great-battles-numbers.png') 100% -18px no-repeat;
+		}
+
+		.b-great-battles__rating_magmar .b-great-battles__rating-inner {
+			background-position: 100% 100%;
+		}
+
+/* ====== /Great Battles ====== */
+
+
+/* ====== Ratings ====== */
+
+.b-ratings {
+	margin: 0 20px;
+}
+
+	.b-ratings__best {
+		/*display: table; Safari fix (uncomment if needed)
+		width: 100%;*/
+		font-size: 0;
+	}
+
+		.b-button-brown_rating-best {
+			margin: 2px;
+		}
+
+		.b-button-brown_rating-best .b-button-brown__inner {
+			width: 122px;
+		}
+
+	.b-ratings__type {
+		/*display: table; Safari fix (uncomment if needed)
+		width: 100%;*/
+		font-size: 0;
+	}
+
+		.b-button-brown-2_rating-type {
+			margin: 2px;
+		}
+
+		.b-button-brown-2_rating-type .b-button-brown-2__inner {
+			width: 80px;
+		}
+
+	.b-ratings__icons {
+		/*display: table; Safari fix (uncomment if needed)
+		width: 100%;*/
+		margin: 0;
+		font-size: 0;
+	}
+
+		.b-button-brown_icons {
+			margin: 2px;
+		}
+
+		.b-button-brown_icons .b-button-brown__inner {
+			width: 42px;
+		}
+
+	.b-ratings__table {
+		width: 100%;
+		margin: 10px 0 0;
+		border: 0;
+	}
+
+		.b-ratings__odd td {
+			background: url('../images/bg-table-cell.png');
+		}
+
+		.b-ratings__table td {
+			padding: 0 5px;
+			font-size: 1.1em;
+			color: #4c3f2f;
+		}
+
+		.b-ratings__table__num {
+			width: 1%;
+		}
+
+		.b-ratings__table-inner {
+			width: 100%;
+			border: 0;
+			border-collapse: collapse;
+		}
+
+			.b-ratings__table-inner td {
+				padding: 0;
+				background: none;
+			}
+
+			.b-ratings__table-inner__race {
+				width: 1%;
+			}
+
+/* ====== /Ratings ====== */
+
+
+/* ====== Forum ====== */
+
+.b-forum {
+	padding: 0 20px;
+}
+
+	.b-forum__post {
+		margin: 5px 0 0;
+	}
+
+		.b-forum__post-header {
+			min-height: 17px;
+			margin: 5px 0 0;
+			padding: 0 0 0 20px;
+			font-weight: bold;
+			font-size: 1.2em;
+			color: #7e1d0a;
+			background: url('../images/bg-forum-header.png') 0 2px no-repeat;
+		}
+
+		.b-forum__post-info {
+			height: 20px;
+			margin: 5px 0 0;
+			padding: 0 0 0 8px;
+			background: url('../images/bg-forum-info.png') 0 0 no-repeat;
+		}
+
+			.b-forum__post-info-inner {
+				height: 20px;
+				padding: 0 8px 0 0;
+				background: url('../images/bg-forum-info.png') 100% -20px no-repeat;
+			}
+
+				.b-forum__post-datetime {
+					float: left;
+					font-weight: bold;
+					font-size: 1.1em;
+					line-height: 18px;
+					color: #6a5549;
+				}
+
+				.b-forum__post-user {
+					float: right;
+					font-weight: bold;
+					font-size: 1.1em;
+					line-height: 18px;
+					color: #6a5549;
+				}
+
+	.b-forum__post-text {
+		margin: 5px 0 0;
+		font-size: 1.2em;
+	}
+
+/* ====== /Forum ====== */
+
+
+/* ====== Communities ====== */
+
+.b-communities {
+	/*display: table; Safari fix (uncomment if needed)
+	width: 100%;*/
+	margin: 10px 0 0;
+	font-size: 0;
+	text-align: center;
+}
+
+	.b-communities__link {
+		display: inline-block;
+	}
+
+/* ====== /Communities ====== */
+
+
+/* ====== Auth Form ====== */
+
+.b-auth-form {
+	margin: 10px 0 0;
+	padding: 0 25px;
+}
+
+/* ====== /Auth Form ====== */

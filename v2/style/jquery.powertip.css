@@ -1,0 +1,29 @@
+/* PowerTip Plugin */
+#powerTip {
+	display: none;
+	position: absolute;
+	z-index: 2147483647;
+	cursor: default;
+}
+
+#powerTip:before {
+	content: "";
+	position: absolute;
+}
+
+/* Styles for bubble tail */
+#powerTip.n:before, #powerTip.s:before {}
+#powerTip.e:before, #powerTip.w:before {}
+#powerTip.n:before {}
+#powerTip.e:before {}
+#powerTip.s:before {}
+#powerTip.w:before {}
+#powerTip.ne:before, #powerTip.se:before {}
+#powerTip.nw:before, #powerTip.sw:before {}
+#powerTip.ne:before, #powerTip.nw:before {}
+#powerTip.se:before, #powerTip.sw:before {}
+#powerTip.nw-alt:before, #powerTip.ne-alt:before,
+#powerTip.sw-alt:before, #powerTip.se-alt:before {}
+#powerTip.ne-alt:before {}
+#powerTip.sw-alt:before, #powerTip.se-alt:before {}
+#powerTip.se-alt:before {}

@@ -1,0 +1,34 @@
+BODY
+{
+MARGIN: 0pt;
+text: #98999F
+}
+TD
+{
+FONT-WEIGHT: normal;
+FONT-SIZE: 10px;
+COLOR: #98999F;
+FONT-STYLE: normal;
+FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica, sans-serif
+}
+.action_text
+{
+FONT-WEIGHT: normal;
+FONT-SIZE: 10px;
+COLOR: #6E6F72;
+FONT-STYLE: normal;
+FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica, sans-serif
+}
+.chat_forma
+{
+background-color: transparent;
+FONT-SIZE: 11px;
+COLOR: #000000;
+height: 17px;
+border: 0px
+FONT-STYLE: normal;
+FONT-FAMILY: Verdana;
+}
+.chatpostbut {
+	BACKGROUND: #E7E7E7; BORDER-BOTTOM: #DDDDDD 0px solid; BORDER-LEFT: #CE0202 0px solid; BORDER-RIGHT: #CE0202 0px solid; BORDER-TOP: #CE0202 0px solid; COLOR: #724000; CURSOR: hand; FONT: 12px Tahoma,Verdana,Helvetica; FONT-WEIGHT: bold;
+}

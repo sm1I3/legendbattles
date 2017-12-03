@@ -1,0 +1,310 @@
+* {
+	font-family: Tahoma;
+	font-size: 11px;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+a.us, a.us:hover {
+	text-decoration: none;
+}
+
+/*
+.png {
+     behavior: url("pngbehavior.htc");
+}
+*/
+.bgg {
+	background-image: url(http://img.legendbattles.ru/images/fon2.gif);
+}
+i { color: #339 !important; }
+.f0, .f0 * {color: #063 !important;}
+.f1, .f1 * {color: #039 !important;}
+.f4, .f4 * {color: #309 !important;}
+.f5, .f5 * {color: #f00 !important;}
+.f2 {background-color: #FFFF99 !important; font-weight: bold;}
+.f3 {background-color: #FFC !important; font-weight: bold;}
+.count2
+{
+	background-color: #500;
+	color: #fff;
+	padding: 2px;
+	padding-top: 0px;
+	font-weight: bold;
+}
+.count
+{
+	background-color: #500;
+	color: #fff;
+	padding: 2px;
+	font-weight: bold;
+	float: right;
+	position: relative;
+	left: -8px;
+	top: -17px;
+}
+.title
+{
+	color: #FFE4AA;
+	font-weight: bold;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.title2
+{
+	color: #FFE4AA;
+	font-weight: bold;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.zamok
+{
+	color: #FFE4AA;
+	font-weight: bold;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.titl
+{
+	color: #FFE4AA;
+	font-weight: bold;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	font-size: 12px;
+}
+.tit
+{
+	color: #623E00;
+	font-weight: bold;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.login
+{
+	color: #FFFBD6;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 0px;
+}
+.nob, .nob td
+{
+	border: 0px !important;
+}
+.nowrap {white-space:nowrap}
+.dv
+{
+	background-image: url('http://img.legendbattles.ru/images/fon3.jpg');
+	margin-bottom: 4px;
+}
+.butt
+{
+	cursor: hand;
+	cursor: pointer;
+	color: #FFE4AA;
+	font-weight: bold;
+	padding-bottom: 2px;
+	background: transparent;
+	border: 0px;
+}
+.but_menu
+{
+	color: #FFE4AA;
+	font-weight: bold;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.but
+{
+	cursor: hand;
+	cursor: pointer;
+	color: #660000;
+	font-weight: bold;
+	background: transparent;
+	border: 0px;
+	font-size: 12px;
+}
+.inp
+{
+	color:#6C3100;
+	font-weight: bold;
+	border: 1px solid #6C3100;
+	text-align: center;
+	background-color: #FFC;
+	font-size: 9px;
+}
+.lscroll {
+	scrollbar-3dlight-color: #E2D9C3;
+	scrollbar-arrow-color: #760000;
+	scrollbar-base-color: #FFE2A8;
+	scrollbar-darkshadow-color: #4F3224;
+	scrollbar-face-color: #FFE2A8;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #CF805F;
+	scrollbar-track-color: #FFFBD6;
+}
+.b {
+	font-weight: bold;
+}
+.u {
+	text-decoration: underline;
+}
+.i {
+	font-style: italic;
+}
+.grn
+{
+	color: green;
+}
+.red
+{
+	color: red;
+}
+.l
+{
+	text-align: left !important;
+	text-indent: 5px;
+}
+.r
+{
+	text-align: right !important;
+}
+.w100 {
+	width: 100%;
+}
+.h100 {
+	height: 100%;
+}
+table.coll {
+	border-collapse: collapse;
+}
+.brd, .brd td  {
+	border: 1px solid #b19269;
+}
+.brd2, .brd2 td  {
+	border: 1px solid transparent;
+}
+table.user_info    { border-left: 1px solid #b19269;border-top: 1px solid #b19269; border-right: 1px solid #b19269;}
+table.user_info td { border-bottom: 1px solid #b19269;}
+.dbgl2 {
+	background-color: #FFFBD6;
+}
+.transp {
+	background-color: transparent;
+}
+.curh
+{
+	cursor: hand;
+	cursor: pointer;
+}
+.mar5
+{
+	margin: 5px;
+}
+.pad
+{
+	padding: 1px;
+}
+.mar
+{
+	margin-top: 3px;
+}
+.small, .small * {
+	font-size: 10px;
+}
+.ind
+{
+	text-indent: 20px;
+	text-align: justify;
+}
+.menuitem
+{
+	padding: 2px;
+	font-weight: bold;
+}
+.menusubitem
+{
+	padding: 1px;
+	padding-left: 20px;
+}
+.menusubitemsel
+{
+	background: url(http://img.legendbattles.ru/images/selitem.gif) repeat-y;
+	padding: 1px;
+	padding-left: 20px;
+	font-weight: bold;
+}
+.sel_day
+{
+	background: url(http://img.legendbattles.ru/images/day.gif) no-repeat center bottom;
+}
+.tbl
+{
+	padding: 1px;
+	text-align: center;
+	color: #660033;
+}
+.tbl_title
+{
+	padding: 2px;
+	text-align: center;
+	font-weight: bold;
+	color: #BA0000;
+}
+.tbl_top_left
+{
+	background: url('http://img.legendbattles.ru/images/tbl_top_left.gif') no-repeat left bottom;
+	padding-left: 5px;
+}
+.tbl_top_right
+{
+	background: url('http://img.legendbattles.ru/images/tbl_top_right.gif') no-repeat right bottom;
+	padding-right: 5px;
+}
+/* Есть перемещение*/
+.move_yes
+{
+	cursor: hand;
+	cursor: pointer;
+	color: #FFE4AA;
+	font-weight: bold;
+	padding-bottom: 0px;
+	background: transparent;
+	background-color: #FFFBD6;
+}
+/* местоположение перса*/
+.move_pers
+{
+	cursor: hand;
+	cursor: pointer;
+	color: #FFE4AA;
+	font-weight: bold;
+	padding-bottom: 0px;
+	background: transparent;
+	background-color: #FFFBD6;
+}
+
+.move_no
+{
+	cursor: hand;
+	cursor: pointer;
+	color: #FFE4AA;
+	font-weight: bold;
+	padding-bottom: 2px;
+	background: transparent;
+	background-color: #FFFBD6;
+}
+/*класс алл мап*/
+.return_win
+{
+	border: 1px solid #DDDDDD;
+	font-size: 12px;
+	color : #222222;
+	background-color: #F5F5F5;
+}
+

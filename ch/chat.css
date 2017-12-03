@@ -1,0 +1,138 @@
+/* ¬кладки в сайдбаре */
+.box {
+display: none; /* по умолчанию пр€чем все блоки */
+border: 0px solid #777;
+padding: 1px;
+}
+.box.visible {
+display: block; /* по умолчанию показываем нужный блок */
+border: 0px solid #777;
+padding: 1px;
+}
+ul.tabs {
+margin: 0px 0px 0 !important;
+padding: 1px 1px 1px 1px;
+overflow: hidden;
+list-style: none;
+float: right;
+}
+.tabs li.current {
+background: rgb(190, 190, 190);
+border-radius: 10px;  /* свойство дл€ тех кто его поддерживает */
+-moz-border-radius: 10px;  /* дл€ firefox */
+-webkit-border-radius: 10px;  /* дл€ Safari и Chrome */
+}
+.tabs li {
+float: right;
+margin: 0 1px 0 0;
+font-weight: bold;
+cursor: pointer;
+border: 1px solid #777;
+background: #FCFAF3;
+width: 120px;
+text-align:center;
+opacity: 0.3;
+color:rgb(83, 83, 83);
+border-radius: 10px;  /* свойство дл€ тех кто его поддерживает */
+-moz-border-radius: 10px;  /* дл€ firefox */
+-webkit-border-radius: 10px;  /* дл€ Safari и Chrome */
+}
+.tabs li:hover {
+    opacity: 0.9;
+}
+.tabs li.current span {
+color: #FFF;
+}
+.tabs li span {
+float: right;
+height: 27px;
+color: #777;
+}
+
+a,span
+{
+  FONT-SIZE: 10pt;
+  FONT-FAMILY: Verdana, Arial, Helvetica, Tahoma, sans-serif;
+  text-decoration: none;
+  FONT-WEIGHT: bold;
+  cursor: pointer;
+}
+body
+{
+  background: #FCFAF3;
+  FONT-SIZE: 10pt;
+  FONT-FAMILY: Verdana, Arial, Helvetica, Tahoma, sans-serif;
+}
+.chattxt{
+font-family : Verdana, Tahoma, Helvetica, Tahoma, Verdana, sans-serif;
+	text-decoration : none;
+	color : #000000;
+	font-size : 10pt;
+}
+.nickname{
+font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+	font-size : 12px;
+	text-decoration : none;
+	color : #222222;
+}
+.chattext{
+font-family : Verdana, Helvetica, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+	font-size : 13px;
+	text-decoration : none;
+	color : #222222;
+}
+.chattime{
+font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+	font-size : 11px;
+	text-decoration : none;
+	color : #003366;
+}
+.yochattime{
+font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+	font-size : 11px;
+	text-decoration : none;
+	color : #ffffff;
+	background-color:#6699bb;
+}
+.prchattime{
+font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+	font-size : 11px;
+	text-decoration : none;
+	color : #ffffff;
+	background-color:#D16F67;
+}
+.clchattime{
+font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+	font-size : 11px;
+	text-decoration : none;
+	color : #FFFFFF;
+	background-color:#808080;
+}
+.massm{
+font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+	font-size : 11px;
+	text-decoration : none;
+	color : #ffffff;
+	background-color:#EF6B00;
+}
+.usermenu {
+  background-color: #FCFAF3; border-color: #B9A05C #A9904C #A9904C #B9A05C; border-style: solid; border-width: 1px; position: absolute; left: 0px; top: 0px; visibility: hidden;
+}
+
+a.usermenulink {
+  font-family: Tahoma, Arial, Verdana; font-size: 11px; font-weight: bold; color: #222222; border: 0px solid #000000; padding: 2px 12px 2px 12px; display: block; text-decoration: none;
+}
+a.usermenulink:hover {
+  background-color: #F3ECD7; color: #336699;
+}
+.h {
+	font-size: 0px;
+	font-family: monospace;
+	letter-spacing: -11px;
+}
+.left_counter{width:31px; height:31px;position:absolute; left:5px;bottom:5px;}
+.right_counter{width:31px; height:31px;position:absolute; right:5px;bottom:5px;}
+body{
+	background-image: url(/ch/chbg.gif);
+
+}

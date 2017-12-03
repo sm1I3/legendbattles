@@ -1,0 +1,112 @@
+HTML, BODY 
+{
+       font-family: Verdana, Tahoma, Helvetica; 
+       margin: 0px;
+       padding: 0px;
+       width: 100%;
+       height: 100%;
+       background-color: #FFFFFF;	
+       background-image: url('/img/image/gameplay/logs/background.gif');
+       background-position: top;
+       background-repeat: repeat-x;
+       font-size: 12px;
+       color: #000000;	
+}
+
+TABLE, TD 
+{ 
+       font-family: Verdana, Tahoma, Helvetica; 
+       font-size: 12px; 
+       color: #000000;
+}
+
+IMG 
+{
+       border: 0;
+       padding: 0;
+       margin: 0;
+}
+
+P 
+{ 
+       text-align: justify; 
+       margin:0; 
+       padding: 0 0 5px 0; 
+}
+
+H3 
+{ 
+       color: #3F4E57; 
+       font-size: 14px; 
+       font-family: Arial, Helvetica; 
+       font-weight: bold; 
+       padding: 0; 
+       letter-spacing: 0px; 
+}
+
+A:link, A:active, A:visited
+{
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12px;
+	FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif;
+	TEXT-DECORATION: underline;
+	COLOR: #000000;
+}
+
+A:hover
+{
+	COLOR: #A61A1D;
+	TEXT-DECORATION: underline;
+}
+
+UL 
+{ 
+       padding: 0;
+       margin: 0px 0px 10px 25px; 
+       list-style-type: none; 
+       list-style-image: url('/img/image/gameplay/logs/dot.gif');  
+}
+
+LI { margin: 0 0 10px 0; }
+
+.png 
+{ 
+       //background-image: none ! important;
+       behavior: url('./css/pngfix.htc'); 
+}
+
+.dynam { position: absolute; z-index: 3; left: 26%; right: 26%; top: 144px; width: 48%; height: 90px; }
+.hpfull { BACKGROUND: url('/img/image/gameplay/fight/hpbg1.gif') repeat-x; }
+.hplos { BACKGROUND: url('/img/image/gameplay/fight/hpbg2.gif') repeat-x; }
+.mpfull { BACKGROUND: url('/img/image/gameplay/fight/mpbg1.gif') repeat-x; }
+.mplos { BACKGROUND: url('/img/image/gameplay/fight/mpbg2.gif') repeat-x; }
+
+#lines_container { position: relative; }
+#leftC { position: absolute; left: 0px; top: 0; }
+#rightC { position: absolute; right: 0px; top: 0; }
+#lines { padding: 7px 15px 0 18px; }
+#text { position: absolute; z-index: 2; left: 25px; top: 6px; font-size: 11px; }
+
+.clear { clear: both; }
+.img-left { float: left; }
+.img-right { float: right; }
+.mainTable { padding-top: 95px; }
+.ftime { font-size: 12px; color: #6b6b6b; }
+.rh { font-weight: bold; color: #a61a1d; }
+.fpla { font-size: 11px; color: #888888; }
+.lBg { background: url('/img/image/gameplay/logs/lbg.gif') repeat-y left; }
+.rBg { background: url('/img/image/gameplay/logs/rbg.gif') repeat-y right; }
+.copir { font-weight: normal; font-size: 11px; margin: 0px; color: #999999; font-style: normal; font-family: Verdana, Tahoma, Helvetica; }
+
+#container { height: 100%; position: relative; width: expression(document.body.clientWidth > 980 ? "100%" : "980px"); min-width: 980px; }
+#headerPlace { position: absolute; top: 0; z-index: 2; width: 968px; left: 50%; margin-left: -484px; height: 89px; }
+#content { position: relative; width: 92%; text-align: left; margin-bottom: 40px; }
+#bottomLinks { width: 100%; text-align: center; position: relative; bottom: 0px; }
+#rightCol { position: absolute; right: 0; top: 0; z-index: 1; }
+#rightCounter { position: absolute; right: 3px; bottom: 3px; }
+#leftCol { position: absolute; left: 0; top: 0; z-index: 1; }
+#leftCounter { position: absolute; left: 3px; bottom: 3px; }
+#rBot { position: absolute; right: 0; bottom: 35px;  }
+#lBot { position: absolute; left: 0; bottom: 35px;  }
+
+#tooltip{background:#fff;border:1px solid #999;color:#333;font: 12px Tahoma;margin:0px;padding:3px 5px;position:absolute;visibility:hidden;z-index:10;}

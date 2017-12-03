@@ -1,0 +1,133 @@
+HTML, BODY { font-family : Verdana, Tahoma, Helvetica, sans-serif; margin: 0px; padding: 0px; width:100%; height:100%; background-color: #ffffff; background-image: url('http://img.legendbattles.ru/image/forum/design/background.gif'); background-position: top; background-repeat: repeat-x; font-size: 11px; color: #2b2b2b; }
+TABLE, TD { font-family : Verdana, Tahoma, Helvetica, sans-serif; font-size: 11px; color: #2b2b2b; }
+IMG { border: 0; padding: 0; margin: 0; }
+P { text-align: justify; margin:0; padding: 0 0 7px 0; }
+H3 { color: #3F4E57; font-size: 14px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; padding: 0; letter-spacing: 0px; }
+FORM { margin: 0; padding: 0; }
+
+A:link,A:active,A:visited { font-weight: normal; font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; text-decoration: underline; color: #000000; }
+A:hover { color: #a61a1d; text-decoration: underline; }
+A.fLink:link,A.fLink:active,A.fLink:visited { font-family: Georgia, "Times New Roman", Times, serif; font-size: 16px; font-weight: bold; text-decoration: underline; color: #4d4d4d; }
+A.fLink:hover { color: #ff1b00; text-decoration: underline; }
+A.fLinkT:link, A.fLinkT:active, A.fLinkT:visited { font-family: Georgia, "Times New Roman", Times, serif; font-size: 16px; font-weight: bold; text-decoration: none; color: #000000; }
+A.fLinkT:hover { color: #ff1b00; text-decoration: underline; }
+A.anick { font-family: Verdana; font-size: 12px; color: #000000; text-decoration: none; font-weight: bold; }
+A.fact:link, A.fact:active, A.fact:visited { font-family: Verdana, Arial; font-size: 11px; text-decoration: none; color: #bf2f38; }
+A.fact:hover { text-decoration: underline; }
+
+UL { padding: 0; margin: 0px 0px 10px 25px; list-style-type: none; list-style-image: url('http://img.legendbattles.ru/image/forum/design/dot.gif');  }
+LI { margin: 0 0 10px 0; }
+
+#bLeft { position: absolute; left: 0; bottom: 0; }
+#bRight { position: absolute; right: 0; bottom: 0; }
+#container { height: 100%; width:expression(document.body.clientWidth > 980 ? "100%" : "980px"); min-width: 980px; }
+#containerList { width:expression(document.body.clientWidth > 1000 ? "100%" : "1000px"); min-width: 1000px; }
+#mainCols { position: relative; z-index: 2; }
+#mainColsInner { position: relative; z-index: 2; width:100%; }
+#mainColsList { position: relative; z-index: 2; width:100%; display: block; }
+#wingsPlace { position: absolute; z-index: 1; width: 100%; height: 299px; background: url('http://img.legendbattles.ru/image/forum/design/wings.jpg') no-repeat center; top: 0; }
+#wingsPlaceInner { position: absolute; z-index: 1; width: 100%; height: 224px; background: url('http://img.legendbattles.ru/image/forum/design/wings_inner.jpg') no-repeat center; top: 0; }
+#fTop { position: absolute; z-index: 3; left: 50%; margin-left: -391px; }
+#fTopInner { position: absolute; z-index: 3; left: 50%; margin-left: -280px; }
+#tableForum { margin-top: -28px; z-index: 5; position: relative; display: block; }
+#tableForumList { margin-top: -29px; z-index: 5; position: relative; display: block; }
+#tableForumInner { margin-top: -103px; z-index: 5; position: relative; display: block; }
+#bottomLinks { position: absolute; bottom: 5px; left: 0; width: 100%; text-align: center; }
+#leftCounter { position: absolute; left: 3px; bottom: 3px; z-index: 10; }
+#rightCounter { position: absolute; right: 3px; bottom: 3px; z-index: 10; }
+#leftCounterInner { position: absolute; left: 3px; bottom: 3px; }
+#rightCounterInner { position: absolute; right: 3px; bottom: 3px; }
+#searchBox { position: absolute; z-index: 7; right: 3%; top: 196px; }
+#searchBox input { position: absolute; z-index: 100; top: 37px; left: 96px; font-family: Georgia, "Times New Roman", Times, serif; width: 170px; color: #999999; font-size: 12px; font-weight: bold; background-image: none; background: url('http://img.legendbattles.ru/image/forum/design/spacer.gif') top; border: 0;}
+#searchBox #button { position: absolute; right: 47px; top: 36px; }
+#tableMessages { position: relative; z-index: 50; margin-top: -21px; padding: 0; }
+#searchPanel { width: 416px; height: 102px; position: absolute; z-index: 12; left: 50%; margin-left: -208px; top: 200px; }
+#SMILES { position: absolute; z-index: 100; border-top: 0; left: 0%; top: -131px; }
+#SMILES table { background-color: #FFFFFF; border: #919194 1px solid; }
+
+.searchInput { height: 19px; width: 225px; border: 0; font-family: Georgia, "Times New Roman", Times, serif; font-size: 14px; font-weight: bold; color: #999999; margin-left: 95px; background: url('http://img.legendbattles.ru/image/forum/design/spacer.gif') top; }
+.bgCenter { background: url('http://img.legendbattles.ru/image/forum/design/bgcenter.jpg') no-repeat center bottom; }
+.fCont { padding: 5px 10px 30px 10px; background: url('http://img.legendbattles.ru/image/forum/design/hrr.gif') repeat-x bottom; }
+.nick { font-family: Verdana; font-size: 12px; color: #000000; }
+
+.forumSubj { font-family: Georgia, "Times New Roman", Times, serif; font-size: 16px; font-weight: bold; }
+.forumTitle { font-family: Georgia, "Times New Roman", Times, serif; font-size: 16px; font-weight: bold; padding-left: 5px; }
+.inputTxt { font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif; border: 1px solid #c5c5c5; background-color: #f8f8f8; }
+.redText { font-family: Georgia, "Times New Roman", Times, serif; font-size: 14px; color: #bf2f38; font-weight: bold; }
+.copir { font-weight: normal; font-size: 11px; margin: 0px; color: #999999; font-style: normal; font-family: verdana, tahoma, arial, sans-serif; }
+.buttons { background: #D1D0D4; border-bottom: #919194 1px solid; border-left: #B3B3B3 1px solid; border-right: #B3B3B3 1px solid; border-top: #F6F6F7 1px solid; color: #000000; cursor: hand; font-family: 13px Helvetica, Tahoma, Verdana; }
+.hand { cursor: hand; }
+
+.leftColBg { background: url('http://img.legendbattles.ru/image/forum/design/left_col_bg.gif') no-repeat top right; }
+.rightColBg { background: url('http://img.legendbattles.ru/image/forum/design/right_col_bg.gif') no-repeat top left; }
+.leftTent { background: url('http://img.legendbattles.ru/image/forum/design/left_tent_bg.gif') repeat-x left; }
+.rightTent { background: url('http://img.legendbattles.ru/image/forum/design/right_tent_bg.gif') repeat-x right; }
+
+.topBg { background: url('http://img.legendbattles.ru/image/forum/design/top_bg.gif') repeat-x; height: 33px; }
+.topBg2 { background: url('http://img.legendbattles.ru/image/forum/design/top_bg2.gif') repeat-x; height: 26px; font-family: Georgia, "Times New Roman", Times, serif; font-size: 16px; font-weight: bold; padding-left: 5px; }
+.topBg3 { background: url('http://img.legendbattles.ru/image/forum/design/top_bg3.gif') repeat-x; height: 26px; }
+.topBg4 { background: url('http://img.legendbattles.ru/image/forum/design/top_bg4.gif') no-repeat center; height: 26px; }
+.topBg4a { background: url('http://img.legendbattles.ru/image/forum/design/top_bg4a.gif') no-repeat center; height: 26px; }
+.topBg5 { background: url('http://img.legendbattles.ru/image/forum/design/top_bg5.gif') repeat-x right; height: 26px; }
+.topBg6 { background: url('http://img.legendbattles.ru/image/forum/design/top_bg6.gif') repeat-x; height: 15px; }
+.forBg1 { background: url('http://img.legendbattles.ru/image/forum/design/for_bg1.gif') repeat-y top; }
+.forBg2 { background: url('http://img.legendbattles.ru/image/forum/design/for_bg2.gif') repeat-y top; }
+.forBg3 { background: url('http://img.legendbattles.ru/image/forum/design/for_bg3.gif') repeat-y center top; padding: 3px 5px 5px 0px; border-bottom: 1px solid #d9d9d9; }
+.forBg3End { background: url('http://img.legendbattles.ru/image/forum/design/for_bg3.gif') repeat-y center top; padding: 3px 5px 5px 0px; }
+.forBg4 { background: url('http://img.legendbattles.ru/image/forum/design/for_bg4.gif') repeat-x left top; }
+
+.lColBg { background: url('http://img.legendbattles.ru/image/forum/design/lcol.gif') repeat-y left; }
+.rColBg { background: url('http://img.legendbattles.ru/image/forum/design/rcol.gif') repeat-y right; }
+.lColBgInner { background: url('http://img.legendbattles.ru/image/forum/design/lcol_inner.gif') repeat-y; }
+.rColBgInner { background: url('http://img.legendbattles.ru/image/forum/design/rcol_inner.gif') repeat-y; }
+.lColBgList { background: url('http://img.legendbattles.ru/image/forum/design/lcol_list.gif') repeat-y left; }
+.rColBgList { background: url('http://img.legendbattles.ru/image/forum/design/rcol_list.gif') repeat-y right; }
+.lColBg22 { background: url('http://img.legendbattles.ru/image/forum/design/lcol22.gif') repeat-y left; }
+.rColBg22 { background: url('http://img.legendbattles.ru/image/forum/design/rcol22.gif') repeat-y right; }
+
+.tbg { background: url('http://img.legendbattles.ru/image/forum/design/tbg.gif') repeat-x top; }
+.tbg2 { background: url('http://img.legendbattles.ru/image/forum/design/tbg2.gif') no-repeat center top; text-align: center; vertical-align: top; padding-top: 10px; }
+.ttbg { background: url('http://img.legendbattles.ru/image/forum/design/ttbg.gif') repeat-x; vertical-align: top; padding-top: 10px; }
+.tbg3 { background: url('http://img.legendbattles.ru/image/forum/design/tbg3.gif') no-repeat center top; text-align: center; width: 201px; vertical-align: top; padding-top: 10px; }
+.tbg4 { background: url('http://img.legendbattles.ru/image/forum/design/tbg4.gif') no-repeat center top; text-align: left; width: 163px; vertical-align: top; padding-top: 10px; }
+.bbg { background: url('http://img.legendbattles.ru/image/forum/design/bbg.gif') repeat-x top; }
+.ffbg { background: url('http://img.legendbattles.ru/image/forum/design/ffbg.gif') repeat-x top; }
+
+.forBg1 { background: url('http://img.legendbattles.ru/image/forum/design/for_bg1.gif') repeat-y top; }
+.forBg2 { background: url('http://img.legendbattles.ru/image/forum/design/for_bg2.gif') repeat-y top; }
+.forBg1Inner { background: url('http://img.legendbattles.ru/image/forum/design/for_bg1_inner.gif') repeat-y top; }
+.forBg2Inner { background: url('http://img.legendbattles.ru/image/forum/design/for_bg2_inner.gif') repeat-y top; }
+.forBg3 { background: url('http://img.legendbattles.ru/image/forum/design/for_bg3.gif') repeat-y center top; padding: 3px 5px 5px 0px; border-bottom: 1px solid #d9d9d9; }
+.forBg3End { background: url('http://img.legendbattles.ru/image/forum/design/for_bg3.gif') repeat-y center top; padding: 3px 5px 5px 0px; }
+.forBg4 { background: url('http://img.legendbattles.ru/image/forum/design/for_bg4.gif') repeat-x left top; }
+
+.forumLine { padding: 3px 0px 5px 0px; border-bottom: 1px solid #d9d9d9; }
+.forumLineLast { padding: 3px 0px 5px 25px; border-bottom: 1px solid #d9d9d9; }
+.forumLineEnd { padding: 3px 0px 5px 0px; }
+.forumLineLastEnd { padding: 3px 0px 5px 25px; }
+
+.fBg { background: url('http://img.legendbattles.ru/image/forum/design/fbg.gif') repeat-x top; height: 25px; }
+.fbg1 { background: url('http://img.legendbattles.ru/image/forum/design/fbg2.gif') repeat-x; height: 29px; font-family: Georgia, "Times New Roman", Times, serif; font-size: 16px; font-weight: bold; padding: 0 0 0 5px; }
+.fbg1 span { margin: 3px 0 0 0; display: block; }
+.fbg2 { background: url('http://img.legendbattles.ru/image/forum/design/fbg3.gif') repeat-x top; height: 25px; }
+.lBg { background: url('http://img.legendbattles.ru/image/forum/design/lbg.gif') repeat-y bottom right; }
+.rBg { background: url('http://img.legendbattles.ru/image/forum/design/rbg.gif') repeat-y bottom left; }
+.fBg3 { background: url('http://img.legendbattles.ru/image/forum/design/fbg4.gif') repeat-x top; height: 46px; }
+.fBg3d { background: url('http://img.legendbattles.ru/image/forum/design/fbg4d.gif') repeat-x top; height: 46px; }
+.fBg4 { background: url('http://img.legendbattles.ru/image/forum/design/fbg5.gif') no-repeat top left; }
+.lBg1 { background: url('http://img.legendbattles.ru/image/forum/design/lbg1.gif') repeat-y bottom right; }
+.rBg1 { background: url('http://img.legendbattles.ru/image/forum/design/rbg1.gif') repeat-y bottom left; }
+.fBg6 { padding: 0 0 0 20px; }
+.fBg7 { background: url('http://img.legendbattles.ru/image/forum/design/hrr.gif') repeat-x bottom; background-color: #e6e6e6; padding: 5px 15px 30px 20px; }
+.fBg8 { background: url('http://img.legendbattles.ru/image/forum/design/fbg7.gif') repeat-x top right; }
+.fNonBg { padding: 5px 15px 15px 20px; }
+.fNonBg_topic { padding: 5px 15px 60px 20px; }
+
+.hhr { background: url('http://img.legendbattles.ru/image/forum/design/hrr.gif') repeat-x; }
+.llbg { background: url('http://img.legendbattles.ru/image/forum/design/llbg.gif') repeat-x top; }
+.bgForm { background: url('http://img.legendbattles.ru/image/forum/design/bg.jpg') no-repeat center; }
+
+.ttBg1 { background: url('http://img.legendbattles.ru/image/forum/design/ttbg1.gif') repeat-x; }
+.ttBg2 { background: url('http://img.legendbattles.ru/image/forum/design/ttbg2.gif') repeat-y; }
+.ttBg3 { background: url('http://img.legendbattles.ru/image/forum/design/ttbg3.gif') repeat-y; }
+.ttBg4 { background: url('http://img.legendbattles.ru/image/forum/design/ttbg4.gif') repeat-x; }

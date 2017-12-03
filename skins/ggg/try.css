@@ -1,0 +1,15 @@
+html{background-color:#ececec; height:100%;}
+body{margin:0 auto; width:294px; height:100%;}
+input{width:145px; border:0; background-color:#ececec; margin:0 0 0 72px; padding:0; float:left; margin-bottom:15px; font:12px Verdana; text-align:center;}
+#auth{position:absolute; height:328px;}
+#auth div{width:294px;}
+#auth_top{height:69px; background:url(http://image.neverlands.ru/index/auth_top.jpg) no-repeat;}
+#auth2{width: 294px; height:70px; background:url(http://image.neverlands.ru/index/auth2.jpg) no-repeat; padding-top:28px;}
+#auth3{height:81px; background:url(http://image.neverlands.ru/index/auth3.jpg) no-repeat; padding:6px 0 0 71px;}
+#auth3 input{position:absolute; margin:57px 0 0 5px; width:137px; text-align:center;}
+#auth3 img{position:absolute;}
+#auth3 a{position:absolute;}
+
+#auth_bot{height:74px; background:url(http://image.neverlands.ru/index/auth_bot.jpg) no-repeat;}
+#auth_bot a{float:left; width:141px; height:30px; margin-left:74px;}
+#auth_bot a:hover{ background:url(http://image.neverlands.ru/index/auth_enter.jpg) no-repeat;}

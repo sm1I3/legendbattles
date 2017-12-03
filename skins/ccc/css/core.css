@@ -1,0 +1,84 @@
+a.button{
+	background-image:url(/img/image/main_buttons2.png);
+	text-decoration:none;
+	width:37px;
+	height:44px;
+	float:left;
+	background-repeat:no-repeat;
+	display:block;
+	padding:0px;
+	margin:0px;
+	border:none;
+	outline:none
+}
+a.button#forum{background-position:0px 0px}
+a.button#bank{background-position:-37px 0px}
+a.button#ratings{background-position:-74px 0px}
+a.button#social{background-position:-111px 0px}
+a.button#sphelp{background-position:-148px 0px}
+a.button#birja{background-position:-185px 0px}
+a.button#sms{background-position:-222px 0px}
+a.button#golos{background-position:-259px 0px}
+a.button#referal{background-position:-296px 0px}
+a:hover.button{text-decoration:none}
+a:hover.button#forum{background-position:0px -44px}
+a:hover.button#bank{background-position:-37px -44px}
+a:hover.button#ratings{background-position:-74px -44px}
+a:hover.button#social{background-position:-111px -44px}
+a:hover.button#sphelp{background-position:-148px -44px}
+a:hover.button#birja{background-position:-185px -44px}
+a:hover.button#sms{background-position:-222px -44px}
+a:hover.button#golos{background-position:-259px -44px}
+a:hover.button#referal{background-position:-296px -44px}
+
+a.bbutton{
+	text-decoration:none;
+	width:56px;
+	height:34px;
+	float:left;
+	background-repeat:no-repeat;
+	display:block;
+	padding:0px;
+	margin:0px;
+	border:none;
+	outline:none
+}
+
+a.bbutton#skill{background-image:url(/img/image/character_1.png);}
+a.bbutton#nav{background-image:url(/img/image/character_2.png);}
+a.bbutton#options{background-image:url(/img/image/character_3.png);}
+a.bbutton#presents{background-image:url(/img/image/character_4.png);}
+a.bbutton#exptab{background-image:url(/img/image/character_5.png);}
+a.bbutton#secur{background-image:url(/img/image/character_6.png);}
+a.bbutton#about{background-image:url(/img/image/character_7.png);}
+a.bbutton#service{background-image:url(/img/image/character_8.png);}
+a.bbutton#client{background-image:url(/img/image/character_9.png);}
+a.bbutton#real{background-image:url(/img/image/character_10.png);}
+a:hover.bbutton#skill{background-position:0px -38px}
+a:hover.bbutton#nav{background-position:0px -38px}
+a:hover.bbutton#options{background-position:0px -38px}
+a:hover.bbutton#presents{background-position:0px -38px}
+a:hover.bbutton#exptab{background-position:0px -38px}
+a:hover.bbutton#secur{background-position:0px -38px}
+a:hover.bbutton#about{background-position:0px -38px}
+a:hover.bbutton#service{background-position:0px -38px}
+a:hover.bbutton#client{background-position:0px -38px}
+a:hover.bbutton#real{background-position:0px -38px}
+
+
+
+#div_main_buttons {
+z-index: 10;
+position: relative;
+width: 380px;
+top: 0px;
+right: 0px;
+}
+#div_low_buttons {
+z-index: 10;
+position: relative;
+width: 100%;
+top: 0px;
+right: 0px;
+}
+
