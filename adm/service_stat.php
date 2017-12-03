@@ -12,7 +12,8 @@ mysql_set_charset('cp1251');
 date_default_timezone_set('Europe/Moscow');
 session_start();
 function generateMysqlLimit($page, $recs_per_page) { return ' LIMIT '.(($page-1)*$recs_per_page).', '.$recs_per_page.' '; }
-function createPageNavigator($records_count, $cur_page = 1, $nav_name = 'Записи', $link = '', $recs_per_page = 10)
+
+function createPageNavigator($records_count, $cur_page = 1, $nav_name = 'Р—Р°РїРёСЃРё', $link = '', $recs_per_page = 10)
 {
     if ($link == '') $link = $_SERVER['REQUEST_URI'];
     
@@ -21,17 +22,17 @@ function createPageNavigator($records_count, $cur_page = 1, $nav_name = 'Записи'
     if ($records_count == 0) $first = 0;
     $last = ($cur_page*$recs_per_page);
     if ($last > $records_count) $last = $records_count;
-    
-    $nav = $nav_name.' '.$first.'-'.$last.' из '.$records_count.'<br />';
+
+    $nav = $nav_name . ' ' . $first . '-' . $last . ' РёР· ' . $records_count . '<br />';
     
     $link = preg_replace('/\&?page=\d{1,5}/i', '', $link);
     if (strpos($link, '?')===false) 
         $link .= '?';
     
     if ($cur_page > 1)
-        $nav .= '<a href="'.$link.'&page=1">Первая</a> | <a href="'.$link.'&page='.($cur_page-1).'">Пред.</a> | ';
+        $nav .= '<a href="' . $link . '&page=1">РџРµСЂРІР°СЏ</a> | <a href="' . $link . '&page=' . ($cur_page - 1) . '">РџСЂРµРґ.</a> | ';
     else
-        $nav .= '<span class="red">Первая</span> | <span class="red">Пред.</span> | ';
+        $nav .= '<span class="red">РџРµСЂРІР°СЏ</span> | <span class="red">РџСЂРµРґ.</span> | ';
     
     for($i=1; $i<=$pages_count; $i++) {
         if ($cur_page == $i)
@@ -41,9 +42,9 @@ function createPageNavigator($records_count, $cur_page = 1, $nav_name = 'Записи'
     }
     
     if ($cur_page < $pages_count)
-        $nav .= '<a href="'.$link.'&page='.($cur_page+1).'">След.</a> | <a href="'.$link.'&page='.$pages_count.'">Последняя</a>';
+        $nav .= '<a href="' . $link . '&page=' . ($cur_page + 1) . '">РЎР»РµРґ.</a> | <a href="' . $link . '&page=' . $pages_count . '">РџРѕСЃР»РµРґРЅСЏСЏ</a>';
     else
-        $nav .= '<span class="red">След.</span> | <span class="red">Последняя</span>';
+        $nav .= '<span class="red">РЎР»РµРґ.</span> | <span class="red">РџРѕСЃР»РµРґРЅСЏСЏ</span>';
     
     return $nav;
 }
@@ -136,15 +137,15 @@ $table .= '</table>';
 <meta http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Cache-Control" content="no-cache">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="content-language" content="en">
 <title>Filter</title>
 <link rel="stylesheet" type="text/css" href="my.css">
 </head>
 <body>
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 <form name="filter" action="" method="get">
 Date from: <input type="text" name="date_from" id="date_from" value="<?=(isset($_GET['date_from'])?$_GET['date_from']:'')?>" /><img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="zdcec13f12f1" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -210,8 +211,8 @@ Date to: <input type="text" name="date_to" id="date_to" value="<?=(isset($_GET['
 <input type="submit" name="submit" value="OK" />
 </form>
 <br />
-<?=createPageNavigator($records_count, $cur_page, 'Записи')?>
+<?= createPageNavigator($records_count, $cur_page, 'Р—Р°РїРёСЃРё') ?>
 <?=$table?>
-<?=createPageNavigator($records_count, $cur_page, 'Записи')?>
+<?= createPageNavigator($records_count, $cur_page, 'Р—Р°РїРёСЃРё') ?>
 </body>
 </html>

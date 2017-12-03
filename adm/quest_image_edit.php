@@ -55,12 +55,12 @@ else
 }
 
 ?>
-<h3><?=($image_id == ''?'Добавить картинку':'Изменить картинку')?></h3>
+    <h3><?= ($image_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ' : 'РР·РјРµРЅРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ') ?></h3>
 
 <form name="edit_bank" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Картинка: &nbsp;  </td>
+    <td>РљР°СЂС‚РёРЅРєР°: &nbsp;</td>
   <td><input name="image" type="text" class="cms_fieldstyle1" value="<?=$image['image']?>" size="30" maxlength="255" /></td>
 </tr>
 <? if ($image['image'] != '') { ?>
@@ -70,14 +70,16 @@ else
 </tr>
 <? } ?>
 <tr>
-  <td>Название: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ: &nbsp;</td>
   <td><input name="image_name" type="text" class="cms_fieldstyle1" value="<?=$image['image_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='<?=$_SESSION['pages']['quest_image_list']?>'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.location='<?= $_SESSION['pages']['quest_image_list'] ?>'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

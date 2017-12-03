@@ -5,8 +5,8 @@ include_once('includes/config.php');
 <html>
  <head>
  <link rel="stylesheet" href="./css/css.php?f=game|stl|core|introjs.min">
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
-  <title>Восстановление пароля</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <title>Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїР°СЂРѕР»СЏ</title>
 
 </head>
 <body>
@@ -24,16 +24,16 @@ if (isset($_POST['submit'])){
 	$email=mysql_real_escape_string($email);
 	
 	if (empty($login)){
-		echo "Введите логин!";
+        echo "Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ!";
 	}
 	elseif (empty($email)){
-		echo "Введите e-mail!";
+        echo "Р’РІРµРґРёС‚Рµ e-mail!";
 	}
    else{
 		$resultat = mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login = '$login' AND email = '$email'");
 		$array = mysqli_fetch_array($resultat);
 		if (empty($array)){
-			echo 'Ошибка! Такого пользователя не существует';
+            echo 'РћС€РёР±РєР°! РўР°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚';
 		}
 		elseif (mysqli_num_rows($resultat) > 0){
 			$chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP"; 
@@ -44,16 +44,16 @@ if (isset($_POST['submit'])){
 			while($max--){
 			$password.=$chars[rand(0,$size)]; 
 			}
-			$newmdPassword = md5($password); 
-			$title = 'Востановления пароля пользователю '.mysql_real_escape_string($login).' для сайта legendbattles.ru!';
-			$headers  = "Content-type: text/plain; charset=windows-1251\r\n";
-			$headers .= "Администрация сайта legendbattles.ru";
-			$letter = 	'Вы запросили восстановление пароля для аккаунта '.mysql_real_escape_string($login).' на сайте legendbattles.ru  Ваш новый пароль: '.mysql_real_escape_string($password);
+			$newmdPassword = md5($password);
+            $title = 'Р’РѕСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РїР°СЂРѕР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ ' . mysql_real_escape_string($login) . ' РґР»СЏ СЃР°Р№С‚Р° legendbattles.ru!';
+            $headers = "Content-type: text/plain; charset=utf-8\r\n";
+            $headers .= "РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ СЃР°Р№С‚Р° legendbattles.ru";
+            $letter = 'Р’С‹ Р·Р°РїСЂРѕСЃРёР»Рё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїР°СЂРѕР»СЏ РґР»СЏ Р°РєРєР°СѓРЅС‚Р° ' . mysql_real_escape_string($login) . ' РЅР° СЃР°Р№С‚Рµ legendbattles.ru  Р’Р°С€ РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ: ' . mysql_real_escape_string($password);
 
-// Отправляем письмо
+// РћС‚РїСЂР°РІР»СЏРµРј РїРёСЃСЊРјРѕ
 			if (mail($email, $title, $letter, $headers)) {
 			   mysqli_query($GLOBALS['db_link'],"UPDATE user SET pass = '$newmdPassword' WHERE login = '$login'  AND user.email = '$email'");
-			   echo 'Новый пароль отправлен на ваш e-mail!<br><a href="index.php">Главная страница</a>';
+                echo 'РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ РѕС‚РїСЂР°РІР»РµРЅ РЅР° РІР°С€ e-mail!<br><a href="index.php">Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°</a>';
 			}
 		}		
 	}
@@ -65,7 +65,7 @@ mysql_close();
  
       <form method="POST">
       <tr>
-      <td>Логин:</td>
+          <td>Р›РѕРіРёРЅ:</td>
       <td><input type="text" size="20" name="login" ></td>
       </tr>
       <tr>
@@ -74,7 +74,7 @@ mysql_close();
       </tr>
       <tr>
        <td></td>
-      <td colspan="2"><input type="submit" value="Восстановить пароль" name="submit" ></td>
+          <td colspan="2"><input type="submit" value="Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ" name="submit"></td>
       </tr>
      <br>
       </form>

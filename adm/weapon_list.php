@@ -64,7 +64,7 @@ if (isset($_GET['add_to_inventory']) && $_GET['add_to_inventory'] != '')
          if (!mysql_query($query))
             echo mysql_error();
          else
-            header('Location: weapon_list.php?w_category='.(isset($_GET['w_category'])?$_GET['w_category']:'').'&page='.$cur_page.'&message=Успешно добавлено');
+             header('Location: weapon_list.php?w_category=' . (isset($_GET['w_category']) ? $_GET['w_category'] : '') . '&page=' . $cur_page . '&message=РЈСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅРѕ');
      }
 }
 
@@ -103,7 +103,7 @@ if (isset($_GET['add_to_shop']) && $_GET['add_to_shop'] != '')
          if (!mysql_query($query))
             echo mysql_error();
          else
-            header('Location: weapon_list.php?w_category='.(isset($_GET['w_category'])?$_GET['w_category']:'').'&page='.$cur_page.'&message=Успешно добавлено');
+             header('Location: weapon_list.php?w_category=' . (isset($_GET['w_category']) ? $_GET['w_category'] : '') . '&page=' . $cur_page . '&message=РЈСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅРѕ');
      }
 }
     
@@ -125,16 +125,16 @@ while ($row = mysql_fetch_assoc($res))
 {
     $resources.='
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить это оружие?\');" href="weapon_list.php?delete_w_uid='.$row['w_uid'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="weapon_edit.php?w_uid='.$row['w_uid'].'" title="Изменить"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="weapon_edit.php?clone_w_uid='.$row['w_uid'].'" title="Копировать"><img src="images/cms_icons/cms_add.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Рѕ РѕСЂСѓР¶РёРµ?\');" href="weapon_list.php?delete_w_uid=' . $row['w_uid'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="weapon_edit.php?w_uid=' . $row['w_uid'] . '" title="РР·РјРµРЅРёС‚СЊ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="weapon_edit.php?clone_w_uid=' . $row['w_uid'] . '" title="РљРѕРїРёСЂРѕРІР°С‚СЊ"><img src="images/cms_icons/cms_add.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['w_uid'].'</td>
-      <td align="left" class="cms_middle">'.(isset($weapon_categories[$row['w_category']]) ? $weapon_categories[$row['w_category']] : '-- Не определено --').'</td>
-      <td align="left" class="cms_middle"><a href="weapon_edit.php?w_uid='.$row['w_uid'].'" title="Изменить">'._htext($row['w_name']).'</a></td>
+      <td align="left" class="cms_middle">' . (isset($weapon_categories[$row['w_category']]) ? $weapon_categories[$row['w_category']] : '-- РќРµ РѕРїСЂРµРґРµР»РµРЅРѕ --') . '</td>
+      <td align="left" class="cms_middle"><a href="weapon_edit.php?w_uid=' . $row['w_uid'] . '" title="РР·РјРµРЅРёС‚СЊ">' . _htext($row['w_name']) . '</a></td>
       <td align="left" class="cms_middle">'._htext($row['w_price']).'</td>
       <td align="left" class="cms_middle">'.$row['w_id'].'</td>
-      <td align="center" class="cms_middle"><a href="weapon_list.php?w_category='.(isset($_GET['w_category'])?$_GET['w_category']:'').'&page='.$cur_page.'&add_to_inventory='.$row['w_uid'].'" title="Добавить в инвентарь"><img src="images/cms_icons/cms_add.gif" width="16" height="16" border="0" /></a></td>
-      <td align="center" class="cms_middle"><a href="weapon_list.php?w_category='.(isset($_GET['w_category'])?$_GET['w_category']:'').'&page='.$cur_page.'&add_to_shop='.$row['w_uid'].'" title="Добавить в магазин"><img src="images/cms_icons/cms_add.gif" width="16" height="16" border="0" /></a></td>
+      <td align="center" class="cms_middle"><a href="weapon_list.php?w_category=' . (isset($_GET['w_category']) ? $_GET['w_category'] : '') . '&page=' . $cur_page . '&add_to_inventory=' . $row['w_uid'] . '" title="Р”РѕР±Р°РІРёС‚СЊ РІ РёРЅРІРµРЅС‚Р°СЂСЊ"><img src="images/cms_icons/cms_add.gif" width="16" height="16" border="0" /></a></td>
+      <td align="center" class="cms_middle"><a href="weapon_list.php?w_category=' . (isset($_GET['w_category']) ? $_GET['w_category'] : '') . '&page=' . $cur_page . '&add_to_shop=' . $row['w_uid'] . '" title="Р”РѕР±Р°РІРёС‚СЊ РІ РјР°РіР°Р·РёРЅ"><img src="images/cms_icons/cms_add.gif" width="16" height="16" border="0" /></a></td>
     </tr>
     ';
 }
@@ -142,16 +142,16 @@ while ($row = mysql_fetch_assoc($res))
 $_SESSION['pages']['weapon_list'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Список оружия</h3>
+    <h3>РЎРїРёСЃРѕРє РѕСЂСѓР¶РёСЏ</h3>
 <? if (isset($_GET['message'])) echo messageToHtml($_GET['message']); ?>
 <form name="filter" id="filter" action="" method="get">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-    <td>Категория оружия:</td>
+      <td>РљР°С‚РµРіРѕСЂРёСЏ РѕСЂСѓР¶РёСЏ:</td>
     <td>
         <?=createSelectFromArray('w_category', $weapon_categories, (isset($_GET['w_category'])?$_GET['w_category']:''))?>
     </td>
@@ -172,34 +172,35 @@ function clearFilter()
 </form>
 
 <div id="results">
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Оружия')?></div>
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'РћСЂСѓР¶РёСЏ') ?></div>
 
     <div class="cms_ind">
         <br />
-        Ресурсы: <br />
+        Р РµСЃСѓСЂСЃС‹: <br/>
          <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr >
-              <td class="cms_cap2 normal"> Удалить </td>
-              <td class="cms_cap2 normal"> Изменить </td>
-              <td class="cms_cap2 normal"> Копировать </td>
+                <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РљРѕРїРёСЂРѕРІР°С‚СЊ</td>
 
-              <td class="cms_cap2"><a href="<?=sortby('w_uid')?>">UID Оружия</a></td>
-              <td class="cms_cap2">Категория оружия</td>
-              <td class="cms_cap2"><a href="<?=sortby('w_name')?>">Название оружия</a></td>
-              <td class="cms_cap2"><a href="<?=sortby('w_price')?>">Цена оружия</a></td>
-              <td class="cms_cap2"><a href="<?=sortby('w_id')?>">Идентификатор</a></td>
-              <td class="cms_cap2 normal"> В инвентарь </td>
-              <td class="cms_cap2 normal"> В магазин </td>
+                <td class="cms_cap2"><a href="<?= sortby('w_uid') ?>">UID РћСЂСѓР¶РёСЏ</a></td>
+                <td class="cms_cap2">РљР°С‚РµРіРѕСЂРёСЏ РѕСЂСѓР¶РёСЏ</td>
+                <td class="cms_cap2"><a href="<?= sortby('w_name') ?>">РќР°Р·РІР°РЅРёРµ РѕСЂСѓР¶РёСЏ</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('w_price') ?>">Р¦РµРЅР° РѕСЂСѓР¶РёСЏ</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('w_id') ?>">РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ</a></td>
+                <td class="cms_cap2 normal"> Р’ РёРЅРІРµРЅС‚Р°СЂСЊ</td>
+                <td class="cms_cap2 normal"> Р’ РјР°РіР°Р·РёРЅ</td>
             </tr>
             <?=$resources?>   
          </table>
          <br />
     </div>
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Ресурсы')?></div> 
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р РµСЃСѓСЂСЃС‹') ?></div>
 </div>
  
  <br />
- <img src="images/cms_icons/cms_add.gif" alt="Добавить оружие" /><a href="weapon_edit.php" title="Добавить оружие">Добавить оружие</a> &nbsp;
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РѕСЂСѓР¶РёРµ"/><a href="weapon_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ РѕСЂСѓР¶РёРµ">Р”РѕР±Р°РІРёС‚СЊ
+    РѕСЂСѓР¶РёРµ</a> &nbsp;
  <br />
 
 <? require('kernel/after.php'); ?>

@@ -5,16 +5,20 @@ if(isset($_POST['lic'])){
 	$check2 = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `meria` WHERE `uid`='".$player['id']."' LIMIT 1;"));
 	if($check['id'] and !($check2['id'])){
 		if(mysqli_query($GLOBALS['db_link'],"INSERT INTO `meria` (`uid`,`itemid`) VALUES ('".$player['id']."','".$check['id']."');")){
-			$msg='<font class=proceg>Заявка подана.</font>';
+            $msg = '<font class=proceg>Р—Р°СЏРІРєР° РїРѕРґР°РЅР°.</font>';
 		}
-	}
-	elseif($check2['id']){$msg='<font class=proce><b>Вы уже подавали заявку на выдачу лицензии.</b></font>';}
+	} elseif ($check2['id']) {
+        $msg = '<font class=proce><b>Р’С‹ СѓР¶Рµ РїРѕРґР°РІР°Р»Рё Р·Р°СЏРІРєСѓ РЅР° РІС‹РґР°С‡Сѓ Р»РёС†РµРЅР·РёРё.</b></font>';
+    }
 }
-if(isset($_POST['fcheck']) and ($player['clan']=='Life' or $player['clan']=='Мэрия города')){
+if (isset($_POST['fcheck']) and ($player['clan'] == 'Life' or $player['clan'] == 'РњСЌСЂРёСЏ РіРѕСЂРѕРґР°')) {
 	switch($_POST['fcheck']){
 	 case 0:
 		$check = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `meria` WHERE `id`='".intval($_POST['zay'])."' LIMIT 1;"));
-		if($check['id']){mysqli_query($GLOBALS['db_link'],"DELETE FROM `meria` WHERE `id`='".$check['id']."';"); $msg='<font class=proceg>Заявка удалена.</font>'; }
+         if ($check['id']) {
+             mysqli_query($GLOBALS['db_link'], "DELETE FROM `meria` WHERE `id`='" . $check['id'] . "';");
+             $msg = '<font class=proceg>Р—Р°СЏРІРєР° СѓРґР°Р»РµРЅР°.</font>';
+         }
 	 break;
 	 case 1:
 		$check = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `meria` WHERE `id`='".intval($_POST['zay'])."' LIMIT 1;"));
@@ -31,22 +35,22 @@ if(isset($_POST['fcheck']) and ($player['clan']=='Life' or $player['clan']=='Мэр
 					mysqli_query($GLOBALS['db_link'],'INSERT INTO invent (protype,pl_id,dolg,price) VALUES ('.AP.$check3[id].AP.','.AP.$check2[id].AP.','.AP.$dolg.AP.','.AP.$check3[price].AP.');');
 					mysqli_query($GLOBALS['db_link'],'UPDATE user SET nv=nv-'.AP.$check3[price].AP.' WHERE id='.AP.$check2[id].AP.'LIMIT 1;');
 					mysqli_query($GLOBALS['db_link'],"UPDATE `meria_items` SET `licens`=`licens`-'1' WHERE `clan`='meria' LIMIT 1;");
-					mysqli_query($GLOBALS['db_link'],"DELETE FROM `meria` WHERE `id`='".$check['id']."';"); 
-					$msg='<font class=proceg>Лицензия выдана. Заявка удалена.</font>'; 
+					mysqli_query($GLOBALS['db_link'],"DELETE FROM `meria` WHERE `id`='".$check['id']."';");
+                    $msg = '<font class=proceg>Р›РёС†РµРЅР·РёСЏ РІС‹РґР°РЅР°. Р—Р°СЏРІРєР° СѓРґР°Р»РµРЅР°.</font>';
 				}
 			}
 		}
 	 break;	 
 	}
 }
-if(isset($_POST['load']) and ($player['clan']=='Life' or $player['clan']=='Мэрия города')){
+if (isset($_POST['load']) and ($player['clan'] == 'Life' or $player['clan'] == 'РњСЌСЂРёСЏ РіРѕСЂРѕРґР°')) {
 		$check = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `market` WHERE `id`='".intval($_POST['zay'])."' LIMIT 1;"));
 		if($check['id']){
 			$lcount = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `meria_items` WHERE `clan`='meria' LIMIT 1;"));
 			if($lcount['items']>10){
 				mysqli_query($GLOBALS['db_link'],"UPDATE `market` SET `kol`=`kol`+'1000' WHERE `id`='".intval($_POST['zay'])."' LIMIT 1;");
 				mysqli_query($GLOBALS['db_link'],"UPDATE `meria_items` SET `items`=`items`-'10' WHERE `clan`='meria' LIMIT 1;");
-				$msg='<font class=proceg>Завоз произведен успешно.</font>'; 
+                $msg = '<font class=proceg>Р—Р°РІРѕР· РїСЂРѕРёР·РІРµРґРµРЅ СѓСЃРїРµС€РЅРѕ.</font>';
 			}
 		}
 }
@@ -62,18 +66,33 @@ echo "<SCRIPT>MessBoxDiv('".$msg."',0,0,0,0);</SCRIPT>";
 <tr><td bgcolor=#cccccc>
 	<table cellpadding=5 cellspacing=1 border=0 align=center width=100%>
 	<tr>
-	<td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=1'" title=""><font class="zaya"><b>Заявка на Лицензию</b></font></a></td>
-	<td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=2'" title=""><font class="zaya" style="color: red;"><b>Заявка на Пропуск</b></font></a></td>
-	<td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=3'" title=""><font class="zaya"><b>Просмотр Лицензий и пропусков</b></font></a></td>
-	<td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=4'" title=""><font class="zaya"><b>Регистрация бракосочетаний</b></font></a></td>
+        <td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=1'"
+                                                            title=""><font class="zaya"><b>Р—Р°СЏРІРєР° РЅР° Р›РёС†РµРЅР·РёСЋ</b></font></a>
+        </td>
+        <td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=2'"
+                                                            title=""><font class="zaya" style="color: red;"><b>Р—Р°СЏРІРєР° РЅР°
+                        РџСЂРѕРїСѓСЃРє</b></font></a></td>
+        <td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=3'"
+                                                            title=""><font class="zaya"><b>РџСЂРѕСЃРјРѕС‚СЂ Р›РёС†РµРЅР·РёР№ Рё
+                        РїСЂРѕРїСѓСЃРєРѕРІ</b></font></a></td>
+        <td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=4'"
+                                                            title=""><font class="zaya"><b>Р РµРіРёСЃС‚СЂР°С†РёСЏ
+                        Р±СЂР°РєРѕСЃРѕС‡РµС‚Р°РЅРёР№</b></font></a></td>
 	</tr>
-	<?if($player['clan']=='Life' or $player['clan']=='Мэрия города'){?>
-	<tr><td bgcolor="#f5f5f5" align="center" colspan=4><font class=proceg><b>только для сотрудников мэрии</b></font></td></tr>
+        <? if ($player['clan'] == 'Life' or $player['clan'] == 'РњСЌСЂРёСЏ РіРѕСЂРѕРґР°') { ?>
+            <tr>
+                <td bgcolor="#f5f5f5" align="center" colspan=4><font class=proceg><b>С‚РѕР»СЊРєРѕ РґР»СЏ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ
+                            РјСЌСЂРёРё</b></font></td>
+            </tr>
 	<tr>
-		<td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?adm_category=1'" title=""><font class="zaya"><b>Выдача лицензий</b></font></a></td>
-		<td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?adm_category=2'" title=""><font class="zaya"><b>Контроль товара в магазинах</b></font></a></td>
-		<td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?adm_category=3'" title=""><font class="zaya"><b>Состав мэрии</b></font></a></td>
-		<td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?adm_category=4'" title=""><font class="zaya" style="color: red;"><b>Заявки на бракосочетание</b></font></a></td>
+        <td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?adm_category=1'" title=""><font
+                        class="zaya"><b>Р’С‹РґР°С‡Р° Р»РёС†РµРЅР·РёР№</b></font></a></td>
+        <td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?adm_category=2'" title=""><font
+                        class="zaya"><b>РљРѕРЅС‚СЂРѕР»СЊ С‚РѕРІР°СЂР° РІ РјР°РіР°Р·РёРЅР°С…</b></font></a></td>
+        <td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?adm_category=3'" title=""><font
+                        class="zaya"><b>РЎРѕСЃС‚Р°РІ РјСЌСЂРёРё</b></font></a></td>
+        <td width="25%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?adm_category=4'" title=""><font
+                        class="zaya" style="color: red;"><b>Р—Р°СЏРІРєРё РЅР° Р±СЂР°РєРѕСЃРѕС‡РµС‚Р°РЅРёРµ</b></font></a></td>
 	</tr>
 	<?}?>
 	</table>
@@ -81,16 +100,18 @@ echo "<SCRIPT>MessBoxDiv('".$msg."',0,0,0,0);</SCRIPT>";
 <tr><td bgcolor=#cccccc colspan=4>
 <?
 $ITEMS = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `items` WHERE `type`='w30' and `acte`!='teleport' ORDER BY `name` DESC;");
-if($player['clan']=='Life' or $player['clan']=='Мэрия города'){
+if ($player['clan'] == 'Life' or $player['clan'] == 'РњСЌСЂРёСЏ РіРѕСЂРѕРґР°') {
 	function loginbyid($id){
 		$check = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `id`,`login` FROM `user` WHERE `id`='".intval($id)."' LIMIT 1;"));
-		if($check['login']){return $check['login'];}
-		else{return 'Игрок не найден';}
+		if($check['login']){return $check['login'];} else {
+            return 'РРіСЂРѕРє РЅРµ РЅР°Р№РґРµРЅ';
+        }
 	}
 	function licinfo($id){
 		$check = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `id`,`name`,`price` FROM `items` WHERE `id`='".intval($id)."' LIMIT 1;"));
-		if($check['name']){return $check;}
-		else{return 'Лицензия не найдена';}
+		if($check['name']){return $check;} else {
+            return 'Р›РёС†РµРЅР·РёСЏ РЅРµ РЅР°Р№РґРµРЅР°';
+        }
 	}
 	$lcount = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `meria_items` WHERE `clan`='meria' LIMIT 1;"));
 	$zayavki = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `meria` WHERE `status`='0';");
@@ -100,17 +121,17 @@ if($player['clan']=='Life' or $player['clan']=='Мэрия города'){
 			<table cellpadding=0 cellspacing=0 border=0 width=100% bgcolor=#e0e0e0>
 			<tr><td>
 			<table cellpadding=3 cellspacing=1 border=0 width=100%>
-			<tr bgcolor=white><td align=center width=100% colspan=5><b><font class=proceb>Лицензий в наличии:</font> <b><font class=proce'.($lcount['licens']>0?'g':'').'>'.$lcount['licens'].'</font></b></td></tr>
+			<tr bgcolor=white><td align=center width=100% colspan=5><b><font class=proceb>Р›РёС†РµРЅР·РёР№ РІ РЅР°Р»РёС‡РёРё:</font> <b><font class=proce' . ($lcount['licens'] > 0 ? 'g' : '') . '>' . $lcount['licens'] . '</font></b></td></tr>
 			<tr bgcolor=white>
-				<td align=center class=nickname2 width=20%><font class=nickname><b>Ник персонажа</b></font></td>
-				<td align=center class=nickname2 width=40%><font class=nickname><b>Название лицензии</b></font></td>
-				<td align=center class=nickname2 width=10%><font class=nickname><b>Цена лицензии</b></font></td>
-				<td align=center class=nickname2 width=30% colspan=2><b>Опции</b></td>
+				<td align=center class=nickname2 width=20%><font class=nickname><b>РќРёРє РїРµСЂСЃРѕРЅР°Р¶Р°</b></font></td>
+				<td align=center class=nickname2 width=40%><font class=nickname><b>РќР°Р·РІР°РЅРёРµ Р»РёС†РµРЅР·РёРё</b></font></td>
+				<td align=center class=nickname2 width=10%><font class=nickname><b>Р¦РµРЅР° Р»РёС†РµРЅР·РёРё</b></font></td>
+				<td align=center class=nickname2 width=30% colspan=2><b>РћРїС†РёРё</b></td>
 			</tr>';	
 			$i=0;
 			$num = mysqli_num_rows($zayavki);
 			if($num<=0){
-				echo'<tr bgcolor=white><td align=center width=100% colspan=5><b><font class=proceb>Заявок не найдено.</font></b></td></tr>';
+                echo '<tr bgcolor=white><td align=center width=100% colspan=5><b><font class=proceb>Р—Р°СЏРІРѕРє РЅРµ РЅР°Р№РґРµРЅРѕ.</font></b></td></tr>';
 			}
 			else{
 				while($r = mysqli_fetch_assoc($zayavki)){
@@ -124,10 +145,10 @@ if($player['clan']=='Life' or $player['clan']=='Мэрия города'){
 					<td bgcolor=white align=center><font class=nickname>'.$lic['name'].'</font></td>
 					<td bgcolor=white align=center><font class=nickname>'.$lic['price'].' LR</font></td>
 					<td bgcolor=white align=center>
-						<form method=post><input type=hidden name=fcheck value=1><input type=hidden name=zay value="'.$r['id'].'"><input type=submit class=klbut value="Принять" style="'.($lcount['licens']>0?'':'color:gray;').'background: none;" '.($lcount['licens']>0?'':'DISABLED').'></form>
+						<form method=post><input type=hidden name=fcheck value=1><input type=hidden name=zay value="' . $r['id'] . '"><input type=submit class=klbut value="РџСЂРёРЅСЏС‚СЊ" style="' . ($lcount['licens'] > 0 ? '' : 'color:gray;') . 'background: none;" ' . ($lcount['licens'] > 0 ? '' : 'DISABLED') . '></form>
 					</td>
 					<td bgcolor=white align=center>
-						<form method=post><input type=hidden name=fcheck value=0><input type=hidden name=zay value="'.$r['id'].'"><input type=submit class=klbut value="Отказать" style="color: red; background: none;"></form>
+						<form method=post><input type=hidden name=fcheck value=0><input type=hidden name=zay value="' . $r['id'] . '"><input type=submit class=klbut value="РћС‚РєР°Р·Р°С‚СЊ" style="color: red; background: none;"></form>
 					</td>
 					';
 				}
@@ -144,12 +165,12 @@ if($player['clan']=='Life' or $player['clan']=='Мэрия города'){
 			<table cellpadding=0 cellspacing=0 border=0 width=100% bgcolor=#e0e0e0>
 			<tr><td>
 			<table cellpadding=3 cellspacing=1 border=0 width=100%>
-			<tr bgcolor=white><td align=center width=100% colspan=5><b><font class=proceb>Количество завозов (1000шт за завоз):</font> <b><font class=proce'.($lcount['items']>0?'g':'').'>'.$lcount['items'].'</font><font class=proce> [ -10 за 1 завоз ]</font></b></td></tr>
+			<tr bgcolor=white><td align=center width=100% colspan=5><b><font class=proceb>РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РІРѕР·РѕРІ (1000С€С‚ Р·Р° Р·Р°РІРѕР·):</font> <b><font class=proce' . ($lcount['items'] > 0 ? 'g' : '') . '>' . $lcount['items'] . '</font><font class=proce> [ -10 Р·Р° 1 Р·Р°РІРѕР· ]</font></b></td></tr>
 			<tr bgcolor=white>
-				<td align=center class=nickname2 width=20%><font class=nickname><b>Магазин</b></font></td>
-				<td align=center class=nickname2 width=40%><font class=nickname><b>Товар</b></font></td>
-				<td align=center class=nickname2 width=10%><font class=nickname><b>Количество</b></font></td>
-				<td align=center class=nickname2 width=30% colspan=2><b>Опции</b></td>
+				<td align=center class=nickname2 width=20%><font class=nickname><b>РњР°РіР°Р·РёРЅ</b></font></td>
+				<td align=center class=nickname2 width=40%><font class=nickname><b>РўРѕРІР°СЂ</b></font></td>
+				<td align=center class=nickname2 width=10%><font class=nickname><b>РљРѕР»РёС‡РµСЃС‚РІРѕ</b></font></td>
+				<td align=center class=nickname2 width=30% colspan=2><b>РћРїС†РёРё</b></td>
 		</tr>';	
 		$i=0;
 		function nameloc($id){
@@ -165,7 +186,7 @@ if($player['clan']=='Life' or $player['clan']=='Мэрия города'){
 					<td bgcolor=white align=center><font class=nickname>'.$r['name'].'</font></td>
 					<td bgcolor=white align=center><font class=nickname>'.$r['kol'].'</font></td>
 					<td bgcolor=white align=center>
-						<form method=post><input type=hidden name=load value=1><input type=hidden name=zay value="'.$r['id'].'"><input type=submit class=klbut value="Завезти" style="'.($lcount['items']>0?'':'color:gray;').'background: none;" '.($lcount['items']>0?'':'DISABLED').'></form>
+						<form method=post><input type=hidden name=load value=1><input type=hidden name=zay value="' . $r['id'] . '"><input type=submit class=klbut value="Р—Р°РІРµР·С‚Рё" style="' . ($lcount['items'] > 0 ? '' : 'color:gray;') . 'background: none;" ' . ($lcount['items'] > 0 ? '' : 'DISABLED') . '></form>
 					</td>
 					';
 				}
@@ -185,27 +206,27 @@ case 1:
 	<td width="100%" bgcolor="white" align="left">
 	<font class=nickname>
 
-	Чтобы получить лицензию на торговлю/докторство, необходимо заполнить <i>заявку</i>, заявка будет обработана сотрудниками <b>Мэрии</b> и при её обработке и одобрении,
-	будет из вашего счета извлеченна сумма стоимости лицензии и в инвентарь помещена сама лицензия, где вы её сможете активировать. (в инвентаре может быть только одна лицензия одного типа)
+	Р§С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ Р»РёС†РµРЅР·РёСЋ РЅР° С‚РѕСЂРіРѕРІР»СЋ/РґРѕРєС‚РѕСЂСЃС‚РІРѕ, РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РїРѕР»РЅРёС‚СЊ <i>Р·Р°СЏРІРєСѓ</i>, Р·Р°СЏРІРєР° Р±СѓРґРµС‚ РѕР±СЂР°Р±РѕС‚Р°РЅР° СЃРѕС‚СЂСѓРґРЅРёРєР°РјРё <b>РњСЌСЂРёРё</b> Рё РїСЂРё РµС‘ РѕР±СЂР°Р±РѕС‚РєРµ Рё РѕРґРѕР±СЂРµРЅРёРё,
+	Р±СѓРґРµС‚ РёР· РІР°С€РµРіРѕ СЃС‡РµС‚Р° РёР·РІР»РµС‡РµРЅРЅР° СЃСѓРјРјР° СЃС‚РѕРёРјРѕСЃС‚Рё Р»РёС†РµРЅР·РёРё Рё РІ РёРЅРІРµРЅС‚Р°СЂСЊ РїРѕРјРµС‰РµРЅР° СЃР°РјР° Р»РёС†РµРЅР·РёСЏ, РіРґРµ РІС‹ РµС‘ СЃРјРѕР¶РµС‚Рµ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ. (РІ РёРЅРІРµРЅС‚Р°СЂРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ РѕРґРЅР° Р»РёС†РµРЅР·РёСЏ РѕРґРЅРѕРіРѕ С‚РёРїР°)
 
-	<br><br>Заявка для получения лицензии: <br><br>
+	<br><br>Р—Р°СЏРІРєР° РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р»РёС†РµРЅР·РёРё: <br><br>
 	<form method=post>
 		<table cellpadding=0 cellspacing=0 border=0 align=center width=100%>
 			<tr><td width=33%>
-			<font class=nickname><b>Выберите лицензию:</b></font>
+			<font class=nickname><b>Р’С‹Р±РµСЂРёС‚Рµ Р»РёС†РµРЅР·РёСЋ:</b></font>
 			<select name=lic>
-			<option value=0>Лицензия не выбрана</option>
+			<option value=0>Р›РёС†РµРЅР·РёСЏ РЅРµ РІС‹Р±СЂР°РЅР°</option>
 			';
 			while($lic = mysqli_fetch_assoc($ITEMS)){
 				echo '<option value="'.$lic['id'].'">'.$lic['name'].'</option>';
 			}
 			echo'
 			</select>
-			<input type=submit class=lbut value="Подать заявку" >
+			<input type=submit class=lbut value="РџРѕРґР°С‚СЊ Р·Р°СЏРІРєСѓ" >
 		</tr></td></table>                 
 	</form>                                          
-	<br><font class=proce><b>Название лицензий, вы можете посмотреть в разделе “<i>Просмотр Лицензий и пропусков</i>”</b></font>
-	<br><font class=proce><b>Количество дней и цен на лицензии указаны так же, в “<i>Просмотр Лицензий и пропусков</i>”</b></font>
+	<br><font class=proce><b>РќР°Р·РІР°РЅРёРµ Р»РёС†РµРЅР·РёР№, РІС‹ РјРѕР¶РµС‚Рµ РїРѕСЃРјРѕС‚СЂРµС‚СЊ РІ СЂР°Р·РґРµР»Рµ вЂњ<i>РџСЂРѕСЃРјРѕС‚СЂ Р›РёС†РµРЅР·РёР№ Рё РїСЂРѕРїСѓСЃРєРѕРІ</i>вЂќ</b></font>
+	<br><font class=proce><b>РљРѕР»РёС‡РµСЃС‚РІРѕ РґРЅРµР№ Рё С†РµРЅ РЅР° Р»РёС†РµРЅР·РёРё СѓРєР°Р·Р°РЅС‹ С‚Р°Рє Р¶Рµ, РІ вЂњ<i>РџСЂРѕСЃРјРѕС‚СЂ Р›РёС†РµРЅР·РёР№ Рё РїСЂРѕРїСѓСЃРєРѕРІ</i>вЂќ</b></font>
 	</font>
 	</tr></td></table>
 	';
@@ -216,7 +237,7 @@ case 2:
 	<tr>
 	<td width="100%" bgcolor="white" align="left">
 	<font class=nickname>
-	<div align=center><font class=proce>Временно недоступно.</font></div>
+	<div align=center><font class=proce>Р’СЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРЅРѕ.</font></div>
 	</font>
 	</tr></td></table>
 	';
@@ -228,9 +249,10 @@ case 3:
 	while($ITEM = mysqli_fetch_assoc($ITEMS)){	
 			$bt=0;$tr_b='';$par_i='';$pararr ='';$m=1;
 			$pararr = itemparams(0,$ITEM,$player,$plstt,$mass);
-			$tr_b = $pararr[1][0]; $iz = $pararr[2];//требования
-			$bt = $pararr[1][1]; //доступность кнопок
-			$par_i = $pararr[0]; //параметры
+        $tr_b = $pararr[1][0];
+        $iz = $pararr[2];//С‚СЂРµР±РѕРІР°РЅРёСЏ
+        $bt = $pararr[1][1]; //РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РєРЅРѕРїРѕРє
+        $par_i = $pararr[0]; //РїР°СЂР°РјРµС‚СЂС‹
 			if($i==2){echo '</tr>';$i=0;}
 			if($i==0){echo '<tr>';}
 			$i++;
@@ -238,7 +260,7 @@ case 3:
 			<div align=center><font class=weaponch><b>'.$ITEM['name'].'</b></font></div>
 			<div align=center><img src=/img/image/weapon/'.$ITEM['gif'].' border=0></div>
 			<div align=center>
-			<font class=weaponch>&nbsp;Цена: <b>';
+			<font class=weaponch>&nbsp;Р¦РµРЅР°: <b>';
 			if($ITEM['dd_price']==0){
 			 if($ITEM['price']>$player['nv']){echo "<font color=#cc0000>".$ITEM['price']." LR</font>";}else{echo $ITEM['price']." LR";}
 			}

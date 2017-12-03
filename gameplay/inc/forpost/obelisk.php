@@ -3,210 +3,212 @@
 <div style="padding-left:39px; text-align:left; padding-top:0px;" id="draw_pers_info"></div>
 <div style="position: absolute; left: 0; top: 0; width: 100%; z-index: 50;" id="popup"></div>
 <html>
-<META content="text/html; charset=windows-1251" Http-Equiv=Content-type>
+<META content="text/html; charset=utf-8" Http-Equiv=Content-type>
 <META Http-Equiv=Cache-Control Content=no-cache>
 <META Http-Equiv=PRAGMA content=NO-CACHE>
 <META Http-Equiv=Expires Content=0>
 <HEAD>
-<script type="text/javascript" src="js/interface/get_windows2.js?"></script>
-<LINK href=./css/info_loc.css rel=STYLESHEET type=text/css>
+    <script type="text/javascript" src="js/interface/get_windows2.js?"></script>
+    <LINK href=./css/info_loc.css rel=STYLESHEET type=text/css>
 </HEAD>
 <body>
 <script LANGUAGE="JavaScript">
 
-function getRandomArbitary(min, max)
-	{
-	  return Math.random() * (max - min) + min;
-	}
+    function getRandomArbitary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
 
 
+    // СЃРєРѕСЂРѕСЃС‚СЊ РїСЂРѕРєСЂСѓС‚РєРё
+    var speed = 70
+    // РѕСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅР° 1 СЃРµРє.
+    var pause = 1100
+    var timerID = null
+    var wireRunning = false
+    var cc = new Array()
 
 
-// скорость прокрутки
-var speed = 70
-// останавливаем на 1 сек.
-var pause = 1100
-var timerID = null
-var wireRunning = false
-var cc = new Array()
+    cc[0] = "Р”РѕСЂРѕРіРёРµ РґСЂСѓР·СЊСЏ";
+    cc[1] = "РҐРѕС‡Сѓ РїРѕР·РґСЂР°РІРёС‚СЊ РІР°СЃ.";
+    cc[2] = "РЎ РЅР°СЃС‚СѓРїР°СЋС‰РёРј РіРѕРґРѕРј РѕР±РµР·СЊСЏРЅС‹,";
+    cc[3] = "СЃРµСЂРґРµС‡РЅРѕ С…РѕС‡Сѓ РїРѕР¶РµР»Р°С‚СЊ РІСЃРµРіРѕ СЃР°РјРѕРіРѕ Р»СѓС‡С€РµРіРѕ";
+    cc[4] = "РџСѓСЃС‚СЊ СЌС‚РѕС‚ РіРѕРґ РёСЃРїРѕР»РЅРёС‚ РІСЃРµ РІР°С€Рё  РјРµС‡С‚С‹";
 
+    var currentMessage = 0
+    var offset = 0
 
+    // РѕСЃС‚Р°РЅР°РІР»РёРІР°РµРј РІС‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёР№
+    function stopWire() {
+        if (wireRunning)
+            clearTimeout(timerID)
+        wireRunning = false
 
-cc[0] = "Дорогие друзья";
-cc[1] = "Хочу поздравить вас.";
-cc[2] = "С наступающим годом обезьяны,";
-cc[3] = "сердечно хочу пожелать всего самого лучшего";
-cc[4] = "Пусть этот год исполнит все ваши  мечты";
+    }
 
-var currentMessage = 0
-var offset = 0
-// останавливаем вывод сообщений
-function stopWire() {
-                if (wireRunning)
-                clearTimeout(timerID)
-                wireRunning = false
+    // СЃС‚Р°СЂС‚СѓРµРј
+    function startWire() {
+        stopWire()
+        showWire()
+    }
 
-}
-// стартуем
-function startWire() {
-                stopWire()
-                showWire()
-}
-function showWire() {
-                var text = cc[currentMessage]
-                if (offset < text.length) {
-                                if (text.charAt(offset) == " ")
-                                                offset++
-                                var partialMessage = text.substring(0, offset + 1)
-                document.wireForm.wireField.value = partialMessage
-                                offset++
-                timerID = setTimeout("showWire()", speed)
-        wireRunning = true
-        ///alert(1);
+    function showWire() {
+        var text = cc[currentMessage]
+        if (offset < text.length) {
+            if (text.charAt(offset) == " ")
+                offset++
+            var partialMessage = text.substring(0, offset + 1)
+            document.wireForm.wireField.value = partialMessage
+            offset++
+            timerID = setTimeout("showWire()", speed)
+            wireRunning = true
+            ///alert(1);
         } else {
-               offset = 0
-               currentMessage++
-                if (currentMessage == cc.length)
-                        currentMessage = 0
-                timerID = setTimeout("showWire()", pause)
+            offset = 0
+            currentMessage++
+            if (currentMessage == cc.length)
+                currentMessage = 0
+            timerID = setTimeout("showWire()", pause)
 
-           if (currentMessage == 0 && offset == 0){
-                // останавливаем функцию =)
+            if (currentMessage == 0 && offset == 0) {
+                // РѕСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„СѓРЅРєС†РёСЋ =)
                 stopWire();
-                // закрываем окно.
+                // Р·Р°РєСЂС‹РІР°РµРј РѕРєРЅРѕ.
                 close_window();
-                // открываем окно
-                message_window ('success','','Теперь можешь взять свой подарок - и ступай, мне отдыхать пора. <a href=?starik=senk><img src="http://smayly.ru/gallery/anime/FeiXin/41.gif"></a>','cancel','');
+                // РѕС‚РєСЂС‹РІР°РµРј РѕРєРЅРѕ
+                message_window('success', '', 'РўРµРїРµСЂСЊ РјРѕР¶РµС€СЊ РІР·СЏС‚СЊ СЃРІРѕР№ РїРѕРґР°СЂРѕРє - Рё СЃС‚СѓРїР°Р№, РјРЅРµ РѕС‚РґС‹С…Р°С‚СЊ РїРѕСЂР°. <a href=?starik=senk><img src="http://smayly.ru/gallery/anime/FeiXin/41.gif"></a>', 'cancel', '');
 
-        wireRunning = true
+                wireRunning = true
+            }
         }
-        }
-}
-
+    }
 
 
 </SCRIPT>
 
-<TABLE cellpadding=0 cellspacing=0 width=100%><TR><TD>
-<table cellpadding=0 cellspacing=0 border=0 align=center width=760><tr valign=top><td>
+<TABLE cellpadding=0 cellspacing=0 width=100%>
+    <TR>
+        <TD>
+            <table cellpadding=0 cellspacing=0 border=0 align=center width=760>
+                <tr valign=top>
+                    <td>
 
 
-<table width=100% cellspacing=0 border=0 cellpadding=0>
-<td valign=top>
-  <tr>
-    <td><div class="block info">
-	<div class="header">
-		<span>Лесной эльдрик</span>
-	</div>
-<img  src='https://w1.dwar.ru/info/pictures/image/eldrik.jpg' width='190' height='171'>
-<?if ($player["level"]<5)
-echo "Лесной эльдрик - приходи как подрастешь (Необходимо быть 5-м уровнем и выше) ";
-else if($player["time_prz"]<time())
-echo "Согласно поверьям, у каждого лесного дерева есть крошечный воздушный хранитель - эльдрик, который пр¤четс¤ от любопытных глаз простых смертных в дупле или среди ветвистых корней.  рылатый малютка не покидает уютное жилище, забот¤сь и оберегая дерево до тех пор, покуда оно не засохнет.. <a href=?starik=1> Послушать </a>";
-else {
-echo "Лесной эльдрик я устала от вашего внимания, приходите через <b>".tp($player["time_prz"] - time())."</b>";?>
-</FIELDSET>
-          </tr>
-        </table>
-    </font></td>
-  </tr>
+                        <table width=100% cellspacing=0 border=0 cellpadding=0>
+                            <td valign=top>
+                                <tr>
+                                    <td>
+                                        <div class="block info">
+                                            <div class="header">
+                                                <span>Р›РµСЃРЅРѕР№ СЌР»СЊРґСЂРёРє</span>
+                                            </div>
+                                            <img src='https://w1.dwar.ru/info/pictures/image/eldrik.jpg' width='190'
+                                                 height='171'>
+                                            <? if ($player["level"] < 5)
+                                            echo "Р›РµСЃРЅРѕР№ СЌР»СЊРґСЂРёРє - РїСЂРёС…РѕРґРё РєР°Рє РїРѕРґСЂР°СЃС‚РµС€СЊ (РќРµРѕР±С…РѕРґРёРјРѕ Р±С‹С‚СЊ 5-Рј СѓСЂРѕРІРЅРµРј Рё РІС‹С€Рµ) ";
+                                            else if ($player["time_prz"] < time())
+                                            echo "РЎРѕРіР»Р°СЃРЅРѕ РїРѕРІРµСЂСЊСЏРј, Сѓ РєР°Р¶РґРѕРіРѕ Р»РµСЃРЅРѕРіРѕ РґРµСЂРµРІР° РµСЃС‚СЊ РєСЂРѕС€РµС‡РЅС‹Р№ РІРѕР·РґСѓС€РЅС‹Р№ С…СЂР°РЅРёС‚РµР»СЊ - СЌР»СЊРґСЂРёРє, РєРѕС‚РѕСЂС‹Р№ РїСЂВ¤С‡РµС‚СЃВ¤ РѕС‚ Р»СЋР±РѕРїС‹С‚РЅС‹С… РіР»Р°Р· РїСЂРѕСЃС‚С‹С… СЃРјРµСЂС‚РЅС‹С… РІ РґСѓРїР»Рµ РёР»Рё СЃСЂРµРґРё РІРµС‚РІРёСЃС‚С‹С… РєРѕСЂРЅРµР№. В СЂС‹Р»Р°С‚С‹Р№ РјР°Р»СЋС‚РєР° РЅРµ РїРѕРєРёРґР°РµС‚ СѓСЋС‚РЅРѕРµ Р¶РёР»РёС‰Рµ, Р·Р°Р±РѕС‚В¤СЃСЊ Рё РѕР±РµСЂРµРіР°СЏ РґРµСЂРµРІРѕ РґРѕ С‚РµС… РїРѕСЂ, РїРѕРєСѓРґР° РѕРЅРѕ РЅРµ Р·Р°СЃРѕС…РЅРµС‚.. <a href=?starik=1> РџРѕСЃР»СѓС€Р°С‚СЊ </a>";
+                                            else {
+                                            echo "Р›РµСЃРЅРѕР№ СЌР»СЊРґСЂРёРє СЏ СѓСЃС‚Р°Р»Р° РѕС‚ РІР°С€РµРіРѕ РІРЅРёРјР°РЅРёСЏ, РїСЂРёС…РѕРґРёС‚Рµ С‡РµСЂРµР· <b>" . tp($player["time_prz"] - time()) . "</b>"; ?>
+                                            </FIELDSET>
+                                </tr>
+                        </table>
+                        </font></td>
+                </tr>
+            </table>
+            <?
+            }
+            /*
+            if ($player["time_prz"]<time()){
+            echo "РќРёРєР°Рє РїСѓС‚РЅРёРє - РїРѕСЃРµС‚РёР» РјРµРЅСЏ, РЅСѓ С‡С‚Рѕ Р¶, СЃР°РґРёСЃСЊ РєРѕР»СЊ РїСЂРёС€РµР». <a href=?starik=1> РЎРµСЃС‚СЊ </a>";
+            }else{
+            echo "РЎС‚Р°СЂРёРє СѓСЃС‚Р°Р» РѕС‚ РІР°С€РµРіРѕ РІРЅРёРјР°РЅРёСЏ, РїСЂРёС…РѕРґРёС‚Рµ С‡РµСЂРµР· <b>".tp($player["time_prz"] - time())."</b>";
+            }
+            */
+
+            ## Р•СЃР»Рё РїРµСЂСЃРѕРЅР°Р¶ СЃРѕРіР»Р°СЃРёР»СЃСЏ РїСЂРёСЃРµСЃС‚СЊ Рє СЃС‚Р°СЂРёРєСѓ =)
+            if ($_GET["starik"] == 1 and $pers["time_prz"] < time() and $player["level"] >= 5) {
+                $secrets = 'РџРѕР·РґСЂР°РІР»РµРЅРёРµРј СЃ 2016 РіРѕРґР°<br><FORM NAME="wireForm"><input type="text" style="height:45px;" class="but_view" name="wireField" value=" Р’С‹СЃР»СѓС€Р°С‚СЊ РџРѕР·РґСЂР°РІР»РµРЅРёРµ " size=100 onFocus="if (!wireRunning) { startWire() }"></FORM>';
+            }
+
+
+            ## РџРѕР»СѓС‡РµРЅРёРµ РїРѕРґР°СЂРєР°.
+            if ($_GET["starik"] == 'senk' and $player["time_prz"] < time() and $player["level"] >= 5) {
+                $prz_time = (time() + 8640000000);
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2570',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '" . $player['id'] . "',  '0',  '0',  '1',  '1',  '0');");
+                $res = "Р’С‹ РѕР±РЅР°СЂСѓР¶РёР»Рё РІ РїРѕРґР°СЂРєРµ <b>Р’РѕР»С€РµР±РЅР°СЏ СЃРЅРµР¶РёРЅРєР°(50 С€С‚) Р‘СѓС‚С‹Р»РєР° РЁР°РјРїР°РЅСЃРєРѕРіРѕ</b> !";
+                chmsg("top.frames['chmain'].add_msg('<font class=massm>&nbsp;&nbsp;<b>Р‹РµСЃРЅРѕР№ СЌР»СЊРґСЂРёРє</b>&nbsp;&nbsp;</font>   <font color=000000><b><font color=#cc0000>В¬РЅРёРјР°РЅРёРµ! </font></b>" . $res . ".<BR>'+'');", $player['login']);
+                mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `time_prz`='" . $prz_time . "' WHERE `id`='" . $player["id"] . "' LIMIT 1");
+                echo "<script>location='main.php';</script>";
+            }
+
+            ?>
+
+
+        <td width=0 valign=top style="width: 100%;">
+            <table width=80% cellspacing=0 cellpadding=0 border=0 style="width: 100;">
+                <tr>
+                    <td align=center>
+
+
+                        </div>
+            </table>
+        </td>
 </table>
-<?
-}
-/*
-if ($player["time_prz"]<time()){
-echo "Никак путник - посетил меня, ну что ж, садись коль пришел. <a href=?starik=1> Сесть </a>";
-}else{
-echo "Старик устал от вашего внимания, приходите через <b>".tp($player["time_prz"] - time())."</b>";
-}
-*/
-
-## Если персонаж согласился присесть к старику =)
-if ($_GET["starik"] == 1 and $pers["time_prz"]<time() and $player["level"]>=5){
-$secrets = 'Поздравлением с 2016 года<br><FORM NAME="wireForm"><input type="text" style="height:45px;" class="but_view" name="wireField" value=" Выслушать Поздравление " size=100 onFocus="if (!wireRunning) { startWire() }"></FORM>';
-}
-
-
-## Получение подарка.
-if ($_GET["starik"] == 'senk' and $player["time_prz"]<time() and $player["level"]>=5){
-$prz_time = (time()+8640000000);
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2570',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('2735',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
-$res = "Вы обнаружили в подарке <b>Волшебная снежинка(50 шт) Бутылка Шампанского</b> !";
-chmsg("top.frames['chmain'].add_msg('<font class=massm>&nbsp;&nbsp;<b>Ћесной эльдрик</b>&nbsp;&nbsp;</font>   <font color=000000><b><font color=#cc0000>¬нимание! </font></b>".$res.".<BR>'+'');",$player['login']);
-mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `time_prz`='".$prz_time."' WHERE `id`='".$player["id"]."' LIMIT 1");
-echo "<script>location='main.php';</script>";
-}
-
-?>
-
-
-
-
-
-<td width=0 valign=top style="width: 100%;">
-<table width=80% cellspacing=0 cellpadding=0  border=0 style="width: 100;">
-<tr><td align=center>
-
-
-
-
-
-</div>
-</table></td></table></tr></td></table>
+</tr></td></table>
 </td></tr></table></TD></TR></TABLE>
 
 <script type="text/javascript">
-<? if (isset($secrets) && !empty($secrets)){?>
-message_window ('success','','<?=$secrets?>','cancel','')
-<? } ?>
+    <? if (isset($secrets) && !empty($secrets)){?>
+    message_window('success', '', '<?=$secrets?>', 'cancel', '')
+    <? } ?>
 </script>

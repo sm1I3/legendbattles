@@ -7,7 +7,7 @@ ob_end_clean();
         $query .= ' and type = \''.mysql_escape_string($_GET['wtype']).'\' ';
         
     if (isset($_GET['wname']) && $_GET['wname']!='')
-        $wname = iconv('UTF-8', 'windows-1251', $_GET['wname']);
+        $wname = iconv('UTF-8', 'utf-8', $_GET['wname']);
     else
         $wname = '';
         
@@ -47,7 +47,7 @@ ob_end_clean();
 
     $status = ($count>100 ? 'x' : ($count==0 ? 'n' : 'k') );
 
-    header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=utf-8');
     header("Cache-Control: no-cache"); 
     header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
     echo $status.'|'.$table;

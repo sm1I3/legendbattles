@@ -53,15 +53,15 @@ echo substr($map,0,strlen($map)-1);
         <?php
 	$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature_bots` WHERE `x`='".$pers['x']."' AND `y`='".$pers['y']."'");
 	while ($row = mysqli_fetch_assoc($query)) {
-		echo'<tr><td align="center" title="Редактировать"><a href="javascript:EditBots(\'Edit\',\''.$row['lvlmin'].'|'.$row['lvlmax'].'\');">E</a></td><td align=center>Боты<br>[<b>'.$row['lvlmin'].'-'.$row['lvlmax'].'</b>]</td><td align="center" title="Удалить"><a href="javascript: if(confirm(\'Вы действительно хотите удалить бота?\')) { AjaxGet(\'mapeditor_ajax.php?act=BotDelete&x='.$pers['x'].'&y='.$pers['y'].'\'); }">X</a></td>';
+        echo '<tr><td align="center" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"><a href="javascript:EditBots(\'Edit\',\'' . $row['lvlmin'] . '|' . $row['lvlmax'] . '\');">E</a></td><td align=center>Р‘РѕС‚С‹<br>[<b>' . $row['lvlmin'] . '-' . $row['lvlmax'] . '</b>]</td><td align="center" title="РЈРґР°Р»РёС‚СЊ"><a href="javascript: if(confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ Р±РѕС‚Р°?\')) { AjaxGet(\'mapeditor_ajax.php?act=BotDelete&x=' . $pers['x'] . '&y=' . $pers['y'] . '\'); }">X</a></td>';
 	}
 	if(mysqli_num_rows($query)<1){
-		echo'<tr><td align="center" colspan="3"><a href="javascript:EditBots(\'Add\');">Добавить ботов</a></td></tr>';
+        echo '<tr><td align="center" colspan="3"><a href="javascript:EditBots(\'Add\');">Р”РѕР±Р°РІРёС‚СЊ Р±РѕС‚РѕРІ</a></td></tr>';
 	}
 	if(!empty($_POST['BotsGroup'])){
 	mysqli_query($GLOBALS['db_link'],"UPDATE `nature_bots` SET `group`='".intval($_POST['group'])."' WHERE `x`='".$pers['x']."' AND `y`='".$pers['y']."'");
 }
-	//трава
+        //С‚СЂР°РІР°
 	$gquery = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature_grass` WHERE `x`='".$pers['x']."' AND `y`='".$pers['y']."'");
 	$basegrass = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `items` WHERE `type`='w66' AND `slot`='0';");
 	$gparam="";
@@ -80,14 +80,14 @@ echo substr($map,0,strlen($map)-1);
 		foreach($grass as $val){
 			$gr=explode("@",$val);
 			$list=mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT `items`.`name` FROM `items` WHERE `id`='".$gr[0]."' LIMIT 1"));
-			$listnames.=$list['name']." (".$gr[1]." мин)<br>";
-		}
-		echo'<tr><td align="center" title="Редактировать"><a href="javascript:EditGrass(\'Add\',\''.$gid.'\',\''.$gname.'\',\''.$gcol.'\');">E</a></td><td align=center><b>Трава</b><br>'.$listnames.'</td><td align="center" title="Удалить"><a href="javascript: if(confirm(\'Вы действительно хотите удалить траву?\')) { AjaxGet(\'mapeditor_ajax.php?act=GrassDelete&x='.$pers['x'].'&y='.$pers['y'].'\'); }">X</a></td>';
+            $listnames .= $list['name'] . " (" . $gr[1] . " РјРёРЅ)<br>";
+        }
+        echo '<tr><td align="center" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"><a href="javascript:EditGrass(\'Add\',\'' . $gid . '\',\'' . $gname . '\',\'' . $gcol . '\');">E</a></td><td align=center><b>РўСЂР°РІР°</b><br>' . $listnames . '</td><td align="center" title="РЈРґР°Р»РёС‚СЊ"><a href="javascript: if(confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ С‚СЂР°РІСѓ?\')) { AjaxGet(\'mapeditor_ajax.php?act=GrassDelete&x=' . $pers['x'] . '&y=' . $pers['y'] . '\'); }">X</a></td>';
 	}
 	if(mysqli_num_rows($gquery)<1){
-		echo'<tr><td align="center" colspan="3"><a href="javascript:EditGrass(\'Add\',\''.$gid.'\',\''.$gname.'\',\''.$gcol.'\');">Добавить траву</a></td></tr>';
-	}
-	//лес
+        echo '<tr><td align="center" colspan="3"><a href="javascript:EditGrass(\'Add\',\'' . $gid . '\',\'' . $gname . '\',\'' . $gcol . '\');">Р”РѕР±Р°РІРёС‚СЊ С‚СЂР°РІСѓ</a></td></tr>';
+    }
+        //Р»РµСЃ
 	$lquery = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature_les` WHERE `x`='".$pers['x']."' AND `y`='".$pers['y']."'");
 	$baseles = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `items` WHERE `type`='w68'  AND `slot`='0' AND `num_a`='';");
 	$lparam="";
@@ -108,14 +108,14 @@ echo substr($map,0,strlen($map)-1);
 		foreach($grass as $val){
 			$gr=explode("@",$val);
 			$list=mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT `items`.`name` FROM `items` WHERE `id`='".$gr[0]."' LIMIT 1"));
-			$listnames.=$list['name']." (".$gr[1]." мин)<br>";
-		}
-		echo'<tr><td align="center" title="Редактировать"><a href="javascript:EditLes(\'Add\',\''.$lid.'\',\''.$lname.'\',\''.$lcol.'\');">E</a></td><td align=center><b>Лес</b><br>'.$listnames.'</td><td align="center" title="Удалить"><a href="javascript: if(confirm(\'Вы действительно хотите удалить лес?\')) { AjaxGet(\'mapeditor_ajax.php?act=LesDelete&x='.$pers['x'].'&y='.$pers['y'].'\'); }">X</a></td>';
+            $listnames .= $list['name'] . " (" . $gr[1] . " РјРёРЅ)<br>";
+        }
+        echo '<tr><td align="center" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"><a href="javascript:EditLes(\'Add\',\'' . $lid . '\',\'' . $lname . '\',\'' . $lcol . '\');">E</a></td><td align=center><b>Р›РµСЃ</b><br>' . $listnames . '</td><td align="center" title="РЈРґР°Р»РёС‚СЊ"><a href="javascript: if(confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ Р»РµСЃ?\')) { AjaxGet(\'mapeditor_ajax.php?act=LesDelete&x=' . $pers['x'] . '&y=' . $pers['y'] . '\'); }">X</a></td>';
 	}
 	if(mysqli_num_rows($lquery)<1){
-		echo'<tr><td align="center" colspan="3"><a href="javascript:EditLes(\'Add\',\''.$lid.'\',\''.$lname.'\',\''.$lcol.'\');">Добавить лес</a></td></tr>';
-	}
-	//рыбалка
+        echo '<tr><td align="center" colspan="3"><a href="javascript:EditLes(\'Add\',\'' . $lid . '\',\'' . $lname . '\',\'' . $lcol . '\');">Р”РѕР±Р°РІРёС‚СЊ Р»РµСЃ</a></td></tr>';
+    }
+        //СЂС‹Р±Р°Р»РєР°
 	$lquery = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature_fish` WHERE `x`='".$pers['x']."' AND `y`='".$pers['y']."'");
 	$baseles = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `items` WHERE `type`='w69'  AND `slot`='0' AND `num_a`='';");
 	$lparam="";
@@ -136,12 +136,12 @@ echo substr($map,0,strlen($map)-1);
 		foreach($grass as $val){
 			$gr=explode("@",$val);
 			$list=mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT `items`.`name` FROM `items` WHERE `id`='".$gr[0]."' LIMIT 1;"));
-			$listnames.=$list['name']." (".$gr[1]." умения)<br>";
-		}
-		echo'<tr><td align="center" title="Редактировать"><a href="javascript:EditFish(\'Add\',\''.$lid.'\',\''.$lname.'\',\''.$lcol.'\');">E</a></td><td align=center><b>Рыбалка</b><br>'.$listnames.'</td><td align="center" title="Удалить"><a href="javascript: if(confirm(\'Вы действительно хотите удалить рыбу?\')) { AjaxGet(\'mapeditor_ajax.php?act=FishDelete&x='.$pers['x'].'&y='.$pers['y'].'\'); }">X</a></td>';
+            $listnames .= $list['name'] . " (" . $gr[1] . " СѓРјРµРЅРёСЏ)<br>";
+        }
+        echo '<tr><td align="center" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"><a href="javascript:EditFish(\'Add\',\'' . $lid . '\',\'' . $lname . '\',\'' . $lcol . '\');">E</a></td><td align=center><b>Р С‹Р±Р°Р»РєР°</b><br>' . $listnames . '</td><td align="center" title="РЈРґР°Р»РёС‚СЊ"><a href="javascript: if(confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЂС‹Р±Сѓ?\')) { AjaxGet(\'mapeditor_ajax.php?act=FishDelete&x=' . $pers['x'] . '&y=' . $pers['y'] . '\'); }">X</a></td>';
 	}
 	if(mysqli_num_rows($lquery)<1){
-		echo'<tr><td align="center" colspan="3"><a href="javascript:EditFish(\'Add\',\''.$lid.'\',\''.$lname.'\',\''.$lcol.'\');">Добавить рыбу</a></td></tr>';
+        echo '<tr><td align="center" colspan="3"><a href="javascript:EditFish(\'Add\',\'' . $lid . '\',\'' . $lname . '\',\'' . $lcol . '\');">Р”РѕР±Р°РІРёС‚СЊ СЂС‹Р±Сѓ</a></td></tr>';
 	}
 	?>
       </table>
@@ -149,77 +149,108 @@ echo substr($map,0,strlen($map)-1);
       <form method="post">
         <table border="1" width="100%">
           <tr>
-            <td width="100%">Квесты:</td>
+              <td width="100%">РљРІРµСЃС‚С‹:</td>
             <td><select name="que">
-              <option<?php echo (($loc_editor['que'])?' selected="selected"':''); ?> value="1" style="background:#0F0">да</option>
-              <option<?php echo (($loc_editor['que'])?'':' selected="selected"'); ?> value="0" style="background:#F00">нет</option>
+                    <option<?php echo(($loc_editor['que']) ? ' selected="selected"' : ''); ?> value="1"
+                                                                                              style="background:#0F0">РґР°
+                    </option>
+                    <option<?php echo(($loc_editor['que']) ? '' : ' selected="selected"'); ?> value="0"
+                                                                                              style="background:#F00">
+                        РЅРµС‚
+                    </option>
             </select></td>
           </tr>
           <tr>
-            <td>Алхимия:</td>
+              <td>РђР»С…РёРјРёСЏ:</td>
             <td><select name="ogl">
-              <option<?php echo (($loc_editor['ogl'])?' selected="selected"':''); ?> value="1" style="background:#0F0">да</option>
-              <option<?php echo (($loc_editor['ogl'])?'':' selected="selected"'); ?> value="0" style="background:#F00">нет</option>
+                    <option<?php echo(($loc_editor['ogl']) ? ' selected="selected"' : ''); ?> value="1"
+                                                                                              style="background:#0F0">РґР°
+                    </option>
+                    <option<?php echo(($loc_editor['ogl']) ? '' : ' selected="selected"'); ?> value="0"
+                                                                                              style="background:#F00">
+                        РЅРµС‚
+                    </option>
             </select></td>
           </tr>
           <tr>
-            <td>Рыбалка:</td>
+              <td>Р С‹Р±Р°Р»РєР°:</td>
             <td><select name="fis">
-              <option<?php echo (($loc_editor['fis'])?' selected="selected"':''); ?> value="1" style="background:#0F0">да</option>
-              <option<?php echo (($loc_editor['fis'])?'':' selected="selected"'); ?> value="0" style="background:#F00">нет</option>
+                    <option<?php echo(($loc_editor['fis']) ? ' selected="selected"' : ''); ?> value="1"
+                                                                                              style="background:#0F0">РґР°
+                    </option>
+                    <option<?php echo(($loc_editor['fis']) ? '' : ' selected="selected"'); ?> value="0"
+                                                                                              style="background:#F00">
+                        РЅРµС‚
+                    </option>
             </select></td>
           </tr>
           <tr>
-            <td>Питье:</td>
+              <td>РџРёС‚СЊРµ:</td>
             <td><select name="dri">
-              <option<?php echo (($loc_editor['dri'])?' selected="selected"':''); ?> value="1" style="background:#0F0">да</option>
-              <option<?php echo (($loc_editor['dri'])?'':' selected="selected"'); ?> value="0" style="background:#F00">нет</option>
+                    <option<?php echo(($loc_editor['dri']) ? ' selected="selected"' : ''); ?> value="1"
+                                                                                              style="background:#0F0">РґР°
+                    </option>
+                    <option<?php echo(($loc_editor['dri']) ? '' : ' selected="selected"'); ?> value="0"
+                                                                                              style="background:#F00">
+                        РЅРµС‚
+                    </option>
             </select></td>
           </tr>
 		  <tr>
-            <td>Лесоруб:</td>
+              <td>Р›РµСЃРѕСЂСѓР±:</td>
             <td><select name="les">
-              <option<?php echo (($loc_editor['les'])?' selected="selected"':''); ?> value="1" style="background:#0F0">да</option>
-              <option<?php echo (($loc_editor['les'])?'':' selected="selected"'); ?> value="0" style="background:#F00">нет</option>
+                    <option<?php echo(($loc_editor['les']) ? ' selected="selected"' : ''); ?> value="1"
+                                                                                              style="background:#0F0">РґР°
+                    </option>
+                    <option<?php echo(($loc_editor['les']) ? '' : ' selected="selected"'); ?> value="0"
+                                                                                              style="background:#F00">
+                        РЅРµС‚
+                    </option>
             </select></td>
           </tr>
 		  <tr>
-            <td>Строения:</td>
+              <td>РЎС‚СЂРѕРµРЅРёСЏ:</td>
             <td><select name="bld">
-              <option<?php echo (($loc_editor['bld'])?' selected="selected"':''); ?> value="1" style="background:#0F0">да</option>
-              <option<?php echo (($loc_editor['bld'])?'':' selected="selected"'); ?> value="0" style="background:#F00">нет</option>
+                    <option<?php echo(($loc_editor['bld']) ? ' selected="selected"' : ''); ?> value="1"
+                                                                                              style="background:#0F0">РґР°
+                    </option>
+                    <option<?php echo(($loc_editor['bld']) ? '' : ' selected="selected"'); ?> value="0"
+                                                                                              style="background:#F00">
+                        РЅРµС‚
+                    </option>
             </select></td>
           </tr>
           <tr>
-            <td colspan="2" align="center"><input name="ProffForm" type="submit" value="Сохранить" /></td>
+              <td colspan="2" align="center"><input name="ProffForm" type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/></td>
           </tr>
         </table>
       </form></td>
     <td align="center"><script>view_map();</script></td>
-    <td width="200" valign="top" align="center"><a href="javascript:MoveTo();">Позиция<br />
+      <td width="200" valign="top" align="center"><a href="javascript:MoveTo();">РџРѕР·РёС†РёСЏ<br/>
       X:<?php echo $pers['x']; ?> Y:<?php echo $pers['y']; ?></a>
       <hr />
-      <a href="javascript:LocName();" id="LocName_text">Локация: <?php echo $loc_editor['name']; ?></a>
+          <a href="javascript:LocName();" id="LocName_text">Р›РѕРєР°С†РёСЏ: <?php echo $loc_editor['name']; ?></a>
       <hr />
-	  <a href="javascript:LocConfig();" id="LocName_text">Клетка: <?php echo ($loc_editor['name']?'Доступная для перехода':'Недоступная для перехода'); ?></a>
+          <a href="javascript:LocConfig();"
+             id="LocName_text">РљР»РµС‚РєР°: <?php echo($loc_editor['name'] ? 'Р”РѕСЃС‚СѓРїРЅР°СЏ РґР»СЏ РїРµСЂРµС…РѕРґР°' : 'РќРµРґРѕСЃС‚СѓРїРЅР°СЏ РґР»СЏ РїРµСЂРµС…РѕРґР°'); ?></a>
       <hr />
-      <a href="javascript:GoTo();" id="GoTo_text">Вход:
+          <a href="javascript:GoTo();" id="GoTo_text">Р’С…РѕРґ:
         <?php 
 	  if($loc_editor['dep']){
 		  $locname = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `loc` WHERE `id`='".$loc_editor['dep']."'"));
 		  echo '<br>'.$locname['city'].'<br>['.$locname['loc']?$locname['loc']:$locname['loc'].'-'.$locname['room'].']';
 	  }else{
-		  echo 'Никуда';
+          echo 'РќРёРєСѓРґР°';
 	  }?>
 	  <hr />
-      <a href="javascript:TeleTo();" id="TeleTo_text">Телепорт:
+              <a href="javascript:TeleTo();" id="TeleTo_text">РўРµР»РµРїРѕСЂС‚:
 	  <?php 
 	  if($loc_editor['tele_coord']){
 		  list($tele['x'], $tele['y']) = explode('_', $loc_editor['tele_coord']);
 		  $locname = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x`='".$tele['x']."' AND `y`='".$tele['y']."' LIMIT 1;"));
 		  echo '<br>'.$locname['city'].'<br>['.($locname['name']?$locname['name']:'').']';
 	  }else{
-		  echo 'Никуда';
+          echo 'РќРёРєСѓРґР°';
 	  }?>
       </a></td>
   </tr>
@@ -227,14 +258,18 @@ echo substr($map,0,strlen($map)-1);
 	  <form method="post">
         <table border="1" width="100%">
           <tr>
-            <td width="100%">Создать бота на клетке(не использовать если на клетке уже есть боты):</td>
+              <td width="100%">РЎРѕР·РґР°С‚СЊ Р±РѕС‚Р° РЅР° РєР»РµС‚РєРµ(РЅРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РµСЃР»Рё РЅР° РєР»РµС‚РєРµ СѓР¶Рµ РµСЃС‚СЊ Р±РѕС‚С‹):</td>
             <td><select name="new_bot">
-			  <option<?php echo (($bot_editor['group']==0)?' selected="selected"':''); ?> value="0">Нет ботов(не выбирать)</option>
-              <option<?php echo (($bot_editor['group']==1)?' selected="selected"':''); ?> value="1">Зомби 8-12</option>
+                    <option<?php echo(($bot_editor['group'] == 0) ? ' selected="selected"' : ''); ?> value="0">РќРµС‚
+                        Р±РѕС‚РѕРІ(РЅРµ РІС‹Р±РёСЂР°С‚СЊ)
+                    </option>
+                    <option<?php echo(($bot_editor['group'] == 1) ? ' selected="selected"' : ''); ?> value="1">Р—РѕРјР±Рё
+                        8-12
+                    </option>
             </select></td>
           </tr>
           <tr>
-            <td colspan="2" align="center"><input name="MakeBot" type="submit" value="Сохранить" /></td>
+              <td colspan="2" align="center"><input name="MakeBot" type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/></td>
           </tr>
         </table>
       </form>
@@ -242,14 +277,18 @@ echo substr($map,0,strlen($map)-1);
 	       <form method="post">
         <table border="1" width="100%">
           <tr>
-            <td width="100%">Группа ботов(только для смены группы а не установки новой):</td>
+              <td width="100%">Р“СЂСѓРїРїР° Р±РѕС‚РѕРІ(С‚РѕР»СЊРєРѕ РґР»СЏ СЃРјРµРЅС‹ РіСЂСѓРїРїС‹ Р° РЅРµ СѓСЃС‚Р°РЅРѕРІРєРё РЅРѕРІРѕР№):</td>
             <td><select name="group">
-			  <option<?php echo (($bot_editor['group']==0)?' selected="selected"':''); ?> value="0">Нет ботов(не выбирать)</option>
-              <option<?php echo (($bot_editor['group']==1)?' selected="selected"':''); ?> value="1">Зомби 8-12</option>
+                    <option<?php echo(($bot_editor['group'] == 0) ? ' selected="selected"' : ''); ?> value="0">РќРµС‚
+                        Р±РѕС‚РѕРІ(РЅРµ РІС‹Р±РёСЂР°С‚СЊ)
+                    </option>
+                    <option<?php echo(($bot_editor['group'] == 1) ? ' selected="selected"' : ''); ?> value="1">Р—РѕРјР±Рё
+                        8-12
+                    </option>
             </select></td>
           </tr>
           <tr>
-            <td colspan="2" align="center"><input name="BotsGroup" type="submit" value="Сохранить" /></td>
+              <td colspan="2" align="center"><input name="BotsGroup" type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/></td>
           </tr>
 		  <tr>
           </tr>
@@ -259,7 +298,7 @@ echo substr($map,0,strlen($map)-1);
 <form method="post">
         <table border="1" width="100%">
 		  <tr>
-            <td colspan="2" align="center"><input name="BotDelete" type="submit" value="Удалить ботов с клетки" /></td>
+              <td colspan="2" align="center"><input name="BotDelete" type="submit" value="РЈРґР°Р»РёС‚СЊ Р±РѕС‚РѕРІ СЃ РєР»РµС‚РєРё"/></td>
           </tr>
         </table>
       </form>

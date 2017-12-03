@@ -65,11 +65,17 @@ function KeyClock()
        {
               switch(Mine)
               {
-                     case 0: ttxt = 'автобоя'; break;
-                     case 1: ttxt = 'автокопа'; break;
-                     case 2: ttxt = 'авторыбалки'; break;
+                  case 0:
+                      ttxt = 'Р°РІС‚РѕР±РѕСЏ';
+                      break;
+                  case 1:
+                      ttxt = 'Р°РІС‚РѕРєРѕРїР°';
+                      break;
+                  case 2:
+                      ttxt = 'Р°РІС‚РѕСЂС‹Р±Р°Р»РєРё';
+                      break;
               }
-	      document.all("key").innerHTML = 'Защита от '+ttxt+' [ ещё '+curTimeFor+' сек ]';
+           document.all("key").innerHTML = 'Р—Р°С‰РёС‚Р° РѕС‚ ' + ttxt + ' [ РµС‰С‘ ' + curTimeFor + ' СЃРµРє ]';
 	      curTimeFor = curTimeFor - 1;
        }
        else

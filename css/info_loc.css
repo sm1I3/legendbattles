@@ -266,7 +266,8 @@ table.user_info td { border-bottom: 1px solid #b19269;}
 	background: url('http://img.legendbattles.ru/images/tbl_top_right.gif') no-repeat right bottom;
 	padding-right: 5px;
 }
-/* Есть перемещение*/
+
+/* Р•СЃС‚СЊ РїРµСЂРµРјРµС‰РµРЅРёРµ*/
 .move_yes
 {
 	cursor: hand;
@@ -277,7 +278,8 @@ table.user_info td { border-bottom: 1px solid #b19269;}
 	background: transparent;
 	background-color: #FFFBD6;
 }
-/* местоположение перса*/
+
+/* РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ РїРµСЂСЃР°*/
 .move_pers
 {
 	cursor: hand;
@@ -299,7 +301,8 @@ table.user_info td { border-bottom: 1px solid #b19269;}
 	background: transparent;
 	background-color: #FFFBD6;
 }
-/*класс алл мап*/
+
+/*РєР»Р°СЃСЃ Р°Р»Р» РјР°Рї*/
 .return_win
 {
 	border: 1px solid #DDDDDD;

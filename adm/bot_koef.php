@@ -39,10 +39,10 @@ while ($row = mysql_fetch_assoc($res))
 $_SESSION['pages']['bot_list'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Коэффициенты ботов</h3>
+    <h3>РљРѕСЌС„С„РёС†РёРµРЅС‚С‹ Р±РѕС‚РѕРІ</h3>
 <link rel="stylesheet" href="files/modalwindow.css" type="text/css" />
 <form action="" method="post">
-Коэффициенты:
+    РљРѕСЌС„С„РёС†РёРµРЅС‚С‹:
 <table>
     <tr>
         <td>&nbsp;</td>
@@ -58,7 +58,7 @@ $_SESSION['pages']['bot_list'] = $_SERVER['REQUEST_URI'];
     </tr>
 <? } ?>
 </table>
-<input type="submit" name="update" value="Сохранить">
+    <input type="submit" name="update" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
  <br />
 </form>
  <br />

@@ -14,7 +14,7 @@
 }
 </style><script type="text/javascript" language="javascript" src="/js/itemsInfo.js"></script><table cellpadding="5" cellspacing="1" border="0" width="100%"><tr><td>';
 			$ArrayCombins = array(
-			 array(// Вещь 7
+                array(// Р’РµС‰СЊ 7
 					'items'=>array(
 						array('3283','1'),
 						array('3475','1'),
@@ -24,9 +24,9 @@
 						array('',''),
 						array('','')
 					),
-					'result'=>'3474' // ИД вещи
+                    'result' => '3474' // РР” РІРµС‰Рё
 				),
-				array(// Вещь 6
+                array(// Р’РµС‰СЊ 6
 					'items'=>array(
 						array('2931','1'),
 						array('3473','1'),
@@ -36,9 +36,9 @@
 						array('',''),
 						array('','')
 					),
-					'result'=>'3472' // ИД вещи
+                    'result' => '3472' // РР” РІРµС‰Рё
 				),
-				array(// Вещь 5
+                array(// Р’РµС‰СЊ 5
 					'items'=>array(
 						array('2782','1'),
 						array('3471','1'),
@@ -48,9 +48,9 @@
 						array('',''),
 						array('','')
 					),
-					'result'=>'3470' // ИД вещи
+                    'result' => '3470' // РР” РІРµС‰Рё
 				),
-			    array(// Вещь 4
+                array(// Р’РµС‰СЊ 4
 					'items'=>array(
 						array('2780','1'),
 						array('3469','1'),
@@ -60,9 +60,9 @@
 						array('',''),
 						array('','')
 					),
-					'result'=>'3468' // ИД вещи
+                    'result' => '3468' // РР” РІРµС‰Рё
 				),
-				array(// Вещь 3
+                array(// Р’РµС‰СЊ 3
 					'items'=>array(
 						array('2778','1'),
 						array('3467','1'),
@@ -72,9 +72,9 @@
 						array('',''),
 						array('','')
 					),
-					'result'=>'3466' // ИД вещи
+                    'result' => '3466' // РР” РІРµС‰Рё
 				),
-				array(// Вещь 2
+                array(// Р’РµС‰СЊ 2
 					'items'=>array(
 						array('2781','1'),
 						array('3465','1'),
@@ -84,9 +84,9 @@
 						array('',''),
 						array('','')
 					),
-					'result'=>'3464' // ИД вещи
+                    'result' => '3464' // РР” РІРµС‰Рё
 				),
-				array(// Вещь 1
+                array(// Р’РµС‰СЊ 1
 					'items'=>array(
 						array('2770','1'),
 						array('3463','1'),
@@ -96,9 +96,9 @@
 						array('',''),
 						array('','')
 					),
-					'result'=>'3458' // ИД вещи
+                    'result' => '3458' // РР” РІРµС‰Рё
 				),
-				array(// Вещь 0
+                array(// Р’РµС‰СЊ 0
 					'items'=>array(
 						array('2795','1'),
 						array('3463','1'),
@@ -108,7 +108,7 @@
 						array('',''),
 						array('','')
 					),
-					'result'=>'3462' // ИД вещи
+                    'result' => '3462' // РР” РІРµС‰Рё
 				),
 			);
 			if(isset($_POST['craftID'])){
@@ -142,7 +142,7 @@
 						}
 						if(mysqli_query($GLOBALS['db_link'],"INSERT INTO invent (`protype` ,`pl_id` ,`dolg` ,`price` ,`gift`,`gift_from`) VALUES ('".$itemsql['id']."','".$player['id']."','".$dolg."','".$itemsql['price']."','0','');")){
 						echo"<script>
-							top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."</font>&nbsp;<b><font color=#CC0000>Внимание!</font></b> Вы получили &quot;<b>" . $itemsql['name'] . "</b>&quot;. </font><BR>'+'');
+							top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "</font>&nbsp;<b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b> Р’С‹ РїРѕР»СѓС‡РёР»Рё &quot;<b>" . $itemsql['name'] . "</b>&quot;. </font><BR>'+'');
 							top.set_lmid(8);
 							</script>";	
 						}
@@ -171,7 +171,7 @@
 					}
 					echo'</div>';
 				}
-				echo'</td><td class="collection-ico" bgcolor="#FFFFFF" align="center"><b>=</b></td><td bgcolor="#FFFFFF" align="center"><img src="/img/image/weapon/' . $ResultItem['gif'] . '" onmouseover="tooltip(this,ShowInfo(\''.$ResultItem['name'].'\',\''.$ResultItem['gif'].'\',\''.lr($ResultItem['price']).'\',\''.$ResultItem['slot'].'\',\''.$ResultItem['block'].'\',\''.$ResultItem['hand'].'\',\''.preg_replace('/@/',':',$ResultItem['param']).'\',\''.preg_replace('/@/',':',$ResultItem['need']).'\',\''.$ResultItem['massa'].'\',\''.$ResultItem['level'].'\'));" onmouseout="hide_info(this);" /></td><td bgcolor="#FFFFFF" align="center"><input type=submit' . ($ParamsNeeds == true ? ' class=lbut' : ' class=lbutdis disabled') . ' value="Применить магию" /></td></tr></table></form>';
+                echo '</td><td class="collection-ico" bgcolor="#FFFFFF" align="center"><b>=</b></td><td bgcolor="#FFFFFF" align="center"><img src="/img/image/weapon/' . $ResultItem['gif'] . '" onmouseover="tooltip(this,ShowInfo(\'' . $ResultItem['name'] . '\',\'' . $ResultItem['gif'] . '\',\'' . lr($ResultItem['price']) . '\',\'' . $ResultItem['slot'] . '\',\'' . $ResultItem['block'] . '\',\'' . $ResultItem['hand'] . '\',\'' . preg_replace('/@/', ':', $ResultItem['param']) . '\',\'' . preg_replace('/@/', ':', $ResultItem['need']) . '\',\'' . $ResultItem['massa'] . '\',\'' . $ResultItem['level'] . '\'));" onmouseout="hide_info(this);" /></td><td bgcolor="#FFFFFF" align="center"><input type=submit' . ($ParamsNeeds == true ? ' class=lbut' : ' class=lbutdis disabled') . ' value="РџСЂРёРјРµРЅРёС‚СЊ РјР°РіРёСЋ" /></td></tr></table></form>';
 			}
 			echo'</td></tr></table>';
 		?>

@@ -52,23 +52,24 @@ if ($zone_code == '') {
 }
 
 ?>
-<h3><?=($zone_code == ''?'Добавить зону':'Изменить зону')?></h3>
+    <h3><?= ($zone_code == '' ? 'Р”РѕР±Р°РІРёС‚СЊ Р·РѕРЅСѓ' : 'РР·РјРµРЅРёС‚СЊ Р·РѕРЅСѓ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Код зоны: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РљРѕРґ Р·РѕРЅС‹: &nbsp;</td>
   <td><input name="zone_code" type="text" class="cms_fieldstyle1" value="<?=$zone['zone_code']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Название зоны: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ Р·РѕРЅС‹: &nbsp;</td>
   <td><input name="zone_name" type="text" class="cms_fieldstyle1" value="<?=$zone['zone_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='world_map_zone_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='world_map_zone_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

@@ -1,7 +1,7 @@
 <div class="block skill">
 	<div class="header">
 		<span>
-				Информация о монстров
+				РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РјРѕРЅСЃС‚СЂРѕРІ
 	</span>
 	</div>
 <?php
@@ -12,7 +12,7 @@ while($bot = mysqli_fetch_assoc($bots)){
 				<table cellpadding=0 cellspacing=0 border=0 width=65%  align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1  align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td><b>Сундук:  '.$bot['name'].' </b></td></tr><hr>';
+				<tr align=center class=nickname><td><b>РЎСѓРЅРґСѓРє:  ' . $bot['name'] . ' </b></td></tr><hr>';
 				$itemsin=explode("|",$chbot['items']);				
 				foreach($itemsin as $val){
 					if($val!=''){

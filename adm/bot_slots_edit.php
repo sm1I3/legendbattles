@@ -15,9 +15,9 @@ if (!isset($_GET['bot_template_id']) || !is_numeric($_GET['bot_template_id']) ||
 }
     
 $slot_fields = array(
-    'Шлем', 'Амулет', 'Оружие', 'Пояс', 'Содержимое пояса', 'Содержимое пояса', 'Содержимое пояса', 
-    'Ботинки', 'Слот для кармана', 'Слот для содержимого кармана', 'Наручи', 'Перчатки', 
-    'Щит', 'Кольцо', 'Кольцо', 'Броня'
+    'РЁР»РµРј', 'РђРјСѓР»РµС‚', 'РћСЂСѓР¶РёРµ', 'РџРѕСЏСЃ', 'РЎРѕРґРµСЂР¶РёРјРѕРµ РїРѕСЏСЃР°', 'РЎРѕРґРµСЂР¶РёРјРѕРµ РїРѕСЏСЃР°', 'РЎРѕРґРµСЂР¶РёРјРѕРµ РїРѕСЏСЃР°',
+    'Р‘РѕС‚РёРЅРєРё', 'РЎР»РѕС‚ РґР»СЏ РєР°СЂРјР°РЅР°', 'РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РєР°СЂРјР°РЅР°', 'РќР°СЂСѓС‡Рё', 'РџРµСЂС‡Р°С‚РєРё',
+    'Р©РёС‚', 'РљРѕР»СЊС†Рѕ', 'РљРѕР»СЊС†Рѕ', 'Р‘СЂРѕРЅСЏ'
 );
 
 $bot_templates = array();
@@ -91,26 +91,26 @@ if (isset($_GET['copy_bot_template_id']))
 $slots_arr = explode('@', $bot_slots['slots']);
 
 ?>
-<h3><?=($bot_template_id == ''?'Добавить слоты бота':'Изменить слоты бота')?></h3>
+    <h3><?= ($bot_template_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СЃР»РѕС‚С‹ Р±РѕС‚Р°' : 'РР·РјРµРЅРёС‚СЊ СЃР»РѕС‚С‹ Р±РѕС‚Р°') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID Шаблона: &nbsp;  </td>
+    <td>ID РЁР°Р±Р»РѕРЅР°: &nbsp;</td>
   <td><?=createSelectFromArray('bot_template_id', $bot_templates, $bot_slots['bot_template_id'])?></td>
 </tr>
 <tr>
-  <td>Уровень бота: &nbsp;  </td>
+    <td>РЈСЂРѕРІРµРЅСЊ Р±РѕС‚Р°: &nbsp;</td>
   <td><input name="level" type="text" class="cms_fieldstyle1" value="<?=$bot_slots['level']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
-Слоты:
+    РЎР»РѕС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_qe" >
     <tr >
-        <td class="cms_cap3">Слот</td>
-        <td class="cms_cap3">Название предмета</td>
-        <td class="cms_cap3">Картинка</td>
+        <td class="cms_cap3">РЎР»РѕС‚</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°</td>
+        <td class="cms_cap3">РљР°СЂС‚РёРЅРєР°</td>
     </tr>
 <? foreach($slot_fields as $id=>$sname) {
  
@@ -132,8 +132,9 @@ $slots_arr = explode('@', $bot_slots['slots']);
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='bot_slots_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='bot_slots_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

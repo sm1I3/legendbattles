@@ -1,6 +1,6 @@
 document.onmousedown = t_nick;
-var align_ar = ["0","radio.gif;Dj на радио","litop.gif;Летописец","mentor.gif;Ментор","chaoss.gif;Дети Хаоса","light.gif;Истинный Свет","dark.gif;Истинная Тьма","sumer.gif;Нейтральные Сумерки","chaos.gif;Абсолютный Хаос","angel.gif;Ангел"];
-var doblest_ar = ['0;Стажер','1;Солдaт','2;Боeц','3;Воин','4;Элитный воин','5;Чeмпион','6;Глaдиaтор','7;Полководeц','8;Мaстeр войны','9;Гeрой','10;Военный эксперт','11;Магистр войны','12;Вершитель','14;Высший магистр','13;Повелитель'];
+var align_ar = ["0", "radio.gif;Dj РЅР° СЂР°РґРёРѕ", "litop.gif;Р›РµС‚РѕРїРёСЃРµС†", "mentor.gif;РњРµРЅС‚РѕСЂ", "chaoss.gif;Р”РµС‚Рё РҐР°РѕСЃР°", "light.gif;РСЃС‚РёРЅРЅС‹Р№ РЎРІРµС‚", "dark.gif;РСЃС‚РёРЅРЅР°СЏ РўСЊРјР°", "sumer.gif;РќРµР№С‚СЂР°Р»СЊРЅС‹Рµ РЎСѓРјРµСЂРєРё", "chaos.gif;РђР±СЃРѕР»СЋС‚РЅС‹Р№ РҐР°РѕСЃ", "angel.gif;РђРЅРіРµР»"];
+var doblest_ar = ['0;РЎС‚Р°Р¶РµСЂ', '1;РЎРѕР»РґaС‚', '2;Р‘РѕeС†', '3;Р’РѕРёРЅ', '4;Р­Р»РёС‚РЅС‹Р№ РІРѕРёРЅ', '5;Р§eРјРїРёРѕРЅ', '6;Р“Р»aРґРёaС‚РѕСЂ', '7;РџРѕР»РєРѕРІРѕРґeС†', '8;РњaСЃС‚eСЂ РІРѕР№РЅС‹', '9;Р“eСЂРѕР№', '10;Р’РѕРµРЅРЅС‹Р№ СЌРєСЃРїРµСЂС‚', '11;РњР°РіРёСЃС‚СЂ РІРѕР№РЅС‹', '12;Р’РµСЂС€РёС‚РµР»СЊ', '14;Р’С‹СЃС€РёР№ РјР°РіРёСЃС‚СЂ', '13;РџРѕРІРµР»РёС‚РµР»СЊ'];
 
 function t_nick ()
 {
@@ -143,18 +143,19 @@ function chatlist_build (sort_type)
 	//
     if(str_array[4]!='0'){ var molch,minut,hour,sec; molch='';
 	hour=parseInt(str_array[4]/3600);minut=parseInt((str_array[4]-(hour*3600))/60); sec=str_array[4]-((hour*3600)+(minut*60));
-	if(hour>0)molch=hour+" ч. ";
-	if(minut>0)molch+=minut+" мин. и ";
-	molch+=sec+" сек.";
-      sleeps="<img src=img/image/signs/molch.gif width=10 height=10 border=0 title=\"Персонаж будет молчать еще "+molch+"\" align=absmiddle>";}
+        if (hour > 0) molch = hour + " С‡. ";
+        if (minut > 0) molch += minut + " РјРёРЅ. Рё ";
+        molch += sec + " СЃРµРє.";
+        sleeps = "<img src=img/image/signs/molch.gif width=10 height=10 border=0 title=\"РџРµСЂСЃРѕРЅР°Р¶ Р±СѓРґРµС‚ РјРѕР»С‡Р°С‚СЊ РµС‰Рµ " + molch + "\" align=absmiddle>";
+    }
     if (str_array[5] == '1')
-      ign = "<a href=\"javascript:ch_clear_ignor('"+login+"');\"><img src=img/image/signs/ignor/3.gif width=15 height=12 border=0 title=\"Снять игнорирование\"></a>";
+        ign = "<a href=\"javascript:ch_clear_ignor('" + login + "');\"><img src=img/image/signs/ignor/3.gif width=15 height=12 border=0 title=\"РЎРЅСЏС‚СЊ РёРіРЅРѕСЂРёСЂРѕРІР°РЅРёРµ\"></a>";
     if (str_array[6] != '0')
       inj = "<img src=img/image/chat/tr4.gif width=10 height=10 border=0 title=\""+str_array[6]+"\" align=absmiddle>";
 
      if (str_array[7] != '0')
      {
-       var dilers = new Array ('', 'Дилер', 'Дилер', '', '', '', '', '', '', '', '', 'Помощник дилера');
+         var dilers = new Array('', 'Р”РёР»РµСЂ', 'Р”РёР»РµСЂ', '', '', '', '', '', '', '', '', 'РџРѕРјРѕС‰РЅРёРє РґРёР»РµСЂР°');
        psg = "<img src=img/image/signs/d_sm_"+str_array[7]+".gif width=15 height=12 align=absmiddle border=0 title=\""+dilers[str_array[7]]+"\">&nbsp;";
      }
      if (str_array[8] != '0')
@@ -171,6 +172,6 @@ function chatlist_build (sort_type)
      else if (str_array[7] == '0')
      align = "<img src=img/image/1x1.gif width=16 height=12 align=absmiddle border=0 title=\"\">&nbsp";
      lvl_array = str_array[2].split(";");
-     document.write("<img src=img/image/1x1.gif width=5 height=0><a href=\"javascript:parent.say_private('"+login+"')\"><img src=img/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a>&nbsp;"+psg+" <a href=\"/clan_info.php?"+nn_sec+"\" target=_blank>"+align+ss+doblest+"<a href=\"javascript:parent.say_to('"+login+"')\"><font class=nickname "+(str_array[14]?'style="color : #'+str_array[14]+'; font-size : 12px;"':'')+"><b>"+str_array[1]+"</b></a></font><font class=nickname>["+lvl_array[0]+"]</font> "+((str_array[12] > 0)? '<img src=http://w1.dwar.ru/images/axe.png width=11 height=12 border=0 title="Палач '+str_array[12]+' ур." align=absmiddle>' : '' )+""+((str_array[10] > 0)? '<img src=img/image/signs/key_quest.png width=11 height=12 border=0 title="Взломщик '+str_array[10]+' ур." align=absmiddle>' : '' )+""+(str_array[11] !='не женат'  && str_array[11] !='не замужем'  && str_array[11] !='' ? '<img src=img/image/rings.gif width=11 height=12 border=0 title="На '+str_array[11]+'" align=absmiddle>' : '' )+" <a href=\"/ipers/"+nn_sec+"\" target=_blank><img src=img/image/chat/info"+(str_array[9]=='4'?'1':'')+".gif width=11 height=12 border=0 align=absmiddle></a>"+sleeps+"&nbsp;"+ign+"&nbsp;"+inj+"&nbsp;"+"<br><img border=0 width=90%  height=1 src=img/image/1x1_2.gif><br />");
+      document.write("<img src=img/image/1x1.gif width=5 height=0><a href=\"javascript:parent.say_private('" + login + "')\"><img src=img/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a>&nbsp;" + psg + " <a href=\"/clan_info.php?" + nn_sec + "\" target=_blank>" + align + ss + doblest + "<a href=\"javascript:parent.say_to('" + login + "')\"><font class=nickname " + (str_array[14] ? 'style="color : #' + str_array[14] + '; font-size : 12px;"' : '') + "><b>" + str_array[1] + "</b></a></font><font class=nickname>[" + lvl_array[0] + "]</font> " + ((str_array[12] > 0) ? '<img src=http://w1.dwar.ru/images/axe.png width=11 height=12 border=0 title="РџР°Р»Р°С‡ ' + str_array[12] + ' СѓСЂ." align=absmiddle>' : '') + "" + ((str_array[10] > 0) ? '<img src=img/image/signs/key_quest.png width=11 height=12 border=0 title="Р’Р·Р»РѕРјС‰РёРє ' + str_array[10] + ' СѓСЂ." align=absmiddle>' : '') + "" + (str_array[11] != 'РЅРµ Р¶РµРЅР°С‚' && str_array[11] != 'РЅРµ Р·Р°РјСѓР¶РµРј' && str_array[11] != '' ? '<img src=img/image/rings.gif width=11 height=12 border=0 title="РќР° ' + str_array[11] + '" align=absmiddle>' : '') + " <a href=\"/ipers/" + nn_sec + "\" target=_blank><img src=img/image/chat/info" + (str_array[9] == '4' ? '1' : '') + ".gif width=11 height=12 border=0 align=absmiddle></a>" + sleeps + "&nbsp;" + ign + "&nbsp;" + inj + "&nbsp;" + "<br><img border=0 width=90%  height=1 src=img/image/1x1_2.gif><br />");
   }
 }

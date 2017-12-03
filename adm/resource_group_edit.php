@@ -133,7 +133,7 @@ else
 }
 
 ?>
-<h3><?=($resource_group_id == ''?'Добавить группу ресурсов':'Изменить группу ресурсов')?></h3>
+    <h3><?= ($resource_group_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РіСЂСѓРїРїСѓ СЂРµСЃСѓСЂСЃРѕРІ' : 'РР·РјРµРЅРёС‚СЊ РіСЂСѓРїРїСѓ СЂРµСЃСѓСЂСЃРѕРІ') ?></h3>
 <script src="jscript/resource_group.js" language="javascript"></script>
 <script language="javascript">
 var last_id = <?=(int)$row_id?>;
@@ -158,31 +158,33 @@ function filter(row, type)
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>ID группы: &nbsp;  </td>
+    <td><span class="cms_star">*</span>ID РіСЂСѓРїРїС‹: &nbsp;</td>
   <td><input name="resource_group_id" type="text" class="cms_fieldstyle1" value="<?=$resource_group['resource_group_id']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Название группы: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹: &nbsp;</td>
   <td><input name="resource_group_name" type="text" class="cms_fieldstyle1" value="<?=$resource_group['resource_group_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 <br />
 
-Товары:
+    РўРѕРІР°СЂС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_resources" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Ресурс</td>
-        <td class="cms_cap3">Тип</td>
-        <td class="cms_cap3">Кол-во</td>
-        <td class="cms_cap3">Время восстановления</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">Р РµСЃСѓСЂСЃ</td>
+        <td class="cms_cap3">РўРёРї</td>
+        <td class="cms_cap3">РљРѕР»-РІРѕ</td>
+        <td class="cms_cap3">Р’СЂРµРјСЏ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ</td>
     </tr>
     <?=$group_resources?>
 </table>
-<a onclick="addItem_res_item('table_resources', 'tr_resource_', 'resource[]', resources, '', ''); return false;" href="#">Добавить ресурс</a><br />
+    <a onclick="addItem_res_item('table_resources', 'tr_resource_', 'resource[]', resources, '', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ СЂРµСЃСѓСЂСЃ</a><br/>
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='resource_group_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='resource_group_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

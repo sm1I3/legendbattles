@@ -31,13 +31,13 @@ mysql_free_result($res);
 
 if (isset($_POST['action']) && $_POST['action']=='save') 
 {
-    ob_end_clean(); 
-    header('Content-type: text/html; charset=windows-1251');
+    ob_end_clean();
+    header('Content-type: text/html; charset=utf-8');
     
     $cell_code = $_POST['cell_code'];
     
     if (isset($_POST['cell_name']) && $_POST['cell_name']!='')
-        $cell_name = iconv('UTF-8', 'windows-1251', rawurldecode($_POST['cell_name']));
+        $cell_name = iconv('UTF-8', 'utf-8', rawurldecode($_POST['cell_name']));
     else
         $cell_name = '';
     
@@ -79,8 +79,8 @@ if (isset($_POST['action']) && $_POST['action']=='save')
 
 if (isset($_POST['action']) && $_POST['action']=='saveall') 
 {
-    ob_end_clean(); 
-    header('Content-type: text/html; charset=windows-1251');
+    ob_end_clean();
+    header('Content-type: text/html; charset=utf-8');
     
     
     foreach($_POST as $code => $row)
@@ -89,7 +89,7 @@ if (isset($_POST['action']) && $_POST['action']=='saveall')
         $cell_code = $code;
         
         if (isset($row['cell_name']) && $row['cell_name']!='')
-            $cell_name = iconv('UTF-8', 'windows-1251', rawurldecode($row['cell_name']));
+            $cell_name = iconv('UTF-8', 'utf-8', rawurldecode($row['cell_name']));
         else
             $cell_name = '';
         
@@ -127,8 +127,8 @@ if (isset($_POST['action']) && $_POST['action']=='saveall')
 
 if (isset($_GET['action']) && $_GET['action']=='load') 
 {
-    ob_end_clean(); 
-    header('Content-type: text/html; charset=windows-1251');
+    ob_end_clean();
+    header('Content-type: text/html; charset=utf-8');
     
     $x1 = $_GET['x1'];
     $y1 = $_GET['y1'];
@@ -245,74 +245,75 @@ var last_id = 0;
             <input type="button" onclick="moveMap('right');" name="move_right" value="&gt;" />
         </div>
         <br /><br />
-        <input type="button" name="save" value="Загрузить" onclick="loadCells();" />
+        <input type="button" name="save" value="Р—Р°РіСЂСѓР·РёС‚СЊ" onclick="loadCells();"/>
         <br /><br />
-        
-        <div id="save_all_status" class="status_ok">Все изменения сохранены.</div>
-        <input id="save_all_button" type="button" name="save" value="Сохранить изменения" onclick="saveChanged();"  disabled="disabled" />
+
+        <div id="save_all_status" class="status_ok">Р’СЃРµ РёР·РјРµРЅРµРЅРёСЏ СЃРѕС…СЂР°РЅРµРЅС‹.</div>
+        <input id="save_all_button" type="button" name="save" value="РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ" onclick="saveChanged();"
+               disabled="disabled"/>
         <br />
         <br />
-        <div id="clipboard_status" class="status_none">Буфер обмена пуст.</div>
+        <div id="clipboard_status" class="status_none">Р‘СѓС„РµСЂ РѕР±РјРµРЅР° РїСѓСЃС‚.</div>
         <br />
         <br />
         
         <div id="details_div" style="display: none;">
-            Детали (<b><span id="current_coord"></span></b>):
+            Р”РµС‚Р°Р»Рё (<b><span id="current_coord"></span></b>):
             
             <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="bots_table" >
                 <tr>
-                    <td>Зона</td>
+                    <td>Р—РѕРЅР°</td>
                     <td><?=createSelectFromArray('zone', $zones, '', 'id="zone_code" onchange="applyDetails();"')?></td>
                 </tr>
                 <tr>
-                    <td>Название</td>
+                    <td>РќР°Р·РІР°РЅРёРµ</td>
                     <td><input type="text" name="name" id="cell_name" onkeypress="applyDetails();" /></td>
                 </tr>
                 <!--<tr>
-                    <td>Параметры (старые)</td>
+                    <td>РџР°СЂР°РјРµС‚СЂС‹ (СЃС‚Р°СЂС‹Рµ)</td>
                     <td><input type="text" name="params" id="cell_params" /></td>
                 </tr>-->
                 <tr>
-                    <td>Переход</td>
+                    <td>РџРµСЂРµС…РѕРґ</td>
                     <td><input type="text" name="time" id="cell_time" onkeypress="applyDetails();" /></td>
                 </tr>
                 <tr>
-                    <td>Оглядется</td>
+                    <td>РћРіР»СЏРґРµС‚СЃСЏ</td>
                     <td><input type="checkbox" name="det0" id="cell_det_0" value="Y" onclick="applyDetails();" /></td>
                 </tr>
                 <tr>
-                    <td>Нападать</td>
+                    <td>РќР°РїР°РґР°С‚СЊ</td>
                     <td><input type="checkbox" name="det1" id="cell_det_1" value="Y" onclick="applyDetails();" /></td>
                 </tr>
                 <tr>
-                    <td>Пить</td>
+                    <td>РџРёС‚СЊ</td>
                     <td><input type="checkbox" name="det2" id="cell_det_2" value="Y" onclick="applyDetails();" /></td>
                 </tr>
                 <tr>
-                    <td>Рыбалка</td>
+                    <td>Р С‹Р±Р°Р»РєР°</td>
                     <td><input type="checkbox" name="det3" id="cell_det_3" value="Y" onclick="applyDetails();" /></td>
                 </tr>
                 <tr>
-                    <td>Квесты</td>
+                    <td>РљРІРµСЃС‚С‹</td>
                     <td><input type="checkbox" name="det4" id="cell_det_4" value="Y" onclick="applyDetails();" /></td>
                 </tr>
                 <tr>
-                    <td>Замок</td>
+                    <td>Р—Р°РјРѕРє</td>
                     <td><input type="checkbox" name="det5" id="cell_det_5" value="Y" onclick="applyDetails();" /></td>
                 </tr>
                 <tr>
-                    <td>Доп.</td>
+                    <td>Р”РѕРї.</td>
                     <td><input type="text" name="cell_add" id="cell_add" value="" onkeyup="applyDetails();" /></td>
                 </tr>
             </table>
             <div id="map_links"></div>
-            <b>Здесь находится:</b><br />
-            <span id="cell_enter">Пусто</span>
+            <b>Р—РґРµСЃСЊ РЅР°С…РѕРґРёС‚СЃСЏ:</b><br/>
+            <span id="cell_enter">РџСѓСЃС‚Рѕ</span>
             <br />
             <br />
-            <input id="save_button" type="button" name="save" value="Сохранить" onclick="saveDetails();" />
-            <input id="copy_button" type="button" name="save" value="Запомнить" onclick="copyDetails();" />
-            <input id="cancel_button" type="button" name="cancel" value="Закрыть" onclick="cancelDetails();" /><br />
+            <input id="save_button" type="button" name="save" value="РЎРѕС…СЂР°РЅРёС‚СЊ" onclick="saveDetails();"/>
+            <input id="copy_button" type="button" name="save" value="Р—Р°РїРѕРјРЅРёС‚СЊ" onclick="copyDetails();"/>
+            <input id="cancel_button" type="button" name="cancel" value="Р—Р°РєСЂС‹С‚СЊ" onclick="cancelDetails();"/><br/>
         </div>
     </td>
 </table>

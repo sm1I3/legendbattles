@@ -28,17 +28,17 @@ echo "<SCRIPT>MessBoxDiv('".$msg."',0,0,0,0);</SCRIPT>";
    <tr>
     <td>
 	 <?
-	 if($player['login']=='alexs' or $player['login']=='Администрация'){
+     if ($player['login'] == 'alexs' or $player['login'] == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
 				echo '
 				<font class=proce><font color=#222222>
 				<FIELDSET style="background: white;">
 				<table cellpadding=0 cellspacing=0 border=0 width=100% >
 					<tr><td>
-						<b><a href="?d_swi=999"><font class=nickname2 style="color:#993388">Просмотр исполненных заявок игроков</font></a></b><br>
-						<b><a href="?d_swi=998"><font class=nickname2 style="color:#993388">Просмотр заявок игроков</font></a></b><br>
-						<b><a href="?d_swi=904" class=nickname2><font  color=#993388>Вклады</font></a><br>
-						<b><a href="?d_swi=1000" class=nickname2><font  color=#993388>Работа с образами</font></a><br>
-						<b><a href="?d_swi=905" class=nickname2><font  color=#993388>Арендованные вещи</font></a>
+						<b><a href="?d_swi=999"><font class=nickname2 style="color:#993388">РџСЂРѕСЃРјРѕС‚СЂ РёСЃРїРѕР»РЅРµРЅРЅС‹С… Р·Р°СЏРІРѕРє РёРіСЂРѕРєРѕРІ</font></a></b><br>
+						<b><a href="?d_swi=998"><font class=nickname2 style="color:#993388">РџСЂРѕСЃРјРѕС‚СЂ Р·Р°СЏРІРѕРє РёРіСЂРѕРєРѕРІ</font></a></b><br>
+						<b><a href="?d_swi=904" class=nickname2><font  color=#993388>Р’РєР»Р°РґС‹</font></a><br>
+						<b><a href="?d_swi=1000" class=nickname2><font  color=#993388>Р Р°Р±РѕС‚Р° СЃ РѕР±СЂР°Р·Р°РјРё</font></a><br>
+						<b><a href="?d_swi=905" class=nickname2><font  color=#993388>РђСЂРµРЅРґРѕРІР°РЅРЅС‹Рµ РІРµС‰Рё</font></a>
 					</td></tr>
 				</table>
 				</FIELDSET>

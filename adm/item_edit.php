@@ -419,10 +419,10 @@ else
 
 ?>
 <link rel="stylesheet" href="files/modalwindow.css" type="text/css" />
-<script src="jscript/ajax.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/modal_window.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/controls/weapon_control.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/items.js" language="javascript" charset="windows-1251"></script> 
+    <script src="jscript/ajax.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/modal_window.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/controls/weapon_control.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/items.js" language="javascript" charset="utf-8"></script>
 <script language="javascript">
 var last_id = <?=(int)$row_id?>;
 <?=createJsArray('res_array', $resource_array);?>
@@ -430,21 +430,21 @@ var last_id = <?=(int)$row_id?>;
 <?=createJsArray('mod_array', $modificators);?>
 <?=createJsArray('weapon_categories', $weapon_categories_array)?> 
 </script>
-<h3><?=($item_id == ''?'Добавить предмет':'Изменить предмет')?></h3>
+    <h3><?= ($item_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РїСЂРµРґРјРµС‚' : 'РР·РјРµРЅРёС‚СЊ РїСЂРµРґРјРµС‚') ?></h3>
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Название предмета: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°: &nbsp;</td>
   <td><input name="item_name" type="text" class="cms_fieldstyle1" value="<?=$item['item_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <? if ($item_id != '') { ?>
 <tr>
-  <td>Картинка: &nbsp;  </td>
+    <td>РљР°СЂС‚РёРЅРєР°: &nbsp;</td>
   <td><img src="http://image.neverlands.ru/tools/<?=$item_id?>.gif" /></td>
 </tr>
 <? } ?>
 <tr>
-  <td>Стоимость: &nbsp;  </td>
+    <td>РЎС‚РѕРёРјРѕСЃС‚СЊ: &nbsp;</td>
   <td><input name="item_cost" type="text" class="cms_fieldstyle1" value="<?=$item['item_cost']?>" size="10" maxlength="255" id="item_cost_total" onchange="recalcResourceCount(); recalcResourcePrice();" /></td>
 </tr>
 <tr>
@@ -501,173 +501,181 @@ var last_id = <?=(int)$row_id?>;
 </tr>
 </table>
 <br />
-Состав предмета: (<span id="init_res_total_info">0</span>)
+    РЎРѕСЃС‚Р°РІ РїСЂРµРґРјРµС‚Р°: (<span id="init_res_total_info">0</span>)
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_resources" >
 <tr >
-    <td class="cms_cap3">Удалить</td>
-    <td class="cms_cap3">Название ресурса</td>
-    <td class="cms_cap3">Количество</td>
+    <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+    <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ СЂРµСЃСѓСЂСЃР°</td>
+    <td class="cms_cap3">РљРѕР»РёС‡РµСЃС‚РІРѕ</td>
 </tr>
 <?=$item_consists?>
 </table>
 <script language="javascript">recalcResourcePrice();</script>
 <a onclick="addItem_item_initres('table_resources', 'tr_resource', 'resources[]', res_array, 'resources_amount[]', '1'); return false;" href="#">Add resource</a><br />
 <br />
-Дополнительные пораметры:
+    Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїРѕСЂР°РјРµС‚СЂС‹:
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Ограничение по количеству (0 - нет ограничения): &nbsp;  </td>
+    <td>РћРіСЂР°РЅРёС‡РµРЅРёРµ РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ (0 - РЅРµС‚ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ): &nbsp;</td>
   <td><input name="add_nl" type="text" class="cms_fieldstyle1" value="<?=(isset($add['NL'])?$add['NL']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Здоровье: &nbsp;  </td>
+    <td>Р—РґРѕСЂРѕРІСЊРµ: &nbsp;</td>
   <td><input name="add_hp" type="text" class="cms_fieldstyle1" value="<?=(isset($add['HP'])?$add['HP']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Мана: &nbsp;  </td>
+    <td>РњР°РЅР°: &nbsp;</td>
   <td><input name="add_mp" type="text" class="cms_fieldstyle1" value="<?=(isset($add['MP'])?$add['MP']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Усталость: &nbsp;  </td>
+    <td>РЈСЃС‚Р°Р»РѕСЃС‚СЊ: &nbsp;</td>
   <td><input name="add_us" type="text" class="cms_fieldstyle1" value="<?=(isset($add['US'])?$add['US']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Требуемый уровень: &nbsp;  </td>
+    <td>РўСЂРµР±СѓРµРјС‹Р№ СѓСЂРѕРІРµРЅСЊ: &nbsp;</td>
   <td><input name="add_lv" type="text" class="cms_fieldstyle1" value="<?=(isset($add['LV'])?$add['LV']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Требуемый квест: &nbsp;  </td>
+    <td>РўСЂРµР±СѓРµРјС‹Р№ РєРІРµСЃС‚: &nbsp;</td>
   <td><?=createSelectFromArray('add_qu', $quest_array, (isset($add['QU'])?$add['QU']:''))?></td>
 </tr>
 </table>
 
 
-Влияние на модификаторы:
+    Р’Р»РёСЏРЅРёРµ РЅР° РјРѕРґРёС„РёРєР°С‚РѕСЂС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_mf" >
 <tr >
-    <td class="cms_cap3">Удалить</td>
-    <td class="cms_cap3">Модификатор</td>
-    <td class="cms_cap3">Значение</td>
-    <td class="cms_cap3">Время в минутах</td>
+    <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+    <td class="cms_cap3">РњРѕРґРёС„РёРєР°С‚РѕСЂ</td>
+    <td class="cms_cap3">Р—РЅР°С‡РµРЅРёРµ</td>
+    <td class="cms_cap3">Р’СЂРµРјСЏ РІ РјРёРЅСѓС‚Р°С…</td>
 </tr>
 <?=$add_mf?>
 </table>
-<a onclick="addItem_item_mf('table_mf', 'tr_mf', 'add_mf', mod_array); return false;" href="#">Добавить модификатор</a><br />
+    <a onclick="addItem_item_mf('table_mf', 'tr_mf', 'add_mf', mod_array); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РјРѕРґРёС„РёРєР°С‚РѕСЂ</a><br/>
 <br />
 
 
-Влияние на случайные модификаторы:
+    Р’Р»РёСЏРЅРёРµ РЅР° СЃР»СѓС‡Р°Р№РЅС‹Рµ РјРѕРґРёС„РёРєР°С‚РѕСЂС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_rm" >
 <tr >
-    <td class="cms_cap3">Удалить</td>
-    <td class="cms_cap3">Добавить</td>
-    <td class="cms_cap3">Модификаторы</td>
-    <td class="cms_cap3">Значение</td>
-    <td class="cms_cap3">Время в минутах</td>
+    <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+    <td class="cms_cap3">Р”РѕР±Р°РІРёС‚СЊ</td>
+    <td class="cms_cap3">РњРѕРґРёС„РёРєР°С‚РѕСЂС‹</td>
+    <td class="cms_cap3">Р—РЅР°С‡РµРЅРёРµ</td>
+    <td class="cms_cap3">Р’СЂРµРјСЏ РІ РјРёРЅСѓС‚Р°С…</td>
 </tr>
 <?=$add_rm?>
 </table>
-<a onclick="addItem_item_rm('table_rm', 'tr_rm', 'add_rm', mod_array, 'td_rm'); return false;" href="#">Добавить группу модификаторов</a><br />
+    <a onclick="addItem_item_rm('table_rm', 'tr_rm', 'add_rm', mod_array, 'td_rm'); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РіСЂСѓРїРїСѓ РјРѕРґРёС„РёРєР°С‚РѕСЂРѕРІ</a><br/>
 <br />
 
 
-Случайное влияние на случайные модификаторы:
+    РЎР»СѓС‡Р°Р№РЅРѕРµ РІР»РёСЏРЅРёРµ РЅР° СЃР»СѓС‡Р°Р№РЅС‹Рµ РјРѕРґРёС„РёРєР°С‚РѕСЂС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_rmb" >
 <tr >
-    <td class="cms_cap3">Удалить</td>
-    <td class="cms_cap3">Добавить</td>
-    <td class="cms_cap3">Модификаторы</td>
-    <td class="cms_cap3">Минимальное значение</td>
-    <td class="cms_cap3">Время в минутах</td>
-    <td class="cms_cap3">Максимальное значение</td>
-    <td class="cms_cap3">Положительный эффект</td>
+    <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+    <td class="cms_cap3">Р”РѕР±Р°РІРёС‚СЊ</td>
+    <td class="cms_cap3">РњРѕРґРёС„РёРєР°С‚РѕСЂС‹</td>
+    <td class="cms_cap3">РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ</td>
+    <td class="cms_cap3">Р’СЂРµРјСЏ РІ РјРёРЅСѓС‚Р°С…</td>
+    <td class="cms_cap3">РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ</td>
+    <td class="cms_cap3">РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№ СЌС„С„РµРєС‚</td>
 </tr>
 <?=$add_rmb?>
 </table>
-<a onclick="addItem_item_rmb('table_rmb', 'tr_rmb', 'add_rmb', mod_array, 'td_rmb'); return false;" href="#">Добавить группу модификаторов</a><br />
+    <a onclick="addItem_item_rmb('table_rmb', 'tr_rmb', 'add_rmb', mod_array, 'td_rmb'); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РіСЂСѓРїРїСѓ РјРѕРґРёС„РёРєР°С‚РѕСЂРѕРІ</a><br/>
 <br />
 <br />
 
 
-Эффекты, применяемые по истечению времени:<br />
+    Р­С„С„РµРєС‚С‹, РїСЂРёРјРµРЅСЏРµРјС‹Рµ РїРѕ РёСЃС‚РµС‡РµРЅРёСЋ РІСЂРµРјРµРЅРё:<br/>
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Кол-во времени: &nbsp;  </td>
+    <td>РљРѕР»-РІРѕ РІСЂРµРјРµРЅРё: &nbsp;</td>
   <td><input name="add_aeff_after" type="text" class="cms_fieldstyle1" value="<?=(isset($add['AEFF']['EFF'][0])?$add['AEFF']['EFF'][0]:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Длительность эффекта: &nbsp;  </td>
+    <td>Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ СЌС„С„РµРєС‚Р°: &nbsp;</td>
   <td><input name="add_aeff_duration" type="text" class="cms_fieldstyle1" value="<?=(isset($add['AEFF']['EFF'][1])?$add['AEFF']['EFF'][1]:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Здоровье: &nbsp;  </td>
+    <td>Р—РґРѕСЂРѕРІСЊРµ: &nbsp;</td>
   <td><input name="add_aeff_hp" type="text" class="cms_fieldstyle1" value="<?=(isset($add['AEFF']['HP'])?$add['AEFF']['HP']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Мана: &nbsp;  </td>
+    <td>РњР°РЅР°: &nbsp;</td>
   <td><input name="add_aeff_mp" type="text" class="cms_fieldstyle1" value="<?=(isset($add['AEFF']['MP'])?$add['AEFF']['MP']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Усталость: &nbsp;  </td>
+    <td>РЈСЃС‚Р°Р»РѕСЃС‚СЊ: &nbsp;</td>
   <td><input name="add_aeff_us" type="text" class="cms_fieldstyle1" value="<?=(isset($add['AEFF']['US'])?$add['AEFF']['US']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 </table><br />
 
-Влияние на модификаторы:
+    Р’Р»РёСЏРЅРёРµ РЅР° РјРѕРґРёС„РёРєР°С‚РѕСЂС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_aeff_mf" >
  <tr >
-    <td class="cms_cap3">Удалить</td>
-    <td class="cms_cap3">Модификатор</td>
-    <td class="cms_cap3">Значение</td>
-    <td class="cms_cap3">Время в минутах</td>
+     <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+     <td class="cms_cap3">РњРѕРґРёС„РёРєР°С‚РѕСЂ</td>
+     <td class="cms_cap3">Р—РЅР°С‡РµРЅРёРµ</td>
+     <td class="cms_cap3">Р’СЂРµРјСЏ РІ РјРёРЅСѓС‚Р°С…</td>
 </tr>
 <?=$add_aeff_mf?>
 </table>
-<a onclick="addItem_item_mf('table_aeff_mf', 'tr_aeff_mf', 'add_aeff_mf', mod_array); return false;" href="#">Добавить модификатор</a><br />
+    <a onclick="addItem_item_mf('table_aeff_mf', 'tr_aeff_mf', 'add_aeff_mf', mod_array); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РјРѕРґРёС„РёРєР°С‚РѕСЂ</a><br/>
 <br />
 
 
-Влияние на случайные модификаторы:
+    Р’Р»РёСЏРЅРёРµ РЅР° СЃР»СѓС‡Р°Р№РЅС‹Рµ РјРѕРґРёС„РёРєР°С‚РѕСЂС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_aeff_rm" >
  <tr >
-    <td class="cms_cap3">Удалить</td>
-    <td class="cms_cap3">Добавить</td>
-    <td class="cms_cap3">Модификаторы</td>
-    <td class="cms_cap3">Значение</td>
-    <td class="cms_cap3">Время в минутах</td>
+     <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+     <td class="cms_cap3">Р”РѕР±Р°РІРёС‚СЊ</td>
+     <td class="cms_cap3">РњРѕРґРёС„РёРєР°С‚РѕСЂС‹</td>
+     <td class="cms_cap3">Р—РЅР°С‡РµРЅРёРµ</td>
+     <td class="cms_cap3">Р’СЂРµРјСЏ РІ РјРёРЅСѓС‚Р°С…</td>
 </tr>
 <?=$add_aeff_rm?>
 </table>
-<a onclick="addItem_item_rm('table_aeff_rm', 'tr_aeff_rm', 'add_aeff_rm', mod_array, 'td_aeff_rm'); return false;" href="#">Добавить группу модификаторов</a><br />
+    <a onclick="addItem_item_rm('table_aeff_rm', 'tr_aeff_rm', 'add_aeff_rm', mod_array, 'td_aeff_rm'); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РіСЂСѓРїРїСѓ РјРѕРґРёС„РёРєР°С‚РѕСЂРѕРІ</a><br/>
 <br />
 
 
-Случайное влияние на случайные модификаторы:
+    РЎР»СѓС‡Р°Р№РЅРѕРµ РІР»РёСЏРЅРёРµ РЅР° СЃР»СѓС‡Р°Р№РЅС‹Рµ РјРѕРґРёС„РёРєР°С‚РѕСЂС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_aeff_rmb" >
  <tr >
-    <td class="cms_cap3">Удалить</td>
-    <td class="cms_cap3">Добавить</td>
-    <td class="cms_cap3">Модификаторы</td>
-    <td class="cms_cap3">Минимальное значение</td>
-    <td class="cms_cap3">Время в минутах</td>
-    <td class="cms_cap3">Максимальное значение</td>
-    <td class="cms_cap3">Положительный эффект</td>
+     <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+     <td class="cms_cap3">Р”РѕР±Р°РІРёС‚СЊ</td>
+     <td class="cms_cap3">РњРѕРґРёС„РёРєР°С‚РѕСЂС‹</td>
+     <td class="cms_cap3">РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ</td>
+     <td class="cms_cap3">Р’СЂРµРјСЏ РІ РјРёРЅСѓС‚Р°С…</td>
+     <td class="cms_cap3">РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ</td>
+     <td class="cms_cap3">РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№ СЌС„С„РµРєС‚</td>
 </tr>
 <?=$add_aeff_rmb?>
 </table>
-<a onclick="addItem_item_rmb('table_aeff_rmb', 'tr_aeff_rmb', 'add_aeff_rmb', mod_array, 'td_aeff_rmb'); return false;" href="#">Добавить группу модификаторов</a><br />
+    <a onclick="addItem_item_rmb('table_aeff_rmb', 'tr_aeff_rmb', 'add_aeff_rmb', mod_array, 'td_aeff_rmb'); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РіСЂСѓРїРїСѓ РјРѕРґРёС„РёРєР°С‚РѕСЂРѕРІ</a><br/>
 <br />
 
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Вместо инструмента использовать оружие: &nbsp;  </td>
+    <td><span class="cms_star">*</span>Р’РјРµСЃС‚Рѕ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р° РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РѕСЂСѓР¶РёРµ: &nbsp;</td>
   <td><?=createWeaponControl('add_wea', 'uid', (isset($add['WEA'])?$add['WEA']:''), (isset($add['WEA'])?$weapon_array_uid[$add['WEA']]:''))?></td>
 </tr>
 </table>
     
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='<?=$_SESSION['pages']['item_list']?>'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.location='<?= $_SESSION['pages']['item_list'] ?>'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

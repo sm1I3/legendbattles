@@ -19,26 +19,26 @@ while ($row = mysql_fetch_assoc($res))
 {
     $users .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы действительно хотите удалить этого пользователя?\');" href="user_list.php?delete_user_id='.$row['id'].'" title="Удалить пользователя"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="user_edit.php?user_id='.$row['id'].'" title="Редактировать пользователя"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ?\');" href="user_list.php?delete_user_id=' . $row['id'] . '" title="РЈРґР°Р»РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="user_edit.php?user_id=' . $row['id'] . '" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['id'].'</td>
-      <td align="left" class="cms_middle"><a href="user_edit.php?user_id='.$row['id'].'" title="Редактировать пользователя">'._htext($row['login']).'</a></td>
+      <td align="left" class="cms_middle"><a href="user_edit.php?user_id=' . $row['id'] . '" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ">' . _htext($row['login']) . '</a></td>
     </tr>
     ';
 }
 
 ?>
-<h3>Список пользователей</h3>
+    <h3>РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</h3>
 <div class="cms_ind">
 <br />
-Пользователи: <br />
+    РџРѕР»СЊР·РѕРІР°С‚РµР»Рё: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Пользователя</td>
-      <td class="cms_cap2">Логин</td>
+        <td class="cms_cap2">ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ</td>
+        <td class="cms_cap2">Р›РѕРіРёРЅ</td>
     </tr>
     
     <?=$users?>
@@ -46,7 +46,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить пользователя" /><a href="user_edit.php" title="Добавить пользователя">Добавить пользователя</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ"/><a href="user_edit.php"
+                                                                            title="Р”РѕР±Р°РІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ">Р”РѕР±Р°РІРёС‚СЊ
+    РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</a> &nbsp;<br/>
  <br />
 
 <? require('kernel/after.php'); ?>

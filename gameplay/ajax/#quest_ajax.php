@@ -14,7 +14,7 @@ $Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `quests` WHERE `loc`='"
 $EndQuests = mysqli_query($GLOBALS['db_link'],"SELECT `quest_completed`.*,  `quests`.* FROM `quests` INNER JOIN `quest_completed` ON `quests`.`id` = `quest_completed`.`que_id` WHERE `quest_completed`.`usr_id`='".$pers['id']."' AND `quest_completed`.`que_st`>'0' AND `quests`.`loc`='".$pers['loc']."' AND `quests`.`x`='".$pers['x']."' AND `quests`.`y`='".$pers['y']."' AND `quests`.`level_max`>='".$pers['level']."' AND `quests`.`level_min`<='".$pers['level']."'");
 
 if(mysqli_num_rows($Query) == mysqli_num_rows($EndQuests)){
-	exit('QUEST@["Çäðàâñòâóé '.$pers['login'].', äëÿ Âàñ ñåé÷àñ íåò íèêàêèõ ïîðó÷åíèé."]@["",[0,"",]]');
+    exit('QUEST@["Ð—Ð´Ñ€Ð°Ð²ÑÑ‚Ð²ÑƒÐ¹ ' . $pers['login'] . ', Ð´Ð»Ñ Ð’Ð°Ñ ÑÐµÐ¹Ñ‡Ð°Ñ Ð½ÐµÑ‚ Ð½Ð¸ÐºÐ°ÐºÐ¸Ñ… Ð¿Ð¾Ñ€ÑƒÑ‡ÐµÐ½Ð¸Ð¹."]@["",[0,"",]]');
 }
 
 if(empty($_GET['qid'])){
@@ -83,8 +83,8 @@ if(empty($_GET['qid'])){
 					}
 					if($NumsQuest == $NumsInvent and $MoneyError == 0){
 						echo'QUEST@['.$Quest_Status_ok.']@["'.$StatusQuest['que_face'].'",[0,"",'.$StatusQuest['que_id'].']]@';
-						
-						// Âûäàåì ïðèçû çáèðàåì âåùè
+
+                        // Ð’Ñ‹Ð´Ð°ÐµÐ¼ Ð¿Ñ€Ð¸Ð·Ñ‹ Ð·Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ð²ÐµÑ‰Ð¸
 						for($i=0;$i<count($Items);$i++){
 							$ItemNeed = explode(";",$Items[$i]);
 							mysqli_query($GLOBALS['db_link'],"DELETE FROM `invent` WHERE `pl_id`='".$pers['id']."' AND `protype`='".$ItemNeed[0]."' AND `used`='0' AND `clan`='0' AND `gift_from`='' LIMIT ".$ItemNeed[1]."");
@@ -92,7 +92,7 @@ if(empty($_GET['qid'])){
 						$exp = explode("|",$pers['exp']);
 						$QuestStepThree = true;
 						include($_SERVER["DOCUMENT_ROOT"]."/includes/quests/quest-".$GetQuest['id'].".php");
-						//Çàêîí÷èëè ñ ïðèçàìè
+                        //Ð—Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ð»Ð¸ Ñ Ð¿Ñ€Ð¸Ð·Ð°Ð¼Ð¸
 						exit;
 					}elseif($NumsQuest != $NumsInvent or $MoneyError == 1){
 						echo'QUEST@['.$Quest_Status_err.']@["'.$StatusQuest['que_face'].'",[0,"",'.$StatusQuest['que_id'].']]@';

@@ -1,45 +1,156 @@
-body{background-color:#CCCCCC;}
-#doc{background-color:#333333}
-#footer{margin-top:0px;color:#FFF;}
-#footer a{color:#FFF;}
-#content{background-color:#CCC;padding-bottom:10px;}
-a{color:#222;}
+body {
+    background-color: #CCCCCC;
+}
 
-select{color:#000;}
+#doc {
+    background-color: #333333
+}
 
+#footer {
+    margin-top: 0px;
+    color: #FFF;
+}
 
-h3{background:#555555;color:#FFF}
+#footer a {
+    color: #FFF;
+}
 
-.submenu li{color:#000;background-color:transparent;border-bottom:1px #555555 solid;border-right:1px #555555 solid;}
-.submenu li:hover, .submenu li.selected, .list li:hover{background:#555; color:#fff}
-.verticalList li{background-color:transparent;color:#000;border:1px #555 solid;border-width:0px 1px 1px 0px}
+#content {
+    background-color: #CCC;
+    padding-bottom: 10px;
+}
+
+a {
+    color: #222;
+}
+
+select {
+    color: #000;
+}
+
+h3 {
+    background: #555555;
+    color: #FFF
+}
+
+.submenu li {
+    color: #000;
+    background-color: transparent;
+    border-bottom: 1px #555555 solid;
+    border-right: 1px #555555 solid;
+}
+
+.submenu li:hover, .submenu li.selected, .list li:hover {
+    background: #555;
+    color: #fff
+}
+
+.verticalList li {
+    background-color: transparent;
+    color: #000;
+    border: 1px #555 solid;
+    border-width: 0px 1px 1px 0px
+}
+
 /**---LIST---**/
-#leftColumn{border-right:1px #000000 solid;}
-#leftColumn div.selected a{color:#555;text-decoration:none;}
+#leftColumn {
+    border-right: 1px #000000 solid;
+}
 
-.text{border:1px #555 solid; color:#555;padding: 3px 5px;}
-.button{background:#555;color: #fff;height: 30px;padding: 2px 10px;vertical-align: middle;border:0;
-border-radius:5px;-moz-border-radius:5px;}
-.button:hover{background:#000;}
-input.error {border: 1px solid red;}
+#leftColumn div.selected a {
+    color: #555;
+    text-decoration: none;
+}
 
+.text {
+    border: 1px #555 solid;
+    color: #555;
+    padding: 3px 5px;
+}
 
-.listCountries a.country {height:21px;padding:6px 3px 0px 0px;border:1px #000 solid;background-color: #fff;color: #000;}
+.button {
+    background: #555;
+    color: #fff;
+    height: 30px;
+    padding: 2px 10px;
+    vertical-align: middle;
+    border: 0;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+}
 
-#info{border-color:#555;}
+.button:hover {
+    background: #000;
+}
 
-.block, .errorBlock {line-height: 1.5em;background-color:#858585;color:#fff}
-.paynum{background-color:#858585;color:#fff}
-.red{color:#fff;font-size:13px;font-weight:bold;}
+input.error {
+    border: 1px solid red;
+}
 
-.containerSelect{background-color:#555;}
-.containerSelect a{color:#fff}
+.listCountries a.country {
+    height: 21px;
+    padding: 6px 3px 0px 0px;
+    border: 1px #000 solid;
+    background-color: #fff;
+    color: #000;
+}
+
+#info {
+    border-color: #555;
+}
+
+.block, .errorBlock {
+    line-height: 1.5em;
+    background-color: #858585;
+    color: #fff
+}
+
+.paynum {
+    background-color: #858585;
+    color: #fff
+}
+
+.red {
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.containerSelect {
+    background-color: #555;
+}
+
+.containerSelect a {
+    color: #fff
+}
 
 /**LANDINGS TABLE*/
-table.sms {width: 95%;margin: 0px;}
-table.sms th {background-color:#555;}
-table.sms td{height:auto;}
-table.sms tr.pink td{background-color:#555;}
-.smsnavigate div.active, .smsnavigate div.page:hover{background-color:#555;color:#fff;}
-.smsnavigate div{border:1px solid #555;background: none;color:#000;margin-bottom:4px;}
+table.sms {
+    width: 95%;
+    margin: 0px;
+}
+
+table.sms th {
+    background-color: #555;
+}
+
+table.sms td {
+    height: auto;
+}
+
+table.sms tr.pink td {
+    background-color: #555;
+}
+
+.smsnavigate div.active, .smsnavigate div.page:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.smsnavigate div {
+    border: 1px solid #555;
+    background: none;
+    color: #000;
+    margin-bottom: 4px;
+}
 

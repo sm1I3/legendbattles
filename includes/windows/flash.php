@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" id="html">
 <head>
-<title>LifeIsWar™ «Жизнь в мире cильнейших». - Второй пароль</title>
+    <title>LifeIsWarв„ў В«Р–РёР·РЅСЊ РІ РјРёСЂРµ cРёР»СЊРЅРµР№С€РёС…В». - Р’С‚РѕСЂРѕР№ РїР°СЂРѕР»СЊ</title>
 <link href="/css/nl_try.css" rel="stylesheet" type="text/css">
 <SCRIPT src="/js/nl_main.js"></SCRIPT> 
 <SCRIPT src="/js/nl_try.js"></SCRIPT>

@@ -13,10 +13,10 @@
 		}
 		while($row = mysqli_fetch_array($podq)){
 			if($row['end_time']>time() and $row['level']==1){
-				$cd[1]="Подземелье откроется: ".date("d.m.y (в Hч. iмин. sсек.)",$row[end_time])."";				
+                $cd[1] = "РџРѕРґР·РµРјРµР»СЊРµ РѕС‚РєСЂРѕРµС‚СЃСЏ: " . date("d.m.y (РІ HС‡. iРјРёРЅ. sСЃРµРє.)", $row[end_time]) . "";
 			}
 			if($row['end_time']>time() and $row['level']==2){
-				$cd[2]="Подземелье откроется: ".date("d.m.y (в Hч. iмин. sсек.)",$row[end_time])."";	
+                $cd[2] = "РџРѕРґР·РµРјРµР»СЊРµ РѕС‚РєСЂРѕРµС‚СЃСЏ: " . date("d.m.y (РІ HС‡. iРјРёРЅ. sСЃРµРє.)", $row[end_time]) . "";
 			}
 		}
 		$id=1;
@@ -29,10 +29,10 @@
 		}
 		while($row = mysqli_fetch_array($podq)){
 			if($row['end_time']>time() and $row['level']==1){
-				$cd[1]="Подземелье откроется: ".date("d.m.y (в Hч. iмин. sсек.)",$row[end_time])."";				
+                $cd[1] = "РџРѕРґР·РµРјРµР»СЊРµ РѕС‚РєСЂРѕРµС‚СЃСЏ: " . date("d.m.y (РІ HС‡. iРјРёРЅ. sСЃРµРє.)", $row[end_time]) . "";
 			}
 			if($row['end_time']>time() and $row['level']==2){
-				$cd[2]="Подземелье откроется: ".date("d.m.y (в Hч. iмин. sсек.)",$row[end_time])."";	
+                $cd[2] = "РџРѕРґР·РµРјРµР»СЊРµ РѕС‚РєСЂРѕРµС‚СЃСЏ: " . date("d.m.y (РІ HС‡. iРјРёРЅ. sСЃРµРє.)", $row[end_time]) . "";
 			}
 		}
 		$id=2;
@@ -41,16 +41,21 @@
 	<table border=1 width=760 height=100 align=center valign=top>';
 	
 	if($cd[1]=='none'){
-		echo'<tr><td align=center width=33% bgcolor=f5f5f5><b><a href="main.php?post_id=80&vcode=';echo scod();echo'"><font class=weaponchart>Войти в подземелье (1й уровень)</font></a></b></font></td></tr>';
+        echo '<tr><td align=center width=33% bgcolor=f5f5f5><b><a href="main.php?post_id=80&vcode=';
+        echo scod();
+        echo '"><font class=weaponchart>Р’РѕР№С‚Рё РІ РїРѕРґР·РµРјРµР»СЊРµ (1Р№ СѓСЂРѕРІРµРЅСЊ)</font></a></b></font></td></tr>';
 	}
 	else{
 		echo'<tr><td align=center width=33% bgcolor=f5f5f5><b><font class=freetxt><font color=gray>'.$cd[1].'</font></b></font></td></tr>';
 	}
 	
 	if($cd[2]=='none' and $clpod[$id-1]==$id){
-		echo'<tr><td align=center width=33% bgcolor=f5f5f5><b><a href="main.php?post_id=80&vcode=';echo scod();echo'"><font class=weaponchart>Войти в подземелье (2й уровень)</font></a></b></font></td></tr>';
-	}
-	else if($player['clan_id']=='none' or $clpod[$id-1]!=$id){echo'<td align=center width=33% bgcolor=f5f5f5><b><font class=freetxt><font color=#222222>Вход на 2й уровень недоступен</font></b></font></td></tr>';}
+        echo '<tr><td align=center width=33% bgcolor=f5f5f5><b><a href="main.php?post_id=80&vcode=';
+        echo scod();
+        echo '"><font class=weaponchart>Р’РѕР№С‚Рё РІ РїРѕРґР·РµРјРµР»СЊРµ (2Р№ СѓСЂРѕРІРµРЅСЊ)</font></a></b></font></td></tr>';
+    } else if ($player['clan_id'] == 'none' or $clpod[$id - 1] != $id) {
+        echo '<td align=center width=33% bgcolor=f5f5f5><b><font class=freetxt><font color=#222222>Р’С…РѕРґ РЅР° 2Р№ СѓСЂРѕРІРµРЅСЊ РЅРµРґРѕСЃС‚СѓРїРµРЅ</font></b></font></td></tr>';
+    }
 	else {
 		echo'<tr><td align=center width=33% bgcolor=f5f5f5><b><font class=freetxt><font color=#222222>'.$cd[1].'</font></b></font></td></tr>';
 	}

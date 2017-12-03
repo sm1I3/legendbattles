@@ -111,65 +111,70 @@ foreach($categories as $cat)
     $cat_array[$cat[0]] = $cat[1];
 
 ?>
-<h3><?=($cat_id == ''?'Добавить категорию форума':'Изменить категорию форума')?></h3>
+    <h3><?= ($cat_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ С„РѕСЂСѓРјР°' : 'РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ С„РѕСЂСѓРјР°') ?></h3>
 
 <form name="edit_cat" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Категория: &nbsp;  </td>
+    <td>РљР°С‚РµРіРѕСЂРёСЏ: &nbsp;</td>
   <td><?=createSelectFromArray('forum_cat', $cat_array, $forum['forum_cat'])?></td>
 </tr>
 <tr>
-  <td>Название форума: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ С„РѕСЂСѓРјР°: &nbsp;</td>
   <td><input name="forum_name" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_name']?>" size="20" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Картинка форума: &nbsp;  </td>
+    <td>РљР°СЂС‚РёРЅРєР° С„РѕСЂСѓРјР°: &nbsp;</td>
   <td><input name="forum_img" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_img']?>" size="20" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Описание: &nbsp;  </td>
+    <td>РћРїРёСЃР°РЅРёРµ: &nbsp;</td>
   <td><input name="forum_description" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_description']?>" size="40" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Склонность: &nbsp;  </td>
+    <td>РЎРєР»РѕРЅРЅРѕСЃС‚СЊ: &nbsp;</td>
   <td><input name="forum_align" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_align']?>" size="40" maxlength="255" /></td>
 </tr>
 <tr>
-    <td colspan="2"><label><input type="checkbox" name="forum_dealer" value="1" <?=($forum['forum_dealer'] == 1 ? 'checked="checked"' : '')?> > Только для дилеров</label></td>
+    <td colspan="2"><label><input type="checkbox" name="forum_dealer"
+                                  value="1" <?= ($forum['forum_dealer'] == 1 ? 'checked="checked"' : '') ?> > РўРѕР»СЊРєРѕ РґР»СЏ
+            РґРёР»РµСЂРѕРІ</label></td>
 </tr>
 <tr>
-    <td colspan="2"><label><input type="checkbox" name="forum_developer" value="1" <?=($forum['forum_developer'] == 1 ? 'checked="checked"' : '')?> > Только для разработчиков</label></td>
+    <td colspan="2"><label><input type="checkbox" name="forum_developer"
+                                  value="1" <?= ($forum['forum_developer'] == 1 ? 'checked="checked"' : '') ?> > РўРѕР»СЊРєРѕ
+            РґР»СЏ СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРІ</label></td>
 </tr>
 <tr>
-  <td>Мин уровень: &nbsp;  </td>
+    <td>РњРёРЅ СѓСЂРѕРІРµРЅСЊ: &nbsp;</td>
   <td><input name="forum_min_level" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_min_level']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Права на чтение: &nbsp;  </td>
+    <td>РџСЂР°РІР° РЅР° С‡С‚РµРЅРёРµ: &nbsp;</td>
   <td><input name="forum_read" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_read']?>" size="20" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Права на запись: &nbsp;  </td>
+    <td>РџСЂР°РІР° РЅР° Р·Р°РїРёСЃСЊ: &nbsp;</td>
   <td><input name="forum_write" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_write']?>" size="20" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Макс тем на страницу: &nbsp;  </td>
+    <td>РњР°РєСЃ С‚РµРј РЅР° СЃС‚СЂР°РЅРёС†Сѓ: &nbsp;</td>
   <td><input name="forum_max_page" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_max_page']?>" size="20" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Макс тем всего: &nbsp;  </td>
+    <td>РњР°РєСЃ С‚РµРј РІСЃРµРіРѕ: &nbsp;</td>
   <td><input name="forum_max_total" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_max_total']?>" size="20" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Приоритет форума: &nbsp;  </td>
+    <td>РџСЂРёРѕСЂРёС‚РµС‚ С„РѕСЂСѓРјР°: &nbsp;</td>
   <td><input name="forum_priority" type="text" class="cms_fieldstyle1" value="<?=$forum['forum_priority']?>" size="10" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='forum_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='forum_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

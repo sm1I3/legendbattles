@@ -58,13 +58,13 @@ while ($row = mysql_fetch_assoc($res))
 {
     $objects.='
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить объект?\');" href="world_map_object_list.php?delete_object_code='.$row['object_code'].'" title="Delete Item"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="world_map_object_edit.php?object_code='.$row['object_code'].'" title="Изменить объект"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚?\');" href="world_map_object_list.php?delete_object_code=' . $row['object_code'] . '" title="Delete Item"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="world_map_object_edit.php?object_code=' . $row['object_code'] . '" title="РР·РјРµРЅРёС‚СЊ РѕР±СЉРµРєС‚"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$zones[$row['zone_code']].'</td>
       <td align="left" class="cms_middle">'.$row['object_module'].'</td>
       <td align="left" class="cms_middle">'.(isset($row['parent_code']) && isset($object_array[$row['parent_code']])?$object_array[$row['parent_code']]: (isset($row['parent_code'])?$row['parent_code']:'') ).'</td>
       <td align="left" class="cms_middle">'.$row['object_code'].'</td>
-      <td align="left" class="cms_middle"><a href="world_map_object_edit.php?object_code='.$row['object_code'].'" title="Изменить объект">'._htext($row['object_name']).'</a></td>
+      <td align="left" class="cms_middle"><a href="world_map_object_edit.php?object_code=' . $row['object_code'] . '" title="РР·РјРµРЅРёС‚СЊ РѕР±СЉРµРєС‚">' . _htext($row['object_name']) . '</a></td>
     </tr>
     ';
 }
@@ -72,15 +72,15 @@ while ($row = mysql_fetch_assoc($res))
 $_SESSION['pages']['world_map_object_list'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Список объектов</h3>
+    <h3>РЎРїРёСЃРѕРє РѕР±СЉРµРєС‚РѕРІ</h3>
 <form name="filter" id="filter" action="" method="get">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-    <td>Зона:</td>
+      <td>Р—РѕРЅР°:</td>
     <td>
         <?=createSelectFromArray('zone_code', $zones, (isset($_GET['zone_code'])?$_GET['zone_code']:''))?>
     </td>
@@ -100,21 +100,21 @@ function clearFilter()
 </div>
 </form>
 <div id="results">
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Объекты')?></div>
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'РћР±СЉРµРєС‚С‹') ?></div>
 
     <div class="cms_ind">
         <br />
-        Предметы: <br />
+        РџСЂРµРґРјРµС‚С‹: <br/>
          <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr >
-              <td class="cms_cap2 normal"> Удалить </td>
-              <td class="cms_cap2 normal"> Изменить </td>
+                <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-              <td class="cms_cap2">Зона</td>
-              <td class="cms_cap2"><a href="<?=sortby('object_module')?>">Модуль</a></td>
-              <td class="cms_cap2">Где находится</td>
-              <td class="cms_cap2"><a href="<?=sortby('object_code')?>">Код объекта</a></td>
-              <td class="cms_cap2"><a href="<?=sortby('object_name')?>">Название объекта</a></td>
+                <td class="cms_cap2">Р—РѕРЅР°</td>
+                <td class="cms_cap2"><a href="<?= sortby('object_module') ?>">РњРѕРґСѓР»СЊ</a></td>
+                <td class="cms_cap2">Р“РґРµ РЅР°С…РѕРґРёС‚СЃСЏ</td>
+                <td class="cms_cap2"><a href="<?= sortby('object_code') ?>">РљРѕРґ РѕР±СЉРµРєС‚Р°</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('object_name') ?>">РќР°Р·РІР°РЅРёРµ РѕР±СЉРµРєС‚Р°</a></td>
             </tr>
             
             <?=$objects?>
@@ -122,9 +122,10 @@ function clearFilter()
             </table>
             <br />
     </div>
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Объекты')?></div> 
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'РћР±СЉРµРєС‚С‹') ?></div>
 </div>
 <br />
-<img src="images/cms_icons/cms_add.gif" alt="Добавить объект" /><a href="world_map_object_edit.php" title="Добавить объект">Добавить объект</a><br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РѕР±СЉРµРєС‚"/><a href="world_map_object_edit.php"
+                                                                      title="Р”РѕР±Р°РІРёС‚СЊ РѕР±СЉРµРєС‚">Р”РѕР±Р°РІРёС‚СЊ РѕР±СЉРµРєС‚</a><br/>
 <br />
 <? require('kernel/after.php'); ?>

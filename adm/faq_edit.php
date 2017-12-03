@@ -110,20 +110,20 @@ else
 }
 
 ?>
-<h3><?=($page_id == ''?'Добавить страницу':'Изменить станицу')?></h3>
+    <h3><?= ($page_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ' : 'РР·РјРµРЅРёС‚СЊ СЃС‚Р°РЅРёС†Сѓ') ?></h3>
 <script type="text/javascript" src="jscript/ckeditor/ckeditor.js"></script>
 <form name="edit_page" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td width="20%">Родительская страница: &nbsp;  </td>
+    <td width="20%">Р РѕРґРёС‚РµР»СЊСЃРєР°СЏ СЃС‚СЂР°РЅРёС†Р°: &nbsp;</td>
   <td><?=createSelectFromArray('parent_page_id', $pages_array, $page['parent_page_id'])?></td>
 </tr>
 <tr>
-  <td width="20%">Заголовок: &nbsp;  </td>
+    <td width="20%">Р—Р°РіРѕР»РѕРІРѕРє: &nbsp;</td>
   <td><input type="text" name="page_title" value="<?=_htext($page['page_title'])?>" /></td>
 </tr>
 <tr>
-  <td colspan="2">Текст: &nbsp;<br />
+    <td colspan="2">РўРµРєСЃС‚: &nbsp;<br/>
   <textarea name="text" id="text"><?=_htext($page['text'])?></textarea>
   <script>
   CKEDITOR.replace('text');
@@ -131,14 +131,15 @@ else
   </td>
 </tr>
 <tr>
-  <td width="20%">Порядок сортировки: &nbsp;  </td>
+    <td width="20%">РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё: &nbsp;</td>
   <td><input type="text" name="sort_order" value="<?=_htext($page['sort_order'])?>" /></td>
 </tr>
 </table>
 <br />
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='faq_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='faq_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

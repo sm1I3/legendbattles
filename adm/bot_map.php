@@ -213,18 +213,19 @@ $zones = '';
             <input type="button" onclick="moveMap('right');" name="move_right" value="&gt;" />
         </div>
         <br /><br />
-        <input type="button" name="save" value="Редактировать" onclick="loadZones();" />
+        <input type="button" name="save" value="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" onclick="loadZones();"/>
         <br /><br />
-        Зоны:
+        Р—РѕРЅС‹:
         <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_zones" >
             <tr >
-                <td class="cms_cap3 normal">Удалить</td>
-                <td class="cms_cap3">Зона</td>
+                <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+                <td class="cms_cap3">Р—РѕРЅР°</td>
             </tr>
             <?=$zones?>
         </table>
         <br />
-        <input type="button" name="create" value="Create" onclick="if (edit_mode == 0) { alert('Войдите в режим редактирования.'); } else { mode = 0; el('world_map').style.cursor = 'crosshair'; }" />
+        <input type="button" name="create" value="Create"
+               onclick="if (edit_mode == 0) { alert('Р’РѕР№РґРёС‚Рµ РІ СЂРµР¶РёРј СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ.'); } else { mode = 0; el('world_map').style.cursor = 'crosshair'; }"/>
         <input type="button" name="save" value="Save" onclick="saveZones();" />
         <br /><br />
         <div id="bots_div" style="padding: 4px; border: 1px solid black; background: #EEEEEE; display: none; position: absolute; z-index: 1000;">
@@ -236,13 +237,13 @@ $zones = '';
                     <? for($i=1; $i<=10; $i++) { echo '<td><input size="2" type="text" name="poss'.$i.'" id="poss'.$i.'" value="" /></td>'; } ?>
                 </tr>
             </table>
-            Интервал: <input type="text" name="time_interval" id="time_interval" value="" size="6">
+            РРЅС‚РµСЂРІР°Р»: <input type="text" name="time_interval" id="time_interval" value="" size="6">
             <br />
-            Боты:
+            Р‘РѕС‚С‹:
             <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="bots_table" >
                 <tr>
-                    <td class="cms_cap3 normal">Удалить</td>
-                    <td class="cms_cap3">Бот</td>
+                    <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+                    <td class="cms_cap3">Р‘РѕС‚</td>
                 </tr>
                 
             </table>

@@ -25,28 +25,28 @@ while ($row = mysql_fetch_assoc($res))
 {
     $branches .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить это отделение?\');" href="bank_branch_list.php?delete_branch_code='.$row['branch_code'].'" title="Удалить отделение"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="bank_branch_edit.php?branch_code='.$row['branch_code'].'" title="Изменить отделение"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Рѕ РѕС‚РґРµР»РµРЅРёРµ?\');" href="bank_branch_list.php?delete_branch_code=' . $row['branch_code'] . '" title="РЈРґР°Р»РёС‚СЊ РѕС‚РґРµР»РµРЅРёРµ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="bank_branch_edit.php?branch_code=' . $row['branch_code'] . '" title="РР·РјРµРЅРёС‚СЊ РѕС‚РґРµР»РµРЅРёРµ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$banks[$row['bank_id']].'</td>
       <td align="left" class="cms_middle">'.$row['branch_code'].'</td>
-      <td align="left" class="cms_middle"><a href="bank_branch_edit.php?branch_code='.$row['branch_code'].'" title="Изменить отделение">'._htext($row['branch_name']).'</a></td>
+      <td align="left" class="cms_middle"><a href="bank_branch_edit.php?branch_code=' . $row['branch_code'] . '" title="РР·РјРµРЅРёС‚СЊ РѕС‚РґРµР»РµРЅРёРµ">' . _htext($row['branch_name']) . '</a></td>
     </tr>
     ';
 }
 
 ?>
-<h3>Список отделений банков</h3>
+    <h3>РЎРїРёСЃРѕРє РѕС‚РґРµР»РµРЅРёР№ Р±Р°РЅРєРѕРІ</h3>
 <div class="cms_ind">
     <br />
-    Отделения банков: <br />
+    РћС‚РґРµР»РµРЅРёСЏ Р±Р°РЅРєРѕРІ: <br/>
     <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
         <tr >
-        <td class="cms_cap2 normal"> Удалить </td>
-        <td class="cms_cap2 normal"> Изменить </td>
+            <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+            <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-        <td class="cms_cap2">Банк</td>
-        <td class="cms_cap2">Код отделения банка</td>
-        <td class="cms_cap2">Название отделения банка</td>
+            <td class="cms_cap2">Р‘Р°РЅРє</td>
+            <td class="cms_cap2">РљРѕРґ РѕС‚РґРµР»РµРЅРёСЏ Р±Р°РЅРєР°</td>
+            <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ РѕС‚РґРµР»РµРЅРёСЏ Р±Р°РЅРєР°</td>
         </tr>
 
         <?=$branches?>
@@ -54,7 +54,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
 </div>
-<img src="images/cms_icons/cms_add.gif" alt="Добавить отделение банка" /><a href="bank_branch_edit.php" title="Добавить отделение банка">Добавить отделение банка</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РѕС‚РґРµР»РµРЅРёРµ Р±Р°РЅРєР°"/><a href="bank_branch_edit.php"
+                                                                               title="Р”РѕР±Р°РІРёС‚СЊ РѕС‚РґРµР»РµРЅРёРµ Р±Р°РЅРєР°">Р”РѕР±Р°РІРёС‚СЊ
+    РѕС‚РґРµР»РµРЅРёРµ Р±Р°РЅРєР°</a> &nbsp;<br/>
 <br />
 
 <? require('kernel/after.php'); ?>

@@ -11,9 +11,9 @@
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location='adm.php'" value="Вернуться">
-		<input type=button class=lbut onClick="location='errors.php'" value="обновить">
-		<input type=button class=lbut onClick="location='errors.php?fl=1'" value="скрыть исправленные ошибки">
+        <input type=button class=lbut onClick="location='adm.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        <input type=button class=lbut onClick="location='errors.php'" value="РѕР±РЅРѕРІРёС‚СЊ">
+        <input type=button class=lbut onClick="location='errors.php?fl=1'" value="СЃРєСЂС‹С‚СЊ РёСЃРїСЂР°РІР»РµРЅРЅС‹Рµ РѕС€РёР±РєРё">
 	</td>
    </tr>
 </table>
@@ -39,7 +39,7 @@ db_open();
 
 if($_GET['addtz']==1){
 	mysqli_query($GLOBALS['db_link'],"INSERT INTO `bug_reports` (`text`,`date`,`srok`) VALUES ('".bbCodes($tztext)."','".time()."','".$srok."')");
-	echo 'Тз добавлено';
+    echo 'РўР· РґРѕР±Р°РІР»РµРЅРѕ';
 }
 
 if($_GET['addtz']==2){
@@ -72,13 +72,13 @@ echo  '<br>
 <tr><td>
 <table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 		<tr class=nickname bgcolor=#EAEAEA>
-			<td align=center width=60%><b>Текст задания</b></td>
-			<td align=center><b>Тип ошибки</b></td>
-			<td align=center><b>Дата</b></td>
-			<td align=center><b>Сообщил</b></td>
-			<td align=center><b>Выполнил</b></td>
-			<td align=center><b>Статус</b></td>
-			<td align=center><b>Изменить статус</b></td>
+			<td align=center width=60%><b>РўРµРєСЃС‚ Р·Р°РґР°РЅРёСЏ</b></td>
+			<td align=center><b>РўРёРї РѕС€РёР±РєРё</b></td>
+			<td align=center><b>Р”Р°С‚Р°</b></td>
+			<td align=center><b>РЎРѕРѕР±С‰РёР»</b></td>
+			<td align=center><b>Р’С‹РїРѕР»РЅРёР»</b></td>
+			<td align=center><b>РЎС‚Р°С‚СѓСЃ</b></td>
+			<td align=center><b>РР·РјРµРЅРёС‚СЊ СЃС‚Р°С‚СѓСЃ</b></td>
 		</tr>';
 	while($row = mysqli_fetch_assoc($tzsql)){
 		if($row['status']==1){
@@ -86,12 +86,24 @@ echo  '<br>
 		}
 		$count[$row['from']]+=1;
 		switch($row['srok']){
-			case 0: $srok='Вещи и их параметры';break;
-			case 1: $srok='Умения,навыки,статы';break;
-			case 2: $srok='Локации';break;
-			case 3: $srok='Профессии';break;
-			case 4: $srok='Другое';break;
-			default: $srok='Не определено';break;
+            case 0:
+                $srok = 'Р’РµС‰Рё Рё РёС… РїР°СЂР°РјРµС‚СЂС‹';
+                break;
+            case 1:
+                $srok = 'РЈРјРµРЅРёСЏ,РЅР°РІС‹РєРё,СЃС‚Р°С‚С‹';
+                break;
+            case 2:
+                $srok = 'Р›РѕРєР°С†РёРё';
+                break;
+            case 3:
+                $srok = 'РџСЂРѕС„РµСЃСЃРёРё';
+                break;
+            case 4:
+                $srok = 'Р”СЂСѓРіРѕРµ';
+                break;
+            default:
+                $srok = 'РќРµ РѕРїСЂРµРґРµР»РµРЅРѕ';
+                break;
 		}
 		echo'
 		<tr class=nickname bgcolor=white>
@@ -101,24 +113,24 @@ echo  '<br>
 			<td align=center><b>'.(($row['from'])?$row['from']:'---').'</b></td>
 			<td align=center><b>'.(($row['who'])?$row['who']:'---').'</b></td>
 			<td align=center><b>
-			'.($row['status']==1?'<font color=green>Выполнено</font>':(($row['status']==0)?'<font color=red>Не выполнено</font>':'<font color=silver>Забронированно<br />'.date('d.m.y H:i:s',$row['startdate']).'</font>')).'</b>
+			' . ($row['status'] == 1 ? '<font color=green>Р’С‹РїРѕР»РЅРµРЅРѕ</font>' : (($row['status'] == 0) ? '<font color=red>РќРµ РІС‹РїРѕР»РЅРµРЅРѕ</font>' : '<font color=silver>Р—Р°Р±СЂРѕРЅРёСЂРѕРІР°РЅРЅРѕ<br />' . date('d.m.y H:i:s', $row['startdate']) . '</font>')) . '</b>
 			<td align=center>
 			'.(	$row['status']==1?
 			'
 			<form method="post" action="errors.php?addtz=3'.($fl?'&fl='.$fl:'').'">
-				<input type=submit class=lbut value=" не выполнено ">
+				<input type=submit class=lbut value=" РЅРµ РІС‹РїРѕР»РЅРµРЅРѕ ">
 				<input type=hidden name=tzid value="'.$row['id'].'">
 			</form>'
 			:(($row['status']==0)?
 			'<form method="post" action="errors.php?addtz=5'.($fl?'&fl='.$fl:'').'">
-				<input type=submit class=lbut value=" взять ">
+				<input type=submit class=lbut value=" РІР·СЏС‚СЊ ">
 				<input type=hidden name=tzid value="'.$row['id'].'">
 			</form>':'<form method="post" action="errors.php?addtz=2'.($fl?'&fl='.$fl:'').'">
-				<input type=submit class=lbut value=" выполнено ">
+				<input type=submit class=lbut value=" РІС‹РїРѕР»РЅРµРЅРѕ ">
 				<input type=hidden name=tzid value="'.$row['id'].'">
 			</form>')).'
 			<form method="post" action="errors.php?addtz=4'.($fl?'&fl='.$fl:'').'">
-				<input type=submit class=lbut value=" удалить ">
+				<input type=submit class=lbut value=" СѓРґР°Р»РёС‚СЊ ">
 				<input type=hidden name=tzid value="'.$row['id'].'">
 			</form>
 			</td>
@@ -132,8 +144,8 @@ if(!$fl){
 	<tr><td>
 	<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 			<tr class=nickname bgcolor=#EAEAEA>
-				<td align=center width=60%><b>Всего сообщений</b></td>
-				<td align=center><b>Исправлено</b></td>
+				<td align=center width=60%><b>Р’СЃРµРіРѕ СЃРѕРѕР±С‰РµРЅРёР№</b></td>
+				<td align=center><b>РСЃРїСЂР°РІР»РµРЅРѕ</b></td>
 			</tr>';
 			echo'
 			<tr class=nickname bgcolor=white>
@@ -145,8 +157,8 @@ if(!$fl){
 	<tr><td>
 	<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 			<tr class=nickname bgcolor=#EAEAEA>
-				<td align=center width=60%><b>Ник</b></td>
-				<td align=center><b>Количество</b></td>
+				<td align=center width=60%><b>РќРёРє</b></td>
+				<td align=center><b>РљРѕР»РёС‡РµСЃС‚РІРѕ</b></td>
 			</tr>';
 	foreach($count as $key=>$val){
 			echo'
@@ -159,7 +171,7 @@ if(!$fl){
 }
 else{
 	echo '<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
-<tr><td align=center>не найдено ни одной ошибки</td></tr>';
+<tr><td align=center>РЅРµ РЅР°Р№РґРµРЅРѕ РЅРё РѕРґРЅРѕР№ РѕС€РёР±РєРё</td></tr>';
 }	  
 ?>
 

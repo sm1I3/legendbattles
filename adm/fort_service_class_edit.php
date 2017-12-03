@@ -52,23 +52,24 @@ if ((string)$fort_service_class_id == '') {
 }
 
 ?>
-<h3><?=($fort_service_class_id == ''?'Добавить класс сервисов':'Изменить класс сервисов')?></h3>
+    <h3><?= ($fort_service_class_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєР»Р°СЃСЃ СЃРµСЂРІРёСЃРѕРІ' : 'РР·РјРµРЅРёС‚СЊ РєР»Р°СЃСЃ СЃРµСЂРІРёСЃРѕРІ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID Класса: &nbsp;  </td>
+    <td>ID РљР»Р°СЃСЃР°: &nbsp;</td>
   <td><input name="service_id" type="text" class="cms_fieldstyle1" value="<?=$fort_service_class['service_id']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Название класса: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ РєР»Р°СЃСЃР°: &nbsp;</td>
   <td><input name="service_name" type="text" class="cms_fieldstyle1" value="<?=$fort_service_class['service_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='fort_service_class_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='fort_service_class_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

@@ -34,7 +34,7 @@ $access = explode("|",$pers['clan_accesses']);
 switch($_GET['act']){
 	case'Sign':
 		$ShowResult = 'ClanList';
-		$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `clan_id`='Служители порядка' ORDER BY `level` DESC");
+        $query = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `clan_id`='РЎР»СѓР¶РёС‚РµР»Рё РїРѕСЂСЏРґРєР°' ORDER BY `level` DESC");
 		if(mysqli_num_rows($query)>0){
 			while ($row = mysqli_fetch_assoc($query)) {
 				$ShowResult .= '@'.(($row['last']>time()-300)?'1':'0').';'.preg_replace("/@/","[a_GuildHonor_t]",$row['login']).';'.$row['level'].';'.$row['clan_gif'].';'.$row['clan_status'].';'.$row['clan_d'].';'.(($row['last']>time()-300)?locations($row["loc"],$row["pos"]):'').';'.$row['id'];
@@ -57,7 +57,7 @@ switch($_GET['act']){
 		$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `id` = '".intval($_GET['uid'])."'");
 		if(mysqli_num_rows($query)>0){
 			$row = mysqli_fetch_assoc($query);
-			if($row['clan_id']=='Служители порядка'){
+            if ($row['clan_id'] == 'РЎР»СѓР¶РёС‚РµР»Рё РїРѕСЂСЏРґРєР°') {
 				if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `clan`='0',`clan_id`='none',`clan_d`='',`clan_gif`='',`clan_accesses`='0',`clan_status`='0' WHERE `id`='".$row['id']."'")){
 					mysqli_query($GLOBALS['db_link'],"DELETE FROM `accesses` WHERE `uid` = '".$row['id']."'");
 					$ShowResult .= '@OK';
@@ -72,7 +72,7 @@ switch($_GET['act']){
 		$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `id` = '".intval($_GET['uid'])."'");
 		if(mysqli_num_rows($query)>0){
 			$row = mysqli_fetch_assoc($query);
-			if($row['clan_id']=='Служители порядка'){
+            if ($row['clan_id'] == 'РЎР»СѓР¶РёС‚РµР»Рё РїРѕСЂСЏРґРєР°') {
 				$placcess = explode("|",accesses($row['id'],'pvu',1));
 				$ShowResult .= "@".$row['id']."|".$row['clan_d']."|".$row['clan_gif']."|".(in_array('1',$placcess)?'1':'0')."|".(in_array('2',$placcess)?'1':'0')."|".(in_array('4',$placcess)?'1':'0')."|".(in_array('16',$placcess)?'1':'0');
 			}
@@ -89,7 +89,7 @@ switch($_GET['act']){
 					$clan = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `clans` WHERE `clan_id` = '".$pers['clan_id']."'"));
 					if(!empty($cuser['id'])){
 						$ShowResult = 'SubmitForm@1';
-						mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `clan`='".$clan['clan_name']."',`clan_id`='".$clan['clan_id']."',`clan_gif`='".$clan['clan_gif']."',`sklon`='".$clan['clan_sclon']."',`clan_d`='Стажёр' WHERE `id`='".$cuser['id']."'");
+                        mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `clan`='" . $clan['clan_name'] . "',`clan_id`='" . $clan['clan_id'] . "',`clan_gif`='" . $clan['clan_gif'] . "',`sklon`='" . $clan['clan_sclon'] . "',`clan_d`='РЎС‚Р°Р¶С‘СЂ' WHERE `id`='" . $cuser['id'] . "'");
 						mysqli_query($GLOBALS['db_link'],"INSERT INTO `accesses` (`uid`, `pvu`) VALUES ('".$cuser['id']."', '1');");
 					}
 				}
@@ -98,7 +98,7 @@ switch($_GET['act']){
 				if(in_array('4',$access)){
 					$ShowResult = 'SubmitForm@2';
 					$GetUser = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `id` = '".intval($_GET['plid'])."'"));
-					if($GetUser['clan_id'] == 'Служители порядка'){
+                    if ($GetUser['clan_id'] == 'РЎР»СѓР¶РёС‚РµР»Рё РїРѕСЂСЏРґРєР°') {
 					$val_section=varcheck($_GET['section']);
 					$val_clan_d=varcheck($_GET['clan_d']);
 						mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `clan_gif`='".$val_section."',`clan_d`='".$val_clan_d."' WHERE `id`='".$GetUser['id']."'");

@@ -6,68 +6,94 @@ $block = 0;
 $par="2@1000|";
 $treb = "71|72|31@5|32@5|33@5";
 	switch($row['type']){
-		case 'w1': 
-			$type = "Меч"; $slot = 3;
+		case 'w1':
+            $type = "РњРµС‡";
+            $slot = 3;
 			$treb.="|28@50";
 		break;
-		case 'w2': 
-			$type = "Топор";$slot = 3;$treb.="|28@55";
+		case 'w2':
+            $type = "РўРѕРїРѕСЂ";
+            $slot = 3;
+            $treb .= "|28@55";
 		break;
-		case 'w3': 
-			$type = "Дробящее";$slot = 3;$treb.="|28@60";
+		case 'w3':
+            $type = "Р”СЂРѕР±СЏС‰РµРµ";
+            $slot = 3;
+            $treb .= "|28@60";
 		break;
-		case 'w4': 
-			$type = "Нож";$slot = 3;$treb.="|28@40";
+		case 'w4':
+            $type = "РќРѕР¶";
+            $slot = 3;
+            $treb .= "|28@40";
 			$wtor = 1;
 		break;
-		case 'w5': 
-			$type = "Метательное";$slot = 3;$treb.="|28@50";
+		case 'w5':
+            $type = "РњРµС‚Р°С‚РµР»СЊРЅРѕРµ";
+            $slot = 3;
+            $treb .= "|28@50";
 		break;
-		case 'w6': 
-			$type = "Алебарда";$slot = 3;$treb.="|28@60";
+		case 'w6':
+            $type = "РђР»РµР±Р°СЂРґР°";
+            $slot = 3;
+            $treb .= "|28@60";
 		break;
-		case 'w7': 
-			$type = "Посох";$slot = 3;$treb.="|28@50";
+		case 'w7':
+            $type = "РџРѕСЃРѕС…";
+            $slot = 3;
+            $treb .= "|28@50";
 		break;
-		case 'w18': 		 
-			 $type = "Кольчуга";$slot = 17;		 
+		case 'w18':
+            $type = "РљРѕР»СЊС‡СѓРіР°";
+            $slot = 17;
 		break;
-		case 'w19': 
-			 $type = "Доспех";	 $slot = 16;		
+		case 'w19':
+            $type = "Р”РѕСЃРїРµС…";
+            $slot = 16;
 		break;
-		case 'w20': 
-			 $type = "Щит";	$slot = 13;$treb.="|28@70";
+		case 'w20':
+            $type = "Р©РёС‚";
+            $slot = 13;
+            $treb .= "|28@70";
 			 $block=90;	
 		break;
-		case 'w21': 		 
-			 $type = "Сапоги";$slot = 8;			 
+		case 'w21':
+            $type = "РЎР°РїРѕРіРё";
+            $slot = 8;
 		break;
-		case 'w22': 
-			 $type = "Кольцо";$slot = 14;			 
+		case 'w22':
+            $type = "РљРѕР»СЊС†Рѕ";
+            $slot = 14;
 		break;
-		case 'w23': 		 
-			 $type = "Шлем";$slot = 1;			
+		case 'w23':
+            $type = "РЁР»РµРј";
+            $slot = 1;
 		break;
-		case 'w24': 		 
-			 $type = "Перчатки";$slot = 12;			
+		case 'w24':
+            $type = "РџРµСЂС‡Р°С‚РєРё";
+            $slot = 12;
 		break;
-		case 'w25':			 
-			 $type = "Кулон";$slot = 2;			 
+		case 'w25':
+            $type = "РљСѓР»РѕРЅ";
+            $slot = 2;
 		break;
-		case 'w26': 		 
-			 $type = "Пояс";$slot = 4;			 
+		case 'w26':
+            $type = "РџРѕСЏСЃ";
+            $slot = 4;
 		break;
-		case 'w28': 		 
-			 $type = "Наплечники";$slot = 10;			 
+		case 'w28':
+            $type = "РќР°РїР»РµС‡РЅРёРєРё";
+            $slot = 10;
 		break;
-		case 'w80': 		 
-			 $type = "Наручи";	$slot = 11;		
+		case 'w80':
+            $type = "РќР°СЂСѓС‡Рё";
+            $slot = 11;
 		break;	
-		case 'w90': 		 
-			 $type = "Наколенники";	$slot = 9;		 
+		case 'w90':
+            $type = "РќР°РєРѕР»РµРЅРЅРёРєРё";
+            $slot = 9;
 		break;	
 		}
-		//статы
+//СЃС‚Р°С‚С‹
 		if ($row['damage']!=0){
 			$par.="1@".$row['damage']."|";
 		}
@@ -82,8 +108,8 @@ $treb = "71|72|31@5|32@5|33@5";
 		}	
 		if($row['znan']!=0){
 			$par.="34@".$row['znan']."|";
-		}	
-		//мф
+		}
+//РјС„
 		if($row['ylov']!=0){
 			$par.="5@".$row['ylov']."|";
 		}	
@@ -96,7 +122,7 @@ $treb = "71|72|31@5|32@5|33@5";
 		if($row['stoi']!=0){
 			$par.="8@".$row['stoi']."|";
 		}
-//пробой и броня
+//РїСЂРѕР±РѕР№ Рё Р±СЂРѕРЅСЏ
 		if($row['armor']!=0){
 			$par.="9@".$row['armor']."|";
 		}

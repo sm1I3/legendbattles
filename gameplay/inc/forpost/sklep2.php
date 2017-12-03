@@ -3,7 +3,7 @@
 <div style="padding-left:39px; text-align:left; padding-top:0px;" id="draw_pers_info"></div>
 <div style="position: absolute; left: 0; top: 0; width: 100%; z-index: 50;" id="popup"></div>
 <html>
-<META content="text/html; charset=windows-1251" Http-Equiv=Content-type>
+<META content="text/html; charset=utf-8" Http-Equiv=Content-type>
 <META Http-Equiv=Cache-Control Content=no-cache>
 <META Http-Equiv=PRAGMA content=NO-CACHE>
 <META Http-Equiv=Expires Content=0>
@@ -35,23 +35,21 @@ $bot_id=array("3","4");
 echo $bot_id[0] ;
 foreach($_POST as $keypost=>$val){$_POST[$keypost] = varcheck($val);}
 foreach($_GET as $keyget=>$val){$_GET[$keyget] = varcheck($val);}
-## Считываем персонажа в инсте.
+## РЎС‡РёС‚С‹РІР°РµРј РїРµСЂСЃРѕРЅР°Р¶Р° РІ РёРЅСЃС‚Рµ.
 $prizes2 = mysql_fetch_assoc(mysql_query("SELECT `id`,`uid`,`login`,`level`,`time`,`type`,`ohr` FROM `logovo` WHERE uid=".$player["id"]." and type=0 LIMIT 1"));
 
-## Если нет персонажа, добавляем ячеку.
+## Р•СЃР»Рё РЅРµС‚ РїРµСЂСЃРѕРЅР°Р¶Р°, РґРѕР±Р°РІР»СЏРµРј СЏС‡РµРєСѓ.
 if (!$prizes2){
 mysql_query("INSERT INTO `instant` (`id`,`uid`,`login`,`level`,`time`,`type`,`ohr`) VALUES (NULL,'".$player["id"]."','".$player["login"]."','0','0','0','0')");
 echo "<script>location='main.php';</script>";
 }
 
 
-
-
-## Если время инстанта обновлено
+## Р•СЃР»Рё РІСЂРµРјСЏ РёРЅСЃС‚Р°РЅС‚Р° РѕР±РЅРѕРІР»РµРЅРѕ
 if ($prizes2["time"]>time()){
-echo "Следующее посещение возможно: <b>".tp($prizes2["time"]-time())."</b>";
+    echo "РЎР»РµРґСѓСЋС‰РµРµ РїРѕСЃРµС‰РµРЅРёРµ РІРѕР·РјРѕР¶РЅРѕ: <b>" . tp($prizes2["time"] - time()) . "</b>";
 }
-## Если прошел последний ур.
+## Р•СЃР»Рё РїСЂРѕС€РµР» РїРѕСЃР»РµРґРЅРёР№ СѓСЂ.
 if ($prizes2["level"]>=6){
 $time_in = time()+21600;
 sql("UPDATE `instant` SET `level`='0',`time`='".$time_in."' WHERE `uid`='".$player['id']."' and `type`=0");
@@ -61,11 +59,11 @@ echo "<script>location='main.php';</script>";
 
 <FIELDSET>
 <form method="post" action="">
-<input name="att_dom" type="submit" class=lbut value="Пройти глубже в логово" style='width:180px;'>
-<? echo "<center>(<b>".$prizes2["level"]."</b> уровень)</center>"; ?>
+    <input name="att_dom" type="submit" class=lbut value="РџСЂРѕР№С‚Рё РіР»СѓР±Р¶Рµ РІ Р»РѕРіРѕРІРѕ" style='width:180px;'>
+    <? echo "<center>(<b>" . $prizes2["level"] . "</b> СѓСЂРѕРІРµРЅСЊ)</center>"; ?>
 </form>
 <form method="post" action="">
-<input name="priroda" type="submit" class=lbut value="Выход из логова" style='width:180px;'>
+    <input name="priroda" type="submit" class=lbut value="Р’С‹С…РѕРґ РёР· Р»РѕРіРѕРІР°" style='width:180px;'>
 </from>
 
 </FIELDSET>
@@ -81,50 +79,54 @@ echo "<script>location='main.php';</script>";
 <?
 if(!empty($_POST['att_dom'])) {
 if ($player["level"]<18 and $prizes2["ohr"] == 0)
-$secrets = 'Стражник загородил проход в пещеру,<br /> Здравствуйте, <b>'.$player["login"].'</b>. <br />Вы слишком малы и не сможете защитится от возможных опасностей в погребе.</b><br /><a href=main.php?vz=ok>Дать взятку (10000 WMB).</a> ';
+    $secrets = 'РЎС‚СЂР°Р¶РЅРёРє Р·Р°РіРѕСЂРѕРґРёР» РїСЂРѕС…РѕРґ РІ РїРµС‰РµСЂСѓ,<br /> Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, <b>' . $player["login"] . '</b>. <br />Р’С‹ СЃР»РёС€РєРѕРј РјР°Р»С‹ Рё РЅРµ СЃРјРѕР¶РµС‚Рµ Р·Р°С‰РёС‚РёС‚СЃСЏ РѕС‚ РІРѕР·РјРѕР¶РЅС‹С… РѕРїР°СЃРЅРѕСЃС‚РµР№ РІ РїРѕРіСЂРµР±Рµ.</b><br /><a href=main.php?vz=ok>Р”Р°С‚СЊ РІР·СЏС‚РєСѓ (10000 WMB).</a> ';
 else{
-$text = 'Стражник загородил проход в пещеру,<br />Здравствуйте, <b>'.$player["login"].'</b>, ходят слухи, что пещера полна нечистой силой,<br />Мы хотим огорадить жителей от опасностей, которые прячутся там,<br />По этому я настоятельно  рекомендую не входить в пещеру...<br />Ну, а в прочем, решать Вам.<br /><b><a href=main.php?target_dom=ok>Я не боюсь какой - то там нечисти.</a><br /><a href=main.php?>Спасибо сэр, я не пойду туда.</a></b> ';
+    $text = 'РЎС‚СЂР°Р¶РЅРёРє Р·Р°РіРѕСЂРѕРґРёР» РїСЂРѕС…РѕРґ РІ РїРµС‰РµСЂСѓ,<br />Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, <b>' . $player["login"] . '</b>, С…РѕРґСЏС‚ СЃР»СѓС…Рё, С‡С‚Рѕ РїРµС‰РµСЂР° РїРѕР»РЅР° РЅРµС‡РёСЃС‚РѕР№ СЃРёР»РѕР№,<br />РњС‹ С…РѕС‚РёРј РѕРіРѕСЂР°РґРёС‚СЊ Р¶РёС‚РµР»РµР№ РѕС‚ РѕРїР°СЃРЅРѕСЃС‚РµР№, РєРѕС‚РѕСЂС‹Рµ РїСЂСЏС‡СѓС‚СЃСЏ С‚Р°Рј,<br />РџРѕ СЌС‚РѕРјСѓ СЏ РЅР°СЃС‚РѕСЏС‚РµР»СЊРЅРѕ  СЂРµРєРѕРјРµРЅРґСѓСЋ РЅРµ РІС…РѕРґРёС‚СЊ РІ РїРµС‰РµСЂСѓ...<br />РќСѓ, Р° РІ РїСЂРѕС‡РµРј, СЂРµС€Р°С‚СЊ Р’Р°Рј.<br /><b><a href=main.php?target_dom=ok>РЇ РЅРµ Р±РѕСЋСЃСЊ РєР°РєРѕР№ - С‚Рѕ С‚Р°Рј РЅРµС‡РёСЃС‚Рё.</a><br /><a href=main.php?>РЎРїР°СЃРёР±Рѕ СЃСЌСЂ, СЏ РЅРµ РїРѕР№РґСѓ С‚СѓРґР°.</a></b> ';
 }
 }
-## Взятка =)
+## Р’Р·СЏС‚РєР° =)
 if ($_GET["vz"] == 'ok' and $player["level"]<19){
 if ($player["nv"]<10000)
-$secrets = 'Ха-ха, да Вы беднее, чем мои башмаки...';
+    $secrets = 'РҐР°-С…Р°, РґР° Р’С‹ Р±РµРґРЅРµРµ, С‡РµРј РјРѕРё Р±Р°С€РјР°РєРё...';
 else{
 mysql_query("UPDATE `user` SET `nv`=`nv`-10000 WHERE `id`='".$player["id"]."' LIMIT 1");
-$secrets = 'Ваша смелость не знает границ, но пройти я Вам не дам, пока не покажете себя в бою! победите моего напарника и сможете пройти! спасибо за монетку <a href=main.php?vz=attack>Напасть на охранника.</a>';
+    $secrets = 'Р’Р°С€Р° СЃРјРµР»РѕСЃС‚СЊ РЅРµ Р·РЅР°РµС‚ РіСЂР°РЅРёС†, РЅРѕ РїСЂРѕР№С‚Рё СЏ Р’Р°Рј РЅРµ РґР°Рј, РїРѕРєР° РЅРµ РїРѕРєР°Р¶РµС‚Рµ СЃРµР±СЏ РІ Р±РѕСЋ! РїРѕР±РµРґРёС‚Рµ РјРѕРµРіРѕ РЅР°РїР°СЂРЅРёРєР° Рё СЃРјРѕР¶РµС‚Рµ РїСЂРѕР№С‚Рё! СЃРїР°СЃРёР±Рѕ Р·Р° РјРѕРЅРµС‚РєСѓ <a href=main.php?vz=attack>РќР°РїР°СЃС‚СЊ РЅР° РѕС…СЂР°РЅРЅРёРєР°.</a>';
 }
 }
-## Если чувак смелый =)
+## Р•СЃР»Рё С‡СѓРІР°Рє СЃРјРµР»С‹Р№ =)
 if ($_GET["vz"] == 'attack' and $prizes2["ohr"] == 0 and $player["level"]<19){
 mysql_query("UPDATE `instant` SET `ohr`=1 WHERE `uid`='".$player["id"]."' LIMIT 1");
-if ($player["sex"] == 'female'){ $sex = 'смелая'; }else{ $sex = 'смельчак';}
-$secrets = 'И в правду, '.$sex.' . Мы не деремся со своим сестрами и братьями. Ладно - можешь проходить, если хочешь умереть быстрой смертью. ';
+    if ($player["sex"] == 'female') {
+        $sex = 'СЃРјРµР»Р°СЏ';
+    } else {
+        $sex = 'СЃРјРµР»СЊС‡Р°Рє';
+    }
+    $secrets = 'Р РІ РїСЂР°РІРґСѓ, ' . $sex . ' . РњС‹ РЅРµ РґРµСЂРµРјСЃСЏ СЃРѕ СЃРІРѕРёРј СЃРµСЃС‚СЂР°РјРё Рё Р±СЂР°С‚СЊСЏРјРё. Р›Р°РґРЅРѕ - РјРѕР¶РµС€СЊ РїСЂРѕС…РѕРґРёС‚СЊ, РµСЃР»Рё С…РѕС‡РµС€СЊ СѓРјРµСЂРµС‚СЊ Р±С‹СЃС‚СЂРѕР№ СЃРјРµСЂС‚СЊСЋ. ';
 }
 
-## Время до след. боя
+## Р’СЂРµРјСЏ РґРѕ СЃР»РµРґ. Р±РѕСЏ
 $t_fight = 3600;
 
 if(@$_GET['target_dom'] == 'ok') {
 if ($player["level"]<=18 and $player["level"]>=26 and $prizes2["ohr"] == 0)
-$secrets = 'Главный лесничий всегда нас предупреждает, когда к нам приходит новичек..  ( Вход доступен для 19-25 ур.)';
+    $secrets = 'Р“Р»Р°РІРЅС‹Р№ Р»РµСЃРЅРёС‡РёР№ РІСЃРµРіРґР° РЅР°СЃ РїСЂРµРґСѓРїСЂРµР¶РґР°РµС‚, РєРѕРіРґР° Рє РЅР°Рј РїСЂРёС…РѕРґРёС‚ РЅРѕРІРёС‡РµРє..  ( Р’С…РѕРґ РґРѕСЃС‚СѓРїРµРЅ РґР»СЏ 19-25 СѓСЂ.)';
 elseif ($player["level"]>=26)
-$secrets = 'Главный лесничий всегда нас предупреждает, когда к нам приходит новичек..  ( Вход доступен для 19-25 ур.)';
+    $secrets = 'Р“Р»Р°РІРЅС‹Р№ Р»РµСЃРЅРёС‡РёР№ РІСЃРµРіРґР° РЅР°СЃ РїСЂРµРґСѓРїСЂРµР¶РґР°РµС‚, РєРѕРіРґР° Рє РЅР°Рј РїСЂРёС…РѕРґРёС‚ РЅРѕРІРёС‡РµРє..  ( Р’С…РѕРґ РґРѕСЃС‚СѓРїРµРЅ РґР»СЏ 19-25 СѓСЂ.)';
 elseif ($player["hp"]<$player["hp_all"]*0.6)
-$secrets = 'Вы слишком слабы, востановитесь.';
+    $secrets = 'Р’С‹ СЃР»РёС€РєРѕРј СЃР»Р°Р±С‹, РІРѕСЃС‚Р°РЅРѕРІРёС‚РµСЃСЊ.';
 elseif ($prizes2["time"]>time())
-$secrets = 'Следующее посещение возможно: <b>'.tp($prizes2["time"]-time()).'</b>.';
+    $secrets = 'РЎР»РµРґСѓСЋС‰РµРµ РїРѕСЃРµС‰РµРЅРёРµ РІРѕР·РјРѕР¶РЅРѕ: <b>' . tp($prizes2["time"] - time()) . '</b>.';
 //elseif ($player["id"]!=10033 and $player["id"]!=12896)
-//$secrets = 'ЗАКРЫТО ПО ТЕХ. ПРИЧИНАМ.';
+//$secrets = 'Р—РђРљР Р«РўРћ РџРћ РўР•РҐ. РџР РР§РРќРђРњ.';
 else{
 
-## Вмешиваемся если там уже идет бой
+## Р’РјРµС€РёРІР°РµРјСЃСЏ РµСЃР»Рё С‚Р°Рј СѓР¶Рµ РёРґРµС‚ Р±РѕР№
 $gds=mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `loc`=26 and `battle`>0 and type!=3"));
 $arenka = mysql_fetch_assoc(mysql_query("SELECT * FROM `arena` WHERE `id_battle`='".$gds["battle"]."' and `vis`=0"));
 
 if($gds["id"] and $arenka["id_battle"]){
 //$btls = mysql_fetch_array(sql('SELECT * FROM `fights` WHERE `id`='.$drug['battle'].''));
-##Вмешиваемся в бой
+##Р’РјРµС€РёРІР°РµРјСЃСЏ РІ Р±РѕР№
 
 mysql_query("UPDATE `user` SET `side`='".$gds["side"]."',`battle`='".$gds["battle"]."',`fight`=2 WHERE `id`='".$player["id"]."'");
 save_hp_roun($player);
@@ -156,7 +158,9 @@ break;
 	$bot_id=array("3","4");
 	$bot_kolvo=array("5","6");
 break;
- default: echo'<script>alert(\'Погреб пуст..\');</script>'; break;
+    default:
+        echo '<script>alert(\'РџРѕРіСЂРµР± РїСѓСЃС‚..\');</script>';
+        break;
 }
 logovo_nap($player,$bot_id,$bot_kolvo); 
 echo "<script>location='main.php';</script>";

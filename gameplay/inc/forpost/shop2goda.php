@@ -4,7 +4,7 @@
 foreach($_POST as $keypost=>$val){$_POST[$keypost] = varcheck($val);}
 foreach($_GET as $keyget=>$val){$_GET[$keyget] = varcheck($val);}
 
-/* СОРТИРОВКА */
+/* РЎРћР РўРР РћР’РљРђ */
 if(!empty($_POST['min_lev']) or !empty($_POST['max_lev']) or !empty($_POST['max_nv']) or !empty($_POST['sorttype'])){
 	$_SESSION['min_lev'] = intval($_POST['min_lev']);
 	$_SESSION['max_lev'] = intval($_POST['max_lev']);
@@ -26,7 +26,7 @@ if(empty($_SESSION['max_lev'])){
 if(empty($_SESSION['sorttype'])){
 	$_SESSION['sorttype'] = 'level';
 }
-/* КАТЕГОРИИ */
+/* РљРђРўР•Р“РћР РР */
 if(isset($_GET['weapon_category'])){
 	$_SESSION['mark']=$_GET['weapon_category'];
 }
@@ -47,26 +47,79 @@ echo "<SCRIPT>MessBoxDiv('".$msg."',0,0,0,0);</SCRIPT>";
 
 <table cellpadding=0 cellspacing=1 border=0 align=center width=100%>
 <tr align=center><td align=center><?$locname = mysql_fetch_array(mysql_query("SELECT * FROM `loc` WHERE `id`='".$player['loc']."' LIMIT 1;"));?><fieldset><legend align="center"><b><font color="gray"><?=$locname['loc'];?></font></b></legend><img src=/img/image/shops/lavka_shop_2.jpg width=760 height=255 border=0 align=center></fieldset></td></tr>
-<!----><tr><td bgcolor=#f5f5f5><?php 
-echo'<form method=post><div align=center><font class=freetxt><font color=#3564A5><b>Фильтр: </b></font>уровень от <select name=min_lev class=zayavki>';
+<!----><tr><td bgcolor=#f5f5f5><?php
+            echo '<form method=post><div align=center><font class=freetxt><font color=#3564A5><b>Р¤РёР»СЊС‚СЂ: </b></font>СѓСЂРѕРІРµРЅСЊ РѕС‚ <select name=min_lev class=zayavki>';
 for($i=0;$i<=33;$i++){
 	echo'<option value='.$i.(($_SESSION['min_lev']==$i)?' SELECTED':'').'>'.$i.'</option>';
 }
-echo'</select> до <select name=max_lev class=zayavki>';
+            echo '</select> РґРѕ <select name=max_lev class=zayavki>';
 for($i=0;$i<=33;$i++){
 	echo'<option value='.$i.(($_SESSION['max_lev']==$i)?' SELECTED':'').'>'.$i.'</option>';
 }
-echo'</select> не дороже <input type=text size=2 name=max_nv value="'.(($_SESSION['max_nv']=='0')?'':$_SESSION['max_nv']).'" class=LogintextBox6><b>Жетонов</b> сортировка по <select name=sorttype class=zayavki><option value=1'.(($_SESSION['sorttype']=='level')?' SELECTED':'').'>уровню</option><option value=0'.(($_SESSION['sorttype']=='price')?' SELECTED':'').'>стоимости</option></select> <input type=submit value=" ok " class=lbut></font></div></form>';
+            echo '</select> РЅРµ РґРѕСЂРѕР¶Рµ <input type=text size=2 name=max_nv value="' . (($_SESSION['max_nv'] == '0') ? '' : $_SESSION['max_nv']) . '" class=LogintextBox6><b>Р–РµС‚РѕРЅРѕРІ</b> СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ <select name=sorttype class=zayavki><option value=1' . (($_SESSION['sorttype'] == 'level') ? ' SELECTED' : '') . '>СѓСЂРѕРІРЅСЋ</option><option value=0' . (($_SESSION['sorttype'] == 'price') ? ' SELECTED' : '') . '>СЃС‚РѕРёРјРѕСЃС‚Рё</option></select> <input type=submit value=" ok " class=lbut></font></div></form>';
 ?></td></tr><tr><td bgcolor=#CCCCCC width=100%><img src=/img/image/1x1.gif width=1 height=1 width=40 height=50></td></tr><!---->
 <tr><td>
-<input type=image src=/img/image/gameplay/shop/knife.gif onClick="location='?weapon_category=w4'" title="Ножи" width=40 height=50><input type=image src=/img/image/gameplay/shop/sword.gif onClick="location='?weapon_category=w1'" title="Мечи" width=40 height=50><input type=image src=/img/image/gameplay/shop/axe.gif onClick="location='?weapon_category=w2'" title="Топоры" width=40 height=50><input type=image src=/img/image/gameplay/shop/crushing.gif onClick="location='?weapon_category=w3'" title="Дробящие" width=40 height=50><input type=image src=/img/image/gameplay/shop/spears_helbeards.gif onClick="location='?weapon_category=w6'" title="Алебарды и двуручное" width=40 height=50><input type=image src=/img/image/gameplay/shop/missle.gif onClick="location='?weapon_category=w5'" title="Копья и метательное" width=40 height=50><input type=image src=/img/image/gameplay/shop/wand.gif onClick="location='?weapon_category=w7'" title="Посохи" width=40 height=50><input type=image src=/img/image/gameplay/shop/shield.gif onClick="location='?weapon_category=w20'" title="Щиты" width=40 height=50><input type=image src=/img/image/gameplay/shop/helm.gif onClick="location='?weapon_category=w23'" title="Шлемы" width=40 height=50><input type=image src=/img/image/gameplay/shop/belt.gif onClick="location='?weapon_category=w26'" title="Пояса" width=40 height=50><input type=image src=/img/image/gameplay/shop/armor_light.gif onClick="location='?weapon_category=w18'" title="Кольчуги" width=40 height=50><input type=image src=/img/image/gameplay/shop/armor_hard.gif onClick="location='?weapon_category=w19'" title="Доспехи" width=40 height=50><input type=image src=/img/image/gameplay/shop/gloves.gif onClick="location='?weapon_category=w24'" title="Перчатки" width=40 height=50><input type=image src=/img/image/gameplay/shop/armlet.gif onClick="location='?weapon_category=w80'" title="Наручи" width=40 height=50><input type=image src=/img/image/gameplay/shop/boots.gif onClick="location='?weapon_category=w21'" title="Сапоги" width=40 height=50><input type=image src=/img/image/gameplay/shop/amulet.gif onClick="location='?weapon_category=w25'" title="Кулоны" width=40 height=50><input type=image src=/img/image/gameplay/shop/ring.gif onClick="location='?weapon_category=w22'" title="Кольца" width=40 height=50><input type=image src=/img/image/gameplay/shop/spaudler.gif onClick="location='?weapon_category=w28'" title="Наплечники" width=40 height=50><input type=image src=/img/image/gameplay/shop/knee_guard.gif onClick="location='?weapon_category=w90'" title="Поножи" width=40 height=50>
-<input type=image src=/img/image/gameplay/shops/trf.gif onClick="location='?weapon_category=all'" title="Чужеземные трофеи" width=40 height=50>
-<input type=image src=/img/image/gameplay/shops/svit.gif onClick="location='?weapon_category=w29'" title="Свитки" width=40 height=50>
-<input type=image src=/img/image/gameplay/shops/lic.gif onClick="location='?weapon_category=w30'" title="Лицензии" width=40 height=50>
-<input type=image src=/img/image/gameplay/shops/mag.gif onClick="location='?weapon_category=w31'" title="Книги и прочее" width=40 height=50>
-<input type=image src=/img/image/gameplay/shops/sn.gif onClick="location='?weapon_category=w66'" title="Снаряжение" width=40 height=50>
-<input type=image src=/img/image/gameplay/shops/el.gif onClick="location='?weapon_category=w999'" title="Эликсиры" width=40 height=50>
-<input type=image src=/img/image/gameplay/shops/zel.gif onClick="location='?weapon_category=w0'" title="Зелья" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shop/knife.gif onClick="location='?weapon_category=w4'" title="РќРѕР¶Рё"
+               width=40 height=50><input type=image src=/img/image/gameplay/shop/sword.gif
+                                         onClick="location='?weapon_category=w1'" title="РњРµС‡Рё" width=40 height=50><input
+                type=image src=/img/image/gameplay/shop/axe.gif onClick="location='?weapon_category=w2'" title="РўРѕРїРѕСЂС‹"
+                width=40 height=50><input type=image src=/img/image/gameplay/shop/crushing.gif
+                                          onClick="location='?weapon_category=w3'" title="Р”СЂРѕР±СЏС‰РёРµ" width=40
+                                          height=50><input type=image src=/img/image/gameplay/shop/spears_helbeards.gif
+                                                           onClick="location='?weapon_category=w6'"
+                                                           title="РђР»РµР±Р°СЂРґС‹ Рё РґРІСѓСЂСѓС‡РЅРѕРµ" width=40 height=50><input
+                type=image src=/img/image/gameplay/shop/missle.gif onClick="location='?weapon_category=w5'"
+                title="РљРѕРїСЊСЏ Рё РјРµС‚Р°С‚РµР»СЊРЅРѕРµ" width=40 height=50><input type=image src=/img/image/gameplay/shop/wand.gif
+                                                                      onClick="location='?weapon_category=w7'"
+                                                                      title="РџРѕСЃРѕС…Рё" width=40 height=50><input
+                type=image src=/img/image/gameplay/shop/shield.gif onClick="location='?weapon_category=w20'"
+                title="Р©РёС‚С‹" width=40 height=50><input type=image src=/img/image/gameplay/shop/helm.gif
+                                                       onClick="location='?weapon_category=w23'" title="РЁР»РµРјС‹" width=40
+                                                       height=50><input type=image src=/img/image/gameplay/shop/belt.gif
+                                                                        onClick="location='?weapon_category=w26'"
+                                                                        title="РџРѕСЏСЃР°" width=40 height=50><input
+                type=image src=/img/image/gameplay/shop/armor_light.gif onClick="location='?weapon_category=w18'"
+                title="РљРѕР»СЊС‡СѓРіРё" width=40 height=50><input type=image src=/img/image/gameplay/shop/armor_hard.gif
+                                                           onClick="location='?weapon_category=w19'" title="Р”РѕСЃРїРµС…Рё"
+                                                           width=40 height=50><input type=image
+                                                                                     src=/img/image/gameplay/shop/gloves.gif
+                                                                                     onClick="location='?weapon_category=w24'"
+                                                                                     title="РџРµСЂС‡Р°С‚РєРё" width=40
+                                                                                     height=50><input type=image
+                                                                                                      src=/img/image/gameplay/shop/armlet.gif
+                                                                                                      onClick="location='?weapon_category=w80'"
+                                                                                                      title="РќР°СЂСѓС‡Рё"
+                                                                                                      width=40
+                                                                                                      height=50><input
+                type=image src=/img/image/gameplay/shop/boots.gif onClick="location='?weapon_category=w21'"
+                title="РЎР°РїРѕРіРё" width=40 height=50><input type=image src=/img/image/gameplay/shop/amulet.gif
+                                                         onClick="location='?weapon_category=w25'" title="РљСѓР»РѕРЅС‹"
+                                                         width=40 height=50><input type=image
+                                                                                   src=/img/image/gameplay/shop/ring.gif
+                                                                                   onClick="location='?weapon_category=w22'"
+                                                                                   title="РљРѕР»СЊС†Р°" width=40
+                                                                                   height=50><input type=image
+                                                                                                    src=/img/image/gameplay/shop/spaudler.gif
+                                                                                                    onClick="location='?weapon_category=w28'"
+                                                                                                    title="РќР°РїР»РµС‡РЅРёРєРё"
+                                                                                                    width=40
+                                                                                                    height=50><input
+                type=image src=/img/image/gameplay/shop/knee_guard.gif onClick="location='?weapon_category=w90'"
+                title="РџРѕРЅРѕР¶Рё" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shops/trf.gif onClick="location='?weapon_category=all'"
+               title="Р§СѓР¶РµР·РµРјРЅС‹Рµ С‚СЂРѕС„РµРё" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shops/svit.gif onClick="location='?weapon_category=w29'"
+               title="РЎРІРёС‚РєРё" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shops/lic.gif onClick="location='?weapon_category=w30'"
+               title="Р›РёС†РµРЅР·РёРё" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shops/mag.gif onClick="location='?weapon_category=w31'"
+               title="РљРЅРёРіРё Рё РїСЂРѕС‡РµРµ" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shops/sn.gif onClick="location='?weapon_category=w66'"
+               title="РЎРЅР°СЂСЏР¶РµРЅРёРµ" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shops/el.gif onClick="location='?weapon_category=w999'"
+               title="Р­Р»РёРєСЃРёСЂС‹" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shops/zel.gif onClick="location='?weapon_category=w0'" title="Р—РµР»СЊСЏ"
+               width=40 height=50>
 </td></tr>
 <tr><td></td></tr>
 <tr><td>
@@ -76,7 +129,16 @@ FROM market LEFT JOIN items ON market.id = items.id
 WHERE items.dd_price=0 AND market='".$player['loc']."' AND `level`>='".$_SESSION["min_lev"]."' AND `level`<='".$_SESSION["max_lev"]."'".(($_SESSION["max_nv"]>'0')?" AND `price`<='".$_SESSION["max_nv"]."'":"")." AND type='".preg_replace('/[^w0-9]/','',$_GET["weapon_category"])."' ORDER BY `items`.`".$_SESSION['sorttype']."` ASC");
 $num = (mysql_num_rows($ITEMS)); 
 if($num>0){?>
-<table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#e0e0e0><table cellpadding=3 cellspacing=1 border=0 width=100%><tr><td colspan=2 bgcolor=#F9f9f9><div align=center><font class=inv><b> У Вас с собой <?=$player[goda]?> Жетонов и вещей массой: <?=$plstt[71]?> Максимальный вес: <?=$mass?></b></div></td></tr>
+        <table cellpadding=0 cellspacing=0 border=0 width=100%>
+            <tr>
+                <td bgcolor=#e0e0e0>
+                    <table cellpadding=3 cellspacing=1 border=0 width=100%>
+                        <tr>
+                            <td colspan=2 bgcolor=#F9f9f9>
+                                <div align=center><font class=inv><b> РЈ Р’Р°СЃ СЃ СЃРѕР±РѕР№ <?= $player[goda] ?> Р–РµС‚РѕРЅРѕРІ Рё РІРµС‰РµР№
+                                            РјР°СЃСЃРѕР№: <?= $plstt[71] ?> РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РІРµСЃ: <?= $mass ?></b></div>
+                            </td>
+                        </tr>
 <?
 $freemass=$plstt[71];
 while ($ITEM = mysql_fetch_assoc($ITEMS)) {
@@ -91,130 +153,387 @@ if($treb[0]!=28){if($plstt[$treb[0]]<$treb[1]){$treb[1]="<font color=#cc0000>$tr
 ;}}}
 switch($treb[0])
 {
-case 28: $tr_b.="&nbsp;Очки действия: <b>$treb[1]</b><br>";break;
-case 30: $tr_b.="&nbsp;Cила: <b>$treb[1]</b><br>";break;
-case 31: $tr_b.="&nbsp;Ловкость: <b>$treb[1]</b><br>";break;
-case 32: $tr_b.="&nbsp;Удача: <b>$treb[1]</b><br>";break;
-case 33: $tr_b.="&nbsp;Здоровье: <b>$treb[1]</b><br>";break;
-case 34: $tr_b.="&nbsp;Знания: <b>$treb[1]</b><br>";break;
-case 35: $tr_b.="&nbsp;Сноровка: <b>$treb[1]</b><br>";break;
-case 36: $tr_b.="&nbsp;Владение мечами: <b>$treb[1]</b><br>";break;
-case 37: $tr_b.="&nbsp;Владение топорами: <b>$treb[1]</b><br>";break;
-case 38: $tr_b.="&nbsp;Владение дробящим оружием: <b>$treb[1]</b><br>";break;
-case 39: $tr_b.="&nbsp;Владение ножами: <b>$treb[1]</b><br>";break;
-case 40: $tr_b.="&nbsp;Владение метательным оружием: <b>$treb[1]</b><br>";break;
-case 41: $tr_b.="&nbsp;Владение алебардами и копьями: <b>$treb[1]</b><br>";break;
-case 42: $tr_b.="&nbsp;Владение посохами: <b>$treb[1]</b><br>";break;
-case 43: $tr_b.="&nbsp;Владение экзотическим оружием: <b>$treb[1]</b><br>";break;
-case 44: $tr_b.="&nbsp;Владение двуручным оружием: <b>$treb[1]</b><br>";break;
-case 45: $tr_b.="&nbsp;Магия огня: <b>$treb[1]</b><br>";break;
-case 46: $tr_b.="&nbsp;Магия воды: <b>$treb[1]</b><br>";break;
-case 47: $tr_b.="&nbsp;Магия воздуха: <b>$treb[1]</b><br>";break;
-case 48: $tr_b.="&nbsp;Магия земли: <b>$treb[1]</b><br>";break;
-case 53: $tr_b.="&nbsp;Воровство: <b>$treb[1]</b><br>";break;
-case 54: $tr_b.="&nbsp;Осторожность: <b>$treb[1]</b><br>";break;
-case 55: $tr_b.="&nbsp;Скрытность: <b>$treb[1]</b><br>";break;
-case 56: $tr_b.="&nbsp;Наблюдательность: <b>$treb[1]</b><br>";break;
-case 57: $tr_b.="&nbsp;Торговля: <b>$treb[1]</b><br>";break;
-case 58: $tr_b.="&nbsp;Странник: <b>$treb[1]</b><br>";break;
-case 59: $tr_b.="&nbsp;Рыболов: <b>$treb[1]</b><br>";break;
-case 60: $tr_b.="&nbsp;Лесоруб: <b>$treb[1]</b><br>";break;
-case 61: $tr_b.="&nbsp;Ювелирное дело: <b>$treb[1]</b><br>";break;
-case 62: $tr_b.="&nbsp;Самолечение: <b>$treb[1]</b><br>";break;
-case 63: $tr_b.="&nbsp;Оружейник: <b>$treb[1]</b><br>";break;
-case 64: $tr_b.="&nbsp;Доктор: <b>$treb[1]</b><br>";break;
-case 65: $tr_b.="&nbsp;Самолечение: <b>$treb[1]</b><br>";break;
-case 66: $tr_b.="&nbsp;Быстрое восстановление маны: <b>$treb[1]</b><br>";break;
-case 67: $tr_b.="&nbsp;Лидерство: <b>$treb[1]</b><br>";break;
-case 68: $tr_b.="&nbsp;Алхимия: <b>$treb[1]</b><br>";break;
-case 69: $tr_b.="&nbsp;Развитие горного дела: <b>$treb[1]</b><br>";break;
-case 70: $tr_b.="&nbsp;Травничество: <b>$treb[1]</b><br>";break;
-case 71: $tr_b.="&nbsp;Масса: <b>$treb[1]</b><br>";break;
-case 72: $tr_b.="&nbsp;Уровень: <b>$treb[1]</b><br>";break;
+    case 28:
+        $tr_b .= "&nbsp;РћС‡РєРё РґРµР№СЃС‚РІРёСЏ: <b>$treb[1]</b><br>";
+        break;
+    case 30:
+        $tr_b .= "&nbsp;CРёР»Р°: <b>$treb[1]</b><br>";
+        break;
+    case 31:
+        $tr_b .= "&nbsp;Р›РѕРІРєРѕСЃС‚СЊ: <b>$treb[1]</b><br>";
+        break;
+    case 32:
+        $tr_b .= "&nbsp;РЈРґР°С‡Р°: <b>$treb[1]</b><br>";
+        break;
+    case 33:
+        $tr_b .= "&nbsp;Р—РґРѕСЂРѕРІСЊРµ: <b>$treb[1]</b><br>";
+        break;
+    case 34:
+        $tr_b .= "&nbsp;Р—РЅР°РЅРёСЏ: <b>$treb[1]</b><br>";
+        break;
+    case 35:
+        $tr_b .= "&nbsp;РЎРЅРѕСЂРѕРІРєР°: <b>$treb[1]</b><br>";
+        break;
+    case 36:
+        $tr_b .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РјРµС‡Р°РјРё: <b>$treb[1]</b><br>";
+        break;
+    case 37:
+        $tr_b .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ С‚РѕРїРѕСЂР°РјРё: <b>$treb[1]</b><br>";
+        break;
+    case 38:
+        $tr_b .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј: <b>$treb[1]</b><br>";
+        break;
+    case 39:
+        $tr_b .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РЅРѕР¶Р°РјРё: <b>$treb[1]</b><br>";
+        break;
+    case 40:
+        $tr_b .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј: <b>$treb[1]</b><br>";
+        break;
+    case 41:
+        $tr_b .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё: <b>$treb[1]</b><br>";
+        break;
+    case 42:
+        $tr_b .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РїРѕСЃРѕС…Р°РјРё: <b>$treb[1]</b><br>";
+        break;
+    case 43:
+        $tr_b .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј: <b>$treb[1]</b><br>";
+        break;
+    case 44:
+        $tr_b .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј: <b>$treb[1]</b><br>";
+        break;
+    case 45:
+        $tr_b .= "&nbsp;РњР°РіРёСЏ РѕРіРЅСЏ: <b>$treb[1]</b><br>";
+        break;
+    case 46:
+        $tr_b .= "&nbsp;РњР°РіРёСЏ РІРѕРґС‹: <b>$treb[1]</b><br>";
+        break;
+    case 47:
+        $tr_b .= "&nbsp;РњР°РіРёСЏ РІРѕР·РґСѓС…Р°: <b>$treb[1]</b><br>";
+        break;
+    case 48:
+        $tr_b .= "&nbsp;РњР°РіРёСЏ Р·РµРјР»Рё: <b>$treb[1]</b><br>";
+        break;
+    case 53:
+        $tr_b .= "&nbsp;Р’РѕСЂРѕРІСЃС‚РІРѕ: <b>$treb[1]</b><br>";
+        break;
+    case 54:
+        $tr_b .= "&nbsp;РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ: <b>$treb[1]</b><br>";
+        break;
+    case 55:
+        $tr_b .= "&nbsp;РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ: <b>$treb[1]</b><br>";
+        break;
+    case 56:
+        $tr_b .= "&nbsp;РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ: <b>$treb[1]</b><br>";
+        break;
+    case 57:
+        $tr_b .= "&nbsp;РўРѕСЂРіРѕРІР»СЏ: <b>$treb[1]</b><br>";
+        break;
+    case 58:
+        $tr_b .= "&nbsp;РЎС‚СЂР°РЅРЅРёРє: <b>$treb[1]</b><br>";
+        break;
+    case 59:
+        $tr_b .= "&nbsp;Р С‹Р±РѕР»РѕРІ: <b>$treb[1]</b><br>";
+        break;
+    case 60:
+        $tr_b .= "&nbsp;Р›РµСЃРѕСЂСѓР±: <b>$treb[1]</b><br>";
+        break;
+    case 61:
+        $tr_b .= "&nbsp;Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ: <b>$treb[1]</b><br>";
+        break;
+    case 62:
+        $tr_b .= "&nbsp;РЎР°РјРѕР»РµС‡РµРЅРёРµ: <b>$treb[1]</b><br>";
+        break;
+    case 63:
+        $tr_b .= "&nbsp;РћСЂСѓР¶РµР№РЅРёРє: <b>$treb[1]</b><br>";
+        break;
+    case 64:
+        $tr_b .= "&nbsp;Р”РѕРєС‚РѕСЂ: <b>$treb[1]</b><br>";
+        break;
+    case 65:
+        $tr_b .= "&nbsp;РЎР°РјРѕР»РµС‡РµРЅРёРµ: <b>$treb[1]</b><br>";
+        break;
+    case 66:
+        $tr_b .= "&nbsp;Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹: <b>$treb[1]</b><br>";
+        break;
+    case 67:
+        $tr_b .= "&nbsp;Р›РёРґРµСЂСЃС‚РІРѕ: <b>$treb[1]</b><br>";
+        break;
+    case 68:
+        $tr_b .= "&nbsp;РђР»С…РёРјРёСЏ: <b>$treb[1]</b><br>";
+        break;
+    case 69:
+        $tr_b .= "&nbsp;Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°: <b>$treb[1]</b><br>";
+        break;
+    case 70:
+        $tr_b .= "&nbsp;РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ: <b>$treb[1]</b><br>";
+        break;
+    case 71:
+        $tr_b .= "&nbsp;РњР°СЃСЃР°: <b>$treb[1]</b><br>";
+        break;
+    case 72:
+        $tr_b .= "&nbsp;РЈСЂРѕРІРµРЅСЊ: <b>$treb[1]</b><br>";
+        break;
 }
 }
 ?>
-<tr><td bgcolor=#f9f9f9><div align=center><img src=/img/image/weapon/<?=$ITEM[gif]?> border=0></div></td><td width=100% bgcolor=#ffffff valign=top><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%><font class=nickname><b><? if($player[goda]>=$ITEM[price] AND $ITEM[kol]>0 and $m!=0){?><input type=button class=invbut onclick="location='main.php?post_id=116&wsuid=<?=$ITEM[id]?>&vcode=<?=scod()?>'" value="купить"> <? }if($player['access']=='admin'){
-	echo '<input type=button class=invbut onclick="location=\'main.php?post_id=111&wsuid='.$ITEM['id'].'&market='.$ITEM['market'].'&vcode='.scode().'\'" value="Удалить из магазина"><br>';
-}?><?=$ITEM[name]?></b><font class=weaponch> (количество: <?=(($ITEM[kol]>0)?'<font color=green>'.$ITEM[kol].'</font>':'<font color=red>'.$ITEM[kol].'</font>')?>)<br><img src=/img/image/1x1.gif width=1 height=3></td><td><br><img src=/img/image/1x1.gif width=1 height=3</td></tr><tr><td colspan=2 width=100%><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#D8CDAF width=50%><div align=center><font class=invtitle>свойства</div></td><td bgcolor=#B9A05C><img src=/img/image/1x1.gif width=1 height=1></td><td bgcolor=#D8CDAF width=50%><div align=center><font class=invtitle>требования</div></td></tr><tr><td bgcolor=#FCFAF3><font class=weaponch>&nbsp;Цена: <b><? if($ITEM[price]>$player[goda]){echo "<font color=#cc0000>$ITEM[price] Жетонов</font>";}else{echo $ITEM[price]." Жетонов";}?></b><?php ?><br>
-<? if($ITEM[slot]==16) echo "<font class=weaponch><b><font color=#cc0000>Можно одевать на кольчуги</font></b><br>";
+    <tr>
+        <td bgcolor=#f9f9f9>
+            <div align=center><img src=/img/image/weapon/<?= $ITEM[gif] ?> border=0></div>
+        </td>
+        <td width=100% bgcolor=#ffffff valign=top>
+            <table cellpadding=0 cellspacing=0 border=0 width=100%>
+                <tr>
+                    <td bgcolor=#ffffff width=100%><font
+                                class=nickname><b><? if ($player[goda] >= $ITEM[price] AND $ITEM[kol] > 0 and $m != 0) { ?>
+                                    <input type=button class=invbut
+                                           onclick="location='main.php?post_id=116&wsuid=<?= $ITEM[id] ?>&vcode=<?= scod() ?>'"
+                                           value="РєСѓРїРёС‚СЊ"> <? }
+                                if ($player['access'] == 'admin') {
+                                    echo '<input type=button class=invbut onclick="location=\'main.php?post_id=111&wsuid=' . $ITEM['id'] . '&market=' . $ITEM['market'] . '&vcode=' . scode() . '\'" value="РЈРґР°Р»РёС‚СЊ РёР· РјР°РіР°Р·РёРЅР°"><br>';
+                                } ?><?= $ITEM[name] ?></b><font class=weaponch>
+                                (РєРѕР»РёС‡РµСЃС‚РІРѕ: <?= (($ITEM[kol] > 0) ? '<font color=green>' . $ITEM[kol] . '</font>' : '<font color=red>' . $ITEM[kol] . '</font>') ?>
+                                )<br><img src=/img/image/1x1.gif width=1 height=3></td>
+                    <td><br><img src=/img/image/1x1.gif width=1 height=3</td>
+                </tr>
+                <tr>
+                    <td colspan=2 width=100%>
+                        <table cellpadding=0 cellspacing=0 border=0 width=100%>
+                            <tr>
+                                <td bgcolor=#D8CDAF width=50%>
+                                    <div align=center><font class=invtitle>СЃРІРѕР№СЃС‚РІР°</div>
+                                </td>
+                                <td bgcolor=#B9A05C><img src=/img/image/1x1.gif width=1 height=1></td>
+                                <td bgcolor=#D8CDAF width=50%>
+                                    <div align=center><font class=invtitle>С‚СЂРµР±РѕРІР°РЅРёСЏ</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor=#FCFAF3><font class=weaponch>&nbsp;Р¦РµРЅР°:
+                                        <b><? if ($ITEM[price] > $player[goda]) {
+                                                echo "<font color=#cc0000>$ITEM[price] Р–РµС‚РѕРЅРѕРІ</font>";
+                                            } else {
+                                                echo $ITEM[price] . " Р–РµС‚РѕРЅРѕРІ";
+                                            } ?></b><?php ?><br>
+                                        <? if ($ITEM[slot] == 16) echo "<font class=weaponch><b><font color=#cc0000>РњРѕР¶РЅРѕ РѕРґРµРІР°С‚СЊ РЅР° РєРѕР»СЊС‡СѓРіРё</font></b><br>";
 blocks($ITEM[block]);
 foreach ($par as $value) {
 $stat=explode("@",$value);
 if($stat[1]>0){$plus = "+";}else{$plus ="";}
 switch($stat[0])
 {
-case 0: echo "Гравировка: <b>$stat[1]</b><br>"; break;
-case 1: echo "Удар: <b>$stat[1]</b><br>";break;
-case 2: echo "Долговечность: <b>$stat[1]/$stat[1]</b><br>";break;
-case 3: echo "Карманов: <b>$stat[1]</b><br>";break;
-case 4: echo "Материал: <b>$stat[1]</b><br>";break;
-case 5: echo "Уловка: $plus<b>$stat[1]%</b><br>";break;
-case 6: echo "Точность: $plus<b>$stat[1]%</b><br>";break;
-case 7: echo "Сокрушение: $plus<b>$stat[1]%</b><br>";break;
-case 8: echo "Стойкость: $plus<b>$stat[1]%</b><br>";break;
-case 9: echo "Класс брони: <b>$stat[1]</b><br>";break;
-case 10: echo "Пробой брони: $plus<b>$stat[1]%</b><br>";break;
-case 11: echo "Пробой колющим ударом: $plus<b>$stat[1]%</b><br>";break;
-case 12: echo "Пробой режущим ударом: $plus<b>$stat[1]%</b><br>";break;
-case 13: echo "Пробой проникающим ударом: $plus<b>$stat[1]%</b><br>";break;
-case 14: echo "Пробой пробивающим ударом: $plus<b>$stat[1]%</b><br>";break;
-case 15: echo "Пробой рубящим ударом: $plus<b>$stat[1]%</b><br>";break;
-case 16: echo "Пробой карающим ударом: $plus<b>$stat[1]%</b><br>";break;
-case 17: echo "Пробой отсекающим ударом: $plus<b>$stat[1]%</b><br>";break;
-case 18: echo "Пробой дробящим ударом: $plus<b>$stat[1]%</b><br>";break;
-case 19: echo "Защита от колющих ударов: $plus<b>$stat[1]</b><br>";break;
-case 20: echo "Защита от режущих ударов: $plus<b>$stat[1]</b><br>";break;
-case 21: echo "Защита от проникающих ударов: $plus<b>$stat[1]</b><br>";break;
-case 22: echo "Защита от пробивающих ударов: $plus<b>$stat[1]</b><br>";break;
-case 23: echo "Защита от рубящих ударов: $plus<b>$stat[1]</b><br>";break;
-case 24: echo "Защита от карающих ударов: $plus<b>$stat[1]</b><br>";break;
-case 25: echo "Защита от отсекающих ударов: $plus<b>$stat[1]</b><br>";break;
-case 26: echo "Защита от дробящих ударов: $plus<b>$stat[1]</b><br>";break;
-case 27: echo "НР: $plus<b>$stat[1]</b><br>";break;
-case 28: echo "Очки действия: $plus<b>$stat[1]</b><br>";break;
-case 29: echo "Мана: $plus<b>$stat[1]</b><br>";break;
-case 30: echo "Cила: $plus<b>$stat[1]</b><br>";break;
-case 31: echo "Ловкость: $plus<b>$stat[1]</b><br>";break;
-case 32: echo "Удача: $plus<b>$stat[1]</b><br>";break;
-case 33: echo "Здоровье: $plus<b>$stat[1]</b><br>";break;
-case 34: echo "Знания: $plus<b>$stat[1]</b><br>";break;
-case 35: echo "Сноровка: $plus<b>$stat[1]</b><br>";break;
-case 36: echo "Владение мечами: $plus<b>$stat[1]%</b><br>";break;
-case 37: echo "Владение топорами: $plus<b>$stat[1]%</b><br>";break;
-case 38: echo "Владение дробящим оружием: $plus<b>$stat[1]%</b><br>";break;
-case 39: echo "Владение ножами: $plus<b>$stat[1]%</b><br>";break;
-case 40: echo "Владение метательным оружием: $plus<b>$stat[1]%</b><br>";break;
-case 41: echo "Владение алебардами и копьями: $plus<b>$stat[1]%</b><br>";break;
-case 42: echo "Владение посохами: $plus<b>$stat[1]%</b><br>";break;
-case 43: echo "Владение экзотическим оружием: $plus<b>$stat[1]%</b><br>";break;
-case 44: echo "Владение двуручным оружием: $plus<b>$stat[1]%</b><br>";break;
-case 45: echo "Магия огня: $plus<b>$stat[1]%</b><br>";break;
-case 46: echo "Магия воды: $plus<b>$stat[1]%</b><br>";break;
-case 47: echo "Магия воздуха: $plus<b>$stat[1]%</b><br>";break;
-case 48: echo "Магия земли: $plus<b>$stat[1]%</b><br>";break;
-case 49: echo "Сопротивление магии огня: $plus<b>$stat[1]%</b><br>";break;
-case 50: echo "Сопротивление магии воды: $plus<b>$stat[1]%</b><br>";break;
-case 51: echo "Сопротивление магии воздуха: $plus<b>$stat[1]%</b><br>";break;
-case 52: echo "Сопротивление магии земли: $plus<b>$stat[1]%</b><br>";break;
-case 53: echo "Воровство: $plus<b>$stat[1]%</b><br>";break;
-case 54: echo "Осторожность: $plus<b>$stat[1]%</b><br>";break;
-case 55: echo "Скрытность: $plus<b>$stat[1]%</b><br>";break;
-case 56: echo "Наблюдательность: $plus<b>$stat[1]%</b><br>";break;
-case 57: echo "Торговля: $plus<b>$stat[1]%</b><br>";break;
-case 58: echo "Странник: $plus<b>$stat[1]%</b><br>";break;
-case 59: echo "Рыболов: $plus<b>$stat[1]%</b><br>";break;
-case 60: echo "Лесоруб: $plus<b>$stat[1]%</b><br>";break;
-case 61: echo "Ювелирное дело: $plus<b>$stat[1]%</b><br>";break;
-case 62: echo "Самолечение: $plus<b>$stat[1]%</b><br>";break;
-case 63: echo "Оружейник: $plus<b>$stat[1]%</b><br>";break;
-case 64: echo "Доктор: $plus<b>$stat[1]%</b><br>";break;
-case 65: echo "Самолечение: $plus<b>$stat[1]%</b><br>";break;
-case 66: echo "Быстрое восстановление маны: $plus<b>$stat[1]%</b><br>";break;
-case 67: echo "Лидерство: $plus<b>$stat[1]%</b><br>";break;
-case 68: echo "Алхимия: $plus<b>$stat[1]%</b><br>";break;
-case 69: echo "Развитие горного дела: $plus<b>$stat[1]%</b><br>";break;
-case 70: echo "Травничество: $plus<b>$stat[1]%</b><br>";break;
+    case 0:
+        echo "Р“СЂР°РІРёСЂРѕРІРєР°: <b>$stat[1]</b><br>";
+        break;
+    case 1:
+        echo "РЈРґР°СЂ: <b>$stat[1]</b><br>";
+        break;
+    case 2:
+        echo "Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ: <b>$stat[1]/$stat[1]</b><br>";
+        break;
+    case 3:
+        echo "РљР°СЂРјР°РЅРѕРІ: <b>$stat[1]</b><br>";
+        break;
+    case 4:
+        echo "РњР°С‚РµСЂРёР°Р»: <b>$stat[1]</b><br>";
+        break;
+    case 5:
+        echo "РЈР»РѕРІРєР°: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 6:
+        echo "РўРѕС‡РЅРѕСЃС‚СЊ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 7:
+        echo "РЎРѕРєСЂСѓС€РµРЅРёРµ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 8:
+        echo "РЎС‚РѕР№РєРѕСЃС‚СЊ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 9:
+        echo "РљР»Р°СЃСЃ Р±СЂРѕРЅРё: <b>$stat[1]</b><br>";
+        break;
+    case 10:
+        echo "РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 11:
+        echo "РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 12:
+        echo "РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 13:
+        echo "РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 14:
+        echo "РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 15:
+        echo "РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 16:
+        echo "РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 17:
+        echo "РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 18:
+        echo "РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 19:
+        echo "Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 20:
+        echo "Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 21:
+        echo "Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 22:
+        echo "Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 23:
+        echo "Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 24:
+        echo "Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 25:
+        echo "Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 26:
+        echo "Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 27:
+        echo "РќР : $plus<b>$stat[1]</b><br>";
+        break;
+    case 28:
+        echo "РћС‡РєРё РґРµР№СЃС‚РІРёСЏ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 29:
+        echo "РњР°РЅР°: $plus<b>$stat[1]</b><br>";
+        break;
+    case 30:
+        echo "CРёР»Р°: $plus<b>$stat[1]</b><br>";
+        break;
+    case 31:
+        echo "Р›РѕРІРєРѕСЃС‚СЊ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 32:
+        echo "РЈРґР°С‡Р°: $plus<b>$stat[1]</b><br>";
+        break;
+    case 33:
+        echo "Р—РґРѕСЂРѕРІСЊРµ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 34:
+        echo "Р—РЅР°РЅРёСЏ: $plus<b>$stat[1]</b><br>";
+        break;
+    case 35:
+        echo "РЎРЅРѕСЂРѕРІРєР°: $plus<b>$stat[1]</b><br>";
+        break;
+    case 36:
+        echo "Р’Р»Р°РґРµРЅРёРµ РјРµС‡Р°РјРё: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 37:
+        echo "Р’Р»Р°РґРµРЅРёРµ С‚РѕРїРѕСЂР°РјРё: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 38:
+        echo "Р’Р»Р°РґРµРЅРёРµ РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 39:
+        echo "Р’Р»Р°РґРµРЅРёРµ РЅРѕР¶Р°РјРё: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 40:
+        echo "Р’Р»Р°РґРµРЅРёРµ РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 41:
+        echo "Р’Р»Р°РґРµРЅРёРµ Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 42:
+        echo "Р’Р»Р°РґРµРЅРёРµ РїРѕСЃРѕС…Р°РјРё: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 43:
+        echo "Р’Р»Р°РґРµРЅРёРµ СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 44:
+        echo "Р’Р»Р°РґРµРЅРёРµ РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 45:
+        echo "РњР°РіРёСЏ РѕРіРЅСЏ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 46:
+        echo "РњР°РіРёСЏ РІРѕРґС‹: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 47:
+        echo "РњР°РіРёСЏ РІРѕР·РґСѓС…Р°: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 48:
+        echo "РњР°РіРёСЏ Р·РµРјР»Рё: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 49:
+        echo "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 50:
+        echo "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 51:
+        echo "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 52:
+        echo "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 53:
+        echo "Р’РѕСЂРѕРІСЃС‚РІРѕ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 54:
+        echo "РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 55:
+        echo "РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 56:
+        echo "РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 57:
+        echo "РўРѕСЂРіРѕРІР»СЏ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 58:
+        echo "РЎС‚СЂР°РЅРЅРёРє: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 59:
+        echo "Р С‹Р±РѕР»РѕРІ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 60:
+        echo "Р›РµСЃРѕСЂСѓР±: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 61:
+        echo "Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 62:
+        echo "РЎР°РјРѕР»РµС‡РµРЅРёРµ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 63:
+        echo "РћСЂСѓР¶РµР№РЅРёРє: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 64:
+        echo "Р”РѕРєС‚РѕСЂ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 65:
+        echo "РЎР°РјРѕР»РµС‡РµРЅРёРµ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 66:
+        echo "Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 67:
+        echo "Р›РёРґРµСЂСЃС‚РІРѕ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 68:
+        echo "РђР»С…РёРјРёСЏ: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 69:
+        echo "Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°: $plus<b>$stat[1]%</b><br>";
+        break;
+    case 70:
+        echo "РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ: $plus<b>$stat[1]%</b><br>";
+        break;
 }
 }
 $dmod=explode("@",$ITEM['damage_mod']);
@@ -226,12 +545,18 @@ include($_SERVER["DOCUMENT_ROOT"]."/inc/sp_dmods.php");
 </td><td bgcolor=#B9A05C><img src=/img/image/1x1.gif width=1 height=1></td><td bgcolor=#FCFAF3>
 <font class=weaponch><?
 echo"$tr_b";
-if($ITEM['srok']>0){echo'<br><font class=weaponch><b><font color=#cc0000>Вещь исчезнет через '.$ITEM['srok'].' дней.</font>';}
+    if ($ITEM['srok'] > 0) {
+        echo '<br><font class=weaponch><b><font color=#cc0000>Р’РµС‰СЊ РёСЃС‡РµР·РЅРµС‚ С‡РµСЂРµР· ' . $ITEM['srok'] . ' РґРЅРµР№.</font>';
+    }
 ?>
 </font>
 </td></tr></table></td></tr></table></td></tr>
 <? }}else{?>
-<table cellpadding=5 cellspacing=1 border=0 width=100%><tr><td bgcolor=#F5F5F5 align=center colspan=2><font class=inv><b>Нет товаров в данной категории.</b></font></td></tr>
+                        <table cellpadding=5 cellspacing=1 border=0 width=100%>
+                            <tr>
+                                <td bgcolor=#F5F5F5 align=center colspan=2><font class=inv><b>РќРµС‚ С‚РѕРІР°СЂРѕРІ РІ РґР°РЅРЅРѕР№
+                                            РєР°С‚РµРіРѕСЂРёРё.</b></font></td>
+                            </tr>
 <? }?>
 </table>
 
@@ -240,9 +565,15 @@ function blocks($bl){
 	if($bl!="") {
 	switch($bl)
        	{
-            case 40: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 1-ой точки</font></b><br>"; break;
-            case 70: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 2-х точек</font></b><br>"; break;
-	    	case 90: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 3-х точек</font></b><br>"; break;
+        case 40:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 1-РѕР№ С‚РѕС‡РєРё</font></b><br>";
+            break;
+        case 70:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 2-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
+        case 90:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 3-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
     	}}}
 ?>
 </td></tr>

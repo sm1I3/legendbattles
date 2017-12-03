@@ -1,7 +1,10 @@
 <?php
 function dump($var) { echo '<pre>'; print_r($var); echo '</pre>'; }
 
-function _htext($text) { return htmlspecialchars($text, ENT_COMPAT, 'WINDOWS-1251'); }
+function _htext($text)
+{
+    return htmlspecialchars($text, ENT_COMPAT, 'utf-8');
+}
 
 function BbToHtml($str) {
 	$str = preg_replace("/\[center\](.+)\[\/center\]/Usi","<center>\\1</center>",$str);
@@ -44,7 +47,8 @@ function createJsHArray($array_name, $array) {
     return $js;
 }
 
-function createSelectFromArray($select_name, $array, $selected_default = '', $other = '', $default = '(Выберите вариант)') {
+function createSelectFromArray($select_name, $array, $selected_default = '', $other = '', $default = '(Р’С‹Р±РµСЂРёС‚Рµ РІР°СЂРёР°РЅС‚)')
+{
     $s = '<select name="'.$select_name.'" '.$other.' >';
     if ($default)
         $s .= '<option value="">'.$default.'</option>';
@@ -56,7 +60,7 @@ function createSelectFromArray($select_name, $array, $selected_default = '', $ot
     return $s;
 }
 
-function createPageNavigator($records_count, $cur_page = 1, $nav_name = 'Записи', $link = '', $recs_per_page = 50)
+function createPageNavigator($records_count, $cur_page = 1, $nav_name = 'Р—Р°РїРёСЃРё', $link = '', $recs_per_page = 50)
 {
     if ($link == '') $link = $_SERVER['REQUEST_URI'];
     
@@ -65,17 +69,17 @@ function createPageNavigator($records_count, $cur_page = 1, $nav_name = 'Записи'
     if ($records_count == 0) $first = 0;
     $last = ($cur_page*$recs_per_page);
     if ($last > $records_count) $last = $records_count;
-    
-    $nav = $nav_name.' '.$first.'-'.$last.' из '.$records_count.'<br />';
+
+    $nav = $nav_name . ' ' . $first . '-' . $last . ' РёР· ' . $records_count . '<br />';
     
     $link = preg_replace('/\&?page=\d{1,5}/i', '', $link);
     if (strpos($link, '?')===false) 
         $link .= '?';
     
     if ($cur_page > 1)
-        $nav .= '<a href="'.$link.'&page=1">Первая</a> | <a href="'.$link.'&page='.($cur_page-1).'">Пред.</a> | ';
+        $nav .= '<a href="' . $link . '&page=1">РџРµСЂРІР°СЏ</a> | <a href="' . $link . '&page=' . ($cur_page - 1) . '">РџСЂРµРґ.</a> | ';
     else
-        $nav .= '<span class="red">Первая</span> | <span class="red">Пред.</span> | ';
+        $nav .= '<span class="red">РџРµСЂРІР°СЏ</span> | <span class="red">РџСЂРµРґ.</span> | ';
     
     for($i=1; $i<=$pages_count; $i++) {
         if ($cur_page == $i)
@@ -85,9 +89,9 @@ function createPageNavigator($records_count, $cur_page = 1, $nav_name = 'Записи'
     }
     
     if ($cur_page < $pages_count)
-        $nav .= '<a href="'.$link.'&page='.($cur_page+1).'">След.</a> | <a href="'.$link.'&page='.$pages_count.'">Последняя</a>';
+        $nav .= '<a href="' . $link . '&page=' . ($cur_page + 1) . '">РЎР»РµРґ.</a> | <a href="' . $link . '&page=' . $pages_count . '">РџРѕСЃР»РµРґРЅСЏСЏ</a>';
     else
-        $nav .= '<span class="red">След.</span> | <span class="red">Последняя</span>';
+        $nav .= '<span class="red">РЎР»РµРґ.</span> | <span class="red">РџРѕСЃР»РµРґРЅСЏСЏ</span>';
     
     return $nav;
 }

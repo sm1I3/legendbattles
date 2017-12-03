@@ -52,23 +52,24 @@ if ($weapon_category_code == '') {
 }
 
 ?>
-<h3><?=($weapon_category_code == ''?'Добавить категорию оружия':'Изменить категорию оружия')?></h3>
+    <h3><?= ($weapon_category_code == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ РѕСЂСѓР¶РёСЏ' : 'РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ РѕСЂСѓР¶РёСЏ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Код категории оружия: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РљРѕРґ РєР°С‚РµРіРѕСЂРёРё РѕСЂСѓР¶РёСЏ: &nbsp;</td>
   <td><input name="category_code" type="text" class="cms_fieldstyle1" value="<?=$weapon_category['category_code']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Название категории оружия: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё РѕСЂСѓР¶РёСЏ: &nbsp;</td>
   <td><input name="category_name" type="text" class="cms_fieldstyle1" value="<?=$weapon_category['category_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='weapon_category_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='weapon_category_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

@@ -25,16 +25,16 @@ else
         );
         header('Location: index.php');
     } else
-        $errors = 'Неверный логин или пароль.';
+        $errors = 'РќРµРІРµСЂРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ.';
 }
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="files/styles.css" type="text/css" />
-    <title>Система управления</title>
+    <title>РЎРёСЃС‚РµРјР° СѓРїСЂР°РІР»РµРЅРёСЏ</title>
 </head>
 <body> 
     <script language="JavaScript">
@@ -88,7 +88,7 @@ else
                                 <tr>
                                     <td valign="top" width="100%">
                                     <?=$errors?>
-                                        <h1>Панель управления</h1>
+                                        <h1>РџР°РЅРµР»СЊ СѓРїСЂР°РІР»РµРЅРёСЏ</h1>
                                         <noscript>
                                             <h2 style="color:#FF0000">Please, enable JavaScript in your browser.</h2>
                                             <p><b>How do I enable JavaScript in my browser? </b></p>
@@ -144,16 +144,18 @@ else
                                             <form name="login" method="post" action="">
                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
-                                                        <td>Логин:<br /></td>
+                                                        <td>Р›РѕРіРёРЅ:<br/></td>
                                                         <td><input name="user_login" maxlength="255" type="text" class="cms_fieldstyle1" value="<?=htmlspecialchars($_POST['user_login'])?>" size="34" /></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Пароль:&nbsp;</td>
+                                                        <td>РџР°СЂРѕР»СЊ:&nbsp;</td>
                                                         <td><input name="user_password" maxlength="40" type="password" class="cms_fieldstyle1" value="" size="34" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td height="40">&nbsp;</td>
-                                                        <td><input type="submit" name="submit" value="Вход" class="cms_button1" onclick="return validate_form(this.form);" /></td>
+                                                        <td><input type="submit" name="submit" value="Р’С…РѕРґ"
+                                                                   class="cms_button1"
+                                                                   onclick="return validate_form(this.form);"/></td>
                                                     </tr>
                                                 </table>
                                             </form>

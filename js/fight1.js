@@ -1,9 +1,9 @@
 
 var stxt,dind,bind,fsize,hpf,mpf,fust,flev,temp,thotems,totemtime,totembuff,maxl,split_ar,bs,i,j,t,blocks,utemp,mbox,fight_f,cu,cb,cod,uadd = "",badd = "",ftmp_pic,ftmp,vsod = 0,mc_i,dyn_selected = -1,dyn_div = 0,formDiv,setp = -1;
 var tshow_bl = ["4:5:6@7:8:9@10:11@12:13","14:15@16:17@18:19@20:21","22:23@24@25@26","27@28"];
-var array_us = ["В голову","В торс","В живот","По ногам"];
-var array_bs = ["Голова","Торс","Живот","Ноги"];
-var pos_vars = ["Простой","Прицельный","Spirit Arrow","Mind Blast","Голова","Голова + торс","Голова + живот","Торс","Торс + живот","Торс + ноги","Живот","Живот + ноги","Ноги","Ноги + голова","Голова","Голова + торс","Торс","Торс + живот","Живот","Живот + ноги","Ноги","Ноги + голова","Голова","Голова + торс","Торс + живот","Живот + ноги","Ноги + голова + живот","Голова + торс + живот","Торс + живот + ноги","Магический Щит","Радужный Барьер","Кристальная Сфера","Восстановление HP","Восстановление MP","Ожог","Прикосновение огня","Аура огня","Огненная стрела","Огненный взрыв","Руки огня","Удар пламени","Огненная волна","Огненный шар","Огненная стена","Огненный ветер","Жар","Ореол огня","Проклятье огня","Демон огня","Танец огня","Метеор","Огненная спираль","Огненная хлыст","Огненный аркан","Лава","Уязвимость от огня","Тело-огонь","Огненный щит","Ритуал огня","Огненный град","Огненный клинок","Сопротивление Огню","Искры","Огненное дыхание","Жизнь огня","Призвать Мефита","Выжигание жизни","Сгусток пламени","Силя огня","Безумие огня","Порыв пламени","Дождь метеоритов","Врата ада","Защита пламени","Смерч огня","Стойка огня","Адское тепло","Пламенная душа","Инферно","Жар солнца","Призвать Феникса","Призрачный свет","Пламенное око","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","Вампиризм","Тьма","Святой кокон","Пожертвование","Смазанный удар","Сумеречная дверь","Кривое зеркало Хаоса","Первичный Хаос","Свиток Выжигания Маны","Свиток Светлого Удара","Свиток Темного Удара","Свиток Изгнания Из Боя","Свиток Удар Ярости","Свиток Излечения Союзника","Свиток Завершения Боя","Свиток Женской Злости","","Зелье Колкости","Зелье Загрубелой Кожи","Зелье Просветления","Зелье Гения","Зелье Лечения Отравлений","Зелье Лечения","Зелье Иммунитета","Зелье Силы","Зелье Защиты От Ожогов","Зелье Арктических Вьюг","Зелье Жизни","Яд","Зелье Сокрушительных Ударов","Зелье Стойкости","Зелье Недосягаемости","Зелье Блаженства","Зелье Ловкости","Зелье Огненного Ореола","Зелье Метаболизма","Зелье Медитации","Зелье Громоотвода","Зелье Точного Попадания","Зелье Сильной Спины","Зелье Невидимости","Зелье Восстановления Маны","Зелье Удачи","Зелье Скорбь Лешего","Зелье Энергии","Зелье Боевой Славы","Зелье Ловких Ударов","Зелье Спокойствия","Зелье Мужества","Зелье Человек-Гора","Зелье Секрет Волшебника","Зелье Инквизитора","Зелье Панциря","","","Восстановление HP","Фраза в бой","Секретное Зелье"];
+var array_us = ["Р’ РіРѕР»РѕРІСѓ", "Р’ С‚РѕСЂСЃ", "Р’ Р¶РёРІРѕС‚", "РџРѕ РЅРѕРіР°Рј"];
+var array_bs = ["Р“РѕР»РѕРІР°", "РўРѕСЂСЃ", "Р–РёРІРѕС‚", "РќРѕРіРё"];
+var pos_vars = ["РџСЂРѕСЃС‚РѕР№", "РџСЂРёС†РµР»СЊРЅС‹Р№", "Spirit Arrow", "Mind Blast", "Р“РѕР»РѕРІР°", "Р“РѕР»РѕРІР° + С‚РѕСЂСЃ", "Р“РѕР»РѕРІР° + Р¶РёРІРѕС‚", "РўРѕСЂСЃ", "РўРѕСЂСЃ + Р¶РёРІРѕС‚", "РўРѕСЂСЃ + РЅРѕРіРё", "Р–РёРІРѕС‚", "Р–РёРІРѕС‚ + РЅРѕРіРё", "РќРѕРіРё", "РќРѕРіРё + РіРѕР»РѕРІР°", "Р“РѕР»РѕРІР°", "Р“РѕР»РѕРІР° + С‚РѕСЂСЃ", "РўРѕСЂСЃ", "РўРѕСЂСЃ + Р¶РёРІРѕС‚", "Р–РёРІРѕС‚", "Р–РёРІРѕС‚ + РЅРѕРіРё", "РќРѕРіРё", "РќРѕРіРё + РіРѕР»РѕРІР°", "Р“РѕР»РѕРІР°", "Р“РѕР»РѕРІР° + С‚РѕСЂСЃ", "РўРѕСЂСЃ + Р¶РёРІРѕС‚", "Р–РёРІРѕС‚ + РЅРѕРіРё", "РќРѕРіРё + РіРѕР»РѕРІР° + Р¶РёРІРѕС‚", "Р“РѕР»РѕРІР° + С‚РѕСЂСЃ + Р¶РёРІРѕС‚", "РўРѕСЂСЃ + Р¶РёРІРѕС‚ + РЅРѕРіРё", "РњР°РіРёС‡РµСЃРєРёР№ Р©РёС‚", "Р Р°РґСѓР¶РЅС‹Р№ Р‘Р°СЂСЊРµСЂ", "РљСЂРёСЃС‚Р°Р»СЊРЅР°СЏ РЎС„РµСЂР°", "Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ HP", "Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ MP", "РћР¶РѕРі", "РџСЂРёРєРѕСЃРЅРѕРІРµРЅРёРµ РѕРіРЅСЏ", "РђСѓСЂР° РѕРіРЅСЏ", "РћРіРЅРµРЅРЅР°СЏ СЃС‚СЂРµР»Р°", "РћРіРЅРµРЅРЅС‹Р№ РІР·СЂС‹РІ", "Р СѓРєРё РѕРіРЅСЏ", "РЈРґР°СЂ РїР»Р°РјРµРЅРё", "РћРіРЅРµРЅРЅР°СЏ РІРѕР»РЅР°", "РћРіРЅРµРЅРЅС‹Р№ С€Р°СЂ", "РћРіРЅРµРЅРЅР°СЏ СЃС‚РµРЅР°", "РћРіРЅРµРЅРЅС‹Р№ РІРµС‚РµСЂ", "Р–Р°СЂ", "РћСЂРµРѕР» РѕРіРЅСЏ", "РџСЂРѕРєР»СЏС‚СЊРµ РѕРіРЅСЏ", "Р”РµРјРѕРЅ РѕРіРЅСЏ", "РўР°РЅРµС† РѕРіРЅСЏ", "РњРµС‚РµРѕСЂ", "РћРіРЅРµРЅРЅР°СЏ СЃРїРёСЂР°Р»СЊ", "РћРіРЅРµРЅРЅР°СЏ С…Р»С‹СЃС‚", "РћРіРЅРµРЅРЅС‹Р№ Р°СЂРєР°РЅ", "Р›Р°РІР°", "РЈСЏР·РІРёРјРѕСЃС‚СЊ РѕС‚ РѕРіРЅСЏ", "РўРµР»Рѕ-РѕРіРѕРЅСЊ", "РћРіРЅРµРЅРЅС‹Р№ С‰РёС‚", "Р РёС‚СѓР°Р» РѕРіРЅСЏ", "РћРіРЅРµРЅРЅС‹Р№ РіСЂР°Рґ", "РћРіРЅРµРЅРЅС‹Р№ РєР»РёРЅРѕРє", "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РћРіРЅСЋ", "РСЃРєСЂС‹", "РћРіРЅРµРЅРЅРѕРµ РґС‹С…Р°РЅРёРµ", "Р–РёР·РЅСЊ РѕРіРЅСЏ", "РџСЂРёР·РІР°С‚СЊ РњРµС„РёС‚Р°", "Р’С‹Р¶РёРіР°РЅРёРµ Р¶РёР·РЅРё", "РЎРіСѓСЃС‚РѕРє РїР»Р°РјРµРЅРё", "РЎРёР»СЏ РѕРіРЅСЏ", "Р‘РµР·СѓРјРёРµ РѕРіРЅСЏ", "РџРѕСЂС‹РІ РїР»Р°РјРµРЅРё", "Р”РѕР¶РґСЊ РјРµС‚РµРѕСЂРёС‚РѕРІ", "Р’СЂР°С‚Р° Р°РґР°", "Р—Р°С‰РёС‚Р° РїР»Р°РјРµРЅРё", "РЎРјРµСЂС‡ РѕРіРЅСЏ", "РЎС‚РѕР№РєР° РѕРіРЅСЏ", "РђРґСЃРєРѕРµ С‚РµРїР»Рѕ", "РџР»Р°РјРµРЅРЅР°СЏ РґСѓС€Р°", "РРЅС„РµСЂРЅРѕ", "Р–Р°СЂ СЃРѕР»РЅС†Р°", "РџСЂРёР·РІР°С‚СЊ Р¤РµРЅРёРєСЃР°", "РџСЂРёР·СЂР°С‡РЅС‹Р№ СЃРІРµС‚", "РџР»Р°РјРµРЅРЅРѕРµ РѕРєРѕ", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Р’Р°РјРїРёСЂРёР·Рј", "РўСЊРјР°", "РЎРІСЏС‚РѕР№ РєРѕРєРѕРЅ", "РџРѕР¶РµСЂС‚РІРѕРІР°РЅРёРµ", "РЎРјР°Р·Р°РЅРЅС‹Р№ СѓРґР°СЂ", "РЎСѓРјРµСЂРµС‡РЅР°СЏ РґРІРµСЂСЊ", "РљСЂРёРІРѕРµ Р·РµСЂРєР°Р»Рѕ РҐР°РѕСЃР°", "РџРµСЂРІРёС‡РЅС‹Р№ РҐР°РѕСЃ", "РЎРІРёС‚РѕРє Р’С‹Р¶РёРіР°РЅРёСЏ РњР°РЅС‹", "РЎРІРёС‚РѕРє РЎРІРµС‚Р»РѕРіРѕ РЈРґР°СЂР°", "РЎРІРёС‚РѕРє РўРµРјРЅРѕРіРѕ РЈРґР°СЂР°", "РЎРІРёС‚РѕРє РР·РіРЅР°РЅРёСЏ РР· Р‘РѕСЏ", "РЎРІРёС‚РѕРє РЈРґР°СЂ РЇСЂРѕСЃС‚Рё", "РЎРІРёС‚РѕРє РР·Р»РµС‡РµРЅРёСЏ РЎРѕСЋР·РЅРёРєР°", "РЎРІРёС‚РѕРє Р—Р°РІРµСЂС€РµРЅРёСЏ Р‘РѕСЏ", "РЎРІРёС‚РѕРє Р–РµРЅСЃРєРѕР№ Р—Р»РѕСЃС‚Рё", "", "Р—РµР»СЊРµ РљРѕР»РєРѕСЃС‚Рё", "Р—РµР»СЊРµ Р—Р°РіСЂСѓР±РµР»РѕР№ РљРѕР¶Рё", "Р—РµР»СЊРµ РџСЂРѕСЃРІРµС‚Р»РµРЅРёСЏ", "Р—РµР»СЊРµ Р“РµРЅРёСЏ", "Р—РµР»СЊРµ Р›РµС‡РµРЅРёСЏ РћС‚СЂР°РІР»РµРЅРёР№", "Р—РµР»СЊРµ Р›РµС‡РµРЅРёСЏ", "Р—РµР»СЊРµ РРјРјСѓРЅРёС‚РµС‚Р°", "Р—РµР»СЊРµ РЎРёР»С‹", "Р—РµР»СЊРµ Р—Р°С‰РёС‚С‹ РћС‚ РћР¶РѕРіРѕРІ", "Р—РµР»СЊРµ РђСЂРєС‚РёС‡РµСЃРєРёС… Р’СЊСЋРі", "Р—РµР»СЊРµ Р–РёР·РЅРё", "РЇРґ", "Р—РµР»СЊРµ РЎРѕРєСЂСѓС€РёС‚РµР»СЊРЅС‹С… РЈРґР°СЂРѕРІ", "Р—РµР»СЊРµ РЎС‚РѕР№РєРѕСЃС‚Рё", "Р—РµР»СЊРµ РќРµРґРѕСЃСЏРіР°РµРјРѕСЃС‚Рё", "Р—РµР»СЊРµ Р‘Р»Р°Р¶РµРЅСЃС‚РІР°", "Р—РµР»СЊРµ Р›РѕРІРєРѕСЃС‚Рё", "Р—РµР»СЊРµ РћРіРЅРµРЅРЅРѕРіРѕ РћСЂРµРѕР»Р°", "Р—РµР»СЊРµ РњРµС‚Р°Р±РѕР»РёР·РјР°", "Р—РµР»СЊРµ РњРµРґРёС‚Р°С†РёРё", "Р—РµР»СЊРµ Р“СЂРѕРјРѕРѕС‚РІРѕРґР°", "Р—РµР»СЊРµ РўРѕС‡РЅРѕРіРѕ РџРѕРїР°РґР°РЅРёСЏ", "Р—РµР»СЊРµ РЎРёР»СЊРЅРѕР№ РЎРїРёРЅС‹", "Р—РµР»СЊРµ РќРµРІРёРґРёРјРѕСЃС‚Рё", "Р—РµР»СЊРµ Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РњР°РЅС‹", "Р—РµР»СЊРµ РЈРґР°С‡Рё", "Р—РµР»СЊРµ РЎРєРѕСЂР±СЊ Р›РµС€РµРіРѕ", "Р—РµР»СЊРµ Р­РЅРµСЂРіРёРё", "Р—РµР»СЊРµ Р‘РѕРµРІРѕР№ РЎР»Р°РІС‹", "Р—РµР»СЊРµ Р›РѕРІРєРёС… РЈРґР°СЂРѕРІ", "Р—РµР»СЊРµ РЎРїРѕРєРѕР№СЃС‚РІРёСЏ", "Р—РµР»СЊРµ РњСѓР¶РµСЃС‚РІР°", "Р—РµР»СЊРµ Р§РµР»РѕРІРµРє-Р“РѕСЂР°", "Р—РµР»СЊРµ РЎРµРєСЂРµС‚ Р’РѕР»С€РµР±РЅРёРєР°", "Р—РµР»СЊРµ РРЅРєРІРёР·РёС‚РѕСЂР°", "Р—РµР»СЊРµ РџР°РЅС†РёСЂСЏ", "", "", "Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ HP", "Р¤СЂР°Р·Р° РІ Р±РѕР№", "РЎРµРєСЂРµС‚РЅРѕРµ Р—РµР»СЊРµ"];
 var pos_ochd = [0,0,50,90,35,50,60,30,50,60,30,50,35,80,40,85,40,85,40,85,40,100,45,70,70,70,130,90,90,45,60,90,30,30,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,70,90,70,90,70,90,70,100,100,100,70,100,70,70,100,0,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,0,0,30,30,30];
 var pos_type = [1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,4,4,3,1,3,1,3,1,1,3,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,2,3,3,3,3,3,4,4,4,4,4,5,4,4,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,4,6,4];
 var pos_mana = [0,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,40,65,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -27,12 +27,12 @@ function magic_slots()
     slots_pla(slots_ow[0],param_ow[0],slots_ow[1],slots_ow[2],param_ow[12]);
     
     d.write('</TR></TABLE></TD>'+m_html(2,"",5,1,"empty")+'<TD width="100%" valign=top><TABLE cellpadding="0" cellspacing="0" border="0" width="100%">');
-    d.write('<TR><TD bgcolor=#f2f2f2 align=center><IMG src=http://lordiswar.net/image/gameimg/2-3.gif border=0 title="Наёмник [ от 10 до 50 LR ]" align=absmiddle '+(naemnik?'onClick="addwarr()"':'')+' style="cursor: pointer"> <IMG src=http://lordiswar.net/image/gameimg/6-3.gif border=0 align=absmiddle onclick="window.open(\'http://legendbattles.ru/logs.php?fid='+fight_ty[8]+'\',\'\');" title="Лог боя" class=ccursor> <IMG src=http://lordiswar.net/image/gameimg/4-3.gif border=0 title="Обновить" align=absmiddle onclick="location=\'main.php\'" class=ccursor>');
+    d.write('<TR><TD bgcolor=#f2f2f2 align=center><IMG src=http://lordiswar.net/image/gameimg/2-3.gif border=0 title="РќР°С‘РјРЅРёРє [ РѕС‚ 10 РґРѕ 50 LR ]" align=absmiddle ' + (naemnik ? 'onClick="addwarr()"' : '') + ' style="cursor: pointer"> <IMG src=http://lordiswar.net/image/gameimg/6-3.gif border=0 align=absmiddle onclick="window.open(\'http://legendbattles.ru/logs.php?fid=' + fight_ty[8] + '\',\'\');" title="Р›РѕРі Р±РѕСЏ" class=ccursor> <IMG src=http://lordiswar.net/image/gameimg/4-3.gif border=0 title="РћР±РЅРѕРІРёС‚СЊ" align=absmiddle onclick="location=\'main.php\'" class=ccursor>');
 	d.write(''+(naemnik?'<form method=post name=NaemForm style="display:none;"><input type=hidden name=post_id value=97><input type=hidden name=fightlog value="'+fight_ty[8]+'"><input type=hidden name=forlogin value="'+param_ow[0]+'"><input type=hidden name=vcode value="'+fight_pm[4]+'"></form>':'')+'');
  
     if(fight_ty[3])
     {
-	d.write((fight_pm[8] > 0 ? ' <IMG src=http://lordiswar.net/image/gameimg/5-3.gif width=56 height=19 border=0 align=absmiddle onclick="location=\'main.php?cenemy='+fight_pm[9]+'\'" title="Сменить противника ('+fight_pm[8]+')" class=ccursor></TD></TR>' : '</TD></TR>'));
+        d.write((fight_pm[8] > 0 ? ' <IMG src=http://lordiswar.net/image/gameimg/5-3.gif width=56 height=19 border=0 align=absmiddle onclick="location=\'main.php?cenemy=' + fight_pm[9] + '\'" title="РЎРјРµРЅРёС‚СЊ РїСЂРѕС‚РёРІРЅРёРєР° (' + fight_pm[8] + ')" class=ccursor></TD></TR>' : '</TD></TR>'));
 	param_en[13] = status_bar(param_en[1],param_en[2],param_en[4],(param_en[5] ? 0 : 1));
     	param_en[14] = status_bar(param_en[3],param_en[4],param_en[2],(param_en[5] ? 0 : 1));
        
@@ -46,31 +46,31 @@ function magic_slots()
             case 40: bs = 1; break;
             case 70: bs = 2; break;
 	    case 90: bs = 3; break;
-    	}   
-    
-    	d.write(m_html(1,"f2f2f2",1,10,"empty")+m_html(1,"cccccc",1,1,"empty")+'<TR><TD bgcolor=#f5f5f5 align=center><TABLE cellpadding=5 cellspacing=0 border=0 width=100% align=center><TR><TD align=center width=100%><B>Ограничения маны на магический удар: <FONT color=#229922>5-'+fight_pm[0]+'</FONT><BR>Количество очков действия: '+fight_pm[1]+'</B><BR><DIV id=steps>Из них использовано: <B>0</B></DIV></TD><TD><IMG src=http://lordiswar.net/image/help/6.gif width=15 height=15 border=0 title="Помощь" align=absmiddle></TD></TR></TABLE></TD></TR>'+m_html(1,"cccccc",1,1,"empty"));
+    	}
+
+        d.write(m_html(1, "f2f2f2", 1, 10, "empty") + m_html(1, "cccccc", 1, 1, "empty") + '<TR><TD bgcolor=#f5f5f5 align=center><TABLE cellpadding=5 cellspacing=0 border=0 width=100% align=center><TR><TD align=center width=100%><B>РћРіСЂР°РЅРёС‡РµРЅРёСЏ РјР°РЅС‹ РЅР° РјР°РіРёС‡РµСЃРєРёР№ СѓРґР°СЂ: <FONT color=#229922>5-' + fight_pm[0] + '</FONT><BR>РљРѕР»РёС‡РµСЃС‚РІРѕ РѕС‡РєРѕРІ РґРµР№СЃС‚РІРёСЏ: ' + fight_pm[1] + '</B><BR><DIV id=steps>РР· РЅРёС… РёСЃРїРѕР»СЊР·РѕРІР°РЅРѕ: <B>0</B></DIV></TD><TD><IMG src=http://lordiswar.net/image/help/6.gif width=15 height=15 border=0 title="РџРѕРјРѕС‰СЊ" align=absmiddle></TD></TR></TABLE></TD></TR>' + m_html(1, "cccccc", 1, 1, "empty"));
     	d.write(magic_c(0,7));   
         d.write('<TR><TD bgcolor=#fafafa align=center>');
-		// Форма Выбора удара ID: form_main
+        // Р¤РѕСЂРјР° Р’С‹Р±РѕСЂР° СѓРґР°СЂР° ID: form_main
 		d.write('<div id="form_map" style="display:none;"></div><FORM name=FF action="main.php" method=POST id=form_main><TABLE cellpadding="0" cellspacing="0" border="0" width="100%"><TR><TD width=50%></TD><TD bgcolor=#cccccc align=center><IMG src="http://lordiswar.net/image/1x1.gif" width="1" height="5"></TD><TD width=50%></TD></TR><TR><TD width=50%><TABLE cellpadding="1" cellspacing="0" border="0" width="100%">');
 
        	for(i=0; i<4; i++)
     	{
-            d.write('<TR><TD width=100% align=right><DIV id="du'+i+'"></DIV></TD><TD><SELECT class=fsel name="u'+i+'" id="u'+i+'" onchange="javascript: CountOD()"><OPTION value="n">'+array_us[i]+' [ удар не выбран ]</OPTION>');
+            d.write('<TR><TD width=100% align=right><DIV id="du' + i + '"></DIV></TD><TD><SELECT class=fsel name="u' + i + '" id="u' + i + '" onchange="javascript: CountOD()"><OPTION value="n">' + array_us[i] + ' [ СѓРґР°СЂ РЅРµ РІС‹Р±СЂР°РЅ ]</OPTION>');
             for(j=0; j<tshow_ud.length; j++){
 				d.write('<OPTION value="'+tshow_ud[j]+'">'+pos_vars[tshow_ud[j]]+' [ '+pos_ochd[tshow_ud[j]]+' ]</OPTION>');
 			}
             d.write(uadd+'</SELECT></TD><TD><IMG src="http://lordiswar.net/image/1x1.gif" width="3" height="1"></TD></TR>');
     	}
-		// Тестируем цель мага
-		d.write('<TR><TD width=100% align=right><DIV id="du'+i+'"></DIV></TD><TD><SELECT class=fsel name="u'+i+'" id="u'+i+'" onchange="javascript: CountOD()"><OPTION value="n">Удар перед собой [ 0 ]</OPTION><OPTION value="1">Удар левее [ 25 ]</OPTION><OPTION value="2">Удар правее [ 25 ]</OPTION></SELECT></TD><TD><IMG src="http://lordiswar.net/image/1x1.gif" width="3" height="1"></TD></TR>');
+        // РўРµСЃС‚РёСЂСѓРµРј С†РµР»СЊ РјР°РіР°
+        d.write('<TR><TD width=100% align=right><DIV id="du' + i + '"></DIV></TD><TD><SELECT class=fsel name="u' + i + '" id="u' + i + '" onchange="javascript: CountOD()"><OPTION value="n">РЈРґР°СЂ РїРµСЂРµРґ СЃРѕР±РѕР№ [ 0 ]</OPTION><OPTION value="1">РЈРґР°СЂ Р»РµРІРµРµ [ 25 ]</OPTION><OPTION value="2">РЈРґР°СЂ РїСЂР°РІРµРµ [ 25 ]</OPTION></SELECT></TD><TD><IMG src="http://lordiswar.net/image/1x1.gif" width="3" height="1"></TD></TR>');
 		// end
        	d.write('</TABLE></TD><TD bgcolor=#cccccc></TD><TD width=50% bgcolor=#fafafa><TABLE cellpadding="1" cellspacing="0" border="0" width="100%">');       
        	
      	var sb = tshow_bl[bs].split("@");
     	for(i=0; i<4; i++)
     	{
-            d.write('<TR align=center><TD align=center><IMG src="http://lordiswar.net/image/1x1.gif" width="3" height="1"></TD><TD align=center><SELECT class=fsel name="b'+i+'" id="b'+i+'" onchange="javascript: CountOD()"><OPTION value="n">'+array_bs[i]+' [ блок не выбран ]</OPTION>');
+            d.write('<TR align=center><TD align=center><IMG src="http://lordiswar.net/image/1x1.gif" width="3" height="1"></TD><TD align=center><SELECT class=fsel name="b' + i + '" id="b' + i + '" onchange="javascript: CountOD()"><OPTION value="n">' + array_bs[i] + ' [ Р±Р»РѕРє РЅРµ РІС‹Р±СЂР°РЅ ]</OPTION>');
             if(sb[i]) 
             {
                 blocks = sb[i].split(":");
@@ -82,24 +82,24 @@ function magic_slots()
             }
             d.write(badd+'</SELECT></TD><TD width=100% align=center><DIV id="db'+i+'"></DIV></TD></TR>');
         }
-		// Тестируем отпрыг от мага
-		d.write('<TR><TD><IMG src="http://lordiswar.net/image/1x1.gif" width="3" height="1"></TD><TD><SELECT class=fsel name="b'+i+'" id="b'+i+'" onchange="javascript: CountOD()"><OPTION value="n">Стоять на месте [ 0 ]</OPTION><OPTION value="1">Отскочить левее [ 25 ]</OPTION><OPTION value="2">Отскочить правее [ 25 ]</OPTION></SELECT></TD><TD width=100%><DIV id="db'+i+'"></DIV></TD></TR>');
+        // РўРµСЃС‚РёСЂСѓРµРј РѕС‚РїСЂС‹Рі РѕС‚ РјР°РіР°
+        d.write('<TR><TD><IMG src="http://lordiswar.net/image/1x1.gif" width="3" height="1"></TD><TD><SELECT class=fsel name="b' + i + '" id="b' + i + '" onchange="javascript: CountOD()"><OPTION value="n">РЎС‚РѕСЏС‚СЊ РЅР° РјРµСЃС‚Рµ [ 0 ]</OPTION><OPTION value="1">РћС‚СЃРєРѕС‡РёС‚СЊ Р»РµРІРµРµ [ 25 ]</OPTION><OPTION value="2">РћС‚СЃРєРѕС‡РёС‚СЊ РїСЂР°РІРµРµ [ 25 ]</OPTION></SELECT></TD><TD width=100%><DIV id="db' + i + '"></DIV></TD></TR>');
         // end
     	d.write('</TABLE></TD></TR><TR><TD width=50%></TD><TD bgcolor=#cccccc align=center><IMG src="http://lordiswar.net/image/1x1.gif" width="1" height="5"></TD><TD width=50%></TD></TR></TABLE></TD></TR>'+m_html(1,"cccccc",1,1,"empty"));
     	d.write(magic_c(8,15));
-    	d.write(m_html(1,"f5f5f5",1,5,"empty")+'<TR><TD bgcolor=#f5f5f5 align=center><input type=button value=" xoд " name="btx0" class=fbut onclick="javascript: StartAct()"> <input type=button value=автоход name="bt2" class=fbut onclick="javascript: parent.AutoSelectGo()"> <input type=button value=автовыбор name="bt2" class=fbut onclick="javascript: parent.AutoSelect()"> <input type=button value=сбросить name="bt2" class=fbut onclick="RefreshF();ShowMap();"></TD></TR>'+mh_ret(1));
+        d.write(m_html(1, "f5f5f5", 1, 5, "empty") + '<TR><TD bgcolor=#f5f5f5 align=center><input type=button value=" xoРґ " name="btx0" class=fbut onclick="javascript: StartAct()"> <input type=button value=Р°РІС‚РѕС…РѕРґ name="bt2" class=fbut onclick="javascript: parent.AutoSelectGo()"> <input type=button value=Р°РІС‚РѕРІС‹Р±РѕСЂ name="bt2" class=fbut onclick="javascript: parent.AutoSelect()"> <input type=button value=СЃР±СЂРѕСЃРёС‚СЊ name="bt2" class=fbut onclick="RefreshF();ShowMap();"></TD></TR>' + mh_ret(1));
     	view_gr();
     	d.write(m_html(1,"f2f2f2",1,5,"empty"));
     
     	viewl(1);
     
     	d.write('</TABLE></TD></FORM>');
-		// Конец формы удара
+        // РљРѕРЅРµС† С„РѕСЂРјС‹ СѓРґР°СЂР°
 		d.write(m_html(2,"",5,1,"empty")+'<TD valign=top><TABLE cellpadding=0 cellspacing=0 border=0 width=100%>');
     	hpmp(param_en);
     	d.write('<TR>');
     	slots_pla(slots_en[0],param_en[0],slots_en[1],slots_en[2],param_en[12]);
-    	d.write('</TR><TR><TD colspan=5><IMG src="http://lordiswar.net/image/1x1.gif" width="1" height="10"></TD></TR><TR><TD colspan=5><TABLE cellpadding="1" cellspacing="1" border="0" width=170 align=center>'+var_init(addpa_en[0],addpa_en[1],'Мощь')+var_init(addpa_en[2],addpa_en[3],'Проворность')+var_init(addpa_en[4],addpa_en[5],'Везение')+var_init(addpa_en[8],addpa_en[9],'Разум')+var_init(addpa_en[6],addpa_en[7],'Сноровка')+'</TABLE></TD></TR><TR><TD colspan=5><IMG src="http://lordiswar.net/image/1x1.gif" width="1" height="10"></TD></TR><TR><TD colspan=5><TABLE cellpadding="1" cellspacing="1" border="0" width=170 align=center>'+mf_init(0,addpa_en[14],'Класс брони')+mf_init(1,addpa_en[10],'Уловка')+mf_init(1,addpa_en[11],'Точность')+mf_init(1,addpa_en[12],'Сокрушение')+mf_init(1,addpa_en[13],'Стойкость')+mf_init(1,addpa_en[15],'Пробой брони')+'</TABLE></TD></TR></TABLE></TD>');
+        d.write('</TR><TR><TD colspan=5><IMG src="http://lordiswar.net/image/1x1.gif" width="1" height="10"></TD></TR><TR><TD colspan=5><TABLE cellpadding="1" cellspacing="1" border="0" width=170 align=center>' + var_init(addpa_en[0], addpa_en[1], 'РњРѕС‰СЊ') + var_init(addpa_en[2], addpa_en[3], 'РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ') + var_init(addpa_en[4], addpa_en[5], 'Р’РµР·РµРЅРёРµ') + var_init(addpa_en[8], addpa_en[9], 'Р Р°Р·СѓРј') + var_init(addpa_en[6], addpa_en[7], 'РЎРЅРѕСЂРѕРІРєР°') + '</TABLE></TD></TR><TR><TD colspan=5><IMG src="http://lordiswar.net/image/1x1.gif" width="1" height="10"></TD></TR><TR><TD colspan=5><TABLE cellpadding="1" cellspacing="1" border="0" width=170 align=center>' + mf_init(0, addpa_en[14], 'РљР»Р°СЃСЃ Р±СЂРѕРЅРё') + mf_init(1, addpa_en[10], 'РЈР»РѕРІРєР°') + mf_init(1, addpa_en[11], 'РўРѕС‡РЅРѕСЃС‚СЊ') + mf_init(1, addpa_en[12], 'РЎРѕРєСЂСѓС€РµРЅРёРµ') + mf_init(1, addpa_en[13], 'РЎС‚РѕР№РєРѕСЃС‚СЊ') + mf_init(1, addpa_en[15], 'РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё') + '</TABLE></TD></TR></TABLE></TD>');
     	fight_f = d.FF;
 		mc_i = magic_in.length;
 		if(param_ow[0] == 'arron'/* || param_ow[0] == 'Arron' || param_ow == 'riddle'*/){
@@ -114,35 +114,37 @@ function magic_slots()
         {
             case 3:
 	    d.write(mh_ret(2));
-    	    if(!fight_ty[6]) d.write('<TR><TD bgcolor=#f5f5f5 align=center class=nick><font color=#CC0000><B>Ожидаем хода противника</B></font></TD></TR>');
-    	    else d.write('<TR><TD bgcolor=#f5f5f5 align=center><input type=button class=fbut value="Победа по таймауту" onclick="location=\'main.php?post_id=61&act=6&mode=1&gr='+fight_ty[7]+'&vcode='+fight_ty[6]+'\'"> <input type=button class=fbut value="Ничья" onclick="location=\'main.php?post_id=61&act=6&mode=2&gr='+fight_ty[7]+'&vcode='+fight_ty[6]+'\'"></TD></TR>');
+                if (!fight_ty[6]) d.write('<TR><TD bgcolor=#f5f5f5 align=center class=nick><font color=#CC0000><B>РћР¶РёРґР°РµРј С…РѕРґР° РїСЂРѕС‚РёРІРЅРёРєР°</B></font></TD></TR>');
+                else d.write('<TR><TD bgcolor=#f5f5f5 align=center><input type=button class=fbut value="РџРѕР±РµРґР° РїРѕ С‚Р°Р№РјР°СѓС‚Сѓ" onclick="location=\'main.php?post_id=61&act=6&mode=1&gr=' + fight_ty[7] + '&vcode=' + fight_ty[6] + '\'"> <input type=button class=fbut value="РќРёС‡СЊСЏ" onclick="location=\'main.php?post_id=61&act=6&mode=2&gr=' + fight_ty[7] + '&vcode=' + fight_ty[6] + '\'"></TD></TR>');
 	    d.write(mh_ret(1));
     	    view_gr();
     	    d.write(m_html(1,"f2f2f2",1,5,"empty"));
             viewl(1);
             break;
             case 2:
-            // Бой завершен и вывод статистики
+                // Р‘РѕР№ Р·Р°РІРµСЂС€РµРЅ Рё РІС‹РІРѕРґ СЃС‚Р°С‚РёСЃС‚РёРєРё
             d.write(m_html(1,"f2f2f2",1,10,"empty"));
             if(fexp[4]) 
 	    {                                                                                                                                              			
 	        var tkeys = '';
-		for(j=0; j<10; j++) tkeys += '<input type=button class=fbut value="'+j+'" OnClick="javascript: KeyInsert('+j+');"> '; 
-	    	d.write(m_html(1,"cccccc",1,1,"empty")+(fexp[6] == 0 ? m_html(1,"f2f2f2",1,5,"empty")+'<FORM action=main.php method=GET name=FEND><TR><TD bgcolor=#f2f2f2 align=center class=nick><img src=../func/scod.php?'+fexp[4]+' width=103 height=40></TD></TR>'+m_html(1,"f2f2f2",1,5,"empty")+m_html(1,"cccccc",1,1,"empty")+m_html(1,"f5f5f5",1,5,"empty")+'<TR><TD bgcolor=#f5f5f5 align=center nowrap class=nick id=fkey><font class=freetxt>Код: </font><input type=text name=code size=4 class=fbut> '+tkeys+'<input type=button class=fbut value="B" OnClick="javascript: BackKey();"> <input type=hidden name=post_id value=61><input type=hidden name=act value=7><input type=hidden name=fexp value='+fexp[0]+'><input type=hidden name=fres value='+fexp[1]+'><input type=hidden name=vcode value='+fexp[3]+'><input type=hidden name=ftype value='+fexp[5]+'><input type=submit class=fbut value="Завершить бой"></TD></TR></FORM>' : m_html(1,"f5f5f5",1,5,"empty")+'<TR><TD bgcolor=#f5f5f5 align=center nowrap class=nick id=fkey><font color=#CC0000><B>Защита от автобоя [ ещё '+fexp[6]+' сек ]</B></font></TD></TR><SCRIPT language="JavaScript">KeyBlock('+fexp[6]+');</SCRIPT>'));
+		for(j=0; j<10; j++) tkeys += '<input type=button class=fbut value="'+j+'" OnClick="javascript: KeyInsert('+j+');"> ';
+            d.write(m_html(1, "cccccc", 1, 1, "empty") + (fexp[6] == 0 ? m_html(1, "f2f2f2", 1, 5, "empty") + '<FORM action=main.php method=GET name=FEND><TR><TD bgcolor=#f2f2f2 align=center class=nick><img src=../func/scod.php?' + fexp[4] + ' width=103 height=40></TD></TR>' + m_html(1, "f2f2f2", 1, 5, "empty") + m_html(1, "cccccc", 1, 1, "empty") + m_html(1, "f5f5f5", 1, 5, "empty") + '<TR><TD bgcolor=#f5f5f5 align=center nowrap class=nick id=fkey><font class=freetxt>РљРѕРґ: </font><input type=text name=code size=4 class=fbut> ' + tkeys + '<input type=button class=fbut value="B" OnClick="javascript: BackKey();"> <input type=hidden name=post_id value=61><input type=hidden name=act value=7><input type=hidden name=fexp value=' + fexp[0] + '><input type=hidden name=fres value=' + fexp[1] + '><input type=hidden name=vcode value=' + fexp[3] + '><input type=hidden name=ftype value=' + fexp[5] + '><input type=submit class=fbut value="Р—Р°РІРµСЂС€РёС‚СЊ Р±РѕР№"></TD></TR></FORM>' : m_html(1, "f5f5f5", 1, 5, "empty") + '<TR><TD bgcolor=#f5f5f5 align=center nowrap class=nick id=fkey><font color=#CC0000><B>Р—Р°С‰РёС‚Р° РѕС‚ Р°РІС‚РѕР±РѕСЏ [ РµС‰С‘ ' + fexp[6] + ' СЃРµРє ]</B></font></TD></TR><SCRIPT language="JavaScript">KeyBlock(' + fexp[6] + ');</SCRIPT>'));
     	    }
-	    else d.write(m_html(1,"cccccc",1,1,"empty")+m_html(1,"f5f5f5",1,5,"empty")+'<TR><TD bgcolor=#f5f5f5 align=center><input type=button class=fbut value="Завершить бой" onclick="location=\'main.php?post_id=61&get=0&act=7&fexp='+fexp[0]+'&fres='+fexp[1]+'&vcode='+fexp[3]+'&ftype='+fexp[5]+'&gr='+fight_ty[7]+'\'"></TD></TR>');
+            else d.write(m_html(1, "cccccc", 1, 1, "empty") + m_html(1, "f5f5f5", 1, 5, "empty") + '<TR><TD bgcolor=#f5f5f5 align=center><input type=button class=fbut value="Р—Р°РІРµСЂС€РёС‚СЊ Р±РѕР№" onclick="location=\'main.php?post_id=61&get=0&act=7&fexp=' + fexp[0] + '&fres=' + fexp[1] + '&vcode=' + fexp[3] + '&ftype=' + fexp[5] + '&gr=' + fight_ty[7] + '\'"></TD></TR>');
     	    d.write(mh_ret(1));
     	    views(0);
     	    d.write(m_html(1,"f2f2f2",1,5,"empty"));
     	    viewl(0);
             break;
             case 4:
-    	    d.write(mh_ret(2)+'<TR><TD bgcolor=#f5f5f5 align=center class=nick><font color=#CC0000><B>Ожидаем окончания боя</B></font></TD></TR>'+mh_ret(1));
+                d.write(mh_ret(2) + '<TR><TD bgcolor=#f5f5f5 align=center class=nick><font color=#CC0000><B>РћР¶РёРґР°РµРј РѕРєРѕРЅС‡Р°РЅРёСЏ Р±РѕСЏ</B></font></TD></TR>' + mh_ret(1));
     	    view_gr();
     	    d.write(m_html(1,"f2f2f2",1,5,"empty"));
             viewl(1);
             break;
-            case 5: d.write(mh_ret(2)+'<TR><TD bgcolor=#f5f5f5 align=center><input type=button class=fbut value="Завершить" onclick="location=\'main.php?post_id=61&act=7&vcode='+fight_ty[5]+'\'"></TD></TR>'+mh_ret(1)); break;
+            case 5:
+                d.write(mh_ret(2) + '<TR><TD bgcolor=#f5f5f5 align=center><input type=button class=fbut value="Р—Р°РІРµСЂС€РёС‚СЊ" onclick="location=\'main.php?post_id=61&act=7&vcode=' + fight_ty[5] + '\'"></TD></TR>' + mh_ret(1));
+                break;
         }
     	d.write('</TABLE></TD>'+m_html(2,"",248,1,"empty"));
     }
@@ -190,8 +192,10 @@ function selpl(lg,tm,ti)
         case 3: 
 	case 4: t += '<TD bgcolor="#cccccc" id="m'+ti+'" width=46 align=center><A href="javascript: magic_slots_check(\'m'+ti+'\')"><IMG src="http://lordiswar.net/image/magic/m'+tm+'.gif" width="44" height="44" border=0 title="'+pos_vars[tm]+'"></A></TD>'; break;
 	case 5: 
-	case 6: t += '<TD bgcolor="#cccccc" id="m'+ti+'" width=46 align=center><A href="javascript: show_dyn('+ti+')"><IMG src="http://lordiswar.net/image/magic/m'+tm+'.gif" width="44" height="44" border=0 title="'+pos_vars[tm]+'"></A></TD>'; break;	  
-		case 7: t += '<TD bgcolor="#000033" id="m'+ti+'" width=30 align=center>'+(param_ow[3]>=pos_mana[magic_in[ti]] ? '<A href="javascript: show_dyn('+ti+');"><IMG src="image/magic/m'+tm+'.gif" width="44" height="44" border=0 title="'+pos_vars[tm]+'">' : '<IMG src="image/magic/m'+tm+'.gif" width="44" height="44" border=0 title="Нехватает маны">')+'</A></TD>'; break;	
+	case 6: t += '<TD bgcolor="#cccccc" id="m'+ti+'" width=46 align=center><A href="javascript: show_dyn('+ti+')"><IMG src="http://lordiswar.net/image/magic/m'+tm+'.gif" width="44" height="44" border=0 title="'+pos_vars[tm]+'"></A></TD>'; break;
+        case 7:
+            t += '<TD bgcolor="#000033" id="m' + ti + '" width=30 align=center>' + (param_ow[3] >= pos_mana[magic_in[ti]] ? '<A href="javascript: show_dyn(' + ti + ');"><IMG src="image/magic/m' + tm + '.gif" width="44" height="44" border=0 title="' + pos_vars[tm] + '">' : '<IMG src="image/magic/m' + tm + '.gif" width="44" height="44" border=0 title="РќРµС…РІР°С‚Р°РµС‚ РјР°РЅС‹">') + '</A></TD>';
+            break;
     }
 }
 
@@ -233,9 +237,9 @@ function CountOD()
     else if(fight_f.elements['u3'].value != "n") fight_f.elements['u0'].disabled = true;
     
     cod += shtra_ud[cu];
-    stxt = shtra_ud[cu] > 0 ? ' [ штраф: <B>'+shtra_ud[cu]+'</B> ]' : '';
+    stxt = shtra_ud[cu] > 0 ? ' [ С€С‚СЂР°С„: <B>' + shtra_ud[cu] + '</B> ]' : '';
     if(cod > fight_pm[1]) vsod = 1;
-    d.getElementById('steps').innerHTML = (fight_pm[1] >= cod ? 'Из них использовано: <B>'+cod+'</B>'+stxt : '<FONT color="#cc0000">Из них использовано: <B>'+cod+'</B>'+stxt+' <B>ПРЕВЫШЕНИЕ!</B></FONT>');
+    d.getElementById('steps').innerHTML = (fight_pm[1] >= cod ? 'РР· РЅРёС… РёСЃРїРѕР»СЊР·РѕРІР°РЅРѕ: <B>' + cod + '</B>' + stxt : '<FONT color="#cc0000">РР· РЅРёС… РёСЃРїРѕР»СЊР·РѕРІР°РЅРѕ: <B>' + cod + '</B>' + stxt + ' <B>РџР Р•Р’Р«РЁР•РќРР•!</B></FONT>');
 }
 
 function FormCheck(vt,ti)
@@ -377,16 +381,16 @@ function hpmp(arrt)
         hpf = mpf = fsize;
         fust = flev = '';
     }
-	thotems = new Array('Час Сфинкса','Час Саблезубого тигра','Час Мудрого Льва','Час Изумрудного Дракона','Час Василиска','Час Скорпиона','Час Ужасающей Рыбы','Час мутанта-острозуба','Час Небесного кита','Час Древнего Ящера','Час Ворона Смерти','Час Острых Клинков');
+    thotems = new Array('Р§Р°СЃ РЎС„РёРЅРєСЃР°', 'Р§Р°СЃ РЎР°Р±Р»РµР·СѓР±РѕРіРѕ С‚РёРіСЂР°', 'Р§Р°СЃ РњСѓРґСЂРѕРіРѕ Р›СЊРІР°', 'Р§Р°СЃ РР·СѓРјСЂСѓРґРЅРѕРіРѕ Р”СЂР°РєРѕРЅР°', 'Р§Р°СЃ Р’Р°СЃРёР»РёСЃРєР°', 'Р§Р°СЃ РЎРєРѕСЂРїРёРѕРЅР°', 'Р§Р°СЃ РЈР¶Р°СЃР°СЋС‰РµР№ Р С‹Р±С‹', 'Р§Р°СЃ РјСѓС‚Р°РЅС‚Р°-РѕСЃС‚СЂРѕР·СѓР±Р°', 'Р§Р°СЃ РќРµР±РµСЃРЅРѕРіРѕ РєРёС‚Р°', 'Р§Р°СЃ Р”СЂРµРІРЅРµРіРѕ РЇС‰РµСЂР°', 'Р§Р°СЃ Р’РѕСЂРѕРЅР° РЎРјРµСЂС‚Рё', 'Р§Р°СЃ РћСЃС‚СЂС‹С… РљР»РёРЅРєРѕРІ');
 	totemtime = new Array('10','20','02','00','22','18','12','04','14','06','08','16');
-	totembuff = new Array('+100кб','+50 оружейника','+50 странника','невидимость','тотемное нападение','+10 удачи и +50% уловки','+10 ловкости и +50% точности','+50 ювы','+15 силы и +150 массы','+50 наблюдательности','+50 мф сокрушения и стойкости','+20% опыта за бой');  
-	thotems[17] = 'Официальный дилер';
-	thotems[35] = 'Мистер m0n';
-	thotems[36] = 'Глава Администрации Проекта';
+    totembuff = new Array('+100РєР±', '+50 РѕСЂСѓР¶РµР№РЅРёРєР°', '+50 СЃС‚СЂР°РЅРЅРёРєР°', 'РЅРµРІРёРґРёРјРѕСЃС‚СЊ', 'С‚РѕС‚РµРјРЅРѕРµ РЅР°РїР°РґРµРЅРёРµ', '+10 СѓРґР°С‡Рё Рё +50% СѓР»РѕРІРєРё', '+10 Р»РѕРІРєРѕСЃС‚Рё Рё +50% С‚РѕС‡РЅРѕСЃС‚Рё', '+50 СЋРІС‹', '+15 СЃРёР»С‹ Рё +150 РјР°СЃСЃС‹', '+50 РЅР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚Рё', '+50 РјС„ СЃРѕРєСЂСѓС€РµРЅРёСЏ Рё СЃС‚РѕР№РєРѕСЃС‚Рё', '+20% РѕРїС‹С‚Р° Р·Р° Р±РѕР№');
+    thotems[17] = 'РћС„РёС†РёР°Р»СЊРЅС‹Р№ РґРёР»РµСЂ';
+    thotems[35] = 'РњРёСЃС‚РµСЂ m0n';
+    thotems[36] = 'Р“Р»Р°РІР° РђРґРјРёРЅРёСЃС‚СЂР°С†РёРё РџСЂРѕРµРєС‚Р°';
     d.write('<TR><TD colspan=5><div>');
     d.write('<table cellpadding="0" cellspacing="0" border="0"><tr><td width=100%><font class=nick>'+sh_align(parseInt(arrt[6]),0)+sh_sign(arrt[7],arrt[8],arrt[9])+'<B>'+arrt[0]+'</B>'+flev+'</font></a></td><td align="right" class=nick nowrap><B><font color=#009b45>'+fust+'</font></B></td></tr><TR><TD colspan=2><img src="http://lordiswar.net/image/1x1.gif" width=1 height=5></TD></TR></table>');
     d.write('<table cellpadding="0" cellspacing="0" border="0">');
-    d.write('<tr><td>'+(arrt[15] !=  17 && arrt[15] !=  35 && arrt[15] != 36?'<img src="http://lordiswar.net/image/magic/totems/t'+arrt[15]+'.gif"':'<img src="http://lordiswar.net/image/pinfo/t'+arrt[15]+'.gif"')+' onmouseover="tooltip(this,\'<b>'+thotems[arrt[15]]+((totemtime[arrt[15]] && totembuff[arrt[15]])?'</b><br>Время действия: c '+totemtime[arrt[15]]+'.00 до '+(totemtime[arrt[15]]+2)+'.00<br>Бонус во время действия: '+totembuff[arrt[15]]:'</b>')+'\')" onmouseout="hide_info(this)" width="37" height="37" border="0"><img src="http://lordiswar.net/image/1x1.gif" width=2 height=1></td><td valign="top">');
+    d.write('<tr><td>' + (arrt[15] != 17 && arrt[15] != 35 && arrt[15] != 36 ? '<img src="http://lordiswar.net/image/magic/totems/t' + arrt[15] + '.gif"' : '<img src="http://lordiswar.net/image/pinfo/t' + arrt[15] + '.gif"') + ' onmouseover="tooltip(this,\'<b>' + thotems[arrt[15]] + ((totemtime[arrt[15]] && totembuff[arrt[15]]) ? '</b><br>Р’СЂРµРјСЏ РґРµР№СЃС‚РІРёСЏ: c ' + totemtime[arrt[15]] + '.00 РґРѕ ' + (totemtime[arrt[15]] + 2) + '.00<br>Р‘РѕРЅСѓСЃ РІРѕ РІСЂРµРјСЏ РґРµР№СЃС‚РІРёСЏ: ' + totembuff[arrt[15]] : '</b>') + '\')" onmouseout="hide_info(this)" width="37" height="37" border="0"><img src="http://lordiswar.net/image/1x1.gif" width=2 height=1></td><td valign="top">');
     d.write('<div id="lines_container">');
     d.write('<div id="text"><font color="#FFFFFF"><B>'+arrt[13]+'</B></font><br><font color="#FFFFFF"><B>'+arrt[14]+'</B></font></div>');
     d.write('<div id="leftC"><img src="http://lordiswar.net/image/gameplay/fight/left.gif" width="33" height="38" border="0" class="png" style="background: url(\'http://lordiswar.net/image/gameplay/fight/left.gif\');"></div>');
@@ -461,8 +465,8 @@ function mf_init(mftype,mf,label){
 
 function view_gr(){
 	d.write('<TR><TD bgcolor=#f2f2f2 align=center class=nick><a href="javascript: group_private(1)"><img src=http://lordiswar.net/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a> ');
-	gr_det(lives_g1,1,1);     
-	d.write(' против <a href="javascript: group_private(2)"><img src=http://lordiswar.net/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a> ');
+	gr_det(lives_g1,1,1);
+    d.write(' РїСЂРѕС‚РёРІ <a href="javascript: group_private(2)"><img src=http://lordiswar.net/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a> ');
 	gr_det(lives_g2,2,1);
 	d.write('</TD></TR>');
 }
@@ -508,13 +512,13 @@ function DinamicForm(id){
 	
 	switch(cas){
 		case 5:
-			formDiv.innerHTML = DynTemplate(id,1)+'(Ваша команда)<br>Применить для: '+show_g1_eff(id)+DynTemplate(id,2)+'<input type=button value=" закрыть окно " class=fbut onclick="javascript: CloseDyn('+id+')"></TD></TR></TABLE>';
+            formDiv.innerHTML = DynTemplate(id, 1) + '(Р’Р°С€Р° РєРѕРјР°РЅРґР°)<br>РџСЂРёРјРµРЅРёС‚СЊ РґР»СЏ: ' + show_g1_eff(id) + DynTemplate(id, 2) + '<input type=button value=" Р·Р°РєСЂС‹С‚СЊ РѕРєРЅРѕ " class=fbut onclick="javascript: CloseDyn(' + id + ')"></TD></TR></TABLE>';
 		break;
 		case 6:
-			formDiv.innerHTML = DynTemplate(id,1)+'Фраза: <input type=text size=60 id="tv'+id+'" class=mbox>'+DynTemplate(id,2)+'<input type=button value=" запомнить " class=fbut onclick="javascript: SaveDyn('+id+',6)"> <input type=button value=" закрыть окно " class=fbut onclick="javascript: CloseDyn('+id+')"></TD></TR></TABLE>';
+            formDiv.innerHTML = DynTemplate(id, 1) + 'Р¤СЂР°Р·Р°: <input type=text size=60 id="tv' + id + '" class=mbox>' + DynTemplate(id, 2) + '<input type=button value=" Р·Р°РїРѕРјРЅРёС‚СЊ " class=fbut onclick="javascript: SaveDyn(' + id + ',6)"> <input type=button value=" Р·Р°РєСЂС‹С‚СЊ РѕРєРЅРѕ " class=fbut onclick="javascript: CloseDyn(' + id + ')"></TD></TR></TABLE>';
 		break;
 		case 7:
-			formDiv.innerHTML = DynTemplate(id,1)+'(Команда противника)<br>Применить для: '+show_g2_eff(id)+DynTemplate(id,2)+'<input type=button value=" закрыть окно " class=fbut onclick="javascript: CloseDyn('+id+')"/TD></TR></TABLE>';
+            formDiv.innerHTML = DynTemplate(id, 1) + '(РљРѕРјР°РЅРґР° РїСЂРѕС‚РёРІРЅРёРєР°)<br>РџСЂРёРјРµРЅРёС‚СЊ РґР»СЏ: ' + show_g2_eff(id) + DynTemplate(id, 2) + '<input type=button value=" Р·Р°РєСЂС‹С‚СЊ РѕРєРЅРѕ " class=fbut onclick="javascript: CloseDyn(' + id + ')"/TD></TR></TABLE>';
 		break;
 	}
 	for(i=0; i<4; i++){
@@ -673,7 +677,7 @@ function buildMap(){
 					break;
 					case 4:
 						if(y == map[1][j][1] && x == map[1][j][2]){
-							tempMap += '<img src="http://lordiswar.net/image/gameplay/fight/friend.gif"'+((fight_pm[6] == 2) ? ' onclick="ShowUd('+map[1][j][3]+','+map[1][j][4]+');" style="cursor:pointer;"' : '' )+' onmouseover="tooltip(this,\'<font color=#0052A6><b><i>невидимка</i></b></font>\')" onmouseout="hide_info(this)" width="60" height="60" />';
+                            tempMap += '<img src="http://lordiswar.net/image/gameplay/fight/friend.gif"' + ((fight_pm[6] == 2) ? ' onclick="ShowUd(' + map[1][j][3] + ',' + map[1][j][4] + ');" style="cursor:pointer;"' : '') + ' onmouseover="tooltip(this,\'<font color=#0052A6><b><i>РЅРµРІРёРґРёРјРєР°</i></b></font>\')" onmouseout="hide_info(this)" width="60" height="60" />';
 							friend = 1;
 						}
 					break;
@@ -695,7 +699,7 @@ function buildMap(){
 					break;
 					case 4:
 						if(y == map[2][j][1] && x == map[2][j][2]){
-							tempMap += '<img src="http://lordiswar.net/image/gameplay/fight/enemy.gif"'+((fight_pm[6] == 1) ? ' onclick="ShowUd('+map[2][j][3]+','+map[2][j][4]+');" style="cursor:pointer;"' : '' )+' onmouseover="tooltip(this,\'<font color=#087C20><b><i>невидимка</i></b></font>\')" onmouseout="hide_info(this)" width="60" height="60" />';
+                            tempMap += '<img src="http://lordiswar.net/image/gameplay/fight/enemy.gif"' + ((fight_pm[6] == 1) ? ' onclick="ShowUd(' + map[2][j][3] + ',' + map[2][j][4] + ');" style="cursor:pointer;"' : '') + ' onmouseover="tooltip(this,\'<font color=#087C20><b><i>РЅРµРІРёРґРёРјРєР°</i></b></font>\')" onmouseout="hide_info(this)" width="60" height="60" />';
 							enemy = 1;
 						}
 					break;
@@ -705,12 +709,12 @@ function buildMap(){
 			if(friend == 0 && enemy == 0){
 				if( param_ow[17][1] >= x-1 && param_ow[17][1] <= x+1 && param_ow[17][0] >= y-1 && param_ow[17][0] <= y+1 ){
 					if(go_no.indexOf('|'+y+'_'+x+'|') == -1){
-						tempMap += '<img src="http://lordiswar.net/image/gameplay/fight/here.gif" onclick="GoToPos('+y+','+x+');" width="60" height="60" border="0" style="cursor:pointer;" title="Перейти" alt="Перейти" />';
+                        tempMap += '<img src="http://lordiswar.net/image/gameplay/fight/here.gif" onclick="GoToPos(' + y + ',' + x + ');" width="60" height="60" border="0" style="cursor:pointer;" title="РџРµСЂРµР№С‚Рё" alt="РџРµСЂРµР№С‚Рё" />';
 					}else{
-						tempMap += '<img src="http://lordiswar.net/image/1x1.gif" width="60" height="60" title="Недоступно" alt="Недоступно" />';
+                        tempMap += '<img src="http://lordiswar.net/image/1x1.gif" width="60" height="60" title="РќРµРґРѕСЃС‚СѓРїРЅРѕ" alt="РќРµРґРѕСЃС‚СѓРїРЅРѕ" />';
 					}
 				}else{
-					tempMap += '<img src="http://lordiswar.net/image/1x1.gif" width="60" height="60" title="Недоступно" alt="Недоступно" />';
+                    tempMap += '<img src="http://lordiswar.net/image/1x1.gif" width="60" height="60" title="РќРµРґРѕСЃС‚СѓРїРЅРѕ" alt="РќРµРґРѕСЃС‚СѓРїРЅРѕ" />';
 				}
 			}
 			tempMap += '</td>';

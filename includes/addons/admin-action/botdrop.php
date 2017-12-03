@@ -11,7 +11,8 @@
 <BODY bgcolor=#FFFFFF topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0>
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
-  	<td><input type=button class= lbuts onClick="location='?useaction=admin-action&addid=botdrop'" value="обновить"></td>
+      <td><input type=button class=lbuts onClick="location='?useaction=admin-action&addid=botdrop'" value="РѕР±РЅРѕРІРёС‚СЊ">
+      </td>
    </tr>
 </table>
 <? 
@@ -24,14 +25,14 @@ echo '
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 <tr align=center><td>
 <select name=bot>
-<option value="none" '.(($_POST['bot']!='none' and $_POST['bot']!='')?'':'selected=selected').'>Выберите бота</option>
+<option value="none" ' . (($_POST['bot'] != 'none' and $_POST['bot'] != '') ? '' : 'selected=selected') . '>Р’С‹Р±РµСЂРёС‚Рµ Р±РѕС‚Р°</option>
 ';
 while($bot = mysqli_fetch_array($bots)){
 	echo '<option value="'.$bot['id'].'" '.(($_POST['bot']==$bot['id'])?'selected=selected':'').'>'.$bot['login'].' ['.$bot['level'].']</option>';
 }
 echo '
 </select>
-<input class= lbuts type=submit value="Выбрать">
+<input class= lbuts type=submit value="Р’С‹Р±СЂР°С‚СЊ">
 </td></tr>
 </table>
 </form>
@@ -154,7 +155,8 @@ if($_POST['bot']!='none'){
 	if($_GET['add']==1){
 		$chbot=mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `bot_drop`  WHERE `bot_id`='".$_POST['bot']."' LIMIT 1;"));
 		if(!empty($chbot)){
-			$chclr="green";$msg="Бот найден в базе!";
+            $chclr = "green";
+            $msg = "Р‘РѕС‚ РЅР°Р№РґРµРЅ РІ Р±Р°Р·Рµ!";
 			$ich=$chbot['items_chance'];
 			$lch=$chbot['leather_chance'];
 			$bch=$chbot['bottle_chance'];
@@ -163,7 +165,8 @@ if($_POST['bot']!='none'){
 			$err=0;
 		}
 		else{
-			$chclr="red";$msg="Бот не найден в базе! Заполните нужные поля и нажмите \"сохранить\".";
+            $chclr = "red";
+            $msg = "Р‘РѕС‚ РЅРµ РЅР°Р№РґРµРЅ РІ Р±Р°Р·Рµ! Р—Р°РїРѕР»РЅРёС‚Рµ РЅСѓР¶РЅС‹Рµ РїРѕР»СЏ Рё РЅР°Р¶РјРёС‚Рµ \"СЃРѕС…СЂР°РЅРёС‚СЊ\".";
 			$ich=10000;
 			$lch=10000;
 			$bch=10000;
@@ -184,39 +187,39 @@ if($_POST['bot']!='none'){
 			<tr><td>
 			<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 				<tr class=nickname bgcolor=#EAEAEA>
-					<td align=center width=30%><b>Имя и ид бота</b></td>
-					<td align=center><b>Вещи</b></td>
-					<td align=center><b>Квестовые вещи</b></td>
-					<td align=center><b>Бутылки</b></td>
-					<td align=center><b>Деньги</b></td>
-					<td align=center><b>Ингридиенты</b></td>
+					<td align=center width=30%><b>РРјСЏ Рё РёРґ Р±РѕС‚Р°</b></td>
+					<td align=center><b>Р’РµС‰Рё</b></td>
+					<td align=center><b>РљРІРµСЃС‚РѕРІС‹Рµ РІРµС‰Рё</b></td>
+					<td align=center><b>Р‘СѓС‚С‹Р»РєРё</b></td>
+					<td align=center><b>Р”РµРЅСЊРіРё</b></td>
+					<td align=center><b>РРЅРіСЂРёРґРёРµРЅС‚С‹</b></td>
 				</tr>';
 		$botdrop=mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT `user`.`id`,`user`.`login` FROM `user` WHERE `user`.`type`='3' AND `user`.`id`='".$_POST['bot']."' LIMIT 1;"));
 		echo'
 		<tr class=freetxt bgcolor=white>
 			<td align=center width=30%>
-				Имя: '.$botdrop['login'].'<br>
-				Ид: '.$botdrop['id'].'
+				РРјСЏ: ' . $botdrop['login'] . '<br>
+				РРґ: ' . $botdrop['id'] . '
 			</td>
 			<td align=center>
-				<b>Шанс выпадения вещей:</b><br> <b>1</b> из <input type=text class=logintextbox6 name="items_chance" value="'.$ich.'" />
+				<b>РЁР°РЅСЃ РІС‹РїР°РґРµРЅРёСЏ РІРµС‰РµР№:</b><br> <b>1</b> РёР· <input type=text class=logintextbox6 name="items_chance" value="' . $ich . '" />
 			</td>
 			<td align=center>
-				<b>Шанс выпадения квестовые вещи</b><br> <b>1</b> из <input type=text class=logintextbox6 name="leather_chance" value="'.$lch.'" />
+				<b>РЁР°РЅСЃ РІС‹РїР°РґРµРЅРёСЏ РєРІРµСЃС‚РѕРІС‹Рµ РІРµС‰Рё</b><br> <b>1</b> РёР· <input type=text class=logintextbox6 name="leather_chance" value="' . $lch . '" />
 			</td>
 			<td align=center>
-				<b>Шанс выпадения бутылок:</b><br> <b>1</b> из <input type=text class=logintextbox6 name="bottle_chance" value="'.$bch.'" />
+				<b>РЁР°РЅСЃ РІС‹РїР°РґРµРЅРёСЏ Р±СѓС‚С‹Р»РѕРє:</b><br> <b>1</b> РёР· <input type=text class=logintextbox6 name="bottle_chance" value="' . $bch . '" />
 			</td>
 			<td align=center>
-				<b>Шанс выпадения денег:</b><br> <b>1</b> из <input type=text class=logintextbox6 name="money_chance" value="'.$mch.'" />
+				<b>РЁР°РЅСЃ РІС‹РїР°РґРµРЅРёСЏ РґРµРЅРµРі:</b><br> <b>1</b> РёР· <input type=text class=logintextbox6 name="money_chance" value="' . $mch . '" />
 			</td>
 			<td align=center>
-				<b>Шанс выпадения ингридиентов:</b><br> <b>1</b> из <input type=text class=logintextbox6 name="prof_chance" value="'.$pro.'" /><br>
+				<b>РЁР°РЅСЃ РІС‹РїР°РґРµРЅРёСЏ РёРЅРіСЂРёРґРёРµРЅС‚РѕРІ:</b><br> <b>1</b> РёР· <input type=text class=logintextbox6 name="prof_chance" value="' . $pro . '" /><br>
 			</td>
 		</tr>
 		<tr class=freetxt bgcolor=white>
 			<td align=center width=100% colspan=5>
-			<input class= lbuts type=submit value="Сохранить">
+			<input class= lbuts type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 			<input type=hidden name=bot_login value="'.$botdrop['login'].'">
 			<input type=hidden name=bot value="'.$_POST['bot'].'">
 			</td>
@@ -227,38 +230,38 @@ if($_POST['bot']!='none'){
 			<form method="post" action="?useaction=admin-action&addid=botdrop&add=1">
 			<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 			<tr align=left class=nickname><td align=center>
-			<b>Добавить вещи в дроп:</b> 
+			<b>Р”РѕР±Р°РІРёС‚СЊ РІРµС‰Рё РІ РґСЂРѕРї:</b> 
 			<select name="type" >
-				<option value="" selected="selected">все типы</option>
-				  <option value="w4">Ножи</option>
-				  <option value="w1">Мечи</option>
-				  <option value="w2">Топоры</option>
-				  <option value="w3">Дробящее</option>
-				  <option value="w6">Алебарды и копья</option>
-				  <option value="w5">Метательное</option>
-				  <option value="w7">Посохи</option>
-				  <option value="w20">Щиты</option>
-				  <option value="w23">Шлемы</option>
-				  <option value="w26">Пояса</option>
-				  <option value="w18">Кольчуги</option>
-				  <option value="w19">Доспехи</option>
-				  <option value="w24">Перчатки</option>
-				  <option value="w80">Наручи</option>
-				  <option value="w21">Сапоги</option>
-				  <option value="w25">Кулоны</option>
-				  <option value="w22">Кольца</option>
-				  <option value="w28">Наплечники</option>
-				  <option value="w90">Поножи</option>
-				  <option value="w61">Приманки</option>
-				  <option value="w27">Зелья</option>
-				  <option value="w0">Эликсиры</option>
-				  <option value="w66">Травы</option>
-				  <option value="w67">Шкуры</option>
-				  <option value="w70">Квестовые Вещи</option>
-				  <option value="w29">Свитки</option>
-				  <option value="w72">Профессиональные свитки</option>
-				  <option value="w73">Ингридиенты</option>
-				 </select>  <input name="smb7" type="submit" class=" lbuts" value="Применить фильтр" />';
+				<option value="" selected="selected">РІСЃРµ С‚РёРїС‹</option>
+				  <option value="w4">РќРѕР¶Рё</option>
+				  <option value="w1">РњРµС‡Рё</option>
+				  <option value="w2">РўРѕРїРѕСЂС‹</option>
+				  <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+				  <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+				  <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+				  <option value="w7">РџРѕСЃРѕС…Рё</option>
+				  <option value="w20">Р©РёС‚С‹</option>
+				  <option value="w23">РЁР»РµРјС‹</option>
+				  <option value="w26">РџРѕСЏСЃР°</option>
+				  <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+				  <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+				  <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+				  <option value="w80">РќР°СЂСѓС‡Рё</option>
+				  <option value="w21">РЎР°РїРѕРіРё</option>
+				  <option value="w25">РљСѓР»РѕРЅС‹</option>
+				  <option value="w22">РљРѕР»СЊС†Р°</option>
+				  <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+				  <option value="w90">РџРѕРЅРѕР¶Рё</option>
+				  <option value="w61">РџСЂРёРјР°РЅРєРё</option>
+				  <option value="w27">Р—РµР»СЊСЏ</option>
+				  <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
+				  <option value="w66">РўСЂР°РІС‹</option>
+				  <option value="w67">РЁРєСѓСЂС‹</option>
+				  <option value="w70">РљРІРµСЃС‚РѕРІС‹Рµ Р’РµС‰Рё</option>
+				  <option value="w29">РЎРІРёС‚РєРё</option>
+				  <option value="w72">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Рµ СЃРІРёС‚РєРё</option>
+				  <option value="w73">РРЅРіСЂРёРґРёРµРЅС‚С‹</option>
+				 </select>  <input name="smb7" type="submit" class=" lbuts" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ" />';
 				 $filter2="WHERE master=''";
 				 if($smb7){
 					if($type==""){
@@ -271,7 +274,7 @@ if($_POST['bot']!='none'){
 				  <select name="idit" >
 				  <option value=0';
 				if($idit==""){echo " selected=selected";}
-				echo'>Выберите тип</option>';
+            echo '>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї</option>';
 				$it=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `items` ".$filter." ".$filter2." ORDER BY type,name,level;");
 				  while ($row = mysqli_fetch_assoc($it)) {
 					echo "<option value=".$row['id']."";if($idit==$row['id']){echo " selected=selected";}echo">".$row['name']." [ ".$row['level']." ]</option>";
@@ -281,13 +284,13 @@ if($_POST['bot']!='none'){
 			if(!empty($_POST['type'])){
 				echo'
 				<select name=dropadd>
-					<option value=none selected=selected>Выберите категорию</option>
-					<option value=1>Вещи</option>
-					<option value=2>Квестовые вещи</option>
-					<option value=3>Бутылки</option>
-					<option value=4>Ингридиенты</option>
+					<option value=none selected=selected>Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ</option>
+					<option value=1>Р’РµС‰Рё</option>
+					<option value=2>РљРІРµСЃС‚РѕРІС‹Рµ РІРµС‰Рё</option>
+					<option value=3>Р‘СѓС‚С‹Р»РєРё</option>
+					<option value=4>РРЅРіСЂРёРґРёРµРЅС‚С‹</option>
 				</select>
-				<input class= lbuts type=submit value="Добавить в дроп">
+				<input class= lbuts type=submit value="Р”РѕР±Р°РІРёС‚СЊ РІ РґСЂРѕРї">
 				';
 			}
 			echo'
@@ -300,7 +303,7 @@ if($_POST['bot']!='none'){
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td><b>Добавленные вещи:</b></td></tr>';
+				<tr align=center class=nickname><td><b>Р”РѕР±Р°РІР»РµРЅРЅС‹Рµ РІРµС‰Рё:</b></td></tr>';
 				$itemsin=explode("|",$chbot['items_id']);
 				foreach($itemsin as $val){
 					if($val!=''){
@@ -329,7 +332,7 @@ if($_POST['bot']!='none'){
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td><b>Добавленные Зелья/Элексиры:</b></td></tr>';
+				<tr align=center class=nickname><td><b>Р”РѕР±Р°РІР»РµРЅРЅС‹Рµ Р—РµР»СЊСЏ/Р­Р»РµРєСЃРёСЂС‹:</b></td></tr>';
 				$itemsin=explode("|",$chbot['bottle_id']);
 				foreach($itemsin as $val){
 					if($val!=''){
@@ -358,7 +361,7 @@ if($_POST['bot']!='none'){
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td><b>Добавленные Ингридиенты:</b></td></tr>';
+				<tr align=center class=nickname><td><b>Р”РѕР±Р°РІР»РµРЅРЅС‹Рµ РРЅРіСЂРёРґРёРµРЅС‚С‹:</b></td></tr>';
 				$itemsin=explode("|",$chbot['prof_id']);
 				foreach($itemsin as $val){
 					if($val!=''){
@@ -387,7 +390,7 @@ if($_POST['bot']!='none'){
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td><b>Добавленная квестовая вещь:</b></td></tr>';
+				<tr align=center class=nickname><td><b>Р”РѕР±Р°РІР»РµРЅРЅР°СЏ РєРІРµСЃС‚РѕРІР°СЏ РІРµС‰СЊ:</b></td></tr>';
 				$itemsin=explode("|",$chbot['leather_id']);
 				foreach($itemsin as $val){
 					if($val!=''){

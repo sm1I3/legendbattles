@@ -96,67 +96,68 @@ else
 }
 
 ?>
-<h3><?=($bot_template_id == ''?'Добавить шаблон бота':'Изменить шаблон бота')?></h3>
+    <h3><?= ($bot_template_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ С€Р°Р±Р»РѕРЅ Р±РѕС‚Р°' : 'РР·РјРµРЅРёС‚СЊ С€Р°Р±Р»РѕРЅ Р±РѕС‚Р°') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID Шаблона: &nbsp;  </td>
+    <td>ID РЁР°Р±Р»РѕРЅР°: &nbsp;</td>
   <td><input name="bot_template_id" type="text" class="cms_fieldstyle1" value="<?=$bot_template['bot_template_id']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Имя бота: &nbsp;  </td>
+    <td>РРјСЏ Р±РѕС‚Р°: &nbsp;</td>
   <td><input name="nickname" type="text" class="cms_fieldstyle1" value="<?=$bot_template['nickname']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Короткое имя: &nbsp;  </td>
+    <td>РљРѕСЂРѕС‚РєРѕРµ РёРјСЏ: &nbsp;</td>
   <td><input name="shortnn" type="text" class="cms_fieldstyle1" value="<?=$bot_template['shortnn']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Картинка: &nbsp;  </td>
+    <td>РљР°СЂС‚РёРЅРєР°: &nbsp;</td>
   <td><input name="image" type="text" class="cms_fieldstyle1" value="<?=$bot_template['image']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Пол: &nbsp;  </td>
+    <td>РџРѕР»: &nbsp;</td>
   <td><input name="intsex" type="text" class="cms_fieldstyle1" value="<?=$bot_template['intsex']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Текущий город: &nbsp;  </td>
+    <td>РўРµРєСѓС‰РёР№ РіРѕСЂРѕРґ: &nbsp;</td>
   <td><input name="nowcity" type="text" class="cms_fieldstyle1" value="<?=$bot_template['nowcity']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Текущее место: &nbsp;  </td>
+    <td>РўРµРєСѓС‰РµРµ РјРµСЃС‚Рѕ: &nbsp;</td>
   <td><input name="nowplace" type="text" class="cms_fieldstyle1" value="<?=$bot_template['nowplace']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Текущий статус: &nbsp;  </td>
+    <td>РўРµРєСѓС‰РёР№ СЃС‚Р°С‚СѓСЃ: &nbsp;</td>
   <td><input name="nowstatus" type="text" class="cms_fieldstyle1" value="<?=$bot_template['nowstatus']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Имя: &nbsp;  </td>
+    <td>РРјСЏ: &nbsp;</td>
   <td><input name="inf_name" type="text" class="cms_fieldstyle1" value="<?=$bot_template['inf_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Страна: &nbsp;  </td>
+    <td>РЎС‚СЂР°РЅР°: &nbsp;</td>
   <td><input name="inf_country" type="text" class="cms_fieldstyle1" value="<?=$bot_template['inf_country']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Город: &nbsp;  </td>
+    <td>Р“РѕСЂРѕРґ: &nbsp;</td>
   <td><input name="inf_city" type="text" class="cms_fieldstyle1" value="<?=$bot_template['inf_city']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Домашняя страница: &nbsp;  </td>
+    <td>Р”РѕРјР°С€РЅСЏСЏ СЃС‚СЂР°РЅРёС†Р°: &nbsp;</td>
   <td><input name="inf_url" type="text" class="cms_fieldstyle1" value="<?=$bot_template['inf_url']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>О себе: &nbsp;  </td>
+    <td>Рћ СЃРµР±Рµ: &nbsp;</td>
   <td><input name="inf_infoabout" type="text" class="cms_fieldstyle1" value="<?=$bot_template['inf_infoabout']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='bot_template_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='bot_template_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

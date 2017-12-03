@@ -3,7 +3,7 @@ session_start();
 ?>
 <HTML>
 <HEAD>
-<META Http-Equiv=Content-Type Content="text/html; charset=windows-1251">
+    <META Http-Equiv=Content-Type Content="text/html; charset=utf-8">
 <META Http-Equiv=Cache-Control Content=No-Cache>
 <META Http-Equiv=Pragma Content=No-Cache>
 <META Http-Equiv=Expires Content=0>
@@ -27,13 +27,13 @@ foreach($_SESSION as $keyses=>$vals){
 	$$keyses = $vals;
 }
 
-/*foreach($_POST as $keypost=>$valp){ //тестовые сообщения
+/*foreach($_POST as $keypost=>$valp){ //С‚РµСЃС‚РѕРІС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
 	echo '<br>post-key:'.$keypost.' | post-val:'.$valp;
 }*/
 
-//обработка данных
+//РѕР±СЂР°Р±РѕС‚РєР° РґР°РЅРЅС‹С…
 switch($_POST['post_id']){
-	case 1: //сохранение основных параметров 
+    case 1: //СЃРѕС…СЂР°РЅРµРЅРёРµ РѕСЃРЅРѕРІРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
 		for($i=5;$i<=20;$i+=5){
 			if($i==20){$i='all';}
 			$bonus_arr[$i] = 'LR@'.(intval($_POST['LR'.$i])>0?intval($_POST['LR'.$i]):'0').'|'.'DLR@'.(intval($_POST['DLR'.$i])>0?intval($_POST['DLR'.$i]):'0').'|';
@@ -61,7 +61,7 @@ switch($_POST['post_id']){
 		LIMIT 1;
 		");	
 	break;
-	case 2: //добавляем вещи
+    case 2: //РґРѕР±Р°РІР»СЏРµРј РІРµС‰Рё
 		$id=intval($_POST['idit']);
 		switch($_POST['ref_col']){
 			 case 'all': $col=$_POST['ref_col']; break;
@@ -141,33 +141,33 @@ switch($_POST['post_id']){
 			<tr><td>
 			<table border=0 cellpadding=4 cellspacing=1 align=center class="smallhead" width=100%>
 				<tr class=nickname bgcolor=#EAEAEA>
-					<td align=center width=20%><b>Бонус за получения уровня рефералом</b></td>
-					<td align=center width=20%><b>Бонус за 5 рефералов</b></td>
-					<td align=center width=20%><b>Бонус за 10 рефералов</b></td>
-					<td align=center width=20%><b>Бонус за 15 рефералов</b></td>
+					<td align=center width=20%><b>Р‘РѕРЅСѓСЃ Р·Р° РїРѕР»СѓС‡РµРЅРёСЏ СѓСЂРѕРІРЅСЏ СЂРµС„РµСЂР°Р»РѕРј</b></td>
+					<td align=center width=20%><b>Р‘РѕРЅСѓСЃ Р·Р° 5 СЂРµС„РµСЂР°Р»РѕРІ</b></td>
+					<td align=center width=20%><b>Р‘РѕРЅСѓСЃ Р·Р° 10 СЂРµС„РµСЂР°Р»РѕРІ</b></td>
+					<td align=center width=20%><b>Р‘РѕРЅСѓСЃ Р·Р° 15 СЂРµС„РµСЂР°Р»РѕРІ</b></td>
 				</tr>';
 				echo'
 				<tr class=freetxt bgcolor=white>
 				<td align=center width=20%>
-					<b>Бонус:</b> <input type=text class=logintextbox7 name="money_bonus" value="'.$ref['money_bonus'].'" />%<br>
-					от полученных LR за уровень<br>
-					<font class=proce>выдается автоматом при получении рефералом уровня.</font><br>
-					<b>Бонус DLR:</b> <input type=text class=logintextbox7 name="money_dlr_bonus" value="'.$ref['money_dlr_bonus'].'" />%
+					<b>Р‘РѕРЅСѓСЃ:</b> <input type=text class=logintextbox7 name="money_bonus" value="' . $ref['money_bonus'] . '" />%<br>
+					РѕС‚ РїРѕР»СѓС‡РµРЅРЅС‹С… LR Р·Р° СѓСЂРѕРІРµРЅСЊ<br>
+					<font class=proce>РІС‹РґР°РµС‚СЃСЏ Р°РІС‚РѕРјР°С‚РѕРј РїСЂРё РїРѕР»СѓС‡РµРЅРёРё СЂРµС„РµСЂР°Р»РѕРј СѓСЂРѕРІРЅСЏ.</font><br>
+					<b>Р‘РѕРЅСѓСЃ DLR:</b> <input type=text class=logintextbox7 name="money_dlr_bonus" value="' . $ref['money_dlr_bonus'] . '" />%
 				</td>';
 				for($i=5;$i<=15;$i+=5){
 				echo'<td align=center  width=20%>
-					<b>Аккаунт:</b>
+					<b>РђРєРєР°СѓРЅС‚:</b>
 					<select name="ACCTYPE'.$i.'">
-						<option value=0'.$w['bonus_'.$i][0].'>Нет</option>
+						<option value=0' . $w['bonus_' . $i][0] . '>РќРµС‚</option>
 						<option value=2'.$w['bonus_'.$i][2].'>SILVER</option>
 						<option value=3'.$w['bonus_'.$i][3].'>GOLD</option>
 						<option value=4'.$w['bonus_'.$i][4].'>VIP</option>
 					</select>
-					<b>Время аккаунта (дней):</b> <input type=text class=logintextbox7 name="ACCTIME'.$i.'" value="'.$ACCTIME['bonus_'.$i].'" />
+					<b>Р’СЂРµРјСЏ Р°РєРєР°СѓРЅС‚Р° (РґРЅРµР№):</b> <input type=text class=logintextbox7 name="ACCTIME' . $i . '" value="' . $ACCTIME['bonus_' . $i] . '" />
 					----------------------------------------------------<br>
 					<b>DLR:</b> <input type=text class=logintextbox7 name="DLR'.$i.'" value="'.$DLR['bonus_'.$i].'" />
 					<b>LR:</b> <input type=text class=logintextbox8 name="LR'.$i.'" value="'.$LR['bonus_'.$i].'" /><br>
-					<font class=proce>Получить можно 1 раз во вкладке "ваши рефералы".</font>					
+					<font class=proce>РџРѕР»СѓС‡РёС‚СЊ РјРѕР¶РЅРѕ 1 СЂР°Р· РІРѕ РІРєР»Р°РґРєРµ "РІР°С€Рё СЂРµС„РµСЂР°Р»С‹".</font>					
 				</td>';
 				}
 				$i='all';
@@ -175,28 +175,28 @@ switch($_POST['post_id']){
 			</tr>
 			<tr class=nickname bgcolor=#EAEAEA>
 				<td colspan=4 align=center>
-					<b>Бонус за каждого реферала</b>
+					<b>Р‘РѕРЅСѓСЃ Р·Р° РєР°Р¶РґРѕРіРѕ СЂРµС„РµСЂР°Р»Р°</b>
 				</td>
 			</tr>
 			<tr class=freetxt bgcolor=white>
 				<td align=center width=100% colspan=4>
-						<b>Аккаунт:</b>
+						<b>РђРєРєР°СѓРЅС‚:</b>
 						<select name="ACCTYPE'.$i.'">
-							<option value=0'.$w['bonus_'.$i][0].'>Нет</option>
+							<option value=0' . $w['bonus_' . $i][0] . '>РќРµС‚</option>
 							<option value=2'.$w['bonus_'.$i][2].'>SILVER</option>
 							<option value=3'.$w['bonus_'.$i][3].'>GOLD</option>
 							<option value=4'.$w['bonus_'.$i][4].'>VIP</option>
 						</select> | 
-						<b>Время аккаунта (дней):</b> <input type=text class=logintextbox7 name="ACCTIME'.$i.'" value="'.$ACCTIME['bonus_'.$i].'" /> | 
+						<b>Р’СЂРµРјСЏ Р°РєРєР°СѓРЅС‚Р° (РґРЅРµР№):</b> <input type=text class=logintextbox7 name="ACCTIME' . $i . '" value="' . $ACCTIME['bonus_' . $i] . '" /> | 
 						<b>DLR:</b> <input type=text class=logintextbox7 name="DLR'.$i.'" value="'.$DLR['bonus_'.$i].'" /> | 
 						<b>LR:</b> <input type=text class=logintextbox8 name="LR'.$i.'" value="'.$LR['bonus_'.$i].'" /><br>
-						<font class=proce>Получить можно 1 раз во вкладке "ваши рефералы".</font>					
+						<font class=proce>РџРѕР»СѓС‡РёС‚СЊ РјРѕР¶РЅРѕ 1 СЂР°Р· РІРѕ РІРєР»Р°РґРєРµ "РІР°С€Рё СЂРµС„РµСЂР°Р»С‹".</font>					
 				</td>
 			</tr>
 			<tr class=freetxt bgcolor=white>
 				<td align=center width=100% colspan=4>
 					<input type=hidden name=post_id value="1">
-					<input class=lbut type=submit value="Сохранить">
+					<input class=lbut type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</td>
 			</tr>	
 			</table>
@@ -205,37 +205,37 @@ switch($_POST['post_id']){
 			<form method="post" action="ref_system.php">
 			<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 			<tr align=left class=nickname><td align=center>
-			<b>Добавить бонусные вещи:</b> 
+			<b>Р”РѕР±Р°РІРёС‚СЊ Р±РѕРЅСѓСЃРЅС‹Рµ РІРµС‰Рё:</b> 
 			<select name="type" >
-				<option value="" selected="selected">все типы</option>
-				  <option value="w4">Ножи</option>
-				  <option value="w1">Мечи</option>
-				  <option value="w2">Топоры</option>
-				  <option value="w3">Дробящее</option>
-				  <option value="w6">Алебарды и копья</option>
-				  <option value="w5">Метательное</option>
-				  <option value="w7">Посохи</option>
-				  <option value="w20">Щиты</option>
-				  <option value="w23">Шлемы</option>
-				  <option value="w26">Пояса</option>
-				  <option value="w18">Кольчуги</option>
-				  <option value="w19">Доспехи</option>
-				  <option value="w24">Перчатки</option>
-				  <option value="w80">Наручи</option>
-				  <option value="w21">Сапоги</option>
-				  <option value="w25">Кулоны</option>
-				  <option value="w22">Кольца</option>
-				  <option value="w28">Наплечники</option>
-				  <option value="w90">Поножи</option>
-				  <option value="w61">Приманки</option>
-				  <option value="w0">Эликсиры</option>
-				  <option value="w66">Травы</option>
-				  <option value="w67">Шкуры</option>
-				  <option value="w69">Рыбалка</option>
-				  <option value="w70">Мази</option>
-				  <option value="w29">Свитки</option>
-				  <option value="w60">Квесты</option>
-				 </select>  <input name="smb7" type="submit" class="lbut" value="Применить фильтр" />';
+				<option value="" selected="selected">РІСЃРµ С‚РёРїС‹</option>
+				  <option value="w4">РќРѕР¶Рё</option>
+				  <option value="w1">РњРµС‡Рё</option>
+				  <option value="w2">РўРѕРїРѕСЂС‹</option>
+				  <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+				  <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+				  <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+				  <option value="w7">РџРѕСЃРѕС…Рё</option>
+				  <option value="w20">Р©РёС‚С‹</option>
+				  <option value="w23">РЁР»РµРјС‹</option>
+				  <option value="w26">РџРѕСЏСЃР°</option>
+				  <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+				  <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+				  <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+				  <option value="w80">РќР°СЂСѓС‡Рё</option>
+				  <option value="w21">РЎР°РїРѕРіРё</option>
+				  <option value="w25">РљСѓР»РѕРЅС‹</option>
+				  <option value="w22">РљРѕР»СЊС†Р°</option>
+				  <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+				  <option value="w90">РџРѕРЅРѕР¶Рё</option>
+				  <option value="w61">РџСЂРёРјР°РЅРєРё</option>
+				  <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
+				  <option value="w66">РўСЂР°РІС‹</option>
+				  <option value="w67">РЁРєСѓСЂС‹</option>
+				  <option value="w69">Р С‹Р±Р°Р»РєР°</option>
+				  <option value="w70">РњР°Р·Рё</option>
+				  <option value="w29">РЎРІРёС‚РєРё</option>
+				  <option value="w60">РљРІРµСЃС‚С‹</option>
+				 </select>  <input name="smb7" type="submit" class="lbut" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ" />';
 				 $filter2="WHERE master=''";
 				 if($smb7){
 					if($type==""){
@@ -248,7 +248,7 @@ switch($_POST['post_id']){
 				  <select name="idit" >
 				  <option value=0';
 				if($idit==""){echo " selected=selected";}
-				echo'>Выберите тип</option>';
+echo '>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї</option>';
 				$it=mysql_query("SELECT * FROM `items` ".$filter." ".$filter2." ORDER BY type,name,level;");
 				  while ($row = mysql_fetch_assoc($it)) {
 					echo "<option value=".$row['id']."";if($idit==$row['id']){echo " selected=selected";}echo">".$row['name']." [ ".$row['level']." ]</option>";
@@ -257,14 +257,14 @@ switch($_POST['post_id']){
 			if(!empty($_POST['type'])){
 				echo'
 				<select name=ref_col>
-					<option value=all selected=selected>за каждого реферала</option>
-					<option value=5>за 5 рефералов</option>
-					<option value=10>за 10 рефералов</option>
-					<option value=15>за 15 рефералов</option>
-					<option value=ref>для реферала</option>
+					<option value=all selected=selected>Р·Р° РєР°Р¶РґРѕРіРѕ СЂРµС„РµСЂР°Р»Р°</option>
+					<option value=5>Р·Р° 5 СЂРµС„РµСЂР°Р»РѕРІ</option>
+					<option value=10>Р·Р° 10 СЂРµС„РµСЂР°Р»РѕРІ</option>
+					<option value=15>Р·Р° 15 СЂРµС„РµСЂР°Р»РѕРІ</option>
+					<option value=ref>РґР»СЏ СЂРµС„РµСЂР°Р»Р°</option>
 				</select>
 				<input type=hidden name=post_id value=2>
-				<input class=lbut type=submit value="Добавить Бонусную вещь"><br><font class=proce>Получить можно 1 раз во вкладке "ваши рефералы".</font>
+				<input class=lbut type=submit value="Р”РѕР±Р°РІРёС‚СЊ Р‘РѕРЅСѓСЃРЅСѓСЋ РІРµС‰СЊ"><br><font class=proce>РџРѕР»СѓС‡РёС‚СЊ РјРѕР¶РЅРѕ 1 СЂР°Р· РІРѕ РІРєР»Р°РґРєРµ "РІР°С€Рё СЂРµС„РµСЂР°Р»С‹".</font>
 				';
 			}
 			echo'
@@ -281,7 +281,7 @@ switch($_POST['post_id']){
 					<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 					<tr><td>
 					<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-					<tr align=center class=nickname><td><b>Вещи в подарок '.($i=='all'?'за каждого реферала:':($i=='ref'?'рефералу (время жизни вещи - 30 дней)':'за '.$i.' рефералов:')).'</b></td></tr>';
+					<tr align=center class=nickname><td><b>Р’РµС‰Рё РІ РїРѕРґР°СЂРѕРє ' . ($i == 'all' ? 'Р·Р° РєР°Р¶РґРѕРіРѕ СЂРµС„РµСЂР°Р»Р°:' : ($i == 'ref' ? 'СЂРµС„РµСЂР°Р»Сѓ (РІСЂРµРјСЏ Р¶РёР·РЅРё РІРµС‰Рё - 30 РґРЅРµР№)' : 'Р·Р° ' . $i . ' СЂРµС„РµСЂР°Р»РѕРІ:')) . '</b></td></tr>';
 					$itemsin=explode("|",$ref['items_'.$i]);
 					foreach($itemsin as $val){
 						if($val!=''){

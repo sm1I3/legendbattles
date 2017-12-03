@@ -12,12 +12,69 @@
 			</div>
 		</div>
 		<div class="TopBar_right">
-<a href="main.php?get=2&amp;go=1&amp;vcode=52569c045dc348f12dfc4c85000ad832" class="MovementMenu mainTooltip" onmouseover="tooltip(this,'<b>Перемещение</b>');" onmouseout="hide_info(this);"></a>
-			<div class="hours" style="float: right;margin-top:1px;margin-right: 121px;"><img src="http://img.legendbattles.ru/razdor/emerald.png" width="14" height="14" title="+1 Изумруд"></div>
+                                 < a href
+
+  =
+  "main.php?get=2&amp;go=1&amp;vcode=52569c045dc348f12dfc4c85000ad832"
+  class
+
+  =
+  "MovementMenu mainTooltip"
+  onmouseover
+
+  =
+  "tooltip(this,'<b>РџРµСЂРµРјРµС‰РµРЅРёРµ</b>');"
+  onmouseout
+
+  =
+  "hide_info(this);"
+  > <
+
+  /
+  a >
+  < div class
+
+  =
+  "hours"
+  style
+
+  =
+  "float: right;margin-top:1px;margin-right: 121px;"
+  > < img src
+
+  =
+  "http://img.legendbattles.ru/razdor/emerald.png"
+  width
+
+  =
+  "14"
+  height
+
+  =
+  "14"
+  title
+
+  =
+  "+1 РР·СѓРјСЂСѓРґ"
+  > <
+
+  /
+  div >
 			<div class="lines" style="float: right;">
 				<div class="dlr" style="margin-top: 8px;margin-right: 3px;">
 					<div class="line" id="dlrline" style="width:<?=(3600-($player['onlineBouns']-time()))/36?>%"></div>
-					<div class="cnt" id="dlrcnt">Еще <?=((($player['onlineBouns']-time())>=3600)?"60:00":date("i:s",($player['onlineBouns']-time())))?></div>
+                                                                                                                   < div class
+
+  =
+  "cnt"
+  id
+
+  =
+  "dlrcnt"
+  > Р•С‰Рµ <?=((($player['onlineBouns']-time())>=3600)?"60:00":date("i:s",($player['onlineBouns']-time())))?><
+
+  /
+  div >
 					<div class="hrs" id="hrs"><? for ($i=1;$i<=10;$i++) {?>
 					<div class="hr<?=(($i<=$player['onlineHour'])?' active':'')?>"></div>
 <?}?></div>
@@ -32,7 +89,8 @@
 					minutes = time.getMinutes();
 					if (seconds<10) seconds = '0'+seconds;
 					if (seconds || minutes) {
-						document.getElementById("dlrcnt").innerHTML = 'Еще '+minutes+':'+seconds;
+      document . getElementById("dlrcnt") . innerHTML = 'Р•С‰Рµ ' +minutes+ ':' +seconds
+  ;
 						document.getElementById("dlrline").style.width = Math.floor((3600-tt/1000)/36)+"%";
 					}
 				}, 1000);
@@ -41,19 +99,140 @@
 			<div class="TopBar_center">
 			<ul class="MainMenu">
 				<li class="CharacterMenu">
-					<a href="<?=(($player['battle']!=0)?'#':'main.php?get=0&vcode='.scode())?>" id="CharacterMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Персонаж</b>\');" onmouseout="hide_info(this);"></a>
+                                         < a href
+
+  =
+  "
+  <?=(($player['battle']!=0)?'#':'main.php?get=0&vcode='.scode())?>
+  "
+  id
+
+  =
+  "CharacterMenu"
+  class
+
+  =
+  "mainTooltip"
+  onmouseover
+
+  =
+  "tooltip(this,\'<b>РџРµСЂСЃРѕРЅР°Р¶</b>\');"
+  onmouseout
+
+  =
+  "hide_info(this);"
+  > <
+
+  /
+  a >
 				</li>
 				<li class="InventoryMenu">
-					<a href="<?=(($_SESSION['user']['pos']==1 or $player['battle']!=0)?'#':'main.php?get=1&vcode='.scode().(($_SESSION['user']['pos'] == 0 and $player['NewGameSteps'] == 0)?'&new-steps=2':''))?>" id="InventoryMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Инвентарь</b>\');" onmouseout="hide_info(this);"></a>
+                                         < a href
+
+  =
+  "
+  <?=(($_SESSION['user']['pos']==1 or $player['battle']!=0)?'#':'main.php?get=1&vcode='.scode().(($_SESSION['user']['pos'] == 0 and $player['NewGameSteps'] == 0)?'&new-steps=2':''))?>
+  "
+  id
+
+  =
+  "InventoryMenu"
+  class
+
+  =
+  "mainTooltip"
+  onmouseover
+
+  =
+  "tooltip(this,\'<b>РРЅРІРµРЅС‚Р°СЂСЊ</b>\');"
+  onmouseout
+
+  =
+  "hide_info(this);"
+  > <
+
+  /
+  a >
 				</li>
 				<li class="FightingMenu">
-					<a href="#" id="FightingMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Поединки</b>\');" onmouseout="hide_info(this);"></a>
+                                        < a href
+
+  =
+  "#"
+  id
+
+  =
+  "FightingMenu"
+  class
+
+  =
+  "mainTooltip"
+  onmouseover
+
+  =
+  "tooltip(this,\'<b>РџРѕРµРґРёРЅРєРё</b>\');"
+  onmouseout
+
+  =
+  "hide_info(this);"
+  > <
+
+  /
+  a >
 				</li>
-				<li class="ClanMenu">
-					<a <?if($player['clan_id']!='none'){?> href="core2.php?useaction=clan-action" <?}?> id="ClanMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b> Клан</b>\');" onmouseout="hide_info(this);" ></a>
+				<li class="ClanMenu"> < a <?if($player['clan_id']!='none'){?> href
+
+  =
+  "core2.php?useaction=clan-action"
+  <?}?>
+  id
+
+  =
+  "ClanMenu"
+  class
+
+  =
+  "mainTooltip"
+  onmouseover
+
+  =
+  "tooltip(this,\'<b>В РљР»Р°РЅ</b>\');"
+  onmouseout
+
+  =
+  "hide_info(this);"
+  > <
+
+  /
+  a >
 				</li>
 				<li class="InfoMenu">
-					<a href="javascript:QActive('<?=scode()?>');" id="InfoMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b> Квесты</b>\');" onmouseout="hide_info(this);"></a>
+                                    < a href
+
+  =
+  "javascript:QActive('
+  <?=scode()?>
+  ');"
+  id
+
+  =
+  "InfoMenu"
+  class
+
+  =
+  "mainTooltip"
+  onmouseover
+
+  =
+  "tooltip(this,\'<b>В РљРІРµСЃС‚С‹</b>\');"
+  onmouseout
+
+  =
+  "hide_info(this);"
+  > <
+
+  /
+  a >
 				</li>
 			</ul>
 		</div>
@@ -66,30 +245,531 @@
       <tr>
         <td bgcolor=#cccccc><table cellpadding=0 cellspacing=1 width=100% border=0>
           <tr>
-            <td bgcolor=<?php echo (($_GET['addid'] == '1')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=1><font class=nickname><b>Шахматы</b></font></a></div></td>
-			<td bgcolor=<?php echo (($_GET['addid'] == '2')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=2><font class=nickname><b>Обмен шахматами</b></font></a></div></td>
-			<td bgcolor=<?php echo (($_GET['addid'] == '3')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=3><font class=nickname><b>Ларцы</b></font></a></div></td>
+                                                                                  < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '1')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  1
+  > < font class
+
+  =
+  nickname > < b > РЁР°С…РјР°С‚С‹<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
+  < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '2')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  2
+  > < font class
+
+  =
+  nickname > < b > РћР±РјРµРЅ С€Р°С…РјР°С‚Р°РјРё<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
+  < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '3')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  3
+  > < font class
+
+  =
+  nickname > < b > Р›Р°СЂС†С‹<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
 				</td>
 	</tr>
 <tr>
-		    <td bgcolor=<?php echo (($_GET['addid'] == '4')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=4><font class=nickname><b>Кладоискатели</b></font></a></div></td>
-			<td bgcolor=<?php echo (($_GET['addid'] == '5')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=5><font class=nickname><b>Руны</b></font></a></div></td>
-			<td bgcolor=<?php echo (($_GET['addid'] == '7')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=7><font class=nickname><b>Взлом Сундуков</b></font></a></div></td> 
+      < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '4')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  4
+  > < font class
+
+  =
+  nickname > < b > РљР»Р°РґРѕРёСЃРєР°С‚РµР»Рё<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
+  < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '5')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  5
+  > < font class
+
+  =
+  nickname > < b > Р СѓРЅС‹<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
+  < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '7')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  7
+  > < font class
+
+  =
+  nickname > < b > Р’Р·Р»РѕРј РЎСѓРЅРґСѓРєРѕРІ<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
 				</td>
 	</tr>
-<tr>			
-            <td bgcolor=<?php echo (($_GET['addid'] == '8')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=8><font class=nickname><b>Покраска яиц</b></font></a></div></td>
-            <td bgcolor=<?php echo (($_GET['addid'] == '9')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=9><font class=nickname><b>Магические скрижали</b></font></a></div></td>
-            <td bgcolor=<?php echo (($_GET['addid'] == '10')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=10><font class=nickname><b>Сундуки репутации</b></font></a></div></td>	
+<tr>
+      < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '8')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  8
+  > < font class
+
+  =
+  nickname > < b > РџРѕРєСЂР°СЃРєР° СЏРёС†<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
+  < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '9')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  9
+  > < font class
+
+  =
+  nickname > < b > РњР°РіРёС‡РµСЃРєРёРµ СЃРєСЂРёР¶Р°Р»Рё<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
+  < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '10')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  10
+  > < font class
+
+  =
+  nickname > < b > РЎСѓРЅРґСѓРєРё СЂРµРїСѓС‚Р°С†РёРё<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
 							</td>
 	</tr>
 <tr>
-           <td bgcolor=<?php echo (($_GET['addid'] == '11')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=11><font class=nickname><b>9 Мая</b></font></a></div></td>
-		   <td bgcolor=<?php echo (($_GET['addid'] == '15')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=15><font class=nickname><b>Хаос</b></font></a></div></td></tr>
+      < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '11')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  11
+  > < font class
+
+  =
+  nickname > < b >
+
+  9
+  РњР°СЏ<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td >
+  < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '15')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  15
+  > < font class
+
+  =
+  nickname > < b > РҐР°РѕСЃ<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td > <
+
+  /
+  tr >
 		   							</td>
 	</tr>
 <tr>
-		   <td bgcolor=<?php echo (($_GET['addid'] == '17')?'#FFFFFF':'#F0F0F0'); ?> width=33%><div align=center><a href=?useaction=menu-action&addid=17><font class=nickname><b>Новый Год</b></font></a></div></td></tr>
+      < td bgcolor
+
+  =
+  <?php echo (($_GET['addid'] == '17')?'#FFFFFF':'#F0F0F0'); ?>
+  width
+
+  =
+  33
+  %
+  > < div align
+
+  =
+  center > < a href
+
+  =
+  ?
+  useaction
+
+  =
+  menu-action& addid
+
+  =
+  17
+  > < font class
+
+  =
+  nickname > < b > РќРѕРІС‹Р№ Р“РѕРґ<
+
+  /
+  b > <
+
+  /
+  font > <
+
+  /
+  a > <
+
+  /
+  div > <
+
+  /
+  td > <
+
+  /
+  tr >
         </table></td>
       </tr>
       <tr>

@@ -51,11 +51,11 @@ function addItem_mine_res(tableId, trPrefix, elmPrefix, res_array)
     
     td5.className = 'cms_middle';
     rand_array = new Array();
-    rand_array[1] = '1 - Большое кол-во маленьких жил';
+    rand_array[1] = '1 - Р‘РѕР»СЊС€РѕРµ РєРѕР»-РІРѕ РјР°Р»РµРЅСЊРєРёС… Р¶РёР»';
     rand_array[2] = '2';
     rand_array[3] = '3';
     rand_array[4] = '4';
-    rand_array[5] = '5 - Малое кол-во больших жил';
+    rand_array[5] = '5 - РњР°Р»РѕРµ РєРѕР»-РІРѕ Р±РѕР»СЊС€РёС… Р¶РёР»';
     sl2 = createSelectFromArray(elmPrefix+'_rand['+new_id+']', rand_array, '');
     td5.appendChild(sl2);
     

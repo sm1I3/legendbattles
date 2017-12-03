@@ -32,7 +32,7 @@
 <div class="block skill">
 	<div class="header">
 		<span>
-			 <td bgcolor="#FFFFFF">Временно не работает
+			 <td bgcolor="#FFFFFF">Р’СЂРµРјРµРЅРЅРѕ РЅРµ СЂР°Р±РѕС‚Р°РµС‚
 		</span>
 	</div>
 	<center>
@@ -42,7 +42,7 @@
 <div class="block skill">
 	<div class="header">
 		<span>
-			Казино
+			РљР°Р·РёРЅРѕ
 		</span>
 	</div>
 	<center>
@@ -57,22 +57,33 @@
  <table width=100% cellspacing=0 cellpadding=3 border=0>
 
 <td width=30%>
-<img src='images/bone/bone.jpg' alt='Кости'></td>
+    <img src='images/bone/bone.jpg' alt='РљРѕСЃС‚Рё'></td>
 
 <td width=70% valign=top>
-<FIELDSET><LEGEND>Правила игры</LEGEND>
-Правила игры предельно просты, от Вас требуется только сделать ставку и кинуть кубики.<br>
-Сумма, выпавшая на верхних гранях Ваших кубиков, сравнивается с суммой противника. Победителем считается тот, у кого она больше.<br>
-Выигрыш складывается из Ваших ставок.</FIELDSET>
+    <FIELDSET>
+        <LEGEND>РџСЂР°РІРёР»Р° РёРіСЂС‹</LEGEND>
+        РџСЂР°РІРёР»Р° РёРіСЂС‹ РїСЂРµРґРµР»СЊРЅРѕ РїСЂРѕСЃС‚С‹, РѕС‚ Р’Р°СЃ С‚СЂРµР±СѓРµС‚СЃСЏ С‚РѕР»СЊРєРѕ СЃРґРµР»Р°С‚СЊ СЃС‚Р°РІРєСѓ Рё РєРёРЅСѓС‚СЊ РєСѓР±РёРєРё.<br>
+        РЎСѓРјРјР°, РІС‹РїР°РІС€Р°СЏ РЅР° РІРµСЂС…РЅРёС… РіСЂР°РЅСЏС… Р’Р°С€РёС… РєСѓР±РёРєРѕРІ, СЃСЂР°РІРЅРёРІР°РµС‚СЃСЏ СЃ СЃСѓРјРјРѕР№ РїСЂРѕС‚РёРІРЅРёРєР°. РџРѕР±РµРґРёС‚РµР»РµРј СЃС‡РёС‚Р°РµС‚СЃСЏ С‚РѕС‚, Сѓ
+        РєРѕРіРѕ РѕРЅР° Р±РѕР»СЊС€Рµ.<br>
+        Р’С‹РёРіСЂС‹С€ СЃРєР»Р°РґС‹РІР°РµС‚СЃСЏ РёР· Р’Р°С€РёС… СЃС‚Р°РІРѕРє.
+    </FIELDSET>
 
 <?
 function new_game () {
         ?>
         <form action='main.php?mselect=33=1&set=game' method=post>
         <P>
-        <FIELDSET><LEGEND>Новая игра</LEGEND>
+            <FIELDSET>
+                <LEGEND>РќРѕРІР°СЏ РёРіСЂР°</LEGEND>
         <center>
-        Ставка: <SELECT class=lbut name=type><OPTION value='1' selected>1000 серебра<img src="http://img.legendbattles.ru/image/gold.png"></b><OPTION value='2'>2500<OPTION value='3'>10000<OPTION value='4'>50000<OPTION value='5'>10000</OPTION></SELECT><p><input type=submit value='Начать игру' class=lbut>
+            РЎС‚Р°РІРєР°: <SELECT class=lbut name=type>
+                <OPTION value='1' selected>1000 СЃРµСЂРµР±СЂР°<img src="http://img.legendbattles.ru/image/gold.png"></b>
+                <OPTION value='2'>2500
+                <OPTION value='3'>10000
+                <OPTION value='4'>50000
+                <OPTION value='5'>10000</OPTION>
+            </SELECT>
+            <p><input type=submit value='РќР°С‡Р°С‚СЊ РёРіСЂСѓ' class=lbut>
         </center>
         </FIELDSET>
         </form>
@@ -103,21 +114,22 @@ if ($_GET[set]==game) {
 <table width=100%>
 <tr>
 <td width=50%>
-<FIELDSET><LEGEND>Игрок №1</LEGEND>
+    <FIELDSET>
+        <LEGEND>РРіСЂРѕРє в„–1</LEGEND>
 <center><?php
 if($player['clan_gif']!=''){echo"<img src=http://img.legendbattles.ru/image/signs/".$player['clan_gif'].">";}echo"<b>".$player['login']."</b>[".$player['level']."]<a href='/pinfo.cgi?".$player['login']."' target='_blank'><img src='http://img.legendbattles.ru/image/chat/info.gif' width='11' height='12' border='0' align='absmiddle'></a>";
 
 ?>
 </center>
 <br>
-Деньги: <b><?=$player[nv]?> <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
+        Р”РµРЅСЊРіРё: <b><?= $player[nv] ?> <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
 <br>
-Ставка: <b><?=$st?> <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
+        РЎС‚Р°РІРєР°: <b><?= $st ?> <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
 <?
 if ($_POST[play]==1) {
 ?>
 <br>
-Выпало:
+    Р’С‹РїР°Р»Рѕ:
 <center>
 <img src='images/bone/<?=$player_1?>.gif' alt='<?=$player_1?>'><p><img src='images/bone/<?=$player_2?>.gif' alt='<?=$player_2?>'>
 </center>
@@ -127,19 +139,20 @@ if ($_POST[play]==1) {
 </FIELDSET>
 </td>
 <td width=50%>
-<FIELDSET><LEGEND>Игрок №2</LEGEND>
+    <FIELDSET>
+        <LEGEND>РРіСЂРѕРє в„–2</LEGEND>
 <center>
-<i>невидимка</i>
+    <i>РЅРµРІРёРґРёРјРєР°</i>
 </center>
 <br>
-Деньги: <b>??? <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
+        Р”РµРЅСЊРіРё: <b>??? <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
 <br>
-Ставка: <b><?=$st?> <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
+        РЎС‚Р°РІРєР°: <b><?= $st ?> <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
 <?
 if ($_POST['play']==1) {
 ?>
 <br>
-Выпало:
+    Р’С‹РїР°Р»Рѕ:
 <center>
 <img src='images/bone/<?=$comp_1?>.gif' alt='<?=$comp_1?>'><p><img src='images/bone/<?=$comp_2?>.gif' alt='<?=$comp_2?>'>
 </center>
@@ -153,7 +166,8 @@ if ($_POST['play']==1) {
 <form action='?33=1&set=game&type=play&get=3&vcode=<?php scode()?>' method=post>
 <input type="hidden" name="type" value="<?=$_POST[type]?>">
 <input type="hidden" name="play" value="1">
-<FIELDSET><LEGEND>Действия</LEGEND>
+    <FIELDSET>
+        <LEGEND>Р”РµР№СЃС‚РІРёСЏ</LEGEND>
 <center>
 <? if ($_POST[play]==1) {
         $summa_player = $player_1+$player_2;
@@ -163,23 +177,24 @@ if ($_POST['play']==1) {
                 mysqli_query($GLOBALS['db_link'],"UPDATE user SET nv=nv+".$st." WHERE id='".$player['id']."'");
 
                                 $player[nv] = $player[nv]+$st;
-                echo "<p><center><font class=sysmessage>Поздравляем! Вы победили и получаете <b>$st <img src='http://img.legendbattles.ru/image/money_all.gif' title='LR'></b> поверх вашей ставки!</font></center><p>";
+            echo "<p><center><font class=sysmessage>РџРѕР·РґСЂР°РІР»СЏРµРј! Р’С‹ РїРѕР±РµРґРёР»Рё Рё РїРѕР»СѓС‡Р°РµС‚Рµ <b>$st <img src='http://img.legendbattles.ru/image/money_all.gif' title='LR'></b> РїРѕРІРµСЂС… РІР°С€РµР№ СЃС‚Р°РІРєРё!</font></center><p>";
         }
         if ($summa_player<$summa_comp) {
                                 mysqli_query($GLOBALS['db_link'],"UPDATE user SET nv=nv-".$st." WHERE id='".$player['id']."'");
 
                                 $player[nv] = $player[nv]-$st;
-                echo "<p><center><font class=sysmessage>Вы проиграли! У Вас снимается  <b>$st <img src='http://img.legendbattles.ru/image/money_all.gif' title='LR'></b>!</font></center><p>";
+            echo "<p><center><font class=sysmessage>Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё! РЈ Р’Р°СЃ СЃРЅРёРјР°РµС‚СЃСЏ  <b>$st <img src='http://img.legendbattles.ru/image/money_all.gif' title='LR'></b>!</font></center><p>";
         }
         if ($summa_player==$summa_comp) {
-                echo "<p><center><font class=sysmessage>Ничья! Бросьте кости еще раз!</font></center><p>";
+            echo "<p><center><font class=sysmessage>РќРёС‡СЊСЏ! Р‘СЂРѕСЃСЊС‚Рµ РєРѕСЃС‚Рё РµС‰Рµ СЂР°Р·!</font></center><p>";
         }
-        echo "<input type=submit value='Сыграть еще раз' class=lbut>";
+    echo "<input type=submit value='РЎС‹РіСЂР°С‚СЊ РµС‰Рµ СЂР°Р·' class=lbut>";
         }
         else {
-                echo "<input type=submit value='Кинуть кости' class=lbut>";
+            echo "<input type=submit value='РљРёРЅСѓС‚СЊ РєРѕСЃС‚Рё' class=lbut>";
         }
-?> <input type=button value='Новая игра' class=lbut onclick='window.location.href="main.php?mselect=33=1&tmp="+Math.random();""'>
+?> <input type=button value='РќРѕРІР°СЏ РёРіСЂР°' class=lbut
+          onclick='window.location.href="main.php?mselect=33=1&tmp="+Math.random();""'>
 </center>
 </FIELDSET>
 </form>
@@ -189,12 +204,12 @@ if ($_POST['play']==1) {
 <?
                  }
                  else {
-                         echo "<p><center><font class=bloked>У Вас недостаточно денег!</font></center><p>";
+                     echo "<p><center><font class=bloked>РЈ Р’Р°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РґРµРЅРµРі!</font></center><p>";
                          new_game();
                  }
         }
         else {
-                echo "<p><center><font class=bloked>Не сделана ставка!</font></center><p>";
+            echo "<p><center><font class=bloked>РќРµ СЃРґРµР»Р°РЅР° СЃС‚Р°РІРєР°!</font></center><p>";
                 new_game();
         }
 }

@@ -3,10 +3,81 @@
 <tr><td>
 <table cellpadding=0 cellspacing=1 border=0 align=center width=100%>
 <tr><td align=center><?=$msg; if($msg!=''){echo "<br>";}?>
-<input type=submit class=lbut title="all" value="Все вещи" onClick="location='?useaction=clan-action&addid=3&weapon_category=all'"/>
+        <input type=submit class=lbut title="all" value="Р’СЃРµ РІРµС‰Рё"
+               onClick="location='?useaction=clan-action&addid=3&weapon_category=all'"/>
 </td></tr>
 <tr><td align=center>
-<input type=image src=/img/image/gameplay/shop/knife.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w4&fullinf=<?=$_GET['fullinf']?>'" title="Ножи" width=40 height=50><input type=image src=/img/image/gameplay/shop/sword.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w1&fullinf=<?=$_GET['fullinf']?>'" title="Мечи" width=40 height=50><input type=image src=/img/image/gameplay/shop/axe.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w2&fullinf=<?=$_GET['fullinf']?>'" title="Топоры" width=40 height=50><input type=image src=/img/image/gameplay/shop/crushing.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w3&fullinf=<?=$_GET['fullinf']?>'" title="Дробящие" width=40 height=50><input type=image src=/img/image/gameplay/shop/spears_helbeards.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w6&fullinf=<?=$_GET['fullinf']?>'" title="Алебарды и копья" width=40 height=50><input type=image src=/img/image/gameplay/shop/missle.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w5&fullinf=<?=$_GET['fullinf']?>'" title="Метательное" width=40 height=50><input type=image src=/img/image/gameplay/shop/wand.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w7&fullinf=<?=$_GET['fullinf']?>'" title="Посохи" width=40 height=50><input type=image src=/img/image/gameplay/shop/shield.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w20&fullinf=<?=$_GET['fullinf']?>'" title="Щиты" width=40 height=50><input type=image src=/img/image/gameplay/shop/helm.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w23&fullinf=<?=$_GET['fullinf']?>'" title="Шлемы" width=40 height=50><input type=image src=/img/image/gameplay/shop/belt.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w26&fullinf=<?=$_GET['fullinf']?>'" title="Пояса" width=40 height=50><input type=image src=/img/image/gameplay/shop/armor_light.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w18&fullinf=<?=$_GET['fullinf']?>'" title="Кольчуги" width=40 height=50><input type=image src=/img/image/gameplay/shop/armor_hard.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w19&fullinf=<?=$_GET['fullinf']?>'" title="Доспехи" width=40 height=50><input type=image src=/img/image/gameplay/shop/gloves.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w24&fullinf=<?=$_GET['fullinf']?>'" title="Перчатки" width=40 height=50><input type=image src=/img/image/gameplay/shop/armlet.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w80&fullinf=<?=$_GET['fullinf']?>'" title="Наручи" width=40 height=50><input type=image src=/img/image/gameplay/shop/boots.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w21&fullinf=<?=$_GET['fullinf']?>'" title="Сапоги" width=40 height=50><input type=image src=/img/image/gameplay/shop/amulet.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w25&fullinf=<?=$_GET['fullinf']?>'" title="Кулоны" width=40 height=50><input type=image src=/img/image/gameplay/shop/ring.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w22&fullinf=<?=$_GET['fullinf']?>'" title="Кольца" width=40 height=50><input type=image src=/img/image/gameplay/shop/spaudler.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w28&fullinf=<?=$_GET['fullinf']?>'" title="Наплечники" width=40 height=50><input type=image src=/img/image/gameplay/shop/knee_guard.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w90&fullinf=<?=$_GET['fullinf']?>'" title="Поножи" width=40 height=50><input type=image src=/img/image/gameplay/shop/zel.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=w0&fullinf=<?=$_GET['fullinf']?>'" title="Зелья" width=40 height=50><input type=image src=/img/image/gameplay/invent/cat/b1.gif onClick="location='?useaction=clan-action&addid=3&weapon_category=<?=$_GET['weapon_category']?>&fullinf=<? if($_GET['fullinf']==0){echo 1;}else{ echo 0;}?>'" title="Полная/сокращенная информация о предметах" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shop/knife.gif
+               onClick="location='?useaction=clan-action&addid=3&weapon_category=w4&fullinf=<?= $_GET['fullinf'] ?>'"
+               title="РќРѕР¶Рё" width=40 height=50><input type=image src=/img/image/gameplay/shop/sword.gif
+                                                      onClick="location='?useaction=clan-action&addid=3&weapon_category=w1&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                      title="РњРµС‡Рё" width=40 height=50><input type=image
+                                                                                             src=/img/image/gameplay/shop/axe.gif
+                                                                                             onClick="location='?useaction=clan-action&addid=3&weapon_category=w2&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                                                             title="РўРѕРїРѕСЂС‹" width=40
+                                                                                             height=50><input type=image
+                                                                                                              src=/img/image/gameplay/shop/crushing.gif
+                                                                                                              onClick="location='?useaction=clan-action&addid=3&weapon_category=w3&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                                                                              title="Р”СЂРѕР±СЏС‰РёРµ"
+                                                                                                              width=40
+                                                                                                              height=50><input
+                type=image src=/img/image/gameplay/shop/spears_helbeards.gif
+                onClick="location='?useaction=clan-action&addid=3&weapon_category=w6&fullinf=<?= $_GET['fullinf'] ?>'"
+                title="РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ" width=40 height=50><input type=image src=/img/image/gameplay/shop/missle.gif
+                                                                   onClick="location='?useaction=clan-action&addid=3&weapon_category=w5&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                                   title="РњРµС‚Р°С‚РµР»СЊРЅРѕРµ" width=40 height=50><input
+                type=image src=/img/image/gameplay/shop/wand.gif
+                onClick="location='?useaction=clan-action&addid=3&weapon_category=w7&fullinf=<?= $_GET['fullinf'] ?>'"
+                title="РџРѕСЃРѕС…Рё" width=40 height=50><input type=image src=/img/image/gameplay/shop/shield.gif
+                                                         onClick="location='?useaction=clan-action&addid=3&weapon_category=w20&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                         title="Р©РёС‚С‹" width=40 height=50><input type=image
+                                                                                                src=/img/image/gameplay/shop/helm.gif
+                                                                                                onClick="location='?useaction=clan-action&addid=3&weapon_category=w23&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                                                                title="РЁР»РµРјС‹" width=40
+                                                                                                height=50><input
+                type=image src=/img/image/gameplay/shop/belt.gif
+                onClick="location='?useaction=clan-action&addid=3&weapon_category=w26&fullinf=<?= $_GET['fullinf'] ?>'"
+                title="РџРѕСЏСЃР°" width=40 height=50><input type=image src=/img/image/gameplay/shop/armor_light.gif
+                                                        onClick="location='?useaction=clan-action&addid=3&weapon_category=w18&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                        title="РљРѕР»СЊС‡СѓРіРё" width=40 height=50><input type=image
+                                                                                                   src=/img/image/gameplay/shop/armor_hard.gif
+                                                                                                   onClick="location='?useaction=clan-action&addid=3&weapon_category=w19&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                                                                   title="Р”РѕСЃРїРµС…Рё"
+                                                                                                   width=40
+                                                                                                   height=50><input
+                type=image src=/img/image/gameplay/shop/gloves.gif
+                onClick="location='?useaction=clan-action&addid=3&weapon_category=w24&fullinf=<?= $_GET['fullinf'] ?>'"
+                title="РџРµСЂС‡Р°С‚РєРё" width=40 height=50><input type=image src=/img/image/gameplay/shop/armlet.gif
+                                                           onClick="location='?useaction=clan-action&addid=3&weapon_category=w80&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                           title="РќР°СЂСѓС‡Рё" width=40 height=50><input type=image
+                                                                                                    src=/img/image/gameplay/shop/boots.gif
+                                                                                                    onClick="location='?useaction=clan-action&addid=3&weapon_category=w21&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                                                                    title="РЎР°РїРѕРіРё"
+                                                                                                    width=40
+                                                                                                    height=50><input
+                type=image src=/img/image/gameplay/shop/amulet.gif
+                onClick="location='?useaction=clan-action&addid=3&weapon_category=w25&fullinf=<?= $_GET['fullinf'] ?>'"
+                title="РљСѓР»РѕРЅС‹" width=40 height=50><input type=image src=/img/image/gameplay/shop/ring.gif
+                                                         onClick="location='?useaction=clan-action&addid=3&weapon_category=w22&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                         title="РљРѕР»СЊС†Р°" width=40 height=50><input type=image
+                                                                                                  src=/img/image/gameplay/shop/spaudler.gif
+                                                                                                  onClick="location='?useaction=clan-action&addid=3&weapon_category=w28&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                                                                  title="РќР°РїР»РµС‡РЅРёРєРё"
+                                                                                                  width=40
+                                                                                                  height=50><input
+                type=image src=/img/image/gameplay/shop/knee_guard.gif
+                onClick="location='?useaction=clan-action&addid=3&weapon_category=w90&fullinf=<?= $_GET['fullinf'] ?>'"
+                title="РџРѕРЅРѕР¶Рё" width=40 height=50><input type=image src=/img/image/gameplay/shop/zel.gif
+                                                         onClick="location='?useaction=clan-action&addid=3&weapon_category=w0&fullinf=<?= $_GET['fullinf'] ?>'"
+                                                         title="Р—РµР»СЊСЏ" width=40 height=50><input type=image
+                                                                                                 src=/img/image/gameplay/invent/cat/b1.gif
+                                                                                                 onClick="location='?useaction=clan-action&addid=3&weapon_category=<?= $_GET['weapon_category'] ?>&fullinf=<? if ($_GET['fullinf'] == 0) {
+                                                                                                     echo 1;
+                                                                                                 } else {
+                                                                                                     echo 0;
+                                                                                                 } ?>'"
+                                                                                                 title="РџРѕР»РЅР°СЏ/СЃРѕРєСЂР°С‰РµРЅРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРµРґРјРµС‚Р°С…"
+                                                                                                 width=40 height=50>
 </td></tr>
 <tr><td></td></tr>
 <tr><td>
@@ -28,7 +99,7 @@ $GetYouItems = mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,  `items`.* F
 echo'<SCRIPT src="./js/clan_items.js"></SCRIPT><table cellpadding="3" cellspacing="2" border="0" width="100%">
   <tr>
     <td colspan="5" bgcolor="#E3EDEF"><font class="freemain"><font color="#3564A5"><b>
-      <div align="center">СПИСОК ВЕЩЕЙ КЛАНА</div>
+      <div align="center">РЎРџРРЎРћРљ Р’Р•Р©Р•Р™ РљР›РђРќРђ</div>
     </b></font></font></td>
   </tr>';
   
@@ -36,9 +107,15 @@ function blocks($bl){
 	if($bl!="") {
 	switch($bl)
        	{
-            case 40: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 1-ой точки</font></b><br>"; break;
-            case 70: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 2-х точек</font></b><br>"; break;
-	    	case 90: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 3-х точек</font></b><br>"; break;
+        case 40:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 1-РѕР№ С‚РѕС‡РєРё</font></b><br>";
+            break;
+        case 70:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 2-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
+        case 90:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 3-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
     	}
 		}
 }
@@ -52,13 +129,13 @@ echo'
 <table border=0 cellpadding=2 cellspacing=1 bordercolor=red align=center class="smallhead" width=100%>
 <tr align=center bgcolor=#EAEAEA>
 	<td align=left class=nickname  width=50%>
-		<font class=nickname align=left style="margin: 0px 0px 0px 20px;" color=gray>Вещь
+		<font class=nickname align=left style="margin: 0px 0px 0px 20px;" color=gray>Р’РµС‰СЊ
 	</font></td>
 	<td align=left class=nickname width=30%>
-		<font class=nickname align=left style="margin: 0px 0px 0px 20px;" color=gray>Персонаж
+		<font class=nickname align=left style="margin: 0px 0px 0px 20px;" color=gray>РџРµСЂСЃРѕРЅР°Р¶
 	</font></td>
 	<td align=center class=nickname colspan=2 width=20%>
-	<font class=nickname align=center color=gray>Опции
+	<font class=nickname align=center color=gray>РћРїС†РёРё
 	</td>
 </tr>
 ';
@@ -100,7 +177,7 @@ if($pers['clan_status']==9 and $ITEM['dd_price']==0){
 			<input type="hidden" name="post_id" value="15" />
 			<input type="hidden" name="clan_act" value="3" />
 			<input type="hidden" name="vcode" value="'.vCode().'" />
-			<input type=image src=/img/image/del.gif  title="Удалить вещь из казны" onClick="javascript: document.RemoveItem.submit();"/>
+			<input type=image src=/img/image/del.gif  title="РЈРґР°Р»РёС‚СЊ РІРµС‰СЊ РёР· РєР°Р·РЅС‹" onClick="javascript: document.RemoveItem.submit();"/>
 		';
 	}
 }
@@ -125,19 +202,24 @@ echo'
 								<input type="hidden" name="post_id" value="13" />
 								<input type="hidden" name="clan_act" value="3" />
 								<input type="hidden" name="vcode" value="'.vCode().'" />
-								<input type=submit class=klbut title="СНЯТЬ" value="СНЯТЬ" />
+								<input type=submit class=klbut title="РЎРќРЇРўР¬" value="РЎРќРЇРўР¬" />
 								</form>
 								';
-							}
-							else{echo'<b><a class="weaponchuse" href="#" title="Вы не можете снимать вещи с этого персонажа">СНЯТЬ</a></b>';}
-						}
-						else{echo'<b><a class="weaponchdis" href="#" title="Предмет не используется">СНЯТЬ</a></b>';}
-					}
-				else{echo'<b><a class="weaponchdis" href="#" title="Пользователь онлайн">СНЯТЬ</a></b>';}
-			}
-			else{echo'<b><a class="weaponchdis" href="#" title="Предмет уже у вас">СНЯТЬ</a></b>';}
-		}
-		else{echo'<b><a class=weaponchdis href="#" title="Не хватает прав">СНЯТЬ</a></b>';}
+							} else {
+                            echo '<b><a class="weaponchuse" href="#" title="Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЃРЅРёРјР°С‚СЊ РІРµС‰Рё СЃ СЌС‚РѕРіРѕ РїРµСЂСЃРѕРЅР°Р¶Р°">РЎРќРЇРўР¬</a></b>';
+                        }
+						} else {
+                        echo '<b><a class="weaponchdis" href="#" title="РџСЂРµРґРјРµС‚ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ">РЎРќРЇРўР¬</a></b>';
+                    }
+					} else {
+                    echo '<b><a class="weaponchdis" href="#" title="РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РѕРЅР»Р°Р№РЅ">РЎРќРЇРўР¬</a></b>';
+                }
+			} else {
+                echo '<b><a class="weaponchdis" href="#" title="РџСЂРµРґРјРµС‚ СѓР¶Рµ Сѓ РІР°СЃ">РЎРќРЇРўР¬</a></b>';
+            }
+        } else {
+            echo '<b><a class=weaponchdis href="#" title="РќРµ С…РІР°С‚Р°РµС‚ РїСЂР°РІ">РЎРќРЇРўР¬</a></b>';
+        }
 		echo '</td><td bgcolor=#F5F5F5 align=center valign=middle width=10%>';
 		if($placcess[0]==1){
 			if($itemuser['login']!=$pers['login']){
@@ -151,17 +233,21 @@ echo'
 						<input type="hidden" name="post_id" value="14" />
 						<input type="hidden" name="clan_act" value="3" />
 						<input type="hidden" name="vcode" value="'.vCode().'" />
-						<input type=submit class=klbut title="ЗАБРАТЬ" value="ЗАБРАТЬ"/>
+						<input type=submit class=klbut title="Р—РђР‘Р РђРўР¬" value="Р—РђР‘Р РђРўР¬"/>
 						</form>
 						';
-					}
-					else{echo'<b><a class="weaponchuse" href="#" title="Вы не можете забирать вещи с этого персонажа">ЗАБРАТЬ</a></b>';}
-				}
-				else{echo'<b><a class="weaponchuse" href="#" title="Предмет используется">ЗАБРАТЬ</a></b>';}
-			}
-			else{echo'<b><a class="weaponchdis" href="#" title="Предмет уже у вас">ЗАБРАТЬ</a></b>';}
-		}
-		else{echo'<b><a class=weaponchdis href="#" title="Не хватает прав">ЗАБРАТЬ</a></b>';}
+					} else {
+                        echo '<b><a class="weaponchuse" href="#" title="Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ Р·Р°Р±РёСЂР°С‚СЊ РІРµС‰Рё СЃ СЌС‚РѕРіРѕ РїРµСЂСЃРѕРЅР°Р¶Р°">Р—РђР‘Р РђРўР¬</a></b>';
+                    }
+				} else {
+                    echo '<b><a class="weaponchuse" href="#" title="РџСЂРµРґРјРµС‚ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ">Р—РђР‘Р РђРўР¬</a></b>';
+                }
+			} else {
+                echo '<b><a class="weaponchdis" href="#" title="РџСЂРµРґРјРµС‚ СѓР¶Рµ Сѓ РІР°СЃ">Р—РђР‘Р РђРўР¬</a></b>';
+            }
+        } else {
+            echo '<b><a class=weaponchdis href="#" title="РќРµ С…РІР°С‚Р°РµС‚ РїСЂР°РІ">Р—РђР‘Р РђРўР¬</a></b>';
+        }
 		
 		echo'
 		</td>

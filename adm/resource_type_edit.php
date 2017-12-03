@@ -51,23 +51,24 @@ if ($resource_type_id == '') {
 }
 
 ?>
-<h3><?=($resource_type_id == ''?'Добавить тип ресурс':'Изменить тип ресурс')?></h3>
+    <h3><?= ($resource_type_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ С‚РёРї СЂРµСЃСѓСЂСЃ' : 'РР·РјРµРЅРёС‚СЊ С‚РёРї СЂРµСЃСѓСЂСЃ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID типа ресурса: &nbsp;  </td>
+    <td>ID С‚РёРїР° СЂРµСЃСѓСЂСЃР°: &nbsp;</td>
   <td><input name="resource_type_id" type="text" class="cms_fieldstyle1" value="<?=$resource_type['resource_type_id']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Название типа ресурса: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ С‚РёРїР° СЂРµСЃСѓСЂСЃР°: &nbsp;</td>
   <td><input name="resource_type_name" type="text" class="cms_fieldstyle1" value="<?=$resource_type['resource_type_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='resource_type_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='resource_type_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

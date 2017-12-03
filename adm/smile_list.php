@@ -46,7 +46,7 @@ if (isset($_POST['add'])) {
 }
 
 ?>
-<h3>Смайлы</h3>
+    <h3>РЎРјР°Р№Р»С‹</h3>
 <form name="smiles" method="post">
 <div class="cms_ind">
 <script language="javascript">
@@ -67,7 +67,7 @@ function selectSmile(smile)
 }
 </script>
 <br />
-Список смайлов: <br />
+    РЎРїРёСЃРѕРє СЃРјР°Р№Р»РѕРІ: <br/>
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
 <tr >
 <? 
@@ -91,11 +91,12 @@ while ($row = mysql_fetch_assoc($res))
 </tr>
 </table>
 <br />
-<input type="submit" name="delete" value="Удалить выделенные" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="submit" name="add" value="Добавить новые" />&nbsp;Диапазон от: <input type="text" name="from" value="" size="10" /> 
-До: <input type="text" name="to" value="" size="10" />
+    <input type="submit" name="delete" value="РЈРґР°Р»РёС‚СЊ РІС‹РґРµР»РµРЅРЅС‹Рµ"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" name="add" value="Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Рµ"/>&nbsp;Р”РёР°РїР°Р·РѕРЅ РѕС‚: <input type="text" name="from" value=""
+                                                                                      size="10"/>
+    Р”Рѕ: <input type="text" name="to" value="" size="10"/>
 </div>
 <br />
-<a href="smile_collection_list.php">Назад</a><br /><br />
+    <a href="smile_collection_list.php">РќР°Р·Р°Рґ</a><br/><br/>
 </form>
 <? require('kernel/after.php'); ?>

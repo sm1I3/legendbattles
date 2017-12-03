@@ -6,19 +6,21 @@
 			
 			checkMoney = function(val,baks){
 				switch(val){
-					case '1': document.getElementById('buttons_color').innerHTML = '<font class=proce>Выберите тип получения цвета.</font>'; break;
+                    case '1':
+                        document.getElementById('buttons_color').innerHTML = '<font class=proce>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РїРѕР»СѓС‡РµРЅРёСЏ С†РІРµС‚Р°.</font>';
+                        break;
 					case '2': 
 						if(baks>=9){
-							document.getElementById('buttons_color').innerHTML = '<input type=submit class=lbut value="Арендовать на 30 дней [ 9 Изумруд ]">';
+                            document.getElementById('buttons_color').innerHTML = '<input type=submit class=lbut value="РђСЂРµРЅРґРѕРІР°С‚СЊ РЅР° 30 РґРЅРµР№ [ 9 РР·СѓРјСЂСѓРґ ]">';
 						}else{
-							document.getElementById('buttons_color').innerHTML = '<input type=button class=lbut value="недостаточно средств" DISABLED>';
+                            document.getElementById('buttons_color').innerHTML = '<input type=button class=lbut value="РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ" DISABLED>';
 						}
 					break;
 					case '3': 
 						if(baks>=99){
-							document.getElementById('buttons_color').innerHTML = '<input type=submit class=lbut value="Купить навсегда [ 99 Изумруд ]">'; 
+                            document.getElementById('buttons_color').innerHTML = '<input type=submit class=lbut value="РљСѓРїРёС‚СЊ РЅР°РІСЃРµРіРґР° [ 99 РР·СѓРјСЂСѓРґ ]">';
 						}else{
-							document.getElementById('buttons_color').innerHTML = '<input type=button class=lbut value="недостаточно средств" DISABLED>';
+                            document.getElementById('buttons_color').innerHTML = '<input type=button class=lbut value="РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ" DISABLED>';
 						}						
 					break;
 				}
@@ -28,25 +30,25 @@
 		echo '
 		<font class=proce><font color=#222222>
 		<FIELDSET style="background: white;" name="field_dealers" id="field_dealers">
-		<LEGEND align=center style="background: white; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border: solid 1px gray;"><b> <font color=gray>У Вас с собой '.$player['baks'].' Изумруд</font> </b></LEGEND>
+		<LEGEND align=center style="background: white; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border: solid 1px gray;"><b> <font color=gray>РЈ Р’Р°СЃ СЃ СЃРѕР±РѕР№ ' . $player['baks'] . ' РР·СѓРјСЂСѓРґ</font> </b></LEGEND>
 		<table cellpadding=0 cellspacing=0 border=0 width=100%>
 			<tr><td align=center>
 				<form method=post name=colorform id=colorform action="?d_swi=10">
 					<input type=hidden name=colorchange value=1>
-					<font  class=nickname2 style="color:#666699"><b>Выберите цвет ника:	
+					<font  class=nickname2 style="color:#666699"><b>Р’С‹Р±РµСЂРёС‚Рµ С†РІРµС‚ РЅРёРєР°:	
 						<select class="LogintextBox" name="font_nick" style="background:none" onChange="changeForm(this,this.value);">'.color_opt('000000',1).'</select></b>
 					</font>				
 				';
 				echo'
 					<select name="buytype" class="LogintextBox" onChange="checkMoney(this.value,'.$player['baks'].');">
-						<option value=1 selected=selected>Выберите тип</option>
-						<option value=2>Аренда</option>
-						<option value=3>Покупка</option>
+						<option value=1 selected=selected>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї</option>
+						<option value=2>РђСЂРµРЅРґР°</option>
+						<option value=3>РџРѕРєСѓРїРєР°</option>
 					</select>';
 					echo'
-						<br><font  class=nickname2 style="color:#666699"><b>Просмотр:</font> <font name=loginfont id=loginfont class=nickname><b>'.$player['login'].'</b></font><br>
+						<br><font  class=nickname2 style="color:#666699"><b>РџСЂРѕСЃРјРѕС‚СЂ:</font> <font name=loginfont id=loginfont class=nickname><b>' . $player['login'] . '</b></font><br>
 						<div id=buttons_color>
-							<font class=proce>Выберите тип получения цвета.</font>
+							<font class=proce>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РїРѕР»СѓС‡РµРЅРёСЏ С†РІРµС‚Р°.</font>
 						</div>
 					';						
 				echo'

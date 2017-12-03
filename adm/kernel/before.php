@@ -15,9 +15,9 @@ ob_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" href="files/styles.css" type="text/css" />
-<title>Система управления legendbattles.ru</title>
+    <title>РЎРёСЃС‚РµРјР° СѓРїСЂР°РІР»РµРЅРёСЏ legendbattles.ru</title>
 </head>
 
 <body class="cms_BODY">
@@ -27,7 +27,8 @@ ob_start();
   <tbody>
     <tr>
       <td width="348" height="51" align="left" nowrap="nowrap"><a href="index.php" title="Redline Management System"><img src="images/spacer.gif" width="348" height="51" border="0" /></a></td>
-      <td align="left" nowrap="nowrap" ><a href="login.php?logout=yes" title="Close">Выход</a> <span class="cms_topvln"><?=$_SESSION['USER']['user_login']?></span></td>
+        <td align="left" nowrap="nowrap"><a href="login.php?logout=yes" title="Close">Р’С‹С…РѕРґ</a> <span
+                    class="cms_topvln"><?= $_SESSION['USER']['user_login'] ?></span></td>
     </tr>
   </tbody>
 </table>

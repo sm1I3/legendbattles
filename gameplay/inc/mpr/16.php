@@ -1,23 +1,23 @@
-<? 
-if($player['login']=='Администрация'){
+<?
+if ($player['login'] == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
 	$adm=1;$colspan=3;
 	$admtable='
 	<table cellpadding="5" cellspacing="1" border="0" width="100%">
 	<tr><td colspan="'.$colspan.'" align="center" class="ftxt">
-		<b>ГОЛОСОВАНИЕ</b>
+		<b>Р“РћР›РћРЎРћР’РђРќРР•</b>
 	</td></tr>
 	<tr><td colspan="'.$colspan.'" align="center" class="nickname" bgcolor="#FCFAF3">
-		<font color="#AA0000"><b>Что вы хотите что бы мы сделали в первую очередь?</b></font>
+		<font color="#AA0000"><b>Р§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ С‡С‚Рѕ Р±С‹ РјС‹ СЃРґРµР»Р°Р»Рё РІ РїРµСЂРІСѓСЋ РѕС‡РµСЂРµРґСЊ?</b></font>
 	</td></tr>
 	';
 }else{$adm=0;$colspan=3;}
 $table='
 <table cellpadding="5" cellspacing="1" border="0" width="100%">
 <tr><td colspan="'.$colspan.'" align="center" class="ftxt">
-	<b>ГОЛОСОВАНИЕ</b>
+	<b>Р“РћР›РћРЎРћР’РђРќРР•</b>
 </td></tr>
 <tr><td colspan="'.$colspan.'" align="center" class="nickname" bgcolor="#FCFAF3">
-	<font color="#AA0000"><b>Какое нововведение важно сделать в первую очередь?</b></font>
+	<font color="#AA0000"><b>РљР°РєРѕРµ РЅРѕРІРѕРІРІРµРґРµРЅРёРµ РІР°Р¶РЅРѕ СЃРґРµР»Р°С‚СЊ РІ РїРµСЂРІСѓСЋ РѕС‡РµСЂРµРґСЊ?</b></font>
 </td></tr>';
 $sql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `golos`;");
 $sqlu=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `golos_users` WHERE `pl_id`='".$player['id']."' LIMIT 1;"));
@@ -35,42 +35,42 @@ if(mysqli_num_rows($sql)>0){
 			<tr class=nickname bgcolor=white align=center>		
 			<td width=80%>
 				<form method="post" action="main.php?mselect=16">
-					<textarea cols=100 rows=2 title="Текст голосования" name="gtext">'.$row['text'].'</textarea><br>
-					<textarea cols=100 rows=2 title="Текст голосования" name="gtinytext">'.$row['tinytext'].'</textarea>
+					<textarea cols=100 rows=2 title="РўРµРєСЃС‚ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ" name="gtext">' . $row['text'] . '</textarea><br>
+					<textarea cols=100 rows=2 title="РўРµРєСЃС‚ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ" name="gtinytext">' . $row['tinytext'] . '</textarea>
 					<input type=hidden name="id_golos" value='.$row['id'].'>
 					<input type=hidden name="post_id" value=105>
 					<input type=hidden name="vcode" value="'.scode().'">
 					<br>
-					<input type=submit class=lbut value="Сохранить">
+					<input type=submit class=lbut value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</form>
 			</td></tr>';
 		}
-	if($adm==0 and $player['level']>9){	
-		$table.='<tr bgcolor=white><td colspan="'.$colspan.'" align="center">'.(($sqlu['id']=='')?'<input type=hidden name=post_id value=102><input type=hidden name=vcode value="'.scode().'"><input type=submit class=lbut value="Добавить голос">':'<font class=freetxt>Ваш голос учтен.</font>').'</td></tr>'.(($sqlu['id']=='')?'</form>':'');
+	if($adm==0 and $player['level']>9){
+        $table .= '<tr bgcolor=white><td colspan="' . $colspan . '" align="center">' . (($sqlu['id'] == '') ? '<input type=hidden name=post_id value=102><input type=hidden name=vcode value="' . scode() . '"><input type=submit class=lbut value="Р”РѕР±Р°РІРёС‚СЊ РіРѕР»РѕСЃ">' : '<font class=freetxt>Р’Р°С€ РіРѕР»РѕСЃ СѓС‡С‚РµРЅ.</font>') . '</td></tr>' . (($sqlu['id'] == '') ? '</form>' : '');
 	}
 	else if($adm==1){
-		$table.='<tr bgcolor=white><td colspan="'.$colspan.'" align="center"><input type=hidden name=post_id value=104><input type=hidden name=vcode value="'.scode().'"><input type=submit class=lbut value="Удалить строку"></td></tr></form>';
+        $table .= '<tr bgcolor=white><td colspan="' . $colspan . '" align="center"><input type=hidden name=post_id value=104><input type=hidden name=vcode value="' . scode() . '"><input type=submit class=lbut value="РЈРґР°Р»РёС‚СЊ СЃС‚СЂРѕРєСѓ"></td></tr></form>';
 	}
 	else if($player['level']<=9){
-		$table.='<tr bgcolor=white><td colspan="'.$colspan.'" align="center"><font class=freetxt>Ваш уровень не позволяет голосовать.</font></td></tr>';
+        $table .= '<tr bgcolor=white><td colspan="' . $colspan . '" align="center"><font class=freetxt>Р’Р°С€ СѓСЂРѕРІРµРЅСЊ РЅРµ РїРѕР·РІРѕР»СЏРµС‚ РіРѕР»РѕСЃРѕРІР°С‚СЊ.</font></td></tr>';
 	}
 }
 else{
-	$table.='<tr bgcolor=white><td colspan="'.$colspan.'" align="center"><font class=freetxt>Нет активных голосований.</font></td></tr>';
+    $table .= '<tr bgcolor=white><td colspan="' . $colspan . '" align="center"><font class=freetxt>РќРµС‚ Р°РєС‚РёРІРЅС‹С… РіРѕР»РѕСЃРѕРІР°РЅРёР№.</font></td></tr>';
 }
 
 if($adm==1){	
 	$table.='
 	<form method="post" action="main.php?mselect=16">
 	<tr class=nickname>
-		<td align="center" class="ftxt" colspan="'.$colspan.'"><b>АДМИНКА</b></td></tr>		
+		<td align="center" class="ftxt" colspan="' . $colspan . '"><b>РђР”РњРРќРљРђ</b></td></tr>		
 		<tr class=nickname bgcolor=white>
 			<td align=center colspan="'.$colspan.'">
-				<textarea cols=100 rows=3 title="Текст голосования" name="gtext">Введите сюда текст голосования</textarea>
-				<textarea cols=100 rows=3 title="Текст голосования" name="gtinytext">Введите сюда текст голосования, который будет отображаться маленьким шрифтом</textarea>
+				<textarea cols=100 rows=3 title="РўРµРєСЃС‚ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ" name="gtext">Р’РІРµРґРёС‚Рµ СЃСЋРґР° С‚РµРєСЃС‚ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ</textarea>
+				<textarea cols=100 rows=3 title="РўРµРєСЃС‚ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ" name="gtinytext">Р’РІРµРґРёС‚Рµ СЃСЋРґР° С‚РµРєСЃС‚ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊСЃСЏ РјР°Р»РµРЅСЊРєРёРј С€СЂРёС„С‚РѕРј</textarea>
 				<br>
 				<input type=hidden name=post_id value=103><input type=hidden name=vcode value="'.scode().'">
-				<input type=submit class=lbut value="Добавить вопрос">
+				<input type=submit class=lbut value="Р”РѕР±Р°РІРёС‚СЊ РІРѕРїСЂРѕСЃ">
 			</td>
 		</tr>
 	</form>

@@ -4,115 +4,115 @@ function GetMenuArray()
 {
   return  Array(
        'users'=>Array(
-            'name'=>'Пользователи',
+           'name' => 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё',
             'icon'=>'images/cms_icons/cms_UsersManagement.gif',
             'pages'=>Array(
-                'user_list'=>Array('Список пользователей', 1),
-                'tz'=>Array('Отчёт по работникам', 1),
-                'online'=>Array('Онлайн', 1),
-				'sendmail_list'=>Array('Рассылка сообщений', 1),
-                'service_list'=>Array('Платные сервисы', 1),
-                'player'=>Array('Персонаж', 1),
-                'present_category_list'=>Array('Категории подарков', 131072),
-                'present_list'=>Array('Подарки', 131072),
+                'user_list' => Array('РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№', 1),
+                'tz' => Array('РћС‚С‡С‘С‚ РїРѕ СЂР°Р±РѕС‚РЅРёРєР°Рј', 1),
+                'online' => Array('РћРЅР»Р°Р№РЅ', 1),
+                'sendmail_list' => Array('Р Р°СЃСЃС‹Р»РєР° СЃРѕРѕР±С‰РµРЅРёР№', 1),
+                'service_list' => Array('РџР»Р°С‚РЅС‹Рµ СЃРµСЂРІРёСЃС‹', 1),
+                'player' => Array('РџРµСЂСЃРѕРЅР°Р¶', 1),
+                'present_category_list' => Array('РљР°С‚РµРіРѕСЂРёРё РїРѕРґР°СЂРєРѕРІ', 131072),
+                'present_list' => Array('РџРѕРґР°СЂРєРё', 131072),
             )
         ),
         'quest'=>Array(
-            'name'=>'Квесты',
+            'name' => 'РљРІРµСЃС‚С‹',
             'icon'=>'images/cms_icons/cms_SystemSettings.gif',
             'pages'=>Array(
-                'quest_group_list'=>Array('Категории квестов', 2),
-                'quest_list'=>Array('Квесты', 2),
-                'quest_image_list'=>Array('Картинки квестов', 2),
-                'place_list'=>Array('Места', 16384),
-                'labyrinth_list'=>Array('Лабиринты', 8),
-                'labyrinth_schedule'=>Array('Расписание лабиринтов', 1),
+                'quest_group_list' => Array('РљР°С‚РµРіРѕСЂРёРё РєРІРµСЃС‚РѕРІ', 2),
+                'quest_list' => Array('РљРІРµСЃС‚С‹', 2),
+                'quest_image_list' => Array('РљР°СЂС‚РёРЅРєРё РєРІРµСЃС‚РѕРІ', 2),
+                'place_list' => Array('РњРµСЃС‚Р°', 16384),
+                'labyrinth_list' => Array('Р›Р°Р±РёСЂРёРЅС‚С‹', 8),
+                'labyrinth_schedule' => Array('Р Р°СЃРїРёСЃР°РЅРёРµ Р»Р°Р±РёСЂРёРЅС‚РѕРІ', 1),
             )
         ),
         
         'tools'=>Array(
-            'name'=>'Ресурсы',
+            'name' => 'Р РµСЃСѓСЂСЃС‹',
             'icon'=>'images/cms_icons/cms_SiteStructure.gif',
             'pages'=>Array(
-                'chests'=>Array('Сундуки', 1),
-                'chests2'=>Array('Сундуки отк', 1),
-                'resource_group_list'=>Array('Группы ресурсов', 32),
-                'resource_list'=>Array('Ресурсы', 32),
-                'item_list'=>Array('Инструменты', 64),
-                'alhim'=>Array('Рецепты', 128),
+                'chests' => Array('РЎСѓРЅРґСѓРєРё', 1),
+                'chests2' => Array('РЎСѓРЅРґСѓРєРё РѕС‚Рє', 1),
+                'resource_group_list' => Array('Р“СЂСѓРїРїС‹ СЂРµСЃСѓСЂСЃРѕРІ', 32),
+                'resource_list' => Array('Р РµСЃСѓСЂСЃС‹', 32),
+                'item_list' => Array('РРЅСЃС‚СЂСѓРјРµРЅС‚С‹', 64),
+                'alhim' => Array('Р РµС†РµРїС‚С‹', 128),
             )
         ),
         
         'weapons'=>Array(
-            'name'=>'Оружие',
+            'name' => 'РћСЂСѓР¶РёРµ',
             'icon'=>'images/cms_icons/cms_SiteStructure.gif',
             'pages'=>Array(
-                'ref_system'=>Array('Рефералка', 1), 
-                'player_items'=>Array('Удаление вещей', 256), 
-                'weapon_category_list'=>Array('Категории оружия', 1),
-                'weapon_property_list'=>Array('Параметры оружия', 1),
-                'tavern'=>Array('Таверна', 262144),
+                'ref_system' => Array('Р РµС„РµСЂР°Р»РєР°', 1),
+                'player_items' => Array('РЈРґР°Р»РµРЅРёРµ РІРµС‰РµР№', 256),
+                'weapon_category_list' => Array('РљР°С‚РµРіРѕСЂРёРё РѕСЂСѓР¶РёСЏ', 1),
+                'weapon_property_list' => Array('РџР°СЂР°РјРµС‚СЂС‹ РѕСЂСѓР¶РёСЏ', 1),
+                'tavern' => Array('РўР°РІРµСЂРЅР°', 262144),
             )
         ),
         
         'bots'=>Array(
-            'name'=>'Боты',
+            'name' => 'Р‘РѕС‚С‹',
             'icon'=>'images/cms_icons/cms_SiteStructure.gif',
             'pages'=>Array(
-                'bot_class_list'=>Array('Шаблоны ботов', 512), 
-                //'bot_slots_list'=>Array('Слоты ботов', 2), 
-                'bot_list'=>Array('Список ботов', 1024), 
-                'bot_koef'=>Array('Коэффициент уровня ботов', 1024), 
-                'bot_game_add'=>Array('Добавление в игру', 1), 
-                'dumper'=>Array('Бекап', 1), 
+                'bot_class_list' => Array('РЁР°Р±Р»РѕРЅС‹ Р±РѕС‚РѕРІ', 512),
+                //'bot_slots_list'=>Array('РЎР»РѕС‚С‹ Р±РѕС‚РѕРІ', 2), 
+                'bot_list' => Array('РЎРїРёСЃРѕРє Р±РѕС‚РѕРІ', 1024),
+                'bot_koef' => Array('РљРѕСЌС„С„РёС†РёРµРЅС‚ СѓСЂРѕРІРЅСЏ Р±РѕС‚РѕРІ', 1024),
+                'bot_game_add' => Array('Р”РѕР±Р°РІР»РµРЅРёРµ РІ РёРіСЂСѓ', 1),
+                'dumper' => Array('Р‘РµРєР°Рї', 1),
             )
         ),
         
         'world'=>Array(
-            'name'=>'Карта мира',
+            'name' => 'РљР°СЂС‚Р° РјРёСЂР°',
             'icon'=>'images/cms_icons/cms_SystemSettings.gif',
             'pages'=>Array(
-                'world_map'=>Array('Общая карта', 2048), 
-                'bot_map'=>Array('Карта ботов', 4096), 
-                'resource_group_map'=>Array('Карта ресурсов', 8192), 
-                //'tree_map'=>Array('Карта деревьев', 8192),
-                'world_map_zone_list'=>Array('Зоны', 1), 
-                'world_map_object_list'=>Array('Объекты', 1), 
-                'world_map_config'=>Array('Конфиг', 1), 
-                'world_map_upload'=>Array('Загрузка и обновление', 1), 
+                'world_map' => Array('РћР±С‰Р°СЏ РєР°СЂС‚Р°', 2048),
+                'bot_map' => Array('РљР°СЂС‚Р° Р±РѕС‚РѕРІ', 4096),
+                'resource_group_map' => Array('РљР°СЂС‚Р° СЂРµСЃСѓСЂСЃРѕРІ', 8192),
+                //'tree_map'=>Array('РљР°СЂС‚Р° РґРµСЂРµРІСЊРµРІ', 8192),
+                'world_map_zone_list' => Array('Р—РѕРЅС‹', 1),
+                'world_map_object_list' => Array('РћР±СЉРµРєС‚С‹', 1),
+                'world_map_config' => Array('РљРѕРЅС„РёРі', 1),
+                'world_map_upload' => Array('Р—Р°РіСЂСѓР·РєР° Рё РѕР±РЅРѕРІР»РµРЅРёРµ', 1),
             )
         ),
         
         'forts'=>Array(
-            'name'=>'Замки',
+            'name' => 'Р—Р°РјРєРё',
             'icon'=>'images/cms_icons/cms_SystemSettings.gif',
             'pages'=>Array(
-                'fort_list'=>Array('Замки', 1), 
-                'fort_class_list'=>Array('Классы замков', 1), 
-                'fort_service_list'=>Array('Сервисы', 1), 
-                'fort_service_class_list'=>Array('Классы сервисов', 1), 
+                'fort_list' => Array('Р—Р°РјРєРё', 1),
+                'fort_class_list' => Array('РљР»Р°СЃСЃС‹ Р·Р°РјРєРѕРІ', 1),
+                'fort_service_list' => Array('РЎРµСЂРІРёСЃС‹', 1),
+                'fort_service_class_list' => Array('РљР»Р°СЃСЃС‹ СЃРµСЂРІРёСЃРѕРІ', 1),
             )
         ),
         
         'bank'=>Array(
-            'name'=>'Банки',
+            'name' => 'Р‘Р°РЅРєРё',
             'icon'=>'images/cms_icons/cms_SystemSettings.gif',
             'pages'=>Array(
-                'bank_list'=>Array('Список банков', 1), 
-                'bank_branch_list'=>Array('Список отделений', 1), 
+                'bank_list' => Array('РЎРїРёСЃРѕРє Р±Р°РЅРєРѕРІ', 1),
+                'bank_branch_list' => Array('РЎРїРёСЃРѕРє РѕС‚РґРµР»РµРЅРёР№', 1),
             )
         ),
         
         'mine'=>Array(
-            'name'=>'Шахты',
+            'name' => 'РЁР°С…С‚С‹',
             'icon'=>'images/cms_icons/cms_SystemSettings.gif',
             'pages'=>Array(
-                'mine_list'=>Array('Список шахт', 32768), 
+                'mine_list' => Array('РЎРїРёСЃРѕРє С€Р°С…С‚', 32768),
             )
         ),
         
         'forum'=>Array(
-            'name'=>'Форум',
+            'name' => 'Р¤РѕСЂСѓРј',
             'icon'=>'images/cms_icons/cms_SystemSettings.gif',
             'pages'=>Array(
                 'forum_list'=>Array('Forum', 2), 
@@ -120,14 +120,14 @@ function GetMenuArray()
         ),
         
         'other'=>Array(
-            'name'=>'Прочее',
+            'name' => 'РџСЂРѕС‡РµРµ',
             'icon'=>'images/cms_icons/cms_SystemSettings.gif',
             'pages'=>Array(
-                'faq_list'=>Array('FAQ', 2), 
-                'log_analyzer'=>Array('Анализ логов', 2), 
-                'payments'=>Array('Оплаты', 65536), 
-                 'curs'=>Array('Дилер', 65536), 
-                'player-actions'=>Array('Логи Персонажа', 65536), 
+                'faq_list'=>Array('FAQ', 2),
+                'log_analyzer' => Array('РђРЅР°Р»РёР· Р»РѕРіРѕРІ', 2),
+                'payments' => Array('РћРїР»Р°С‚С‹', 65536),
+                'curs' => Array('Р”РёР»РµСЂ', 65536),
+                'player-actions' => Array('Р›РѕРіРё РџРµСЂСЃРѕРЅР°Р¶Р°', 65536),
             )
         ),
         

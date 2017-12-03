@@ -1,22 +1,22 @@
-<?	
-if($_SESSION["user"]!='' and $player['firstlogin']==0){
-	$prem="4|".(time()+86400*14);
-	$gfrom="<font color=000000><b><font color=#377596>Legend</font><font color=#b5170b>Battles.ru</font></b>";
-	$item1="<b>Еда</b>";
-	mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price` ,`curslot` ,`clan` ,`gift` ,`gift_from`) VALUES ('3563',  '".$player['id']."',  '0',  '0',  '100',  '100',  '0',  '0',  '0',  '0',  '".$gfrom."');");
-	echo"
+<?
+if ($_SESSION["user"] != '' and $player['firstlogin'] == 0) {
+    $prem = "4|" . (time() + 86400 * 14);
+    $gfrom = "<font color=000000><b><font color=#377596>Legend</font><font color=#b5170b>Battles.ru</font></b>";
+    $item1 = "<b>Р•РґР°</b>";
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price` ,`curslot` ,`clan` ,`gift` ,`gift_from`) VALUES ('3563',  '" . $player['id'] . "',  '0',  '0',  '100',  '100',  '0',  '0',  '0',  '0',  '" . $gfrom . "');");
+    echo "
 	<script>
-	top.frames['chmain'].add_msg('".$gfrom."<b>:</b>&nbsp;<font color=#003399><b>Добро пожаловать.</b></font></font><BR>'+'');
-	top.frames['chmain'].add_msg('".$gfrom."<b>:</b>&nbsp;<font color=#CC0033><b>У вас  есть возможность взять квест. <img src=http://i.imgur.com/ihfnGdr.png width=60 height=60> </b></font></font><BR>'+'');
-	top.frames['chmain'].add_msg('".$gfrom."<b>:</b>&nbsp;<font color=#6600FF><b>Бонус + 250 репутации города</b></font></font><BR>'+'');
-	top.frames['chmain'].add_msg('".$gfrom."<b>:</b>&nbsp;В первую очередь рекомендуется <b>Силы: +3, Ловкость: +3, Везение: +3, Живучесть: +3</b>.</font><BR>'+'');
-	top.frames['chmain'].add_msg('".$gfrom."<b>:</b>&nbsp;<font color=#993399><b>Администрация проекта даёт уникальную возможность для перспективного и увлекающего развития: активирован один из платных расширенных аккаунтов сроком на 1 месяц.</b></font></font><BR>'+'');
-	top.frames['chmain'].add_msg('".$gfrom."<b>:</b>&nbsp;<font color=#499399>Команда разработчиков проекта LegendBattles ,<b><font color=#CC0033> даёт уникальную возможность зарабатывать изумруды <img src=/img/razdor/emerald.png width=14 height=14> . За каждые 10 часов Вы будете получать по 1 <img src=/img/razdor/emerald.png width=14 height=14> изумруду ,которые сможете потратить в </b> <font color=#993399> Доме Ценителей. </b> <a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" onclick=\"window.open(\'../taimer.php\',\'\');\" title=\"Перейте\">Ознакомиться более подробнее<font style=\"font-size: 10px;\">>>></b></b></font></font><BR>'+'');
-	top.frames['chmain'].add_msg('".$gfrom."<b>:</b>&nbsp;Желаем вам побольше <b>Побед</b>.</font><BR>'+'');
+	top.frames['chmain'].add_msg('" . $gfrom . "<b>:</b>&nbsp;<font color=#003399><b>Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ.</b></font></font><BR>'+'');
+	top.frames['chmain'].add_msg('" . $gfrom . "<b>:</b>&nbsp;<font color=#CC0033><b>РЈ РІР°СЃ  РµСЃС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІР·СЏС‚СЊ РєРІРµСЃС‚. <img src=http://i.imgur.com/ihfnGdr.png width=60 height=60> </b></font></font><BR>'+'');
+	top.frames['chmain'].add_msg('" . $gfrom . "<b>:</b>&nbsp;<font color=#6600FF><b>Р‘РѕРЅСѓСЃ + 250 СЂРµРїСѓС‚Р°С†РёРё РіРѕСЂРѕРґР°</b></font></font><BR>'+'');
+	top.frames['chmain'].add_msg('" . $gfrom . "<b>:</b>&nbsp;Р’ РїРµСЂРІСѓСЋ РѕС‡РµСЂРµРґСЊ СЂРµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ <b>РЎРёР»С‹: +3, Р›РѕРІРєРѕСЃС‚СЊ: +3, Р’РµР·РµРЅРёРµ: +3, Р–РёРІСѓС‡РµСЃС‚СЊ: +3</b>.</font><BR>'+'');
+	top.frames['chmain'].add_msg('" . $gfrom . "<b>:</b>&nbsp;<font color=#993399><b>РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ РїСЂРѕРµРєС‚Р° РґР°С‘С‚ СѓРЅРёРєР°Р»СЊРЅСѓСЋ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РґР»СЏ РїРµСЂСЃРїРµРєС‚РёРІРЅРѕРіРѕ Рё СѓРІР»РµРєР°СЋС‰РµРіРѕ СЂР°Р·РІРёС‚РёСЏ: Р°РєС‚РёРІРёСЂРѕРІР°РЅ РѕРґРёРЅ РёР· РїР»Р°С‚РЅС‹С… СЂР°СЃС€РёСЂРµРЅРЅС‹С… Р°РєРєР°СѓРЅС‚РѕРІ СЃСЂРѕРєРѕРј РЅР° 1 РјРµСЃСЏС†.</b></font></font><BR>'+'');
+	top.frames['chmain'].add_msg('" . $gfrom . "<b>:</b>&nbsp;<font color=#499399>РљРѕРјР°РЅРґР° СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРІ РїСЂРѕРµРєС‚Р° LegendBattles ,<b><font color=#CC0033> РґР°С‘С‚ СѓРЅРёРєР°Р»СЊРЅСѓСЋ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°СЂР°Р±Р°С‚С‹РІР°С‚СЊ РёР·СѓРјСЂСѓРґС‹ <img src=/img/razdor/emerald.png width=14 height=14> . Р—Р° РєР°Р¶РґС‹Рµ 10 С‡Р°СЃРѕРІ Р’С‹ Р±СѓРґРµС‚Рµ РїРѕР»СѓС‡Р°С‚СЊ РїРѕ 1 <img src=/img/razdor/emerald.png width=14 height=14> РёР·СѓРјСЂСѓРґСѓ ,РєРѕС‚РѕСЂС‹Рµ СЃРјРѕР¶РµС‚Рµ РїРѕС‚СЂР°С‚РёС‚СЊ РІ </b> <font color=#993399> Р”РѕРјРµ Р¦РµРЅРёС‚РµР»РµР№. </b> <a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" onclick=\"window.open(\'../taimer.php\',\'\');\" title=\"РџРµСЂРµР№С‚Рµ\">РћР·РЅР°РєРѕРјРёС‚СЊСЃСЏ Р±РѕР»РµРµ РїРѕРґСЂРѕР±РЅРµРµ<font style=\"font-size: 10px;\">>>></b></b></font></font><BR>'+'');
+	top.frames['chmain'].add_msg('" . $gfrom . "<b>:</b>&nbsp;Р–РµР»Р°РµРј РІР°Рј РїРѕР±РѕР»СЊС€Рµ <b>РџРѕР±РµРґ</b>.</font><BR>'+'');
 	top.set_lmid(8);
 	</script>";
-	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `firstlogin`='1',`Premium`='".$prem."' WHERE `id`='".$player['id']."' LIMIT 1;");
-	$newplayerms="top.frames['chmain'].add_msg('<font class=massm>&nbsp;&nbsp;<b>News.legendbattles.ru</b>&nbsp;&nbsp;</font>В свет наших земель вышел будущий герой <b>".$player['login']."</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?".$player['login']."\" target=\"_blank\"><img src=/img/image/chat/info.gif width=11 height=12 border=0 onClick=\"window.open(\'http://legendbattles.ru/ipers.php?".$player['login']."\');\" ></a>, желаем увлекательного пребывания в нашем мире.</font><BR>'+'');";
-	chmsg($newplayerms,"");
+    mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `firstlogin`='1',`Premium`='" . $prem . "' WHERE `id`='" . $player['id'] . "' LIMIT 1;");
+    $newplayerms = "top.frames['chmain'].add_msg('<font class=massm>&nbsp;&nbsp;<b>News.legendbattles.ru</b>&nbsp;&nbsp;</font>Р’ СЃРІРµС‚ РЅР°С€РёС… Р·РµРјРµР»СЊ РІС‹С€РµР» Р±СѓРґСѓС‰РёР№ РіРµСЂРѕР№ <b>" . $player['login'] . "</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?" . $player['login'] . "\" target=\"_blank\"><img src=/img/image/chat/info.gif width=11 height=12 border=0 onClick=\"window.open(\'http://legendbattles.ru/ipers.php?" . $player['login'] . "\');\" ></a>, Р¶РµР»Р°РµРј СѓРІР»РµРєР°С‚РµР»СЊРЅРѕРіРѕ РїСЂРµР±С‹РІР°РЅРёСЏ РІ РЅР°С€РµРј РјРёСЂРµ.</font><BR>'+'');";
+    chmsg($newplayerms, "");
 }
 ?>

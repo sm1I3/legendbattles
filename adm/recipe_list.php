@@ -54,31 +54,32 @@ while ($row = mysql_fetch_assoc($res))
 $_SESSION['pages']['recipe_list'] = $_SERVER['REQUEST_URI']; 
 
 ?>
-<h3>Список рецептов</h3>
+    <h3>РЎРїРёСЃРѕРє СЂРµС†РµРїС‚РѕРІ</h3>
   <div id="results">
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Рецепты')?></div>
+      <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р РµС†РµРїС‚С‹') ?></div>
 
     <div class="cms_ind">
         <br />
-        Рецепты: <br />
+        Р РµС†РµРїС‚С‹: <br/>
          <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr >
-              <td class="cms_cap2 normal"> Удалить </td>
-              <td class="cms_cap2 normal"> Изменить </td>
-              <td class="cms_cap2 normal"> Копировать </td>
+                <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РљРѕРїРёСЂРѕРІР°С‚СЊ</td>
 
-              <td class="cms_cap2"><a href="<?=sortby('rec_id')?>">ID Рецепта</a></td>
-              <td class="cms_cap2"><a href="<?=sortby('rec_name')?>">Название рецепта</a></td>
-              <td class="cms_cap2"><a href="<?=sortby('rec_size')?>">Кол-во ингредиентов</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('rec_id') ?>">ID Р РµС†РµРїС‚Р°</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('rec_name') ?>">РќР°Р·РІР°РЅРёРµ СЂРµС†РµРїС‚Р°</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('rec_size') ?>">РљРѕР»-РІРѕ РёРЅРіСЂРµРґРёРµРЅС‚РѕРІ</a></td>
             </tr>
             <?=$recipes?>
          </table>
          <br />
     </div>
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Рецепты')?></div> 
-</div>
+      <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р РµС†РµРїС‚С‹') ?></div>
+  </div>
 <br />
-<img src="images/cms_icons/cms_add.gif" alt="Добавить рецепт" /><a href="recipe_edit.php" title="Добавить рецепт">Добавить рецепт</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СЂРµС†РµРїС‚"/><a href="recipe_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ СЂРµС†РµРїС‚">Р”РѕР±Р°РІРёС‚СЊ
+    СЂРµС†РµРїС‚</a> &nbsp;<br/>
 <br />
 
 <? require('kernel/after.php'); ?>

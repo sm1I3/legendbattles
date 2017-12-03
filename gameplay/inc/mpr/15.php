@@ -4,14 +4,14 @@ $SocialIcons = array("vkontakte"=>"35","odnoklassniki"=>"70","mailru"=>"105","fa
 ?>
 <tr><td width=100%>
 <FIELDSET>
-<LEGEND align=center><B><font color=gray>&nbsp;Сообщества&nbsp;</font></B></LEGEND>
+    <LEGEND align=center><B><font color=gray>&nbsp;РЎРѕРѕР±С‰РµСЃС‚РІР°&nbsp;</font></B></LEGEND>
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
 <table cellpadding=0 cellspacing=0 border=0 width=100%>
   <tr>
     <td>
 <?php
 $Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `ulogin` WHERE `userid`='".$player['id']."'");
-echo'<font class=proce><FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;Социальные профили&nbsp;</font></B></LEGEND><div align="center" id="SocialsLists">';
+echo '<font class=proce><FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;РЎРѕС†РёР°Р»СЊРЅС‹Рµ РїСЂРѕС„РёР»Рё&nbsp;</font></B></LEGEND><div align="center" id="SocialsLists">';
 	if(mysqli_num_rows($Query)>0){
 		echo'<table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><table cellpadding=3 cellspacing=1 border=0 align=center width=100%>';
 		$i = 0;
@@ -21,12 +21,12 @@ echo'<font class=proce><FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;
 			echo'<tr>
 			  <td class="freetxt" width="32" height="32" bgcolor="#'.$bgcolor.'" style="background:url(https://ulogin.ru/img/panel7.png) no-repeat 0 -'.$SocialIcons[$row['network']].'px;"><img src="https://img.legendbattles.ru/image/1x1.gif" width="32" height="32" /></td>
 			  <td class="freetxt" align="center" valign="middle" bgcolor="#'.$bgcolor.'"><a href="'.$row['profile'].'" target="_blank">'.$row['profile_names'].'</a></td>
-			  <td class="freetxt" align="center" valign="middle" bgcolor="#'.$bgcolor.'"><a href="javascript:SocialDelete('.$row['id'].');"><font color="red">удалить</font></a></td>
+			  <td class="freetxt" align="center" valign="middle" bgcolor="#' . $bgcolor . '"><a href="javascript:SocialDelete(' . $row['id'] . ');"><font color="red">СѓРґР°Р»РёС‚СЊ</font></a></td>
 			</tr>';
 		}
 		echo'</table></td></tr></table>';
 	}else{
-		echo'нет привязанных аккаунтов';
+        echo 'РЅРµС‚ РїСЂРёРІСЏР·Р°РЅРЅС‹С… Р°РєРєР°СѓРЅС‚РѕРІ';
 	}
 echo'</div></FIELDSET>';
 
@@ -36,7 +36,7 @@ foreach($SyncArray as $Socials){
 	}
 }
 if(count($ShowSocial)>0){
-	echo'<FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;Добавить профиль&nbsp;</font></B></LEGEND><script src="//ulogin.ru/js/ulogin.js"></script><div align="center" id="SocialProfiles">';
+    echo '<FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;Р”РѕР±Р°РІРёС‚СЊ РїСЂРѕС„РёР»СЊ&nbsp;</font></B></LEGEND><script src="//ulogin.ru/js/ulogin.js"></script><div align="center" id="SocialProfiles">';
 	for( $i = 0; $i < count($ShowSocial); $i++ ){
 		$SocialPrints[intval($i/7)][] = $ShowSocial[$i];
 	}

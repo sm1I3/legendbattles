@@ -36,20 +36,24 @@ switch (e){
 }
 switch(type){
 	case '': second='';break;
-	case 'weapon': second='<font class weaponchdis>&nbsp;Второе оружие ( да <input name="wtor" type="radio" value="1" onClick="writeparams2();" /> ) ( нет <input name="wtor" type="radio" value="0" onClick="writeparams2();" /> )<input type=hidden name="block" value="0" /></font>';	break;
-	case 'shield': second= '<select name="block" width=50><option value="0" selected="selected">Блок точек</option><option value="40">1 точка</option><option value="70">2 точки</option><option value="90">3 точки</option></select>';	break;
+    case 'weapon':
+        second = '<font class weaponchdis>&nbsp;Р’С‚РѕСЂРѕРµ РѕСЂСѓР¶РёРµ ( РґР° <input name="wtor" type="radio" value="1" onClick="writeparams2();" /> ) ( РЅРµС‚ <input name="wtor" type="radio" value="0" onClick="writeparams2();" /> )<input type=hidden name="block" value="0" /></font>';
+        break;
+    case 'shield':
+        second = '<select name="block" width=50><option value="0" selected="selected">Р‘Р»РѕРє С‚РѕС‡РµРє</option><option value="40">1 С‚РѕС‡РєР°</option><option value="70">2 С‚РѕС‡РєРё</option><option value="90">3 С‚РѕС‡РєРё</option></select>';
+        break;
 }
 el.innerHTML = second;
 }
 
 function writeparams2(){
 	el = d.getElementById('params2');
-	el.innerHTML = '<input name="name" type="text" value="Название" /><input type="checkbox" onClick="writeparams3();" />';
+    el.innerHTML = '<input name="name" type="text" value="РќР°Р·РІР°РЅРёРµ" /><input type="checkbox" onClick="writeparams3();" />';
 }
 
 function writeparams3(){
 	el = d.getElementById('params3');
-	el.innerHTML = '<input name="name" type="text" value="Название" /><input type="checkbox" onClick="writeparams3();" />';
+    el.innerHTML = '<input name="name" type="text" value="РќР°Р·РІР°РЅРёРµ" /><input type="checkbox" onClick="writeparams3();" />';
 }
  
  

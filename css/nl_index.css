@@ -1,135 +1,639 @@
-html{background:#ececec url(http://img.legendbattles.ru/images/index/grad.jpg) repeat-x; height:100%;}
-body{margin:0; background:url(http://img.legendbattles.ru/images/index/fr.jpg) repeat-x 50% 431px; height:auto!important; min-height:100%; height: 100%; position:relative;}
+html {
+    background: #ececec url(http://img.legendbattles.ru/images/index/grad.jpg) repeat-x;
+    height: 100%;
+}
 
-.top_01{height:487px; background: url(http://img.legendbattles.ru/images/index/all_01.jpg) no-repeat right bottom;}
-.top_02{background: url(http://img.legendbattles.ru/images/index/all_08.jpg) no-repeat left bottom;}
-#main{position:relative;}
-*html #main{padding-bottom:0;}
-#log_bg{width:750px; height:272px; margin:0 auto; background: url(http://img.legendbattles.ru/images/index/all_10.jpg) no-repeat center top; padding-bottom:20px;}
-#login_form{width: 180px;margin:0 auto; height:155px; top:63px; position:relative;}
-#login_form form{margin:0; padding:0;}
-#login_form input{margin:0; padding:0; text-align:center;}
-#login_form input{ width:144px; border:0;font-family:Verdana,Tahoma,Arial,sans-serif;font-size:12px; margin-top:14px; background-color:#ececec}
-*html #login_form input{margin-top:13px;margin-bottom:-1px;}
-*+html #login_form input{margin-top:12px;}
-#auth_form{ text-align:center;}
-#ent_button{position:absolute; height:28px; width:180px; margin: 9px 0 0 0; display:block;}
-#ent_button:hover{background: url(http://img.legendbattles.ru/images/index/ent_but.jpg) no-repeat 0 0;}
+body {
+    margin: 0;
+    background: url(http://img.legendbattles.ru/images/index/fr.jpg) repeat-x 50% 431px;
+    height: auto !important;
+    min-height: 100%;
+    height: 100%;
+    position: relative;
+}
 
-#forg_button{position:absolute; height:15px; width:102px; margin: 46px 0 0 39px; display:block;}
-#forg_button:hover{background: url(http://img.legendbattles.ru/images/index/forg_but.jpg) no-repeat 0 0;}
+.top_01 {
+    height: 487px;
+    background: url(http://img.legendbattles.ru/images/index/all_01.jpg) no-repeat right bottom;
+}
 
-#reg_button{position:absolute; height:26px; width:142px; margin: 82px 0 0 19px; display:block;}
-#reg_button:hover{background: url(http://img.legendbattles.ru/images/index/reg_but.jpg) no-repeat 0 0;}
+.top_02 {
+    background: url(http://img.legendbattles.ru/images/index/all_08.jpg) no-repeat left bottom;
+}
 
-#flags{position:absolute; width:100%; height:42px; bottom:0;}
-#r_flag{float:right; width:160px; height:42px; background: url(http://img.legendbattles.ru/images/index/r_flag.jpg) no-repeat;}
-#l_flag{float:left; width:160px; height:42px; background: url(http://img.legendbattles.ru/images/index/l_flag.jpg) no-repeat;}
+#main {
+    position: relative;
+}
 
-#darker{width:100%; height:100%; position:absolute; z-index:2; display:none;}
-.TB_overlayMacFFBGHack {background:url(http://img.legendbattles.ru/images/index/dark.png) repeat;}
-.TB_overlayBG {background-color:#000; filter:alpha(opacity=75); -moz-opacity: 0.75; opacity: 0.75;}
+* html #main {
+    padding-bottom: 0;
+}
 
-#reg_form{position:absolute;z-index:3; display:none;height:415px;}
-#reg_form td{vertical-align:top;}
-.reg_left{width:128px; height:415px; background: url(http://img.legendbattles.ru/images/index/reg_left.png) no-repeat;}
-.reg_mid{width:310px; background:url(http://img.legendbattles.ru/images/index/reg_top.png) no-repeat;}
-.reg_right{width:136px; background: url(http://img.legendbattles.ru/images/index/reg_right.png) no-repeat;}
-.reg_fields{background:url(http://img.legendbattles.ru/images/index/reg_orn.jpg) repeat-x; height:228px; margin-top:87px; padding-top:1px;}
+#log_bg {
+    width: 750px;
+    height: 272px;
+    margin: 0 auto;
+    background: url(http://img.legendbattles.ru/images/index/all_10.jpg) no-repeat center top;
+    padding-bottom: 20px;
+}
 
-.reg_check{background:#ececec; height:30px;}
-*html .reg_check{height:23px;}
-.reg_bot{background: url(http://img.legendbattles.ru/images/index/reg_bot.png) no-repeat;height:69px;}
-.reg_done{height:30px; width:185px; margin:24px 0 0 62px; position:absolute;}
-.reg_done:hover{background: url(http://img.legendbattles.ru/images/index/reg_done.jpg) no-repeat;}
+#login_form {
+    width: 180px;
+    margin: 0 auto;
+    height: 155px;
+    top: 63px;
+    position: relative;
+}
 
-.reg_cl{height:18px; width:18px;background: url(http://img.legendbattles.ru/images/index/cl_but.png) no-repeat; position:absolute; margin-left:15px; margin-top:45px; overflow:hidden;}
-.reg_cl:hover{background-position:0 100%;}
-*html .reg_cl:hover{background-position:0 140%;}
-.reg_field {}
-.reg_field .reg_field_left{width:109px; float:left;background: url(http://img.legendbattles.ru/images/index/reg_left_ar.png) no-repeat left center;}
-.reg_field .reg_field_center{width:182px; float:left;}
+#login_form form {
+    margin: 0;
+    padding: 0;
+}
 
-.reg_field.reg_input .reg_field_center{height:29px; background: url(http://img.legendbattles.ru/images/index/reg_input.jpg) no-repeat;}
-.reg_field.reg_input .reg_field_center input{border:0;font-family:Verdana,Tahoma,Arial,sans-serif;font-size:12px; background-color:#ececec; margin-top:6px; margin-left:20px; width:142px;}
-.reg_field.reg_input .reg_field_left div{height:29px;}
-.reg_field.reg_sex .reg_field_left div{height:28px;}
-.reg_field.reg_captcha .reg_field_left div{height:55px;}
+#login_form input {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
 
-.reg_field.reg_sex .reg_field_center{width:159px; padding-left:15px;height:28px; background: url(http://img.legendbattles.ru/images/index/reg_sex.jpg) no-repeat; width:167px;}
-*html .reg_field.reg_sex .reg_field_center{padding-left:16px;width:166px; }
-.reg_field.reg_sex .reg_field_center input{display:inline;padding:0; margin:7px 65px 0 0; position:relative;}
-*+html .reg_field.reg_sex .reg_field_center input{margin:3px 58px 0 0;}
-*html .reg_field.reg_sex .reg_field_center input{margin:0px 58px 0 0;}
+#login_form input {
+    width: 144px;
+    border: 0;
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    margin-top: 14px;
+    background-color: #ececec
+}
 
-.reg_field.reg_captcha .reg_field_center{padding:4px 0 0 17px; width:165px; height:51px; background: url(http://img.legendbattles.ru/images/index/reg_captcha.jpg) no-repeat;}
+* html #login_form input {
+    margin-top: 13px;
+    margin-bottom: -1px;
+}
 
-.reg_field.reg_input .reg_field_right{height:29px;}
-.reg_field.reg_sex .reg_field_right{height:28px;}
-.reg_field.reg_captcha .reg_field_right{height:55px;}
+* + html #login_form input {
+    margin-top: 12px;
+}
 
-.reg_field .reg_field_right{float:left;width:19px;background:url(http://img.legendbattles.ru/images/index/reg_valid.png) no-repeat left center;}
-.reg_field .reg_field_right.valid{background:url(http://img.legendbattles.ru/images/index/reg_valid_true.png) no-repeat left center;}
-.reg_field .reg_field_right.invalid{background:url(http://img.legendbattles.ru/images/index/reg_valid_false.png) no-repeat left center;}
+#auth_form {
+    text-align: center;
+}
 
-.reg_cap_label{background:url(http://img.legendbattles.ru/images/index/reg_cap_label.png) no-repeat right center;}
-.reg_code_label{background:url(http://img.legendbattles.ru/images/index/reg_code_label.png) no-repeat right center;}
-.reg_sex_label{background:url(http://img.legendbattles.ru/images/index/reg_sex_label.png) no-repeat right center;}
-.reg_email_label{background:url(http://img.legendbattles.ru/images/index/reg_email_label.png) no-repeat right center;}
-.reg_more_label{background:url(http://img.legendbattles.ru/images/index/reg_more_label.png) no-repeat right center;}
-.reg_nick_label{background:url(http://img.legendbattles.ru/images/index/reg_nick_label.png) no-repeat right center;}
-.reg_pass_label{background:url(http://img.legendbattles.ru/images/index/reg_pass_label.png) no-repeat right center;}
+#ent_button {
+    position: absolute;
+    height: 28px;
+    width: 180px;
+    margin: 9px 0 0 0;
+    display: block;
+}
 
-.reg_check .text{font:12px Arial; margin-left:60px;text-align:center; position:absolute; margin-top:8px; }
-#reg_input_check{z-index:3; position:absolute; height:21px; width:20px; margin-left:30px; margin-top:5px; background:url(http://img.legendbattles.ru/images/index/but_check.jpg) no-repeat;}
-#reg_input_check input{ padding:0; margin:0; position:absolute; visibility:hidden;}
-#reg_input_check label{ width:20px; height:21px; display:block;cursor:pointer;}
+#ent_button:hover {
+    background: url(http://img.legendbattles.ru/images/index/ent_but.jpg) no-repeat 0 0;
+}
 
-#reg_warn{position:absolute;z-index:4; display:none;height:117px;}
-#reg_warn td{vertical-align:top;}
-#reg_warn .reg_warn_left{height:117px; width:98px;background:url(http://img.legendbattles.ru/images/index/reg_warn_left.gif) no-repeat;}
-#reg_warn .reg_warn_left div{width:27px; height:42px; margin-top:40px; margin-left:50px; position:relative;}
-#reg_warn .reg_warn_left div.ok{background:url(http://img.legendbattles.ru/images/index/reg_warn_ok.png) no-repeat;}
-#reg_warn .reg_warn_left div.err{background:url(http://img.legendbattles.ru/images/index/reg_warn_err.png) no-repeat;}
-#reg_warn .reg_warn_mid{width:219px;background:url(http://img.legendbattles.ru/images/index/reg_warn_mid.jpg) no-repeat;}
-#reg_warn .reg_warn_mid a{position:absolute;  width:151px; height:30px; margin-left:30px; margin-top:74px;}
-#reg_warn .reg_warn_mid a img{border:0;}
-#reg_warn .reg_warn_mid a:hover{background:url(http://img.legendbattles.ru/images/index/reg_warn_close.jpg) no-repeat;}
-#reg_warn .reg_warn_mid span{display:block; text-align:center; margin-top:13px; font:bold 11px Verdana; color:#c3c3c3;}
-#reg_warn .reg_warn_mid div{width:54px; height:12px; margin-top:10px; margin-left:78px; position:relative;}
-#reg_warn .reg_warn_mid div.ok{background:url(http://img.legendbattles.ru/images/index/reg_warn_ok_text.png) no-repeat;}
-#reg_warn .reg_warn_mid div.err{background:url(http://img.legendbattles.ru/images/index/reg_warn_err_text.png) no-repeat;}
-#reg_warn .reg_warn_right{width:21px;background:url(http://img.legendbattles.ru/images/index/reg_warn_right.gif) no-repeat;}
+#forg_button {
+    position: absolute;
+    height: 15px;
+    width: 102px;
+    margin: 46px 0 0 39px;
+    display: block;
+}
 
-#pass_recovery{position:absolute;z-index:3; display:none;height:209px;}
-#pass_recovery td{vertical-align:top;}
-#pass_recovery .pass_left{height:209px; width:45px;background:url(http://img.legendbattles.ru/images/index/pass_left.png) no-repeat;}
-#pass_recovery .pass_mid{width:340px;background:url(http://img.legendbattles.ru/images/index/pass_top.png) no-repeat;}
-#pass_recovery .pass_right{width:45px;background:url(http://img.legendbattles.ru/images/index/pass_right.png) no-repeat;}
+#forg_button:hover {
+    background: url(http://img.legendbattles.ru/images/index/forg_but.jpg) no-repeat 0 0;
+}
 
-#pass_recovery .fields{margin-top:38px; height:58px; background:url(http://img.legendbattles.ru/images/index/pass_orn.jpg) no-repeat;}
-#pass_recovery .text{height:110px; background:url(http://img.legendbattles.ru/images/index/pass_bottom.png) no-repeat; font:10px Verdana; color:#717171; padding:3px 10px 0 10px; }
-#pass_recovery .reg_field{padding-left:17px;}
-#pass_recovery .reg_field_right{margin-left:5px;}
-#pass_recovery .text p{padding:0; margin:0;text-align:center;}
-.pass_button{display:block;float:none; clear:both; z-index:3;width:185px; height:30px; position:absolute; margin-top:64px; margin-left:69px;}
-*html .pass_button{left:55px;}
-*+html .pass_button{left:55px;}
+#reg_button {
+    position: absolute;
+    height: 26px;
+    width: 142px;
+    margin: 82px 0 0 19px;
+    display: block;
+}
 
-.shit{position:relative; width:62px; height:72px; float:left; top:-7px; padding-right:22px; left:15px; background:url(http://img.legendbattles.ru/images/index/shit.jpg) no-repeat; display:block;}
-.shit div{width:27px; height:42px; position:relative; margin:20px 0 0 18px;}
-.shit div.err{background:url(http://img.legendbattles.ru/images/index/reg_warn_err.png) no-repeat;}
-.shit div.ok{background:url(http://img.legendbattles.ru/images/index/reg_warn_ok.png) no-repeat;}
-.shit div.info{background:url(http://img.legendbattles.ru/images/index/reg_warn_info.png) no-repeat;}
+#reg_button:hover {
+    background: url(http://img.legendbattles.ru/images/index/reg_but.jpg) no-repeat 0 0;
+}
 
-.pass_button.fin{background:url(http://img.legendbattles.ru/images/index/pass_fin.jpg) no-repeat;}
-.pass_button.fin:hover{background:url(http://img.legendbattles.ru/images/index/pass_fin_over.jpg) no-repeat;}
-.pass_button.continue{background:url(http://img.legendbattles.ru/images/index/pass_continue.jpg) no-repeat;}
-.pass_button.continue:hover{background:url(http://img.legendbattles.ru/images/index/pass_continue_over.jpg) no-repeat;}
+#flags {
+    position: absolute;
+    width: 100%;
+    height: 42px;
+    bottom: 0;
+}
 
-.pass_cl{height:18px; float:right; width:18px;background: url(http://img.legendbattles.ru/images/index/cl_but.png) no-repeat; position:absolute; margin-left:316px; margin-top:14px; overflow:hidden;}
-.pass_cl:hover{background-position:0 100%;}
-*html .pass_cl:hover{background-position:0 140%;}
+#r_flag {
+    float: right;
+    width: 160px;
+    height: 42px;
+    background: url(http://img.legendbattles.ru/images/index/r_flag.jpg) no-repeat;
+}
 
-#copyright{text-align:center; height:20px; color:#999999;font-family:Verdana,Tahoma,Arial,sans-serif;font-size:11px; position:absolute; width:100%; bottom:0;}
-#sixage{position:absolute; top:0; right:30px; width:109px; height:218px; background: url(http://img.legendbattles.ru/images/index/sixage.png) no-repeat; z-index: 1;}
+#l_flag {
+    float: left;
+    width: 160px;
+    height: 42px;
+    background: url(http://img.legendbattles.ru/images/index/l_flag.jpg) no-repeat;
+}
+
+#darker {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    display: none;
+}
+
+.TB_overlayMacFFBGHack {
+    background: url(http://img.legendbattles.ru/images/index/dark.png) repeat;
+}
+
+.TB_overlayBG {
+    background-color: #000;
+    filter: alpha(opacity=75);
+    -moz-opacity: 0.75;
+    opacity: 0.75;
+}
+
+#reg_form {
+    position: absolute;
+    z-index: 3;
+    display: none;
+    height: 415px;
+}
+
+#reg_form td {
+    vertical-align: top;
+}
+
+.reg_left {
+    width: 128px;
+    height: 415px;
+    background: url(http://img.legendbattles.ru/images/index/reg_left.png) no-repeat;
+}
+
+.reg_mid {
+    width: 310px;
+    background: url(http://img.legendbattles.ru/images/index/reg_top.png) no-repeat;
+}
+
+.reg_right {
+    width: 136px;
+    background: url(http://img.legendbattles.ru/images/index/reg_right.png) no-repeat;
+}
+
+.reg_fields {
+    background: url(http://img.legendbattles.ru/images/index/reg_orn.jpg) repeat-x;
+    height: 228px;
+    margin-top: 87px;
+    padding-top: 1px;
+}
+
+.reg_check {
+    background: #ececec;
+    height: 30px;
+}
+
+* html .reg_check {
+    height: 23px;
+}
+
+.reg_bot {
+    background: url(http://img.legendbattles.ru/images/index/reg_bot.png) no-repeat;
+    height: 69px;
+}
+
+.reg_done {
+    height: 30px;
+    width: 185px;
+    margin: 24px 0 0 62px;
+    position: absolute;
+}
+
+.reg_done:hover {
+    background: url(http://img.legendbattles.ru/images/index/reg_done.jpg) no-repeat;
+}
+
+.reg_cl {
+    height: 18px;
+    width: 18px;
+    background: url(http://img.legendbattles.ru/images/index/cl_but.png) no-repeat;
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 45px;
+    overflow: hidden;
+}
+
+.reg_cl:hover {
+    background-position: 0 100%;
+}
+
+* html .reg_cl:hover {
+    background-position: 0 140%;
+}
+
+.reg_field {
+}
+
+.reg_field .reg_field_left {
+    width: 109px;
+    float: left;
+    background: url(http://img.legendbattles.ru/images/index/reg_left_ar.png) no-repeat left center;
+}
+
+.reg_field .reg_field_center {
+    width: 182px;
+    float: left;
+}
+
+.reg_field.reg_input .reg_field_center {
+    height: 29px;
+    background: url(http://img.legendbattles.ru/images/index/reg_input.jpg) no-repeat;
+}
+
+.reg_field.reg_input .reg_field_center input {
+    border: 0;
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    background-color: #ececec;
+    margin-top: 6px;
+    margin-left: 20px;
+    width: 142px;
+}
+
+.reg_field.reg_input .reg_field_left div {
+    height: 29px;
+}
+
+.reg_field.reg_sex .reg_field_left div {
+    height: 28px;
+}
+
+.reg_field.reg_captcha .reg_field_left div {
+    height: 55px;
+}
+
+.reg_field.reg_sex .reg_field_center {
+    width: 159px;
+    padding-left: 15px;
+    height: 28px;
+    background: url(http://img.legendbattles.ru/images/index/reg_sex.jpg) no-repeat;
+    width: 167px;
+}
+
+* html .reg_field.reg_sex .reg_field_center {
+    padding-left: 16px;
+    width: 166px;
+}
+
+.reg_field.reg_sex .reg_field_center input {
+    display: inline;
+    padding: 0;
+    margin: 7px 65px 0 0;
+    position: relative;
+}
+
+* + html .reg_field.reg_sex .reg_field_center input {
+    margin: 3px 58px 0 0;
+}
+
+* html .reg_field.reg_sex .reg_field_center input {
+    margin: 0px 58px 0 0;
+}
+
+.reg_field.reg_captcha .reg_field_center {
+    padding: 4px 0 0 17px;
+    width: 165px;
+    height: 51px;
+    background: url(http://img.legendbattles.ru/images/index/reg_captcha.jpg) no-repeat;
+}
+
+.reg_field.reg_input .reg_field_right {
+    height: 29px;
+}
+
+.reg_field.reg_sex .reg_field_right {
+    height: 28px;
+}
+
+.reg_field.reg_captcha .reg_field_right {
+    height: 55px;
+}
+
+.reg_field .reg_field_right {
+    float: left;
+    width: 19px;
+    background: url(http://img.legendbattles.ru/images/index/reg_valid.png) no-repeat left center;
+}
+
+.reg_field .reg_field_right.valid {
+    background: url(http://img.legendbattles.ru/images/index/reg_valid_true.png) no-repeat left center;
+}
+
+.reg_field .reg_field_right.invalid {
+    background: url(http://img.legendbattles.ru/images/index/reg_valid_false.png) no-repeat left center;
+}
+
+.reg_cap_label {
+    background: url(http://img.legendbattles.ru/images/index/reg_cap_label.png) no-repeat right center;
+}
+
+.reg_code_label {
+    background: url(http://img.legendbattles.ru/images/index/reg_code_label.png) no-repeat right center;
+}
+
+.reg_sex_label {
+    background: url(http://img.legendbattles.ru/images/index/reg_sex_label.png) no-repeat right center;
+}
+
+.reg_email_label {
+    background: url(http://img.legendbattles.ru/images/index/reg_email_label.png) no-repeat right center;
+}
+
+.reg_more_label {
+    background: url(http://img.legendbattles.ru/images/index/reg_more_label.png) no-repeat right center;
+}
+
+.reg_nick_label {
+    background: url(http://img.legendbattles.ru/images/index/reg_nick_label.png) no-repeat right center;
+}
+
+.reg_pass_label {
+    background: url(http://img.legendbattles.ru/images/index/reg_pass_label.png) no-repeat right center;
+}
+
+.reg_check .text {
+    font: 12px Arial;
+    margin-left: 60px;
+    text-align: center;
+    position: absolute;
+    margin-top: 8px;
+}
+
+#reg_input_check {
+    z-index: 3;
+    position: absolute;
+    height: 21px;
+    width: 20px;
+    margin-left: 30px;
+    margin-top: 5px;
+    background: url(http://img.legendbattles.ru/images/index/but_check.jpg) no-repeat;
+}
+
+#reg_input_check input {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    visibility: hidden;
+}
+
+#reg_input_check label {
+    width: 20px;
+    height: 21px;
+    display: block;
+    cursor: pointer;
+}
+
+#reg_warn {
+    position: absolute;
+    z-index: 4;
+    display: none;
+    height: 117px;
+}
+
+#reg_warn td {
+    vertical-align: top;
+}
+
+#reg_warn .reg_warn_left {
+    height: 117px;
+    width: 98px;
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_left.gif) no-repeat;
+}
+
+#reg_warn .reg_warn_left div {
+    width: 27px;
+    height: 42px;
+    margin-top: 40px;
+    margin-left: 50px;
+    position: relative;
+}
+
+#reg_warn .reg_warn_left div.ok {
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_ok.png) no-repeat;
+}
+
+#reg_warn .reg_warn_left div.err {
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_err.png) no-repeat;
+}
+
+#reg_warn .reg_warn_mid {
+    width: 219px;
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_mid.jpg) no-repeat;
+}
+
+#reg_warn .reg_warn_mid a {
+    position: absolute;
+    width: 151px;
+    height: 30px;
+    margin-left: 30px;
+    margin-top: 74px;
+}
+
+#reg_warn .reg_warn_mid a img {
+    border: 0;
+}
+
+#reg_warn .reg_warn_mid a:hover {
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_close.jpg) no-repeat;
+}
+
+#reg_warn .reg_warn_mid span {
+    display: block;
+    text-align: center;
+    margin-top: 13px;
+    font: bold 11px Verdana;
+    color: #c3c3c3;
+}
+
+#reg_warn .reg_warn_mid div {
+    width: 54px;
+    height: 12px;
+    margin-top: 10px;
+    margin-left: 78px;
+    position: relative;
+}
+
+#reg_warn .reg_warn_mid div.ok {
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_ok_text.png) no-repeat;
+}
+
+#reg_warn .reg_warn_mid div.err {
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_err_text.png) no-repeat;
+}
+
+#reg_warn .reg_warn_right {
+    width: 21px;
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_right.gif) no-repeat;
+}
+
+#pass_recovery {
+    position: absolute;
+    z-index: 3;
+    display: none;
+    height: 209px;
+}
+
+#pass_recovery td {
+    vertical-align: top;
+}
+
+#pass_recovery .pass_left {
+    height: 209px;
+    width: 45px;
+    background: url(http://img.legendbattles.ru/images/index/pass_left.png) no-repeat;
+}
+
+#pass_recovery .pass_mid {
+    width: 340px;
+    background: url(http://img.legendbattles.ru/images/index/pass_top.png) no-repeat;
+}
+
+#pass_recovery .pass_right {
+    width: 45px;
+    background: url(http://img.legendbattles.ru/images/index/pass_right.png) no-repeat;
+}
+
+#pass_recovery .fields {
+    margin-top: 38px;
+    height: 58px;
+    background: url(http://img.legendbattles.ru/images/index/pass_orn.jpg) no-repeat;
+}
+
+#pass_recovery .text {
+    height: 110px;
+    background: url(http://img.legendbattles.ru/images/index/pass_bottom.png) no-repeat;
+    font: 10px Verdana;
+    color: #717171;
+    padding: 3px 10px 0 10px;
+}
+
+#pass_recovery .reg_field {
+    padding-left: 17px;
+}
+
+#pass_recovery .reg_field_right {
+    margin-left: 5px;
+}
+
+#pass_recovery .text p {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.pass_button {
+    display: block;
+    float: none;
+    clear: both;
+    z-index: 3;
+    width: 185px;
+    height: 30px;
+    position: absolute;
+    margin-top: 64px;
+    margin-left: 69px;
+}
+
+* html .pass_button {
+    left: 55px;
+}
+
+* + html .pass_button {
+    left: 55px;
+}
+
+.shit {
+    position: relative;
+    width: 62px;
+    height: 72px;
+    float: left;
+    top: -7px;
+    padding-right: 22px;
+    left: 15px;
+    background: url(http://img.legendbattles.ru/images/index/shit.jpg) no-repeat;
+    display: block;
+}
+
+.shit div {
+    width: 27px;
+    height: 42px;
+    position: relative;
+    margin: 20px 0 0 18px;
+}
+
+.shit div.err {
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_err.png) no-repeat;
+}
+
+.shit div.ok {
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_ok.png) no-repeat;
+}
+
+.shit div.info {
+    background: url(http://img.legendbattles.ru/images/index/reg_warn_info.png) no-repeat;
+}
+
+.pass_button.fin {
+    background: url(http://img.legendbattles.ru/images/index/pass_fin.jpg) no-repeat;
+}
+
+.pass_button.fin:hover {
+    background: url(http://img.legendbattles.ru/images/index/pass_fin_over.jpg) no-repeat;
+}
+
+.pass_button.continue {
+    background: url(http://img.legendbattles.ru/images/index/pass_continue.jpg) no-repeat;
+}
+
+.pass_button.continue:hover {
+    background: url(http://img.legendbattles.ru/images/index/pass_continue_over.jpg) no-repeat;
+}
+
+.pass_cl {
+    height: 18px;
+    float: right;
+    width: 18px;
+    background: url(http://img.legendbattles.ru/images/index/cl_but.png) no-repeat;
+    position: absolute;
+    margin-left: 316px;
+    margin-top: 14px;
+    overflow: hidden;
+}
+
+.pass_cl:hover {
+    background-position: 0 100%;
+}
+
+* html .pass_cl:hover {
+    background-position: 0 140%;
+}
+
+#copyright {
+    text-align: center;
+    height: 20px;
+    color: #999999;
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    font-size: 11px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+#sixage {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 109px;
+    height: 218px;
+    background: url(http://img.legendbattles.ru/images/index/sixage.png) no-repeat;
+    z-index: 1;
+}

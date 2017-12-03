@@ -60,23 +60,24 @@ else
 }
 
 ?>
-<h3><?=($quest_group_id == ''?'Добавить категорию':'Изменить категорию')?></h3>
+    <h3><?= ($quest_group_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ' : 'РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>ID Категории: &nbsp;  </td>
+    <td><span class="cms_star">*</span>ID РљР°С‚РµРіРѕСЂРёРё: &nbsp;</td>
   <td><input name="quest_group_id" type="text" class="cms_fieldstyle1" value="<?=$category['quest_group_id']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Название категории: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё: &nbsp;</td>
   <td><input name="quest_group_name" type="text" class="cms_fieldstyle1" value="<?=$category['quest_group_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='quest_group_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='quest_group_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

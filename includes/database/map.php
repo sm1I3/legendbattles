@@ -14,7 +14,7 @@ if(!empty($_POST['BotsForm'])){
 }
 
 if(($_GET['locc']) or ($_POST["locc"])){
-mysqli_query($GLOBALS['db_link'],"INSERT INTO `nature` (`x`,`y`,`city`,`name`) VALUES ('".$pers['x']."','".$pers['y']."','Окрестности Фатерса','Природа');");
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO `nature` (`x`,`y`,`city`,`name`) VALUES ('" . $pers['x'] . "','" . $pers['y'] . "','РћРєСЂРµСЃС‚РЅРѕСЃС‚Рё Р¤Р°С‚РµСЂСЃР°','РџСЂРёСЂРѕРґР°');");
 }
 
 if($_POST['wood']){
@@ -52,10 +52,10 @@ echo substr($map,0,strlen($map)-1);
 
       <form method="post">
         <tr>
-            <td width="100%">ЛОКАЦИЯ:</td>
+            <td width="100%">Р›РћРљРђР¦РРЇ:</td>
             <td><select name="locc">
-              <option<?php echo ((!$loc_editor['name'])?' selected="selected"':''); ?> value="0">Нет</option>
-              <option<?php echo (($loc_editor['name'])?' selected="selected"':''); ?> value="1">ДА</option>
+                    <option<?php echo((!$loc_editor['name']) ? ' selected="selected"' : ''); ?> value="0">РќРµС‚</option>
+                    <option<?php echo(($loc_editor['name']) ? ' selected="selected"' : ''); ?> value="1">Р”Рђ</option>
             </select></td>
           </tr>
                   <tr>
@@ -69,29 +69,41 @@ echo substr($map,0,strlen($map)-1);
       <form method="post">
         <table border="1" width="100%">
           <tr>
-            <td width="100%">Тип ботов:</td>
+              <td width="100%">РўРёРї Р±РѕС‚РѕРІ:</td>
             <td><select name="bots">
-              <option<?php echo (($loc_editor['BotTypes']==0)?' selected="selected"':''); ?> value="0">Нет Ботов</option>
-              <option<?php echo (($loc_editor['BotTypes']==1)?' selected="selected"':''); ?> value="1">Слабые</option>
-              <option<?php echo (($loc_editor['BotTypes']==2)?' selected="selected"':''); ?> value="2">Средние</option>
-              <option<?php echo (($loc_editor['BotTypes']==3)?' selected="selected"':''); ?> value="3">Сильные</option>
+                    <option<?php echo(($loc_editor['BotTypes'] == 0) ? ' selected="selected"' : ''); ?> value="0">РќРµС‚
+                        Р‘РѕС‚РѕРІ
+                    </option>
+                    <option<?php echo(($loc_editor['BotTypes'] == 1) ? ' selected="selected"' : ''); ?> value="1">
+                        РЎР»Р°Р±С‹Рµ
+                    </option>
+                    <option<?php echo(($loc_editor['BotTypes'] == 2) ? ' selected="selected"' : ''); ?> value="2">
+                        РЎСЂРµРґРЅРёРµ
+                    </option>
+                    <option<?php echo(($loc_editor['BotTypes'] == 3) ? ' selected="selected"' : ''); ?> value="3">
+                        РЎРёР»СЊРЅС‹Рµ
+                    </option>
             </select></td>
           </tr>
 
 
         <tr>
-            <td width="100%">ДЕРЕВЬЯ:</td>
+            <td width="100%">Р”Р•Р Р•Р’Р¬РЇ:</td>
 
             <td><select name="wood">
-              <option<?php echo (($loc_editor['wood']==0)?' selected="selected"':''); ?> value="4">Нет </option>
-              <option<?php echo (($loc_editor['wood']==1)?' selected="selected"':''); ?> value="1">ТИП 1</option>
-              <option<?php echo (($loc_editor['wood']==2)?' selected="selected"':''); ?> value="2">ТИП 2</option>
-              <option<?php echo (($loc_editor['wood']==3)?' selected="selected"':''); ?> value="3">ТИП 3</option>
+                    <option<?php echo(($loc_editor['wood'] == 0) ? ' selected="selected"' : ''); ?> value="4">РќРµС‚
+                    </option>
+                    <option<?php echo(($loc_editor['wood'] == 1) ? ' selected="selected"' : ''); ?> value="1">РўРРџ 1
+                    </option>
+                    <option<?php echo(($loc_editor['wood'] == 2) ? ' selected="selected"' : ''); ?> value="2">РўРРџ 2
+                    </option>
+                    <option<?php echo(($loc_editor['wood'] == 3) ? ' selected="selected"' : ''); ?> value="3">РўРРџ 3
+                    </option>
             </select></td>
           </tr>
 
           <tr>
-            <td colspan="2" align="center"><input name="BotsForm" type="submit" value="Сохранить" /></td>
+              <td colspan="2" align="center"><input name="BotsForm" type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/></td>
           </tr>
         </table>
       </form>
@@ -101,51 +113,69 @@ echo substr($map,0,strlen($map)-1);
       <form method="post">
         <table border="1" width="100%">
           <tr>
-            <td width="100%">Квесты:</td>
+              <td width="100%">РљРІРµСЃС‚С‹:</td>
             <td><select name="que">
-              <option<?php echo (($loc_editor['quest'])?' selected="selected"':''); ?> value="1" style="background:#0F0">да</option>
-              <option<?php echo (($loc_editor['quest'])?'':' selected="selected"'); ?> value="0" style="background:#F00">нет</option>
+                    <option<?php echo(($loc_editor['quest']) ? ' selected="selected"' : ''); ?> value="1"
+                                                                                                style="background:#0F0">
+                        РґР°
+                    </option>
+                    <option<?php echo(($loc_editor['quest']) ? '' : ' selected="selected"'); ?> value="0"
+                                                                                                style="background:#F00">
+                        РЅРµС‚
+                    </option>
             </select></td>
           </tr>
           <tr>
-            <td>Строительство:</td>
+              <td>РЎС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ:</td>
             <td><select name="bld">
-              <option<?php echo (($loc_editor['build'])?' selected="selected"':''); ?> value="1" style="background:#0F0">да</option>
-              <option<?php echo (($loc_editor['build'])?'':' selected="selected"'); ?> value="0" style="background:#F00">нет</option>
+                    <option<?php echo(($loc_editor['build']) ? ' selected="selected"' : ''); ?> value="1"
+                                                                                                style="background:#0F0">
+                        РґР°
+                    </option>
+                    <option<?php echo(($loc_editor['build']) ? '' : ' selected="selected"'); ?> value="0"
+                                                                                                style="background:#F00">
+                        РЅРµС‚
+                    </option>
             </select></td>
           </tr>
           <tr>
-            <td>Питье:</td>
+              <td>РџРёС‚СЊРµ:</td>
             <td><select name="dri">
-              <option<?php echo (($loc_editor['drink'])?' selected="selected"':''); ?> value="1" style="background:#0F0">да</option>
-              <option<?php echo (($loc_editor['drink'])?'':' selected="selected"'); ?> value="0" style="background:#F00">нет</option>
+                    <option<?php echo(($loc_editor['drink']) ? ' selected="selected"' : ''); ?> value="1"
+                                                                                                style="background:#0F0">
+                        РґР°
+                    </option>
+                    <option<?php echo(($loc_editor['drink']) ? '' : ' selected="selected"'); ?> value="0"
+                                                                                                style="background:#F00">
+                        РЅРµС‚
+                    </option>
             </select></td>
           </tr>
           <tr>
-            <td colspan="2" align="center"><input name="ProffForm" type="submit" value="Сохранить" /></td>
+              <td colspan="2" align="center"><input name="ProffForm" type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/></td>
           </tr>
         </table>
       </form>
 </td>
     <td align="center"><script>view_map();</script></td>
-    <td width="200" valign="top" align="center"><a href="javascript:MoveTo();">Позиция<br />
+      <td width="200" valign="top" align="center"><a href="javascript:MoveTo();">РџРѕР·РёС†РёСЏ<br/>
       X:<?php echo $pers['x']; ?> Y:<?php echo $pers['y']; ?></a>
       <hr />
-      <a href="javascript:LocName();" id="LocName_text">Локция: <?php echo $loc_editor['name']; ?></a>
+          <a href="javascript:LocName();" id="LocName_text">Р›РѕРєС†РёСЏ: <?php echo $loc_editor['name']; ?></a>
       <hr />
-      <a href="javascript:GoTo();" id="GoTo_text">Вход:
+          <a href="javascript:GoTo();" id="GoTo_text">Р’С…РѕРґ:
         <?php
 	  if($loc_editor['dep']){
 		  $locname = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `loc` WHERE `id`='".$loc_editor['dep']."'"));
 		  echo '<br>'.$locname['city'].'<br>['.$locname['loc']?$locname['loc']:$locname['loc'].'-'.$locname['room'].']';
 	  }else{
-		  echo 'Никуда';
+          echo 'РќРёРєСѓРґР°';
 	  }?>
       </a></td>
   </tr>
 </table>
 <?php
 }else{
-	echo"<center><b>Нет Доступа</b></center>";
+    echo "<center><b>РќРµС‚ Р”РѕСЃС‚СѓРїР°</b></center>";
 }
 ?>

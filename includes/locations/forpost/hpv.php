@@ -1,5 +1,5 @@
 <?php
-if($pers['clan_id']=='Life' or $pers['clan_id']=='Ñëóæèòåëè ïîðÿäêà' or $pers['clan_id']=='Âåðõîâíàÿ Èíêâèçèöèÿ' or $pers['clan_id']=='Ìýðèÿ ãîðîäà'){
+if ($pers['clan_id'] == 'Life' or $pers['clan_id'] == 'Ð¡Ð»ÑƒÐ¶Ð¸Ñ‚ÐµÐ»Ð¸ Ð¿Ð¾Ñ€ÑÐ´ÐºÐ°' or $pers['clan_id'] == 'Ð’ÐµÑ€Ñ…Ð¾Ð²Ð½Ð°Ñ Ð˜Ð½ÐºÐ²Ð¸Ð·Ð¸Ñ†Ð¸Ñ' or $pers['clan_id'] == 'ÐœÑÑ€Ð¸Ñ Ð³Ð¾Ñ€Ð¾Ð´Ð°') {
 $build = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `locations` WHERE `id` = '".$pers['loc']."'"));
 echo'
 <HTML>

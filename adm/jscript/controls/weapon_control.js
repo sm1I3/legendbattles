@@ -45,8 +45,8 @@ function showWeaponDiallog(uid, id_type, weapon_table)
     window_id = 'window_'+uid+'_'+uniqId();
     
     var mWindow = new ModalWindow(window_id);
-    
-    mWindow.title = 'Выбор оружия';
+
+    mWindow.title = 'Р’С‹Р±РѕСЂ РѕСЂСѓР¶РёСЏ';
     mWindow.content = '';
     mWindow.width = 500;
     mWindow.height = 300;
@@ -83,10 +83,10 @@ function showWeaponDiallog(uid, id_type, weapon_table)
     ed.value = '';
     
     // Weapon name
-    var text = document.createTextNode('Тип: ');
+    var text = document.createTextNode('РўРёРї: ');
     td1_1.appendChild(text);
     td1_1.appendChild(sl);
-    var text = document.createTextNode('Название: '); 
+    var text = document.createTextNode('РќР°Р·РІР°РЅРёРµ: '); 
     td1_2.appendChild(text);
     td1_2.appendChild(ed);
     
@@ -111,7 +111,7 @@ function showWeaponDiallog(uid, id_type, weapon_table)
         });
         
         return true;
-    }
+    };
     
     td1_2.appendChild(bt);
     
@@ -130,7 +130,7 @@ function showWeaponDiallog(uid, id_type, weapon_table)
                 mWindow.close(mWindow.windowId);
             }
         }
-    }
+    };
     
     // If some value has beed selected already
     ed.value = el(uid+'_nf').value;
@@ -146,10 +146,10 @@ function showWeaponDiallog(uid, id_type, weapon_table)
     // Cancel button
     var bcl = d.createElement('INPUT');
     bcl.type = 'button';
-    bcl.value = 'Отмена';
+    bcl.value = 'РћС‚РјРµРЅР°';
     bcl.onclick = function() { 
        mWindow.close(mWindow.windowId);
-    }
+    };
     
     td3_1.appendChild(d.createElement('BR'));
     td3_1.appendChild(bok);

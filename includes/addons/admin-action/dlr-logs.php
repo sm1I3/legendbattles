@@ -14,14 +14,14 @@ echo'
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location=\'adm.php\'" value="Вернуться">
-		<input type=button class=lbut onClick="location=\'dlr-logs.php\'" value="обновить">
+		<input type=button class=lbut onClick="location=\'adm.php\'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+		<input type=button class=lbut onClick="location=\'dlr-logs.php\'" value="РѕР±РЅРѕРІРёС‚СЊ">
 	</td>
    </tr>
    <tr>
     <td align=center>
 		<form method=post>
-			Введите ник: <input type=text class=logintextbox6 name=perslogin> <input type=submit class=lbut value="Ok">
+			Р’РІРµРґРёС‚Рµ РЅРёРє: <input type=text class=logintextbox6 name=perslogin> <input type=submit class=lbut value="Ok">
 		</form>
 	</td>
    </tr>
@@ -51,13 +51,13 @@ if($_POST['perslogin']){
 	$zapros = mysqli_query($GLOBALS['db_link'],"SELECT * FROM mlog WHERE (`login`='".$_POST['perslogin']."' or `tologin`='".$_POST['perslogin']."');");
 			echo'<table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
 		  <tr>
-			<td align=center><b>тип действия</b></td>
-			<td align=center><b>время</b></td>
-			<td align=center><b>ип</b></td>
-			<td align=center><b>что и куда изменилось</b></td>
-			<td align=center><b>сумма</b></td>
-			<td align=center><b>от кого</b></td>
-			<td align=center><b>кому</b></td>	
+			<td align=center><b>С‚РёРї РґРµР№СЃС‚РІРёСЏ</b></td>
+			<td align=center><b>РІСЂРµРјСЏ</b></td>
+			<td align=center><b>РёРї</b></td>
+			<td align=center><b>С‡С‚Рѕ Рё РєСѓРґР° РёР·РјРµРЅРёР»РѕСЃСЊ</b></td>
+			<td align=center><b>СЃСѓРјРјР°</b></td>
+			<td align=center><b>РѕС‚ РєРѕРіРѕ</b></td>
+			<td align=center><b>РєРѕРјСѓ</b></td>	
 		   </tr>';
 	while($row = mysqli_fetch_assoc($zapros)){
 		if($row['action']=='DLR-change' or $row['action']=='BKS-change'){

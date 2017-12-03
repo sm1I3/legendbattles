@@ -1,7 +1,7 @@
 <div class="block skill">
 	<div class="header">
 		<span>
-			Кено
+			РљРµРЅРѕ
 		</span>
 	</div>
 	<center>
@@ -97,7 +97,7 @@ echo "</TABLE>";
 
 if ($action == "play")
 {
-        echo "<B>Выпали такие номера:</B><BR>";
+    echo "<B>Р’С‹РїР°Р»Рё С‚Р°РєРёРµ РЅРѕРјРµСЂР°:</B><BR>";
         echo "<TABLE BORDER=0><TR>";
         $w = 0;
         while ($w < 20)
@@ -112,7 +112,7 @@ if ($action == "play")
                         echo "</TD></TR><TR>";}
         }
         echo "</TR></TABLE>";
-        echo "<B>Вы выбрали:</B><BR>";
+    echo "<B>Р’С‹ РІС‹Р±СЂР°Р»Рё:</B><BR>";
         $w = 0;
         while ($w < 10)
         {
@@ -121,11 +121,11 @@ if ($action == "play")
                 if ($w % 10 == 0)
                         echo "<BR>";
         }
-        echo "<B>Вы угадали <font color=red>$points</font> из десяти!</B>";
+    echo "<B>Р’С‹ СѓРіР°РґР°Р»Рё <font color=red>$points</font> РёР· РґРµСЃСЏС‚Рё!</B>";
 }
 
 echo "<TABLE BORDER=0>";
-echo "<tr><td><FORM METHOD=post ACTION=\"main.php?mselect=33&action=play&". time(). "\">Введите любые 10 чисел от 1 и до 80:</td></tr>";
+echo "<tr><td><FORM METHOD=post ACTION=\"main.php?mselect=33&action=play&" . time() . "\">Р’РІРµРґРёС‚Рµ Р»СЋР±С‹Рµ 10 С‡РёСЃРµР» РѕС‚ 1 Рё РґРѕ 80:</td></tr>";
 echo "<tr><td><INPUT TYPE=text SIZE=3 MAXLENGTH=2 NAME=n1 VALUE=\"$player_numbers[0]\"> &nbsp;";
 echo "<INPUT TYPE=text SIZE=3 MAXLENGTH=2 NAME=n2 VALUE=\"$player_numbers[1]\"> &nbsp;";
 echo "<INPUT TYPE=text SIZE=3 MAXLENGTH=2 NAME=n3 VALUE=\"$player_numbers[2]\"> &nbsp;";
@@ -136,39 +136,39 @@ echo "<INPUT TYPE=text SIZE=3 MAXLENGTH=2 NAME=n7 VALUE=\"$player_numbers[6]\"> 
 echo "<INPUT TYPE=text SIZE=3 MAXLENGTH=2 NAME=n8 VALUE=\"$player_numbers[7]\"> &nbsp;";
 echo "<INPUT TYPE=text SIZE=3 MAXLENGTH=2 NAME=n9 VALUE=\"$player_numbers[8]\"> &nbsp;";
 echo "<INPUT TYPE=text SIZE=3 MAXLENGTH=2 NAME=n10 VALUE=\"$player_numbers[9]\"> &nbsp;</td></tr>";
-echo "<tr><td align=center><INPUT TYPE=submit VALUE=\"Сыграть\"></FORM></td></tr>";
-//Выграши
+echo "<tr><td align=center><INPUT TYPE=submit VALUE=\"РЎС‹РіСЂР°С‚СЊ\"></FORM></td></tr>";
+//Р’С‹РіСЂР°С€Рё
 if(isset($points)){
 	switch($points){
 	case'1':
-	mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b> Вы угадали 1 из 10 .</b></font><font color=000000><b> Игрок  ".$player['login']." получает</b></font><BR>'+'');")."');");
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b> Р’С‹ СѓРіР°РґР°Р»Рё 1 РёР· 10 .</b></font><font color=000000><b> РРіСЂРѕРє  " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 		case'2':
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b>Вы угадали 2 из 10.</b></font><font color=FF0000><b> Игрок   ".$player['login']." получает</b></font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b>Р’С‹ СѓРіР°РґР°Р»Рё 2 РёР· 10.</b></font><font color=FF0000><b> РРіСЂРѕРє   " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 		case'3':
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b>Вы угадали 3 из 10.</b></font><font color=FF9900><b> Игрок   ".$player['login']." получает</b></font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b>Р’С‹ СѓРіР°РґР°Р»Рё 3 РёР· 10.</b></font><font color=FF9900><b> РРіСЂРѕРє   " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 		case'4':
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b>Вы угадали 4 из 10.</b></font><font color=FF9900><b> Игрок  ".$player['login']." получает</b></font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b>Р’С‹ СѓРіР°РґР°Р»Рё 4 РёР· 10.</b></font><font color=FF9900><b> РРіСЂРѕРє  " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 		case'5':
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b>Вы угадали 5 из 10.</b></font><font color=FF9900><b> Игрок  ".$player['login']." получает</b></font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b>Р’С‹ СѓРіР°РґР°Р»Рё 5 РёР· 10.</b></font><font color=FF9900><b> РРіСЂРѕРє  " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 		case'6':
-	mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b>Вы угадали 6 из 10.</b></font><font color=FF9900><b> Игрок   ".$player['login']." получает</b></font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b>Р’С‹ СѓРіР°РґР°Р»Рё 6 РёР· 10.</b></font><font color=FF9900><b> РРіСЂРѕРє   " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 		case'7':
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b>Вы угадали 7 из 10.</b></font><font color=FF9900><b> Игрок   ".$player['login']." получает</b></font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b>Р’С‹ СѓРіР°РґР°Р»Рё 7 РёР· 10.</b></font><font color=FF9900><b> РРіСЂРѕРє   " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 		case'8':
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b>Вы угадали 8 из 10.</b></font><font color=FF9900><b> Игрок   ".$player['login']." получает</b></font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b>Р’С‹ СѓРіР°РґР°Р»Рё 8 РёР· 10.</b></font><font color=FF9900><b> РРіСЂРѕРє   " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 		case'9':
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b>Вы угадали 9 из 10.</b></font><font color=FF9900><b> Игрок   ".$player['login']." получает</b></font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b>Р’С‹ СѓРіР°РґР°Р»Рё 9 РёР· 10.</b></font><font color=FF9900><b> РРіСЂРѕРє   " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 		case'10':
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Кено&nbsp;</font>     <font color=FF9900><b>Вы угадали 10 из 10.</b></font><font color=FF9900><b> Игрок   ".$player['login']." получает</b></font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РљРµРЅРѕ&nbsp;</font>     <font color=FF9900><b>Р’С‹ СѓРіР°РґР°Р»Рё 10 РёР· 10.</b></font><font color=FF9900><b> РРіСЂРѕРє   " . $player['login'] . " РїРѕР»СѓС‡Р°РµС‚</b></font><BR>'+'');") . "');");
 	break;
 }
 }

@@ -4,6 +4,6 @@
 	<div class="content">
 <?php
 echo'<script language=Javascript src="../../../js/create_art.js"> </script><SCRIPT src="./js/transfer.js"></SCRIPT>';
-echo "&nbsp;<a href=\"#\" onClick=\"transferform('2','0','»Изумруд','".scode()."','0','0','0','0')\" style=\"color:#cc0000;text-decoration:underline;\"><i>Если вы хотите  обменять изумруд <img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14> на золото <img src=http://img.legendbattles.ru/image/gold.png width=14 height=14> вам  сюда. Обмен валют</i></a>";
+echo "&nbsp;<a href=\"#\" onClick=\"transferform('2','0','В»РР·СѓРјСЂСѓРґ','" . scode() . "','0','0','0','0')\" style=\"color:#cc0000;text-decoration:underline;\"><i>Р•СЃР»Рё РІС‹ С…РѕС‚РёС‚Рµ  РѕР±РјРµРЅСЏС‚СЊ РёР·СѓРјСЂСѓРґ <img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14> РЅР° Р·РѕР»РѕС‚Рѕ <img src=http://img.legendbattles.ru/image/gold.png width=14 height=14> РІР°Рј  СЃСЋРґР°. РћР±РјРµРЅ РІР°Р»СЋС‚</i></a>";
 
 ?>

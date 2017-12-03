@@ -1,7 +1,7 @@
 <font class="nickname"><font color="#222222">
 <div class="block info">
 	<div class="header">
-		<span>Документы Клана</span>
+        <span>Р”РѕРєСѓРјРµРЅС‚С‹ РљР»Р°РЅР°</span>
 	</div>
   <table cellpadding="5" cellspacing="0" border="0" width="100%">
     <tr>
@@ -12,11 +12,11 @@ $result = '';
 if(mysqli_num_rows($query)>0){
 	$result .= (($msg)?'<center><font color="#FF0000">'.$msg.'</font></center><br />':'');
 	while($row = mysqli_fetch_assoc($query)){
-		$result .= '<font color="#3564A5"><b><font color="#dd0000">'.date("d.m.Y H:i:s",$row['date']).'</font> '.$row['title'].'</b>'.(($pers['clan_status'] == 9)?'&nbsp;<a href="?useaction=clan-action&addid=4&get_id=29&clan_act=3&doc_id='.$row['id'].'&vcode='.vCode().'"><img src="/img/image/del.gif" alt="Уничтожить документ" title="Уничтожить документ"></a>':'').'</font><br />'.$row['msg'].'<br /><br />';
+        $result .= '<font color="#3564A5"><b><font color="#dd0000">' . date("d.m.Y H:i:s", $row['date']) . '</font> ' . $row['title'] . '</b>' . (($pers['clan_status'] == 9) ? '&nbsp;<a href="?useaction=clan-action&addid=4&get_id=29&clan_act=3&doc_id=' . $row['id'] . '&vcode=' . vCode() . '"><img src="/img/image/del.gif" alt="РЈРЅРёС‡С‚РѕР¶РёС‚СЊ РґРѕРєСѓРјРµРЅС‚" title="РЈРЅРёС‡С‚РѕР¶РёС‚СЊ РґРѕРєСѓРјРµРЅС‚"></a>' : '') . '</font><br />' . $row['msg'] . '<br /><br />';
 	}
 	echo substr($result,0,strlen($result)-6);
 }else{
-	echo'<center>Не найдено ни одного документа</center>';
+    echo '<center>РќРµ РЅР°Р№РґРµРЅРѕ РЅРё РѕРґРЅРѕРіРѕ РґРѕРєСѓРјРµРЅС‚Р°</center>';
 }
 ?></font></td>
     </tr>
@@ -32,19 +32,19 @@ echo'<form method="post" action=""><table cellpadding="0" cellspacing="0" width=
   <tr>
     <td><div class="block info">
 	<div class="header">
-		<span>Создать документ</span>
+		<span>РЎРѕР·РґР°С‚СЊ РґРѕРєСѓРјРµРЅС‚</span>
 	</div><table cellpadding="3" cellspacing="0" width="100%" border="0">
       <tr>
-        <td><font class="freemain"><b><font color="#336699">Заголовок:</font></b></font></td>
+        <td><font class="freemain"><b><font color="#336699">Р—Р°РіРѕР»РѕРІРѕРє:</font></b></font></td>
         <td width="100%"><input type="text" name="doc_title" size="30" class="LogintextBox4" maxlength="255" value="" style="width:99%;" /></td>
       </tr>
       <tr>
-        <td colspan="2"><font class="freemain"><b><font color="#336699">Сообщение: </font></b></font></td>
+        <td colspan="2"><font class="freemain"><b><font color="#336699">РЎРѕРѕР±С‰РµРЅРёРµ: </font></b></font></td>
       </tr>
       <tr>
         <td colspan="2"><textarea class="LogintextBox6" cols="61" rows="10" name="doc_subj" style="width: 99%;"></textarea></td>
       </tr>
-      <tr><td colspan="2" align="center"><input type="submit" class="lbut" value="Создать" />
+      <tr><td colspan="2" align="center"><input type="submit" class="lbut" value="РЎРѕР·РґР°С‚СЊ" />
 </td></tr>
     </table></div></td>
   </tr>

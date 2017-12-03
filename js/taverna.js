@@ -44,7 +44,7 @@ function StateReady(res)
 				if(all_i >= k)
 				{
 					str_pr = arr_res[k].split('|');
-					td_obj.innerHTML = '<img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=5><br><img src=http://img.legendbattles.ru/image/tools/'+str_pr[2]+'.gif width=60 height=60 onMouseover="ToolTip(eval('+str_pr[8]+'));" onMouseout="HideToolTip();" onMousemove="ChangePos(event);"><br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=5><br><b>Стоимость: '+str_pr[4]+' LR</b><br>Остаток: '+str_pr[1]+'<br><br>'+AddButton(eval(str_pr[9]));
+                    td_obj.innerHTML = '<img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=5><br><img src=http://img.legendbattles.ru/image/tools/' + str_pr[2] + '.gif width=60 height=60 onMouseover="ToolTip(eval(' + str_pr[8] + '));" onMouseout="HideToolTip();" onMousemove="ChangePos(event);"><br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=5><br><b>РЎС‚РѕРёРјРѕСЃС‚СЊ: ' + str_pr[4] + ' LR</b><br>РћСЃС‚Р°С‚РѕРє: ' + str_pr[1] + '<br><br>' + AddButton(eval(str_pr[9]));
 				}
 				
 				td_obj.bgColor = '#FFFFFF';
@@ -61,10 +61,10 @@ function StateReady(res)
 function view_taverna()
 {
 	view_build_top();
-	var Title = ['','Выпивка','Еда/Закуска'];
+    var Title = ['', 'Р’С‹РїРёРІРєР°', 'Р•РґР°/Р—Р°РєСѓСЃРєР°'];
 	d.write('<div id="tooltip"></div><table cellpadding=0 cellspacing=0 border=0 align=center width=760><tr><td><img src=http://img.legendbattles.ru/image/gameplay/taverna/taverna.jpg width=760 height=255 border=0></td></tr><tr><td><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=2></td></tr><tr><td bgcolor=#CCCCCC><table cellpadding=4 cellspacing=1 border=0 width=100%><tr>');
 	for(var i=1; i<3; i++) d.write('<td bgcolor=#FFFFFF align=center width=50% id="Cat'+i+'"><b><a href="javascript: TavernaShow('+i+');"><font class=category>'+Title[i]+'</font></a></b></td>');
-	d.write('</tr></table></td></tr><tr><td><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=2></td></tr><tr><td bgcolor=#CCCCCC><table cellpadding=4 cellspacing=1 border=0 width=100%><tr><td align=center class=inv bgcolor=#FFFFFF><B>У Вас с собой '+taverna[0]+' LR</B></td></tr></table></td></tr></table><table cellpadding=0 cellspacing=0 border=0 align=center width=760 id="DynTableData"></table>');
+    d.write('</tr></table></td></tr><tr><td><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=2></td></tr><tr><td bgcolor=#CCCCCC><table cellpadding=4 cellspacing=1 border=0 width=100%><tr><td align=center class=inv bgcolor=#FFFFFF><B>РЈ Р’Р°СЃ СЃ СЃРѕР±РѕР№ ' + taverna[0] + ' LR</B></td></tr></table></td></tr></table><table cellpadding=0 cellspacing=0 border=0 align=center width=760 id="DynTableData"></table>');
 	view_build_bottom();
 }
 

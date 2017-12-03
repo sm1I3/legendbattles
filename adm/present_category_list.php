@@ -19,10 +19,10 @@ while ($row = mysql_fetch_assoc($res))
 {
     $categories .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить эту категорию?\');" href="present_category_list.php?delete_pr_cat_id='.$row['pr_cat_id'].'" title="Удалить категорию"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="present_category_edit.php?category_id='.$row['pr_cat_id'].'" title="Изменить категорию"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ РєР°С‚РµРіРѕСЂРёСЋ?\');" href="present_category_list.php?delete_pr_cat_id=' . $row['pr_cat_id'] . '" title="РЈРґР°Р»РёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="present_category_edit.php?category_id=' . $row['pr_cat_id'] . '" title="РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['pr_cat_id'].'</td>
-      <td class="cms_middle"><a href="present_category_edit.php?category_id='.$row['pr_cat_id'].'" title="Изменить категорию">'._htext($row['pr_cat_title']).'</a></td>
+      <td class="cms_middle"><a href="present_category_edit.php?category_id=' . $row['pr_cat_id'] . '" title="РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ">' . _htext($row['pr_cat_title']) . '</a></td>
       <td class="cms_middle">'.date('Y-m-d H:i:s', $row['pr_cat_start']).'</td>
       <td class="cms_middle">'.date('Y-m-d H:i:s', $row['pr_cat_end']).'</td>
     </tr>
@@ -30,19 +30,19 @@ while ($row = mysql_fetch_assoc($res))
 }
 
 ?>
-<h3>Категории подарков</h3>
+    <h3>РљР°С‚РµРіРѕСЂРёРё РїРѕРґР°СЂРєРѕРІ</h3>
 <div class="cms_ind">
 <br />
-Категории подарков: <br />
+    РљР°С‚РµРіРѕСЂРёРё РїРѕРґР°СЂРєРѕРІ: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Категории</td>
-      <td class="cms_cap2">Название категории</td>
-      <td class="cms_cap2">Начало действия</td>
-      <td class="cms_cap2">Конец действия</td>
+        <td class="cms_cap2">ID РљР°С‚РµРіРѕСЂРёРё</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё</td>
+        <td class="cms_cap2">РќР°С‡Р°Р»Рѕ РґРµР№СЃС‚РІРёСЏ</td>
+        <td class="cms_cap2">РљРѕРЅРµС† РґРµР№СЃС‚РІРёСЏ</td>
     </tr>
     
     <?=$categories?>
@@ -50,7 +50,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить категорию" /><a href="present_category_edit.php" title="Добавить категорию">Добавить категорию</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ"/><a href="present_category_edit.php"
+                                                                         title="Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ">Р”РѕР±Р°РІРёС‚СЊ
+    РєР°С‚РµРіРѕСЂРёСЋ</a> &nbsp;<br/>
  <br />
 
 <? require('kernel/after.php'); ?>

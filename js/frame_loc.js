@@ -1,13 +1,13 @@
 d=document;
-// Верхнее меню (лево)
+// Р’РµСЂС…РЅРµРµ РјРµРЅСЋ (Р»РµРІРѕ)
 var tbl_main_top_left = '<TABLE cellpadding=0 cellspacing=0 height=100% width=100%><TR><TD><IMG SRC="/images/1x1.gif" WIDTH="10" HEIGHT="34" BORDER="0"></TD><TD width=100%><TABLE cellpadding=0 cellspacing=0 width=100% background="/images/1x1.gif" height="34"><TR><TD id=button class="tbl_top_left">';
-// Верхнее меню (Центр)
+// Р’РµСЂС…РЅРµРµ РјРµРЅСЋ (Р¦РµРЅС‚СЂ)
 var tbl_main_center = '</td><td class="tbl_top_right">';
-// Верхнее меню (Право)
+// Р’РµСЂС…РЅРµРµ РјРµРЅСЋ (РџСЂР°РІРѕ)
 var tbl_main_top_right = '</TD></TR></TABLE></TD><TD><IMG SRC="/images/1x1.gif" WIDTH="10" HEIGHT="34" BORDER="0"></TD></TR><TR height=100%><TD><TABLE cellpadding=0 cellspacing=0 height=100%><TR><TD><IMG SRC="/images/1x1.gif" WIDTH="10" HEIGHT="16" BORDER="0"></TD></TR><TR height=100%><TD></TD></TR><TR><TD><IMG SRC="/images/1x1.gif" WIDTH="10" HEIGHT="16" BORDER="0"></TD></TR></TABLE></TD><TD valign=top id=resend>';
-// Нижнее меню (лево)
+// РќРёР¶РЅРµРµ РјРµРЅСЋ (Р»РµРІРѕ)
 var tbl_main_bot_left = '<TD><TABLE cellpadding=0 cellspacing=0 height=100%><TR><TD><IMG SRC="/images/1x1.gif" WIDTH="10" HEIGHT="16" BORDER="0"></TD></TR><TR height=100%><TD></TD></TR><TR><TD><IMG SRC="/images/1x1.gif" WIDTH="10" HEIGHT="16" BORDER="0"></TD></TR></TABLE></TD></TR><TR><TD><IMG SRC="/images/1x1.gif" WIDTH="10" HEIGHT="53" BORDER="0"></TD><TD width=100%><TABLE cellpadding=0 cellspacing=0 width=100%><TR><TD><IMG SRC="/images/1x1.gif" WIDTH="44" HEIGHT="53" BORDER="0"></TD><TD width=100% valign=top align=center>';
-// Нижнее меню (право)
+// РќРёР¶РЅРµРµ РјРµРЅСЋ (РїСЂР°РІРѕ)
 var tbl_main_bot_right = '</TD><TD><IMG SRC="/images/1x1.gif" WIDTH="45" HEIGHT="53" BORDER="0"></TD></TR></TABLE></TD><TD><IMG SRC="/images/1x1.gif" WIDTH="10" HEIGHT="53" BORDER="0"></TD></TR></TABLE>';
 
 
@@ -41,21 +41,24 @@ function title(txt)
 {
 	return '<center><TABLE cellpadding=0 cellspacing=0 class=mar5><TR><TD><IMG SRC="/images/1x1.gif" WIDTH="25" HEIGHT="26" BORDER="0"></TD><TD class=tit><nobr>'+txt+'</nobr></TD><TD><IMG SRC="/images/1x1.gif" WIDTH="25" HEIGHT="26" BORDER="0"></TD></TR></TABLE></center>';
 }
-// Вывод стандартного меню
+
+// Р’С‹РІРѕРґ СЃС‚Р°РЅРґР°СЂС‚РЅРѕРіРѕ РјРµРЅСЋ
 function main_menu(act, txt, click)
 {
 	add = act == 1 ? '_act' : '';
 	al = act == 2 ? 'right' : 'left';
 	return '<table cellpadding=0 cellspacing=1 align='+al+'><tr><td><IMG SRC="/images/1x1.gif" WIDTH="23" HEIGHT="34" BORDER="0"></TD><TD class="but_menu curh" onClick="'+click+'" title="'+txt+'" nowrap>'+txt+'</TD><TD><IMG SRC="/images/1x1.gif" WIDTH="22" HEIGHT="34" BORDER="0"></TD></tr></table>';
 }
-// Вывод меню с открытием второго окна
+
+// Р’С‹РІРѕРґ РјРµРЅСЋ СЃ РѕС‚РєСЂС‹С‚РёРµРј РІС‚РѕСЂРѕРіРѕ РѕРєРЅР°
 function main_menu_target(act, txt, click)
 {
 	add = act == 1 ? '_act' : '';
 	al = act == 2 ? 'right' : 'left';
 	return '<table cellpadding=0 cellspacing=1 align='+al+'><tr><td><IMG SRC="/images/1x1.gif" WIDTH="23" HEIGHT="34" BORDER="0"></TD><TD class="but_menu curh" onClick="'+click+'" title="'+txt+'" nowrap><a href="'+click+'" target=_blank><font color=#FFE4AA>'+txt+'</font></a></TD><TD><IMG SRC="/images/1x1.gif" WIDTH="22" HEIGHT="34" BORDER="0"></TD></tr></table>';
 }
-// Вывод меню без клика
+
+// Р’С‹РІРѕРґ РјРµРЅСЋ Р±РµР· РєР»РёРєР°
 function main_menu_title(act, txt)
 {
 	add = act == 1 ? '_act' : '';
@@ -63,14 +66,15 @@ function main_menu_title(act, txt)
 	return '<table cellpadding=0 cellspacing=1 align='+al+'><tr><td><IMG SRC="/images/1x1.gif" WIDTH="23" HEIGHT="34" BORDER="0"></TD><TD class="title2"><nobr id=titl>'+txt+'</nobr></TD><TD><IMG SRC="/images/1x1.gif" WIDTH="22" HEIGHT="34" BORDER="0"></TD></tr></table>';
 }
 
-// Вывод меню без клика
+// Р’С‹РІРѕРґ РјРµРЅСЋ Р±РµР· РєР»РёРєР°
 function main_menu_zamok(act, txt)
 {
 	add = act == 1 ? '_act' : '';
 	al = act == 2 ? 'center' : 'center';
 	return '<table cellpadding=0 cellspacing=1 align='+al+'><tr><td><IMG SRC="/images/1x1.gif" WIDTH="23" HEIGHT="34" BORDER="0"></TD><TD class="zamok"><nobr id=titl>'+txt+'</nobr></TD><TD><IMG SRC="/images/1x1.gif" WIDTH="22" HEIGHT="34" BORDER="0"></TD></tr></table>';
 }
-// Вывод помощи без клика
+
+// Р’С‹РІРѕРґ РїРѕРјРѕС‰Рё Р±РµР· РєР»РёРєР°
 function main_menu_help(act, txt)
 {
 	add = act == 1 ? '_act' : '';

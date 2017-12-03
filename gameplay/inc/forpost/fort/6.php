@@ -58,21 +58,21 @@ if($_POST['change_storm']){
 		}
 	}
 }
-echo'Следующий штурм назначен на <b>'.date('d.m.Y H:i',$Fort['storm_stamp']).'</b>.';
+echo 'РЎР»РµРґСѓСЋС‰РёР№ С€С‚СѓСЂРј РЅР°Р·РЅР°С‡РµРЅ РЅР° <b>' . date('d.m.Y H:i', $Fort['storm_stamp']) . '</b>.';
 if(!$Fort['storm_stamp_changed'] and ($Fort['storm_stamp']-time() > 172800)){
-	echo'Что с этим можно сделать:
+    echo 'Р§С‚Рѕ СЃ СЌС‚РёРј РјРѕР¶РЅРѕ СЃРґРµР»Р°С‚СЊ:
 <form method="post">
-<input type="radio" name="day" value="less" class="check"><i>На день раньше</i> - бесплатно<br/>
-<input type="radio" name="day" value="more" class="check"><i>На день позже</i> - бесплатно<br/>
+<input type="radio" name="day" value="less" class="check"><i>РќР° РґРµРЅСЊ СЂР°РЅСЊС€Рµ</i> - Р±РµСЃРїР»Р°С‚РЅРѕ<br/>
+<input type="radio" name="day" value="more" class="check"><i>РќР° РґРµРЅСЊ РїРѕР·Р¶Рµ</i> - Р±РµСЃРїР»Р°С‚РЅРѕ<br/>
 <hr>
-'.((date('H',$Fort['storm_stamp'])!='12') ? '<input type="radio" name="time" value="12" class="check"><i>В 12 часов</i> - 500 LR.<br/>' : '' ).'
-'.((date('H',$Fort['storm_stamp'])!='17') ? '<input type="radio" name="time" value="17" class="check"><i>В 17 часов</i> - 500 LR.<br/>' : '' ).'
-'.((date('H',$Fort['storm_stamp'])!='22') ? '<input type="radio" name="time" value="22" class="check"><i>В 22 часа</i> - 500 LR.<br/>' : '' ).'
-<input type="submit" name="change_storm" value="Изменить дату/время" onclick="return confirm(\'Внимание! Менять дату и время конкретного штурма можно только один раз! Точно меняем??\')" class="lbut">
+' . ((date('H', $Fort['storm_stamp']) != '12') ? '<input type="radio" name="time" value="12" class="check"><i>Р’ 12 С‡Р°СЃРѕРІ</i> - 500 LR.<br/>' : '') . '
+' . ((date('H', $Fort['storm_stamp']) != '17') ? '<input type="radio" name="time" value="17" class="check"><i>Р’ 17 С‡Р°СЃРѕРІ</i> - 500 LR.<br/>' : '') . '
+' . ((date('H', $Fort['storm_stamp']) != '22') ? '<input type="radio" name="time" value="22" class="check"><i>Р’ 22 С‡Р°СЃР°</i> - 500 LR.<br/>' : '') . '
+<input type="submit" name="change_storm" value="РР·РјРµРЅРёС‚СЊ РґР°С‚Сѓ/РІСЂРµРјСЏ" onclick="return confirm(\'Р’РЅРёРјР°РЅРёРµ! РњРµРЅСЏС‚СЊ РґР°С‚Сѓ Рё РІСЂРµРјСЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ С€С‚СѓСЂРјР° РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РѕРґРёРЅ СЂР°Р·! РўРѕС‡РЅРѕ РјРµРЅСЏРµРј??\')" class="lbut">
 </form>';
 }else{
-	echo'Изменение даты и времени штурма больше невозможно.';
+    echo 'РР·РјРµРЅРµРЅРёРµ РґР°С‚С‹ Рё РІСЂРµРјРµРЅРё С€С‚СѓСЂРјР° Р±РѕР»СЊС€Рµ РЅРµРІРѕР·РјРѕР¶РЅРѕ.';
 }
 echo'<div style="padding: 10 0 0 0px">
 <hr>
-Так же в будущем на этой странице будут возможности отстройки форта в части усиления защиты при штурме - бонусы на жизни, броню, удар...</div>';
+РўР°Рє Р¶Рµ РІ Р±СѓРґСѓС‰РµРј РЅР° СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ Р±СѓРґСѓС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РѕС‚СЃС‚СЂРѕР№РєРё С„РѕСЂС‚Р° РІ С‡Р°СЃС‚Рё СѓСЃРёР»РµРЅРёСЏ Р·Р°С‰РёС‚С‹ РїСЂРё С€С‚СѓСЂРјРµ - Р±РѕРЅСѓСЃС‹ РЅР° Р¶РёР·РЅРё, Р±СЂРѕРЅСЋ, СѓРґР°СЂ...</div>';

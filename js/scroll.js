@@ -1,7 +1,7 @@
 
 /***********************************************
 
-* Scroll To Top Control script- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+ * Scroll To Top Control script- Β© Dynamic Drive DHTML code library (www.dynamicdrive.com)
 
 * Modified by www.MyBloggerTricks.com
 
@@ -102,7 +102,7 @@ var scrolltotop={
             mainobj.$body=(window.opera)? (document.compatMode=="CSS1Compat"? $('html') : $('body')) : $('html,body')
             mainobj.$control=$('<div id="topcontrol" style="z-index: 9;">'+mainobj.controlHTML+'</div>')
                 .css({position:mainobj.cssfixedsupport? 'fixed' : 'absolute', bottom:mainobj.controlattrs.offsety, right:mainobj.controlattrs.offsetx, opacity:0, cursor:'pointer'})
-                .attr({title:'Νΰβεπυ'})
+                .attr({title: 'ΠΠ°Π²ΠµΡ€Ρ…'})
                 .click(function(){mainobj.scrollup(); return false})
                 .appendTo('body')
             if (document.all && !window.XMLHttpRequest && mainobj.$control.text()!='') //loose check for IE6 and below, plus whether control contains any text

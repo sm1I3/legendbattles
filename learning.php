@@ -2,13 +2,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>Legend Battles — бесплатная онлайн игра . Начало пути</title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <title>Legend Battles вЂ” Р±РµСЃРїР»Р°С‚РЅР°СЏ РѕРЅР»Р°Р№РЅ РёРіСЂР° . РќР°С‡Р°Р»Рѕ РїСѓС‚Рё</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="3" />
 <meta name="robots" content="ALL" />
-<meta name="keywords" content="игры онлайн, игры, rpg игра, играть, рпг, онлайн, online, стратегия, мморпг, mmorpg, браузерная, игрового, игрокам" />
-<meta name="description" content="Онлайн игра (online game) ММОРПГ. Стратегия в реальном времени. Об игре" />
+    <meta name="keywords"
+          content="РёРіСЂС‹ РѕРЅР»Р°Р№РЅ, РёРіСЂС‹, rpg РёРіСЂР°, РёРіСЂР°С‚СЊ, СЂРїРі, РѕРЅР»Р°Р№РЅ, online, СЃС‚СЂР°С‚РµРіРёСЏ, РјРјРѕСЂРїРі, mmorpg, Р±СЂР°СѓР·РµСЂРЅР°СЏ, РёРіСЂРѕРІРѕРіРѕ, РёРіСЂРѕРєР°Рј"/>
+    <meta name="description" content="РћРЅР»Р°Р№РЅ РёРіСЂР° (online game) РњРњРћР РџР“. РЎС‚СЂР°С‚РµРіРёСЏ РІ СЂРµР°Р»СЊРЅРѕРј РІСЂРµРјРµРЅРё. РћР± РёРіСЂРµ"/>
 <meta name="rating" content="General" />
 <meta name="distribution" content="GLOBAL" />
 <meta name="Classification" content="On-line Game" />
@@ -20,114 +21,143 @@
 <script type="text/javascript"src="/js/_flash.js"></script>
 </head>
 <body>
-<HEAD><LINK href=../css/game.css rel=STYLESHEET type=text/css><LINK href=../css/stl.css rel=STYLESHEET type=text/css><meta content="text/html; charset=windows-1251" http-equiv=Content-type><META Http-Equiv=Cache-Control Content=no-cache><meta http-equiv=PRAGMA content=NO-CACHE><META Http-Equiv=Expires Content=0></HEAD><body bgcolor=#ffffff topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0 link=#336699 alink=#336699 vlink=#336699>
+<HEAD>
+    <LINK href=../css/game.css rel=STYLESHEET type=text/css>
+    <LINK href=../css/stl.css rel=STYLESHEET type=text/css>
+    <meta content="text/html; charset=utf-8" http-equiv=Content-type>
+    <META Http-Equiv=Cache-Control Content=no-cache>
+    <meta http-equiv=PRAGMA content=NO-CACHE>
+    <META Http-Equiv=Expires Content=0>
+</HEAD>
+<body bgcolor=#ffffff topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0 link=#336699
+      alink=#336699 vlink=#336699>
 	</div>
 	<div class="content" style="text-align:center">
 		<div>
             	<p class="main_text_aboutthegame">
-                <font color=#003399><b>Добро пожаловать Новобранец.</b>
+                    <font color=#003399><b>Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РќРѕРІРѕР±СЂР°РЅРµС†.</b>
                 </p>
                 <p class="main_text_aboutthegame">
-                <font color=#993399><b>Для начала,вам не обходимо взять квест,который вы сможете найти нажав <font color=#CC0033> "Локация/квест"</b>	
-               </p>
-<center><a href="http://i.imgur.com/38ht98n.png" rel="lightbox" title="Информация" onFocus="this.blur();"><img 
+                    <font color=#993399><b>Р”Р»СЏ РЅР°С‡Р°Р»Р°,РІР°Рј РЅРµ РѕР±С…РѕРґРёРјРѕ РІР·СЏС‚СЊ РєРІРµСЃС‚,РєРѕС‚РѕСЂС‹Р№ РІС‹ СЃРјРѕР¶РµС‚Рµ РЅР°Р№С‚Рё РЅР°Р¶Р°РІ <font
+                                    color=#CC0033> "Р›РѕРєР°С†РёСЏ/РєРІРµСЃС‚"</b>
+                </p>
+            <center><a href="http://i.imgur.com/38ht98n.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ"
+                       onFocus="this.blur();"><img
 src="http://i.imgur.com/38ht98n.png" width="694" height="361" 
 style="cursor:pointer;"></a></center>
 				<p class="main_text_aboutthegame">
-                <font color=#003399><b>В квсети три пункта.</b>
+                    <font color=#003399><b>Р’ РєРІСЃРµС‚Рё С‚СЂРё РїСѓРЅРєС‚Р°.</b>
 				</p>
 				<p class="main_text_aboutthegame">
-				1.Вам не  обходима зайти в инвентарь использовать "Сдобную булочку <img src="http://img.legendbattles.ru/image/weapon/bulki.png">
+                    1.Р’Р°Рј РЅРµ РѕР±С…РѕРґРёРјР° Р·Р°Р№С‚Рё РІ РёРЅРІРµРЅС‚Р°СЂСЊ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ "РЎРґРѕР±РЅСѓСЋ Р±СѓР»РѕС‡РєСѓ <img
+                            src="http://img.legendbattles.ru/image/weapon/bulki.png">
 				</p>
-				Потом нажимаем на кнопку Назад и видим.
+            РџРѕС‚РѕРј РЅР°Р¶РёРјР°РµРј РЅР° РєРЅРѕРїРєСѓ РќР°Р·Р°Рґ Рё РІРёРґРёРј.
 				</p>
-<center><a href="http://i.imgur.com/mX8Ck9k.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+            <center><a href="http://i.imgur.com/mX8Ck9k.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                       onFocus="this.blur();"><img
 src="http://i.imgur.com/mX8Ck9k.png" width="694" height="361"></a></center>
 				<p class="main_text_aboutthegame">
-                2.В квести было указано использовать булочку и потом поговорить с Вождём.<img src="http://i.imgur.com/yxuiyPj.png">
+                    2.Р’ РєРІРµСЃС‚Рё Р±С‹Р»Рѕ СѓРєР°Р·Р°РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р±СѓР»РѕС‡РєСѓ Рё РїРѕС‚РѕРј РїРѕРіРѕРІРѕСЂРёС‚СЊ СЃ Р’РѕР¶РґС‘Рј.<img
+                            src="http://i.imgur.com/yxuiyPj.png">
 				</p>
 				<p class="main_text_aboutthegame">
-		        Вождь Торгор. Прежде чем слушать отключите обновления фрейма. Который находться в настройках ПЕРСОНАЖА. Послушать 
+                    Р’РѕР¶РґСЊ РўРѕСЂРіРѕСЂ. РџСЂРµР¶РґРµ С‡РµРј СЃР»СѓС€Р°С‚СЊ РѕС‚РєР»СЋС‡РёС‚Рµ РѕР±РЅРѕРІР»РµРЅРёСЏ С„СЂРµР№РјР°. РљРѕС‚РѕСЂС‹Р№ РЅР°С…РѕРґС‚СЊСЃСЏ РІ РЅР°СЃС‚СЂРѕР№РєР°С…
+                    РџР•Р РЎРћРќРђР–Рђ. РџРѕСЃР»СѓС€Р°С‚СЊ
 				</p>
-<center><a href="http://i.imgur.com/LdM0Vjz.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+            <center><a href="http://i.imgur.com/LdM0Vjz.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                       onFocus="this.blur();"><img
 src="http://i.imgur.com/LdM0Vjz.png" width="794" height="261"></a></center>
-<center><a href="http://i.imgur.com/tin0NRM.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+            <center><a href="http://i.imgur.com/tin0NRM.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                       onFocus="this.blur();"><img
 src="http://i.imgur.com/tin0NRM.png" width="794" height="361"></a></center>
 				<p class="main_text_aboutthegame">
-                После того как вы отключите обновления фреймом.- Вернитесь к Вождю.И нажмите кнопку слушать.
+                    РџРѕСЃР»Рµ С‚РѕРіРѕ РєР°Рє РІС‹ РѕС‚РєР»СЋС‡РёС‚Рµ РѕР±РЅРѕРІР»РµРЅРёСЏ С„СЂРµР№РјРѕРј.- Р’РµСЂРЅРёС‚РµСЃСЊ Рє Р’РѕР¶РґСЋ.Р РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ СЃР»СѓС€Р°С‚СЊ.
 				</p>
-<center><a href="http://i.imgur.com/EXSYT1M.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+            <center><a href="http://i.imgur.com/EXSYT1M.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                       onFocus="this.blur();"><img
 src="http://i.imgur.com/EXSYT1M.png" width="694" height="361"></a></center>
 				<p class="main_text_aboutthegame">
-                	Когда диалог закончится в конце вы увидите кнопку Спасибо
+                    РљРѕРіРґР° РґРёР°Р»РѕРі Р·Р°РєРѕРЅС‡РёС‚СЃСЏ РІ РєРѕРЅС†Рµ РІС‹ СѓРІРёРґРёС‚Рµ РєРЅРѕРїРєСѓ РЎРїР°СЃРёР±Рѕ
 				</p>
-				После этого вы получите ножи новичка,которые вы проносите до 7-10 уровня.
+            РџРѕСЃР»Рµ СЌС‚РѕРіРѕ РІС‹ РїРѕР»СѓС‡РёС‚Рµ РЅРѕР¶Рё РЅРѕРІРёС‡РєР°,РєРѕС‚РѕСЂС‹Рµ РІС‹ РїСЂРѕРЅРѕСЃРёС‚Рµ РґРѕ 7-10 СѓСЂРѕРІРЅСЏ.
 				</p>
-				<center><a href="http://i.imgur.com/LSTCmYK.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+            <center><a href="http://i.imgur.com/LSTCmYK.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                       onFocus="this.blur();"><img
 src="http://i.imgur.com/LSTCmYK.png" width="694" height="361"></a></center>
 				<p class="main_text_aboutthegame">
-                Раскидываем статы по требованию ножа.
+                    Р Р°СЃРєРёРґС‹РІР°РµРј СЃС‚Р°С‚С‹ РїРѕ С‚СЂРµР±РѕРІР°РЅРёСЋ РЅРѕР¶Р°.
                 </p>
-				Осталось 7 Новые повышения Желательно кинуть 4 на Проворность и 3 на Здоровье: 3. 
+            РћСЃС‚Р°Р»РѕСЃСЊ 7 РќРѕРІС‹Рµ РїРѕРІС‹С€РµРЅРёСЏ Р–РµР»Р°С‚РµР»СЊРЅРѕ РєРёРЅСѓС‚СЊ 4 РЅР° РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ Рё 3 РЅР° Р—РґРѕСЂРѕРІСЊРµ: 3.
 				</p>
-<center><a href="http://i.imgur.com/aRtiiBL.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+            <center><a href="http://i.imgur.com/aRtiiBL.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                       onFocus="this.blur();"><img
 src="http://i.imgur.com/aRtiiBL.png" width="894" height="361" 
             <td width="700" height="230" valign="top" class="main_text"><div style="padding-right:30px; width:700px; 
 height:130px;">
 </p>
             	<p class="main_text_aboutthegame" style="margin:0px;">
-                После этой операции,у нас ещё остались Умения и навыки.
+                    РџРѕСЃР»Рµ СЌС‚РѕР№ РѕРїРµСЂР°С†РёРё,Сѓ РЅР°СЃ РµС‰С‘ РѕСЃС‚Р°Р»РёСЃСЊ РЈРјРµРЅРёСЏ Рё РЅР°РІС‹РєРё.
 				</p>
-                Где их найти ? Нажимаем персонаж - Умения
+                    Р“РґРµ РёС… РЅР°Р№С‚Рё ? РќР°Р¶РёРјР°РµРј РїРµСЂСЃРѕРЅР°Р¶ - РЈРјРµРЅРёСЏ
                 </p>
-<center><a href="http://i.imgur.com/4oxxWEo.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+                    <center><a href="http://i.imgur.com/4oxxWEo.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                               onFocus="this.blur();"><img
 src="http://i.imgur.com/4oxxWEo.png" width="794" height="461" 
             <td width="700" height="230" valign="top" class="main_text"><div style="padding-right:30px; width:700px; 
 height:130px;">
-<center><a href="http://i.imgur.com/FznHvAO.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+                    <center><a href="http://i.imgur.com/FznHvAO.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                               onFocus="this.blur();"><img
 src="http://i.imgur.com/FznHvAO.png" width="794" height="461" 
             <td width="700" height="230" valign="top" class="main_text"><div style="padding-right:30px; width:700px; 
 height:130px;">
                 <p class="main_text_aboutthegame" style="margin:10px;">
-                 Дальше переходим в Навыки 
+                    Р”Р°Р»СЊС€Рµ РїРµСЂРµС…РѕРґРёРј РІ РќР°РІС‹РєРё
 			    </p>
-<center><a href="http://i.imgur.com/YPUBt3p.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+                    <center><a href="http://i.imgur.com/YPUBt3p.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                               onFocus="this.blur();"><img
 src="http://i.imgur.com/YPUBt3p.png" width="794" height="461" 
             <td width="700" height="230" valign="top" class="main_text"><div style="padding-right:30px; width:700px; 
 height:130px;">
                 <p class="main_text_aboutthegame" style="margin:10px;">
-                 Вот мы и пришли заключению... Теперь не забудем включить обновления фрейма И после того нажимаем Локация и возвращаемся к Военной Школе.
+                    Р’РѕС‚ РјС‹ Рё РїСЂРёС€Р»Рё Р·Р°РєР»СЋС‡РµРЅРёСЋ... РўРµРїРµСЂСЊ РЅРµ Р·Р°Р±СѓРґРµРј РІРєР»СЋС‡РёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёСЏ С„СЂРµР№РјР° Р РїРѕСЃР»Рµ С‚РѕРіРѕ РЅР°Р¶РёРјР°РµРј
+                    Р›РѕРєР°С†РёСЏ Рё РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ Рє Р’РѕРµРЅРЅРѕР№ РЁРєРѕР»Рµ.
 			    </p>
-<center><a href="http://i.imgur.com/p2Mf1Mt.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+                    <center><a href="http://i.imgur.com/p2Mf1Mt.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                               onFocus="this.blur();"><img
 src="http://i.imgur.com/p2Mf1Mt.png" width="794" height="461" 
             <td width="700" height="230" valign="top" class="main_text"><div style="padding-right:30px; width:700px; 
 height:130px;">
                 <p class="main_text_aboutthegame" style="margin:10px;">
-                 Теперь можно в бой.
+                    РўРµРїРµСЂСЊ РјРѕР¶РЅРѕ РІ Р±РѕР№.
 
-После того как вы нажали кнопку начать тренировку и вы оказали в бою. 
+                    РџРѕСЃР»Рµ С‚РѕРіРѕ РєР°Рє РІС‹ РЅР°Р¶Р°Р»Рё РєРЅРѕРїРєСѓ РЅР°С‡Р°С‚СЊ С‚СЂРµРЅРёСЂРѕРІРєСѓ Рё РІС‹ РѕРєР°Р·Р°Р»Рё РІ Р±РѕСЋ.
 			    </p>
-				Выбираем удар блок и ход .
+                    Р’С‹Р±РёСЂР°РµРј СѓРґР°СЂ Р±Р»РѕРє Рё С…РѕРґ .
 				</p>
-<center><a href="http://i.imgur.com/KW6jDy5.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+                    <center><a href="http://i.imgur.com/KW6jDy5.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                               onFocus="this.blur();"><img
 src="http://i.imgur.com/KW6jDy5.png" width="794" height="361" 
             <td width="700" height="230" valign="top" class="main_text"><div style="padding-right:30px; width:700px; 
 height:130px;">
                 <p class="main_text_aboutthegame" style="margin:10px;">
                 
 			    </p>
-				3.Пункт квеста.(вам не обходимо сражаться с стражой и выйграть 5 раз.После вернуться к Олафу
+                    3.РџСѓРЅРєС‚ РєРІРµСЃС‚Р°.(РІР°Рј РЅРµ РѕР±С…РѕРґРёРјРѕ СЃСЂР°Р¶Р°С‚СЊСЃСЏ СЃ СЃС‚СЂР°Р¶РѕР№ Рё РІС‹Р№РіСЂР°С‚СЊ 5 СЂР°Р·.РџРѕСЃР»Рµ РІРµСЂРЅСѓС‚СЊСЃСЏ Рє РћР»Р°С„Сѓ
 				</p>
-<center><a href="http://i.imgur.com/0wmV7AN.png" rel="lightbox" title="Информация." onFocus="this.blur();"><img 
+                    <center><a href="http://i.imgur.com/0wmV7AN.png" rel="lightbox" title="РРЅС„РѕСЂРјР°С†РёСЏ."
+                               onFocus="this.blur();"><img
 src="http://i.imgur.com/0wmV7AN.png" width="794" height="361" 
             <td width="700" height="230" valign="top" class="main_text"><div style="padding-right:30px; width:700px; 
 height:130px;">
                 </p>
-<center><strong>Системная информация! Квест выполнен. Вы получили: Боевой опыт (50), 20, «Банка восстановления 50 НР», «Банка восстановления 50 НР», «Банка восстановления 50 НР», «Банка восстановления 50 НР», «Банка восстановления 50 НР».
+                    <center><strong>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ! РљРІРµСЃС‚ РІС‹РїРѕР»РЅРµРЅ. Р’С‹ РїРѕР»СѓС‡РёР»Рё: Р‘РѕРµРІРѕР№ РѕРїС‹С‚ (50), 20, В«Р‘Р°РЅРєР°
+                            РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ 50 РќР В», В«Р‘Р°РЅРєР° РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ 50 РќР В», В«Р‘Р°РЅРєР° РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ 50 РќР В», В«Р‘Р°РЅРєР°
+                            РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ 50 РќР В», В«Р‘Р°РЅРєР° РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ 50 РќР В».
 
-Вот мы прошли первую ступень.
+                            Р’РѕС‚ РјС‹ РїСЂРѕС€Р»Рё РїРµСЂРІСѓСЋ СЃС‚СѓРїРµРЅСЊ.
 
-Всем Удачи.</strong></center>
+                            Р’СЃРµРј РЈРґР°С‡Рё.</strong></center>
 <br></div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	</tr>	

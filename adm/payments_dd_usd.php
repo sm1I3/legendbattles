@@ -61,7 +61,7 @@ while ($row = mysql_fetch_assoc($res))
 
 foreach($axis as $k => &$v)
 {
-    $values[$k]->set_tooltip(iconv('windows-1251', 'utf-8', $convert_names[$v]).'<br>#val#');
+    $values[$k]->set_tooltip(iconv('utf-8', 'utf-8', $convert_names[$v]) . '<br>#val#');
 }
   
 $bar->set_values( $values );
@@ -78,23 +78,23 @@ $chart->set_title( $title );
 
 $data = $chart->toPrettyString();
 
-/*<td align="left" class="cms_middle"><a href="bot_edit.php?bot_id='.$row['inf_bot'].'" title="Изменить">'._htext($row['nickname']).'</a></td>*/
+/*<td align="left" class="cms_middle"><a href="bot_edit.php?bot_id='.$row['inf_bot'].'" title="РР·РјРµРЅРёС‚СЊ">'._htext($row['nickname']).'</a></td>*/
 
 $_SESSION['pages']['bot_list'] = $_SERVER['REQUEST_URI'];
 
 $stat_type = array(
-    1 => 'По количеству',
-    2 => 'По прибыли',
+    1 => 'РџРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ',
+    2 => 'РџРѕ РїСЂРёР±С‹Р»Рё',
 );
 
 ?>
-<h3>Статистика по Дому Дилеров (USD)</h3>
+    <h3>РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ Р”РѕРјСѓ Р”РёР»РµСЂРѕРІ (USD)</h3>
 <script type="text/javascript" src="jscript/json2.js"></script>
 <script type="text/javascript" src="jscript/swfobject.js"></script>
 
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 
 <script type="text/javascript">
@@ -119,17 +119,17 @@ function get_data_1()
 <form name="filter" id="filter" action="" method="get">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-    <td>Статистика:</td>
+      <td>РЎС‚Р°С‚РёСЃС‚РёРєР°:</td>
     <td>
         <?=createSelectFromArray('stat_type', $stat_type, (isset($_GET['stat_type'])?$_GET['stat_type']:1), '', false)?>
     </td>
   </tr>
   <tr>
-    <td>Дата с:</td>
+      <td>Р”Р°С‚Р° СЃ:</td>
     <td>
         <input name="date_from" id="date_from" type="text" class="cms_fieldstyle1" value="<?=(isset($_GET['date_from'])?$_GET['date_from']:'')?>" size="22" maxlength="255" />
         <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kl1jhjhdj12d1jk2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -160,8 +160,9 @@ function get_data_1()
         <img src="images/cms_icons/cms_calendar_clear.gif" align="absmiddle" onclick='document.getElementById("date_from").value=""; ' title="Clear Date" style="cursor: pointer;" >
         
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        
-        Дата по: <input name="date_to" id="date_to" type="text" class="cms_fieldstyle1" value="<?=(isset($_GET['date_to'])?$_GET['date_to']:'')?>" size="22" maxlength="255" />
+
+        Р”Р°С‚Р° РїРѕ: <input name="date_to" id="date_to" type="text" class="cms_fieldstyle1"
+                        value="<?= (isset($_GET['date_to']) ? $_GET['date_to'] : '') ?>" size="22" maxlength="255"/>
         <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kjkjdnakjdnakwnjkd2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
         <script type="text/javascript">
         

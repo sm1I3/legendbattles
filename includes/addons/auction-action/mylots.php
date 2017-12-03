@@ -3,7 +3,7 @@ function lr($lr) {
 	$b = $lr % 100;
 	$s = intval(($lr % 10000) / 100);
 	$g = intval($lr / 10000);
-	return (($g)?$g.' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Золото>  ':'').(($s)?$s.' <img src=/img/image/silver.png width=14 height=14 valign=middle title=Серебро> ':'').(($b)?$b.' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Бронза> ':'');
+    return (($g) ? $g . ' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Р—РѕР»РѕС‚Рѕ>  ' : '') . (($s) ? $s . ' <img src=/img/image/silver.png width=14 height=14 valign=middle title=РЎРµСЂРµР±СЂРѕ> ' : '') . (($b) ? $b . ' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Р‘СЂРѕРЅР·Р°> ' : '');
 }	
 function GetInventId($uId){
 	return mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,  `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`auction` = '1' AND `invent`.`id_item` = '".$uId."'"));
@@ -18,12 +18,13 @@ $Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `auction_system` WHERE 
 			<tr>
 				<td align="center" width="50%" bgcolor="#D8D8D8">
 					<font class="nickname">
-						Ваши деньги: <b><?php echo lr($pers['nv']); ?></b>
+                        Р’Р°С€Рё РґРµРЅСЊРіРё: <b><?php echo lr($pers['nv']); ?></b>
 					</font>
 				</td>
 				<td align="center" width="50%" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<strong><em><a href="http://forum.legendbattles.ru/index.php?act=show_topic&amp;id=164" target="_blank">Закон о торговле (Аукцион)</a></em></strong> <b><?=lr(0)?></b>
+                        <strong><em><a href="http://forum.legendbattles.ru/index.php?act=show_topic&amp;id=164"
+                                       target="_blank">Р—Р°РєРѕРЅ Рѕ С‚РѕСЂРіРѕРІР»Рµ (РђСѓРєС†РёРѕРЅ)</a></em></strong> <b><?= lr(0) ?></b>
 					</font>
 				</td>
 			</tr>
@@ -44,38 +45,38 @@ if(mysqli_num_rows($Query) > 0){
 				</td>
 				<td align="center" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<b>Название</b>
+						<b>РќР°Р·РІР°РЅРёРµ</b>
 					</font>
 				</td>
 				<td align="center" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<b>Время</b>
+						<b>Р’СЂРµРјСЏ</b>
 					</font>
 				</td>
 				<td align="center" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<b>Снять</b>
+						<b>РЎРЅСЏС‚СЊ</b>
 					</font>
 				</td>
 				<td align="center" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<b>Выкуп</b>
+						<b>Р’С‹РєСѓРї</b>
 					</font>
 				</td>
 			</tr>';
 $i = 0;
 while( $row = mysqli_fetch_assoc($Query) ){
 	$i++;
-	// Отсчитваем время до конца
+    // РћС‚СЃС‡РёС‚РІР°РµРј РІСЂРµРјСЏ РґРѕ РєРѕРЅС†Р°
 	$thisrow = $row['time'];
 	$row['time']-=time();
 	$ch=floor($row['time']/3600);
 	$min=floor(($row['time']-($ch*3600))/60);
 	$sec=floor(($row['time']-($ch*3600))%60);
-	// Далее
+    // Р”Р°Р»РµРµ
 	$bgcolor = (($i%2)?'f0f0f0':'ffffff'); 
 	$ItemInfo = GetInventId($row['itemID']);
-	if($ItemInfo['mod_color']!='0' or $ItemInfo['modified'] == '1') $ItemInfo['name'] .= '[ап]';
+    if ($ItemInfo['mod_color'] != '0' or $ItemInfo['modified'] == '1') $ItemInfo['name'] .= '[Р°Рї]';
 	
 	echo'			<tr>
 				<td align="center" width="66" bgcolor="#'.$bgcolor.'">
@@ -86,20 +87,20 @@ while( $row = mysqli_fetch_assoc($Query) ){
 				<td bgcolor="#'.$bgcolor.'">
 					<font class="nickname">
 						<b>'.$ItemInfo['name'].'</b><br />
-						Уровень: <b>'.$ItemInfo['level'].'</b><br />
-						Масса: <b>'.$ItemInfo['massa'].'</b><br />
+						РЈСЂРѕРІРµРЅСЊ: <b>' . $ItemInfo['level'] . '</b><br />
+						РњР°СЃСЃР°: <b>' . $ItemInfo['massa'] . '</b><br />
 					</font>
 				</td>
 				<td align="center" bgcolor="#'.$bgcolor.'">
 					<font class="nickname">
-						<b>'.($thisrow > time() ? (($ch<10)?'0'.$ch:$ch).":".(($min<10)?'0'.$min:$min).":".(($sec<10)?'0'.$sec:$sec) : 'окончено' ).'</b>
+						<b>' . ($thisrow > time() ? (($ch < 10) ? '0' . $ch : $ch) . ":" . (($min < 10) ? '0' . $min : $min) . ":" . (($sec < 10) ? '0' . $sec : $sec) : 'РѕРєРѕРЅС‡РµРЅРѕ') . '</b>
 					</font>
 				</td>
 				<td align="center" bgcolor="#'.$bgcolor.'">
 					<font class="nickname">
 						<input type="hidden" name="del" value="1" />
 						<input type="hidden" name="'.$uId.'" value="'.$row['id_item'].'" />
-						<input type="submit" class="lbut" value="Отменить" />
+						<input type="submit" class="lbut" value="РћС‚РјРµРЅРёС‚СЊ" />
 					</font>
 				</td><font color="' . (($row['bet'] == $pers['login']) ? 'green' : 'red' ) . '">' . lr($row['price']) . '</font></b><br />
 					</font>
@@ -115,7 +116,7 @@ while( $row = mysqli_fetch_assoc($Query) ){
 	echo'<table width="100%" border="0" cellpadding="1" cellspacing="1">
 			<tr>
 				<td align="center" width="100%" bgcolor="#D8D8D8">
-					<b>Не найдено ни одного лота!</b>
+					<b>РќРµ РЅР°Р№РґРµРЅРѕ РЅРё РѕРґРЅРѕРіРѕ Р»РѕС‚Р°!</b>
 				</td>
 			</tr>
 		</table>';

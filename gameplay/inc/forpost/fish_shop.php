@@ -1,5 +1,5 @@
 <?php
-/* СОРТИРОВКА */
+/* РЎРћР РўРР РћР’РљРђ */
 if(!empty($_POST['min_lev']) or !empty($_POST['max_lev']) or !empty($_POST['max_nv']) or !empty($_POST['sorttype'])){
 	$_SESSION['min_lev'] = intval($_POST['min_lev']);
 	$_SESSION['max_lev'] = intval($_POST['max_lev']);
@@ -21,7 +21,7 @@ if(empty($_SESSION['max_lev'])){
 if(empty($_SESSION['sorttype'])){
 	$_SESSION['sorttype'] = 'level';
 }
-/* КАТЕГОРИИ */
+/* РљРђРўР•Р“РћР РР */
 if(isset($_GET['weapon_category'])){
 	$_SESSION['mark']=$_GET['weapon_category'];
 }
@@ -44,27 +44,32 @@ echo "<SCRIPT>MessBoxDiv('".$msg."',0,0,0,0);</SCRIPT>";
 		<span><?=$locname['loc'];?></span>
 	</div><img src=/img/image/gameplay/ribalka.jpg width=760 height=255 border=0></td></tr>
 <!---->
-<tr><td bgcolor=#f5f5f5 colspan=3><?php 
-echo'<form method=post><div align=center><font class=freetxt><font color=#3564A5><b>Фильтр: </b></font>уровень от <select name=min_lev class=zayavki>';
+<tr><td bgcolor=#f5f5f5 colspan=3><?php
+        echo '<form method=post><div align=center><font class=freetxt><font color=#3564A5><b>Р¤РёР»СЊС‚СЂ: </b></font>СѓСЂРѕРІРµРЅСЊ РѕС‚ <select name=min_lev class=zayavki>';
 for($i=0;$i<=35;$i++){
 	echo'<option value='.$i.(($_SESSION['min_lev']==$i)?' SELECTED':'').'>'.$i.'</option>';
 }
-echo'</select> до <select name=max_lev class=zayavki>';
+        echo '</select> РґРѕ <select name=max_lev class=zayavki>';
 for($i=0;$i<=35;$i++){
 	echo'<option value='.$i.(($_SESSION['max_lev']==$i)?' SELECTED':'').'>'.$i.'</option>';
 }
-echo'</select> не дороже <input type=text size=2 name=max_nv value="'.(($_SESSION['max_nv']=='0')?'':$_SESSION['max_nv']).'" class=LogintextBox6><b> LR</b> сортировка по <select name=sorttype class=zayavki><option value=1'.(($_SESSION['sorttype']=='level')?' SELECTED':'').'>уровню</option><option value=0'.(($_SESSION['sorttype']=='price')?' SELECTED':'').'>стоимости</option></select> <input type=submit value=" ok " class=lbut></font></div></form>';
+        echo '</select> РЅРµ РґРѕСЂРѕР¶Рµ <input type=text size=2 name=max_nv value="' . (($_SESSION['max_nv'] == '0') ? '' : $_SESSION['max_nv']) . '" class=LogintextBox6><b> LR</b> СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ <select name=sorttype class=zayavki><option value=1' . (($_SESSION['sorttype'] == 'level') ? ' SELECTED' : '') . '>СѓСЂРѕРІРЅСЋ</option><option value=0' . (($_SESSION['sorttype'] == 'price') ? ' SELECTED' : '') . '>СЃС‚РѕРёРјРѕСЃС‚Рё</option></select> <input type=submit value=" ok " class=lbut></font></div></form>';
 ?></td></tr>
 <tr><td bgcolor=#CCCCCC width=100% colspan=3><img src=/img/image/1x1.gif width=1 height=1 width=40 height=50></td></tr><!---->
 
 <tr>
-<td width="33%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=priman'" title=""><font class="zaya"><b>Приманки для рыбы</b></font></a></td>
-<td width="34%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=snast'" title=""><font class="zaya"><b>Снасти</b></font></a></td>
-<td width="33%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=sell'" title=""><font class="zaya"><b>Сдать рыбу</b></font></a>
+    <td width="33%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=priman'"
+                                                        title=""><font class="zaya"><b>РџСЂРёРјР°РЅРєРё РґР»СЏ СЂС‹Р±С‹</b></font></a>
+    </td>
+    <td width="34%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=snast'"
+                                                        title=""><font class="zaya"><b>РЎРЅР°СЃС‚Рё</b></font></a></td>
+    <td width="33%" bgcolor="#f5f5f5" align="center"><a href="#" onClick="location='?weapon_category=sell'"
+                                                        title=""><font class="zaya"><b>РЎРґР°С‚СЊ СЂС‹Р±Сѓ</b></font></a>
 </td></tr>
 <tr><td bgcolor=#CCCCCC width=100% colspan=3><img src=/img/image/1x1.gif width=1 height=1 width=40 height=50></td></tr><!---->
 <tr><td colspan=3 bgcolor="#f5f5f5" width="100%">
-<div align=center><a href="javascript:parent.helpwin('legendbattles.ru/help.php?fish=1')" target="_blank">Таблица дохода от рыбалки (27.02.2013)</a></div>
+        <div align=center><a href="javascript:parent.helpwin('legendbattles.ru/help.php?fish=1')" target="_blank">РўР°Р±Р»РёС†Р°
+                РґРѕС…РѕРґР° РѕС‚ СЂС‹Р±Р°Р»РєРё (27.02.2013)</a></div>
 </td></tr>
 <tr><td colspan=3>
 <? if(isset($_GET['weapon_category'])){
@@ -81,7 +86,10 @@ if($num>0 and $_GET['weapon_category']=='priman'){?>
 <tr><td bgcolor=#e0e0e0>
 <table cellpadding=3 cellspacing=1 border=0 width=100%>
 <tr><td colspan=4 bgcolor=#F9f9f9>
-<div align=center><font class=inv><b> У Вас с собой <?=lr($player[nv])?>  и вещей массой: <?=$plstt[71]?> Максимальный вес: <?=$mass?></b></div></td></tr>
+        <div align=center><font class=inv><b> РЈ Р’Р°СЃ СЃ СЃРѕР±РѕР№ <?= lr($player[nv]) ?> Рё РІРµС‰РµР№ РјР°СЃСЃРѕР№: <?= $plstt[71] ?>
+                    РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РІРµСЃ: <?= $mass ?></b></div>
+    </td>
+</tr>
 <?
 	$freemass=$plstt[71];
 	$i=0;
@@ -104,10 +112,10 @@ if($num>0 and $_GET['weapon_category']=='priman'){?>
 		if($i==0){echo '<tr>';}
 		$i++;
 		echo'<td bgcolor=#f9f9f9>
-		<div align=center><b>'.$ITEM['name'].'</b><br><font class=weaponch>(количество: '.(($ITEM['kol']>0)?'<font color=green>'.$ITEM['kol'].'</font>':'<font color=red>'.$ITEM['kol'].'</font>').')</div>
+		<div align=center><b>' . $ITEM['name'] . '</b><br><font class=weaponch>(РєРѕР»РёС‡РµСЃС‚РІРѕ: ' . (($ITEM['kol'] > 0) ? '<font color=green>' . $ITEM['kol'] . '</font>' : '<font color=red>' . $ITEM['kol'] . '</font>') . ')</div>
 		<div align=center><img src=/img/image/weapon/'.$ITEM['gif'].' border=0></div>
 		<div align=center>
-		<font class=weaponch>&nbsp;Цена: <b>';
+		<font class=weaponch>&nbsp;Р¦РµРЅР°: <b>';
 		if($ITEM['dd_price']==0){
 		 if($ITEM['price']>$player['nv']){echo "<font color=#cc0000>".lr($ITEM['price'])."</font>";}else{echo lr($ITEM['price'])."";}
 		}
@@ -125,29 +133,29 @@ if($num>0 and $_GET['weapon_category']=='priman'){?>
 					$klev .=  $row['name'].", ";
 				}
 				$klev=substr($klev,0,strlen($klev)-2);
-				echo 'Клюет: '.$klev.".";
+                echo 'РљР»СЋРµС‚: ' . $klev . ".";
 				
 			}
 			else{
-				echo 'Клюет: <font color=red>ничего.</font>';
+                echo 'РљР»СЋРµС‚: <font color=red>РЅРёС‡РµРіРѕ.</font>';
 			}
 		}
 		echo'</div>
 		<div align=center>';
 		if($ITEM['dd_price']==0){
 			if($player['nv']>=$ITEM['price'] AND $ITEM['kol']>0 and $m!=0){
-				echo'<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid='.$ITEM['id'].'&vcode='.scode().'\'" value="купить 1 шт">';
+                echo '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="РєСѓРїРёС‚СЊ 1 С€С‚">';
 			}
 			if($player['nv']>=$ITEM['price']*10 AND $ITEM['kol']>10 and $m!=0){
-				echo'<br><input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid='.$ITEM['id'].'&col=10&vcode='.scode().'\'" value="купить 10 шт">';
+                echo '<br><input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&col=10&vcode=' . scode() . '\'" value="РєСѓРїРёС‚СЊ 10 С€С‚">';
 			}
 			if($player['nv']>=$ITEM['price']*50 AND $ITEM['kol']>50 and $m!=0){
-				echo'<br><input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid='.$ITEM['id'].'&col=50&vcode='.scode().'\'" value="купить 50 шт">';
+                echo '<br><input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&col=50&vcode=' . scode() . '\'" value="РєСѓРїРёС‚СЊ 50 С€С‚">';
 			}
 		}
 		else{
 			if($player['baks']>=$ITEM['dd_price'] AND $ITEM['kol']>0 and $m!=0){
-				echo '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid='.$ITEM['id'].'&vcode='.scode().'\'" value="купить ('.$ITEM[dd_price].'$)"><br>';
+                echo '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="РєСѓРїРёС‚СЊ (' . $ITEM[dd_price] . '$)"><br>';
 			}
 		}
 		echo'</div>
@@ -168,7 +176,7 @@ elseif(isset($_GET['weapon_category']) and $_GET['weapon_category']=='sell'){
 	<tr><td bgcolor=#e0e0e0>
 	<table cellpadding=3 cellspacing=1 border=0 width=100%>
 	<tr><td colspan=4 bgcolor=#F9f9f9>
-	<div align=center><font class=inv><b> У Вас с собой '.lr($player['nv']).'  и вещей массой: '.$plstt[71].' Максимальный вес: '.$mass.'</b></div></td></tr>';
+	<div align=center><font class=inv><b> РЈ Р’Р°СЃ СЃ СЃРѕР±РѕР№ ' . lr($player['nv']) . '  Рё РІРµС‰РµР№ РјР°СЃСЃРѕР№: ' . $plstt[71] . ' РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РІРµСЃ: ' . $mass . '</b></div></td></tr>';
 	$fishsql = mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,`items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='".$player['id']."' AND `items`.`type`='w69' AND `items`.`num_a`='' AND `items`.`slot`='0' AND `invent`.`bank`='0' AND `invent`.`clan`='0';");
 	if(mysqli_num_rows($fishsql)>0){
 		$i=0;
@@ -176,12 +184,12 @@ elseif(isset($_GET['weapon_category']) and $_GET['weapon_category']=='sell'){
 				$ItemToOne[$ITEM['id']+$ITEM['arenda']+$ITEM['rassrok']][md5($iz.'/'.$ITEM['dolg'].$ITEM['mod'].$ITEM['clan'].$ITEM['grav'])] += 1;
 				if($ItemToOne[$ITEM['id']+$ITEM['arenda']+$ITEM['rassrok']][md5($iz.'/'.$ITEM['dolg'].$ITEM['mod'].$ITEM['clan'].$ITEM['grav'])] == 1){
 					$count = mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `pl_id`='".$player['id']."' and `invent`.`used`='0' and `dolg`='".$ITEM['dolg']."' and `iznos`='".$ITEM['iznos']."' and `items`.`id`='".$ITEM['id']."' and `invent`.`arenda`='".$ITEM['arenda']."' and `invent`.`rassrok`='".$ITEM['rassrok']."' and `invent`.`mod`='".$ITEM['mod']."' and `invent`.`clan`='".$ITEM['clan']."' and `invent`.`grav`='".$ITEM['grav']."' and `invent`.`bank`='0'"));
-					$buttons=$inputs."onclick=\"javascript: if(confirm('Вы точно хотите сдать все ".$ITEM['name']." в лавку?')) {location='main.php?post_id=11&uid=".$ITEM['id_item']."&act=3&vcode=".scode()."'}\" value=\"Сдать рыбу в лавку\"  ".$inpute;
+                    $buttons = $inputs . "onclick=\"javascript: if(confirm('Р’С‹ С‚РѕС‡РЅРѕ С…РѕС‚РёС‚Рµ СЃРґР°С‚СЊ РІСЃРµ " . $ITEM['name'] . " РІ Р»Р°РІРєСѓ?')) {location='main.php?post_id=11&uid=" . $ITEM['id_item'] . "&act=3&vcode=" . scode() . "'}\" value=\"РЎРґР°С‚СЊ СЂС‹Р±Сѓ РІ Р»Р°РІРєСѓ\"  " . $inpute;
 					if($i==4){echo '</tr>';$i=0;}
 					if($i==0){echo '<tr>';}
 					$i++;
 					echo'<td bgcolor=#f9f9f9>
-					<div align=center><b>'.$ITEM['name'].'</b><br><font class=weaponch>(количество: '.(($count>1)?'<font color=green>'.$count.'</font>':'<font color=red>'.$count.'</font>').')</div>
+					<div align=center><b>' . $ITEM['name'] . '</b><br><font class=weaponch>(РєРѕР»РёС‡РµСЃС‚РІРѕ: ' . (($count > 1) ? '<font color=green>' . $count . '</font>' : '<font color=red>' . $count . '</font>') . ')</div>
 					<div align=center><img src=/img/image/weapon/'.$ITEM['gif'].' border=0></div>
 					<div align=center>'.$buttons.'</div>
 					</td>';
@@ -190,7 +198,11 @@ elseif(isset($_GET['weapon_category']) and $_GET['weapon_category']=='sell'){
 	}
 }
 else{?>
-<table cellpadding=5 cellspacing=1 border=0 width=100%><tr><td bgcolor=#F5F5F5 align=center colspan=2><font class=inv><b>Нет товаров в данной категории.</b></font></td></tr>
+    <table cellpadding=5 cellspacing=1 border=0 width=100%>
+        <tr>
+            <td bgcolor=#F5F5F5 align=center colspan=2><font class=inv><b>РќРµС‚ С‚РѕРІР°СЂРѕРІ РІ РґР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёРё.</b></font>
+            </td>
+        </tr>
 <? }?>
 </table>
 <?}?>

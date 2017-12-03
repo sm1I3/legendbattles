@@ -16,14 +16,15 @@ if($player["rframe"]==1){echo"$rt";}
 ## DLR logs by mozg
 if($_SESSION['bakspl']==''){$_SESSION['bakspl'] = $player['baks'];}
 if($_SESSION['lrpl']==''){$_SESSION['lrpl'] = $player['nv'];}
-## проверяем значения
-	$typetolog = '0'; $abouttolog = '0';  # переменные для логов: первая всегда 0
+## РїСЂРѕРІРµСЂСЏРµРј Р·РЅР°С‡РµРЅРёСЏ
+$typetolog = '0';
+$abouttolog = '0';  # РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ Р»РѕРіРѕРІ: РїРµСЂРІР°СЏ РІСЃРµРіРґР° 0
 	if($_SESSION['bakspl']!=$player['baks']){
-		$typetolog .= '@4';  
-		$abouttolog .= '@старое: <b><font color=#004BBB>'.$_SESSION['bakspl'].'</font></b> | новое: <b><font color=#CC0000>'.$player['baks'].'</font></b>';
+		$typetolog .= '@4';
+        $abouttolog .= '@СЃС‚Р°СЂРѕРµ: <b><font color=#004BBB>' . $_SESSION['bakspl'] . '</font></b> | РЅРѕРІРѕРµ: <b><font color=#CC0000>' . $player['baks'] . '</font></b>';
 		$_SESSION['bakspl']=$player['baks'];
 	}
-	# пишем в лог все что произошло	
+# РїРёС€РµРј РІ Р»РѕРі РІСЃРµ С‡С‚Рѕ РїСЂРѕРёР·РѕС€Р»Рѕ
 		if($typetolog!='0' and $abouttolog!='0'){
 			player_actions($player['id'],$typetolog,$abouttolog);
 		}
@@ -119,21 +120,21 @@ if($_GET["change"]){
 	if(!$sneginv) $sneginv = 0;
 	$_GET["sncount"] = intval($_GET["sncount"]);
 		if(!$_GET["sncount"]){
-		echo"<script>parent.jAlert('Укажите кол-во  для обмена.');</script>";
+            echo "<script>parent.jAlert('РЈРєР°Р¶РёС‚Рµ РєРѕР»-РІРѕ  РґР»СЏ РѕР±РјРµРЅР°.');</script>";
 		exit(include"./includes/addons/addon-action.php");
 		}
 		elseif($_GET["sncount"]>$sneginv or $sneginv==0){
-		echo"<script>parent.jAlert('Недостаточно снежинок.');</script>";
+            echo "<script>parent.jAlert('РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃРЅРµР¶РёРЅРѕРє.');</script>";
 		
 		exit(include"./includes/addons/addon-action.php");
 		}
 		else{
-			if($_GET["sncount"]==1) $n='ка';
-			elseif($_GET["sncount"]>1 and $_GET["sncount"]<=4) $n='ки';
-			elseif($_GET["sncount"]>4 or $_GET["sncount"]==0) $n='ок';
+            if ($_GET["sncount"] == 1) $n = 'РєР°';
+            elseif ($_GET["sncount"] > 1 and $_GET["sncount"] <= 4) $n = 'РєРё';
+            elseif ($_GET["sncount"] > 4 or $_GET["sncount"] == 0) $n = 'РѕРє';
 			mysqli_query($GLOBALS['db_link'],"DELETE FROM invent WHERE protype='2735' and pl_id='".$player['id']."' LIMIT ".intval($_GET['sncount']).";");
 			mysqli_query($GLOBALS['db_link'],"UPDATE user SET sneg=sneg + ".intval($_GET['sncount'])." where id='".$player['id']."' LIMIT 1;");
-			echo"<script>parent.jAlert('На ваш счет зачислено ".$_GET['sncount']." снежинок');</script>";
+            echo "<script>parent.jAlert('РќР° РІР°С€ СЃС‡РµС‚ Р·Р°С‡РёСЃР»РµРЅРѕ " . $_GET['sncount'] . " СЃРЅРµР¶РёРЅРѕРє');</script>";
 		
 		exit(include"./includes/addons/addon-action.php");
 		}
@@ -158,7 +159,9 @@ if(isset($_GET['useaction']) and $player['waitprof']<=time()){
 if($player['battle']!=0 or $player['wait']>time())$_SESSION['user']['pos']=3;
 include"./gameplay/inc/hedder.php";
 if($_SESSION['user']['pos']<2){$inc="/mpers.php";}
-if($_SESSION['user']['pos']>1){$inc=$ret[3]."/".pl_loc($player['loc']);} // pl_loc($player['loc']) - пхп файл локации.
+if ($_SESSION['user']['pos'] > 1) {
+    $inc = $ret[3] . "/" . pl_loc($player['loc']);
+} // pl_loc($player['loc']) - РїС…Рї С„Р°Р№Р» Р»РѕРєР°С†РёРё.
 include("./gameplay/inc/".$inc);
 ?>
 </BODY>

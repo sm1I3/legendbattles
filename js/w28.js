@@ -18,20 +18,64 @@ function w28_form(vcode,wuid,wsubid,wsolid)
 	      case 1:
 	      case 2:
 	      case 3:
-	      case 4:  wadd = 2; vtitle = 'Обычное нападение'; vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><FONT class=nickname><B>На кого: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Выполнить" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
+           case 4:
+               wadd = 2;
+               vtitle = 'РћР±С‹С‡РЅРѕРµ РЅР°РїР°РґРµРЅРёРµ';
+               vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><FONT class=nickname><B>РќР° РєРѕРіРѕ: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Р’С‹РїРѕР»РЅРёС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
 	      case 5:
 	      case 6:
 	      case 7:
-	      case 8:  wadd = 2; vtitle = 'Кровавое нападение'; vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><FONT class=nickname><B>На кого: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Выполнить" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
-	      case 14: wadd = 2; vtitle = 'Закрытое нападение'; vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><FONT class=nickname><B>На кого: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Выполнить" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
-	      case 9:  wadd = 1; vtitle = 'Применить невидимость на 4 часа?'; vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><INPUT type=submit value="Применить" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
-	      case 22: wadd = 1; vtitle = 'Применить телепорт?'; vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><FONT class=nickname><B>Пункт назначения: </B><SELECT name=wtelid class=LogintextBox6><OPTION VALUE=1>Город Барус</OPTION><OPTION VALUE=2>Город Октал</OPTION><OPTION VALUE=3>Деревня Подгорная</OPTION><OPTION VALUE=4>Окрестность Баруса, Телепорт</OPTION><OPTION VALUE=5>Окрестность Октала, Телепорт</OPTION><OPTION VALUE=6>Кровавый Берег, Телепорт</OPTION><OPTION VALUE=7>Окрестность Баалгора, Телепорт</OPTION><OPTION VALUE=8>Пустыня Самум-Бейт, Телепорт</OPTION></SELECT> <INPUT type=submit value="Применить" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></FONT></DIV>'; break;
-	      case 23: wadd = 1; vtitle = 'Рассеять невидимость?'; vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><INPUT type=submit value="Рассеять" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
-       	      case 24: wadd = 2; vtitle = 'Кулачное нападение'; vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><FONT class=nickname><B>На кого: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Выполнить" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
-       	      case 25: wadd = 2; vtitle = 'Закрытое кулачное нападение'; vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><FONT class=nickname><B>На кого: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Выполнить" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
-       	      case 26: wadd = 2; vtitle = 'Боевое нападение'; vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><FONT class=nickname><B>На кого: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Выполнить" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
-       	      case 27: wadd = 2; vtitle = 'Свиток Защиты'; vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><FONT class=nickname><B>Союзник: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Помочь" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
-              case 28: wadd = 1; vtitle = 'Применить Свиток Обнаружения?'; vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value='+vcode+'><INPUT type=hidden name=wuid value='+wuid+'><INPUT type=hidden name=wsubid value='+wsubid+'><INPUT type=hidden name=wsolid value='+wsolid+'><DIV align=center><INPUT type=submit value="Применить" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="Отмена"></DIV>'; break;
+           case 8:
+               wadd = 2;
+               vtitle = 'РљСЂРѕРІР°РІРѕРµ РЅР°РїР°РґРµРЅРёРµ';
+               vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><FONT class=nickname><B>РќР° РєРѕРіРѕ: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Р’С‹РїРѕР»РЅРёС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
+           case 14:
+               wadd = 2;
+               vtitle = 'Р—Р°РєСЂС‹С‚РѕРµ РЅР°РїР°РґРµРЅРёРµ';
+               vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><FONT class=nickname><B>РќР° РєРѕРіРѕ: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Р’С‹РїРѕР»РЅРёС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
+           case 9:
+               wadd = 1;
+               vtitle = 'РџСЂРёРјРµРЅРёС‚СЊ РЅРµРІРёРґРёРјРѕСЃС‚СЊ РЅР° 4 С‡Р°СЃР°?';
+               vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><INPUT type=submit value="РџСЂРёРјРµРЅРёС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
+           case 22:
+               wadd = 1;
+               vtitle = 'РџСЂРёРјРµРЅРёС‚СЊ С‚РµР»РµРїРѕСЂС‚?';
+               vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><FONT class=nickname><B>РџСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: </B><SELECT name=wtelid class=LogintextBox6><OPTION VALUE=1>Р“РѕСЂРѕРґ Р‘Р°СЂСѓСЃ</OPTION><OPTION VALUE=2>Р“РѕСЂРѕРґ РћРєС‚Р°Р»</OPTION><OPTION VALUE=3>Р”РµСЂРµРІРЅСЏ РџРѕРґРіРѕСЂРЅР°СЏ</OPTION><OPTION VALUE=4>РћРєСЂРµСЃС‚РЅРѕСЃС‚СЊ Р‘Р°СЂСѓСЃР°, РўРµР»РµРїРѕСЂС‚</OPTION><OPTION VALUE=5>РћРєСЂРµСЃС‚РЅРѕСЃС‚СЊ РћРєС‚Р°Р»Р°, РўРµР»РµРїРѕСЂС‚</OPTION><OPTION VALUE=6>РљСЂРѕРІР°РІС‹Р№ Р‘РµСЂРµРі, РўРµР»РµРїРѕСЂС‚</OPTION><OPTION VALUE=7>РћРєСЂРµСЃС‚РЅРѕСЃС‚СЊ Р‘Р°Р°Р»РіРѕСЂР°, РўРµР»РµРїРѕСЂС‚</OPTION><OPTION VALUE=8>РџСѓСЃС‚С‹РЅСЏ РЎР°РјСѓРј-Р‘РµР№С‚, РўРµР»РµРїРѕСЂС‚</OPTION></SELECT> <INPUT type=submit value="РџСЂРёРјРµРЅРёС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></FONT></DIV>';
+               break;
+           case 23:
+               wadd = 1;
+               vtitle = 'Р Р°СЃСЃРµСЏС‚СЊ РЅРµРІРёРґРёРјРѕСЃС‚СЊ?';
+               vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><INPUT type=submit value="Р Р°СЃСЃРµСЏС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
+           case 24:
+               wadd = 2;
+               vtitle = 'РљСѓР»Р°С‡РЅРѕРµ РЅР°РїР°РґРµРЅРёРµ';
+               vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><FONT class=nickname><B>РќР° РєРѕРіРѕ: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Р’С‹РїРѕР»РЅРёС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
+           case 25:
+               wadd = 2;
+               vtitle = 'Р—Р°РєСЂС‹С‚РѕРµ РєСѓР»Р°С‡РЅРѕРµ РЅР°РїР°РґРµРЅРёРµ';
+               vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><FONT class=nickname><B>РќР° РєРѕРіРѕ: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Р’С‹РїРѕР»РЅРёС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
+           case 26:
+               wadd = 2;
+               vtitle = 'Р‘РѕРµРІРѕРµ РЅР°РїР°РґРµРЅРёРµ';
+               vcont = '<INPUT type=hidden name=post_id value=8><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><FONT class=nickname><B>РќР° РєРѕРіРѕ: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="Р’С‹РїРѕР»РЅРёС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
+           case 27:
+               wadd = 2;
+               vtitle = 'РЎРІРёС‚РѕРє Р—Р°С‰РёС‚С‹';
+               vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><FONT class=nickname><B>РЎРѕСЋР·РЅРёРє: </B><INPUT TYPE="text" name=pnick class=LogintextBox maxlength=20> <INPUT type=submit value="РџРѕРјРѕС‡СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
+           case 28:
+               wadd = 1;
+               vtitle = 'РџСЂРёРјРµРЅРёС‚СЊ РЎРІРёС‚РѕРє РћР±РЅР°СЂСѓР¶РµРЅРёСЏ?';
+               vcont = '<INPUT type=hidden name=post_id value=25><INPUT type=hidden name=vcode value=' + vcode + '><INPUT type=hidden name=wuid value=' + wuid + '><INPUT type=hidden name=wsubid value=' + wsubid + '><INPUT type=hidden name=wsolid value=' + wsolid + '><DIV align=center><INPUT type=submit value="РџСЂРёРјРµРЅРёС‚СЊ" class=lbut name=agree> <INPUT type=button class=lbut onclick="c_form()" value="РћС‚РјРµРЅР°"></DIV>';
+               break;
        }
        document.all("transfer").innerHTML = '<FORM ACTION=main.php METHOD=POST><TABLE cellpadding=0 cellspacing=0 border=0 width=100%><TR><TD bgcolor=#B9A05C><TABLE cellpadding=3 cellspacing=1 border=0 width=100%><TR><TD width=100% bgcolor=#FCFAF3><FONT class=nickname><B>'+vtitle+'</B></TD></TR><TR><TD bgcolor=#FCFAF3>'+vcont+'</TD></TR></TABLE></TD></TR></TABLE></FORM>';
        document.all("transfer").style.visibility = 'visible';

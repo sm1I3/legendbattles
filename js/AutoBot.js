@@ -1,7 +1,7 @@
 var ab = false;
 
-/* Функции клиента */
-function AutoFight(){// Система боя
+/* Р¤СѓРЅРєС†РёРё РєР»РёРµРЅС‚Р° */
+function AutoFight() {// РЎРёСЃС‚РµРјР° Р±РѕСЏ
 	if(ab == true){		
 		switch(parent.frames['main_top'].fight_ty[4]){
 			case 0:
@@ -13,7 +13,7 @@ function AutoFight(){// Система боя
 			case 2:
 				var inputs = parent.frames['main_top'].document.getElementsByTagName('input');
 				for(var i = 0; i < (inputs.length); i++){
-					if(inputs[i].value == 'Завершить бой'){
+                    if (inputs[i].value == 'Р—Р°РІРµСЂС€РёС‚СЊ Р±РѕР№') {
 						inputs[i].click();
 					}
 				}
@@ -21,19 +21,22 @@ function AutoFight(){// Система боя
 		}
 	}
 }
-/* Функции Авто-Бой JavaScript by Guild of Honor */
-function AutoSelectGo(){// быстрые кнопки аутоудара
+
+/* Р¤СѓРЅРєС†РёРё РђРІС‚Рѕ-Р‘РѕР№ JavaScript by Guild of Honor */
+function AutoSelectGo() {// Р±С‹СЃС‚СЂС‹Рµ РєРЅРѕРїРєРё Р°СѓС‚РѕСѓРґР°СЂР°
 	AutoUdar();
 	AutoBlock();
 	parent.frames['main_top'].CountOD();
 	parent.frames['main_top'].StartAct();
 }
-function AutoSelect(){// быстрые кнопки выбора удара
+
+function AutoSelect() {// Р±С‹СЃС‚СЂС‹Рµ РєРЅРѕРїРєРё РІС‹Р±РѕСЂР° СѓРґР°СЂР°
 	AutoUdar();
 	AutoBlock();
 	parent.frames['main_top'].CountOD();
 }
-function AutoUdar(){// выбераем удар
+
+function AutoUdar() {// РІС‹Р±РµСЂР°РµРј СѓРґР°СЂ
 	var StartUdar = rand(0,1);
 	
 	for(var i=0;i<4;i++){
@@ -43,58 +46,58 @@ function AutoUdar(){// выбераем удар
 	var cs = parent.frames['main_top'].param_ow[16][0];
 	
 	switch(cs){
-		case 1:// простой
-			parent.frames['main_top'].document.getElementById("u" + rand(0,3)).options[1].selected = true;// Простой
+        case 1:// РїСЂРѕСЃС‚РѕР№
+            parent.frames['main_top'].document.getElementById("u" + rand(0, 3)).options[1].selected = true;// РџСЂРѕСЃС‚РѕР№
 		break;
-		case 2:// прицельный
-			parent.frames['main_top'].document.getElementById("u" + rand(0,3)).options[2].selected = true;// Прицельный
+        case 2:// РїСЂРёС†РµР»СЊРЅС‹Р№
+            parent.frames['main_top'].document.getElementById("u" + rand(0, 3)).options[2].selected = true;// РџСЂРёС†РµР»СЊРЅС‹Р№
 		break;
-		case 3:// простой + прицельный
+        case 3:// РїСЂРѕСЃС‚РѕР№ + РїСЂРёС†РµР»СЊРЅС‹Р№
 			var udar = udComb2(StartUdar,(2+StartUdar));
-			parent.frames['main_top'].document.getElementById("u" + udar[0]).options[1].selected = true;// Простой
-			parent.frames['main_top'].document.getElementById("u" + udar[1]).options[2].selected = true;// Прицельный
+            parent.frames['main_top'].document.getElementById("u" + udar[0]).options[1].selected = true;// РџСЂРѕСЃС‚РѕР№
+            parent.frames['main_top'].document.getElementById("u" + udar[1]).options[2].selected = true;// РџСЂРёС†РµР»СЊРЅС‹Р№
 		break;
-		case 4:// 2 простых
+        case 4:// 2 РїСЂРѕСЃС‚С‹С…
 			var udar = udComb2(StartUdar,(2+StartUdar));
-			parent.frames['main_top'].document.getElementById("u" + udar[0]).options[1].selected = true;// Простой
-			parent.frames['main_top'].document.getElementById("u" + udar[1]).options[1].selected = true;// Простой
+            parent.frames['main_top'].document.getElementById("u" + udar[0]).options[1].selected = true;// РџСЂРѕСЃС‚РѕР№
+            parent.frames['main_top'].document.getElementById("u" + udar[1]).options[1].selected = true;// РџСЂРѕСЃС‚РѕР№
 		break;
-		case 5:// 2 прицельных
+        case 5:// 2 РїСЂРёС†РµР»СЊРЅС‹С…
 			var udar = udComb2(StartUdar,(2+StartUdar));
-			parent.frames['main_top'].document.getElementById("u" + udar[0]).options[2].selected = true;// Прицельный
-			parent.frames['main_top'].document.getElementById("u" + udar[1]).options[2].selected = true;// Прицельный
+            parent.frames['main_top'].document.getElementById("u" + udar[0]).options[2].selected = true;// РџСЂРёС†РµР»СЊРЅС‹Р№
+            parent.frames['main_top'].document.getElementById("u" + udar[1]).options[2].selected = true;// РџСЂРёС†РµР»СЊРЅС‹Р№
 		break;
-		case 6:// 2 прицельных + простой
+        case 6:// 2 РїСЂРёС†РµР»СЊРЅС‹С… + РїСЂРѕСЃС‚РѕР№
 			var udar = udComb3(StartUdar,(2+StartUdar));
-			parent.frames['main_top'].document.getElementById("u" + udar[0]).options[2].selected = true;// Прицельный
-			parent.frames['main_top'].document.getElementById("u" + udar[1]).options[2].selected = true;// Прицельный
-			parent.frames['main_top'].document.getElementById("u" + udar[2]).options[1].selected = true;// Простой
+            parent.frames['main_top'].document.getElementById("u" + udar[0]).options[2].selected = true;// РџСЂРёС†РµР»СЊРЅС‹Р№
+            parent.frames['main_top'].document.getElementById("u" + udar[1]).options[2].selected = true;// РџСЂРёС†РµР»СЊРЅС‹Р№
+            parent.frames['main_top'].document.getElementById("u" + udar[2]).options[1].selected = true;// РџСЂРѕСЃС‚РѕР№
 		break;
-		
-		case 7:// Маг 1
+
+        case 7:// РњР°Рі 1
 		var point = "u" + rand(0,3);
 			parent.frames['main_top'].document.getElementById(point).options[3].selected = true;
 			setMana(point,50);
 		break;
-		case 8:// Маг 2
+        case 8:// РњР°Рі 2
 			parent.frames['main_top'].document.getElementById("u" + rand(0,3)).options[4].selected = true;
 		break;
-		case 9:// Маг 1 + Маг 2
+        case 9:// РњР°Рі 1 + РњР°Рі 2
 			var udar = udComb2(StartUdar,(2+StartUdar));
 			parent.frames['main_top'].document.getElementById("u" + udar[0]).options[3].selected = true;
 			parent.frames['main_top'].document.getElementById("u" + udar[1]).options[4].selected = true;
 		break;
-		case 10:// 2 Маг 1
+        case 10:// 2 РњР°Рі 1
 			var udar = udComb2(StartUdar,(2+StartUdar));
 			parent.frames['main_top'].document.getElementById("u" + udar[0]).options[3].selected = true;
 			parent.frames['main_top'].document.getElementById("u" + udar[1]).options[3].selected = true;
 		break;
-		case 11:// 2 Маг 2
+        case 11:// 2 РњР°Рі 2
 			var udar = udComb2(StartUdar,(2+StartUdar));
 			parent.frames['main_top'].document.getElementById("u" + udar[0]).options[4].selected = true;
 			parent.frames['main_top'].document.getElementById("u" + udar[1]).options[4].selected = true;
 		break;
-		case 12:// 2 Маг 2 + Маг 1
+        case 12:// 2 РњР°Рі 2 + РњР°Рі 1
 			var udar = udComb3(StartUdar,(2+StartUdar));
 			parent.frames['main_top'].document.getElementById("u" + udar[0]).options[4].selected = true;
 			parent.frames['main_top'].document.getElementById("u" + udar[1]).options[4].selected = true;
@@ -102,7 +105,8 @@ function AutoUdar(){// выбераем удар
 		break;
 	}
 }
-function AutoBlock(){// блокируемся
+
+function AutoBlock() {// Р±Р»РѕРєРёСЂСѓРµРјСЃСЏ
 	var BlockId = rand(0,3);
 
 	for(var i=0;i<4;i++){
@@ -110,23 +114,24 @@ function AutoBlock(){// блокируемся
 	}
 
 	switch(parent.frames['main_top'].param_ow[16][1]){
-		case 1:// блок 1 точки
-			parent.frames['main_top'].document.getElementById("b" + BlockId).options[1].selected = true;// Простой
+        case 1:// Р±Р»РѕРє 1 С‚РѕС‡РєРё
+            parent.frames['main_top'].document.getElementById("b" + BlockId).options[1].selected = true;// РџСЂРѕСЃС‚РѕР№
 		break;
-		case 2:// блок 2 точек
+        case 2:// Р±Р»РѕРє 2 С‚РѕС‡РµРє
 			var SubBlock = 2;
 			if(BlockId < 2){
 				SubBlock = rand(2,3);
 			}
-			parent.frames['main_top'].document.getElementById("b" + BlockId).options[SubBlock].selected = true;// Простой
+            parent.frames['main_top'].document.getElementById("b" + BlockId).options[SubBlock].selected = true;// РџСЂРѕСЃС‚РѕР№
 		break;
-		case 3:// блок 3 точек со щитом
+        case 3:// Р±Р»РѕРє 3 С‚РѕС‡РµРє СЃРѕ С‰РёС‚РѕРј
 			BlockId = rand(0,1);
-			parent.frames['main_top'].document.getElementById("b" + BlockId).options[1].selected = true;// Простой
+            parent.frames['main_top'].document.getElementById("b" + BlockId).options[1].selected = true;// РџСЂРѕСЃС‚РѕР№
 		break;
 	}
 }
-function udComb2(miNc,maXc){// теория вероятности на 2 цыфры
+
+function udComb2(miNc, maXc) {// С‚РµРѕСЂРёСЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚Рё РЅР° 2 С†С‹С„СЂС‹
 	var a, b, s = [];
 	for (a = miNc; a <= maXc; a++) {
 	    for (b = miNc; b <= maXc; b++) {
@@ -137,7 +142,8 @@ function udComb2(miNc,maXc){// теория вероятности на 2 цыфры
 	};
 	return s[rand(0,(s.length-1))];
 }
-function udComb3(miNc,maXc){// теория вероятности на 3 цыфры
+
+function udComb3(miNc, maXc) {// С‚РµРѕСЂРёСЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚Рё РЅР° 3 С†С‹С„СЂС‹
 	var a, b, c, s = [];
 	for (a = miNc; a <= maXc; a++) {
 	    for (b = miNc; b <= maXc; b++) {
@@ -162,6 +168,7 @@ function setMana(n,col)
 		}
 	}
 }
-function rand(min,max){// аналог rand() в php
+
+function rand(min, max) {// Р°РЅР°Р»РѕРі rand() РІ php
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }

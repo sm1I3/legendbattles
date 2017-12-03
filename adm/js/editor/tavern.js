@@ -1,5 +1,5 @@
-var typesArray = [["1","Выпивка"],["2","Еда/Закуска"]];
-var statsArray = [["0","Нельзя одеть"],["1","Шлем","62","65"],["2","Ожерелье","62","35"],["3","Оружие","62","91"],["4","Пояс","62","30"],["5","Содержимое пояса","20","20"],[],[],["8","Сапоги","62","63"],["9","Поножи","62","40"],["10","Наплечники","62","40"],["11","Наручи","62","40"],["12","Перчатки","62","40"],["13","Щит","62","91"],["14","Кольцо","31","31"],[],["16","Доспех","62","83"],["17","Кольчуга","62","83"]];
+var typesArray = [["1", "Р’С‹РїРёРІРєР°"], ["2", "Р•РґР°/Р—Р°РєСѓСЃРєР°"]];
+var statsArray = [["0", "РќРµР»СЊР·СЏ РѕРґРµС‚СЊ"], ["1", "РЁР»РµРј", "62", "65"], ["2", "РћР¶РµСЂРµР»СЊРµ", "62", "35"], ["3", "РћСЂСѓР¶РёРµ", "62", "91"], ["4", "РџРѕСЏСЃ", "62", "30"], ["5", "РЎРѕРґРµСЂР¶РёРјРѕРµ РїРѕСЏСЃР°", "20", "20"], [], [], ["8", "РЎР°РїРѕРіРё", "62", "63"], ["9", "РџРѕРЅРѕР¶Рё", "62", "40"], ["10", "РќР°РїР»РµС‡РЅРёРєРё", "62", "40"], ["11", "РќР°СЂСѓС‡Рё", "62", "40"], ["12", "РџРµСЂС‡Р°С‚РєРё", "62", "40"], ["13", "Р©РёС‚", "62", "91"], ["14", "РљРѕР»СЊС†Рѕ", "31", "31"], [], ["16", "Р”РѕСЃРїРµС…", "62", "83"], ["17", "РљРѕР»СЊС‡СѓРіР°", "62", "83"]];
 var d = document;
 var xmlhttp;
 
@@ -29,14 +29,14 @@ ShowForm = function(msg){
 		document.getElementById('ContentError').innerHTML = msg;
 	}	
 }
-// Показываем редактор
+// РџРѕРєР°Р·С‹РІР°РµРј СЂРµРґР°РєС‚РѕСЂ
 ShowEditor = function(){
 	var html = '<form method="post" action="">';
 	html += '<div id="main"></div>';
 	html += '<table border="1" cellpadding="0" cellspacing="0" align="center" width="100%">';
 	html += '<tr>';
-	html += '<td align="center" width="50%">СВОЙСТВА</td>';
-	html += '<td align="center" width="50%">ТРЕБОВАНИЯ</td>';
+    html += '<td align="center" width="50%">РЎР’РћР™РЎРўР’Рђ</td>';
+    html += '<td align="center" width="50%">РўР Р•Р‘РћР’РђРќРРЇ</td>';
 	html += '</tr>';
 	html += '<tr>';
 	html += '<td align="center" width="50%" valign="top"><div id="params_1"></div></td>';
@@ -44,7 +44,7 @@ ShowEditor = function(){
 	html += '</tr>';
 	html += '<tr><td colspan="2" width="100%" id="prices"></td></tr>';
 	html += '</table>';
-	html += '<center><input type="submit" value="Сохранить" /></center></form><iframe src="" id="imageUpdate" name="imageUpdate" style="width:100%;height:0px;display:none;"></iframe>';
+    html += '<center><input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ" /></center></form><iframe src="" id="imageUpdate" name="imageUpdate" style="width:100%;height:0px;display:none;"></iframe>';
 	d.write(html);
 	main_inf();
 	ShowPar();
@@ -55,9 +55,9 @@ main_inf = function(){
 	html += '<td colspan="3" align="center"><input type="hidden" name="name" value="'+params[0]+'" /><div onclick="changeParams(0);">'+params[0]+'</div></td>';
 	html += '</tr>';
 	html += '<tr>';
-	html += '<td align="center" width="50%"><hr><input type="hidden" name="LI" value="'+params[6]+'" /><font onclick="changeParams(6);" style="cursor:pointer">Лимит: <b>'+params[6]+'</b> шт.</font><hr></td>';
+    html += '<td align="center" width="50%"><hr><input type="hidden" name="LI" value="' + params[6] + '" /><font onclick="changeParams(6);" style="cursor:pointer">Р›РёРјРёС‚: <b>' + params[6] + '</b> С€С‚.</font><hr></td>';
 	html += '<td align="center" style="cursor:pointer" onclick="changeImage();"><input type="hidden" name="img" value="'+params[1]+'" /><img src="//img.legendbattles.ru/image/tools/'+params[1]+'.gif" /></td>';
-	html += '<td align="center" width="50%"><hr><input type="hidden" name="time" value="'+params[7]+'" /><font onclick="changeParams(7);" style="cursor:pointer">Время: <b>'+params[7]+'</b> м.</font><hr></td>';
+    html += '<td align="center" width="50%"><hr><input type="hidden" name="time" value="' + params[7] + '" /><font onclick="changeParams(7);" style="cursor:pointer">Р’СЂРµРјСЏ: <b>' + params[7] + '</b> Рј.</font><hr></td>';
 	html += '</tr>';
 	html += '<tr>';
 	html += '<td colspan="3" align="center"><hr>' + SelectTypes() + '<hr></td>';
@@ -66,8 +66,8 @@ main_inf = function(){
 	$('main').innerHTML = html;
 	html = '<table border="1" cellpadding="0" cellspacing="0" align="center" width="100%">';
 	html += '<tr>';
-	html += '<td align="center" width="50%"><hr><input type="hidden" name="price" value="'+params[2]+'" /><font onclick="changeParams(2);" style="cursor:pointer">Стоимость: <b>'+params[2]+'</b> </font><hr></td>';
-	html += '<td align="center" width="50%"><hr><input type="hidden" name="count" value="'+params[3]+'" /><font onclick="changeParams(3);" style="cursor:pointer">Количество: <b>'+params[3]+'</b> шт.</font><hr></td>';
+    html += '<td align="center" width="50%"><hr><input type="hidden" name="price" value="' + params[2] + '" /><font onclick="changeParams(2);" style="cursor:pointer">РЎС‚РѕРёРјРѕСЃС‚СЊ: <b>' + params[2] + '</b> </font><hr></td>';
+    html += '<td align="center" width="50%"><hr><input type="hidden" name="count" value="' + params[3] + '" /><font onclick="changeParams(3);" style="cursor:pointer">РљРѕР»РёС‡РµСЃС‚РІРѕ: <b>' + params[3] + '</b> С€С‚.</font><hr></td>';
 	html += '</tr>';
 	html += '</table>';
 	$('prices').innerHTML = html;
@@ -89,7 +89,7 @@ ShowPar = function(){
 			}
 		}
 	}
-	$('params_1').innerHTML = '<table border="1" cellpadding="0" cellspacing="0" align="center" width="100%"><input type="hidden" name="param" value="' + params[8] + '" />'+showPars+'<tr><td align="center" colspan="4" onclick="AddParams(0);" style="cursor:pointer">ДОБАВИТЬ</td></tr></table>';
+    $('params_1').innerHTML = '<table border="1" cellpadding="0" cellspacing="0" align="center" width="100%"><input type="hidden" name="param" value="' + params[8] + '" />' + showPars + '<tr><td align="center" colspan="4" onclick="AddParams(0);" style="cursor:pointer">Р”РћР‘РђР’РРўР¬</td></tr></table>';
 	var showPars = '';
 	var str_pr = params[9].split('|');
 	qsort_int(str_pr, 0, str_pr.length-1);
@@ -103,12 +103,12 @@ ShowPar = function(){
 			}
 		}
 	}
-	$('params_2').innerHTML = '<table border="1" cellpadding="0" cellspacing="0" align="center" width="100%"><input type="hidden" name="need" value="' + params[9] + '" />'+showPars+'<tr><td align="center" colspan="4" onclick="AddParams(1);" style="cursor:pointer">ДОБАВИТЬ</td></tr></table>';
+    $('params_2').innerHTML = '<table border="1" cellpadding="0" cellspacing="0" align="center" width="100%"><input type="hidden" name="need" value="' + params[9] + '" />' + showPars + '<tr><td align="center" colspan="4" onclick="AddParams(1);" style="cursor:pointer">Р”РћР‘РђР’РРўР¬</td></tr></table>';
 	
 	
 	return true;
 }
-// Типы и категории вещей
+// РўРёРїС‹ Рё РєР°С‚РµРіРѕСЂРёРё РІРµС‰РµР№
 SelectTypes = function(){
 	var html = '<select name="type" onchange="ChSelect(4,this.options[this.selectedIndex].value);">';
 	for(var i = 0; i < typesArray.length; i++){
@@ -130,9 +130,9 @@ SelectSlots = function(){
 SelectBlocks = function(){
 	var html = '<select name="block" onchange="ChSelect(10,this.options[this.selectedIndex].value);">';
 	html += '<option value="0"'+((params[10] == 0)?' selected="selected"':'')+'>-------</option>';
-	html += '<option value="40"'+((params[10] == 40)?' selected="selected"':'')+'>1 точка</option>';
-	html += '<option value="70"'+((params[10] == 70)?' selected="selected"':'')+'>2 точки</option>';
-	html += '<option value="90"'+((params[10] == 90)?' selected="selected"':'')+'>3 точки</option>';
+    html += '<option value="40"' + ((params[10] == 40) ? ' selected="selected"' : '') + '>1 С‚РѕС‡РєР°</option>';
+    html += '<option value="70"' + ((params[10] == 70) ? ' selected="selected"' : '') + '>2 С‚РѕС‡РєРё</option>';
+    html += '<option value="90"' + ((params[10] == 90) ? ' selected="selected"' : '') + '>3 С‚РѕС‡РєРё</option>';
 	html += '</select>';
 	return html;
 }
@@ -140,7 +140,7 @@ ChSelect = function(type, value){
 	params[type] = value;
 	main_inf();
 }
-// Всплывающие формы
+// Р’СЃРїР»С‹РІР°СЋС‰РёРµ С„РѕСЂРјС‹
 changeParams = function(paramID){
 	var html = '<form onsubmit="changeParamsM(' + paramID + ');return false;"><center><input class="login" type="text" value="'+params[paramID]+'" id="param" size=30><hr><input type="submit" value="[OK]"></center></form>';
 	ShowForm(html);
@@ -150,7 +150,7 @@ changeParamsM = function(paramID){
 	ShowForm();
 	main_inf();
 }
-// Меняем статы
+// РњРµРЅСЏРµРј СЃС‚Р°С‚С‹
 changeStats = function(type,par,val){
 	var html = '<form onsubmit="changeStatsM(' + type + ',' + par + ');return false;"><center><input class="login" type="text" value="' + val + '" id="param" size=30><hr><input type="submit" value="[OK]"></center></form>';
 	ShowForm(html);
@@ -160,17 +160,17 @@ changeStatsM = function(type,par){
 	ShowForm();
 	ShowPar();
 }
-// Меняем Картинку
+// РњРµРЅСЏРµРј РљР°СЂС‚РёРЅРєСѓ
 changeImage = function(){
-	return alert('В разработке');
+    return alert('Р’ СЂР°Р·СЂР°Р±РѕС‚РєРµ');
 	var loadLink = '';
 	if($('slot').value > 0){
 		loadLink = 'javascript:changeImageAjax('+statsArray[$('slot').value][2]+', '+statsArray[$('slot').value][3]+');';
 	}
 	if(loadLink){
-		ShowForm('<table width="100%"><tr><td align="center"><a href="'+loadLink+'">Загрузить</a></td><td align="center"><a href="#" onclick="window.frames[\'imageUpdate\'].location=\'/gameplay/ajax/imageUpdate.php?action=update\';">Обновить</a></td></tr><tr><td colspan="2" align="center"><div style="height: '+(window.innerHeight/2)+'px;overflow: auto;" id="gamImages">Loading...</div></td></tr></table>');
+        ShowForm('<table width="100%"><tr><td align="center"><a href="' + loadLink + '">Р—Р°РіСЂСѓР·РёС‚СЊ</a></td><td align="center"><a href="#" onclick="window.frames[\'imageUpdate\'].location=\'/gameplay/ajax/imageUpdate.php?action=update\';">РћР±РЅРѕРІРёС‚СЊ</a></td></tr><tr><td colspan="2" align="center"><div style="height: ' + (window.innerHeight / 2) + 'px;overflow: auto;" id="gamImages">Loading...</div></td></tr></table>');
 	}else{
-		alert('Слот вещи не выбран');
+        alert('РЎР»РѕС‚ РІРµС‰Рё РЅРµ РІС‹Р±СЂР°РЅ');
 	}
 }
 changeImageM = function(image){
@@ -183,18 +183,18 @@ changeImageAjax = function(x, y){
 	xmlhttp.onreadystatechange = ajax_response;
 	xmlhttp.send(null);
 }
-// Добавляем новые статы
+// Р”РѕР±Р°РІР»СЏРµРј РЅРѕРІС‹Рµ СЃС‚Р°С‚С‹
 AddParams = function(type){
 	var DataID = [8,9];
 	var unselect = [];
 	var i=0;
-	// Делаем выборку уже добавленных статов
+    // Р”РµР»Р°РµРј РІС‹Р±РѕСЂРєСѓ СѓР¶Рµ РґРѕР±Р°РІР»РµРЅРЅС‹С… СЃС‚Р°С‚РѕРІ
 	var str_pr = params[DataID[type]].split('|');
 	for (var str_val in str_pr){
 		var str_par = str_pr[str_val].split('@');
 		unselect[i++] = str_par[0];
 	}
-	// Строим Select
+    // РЎС‚СЂРѕРёРј Select
 	var select = '';
 	for(var i = 0; i < all_params[type].length; i++){
 		if(all_params[type][i][0]){
@@ -202,7 +202,7 @@ AddParams = function(type){
 			select += '<option value="' + all_params[type][i][0] + '">' + all_params[type][i][1] + '</option>';
 		}
 	}
-	// Строим шаблон
+    // РЎС‚СЂРѕРёРј С€Р°Р±Р»РѕРЅ
 	ShowForm('<form onsubmit="AddParamsM(' + type + ');return false;"><center><select class="login" id="addParamsId">' + select + '</select><br /><input class="login" type="text" value="0" id="addParamsName" size=30><hr><input type="submit" value="[OK]"></center></form>');
 }
 AddParamsM = function(type){
@@ -211,7 +211,7 @@ AddParamsM = function(type){
 	ShowForm();
 	ShowPar();
 }
-// Редактируем переменные в режиме онлайн
+// Р РµРґР°РєС‚РёСЂСѓРµРј РїРµСЂРµРјРµРЅРЅС‹Рµ РІ СЂРµР¶РёРјРµ РѕРЅР»Р°Р№РЅ
 fast_up = function(type,par,val){
 	val = parseInt(val);
 	return '<img style="cursor:pointer" src=http"//img.legendbattles.ru/images/fixed_on.gif onclick="par_set('+type+','+par+','+(val*2)+')"> <img style="cursor:pointer" src=http"//img.legendbattles.ru/images/battle/down.gif onclick="par_set('+type+','+par+','+(val-1)+')"> <img style="cursor:pointer" src=http"//img.legendbattles.ru/images/battle/up.gif onclick="par_set('+type+','+par+','+(val+1)+')"> <img style="cursor:pointer" src=http"//img.legendbattles.ru/images/fixed_off.gif onclick="par_set('+type+','+par+','+(val/2)+')">';
@@ -271,7 +271,7 @@ ajax_response = function(){
 			var response = xmlhttp.responseText;
 			var z = '';
 			if (response == 'none'){
-				$('gamImages').innerHTML += 'Рисунков не найдено.';
+                $('gamImages').innerHTML += 'Р РёСЃСѓРЅРєРѕРІ РЅРµ РЅР°Р№РґРµРЅРѕ.';
 			}else if (response != 'none'){
 				response = response.split('|');
 				for (var i=0;i<response.length;i++){

@@ -91,9 +91,9 @@ while ($row = mysql_fetch_assoc($res))
 {
     $bots.='
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этого бота?\');" href="bot_list.php?delete_bot_id='.$row['inf_bot'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="bot_edit.php?bot_id='.$row['inf_bot'].'" title="Изменить"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="bot_edit.php?copy_bot_id='.$row['inf_bot'].'" title="Клонировать"><img src="images/cms_icons/cms_add.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕРіРѕ Р±РѕС‚Р°?\');" href="bot_list.php?delete_bot_id=' . $row['inf_bot'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="bot_edit.php?bot_id=' . $row['inf_bot'] . '" title="РР·РјРµРЅРёС‚СЊ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="bot_edit.php?copy_bot_id=' . $row['inf_bot'] . '" title="РљР»РѕРЅРёСЂРѕРІР°С‚СЊ"><img src="images/cms_icons/cms_add.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['inf_bot'].'</td>
       <td align="left" class="cms_middle">'.$row['nickname'].'</td>
       
@@ -103,22 +103,22 @@ while ($row = mysql_fetch_assoc($res))
     ';
 }
 
-/*<td align="left" class="cms_middle"><a href="bot_edit.php?bot_id='.$row['inf_bot'].'" title="Изменить">'._htext($row['nickname']).'</a></td>*/
+/*<td align="left" class="cms_middle"><a href="bot_edit.php?bot_id='.$row['inf_bot'].'" title="РР·РјРµРЅРёС‚СЊ">'._htext($row['nickname']).'</a></td>*/
 
 $_SESSION['pages']['bot_list'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Список ботов</h3>
+    <h3>РЎРїРёСЃРѕРє Р±РѕС‚РѕРІ</h3>
 <link rel="stylesheet" href="files/modalwindow.css" type="text/css" />
 
 <form name="filter" id="filter" action="" method="get">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-    <td>Шаблон бота:</td>
+      <td>РЁР°Р±Р»РѕРЅ Р±РѕС‚Р°:</td>
     <td>
         <?=createSelectFromArray('bot_class_id', $bot_classes, (isset($_GET['bot_class_id'])?$_GET['bot_class_id']:''))?>
     </td>
@@ -139,32 +139,33 @@ function clearFilter()
 </form>
 
 <div id="results">
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Боты')?></div>
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р‘РѕС‚С‹') ?></div>
 
     <div class="cms_ind">
         <br />
-        Боты: <br />
+        Р‘РѕС‚С‹: <br/>
         <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr >
-                <td class="cms_cap2 normal"> Удалить </td>
-                <td class="cms_cap2 normal"> Изменить </td>
-                <td class="cms_cap2 normal"> Клонировать </td>
+                <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РљР»РѕРЅРёСЂРѕРІР°С‚СЊ</td>
 
-                <td class="cms_cap2"><a href="<?=sortby('inf_bot')?>">ID Бота</a></td>
-                <td class="cms_cap2"><a href="<?=sortby('nickname')?>">Имя бота</a></td>
-                <!--<td class="cms_cap2"><a href="<?=sortby('nickname')?>">Имя бота</a></td>-->
-                <td class="cms_cap2"><a href="<?=sortby('level')?>">Уровень</a></td>
-                <td class="cms_cap2"><a href="<?=sortby('comment')?>">Комментарий</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('inf_bot') ?>">ID Р‘РѕС‚Р°</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('nickname') ?>">РРјСЏ Р±РѕС‚Р°</a></td>
+                <!--<td class="cms_cap2"><a href="<?= sortby('nickname') ?>">РРјСЏ Р±РѕС‚Р°</a></td>-->
+                <td class="cms_cap2"><a href="<?= sortby('level') ?>">РЈСЂРѕРІРµРЅСЊ</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('comment') ?>">РљРѕРјРјРµРЅС‚Р°СЂРёР№</a></td>
             </tr>
             <?=$bots?>   
         </table>
         <br />
     </div>
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Боты')?></div> 
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р‘РѕС‚С‹') ?></div>
 </div>
  
  <br />
- <img src="images/cms_icons/cms_add.gif" alt="Добавить бота" /><a href="bot_edit.php" title="Добавить бота">Добавить бота</a> &nbsp;
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ Р±РѕС‚Р°"/><a href="bot_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ Р±РѕС‚Р°">Р”РѕР±Р°РІРёС‚СЊ
+    Р±РѕС‚Р°</a> &nbsp;
  <br />
 
 <? require('kernel/after.php'); ?>

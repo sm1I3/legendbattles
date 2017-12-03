@@ -3,7 +3,7 @@ session_start();
 //$_SESSION['chat']['mode']=0;
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<META Content="text/html; Charset=windows-1251" Http-Equiv=Content-type>
+<META Content="text/html; Charset=utf-8" Http-Equiv=Content-type>
 <META Http-Equiv=Cache-Control Content=No-Cache>
 <META Http-Equiv=Pragma Content=No-Cache>
 <META Http-Equiv=Expires Content=0>
@@ -19,10 +19,10 @@ var user = '<?=$inf[sklon]?> <?=$inf[clan_gif]?> <?=$_SESSION['user']["login"]?>
 <body style=" margin:2px; background-color:#FFFFFF; " OnLoad="parent.start()">
 <div class="section" id="section">
   <ul class="tabs" style="position: relative;" >
-    <li class="current" onclick="ch_mode(0);">Общий чат</li>
-    <li onclick="ch_mode(1);">Торговый чат</li>
-	<li onclick="ch_mode(3);">Системный</li>
-	<!--li onclick="ch_mode(2);">Клановый чат&nbsp;&nbsp;</li-->
+      <li class="current" onclick="ch_mode(0);">РћР±С‰РёР№ С‡Р°С‚</li>
+      <li onclick="ch_mode(1);">РўРѕСЂРіРѕРІС‹Р№ С‡Р°С‚</li>
+      <li onclick="ch_mode(3);">РЎРёСЃС‚РµРјРЅС‹Р№</li>
+      <!--li onclick="ch_mode(2);">РљР»Р°РЅРѕРІС‹Р№ С‡Р°С‚&nbsp;&nbsp;</li-->
   </ul>
   <div class="box visible">
     <TEXTAREA id=cpnick style="display:none;"></TEXTAREA>
@@ -66,7 +66,7 @@ $(function() {
       .parents('div.section').find('div.box').eq($(this).index()).fadeIn(600).siblings('div.box').hide();
   })
 })
-})(jQuery)
+})(jQuery);
 
 var e_m;
 e_m = get_by_id('user_menu');

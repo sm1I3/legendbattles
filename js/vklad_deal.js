@@ -9,15 +9,15 @@ function writevklad(e){
 	switch(e){
 		case '0':
 			el_type1.innerHTML = '';
-			el_us.innerHTML = 'Выберите тип ячейки.';
+            el_us.innerHTML = 'Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї СЏС‡РµР№РєРё.';
 		break;
-		case '1': 
-			el_type1.innerHTML = '<select onChange="write_next(this.value);chvk();" ><option value=0 selected>Выберите тип вклада</option><option value=1 >Оптимальный</option><option value=2 >Платинум</option></select>';
-			el_us.innerHTML = 'Выберите тип вклада.';
+		case '1':
+            el_type1.innerHTML = '<select onChange="write_next(this.value);chvk();" ><option value=0 selected>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РІРєР»Р°РґР°</option><option value=1 >РћРїС‚РёРјР°Р»СЊРЅС‹Р№</option><option value=2 >РџР»Р°С‚РёРЅСѓРј</option></select>';
+            el_us.innerHTML = 'Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РІРєР»Р°РґР°.';
 		break;
-		case '2': 
-			el_type1.innerHTML = '<select onChange="write_next(this.value);chvk();" ><option value=0 selected>Выберите тип вклада</option><option value=1 >Биржевой</option><option value=2 >Gold</option></select>';
-			el_us.innerHTML = 'Выберите тип вклада.';
+		case '2':
+            el_type1.innerHTML = '<select onChange="write_next(this.value);chvk();" ><option value=0 selected>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РІРєР»Р°РґР°</option><option value=1 >Р‘РёСЂР¶РµРІРѕР№</option><option value=2 >Gold</option></select>';
+            el_us.innerHTML = 'Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РІРєР»Р°РґР°.';
 		break;
 	}
 }
@@ -32,34 +32,34 @@ function write_next(e){
 	case '0': break;
 	case '1': 
 			switch(e){
-			case "0": 
-				txt='Тип вклада не выбран'; 
+			case "0":
+                txt = 'РўРёРї РІРєР»Р°РґР° РЅРµ РІС‹Р±СЂР°РЅ';
 				el_sum.type == "text" ? el_sum.setAttribute("type","hidden") : "";
-				el_sum.value=" Введите сумму вклада ";			
+                el_sum.value = " Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РІРєР»Р°РґР° ";
 			break;			
 			case "1":
-				txt="Тип вклада: Оптимальный.<br>Проценты по вкладу: 0.2% в день.<br>Срок вклада: 30 дней.<br>Начисление процентов: в конце срока.<br>Досрочное изъятие средств: нет.<br>Максимальная сумма вклада: 250 $.";  
+                txt = "РўРёРї РІРєР»Р°РґР°: РћРїС‚РёРјР°Р»СЊРЅС‹Р№.<br>РџСЂРѕС†РµРЅС‚С‹ РїРѕ РІРєР»Р°РґСѓ: 0.2% РІ РґРµРЅСЊ.<br>РЎСЂРѕРє РІРєР»Р°РґР°: 30 РґРЅРµР№.<br>РќР°С‡РёСЃР»РµРЅРёРµ РїСЂРѕС†РµРЅС‚РѕРІ: РІ РєРѕРЅС†Рµ СЃСЂРѕРєР°.<br>Р”РѕСЃСЂРѕС‡РЅРѕРµ РёР·СЉСЏС‚РёРµ СЃСЂРµРґСЃС‚РІ: РЅРµС‚.<br>РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° РІРєР»Р°РґР°: 250 $.";
 				el_sum.setAttribute("type","text");
 			break;
-			case "2": 
-				txt="Тип вклада: Платинум.<br>Проценты по вкладу: 0.4% в день.<br>Срок вклада: 40 дней.<br>Начисление процентов: в конце срока.<br>Досрочное изъятие средств: нет.<br>Максимальная сумма вклада: 500 $.";  
+			case "2":
+                txt = "РўРёРї РІРєР»Р°РґР°: РџР»Р°С‚РёРЅСѓРј.<br>РџСЂРѕС†РµРЅС‚С‹ РїРѕ РІРєР»Р°РґСѓ: 0.4% РІ РґРµРЅСЊ.<br>РЎСЂРѕРє РІРєР»Р°РґР°: 40 РґРЅРµР№.<br>РќР°С‡РёСЃР»РµРЅРёРµ РїСЂРѕС†РµРЅС‚РѕРІ: РІ РєРѕРЅС†Рµ СЃСЂРѕРєР°.<br>Р”РѕСЃСЂРѕС‡РЅРѕРµ РёР·СЉСЏС‚РёРµ СЃСЂРµРґСЃС‚РІ: РЅРµС‚.<br>РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° РІРєР»Р°РґР°: 500 $.";
 				el_sum.setAttribute("type","text");
 			break;
 		}
 	break;	
 	case '2': 
 			switch(e){
-			case "0": 
-				txt='Тип вклада не выбран'; 
+			case "0":
+                txt = 'РўРёРї РІРєР»Р°РґР° РЅРµ РІС‹Р±СЂР°РЅ';
 				el_sum.type == "text" ? el_sum.setAttribute("type","hidden") : "";
-				el_sum.value=" Введите сумму вклада ";			
+                el_sum.value = " Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РІРєР»Р°РґР° ";
 			break;			
 			case "1":
-				txt="Тип вклада: срочный.<br>Проценты по вкладу: 0.3% в день.<br>Срок вклада: 60 дней.<br>Начисление процентов: в конце срока.<br>Досрочное изъятие средств: нет.<br>Максимальная сумма вклада: 150 DLR.";  
+                txt = "РўРёРї РІРєР»Р°РґР°: СЃСЂРѕС‡РЅС‹Р№.<br>РџСЂРѕС†РµРЅС‚С‹ РїРѕ РІРєР»Р°РґСѓ: 0.3% РІ РґРµРЅСЊ.<br>РЎСЂРѕРє РІРєР»Р°РґР°: 60 РґРЅРµР№.<br>РќР°С‡РёСЃР»РµРЅРёРµ РїСЂРѕС†РµРЅС‚РѕРІ: РІ РєРѕРЅС†Рµ СЃСЂРѕРєР°.<br>Р”РѕСЃСЂРѕС‡РЅРѕРµ РёР·СЉСЏС‚РёРµ СЃСЂРµРґСЃС‚РІ: РЅРµС‚.<br>РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° РІРєР»Р°РґР°: 150 DLR.";
 				el_sum.setAttribute("type","text");
 			break;
-			case "2": 
-				txt="Тип вклада: краткосрочный.<br>Проценты по вкладу: 0.5% в день.<br>Срок вклада: 80 дней.<br>Начисление процентов: в конце срока.<br>Досрочное изъятие средств: нет.<br>Максимальная сумма вклада: 500 DLR.";  
+			case "2":
+                txt = "РўРёРї РІРєР»Р°РґР°: РєСЂР°С‚РєРѕСЃСЂРѕС‡РЅС‹Р№.<br>РџСЂРѕС†РµРЅС‚С‹ РїРѕ РІРєР»Р°РґСѓ: 0.5% РІ РґРµРЅСЊ.<br>РЎСЂРѕРє РІРєР»Р°РґР°: 80 РґРЅРµР№.<br>РќР°С‡РёСЃР»РµРЅРёРµ РїСЂРѕС†РµРЅС‚РѕРІ: РІ РєРѕРЅС†Рµ СЃСЂРѕРєР°.<br>Р”РѕСЃСЂРѕС‡РЅРѕРµ РёР·СЉСЏС‚РёРµ СЃСЂРµРґСЃС‚РІ: РЅРµС‚.<br>РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° РІРєР»Р°РґР°: 500 DLR.";
 				el_sum.setAttribute("type","text");
 			break;
 		}
@@ -82,11 +82,11 @@ function chvk(){
 					case "2": (sum <= 500 && sum > 0) ? err=0 : err=1; sum2=Math.round(sum/400*0.4*40+sum); break;
 				}
 			if(err==1){
-				sum < 0 ? alert("Сумма вклада должна быть больше 0.") : alert("Сумма вклада превышает максимально возможную по данному типу вклада.");
-				d.getElementById("vk_sum").value = " Введите сумму вклада ";
+                sum < 0 ? alert("РЎСѓРјРјР° РІРєР»Р°РґР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0.") : alert("РЎСѓРјРјР° РІРєР»Р°РґР° РїСЂРµРІС‹С€Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅСѓСЋ РїРѕ РґР°РЅРЅРѕРјСѓ С‚РёРїСѓ РІРєР»Р°РґР°.");
+                d.getElementById("vk_sum").value = " Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РІРєР»Р°РґР° ";
 			}
 			else{
-				txt2 = mon_baks >= sum ? "<input type=hidden name=post_id value=99><input type=submit class=lbut value=\"Сделать вклад  [ "+sum+" $ ]\"><br><b>Вы получите: "+sum2+" $</b>" : "<input type=button class=lbut value=\" Недостаточно средств \">";
+                txt2 = mon_baks >= sum ? "<input type=hidden name=post_id value=99><input type=submit class=lbut value=\"РЎРґРµР»Р°С‚СЊ РІРєР»Р°Рґ  [ " + sum + " $ ]\"><br><b>Р’С‹ РїРѕР»СѓС‡РёС‚Рµ: " + sum2 + " $</b>" : "<input type=button class=lbut value=\" РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ \">";
 				d.getElementById("vk_sum_hid").value = sum;
 			}
 			break;
@@ -97,11 +97,11 @@ function chvk(){
 						case "2": (sum <= 500 && sum > 0) ? err=0 : err=1; sum2=Math.round(sum/400*0.5*80+sum); break;
 					}
 				if(err==1){
-					sum < 0 ? alert("Сумма вклада должна быть больше 0.") : alert("Сумма вклада превышает максимально возможную по данному типу вклада.");
-					d.getElementById("vk_sum").value = " Введите сумму вклада ";
+                    sum < 0 ? alert("РЎСѓРјРјР° РІРєР»Р°РґР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0.") : alert("РЎСѓРјРјР° РІРєР»Р°РґР° РїСЂРµРІС‹С€Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅСѓСЋ РїРѕ РґР°РЅРЅРѕРјСѓ С‚РёРїСѓ РІРєР»Р°РґР°.");
+                    d.getElementById("vk_sum").value = " Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РІРєР»Р°РґР° ";
 				}
 				else{
-					txt2 = mon_dd >= sum ? "<input type=hidden name=post_id value=99><input type=submit class=lbut value=\"Сделать вклад  [ "+sum+" DLR ]\"><br><b>Вы получите: "+sum2+" DLR</b>" : "<input type=button class=lbut value=\" Недостаточно средств \">";
+                    txt2 = mon_dd >= sum ? "<input type=hidden name=post_id value=99><input type=submit class=lbut value=\"РЎРґРµР»Р°С‚СЊ РІРєР»Р°Рґ  [ " + sum + " DLR ]\"><br><b>Р’С‹ РїРѕР»СѓС‡РёС‚Рµ: " + sum2 + " DLR</b>" : "<input type=button class=lbut value=\" РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ \">";
 					d.getElementById("vk_sum_hid").value = sum;
 				}
 			break;

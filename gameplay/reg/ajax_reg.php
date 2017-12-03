@@ -1,39 +1,39 @@
 <?php
 session_start();
-include($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
-include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
-header('Content-type: text/html; charset=windows-1251');
+include($_SERVER["DOCUMENT_ROOT"] . "/includes/config.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/includes/functions.php");
+header('Content-type: text/html; charset=utf-8');
 
-if(!empty($_POST)){
-	// Фильтруем логин
-	$_POST["reg-user"] = addslashes(trim((iconv("UTF-8","Windows-1251",urldecode($_POST["reg-user"]))?iconv("UTF-8","Windows-1251",urldecode($_POST["reg-user"])):urldecode($_POST["reg-user"]))));
-	// Делаем проверки
-	if (empty($_POST["reg-user"]) or strlen($_POST["reg-user"]) < 4 or strlen($_POST["reg-user"]) > 21){
-		exit('ERR@1');// Неверная длина логина
-	}
-	if(testchr($_POST["reg-user"])){
-		exit('ERR@2'); // Существует неверные символы
-	}
-	if(GetUser($_POST["reg-user"])){
-		exit('ERR@3'); // Пользователь уже зарегистрирован
-	}
-	preg_match("~^([a-z0-9_\-\.])+@([a-z0-9_\-\.])+\.([a-z0-9])+$~i",$_POST['reg-email']) or die('ERR@4'); // Неверный E-Mail
-	preg_match("/^([0-2][0-9]|[3][0-1]).([0][0-9]|[1][0-2]).[0-9]{4}$/",$_POST['reg-bday']) or die('ERR@5'); // НДР
-	if($_POST['reg-sexuser'] !='male' and $_POST['reg-sexuser'] !='female'){ // Иди в лес бесполое существо ;)
-		exit('ERR@6');
-	}
-	// Если все нормально то уже регистрируем персонажа
-	$UserPassword = generate_password(rand(6,8));
-	$val_bdate=varcheck($_POST['reg-bday']);
-	// Шлем мыло
-	send_mail($_POST['reg-email'],'Регистрация нового пользователя','Здравствуйте, '.$_POST['reg-user'].'!<br><br>Вы успешно зарегистрировались в проекте Legend Battles.<br />Вот ваши игровые данные:<br />Логин: <b>'.$_POST['reg-user'].'</b><br />Пароль: <b>'.$UserPassword.'</b><br /><br /><br />С наилучшими пожеланиями,<br />Администрация игры Legend Battles.<br />www.LegendBattles.ru<br /><br />');
-	// Выполняем запросы в базу
-	mysqli_query($GLOBALS['db_link'],"INSERT INTO `user` (`login`,`pass`,`email`,`bday`,`sex`,`thotem`,`bdaypers`,`obraz`,`ip`) VALUES ('".$_POST['reg-user']."','".md5($UserPassword)."','".$_POST['reg-email']."','".$val_bdate."','".$_POST['reg-sexuser']."','".rand(0,11)."','".time()."','".$_POST['reg-sexuser'].".gif"."','".getIP()."')");
-	// Если есть рефералы работаем дальше ->>>>
-	if($_SESSION['referal_id'] and $_SESSION['referal']){
-		$ReferalID = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `id`,`login` FROM `user` WHERE `id`='".mysqli_insert_id($GLOBALS['db_link'])."' LIMIT 1;"));
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `ref_system` (`who_id`,`who_login`,`ref_id`,`ref_login`,`time`) VALUES ('".$_SESSION['referal_id']."','".$_SESSION['referal']."','".$ReferalID['id']."','".$ReferalID['login']."','".time()."');");
-	}
-	// Говорим что все ок, и завершаем регу
-	exit('OK@' . $UserPassword);
+if (!empty($_POST)) {
+    // Р¤РёР»СЊС‚СЂСѓРµРј Р»РѕРіРёРЅ
+    $_POST["reg-user"] = addslashes(trim((iconv("UTF-8", "utf-8", urldecode($_POST["reg-user"])) ? iconv("UTF-8", "utf-8", urldecode($_POST["reg-user"])) : urldecode($_POST["reg-user"]))));
+    // Р”РµР»Р°РµРј РїСЂРѕРІРµСЂРєРё
+    if (empty($_POST["reg-user"]) or strlen($_POST["reg-user"]) < 4 or strlen($_POST["reg-user"]) > 21) {
+        exit('ERR@1');// РќРµРІРµСЂРЅР°СЏ РґР»РёРЅР° Р»РѕРіРёРЅР°
+    }
+    if (testchr($_POST["reg-user"])) {
+        exit('ERR@2'); // РЎСѓС‰РµСЃС‚РІСѓРµС‚ РЅРµРІРµСЂРЅС‹Рµ СЃРёРјРІРѕР»С‹
+    }
+    if (GetUser($_POST["reg-user"])) {
+        exit('ERR@3'); // РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ
+    }
+    preg_match("~^([a-z0-9_\-\.])+@([a-z0-9_\-\.])+\.([a-z0-9])+$~i", $_POST['reg-email']) or die('ERR@4'); // РќРµРІРµСЂРЅС‹Р№ E-Mail
+    preg_match("/^([0-2][0-9]|[3][0-1]).([0][0-9]|[1][0-2]).[0-9]{4}$/", $_POST['reg-bday']) or die('ERR@5'); // РќР”Р 
+    if ($_POST['reg-sexuser'] != 'male' and $_POST['reg-sexuser'] != 'female') { // РРґРё РІ Р»РµСЃ Р±РµСЃРїРѕР»РѕРµ СЃСѓС‰РµСЃС‚РІРѕ ;)
+        exit('ERR@6');
+    }
+    // Р•СЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ С‚Рѕ СѓР¶Рµ СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј РїРµСЂСЃРѕРЅР°Р¶Р°
+    $UserPassword = generate_password(rand(6, 8));
+    $val_bdate = varcheck($_POST['reg-bday']);
+    // РЁР»РµРј РјС‹Р»Рѕ
+    send_mail($_POST['reg-email'], 'Р РµРіРёСЃС‚СЂР°С†РёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ', 'Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, ' . $_POST['reg-user'] . '!<br><br>Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»РёСЃСЊ РІ РїСЂРѕРµРєС‚Рµ Legend Battles.<br />Р’РѕС‚ РІР°С€Рё РёРіСЂРѕРІС‹Рµ РґР°РЅРЅС‹Рµ:<br />Р›РѕРіРёРЅ: <b>' . $_POST['reg-user'] . '</b><br />РџР°СЂРѕР»СЊ: <b>' . $UserPassword . '</b><br /><br /><br />РЎ РЅР°РёР»СѓС‡С€РёРјРё РїРѕР¶РµР»Р°РЅРёСЏРјРё,<br />РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ РёРіСЂС‹ Legend Battles.<br />www.LegendBattles.ru<br /><br />');
+    // Р’С‹РїРѕР»РЅСЏРµРј Р·Р°РїСЂРѕСЃС‹ РІ Р±Р°Р·Сѓ
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO `user` (`login`,`pass`,`email`,`bday`,`sex`,`thotem`,`bdaypers`,`obraz`,`ip`) VALUES ('" . $_POST['reg-user'] . "','" . md5($UserPassword) . "','" . $_POST['reg-email'] . "','" . $val_bdate . "','" . $_POST['reg-sexuser'] . "','" . rand(0, 11) . "','" . time() . "','" . $_POST['reg-sexuser'] . ".gif" . "','" . getIP() . "')");
+    // Р•СЃР»Рё РµСЃС‚СЊ СЂРµС„РµСЂР°Р»С‹ СЂР°Р±РѕС‚Р°РµРј РґР°Р»СЊС€Рµ ->>>>
+    if ($_SESSION['referal_id'] and $_SESSION['referal']) {
+        $ReferalID = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `id`,`login` FROM `user` WHERE `id`='" . mysqli_insert_id($GLOBALS['db_link']) . "' LIMIT 1;"));
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `ref_system` (`who_id`,`who_login`,`ref_id`,`ref_login`,`time`) VALUES ('" . $_SESSION['referal_id'] . "','" . $_SESSION['referal'] . "','" . $ReferalID['id'] . "','" . $ReferalID['login'] . "','" . time() . "');");
+    }
+    // Р“РѕРІРѕСЂРёРј С‡С‚Рѕ РІСЃРµ РѕРє, Рё Р·Р°РІРµСЂС€Р°РµРј СЂРµРіСѓ
+    exit('OK@' . $UserPassword);
 }

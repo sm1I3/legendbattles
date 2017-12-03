@@ -72,7 +72,7 @@ function PRList(value)
     td_obj.align = 'center';
     td_obj.colSpan = '6';
     td_obj.className = 'freetxt';
-    td_obj.innerHTML = 'Подарок для: <input type=text id=prnick class=gr_text size=20 maxlength=20 DISABLED> Подпись: <input type=text id=prtext class=gr_text size=40 maxlength=40 DISABLED> <input type=checkbox id=pranon value=1 class=gr_text DISABLED> анонимно <input type=submit value="Отправить" id=pridsub class=gr_but onclick="check_pres()" DISABLED>';
+    td_obj.innerHTML = 'РџРѕРґР°СЂРѕРє РґР»СЏ: <input type=text id=prnick class=gr_text size=20 maxlength=20 DISABLED> РџРѕРґРїРёСЃСЊ: <input type=text id=prtext class=gr_text size=40 maxlength=40 DISABLED> <input type=checkbox id=pranon value=1 class=gr_text DISABLED> Р°РЅРѕРЅРёРјРЅРѕ <input type=submit value="РћС‚РїСЂР°РІРёС‚СЊ" id=pridsub class=gr_but onclick="check_pres()" DISABLED>';
 }
 
 function PRSelect(prid,canb)
@@ -93,11 +93,11 @@ function PRSelect(prid,canb)
 function PRTitle(value)
 {
     var str = '';
-    if(value[1] > 0) str += '<b>Стомость:</b> '+value[1]+' NV';
-    if(value[2] > 0) str += '<b>Стомость:</b> '+value[2]+' Изумруда';
-    str += '<br><b>Время жизни:</b> '+value[3]+' дн';
-    str += '<br><b>Лимит:</b> '+(value[4] == 50000 ? 'неограничено' : value[4]+' шт');
-    str += '<br><b>Пол:</b> '+(value[5] == 2 ? 'любой' : (!value[5] ? 'мужской' : 'женский'));
+    if (value[1] > 0) str += '<b>РЎС‚РѕРјРѕСЃС‚СЊ:</b> ' + value[1] + ' NV';
+    if (value[2] > 0) str += '<b>РЎС‚РѕРјРѕСЃС‚СЊ:</b> ' + value[2] + ' РР·СѓРјСЂСѓРґР°';
+    str += '<br><b>Р’СЂРµРјСЏ Р¶РёР·РЅРё:</b> ' + value[3] + ' РґРЅ';
+    str += '<br><b>Р›РёРјРёС‚:</b> ' + (value[4] == 50000 ? 'РЅРµРѕРіСЂР°РЅРёС‡РµРЅРѕ' : value[4] + ' С€С‚');
+    str += '<br><b>РџРѕР»:</b> ' + (value[5] == 2 ? 'Р»СЋР±РѕР№' : (!value[5] ? 'РјСѓР¶СЃРєРѕР№' : 'Р¶РµРЅСЃРєРёР№'));
     return str;
 }
 
@@ -111,11 +111,11 @@ function check_pres()
         
         if(!prnick) er = 1;
         else if(!prtext) er = 1;
-        
-        if(er) MessBoxDiv('Заполните все поля!');
+
+        if (er) MessBoxDiv('Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ!');
         else AjaxGet('present_ajax.php?act=1&pr_code='+prsel+'&prnick='+encodeURIComponent(prnick)+'&prtext='+encodeURIComponent(prtext)+'&pranon='+(d.getElementById('pranon').checked ? 1 : 0)+'&vcode='+hpr[1][0]+'&r='+Math.random());
     }
-    else MessBoxDiv('Недостаточно средств для покупки выбранного подарка!');
+    else MessBoxDiv('РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РґР»СЏ РїРѕРєСѓРїРєРё РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїРѕРґР°СЂРєР°!');
 }
 
 function StateReady()

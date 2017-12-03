@@ -211,7 +211,7 @@
 
       nextTooltipButton.className = "introjs-nextbutton";
       nextTooltipButton.href = "javascript:void(0);";
-      nextTooltipButton.innerHTML = "Äàëåå >";
+        nextTooltipButton.innerHTML = "Ð”Ð°Ð»ÐµÐµ >";
 
       var tooltipButtonsLayer = tooltipLayer.querySelector('.introjs-tooltipbuttons');
       tooltipButtonsLayer.appendChild(skipTooltipButton);

@@ -1,48 +1,39 @@
 var xmlhttp = false;
 var arr_res;
 
-function GetHttpRequest()
-{
-	var xmlHttpObj = false;
-	if(window.XMLHttpRequest)
-	{
-		// IE7+, Firefox, Chrome, Opera, Safari
-		xmlHttpObj = new XMLHttpRequest();
-	}
-	else if(window.ActiveXObject)
-	{
-		// IE6, IE5
-		try
-		{
-			xmlHttpObj = new ActiveXObject('Microsoft.XMLHTTP');
-		}
-		catch(e)
-		{
-			try
-			{
-				xmlHttpObj = new ActiveXObject('Msxml2.XMLHTTP');                     
-			}
-			catch(e){}
-		}
-	}
-	return xmlHttpObj;
+function GetHttpRequest() {
+    var xmlHttpObj = false;
+    if (window.XMLHttpRequest) {
+        // IE7+, Firefox, Chrome, Opera, Safari
+        xmlHttpObj = new XMLHttpRequest();
+    }
+    else if (window.ActiveXObject) {
+        // IE6, IE5
+        try {
+            xmlHttpObj = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        catch (e) {
+            try {
+                xmlHttpObj = new ActiveXObject('Msxml2.XMLHTTP');
+            }
+            catch (e) {
+            }
+        }
+    }
+    return xmlHttpObj;
 }
 
-function AjaxGetSync(script, callback_func)
-{
-    if(!xmlhttp) 
-    {
+function AjaxGetSync(script, callback_func) {
+    if (!xmlhttp) {
         xmlhttp = GetHttpRequest();
-        if(!xmlhttp) return;
+        if (!xmlhttp) return;
     }
-    xmlhttp.open('GET','./gameplay/ajax/'+script, false);
-    if (typeof(callback_func) == 'undefined')
-    {
+    xmlhttp.open('GET', './gameplay/ajax/' + script, false);
+    if (typeof(callback_func) == 'undefined') {
         xmlhttp.onreadystatechange = AjaxProcessChange;
     }
-    else
-    {
-        xmlhttp.onreadystatechange = function() {
+    else {
+        xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 var response = xmlhttp.responseText;
                 callback_func(response);
@@ -52,32 +43,28 @@ function AjaxGetSync(script, callback_func)
     xmlhttp.send(null);
 }
 
-function AjaxPost(script, data, callback_func)
-{
-    if(!xmlhttp) 
-    {
+function AjaxPost(script, data, callback_func) {
+    if (!xmlhttp) {
         xmlhttp = GetHttpRequest();
-        if(!xmlhttp) return;
+        if (!xmlhttp) return;
     }
-    xmlhttp.open('POST','./gameplay/ajax/'+script,true);
+    xmlhttp.open('POST', './gameplay/ajax/' + script, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.setRequestHeader("Content-length", data.length);
     xmlhttp.setRequestHeader("Connection", "close");
-    
-    if (typeof(callback_func) == 'undefined')
-    {
+
+    if (typeof(callback_func) == 'undefined') {
         xmlhttp.onreadystatechange = AjaxProcessChange;
     }
-    else
-    {
-        xmlhttp.onreadystatechange = function() {
+    else {
+        xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 var response = xmlhttp.responseText;
                 callback_func(response);
             }
         }
     }
-    
+
     var data_str = '';
     data['r'] = Math.random();
     for (k in data)
@@ -85,30 +72,24 @@ function AjaxPost(script, data, callback_func)
     xmlhttp.send(data_str);
 }
 
-function AjaxGet(script)
-{
-	if(!xmlhttp) 
-	{
-		xmlhttp = GetHttpRequest();
-		if(!xmlhttp) return;
-	}
-	xmlhttp.open('GET','./gameplay/ajax/'+script,true);
-	xmlhttp.onreadystatechange = AjaxProcessChange;
-	xmlhttp.send(null);
+function AjaxGet(script) {
+    if (!xmlhttp) {
+        xmlhttp = GetHttpRequest();
+        if (!xmlhttp) return;
+    }
+    xmlhttp.open('GET', './gameplay/ajax/' + script, true);
+    xmlhttp.onreadystatechange = AjaxProcessChange;
+    xmlhttp.send(null);
 }
 
-function AjaxProcessChange()
-{
-    if(xmlhttp.readyState == 4)
-    {
-        if(xmlhttp.status == 200)
-        {
-	        var ret = xmlhttp.responseText;
-	        if(ret != 'ERR') 
-            {
+function AjaxProcessChange() {
+    if (xmlhttp.readyState == 4) {
+        if (xmlhttp.status == 200) {
+            var ret = xmlhttp.responseText;
+            if (ret != 'ERR') {
                 arr_res = ret.split('@');
-                if(arr_res[0] != 'QUEST') StateReady();
-                else QuestReady();    
+                if (arr_res[0] != 'QUEST') StateReady();
+                else QuestReady();
             }
         }
     }

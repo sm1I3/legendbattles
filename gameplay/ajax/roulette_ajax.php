@@ -40,7 +40,7 @@ if(isset($_GET['vcode'])){
 		if( $_GET['action'] == 'free' ){
 			$res = mysqli_query($GLOBALS['db_link'], "SELECT * FROM module_slot_free WHERE user_id = ".$pers['id']." AND day = '".date( "Y-m-d" )."'");
 			if ( mysqli_num_rows($res) > 0 ){
-				exit("ERROR@Вы не можете сыграть бесплатно больше одного раза в день.");
+                exit("ERROR@Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЃС‹РіСЂР°С‚СЊ Р±РµСЃРїР»Р°С‚РЅРѕ Р±РѕР»СЊС€Рµ РѕРґРЅРѕРіРѕ СЂР°Р·Р° РІ РґРµРЅСЊ.");
 			}
 			mysqli_query($GLOBALS['db_link'], "INSERT INTO module_slot_free (user_id, day, prize) VALUES (".$pers['id'].", '".date( "Y-m-d" )."', ".$won_prize.")" );
 		}else{
@@ -49,90 +49,90 @@ if(isset($_GET['vcode'])){
 				$pass_to_roulette = true;
 				$pers['baks'] -= 0.2;
 			}else
-				exit("ERROR@У вас нет средств для игры.");
+                exit("ERROR@РЈ РІР°СЃ РЅРµС‚ СЃСЂРµРґСЃС‚РІ РґР»СЏ РёРіСЂС‹.");
 		}
 		
 		switch ( $won_prize ){
 			case 0 :
-				$Text = 'OK@К сожалению, Вы ничего не выиграли. Возможно, Вам повезет в следующий раз.';
+                $Text = 'OK@Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, Р’С‹ РЅРёС‡РµРіРѕ РЅРµ РІС‹РёРіСЂР°Р»Рё. Р’РѕР·РјРѕР¶РЅРѕ, Р’Р°Рј РїРѕРІРµР·РµС‚ РІ СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·.';
 			break;
 			case 1 :
-			  //mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Слот-машина&nbsp;</font> <font color=000000>С радостью сообщаем Всем о Удаче &quot;<b>".$pers['login']."</b>&quot; в игре Слоты. Его выигрыш - <b>1000</b> LR!</font></i><BR>'+'');")."');");
+                //mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;РЎР»РѕС‚-РјР°С€РёРЅР°&nbsp;</font> <font color=000000>РЎ СЂР°РґРѕСЃС‚СЊСЋ СЃРѕРѕР±С‰Р°РµРј Р’СЃРµРј Рѕ РЈРґР°С‡Рµ &quot;<b>".$pers['login']."</b>&quot; РІ РёРіСЂРµ РЎР»РѕС‚С‹. Р•РіРѕ РІС‹РёРіСЂС‹С€ - <b>1000</b> LR!</font></i><BR>'+'');")."');");
 				mysqli_query($GLOBALS['db_link'], "UPDATE user SET nv = nv + 50 WHERE id = ".$pers['id']);
-				$Text = "OK@Поздравляем, Вы выиграли 50 LR.";
+                $Text = "OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё 50 LR.";
 				$count_won = $pers['nv'] + 50;
 				$prize_count = 50;
 			break;
 			case 2 :
-			  //mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Слот-машина&nbsp;</font> <font color=000000>С радостью сообщаем Всем о Удаче &quot;<b>".$pers['login']."</b>&quot; в игре Слоты. Его выигрыш - <b>5000</b> LR!</font></i><BR>'+'');")."');");
+                //mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;РЎР»РѕС‚-РјР°С€РёРЅР°&nbsp;</font> <font color=000000>РЎ СЂР°РґРѕСЃС‚СЊСЋ СЃРѕРѕР±С‰Р°РµРј Р’СЃРµРј Рѕ РЈРґР°С‡Рµ &quot;<b>".$pers['login']."</b>&quot; РІ РёРіСЂРµ РЎР»РѕС‚С‹. Р•РіРѕ РІС‹РёРіСЂС‹С€ - <b>5000</b> LR!</font></i><BR>'+'');")."');");
 				mysqli_query($GLOBALS['db_link'], "UPDATE user SET nv = nv + 500 WHERE id = ".$pers['id']);
-				$Text = "OK@Поздравляем, Вы выиграли 500 LR.";
+                $Text = "OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё 500 LR.";
 				$count_won = $pers['nv'] + 500;
 				$prize_count = 500;
 			break;
 			case 3 :
-			  //mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Слот-машина&nbsp;</font> <font color=000000>С радостью сообщаем Всем о Удаче &quot;<b>".$pers['login']."</b>&quot; в игре Слоты. Его выигрыш - <b>10000</b> LR!</font></i><BR>'+'');")."');");
+                //mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;РЎР»РѕС‚-РјР°С€РёРЅР°&nbsp;</font> <font color=000000>РЎ СЂР°РґРѕСЃС‚СЊСЋ СЃРѕРѕР±С‰Р°РµРј Р’СЃРµРј Рѕ РЈРґР°С‡Рµ &quot;<b>".$pers['login']."</b>&quot; РІ РёРіСЂРµ РЎР»РѕС‚С‹. Р•РіРѕ РІС‹РёРіСЂС‹С€ - <b>10000</b> LR!</font></i><BR>'+'');")."');");
 				mysqli_query($GLOBALS['db_link'], "UPDATE user SET nv = nv + 10000 WHERE id = ".$pers['id']);
-				$Text = "OK@Поздравляем, Вы выиграли 10000 LR.";
+                $Text = "OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё 10000 LR.";
 				$count_won = $pers['nv'] + 10000;
 				$prize_count = 10000;
 			break;
 			case 4 :
 				$ItemsArray = array(2196,2362,2200,3487,2509);
 				$PrizeID = rand(0,(count($ItemsArray)-1));
-				$Text = 'OK@Поздравляем, Вы выиграли Обычный расходник.';
+                $Text = 'OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё РћР±С‹С‡РЅС‹Р№ СЂР°СЃС…РѕРґРЅРёРє.';
 				insertInventory($pers['id'], $ItemsArray[$PrizeID]);
 				$prize_count = $ItemsArray[$PrizeID];
 			break;
 			case 5 :
 				$ItemsArray = array(2324,2322,2201,1984,2069,2716,1930);
 				$PrizeID = rand(0,(count($ItemsArray)-1));
-				$Text = 'OK@Поздравляем, Вы выиграли Хороший расходник.';
+                $Text = 'OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё РҐРѕСЂРѕС€РёР№ СЂР°СЃС…РѕРґРЅРёРє.';
 				insertInventory($pers['id'], $ItemsArray[$PrizeID]);
 				$prize_count = $ItemsArray[$PrizeID];
 			break;
 			case 6 :
 				$ItemsArray = array(2257,2321,2323,2511,2250,2526,2328);
 				$PrizeID = rand(0,(count($ItemsArray)-1));
-				$Text = 'OK@Поздравляем, Вы выиграли Дорогой расходник.';
+                $Text = 'OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё Р”РѕСЂРѕРіРѕР№ СЂР°СЃС…РѕРґРЅРёРє.';
 				insertInventory($pers['id'], $ItemsArray[$PrizeID]);
 				$prize_count = $ItemsArray[$PrizeID];
 			break;
 			case 7 :
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Слот-машина&nbsp;</font> <font color=000000>С радостью сообщаем Всем о Удаче &quot;<b>".$pers['login']."</b>&quot; в игре Слоты. Его выигрыш - <b>25</b> $!</font></i><BR>'+'');")."');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;РЎР»РѕС‚-РјР°С€РёРЅР°&nbsp;</font> <font color=000000>РЎ СЂР°РґРѕСЃС‚СЊСЋ СЃРѕРѕР±С‰Р°РµРј Р’СЃРµРј Рѕ РЈРґР°С‡Рµ &quot;<b>" . $pers['login'] . "</b>&quot; РІ РёРіСЂРµ РЎР»РѕС‚С‹. Р•РіРѕ РІС‹РёРіСЂС‹С€ - <b>25</b> $!</font></i><BR>'+'');") . "');");
 				mysqli_query($GLOBALS['db_link'], "UPDATE user SET baks = baks + 25 WHERE id = ".$pers['id']);
-				$Text = 'OK@Поздравляем, Вы выиграли 25 Изумруд.';
+                $Text = 'OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё 25 РР·СѓРјСЂСѓРґ.';
 				$count_won = $pers['baks'] + 25;
 				$prize_count = 25;
 			break;
 			case 8 :
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Слот-машина&nbsp;</font> <font color=000000>С радостью сообщаем Всем о Удаче &quot;<b>".$pers['login']."</b>&quot; в игре Слоты. Его выигрыш - <b>75</b> $!</font></i><BR>'+'');")."');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;РЎР»РѕС‚-РјР°С€РёРЅР°&nbsp;</font> <font color=000000>РЎ СЂР°РґРѕСЃС‚СЊСЋ СЃРѕРѕР±С‰Р°РµРј Р’СЃРµРј Рѕ РЈРґР°С‡Рµ &quot;<b>" . $pers['login'] . "</b>&quot; РІ РёРіСЂРµ РЎР»РѕС‚С‹. Р•РіРѕ РІС‹РёРіСЂС‹С€ - <b>75</b> $!</font></i><BR>'+'');") . "');");
 				mysqli_query($GLOBALS['db_link'], "UPDATE user SET baks = baks + 75 WHERE id = ".$pers['id']);
-				$Text = 'OK@Поздравляем, Вы выиграли 75 Изумруд.';
+                $Text = 'OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё 75 РР·СѓРјСЂСѓРґ.';
 				$count_won = $pers['baks'] + 75;
 				$prize_count = 75;
 			break;
 			case 9 :
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Слот-машина&nbsp;</font> <font color=000000>С радостью сообщаем Всем о Удаче &quot;<b>".$pers['login']."</b>&quot; в игре Слоты. Его выигрыш - <b>Уникальный раритет</b>!</font></i><BR>'+'');")."');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;РЎР»РѕС‚-РјР°С€РёРЅР°&nbsp;</font> <font color=000000>РЎ СЂР°РґРѕСЃС‚СЊСЋ СЃРѕРѕР±С‰Р°РµРј Р’СЃРµРј Рѕ РЈРґР°С‡Рµ &quot;<b>" . $pers['login'] . "</b>&quot; РІ РёРіСЂРµ РЎР»РѕС‚С‹. Р•РіРѕ РІС‹РёРіСЂС‹С€ - <b>РЈРЅРёРєР°Р»СЊРЅС‹Р№ СЂР°СЂРёС‚РµС‚</b>!</font></i><BR>'+'');") . "');");
 				$ItemsArray = array(2304, 2273, 2278, 2271, 2272, 288, 295, 292);
 				$PrizeID = rand(0,(count($ItemsArray)-1));
-				$Text = 'OK@Поздравляем, Вы выиграли Уникальный раритет.';
+                $Text = 'OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё РЈРЅРёРєР°Р»СЊРЅС‹Р№ СЂР°СЂРёС‚РµС‚.';
 				insertInventory($pers['id'], $ItemsArray[$PrizeID], (time()+864000));
 				$prize_count = $ItemsArray[$PrizeID];
 			break;
 			case 10 :
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Слот-машина&nbsp;</font> <font color=000000>С радостью сообщаем Всем о Удаче &quot;<b>".$pers['login']."</b>&quot; в игре Слоты. Его выигрыш - <b>Уникальный артефакт</b>!</font></i><BR>'+'');")."');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;РЎР»РѕС‚-РјР°С€РёРЅР°&nbsp;</font> <font color=000000>РЎ СЂР°РґРѕСЃС‚СЊСЋ СЃРѕРѕР±С‰Р°РµРј Р’СЃРµРј Рѕ РЈРґР°С‡Рµ &quot;<b>" . $pers['login'] . "</b>&quot; РІ РёРіСЂРµ РЎР»РѕС‚С‹. Р•РіРѕ РІС‹РёРіСЂС‹С€ - <b>РЈРЅРёРєР°Р»СЊРЅС‹Р№ Р°СЂС‚РµС„Р°РєС‚</b>!</font></i><BR>'+'');") . "');");
 				$ItemsArray = array(2346, 2337, 2339, 2341, 2345, 2687, 2692, 2695);
 				$PrizeID = rand(0,(count($ItemsArray)-1));
-				$Text = 'OK@Поздравляем, Вы выиграли Уникальный артефакт.';
+                $Text = 'OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё РЈРЅРёРєР°Р»СЊРЅС‹Р№ Р°СЂС‚РµС„Р°РєС‚.';
 				insertInventory($pers['id'], $ItemsArray[$PrizeID], (time()+432000));
 				$prize_count = $ItemsArray[$PrizeID];
 			break;
 			case 11 :
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Слот-машина&nbsp;</font> <font color=000000>С радостью сообщаем Всем о Удаче &quot;<b>".$pers['login']."</b>&quot; в игре Слоты. Он сорвал <b><font color=red>JACK POT</font></b> в размере <b><font color=red>".$roulette['jackpot_amount']."</font></b> $!</font><BR>'+'');")."');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;РЎР»РѕС‚-РјР°С€РёРЅР°&nbsp;</font> <font color=000000>РЎ СЂР°РґРѕСЃС‚СЊСЋ СЃРѕРѕР±С‰Р°РµРј Р’СЃРµРј Рѕ РЈРґР°С‡Рµ &quot;<b>" . $pers['login'] . "</b>&quot; РІ РёРіСЂРµ РЎР»РѕС‚С‹. РћРЅ СЃРѕСЂРІР°Р» <b><font color=red>JACK POT</font></b> РІ СЂР°Р·РјРµСЂРµ <b><font color=red>" . $roulette['jackpot_amount'] . "</font></b> $!</font><BR>'+'');") . "');");
 				mysqli_query($GLOBALS['db_link'], "UPDATE module_slot_status SET jackpot_amount = 0, attempts_count = 0, last_winner_id = " . $pers['id'] . ", last_winner_name = '" . $pers['login'] . "', last_winner_datetime = ".time().", last_winner_amount = '".$roulette['jackpot_amount']."' WHERE roulette_id = 1");
 				mysqli_query($GLOBALS['db_link'], "UPDATE user SET baks = baks + ".$roulette['jackpot_amount']." WHERE id = ".$pers['id']);
-				$Text = 'OK@Поздравляем, Вы выиграли JACK POT ' . $roulette['jackpot_amount'] . ' Изумруд !!!.';
+                $Text = 'OK@РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РІС‹РёРіСЂР°Р»Рё JACK POT ' . $roulette['jackpot_amount'] . ' РР·СѓРјСЂСѓРґ !!!.';
 				$count_won = $pers['baks'] + $roulette['jackpot_amount'];
 				$prize_count = $roulette['jackpot_amount'];
 			break;
@@ -141,5 +141,5 @@ if(isset($_GET['vcode'])){
 		mysqli_query($GLOBALS['db_link'], "UPDATE module_slot_status SET jackpot_amount = jackpot_amount + 0.1, attempts_count = attempts_count + 1 WHERE roulette_id = 1");
 		exit( $Text . "@" . $roulette_comb . "@" . round($pers['dd'], 2) . "@" . $won_prize . "@" . $count_won . "@" . ($roulette['jackpot_amount'] + 0.1) . " $@" . (($pers['dd'] < 0.2) ? 0 : 1));
 	}
-	exit("ERROR@Неизвестная ошибка.");
+    exit("ERROR@РќРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°.");
 }

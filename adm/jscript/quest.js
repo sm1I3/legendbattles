@@ -308,7 +308,7 @@ function addItem_present_weapon(tableId, trPrefix, elmPrefix)
     var txt = '';
     td6.className = 'cms_middle';
     txt =  '<input type="text" name="'+elmPrefix+'_dolg['+new_id+']'+'" id="'+elmPrefix+'_dolg_'+new_id+'" value="" size="3" />';
-    //txt += '<input type="checkbox" name="'+elmPrefix+'_dolg_1['+new_id+']'+'" id="'+elmPrefix+'_dolg_1_'+new_id+'_'+'" value="Y" /><label for="'+elmPrefix+'_dolg_1_'+new_id+'_'+'">Зависит от кол-ва</label>' ;
+    //txt += '<input type="checkbox" name="'+elmPrefix+'_dolg_1['+new_id+']'+'" id="'+elmPrefix+'_dolg_1_'+new_id+'_'+'" value="Y" /><label for="'+elmPrefix+'_dolg_1_'+new_id+'_'+'">Р—Р°РІРёСЃРёС‚ РѕС‚ РєРѕР»-РІР°</label>' ;
     /*ed2 = d.createElement('INPUT');
     ed2.type = 'text';
     ed2.name = elmPrefix+'_dolg['+new_id+']';
@@ -326,7 +326,7 @@ function addItem_present_weapon(tableId, trPrefix, elmPrefix)
     ed3.size = 3;
     td7.appendChild(ed3);*/
     txt =  '<input type="text" name="'+elmPrefix+'_count['+new_id+']'+'" id="'+elmPrefix+'_count_'+new_id+'" value="" size="3" />';
-    //txt += '<input type="checkbox" name="'+elmPrefix+'_price_1['+new_id+']'+'" id="'+elmPrefix+'_price_1_'+new_id+'_'+'" value="Y" /><label for="'+elmPrefix+'_price_1_'+new_id+'_'+'">Зависит от кол-ва</label>' ;
+    //txt += '<input type="checkbox" name="'+elmPrefix+'_price_1['+new_id+']'+'" id="'+elmPrefix+'_price_1_'+new_id+'_'+'" value="Y" /><label for="'+elmPrefix+'_price_1_'+new_id+'_'+'">Р—Р°РІРёСЃРёС‚ РѕС‚ РєРѕР»-РІР°</label>' ;
     td7.innerHTML = txt;
     
     td8.className = 'cms_middle';
@@ -338,7 +338,7 @@ function addItem_present_weapon(tableId, trPrefix, elmPrefix)
     ed3.size = 3;
     td7.appendChild(ed3);*/
     txt =  '<input type="text" name="'+elmPrefix+'_price['+new_id+']'+'" id="'+elmPrefix+'_price_'+new_id+'" value="" size="3" />';
-    //txt += '<input type="checkbox" name="'+elmPrefix+'_price_1['+new_id+']'+'" id="'+elmPrefix+'_price_1_'+new_id+'_'+'" value="Y" /><label for="'+elmPrefix+'_price_1_'+new_id+'_'+'">Зависит от кол-ва</label>' ;
+    //txt += '<input type="checkbox" name="'+elmPrefix+'_price_1['+new_id+']'+'" id="'+elmPrefix+'_price_1_'+new_id+'_'+'" value="Y" /><label for="'+elmPrefix+'_price_1_'+new_id+'_'+'">Р—Р°РІРёСЃРёС‚ РѕС‚ РєРѕР»-РІР°</label>' ;
     td8.innerHTML = txt; 
     
     td9.className = 'cms_middle';

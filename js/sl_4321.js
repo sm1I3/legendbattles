@@ -79,12 +79,12 @@ function sl_alts(p,curs)
        var params = p.split("|");
        params[4] = parseInt(params[4]);
        if(params[0]) temp += ' ('+params[0]+')';
-       if(params[1]) temp += "\n"+'Удар: '+params[1]+'-'+params[2];
-       if(params[3]) temp += "\n"+'Класс брони: +'+params[3];
-       if(params[4] > 0) temp += "\n"+'Пробой брони: +'+params[4];
-       else if(params[4] < 0) temp += "\n"+'Пробой брони: '+params[4];
+    if (params[1]) temp += "\n" + 'РЈРґР°СЂ: ' + params[1] + '-' + params[2];
+    if (params[3]) temp += "\n" + 'РљР»Р°СЃСЃ Р±СЂРѕРЅРё: +' + params[3];
+    if (params[4] > 0) temp += "\n" + 'РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё: +' + params[4];
+    else if (params[4] < 0) temp += "\n" + 'РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё: ' + params[4];
        if(params[5]) temp += "\n"+'HP: +'+params[5];
-       if(params[6]) temp += "\n"+'Мана: +'+params[6];
-       if(curs) temp += "\n"+'Долговечность: '+curs+'/'+params[7];
+    if (params[6]) temp += "\n" + 'РњР°РЅР°: +' + params[6];
+    if (curs) temp += "\n" + 'Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ: ' + curs + '/' + params[7];
        return temp; 
 }

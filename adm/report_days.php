@@ -20,22 +20,22 @@ if (!isset($_GET['date_to']) || $_GET['date_to'] == '')
 $vizor_days = array();
 $res = mysql_query('SELECT * FROM z_days WHERE date >= \''.mysql_escape_string($_GET['date_from']).'\' AND date <= \''.mysql_escape_string($_GET['date_to']).'\' ORDER BY date');
 
-$types = array(1 => 'Выходной', 2 => 'Рабочий');
+$types = array(1 => 'Р’С‹С…РѕРґРЅРѕР№', 2 => 'Р Р°Р±РѕС‡РёР№');
 ?>
-<h3>Отчёт</h3>
-<a href="report.php">Назад</a>
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+    <h3>РћС‚С‡С‘С‚</h3>
+    <a href="report.php">РќР°Р·Р°Рґ</a>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 <form name="filter" id="filter" action="" method="get" enctype="multipart/form-data">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-  <td>С: &nbsp;  </td>
+      <td>РЎ: &nbsp;</td>
   <td>
     <input name="date_from" id="date_from" type="text" class="cms_fieldstyle1" value="<?=(isset($_GET['date_from'])?$_GET['date_from']:'')?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kl1jhjhdj12d1jk2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -67,7 +67,7 @@ $types = array(1 => 'Выходной', 2 => 'Рабочий');
   </td>
 </tr>
 <tr>
-  <td>по: &nbsp;  </td>
+    <td>РїРѕ: &nbsp;</td>
   <td>
     <input name="date_to" id="date_to" type="text" class="cms_fieldstyle1" value="<?=(isset($_GET['date_to'])?$_GET['date_to']:'')?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kjkjdnakjdnakwnjkd2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -117,19 +117,19 @@ function clearFilter()
 
     <div class="cms_ind">
         <br />
-        Отчёт: <br />
+        РћС‚С‡С‘С‚: <br/>
          <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr >
-              <td class="cms_cap2">Удалить</td>
-              <td class="cms_cap2">Изменить</td>
-              <td class="cms_cap2">Дата</td>
-              <td class="cms_cap2">Тип</td>
+                <td class="cms_cap2">РЈРґР°Р»РёС‚СЊ</td>
+                <td class="cms_cap2">РР·РјРµРЅРёС‚СЊ</td>
+                <td class="cms_cap2">Р”Р°С‚Р°</td>
+                <td class="cms_cap2">РўРёРї</td>
             </tr>
             <? while($row = mysql_fetch_assoc($res)) {
             echo '
             <tr>
-                <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этот день?\');" href="report_days.php?delete_date='.$row['date'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-                <td class="cms_middle" align="center"><a href="report_days_edit.php?date='.$row['date'].'" title="Изменить"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+                <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ РґРµРЅСЊ?\');" href="report_days.php?delete_date=' . $row['date'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+                <td class="cms_middle" align="center"><a href="report_days_edit.php?date=' . $row['date'] . '" title="РР·РјРµРЅРёС‚СЊ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
                 <td align="left" class="cms_middle">'.$row['date'].'</td>
                 <td align="left" class="cms_middle">'.$types[$row['type']].'</td>
             </tr>';
@@ -140,6 +140,6 @@ function clearFilter()
     
 </div>
 <br />
-<a href="report_days_edit.php">Добавить день</a>
+    <a href="report_days_edit.php">Р”РѕР±Р°РІРёС‚СЊ РґРµРЅСЊ</a>
 
 <? require('kernel/after.php'); ?>

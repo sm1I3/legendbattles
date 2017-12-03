@@ -28,20 +28,20 @@ if(!empty($_REQUEST['pan'])){
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location='/core2.php?useaction=admin-action'" value="Вернуться">
-		<input type=button class=lbut onClick="location='chests2.php'" value="обновить">
+        <input type=button class=lbut onClick="location='/core2.php?useaction=admin-action'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        <input type=button class=lbut onClick="location='chests2.php'" value="РѕР±РЅРѕРІРёС‚СЊ">
 	</td>
    </tr>
 </table>
-<LEGEND align=center><B><font color=gray>&nbsp;Админка&nbsp;</font></B></LEGEND>
+<LEGEND align=center><B><font color=gray>&nbsp;РђРґРјРёРЅРєР°&nbsp;</font></B></LEGEND>
 <table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><table cellpadding=0 cellspacing=2 border=0 width=100%>
 <?php 
 echo'<tr>
-            <td><font class=freemain><b><font color=#336699>Вход в игру   </font></b>Вход в  игру сейчас </font></td>
+            <td><font class=freemain><b><font color=#336699>Р’С…РѕРґ РІ РёРіСЂСѓ   </font></b>Р’С…РѕРґ РІ  РёРіСЂСѓ СЃРµР№С‡Р°СЃ </font></td>
             <td><div align=center>
               <select name=serv class=LogintextBox6>
-                <option value="0"'.(($conf['serv']==0)?' selected="selected"':'').'>Выключено</option>
-                <option value="1"'.(($conf['serv']==1)?' selected="selected"':'').'>Включено</option>
+                <option value="0"' . (($conf['serv'] == 0) ? ' selected="selected"' : '') . '>Р’С‹РєР»СЋС‡РµРЅРѕ</option>
+                <option value="1"' . (($conf['serv'] == 1) ? ' selected="selected"' : '') . '>Р’РєР»СЋС‡РµРЅРѕ</option>
               </select>
             </div></td>
           </tr>'; 

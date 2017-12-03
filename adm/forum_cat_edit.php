@@ -46,27 +46,28 @@ else
 }
 
 ?>
-<h3><?=($cat_id == ''?'Добавить категорию форума':'Изменить категорию форума')?></h3>
+    <h3><?= ($cat_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ С„РѕСЂСѓРјР°' : 'РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ С„РѕСЂСѓРјР°') ?></h3>
 
 <form name="edit_cat" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Название категории: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё: &nbsp;</td>
   <td><input name="cat_name" type="text" class="cms_fieldstyle1" value="<?=$cat['cat_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Картинка категории: &nbsp;  </td>
+    <td>РљР°СЂС‚РёРЅРєР° РєР°С‚РµРіРѕСЂРёРё: &nbsp;</td>
   <td><input name="cat_img" type="text" class="cms_fieldstyle1" value="<?=$cat['cat_img']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Приоритет категории: &nbsp;  </td>
+    <td>РџСЂРёРѕСЂРёС‚РµС‚ РєР°С‚РµРіРѕСЂРёРё: &nbsp;</td>
   <td><input name="cat_priority" type="text" class="cms_fieldstyle1" value="<?=$cat['cat_priority']?>" size="10" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='forum_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='forum_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

@@ -86,51 +86,52 @@ if ($branch_code == '') {
 }
 
 ?>
-<h3><?=($branch_code == ''?'Добавить отделение банка':'Изменить отделение банка')?></h3>
+    <h3><?= ($branch_code == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РѕС‚РґРµР»РµРЅРёРµ Р±Р°РЅРєР°' : 'РР·РјРµРЅРёС‚СЊ РѕС‚РґРµР»РµРЅРёРµ Р±Р°РЅРєР°') ?></h3>
 
 <form name="edit_bank" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Код отделения: &nbsp;  </td>
+    <td>РљРѕРґ РѕС‚РґРµР»РµРЅРёСЏ: &nbsp;</td>
   <td><input name="branch_code" type="text" class="cms_fieldstyle1" value="<?=$branch['branch_code']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Банк: &nbsp;  </td>
+    <td>Р‘Р°РЅРє: &nbsp;</td>
   <td><?=createSelectFromArray('bank_id', $banks, $branch['bank_id'])?></td>
 </tr>
 <tr>
-  <td>Название отделения: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ РѕС‚РґРµР»РµРЅРёСЏ: &nbsp;</td>
   <td><input name="branch_name" type="text" class="cms_fieldstyle1" value="<?=$branch['branch_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Размер ячейки: &nbsp;  </td>
+    <td>Р Р°Р·РјРµСЂ СЏС‡РµР№РєРё: &nbsp;</td>
   <td><input name="player_nv_cell_size" type="text" class="cms_fieldstyle1" value="<?=$branch['player_nv_cell_size']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Размер Gold ячейки: &nbsp;  </td>
+    <td>Р Р°Р·РјРµСЂ Gold СЏС‡РµР№РєРё: &nbsp;</td>
   <td><input name="player_usd_cell_size" type="text" class="cms_fieldstyle1" value="<?=$branch['player_usd_cell_size']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Размер DNV ячейки: &nbsp;  </td>
+    <td>Р Р°Р·РјРµСЂ DNV СЏС‡РµР№РєРё: &nbsp;</td>
   <td><input name="player_dnv_cell_size" type="text" class="cms_fieldstyle1" value="<?=$branch['player_dnv_cell_size']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Размер клановой ячейки: &nbsp;  </td>
+    <td>Р Р°Р·РјРµСЂ РєР»Р°РЅРѕРІРѕР№ СЏС‡РµР№РєРё: &nbsp;</td>
   <td><input name="clan_nv_cell_size" type="text" class="cms_fieldstyle1" value="<?=$branch['clan_nv_cell_size']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Размер клановой Gold ячейки: &nbsp;  </td>
+    <td>Р Р°Р·РјРµСЂ РєР»Р°РЅРѕРІРѕР№ Gold СЏС‡РµР№РєРё: &nbsp;</td>
   <td><input name="clan_usd_cell_size" type="text" class="cms_fieldstyle1" value="<?=$branch['clan_usd_cell_size']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Размер клановой DNV ячейки: &nbsp;  </td>
+    <td>Р Р°Р·РјРµСЂ РєР»Р°РЅРѕРІРѕР№ DNV СЏС‡РµР№РєРё: &nbsp;</td>
   <td><input name="clan_dnv_cell_size" type="text" class="cms_fieldstyle1" value="<?=$branch['clan_dnv_cell_size']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='bank_branch_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='bank_branch_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

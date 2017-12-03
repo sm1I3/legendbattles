@@ -1,4 +1,7 @@
-<tr><td><font class=proce><font color=#222222><FIELDSET><LEGEND><B>&nbsp;ДОСТИЖЕНИЯ&nbsp;</B></LEGEND>
+<tr>
+    <td><font class=proce><font color=#222222>
+                <FIELDSET>
+                    <LEGEND><B>&nbsp;Р”РћРЎРўРР–Р•РќРРЇ&nbsp;</B></LEGEND>
 <script src="/js/achievements.js"></script>
 <?php include ($_SERVER['DOCUMENT_ROOT'].'/inc/achievements.php'); ?>
 
@@ -29,30 +32,30 @@ $json8 = json_encode($student);
 
 $achs = array(
 	array(
-		1=>'Гладиатор',
-		2=>'Охотник за головами',
-		3=>'Солдат удачи'),
+        1 => 'Р“Р»Р°РґРёР°С‚РѕСЂ',
+        2 => 'РћС…РѕС‚РЅРёРє Р·Р° РіРѕР»РѕРІР°РјРё',
+        3 => 'РЎРѕР»РґР°С‚ СѓРґР°С‡Рё'),
 	array(
-		11=>'Разбойник',
-		12=>'Слуга Локара',
-		13=>'Вивисектор',
-		14=>'Защитник'),
+        11 => 'Р Р°Р·Р±РѕР№РЅРёРє',
+        12 => 'РЎР»СѓРіР° Р›РѕРєР°СЂР°',
+        13 => 'Р’РёРІРёСЃРµРєС‚РѕСЂ',
+        14 => 'Р—Р°С‰РёС‚РЅРёРє'),
 	array(
-		4=>'Поцелуй Витель',
-		5=>'Наставник',
-		6=>'Ветеран',
-		7=>'Полоса Везения',
-    8=>'Любимец Ирдиса',		
-		9=>'Кладоискатель'),
+        4 => 'РџРѕС†РµР»СѓР№ Р’РёС‚РµР»СЊ',
+        5 => 'РќР°СЃС‚Р°РІРЅРёРє',
+        6 => 'Р’РµС‚РµСЂР°РЅ',
+        7 => 'РџРѕР»РѕСЃР° Р’РµР·РµРЅРёСЏ',
+        8 => 'Р›СЋР±РёРјРµС† РСЂРґРёСЃР°',
+        9 => 'РљР»Р°РґРѕРёСЃРєР°С‚РµР»СЊ'),
 	array(
-		20=>'Травник',
-		30=>'Лесоруб',
-		40=>'Рыбак',
-		50=>'Купец',
-    60=>'Шахтер',		
-		80=>'Ювелир',	
-		100=>'Алхимик',
-		150=>'Доктор'
+        20 => 'РўСЂР°РІРЅРёРє',
+        30 => 'Р›РµСЃРѕСЂСѓР±',
+        40 => 'Р С‹Р±Р°Рє',
+        50 => 'РљСѓРїРµС†',
+        60 => 'РЁР°С…С‚РµСЂ',
+        80 => 'Р®РІРµР»РёСЂ',
+        100 => 'РђР»С…РёРјРёРє',
+        150 => 'Р”РѕРєС‚РѕСЂ'
 	)
 );
 $rim = array('I','II','III','IV','V','VI','VII','VIII','IX','X');
@@ -69,10 +72,10 @@ var fisher = <?=$json7?>;
 var student = <?=$json8?>;</script>
 
 <table cellpadding="2" cellspacing="1" width="95%" align="center" style="border:1px solid #e2e2e2;"><tr><td bgcolor="#e2e2e2" align="center">
-<input type="button" class="lbut" value="Боевые достижения" onclick="table1_onclick()"/>
-<input type="button" class="lbut" value="Военные достижения" onclick="table2_onclick()" />
-<input type="button" class="lbut" value="Особые достижения" onclick="table3_onclick()" />
-<input type="button" class="lbut" value="Мирные достижения" onclick="table4_onclick()" />
+            <input type="button" class="lbut" value="Р‘РѕРµРІС‹Рµ РґРѕСЃС‚РёР¶РµРЅРёСЏ" onclick="table1_onclick()"/>
+            <input type="button" class="lbut" value="Р’РѕРµРЅРЅС‹Рµ РґРѕСЃС‚РёР¶РµРЅРёСЏ" onclick="table2_onclick()"/>
+            <input type="button" class="lbut" value="РћСЃРѕР±С‹Рµ РґРѕСЃС‚РёР¶РµРЅРёСЏ" onclick="table3_onclick()"/>
+            <input type="button" class="lbut" value="РњРёСЂРЅС‹Рµ РґРѕСЃС‚РёР¶РµРЅРёСЏ" onclick="table4_onclick()"/>
 </td></tr>
 <tr><td>
 <?
@@ -88,7 +91,11 @@ for ($i=1;$i<=10;$i++) {
 ?>
 <td>
 	<div>
-		<img id="<?=$key1?>_<?=$i?>" class="img_progress" style="float: left; width: 56px; height: 56px; background: url(http://legendbattles.ru/achievement/<?=$key1?>/a_<?=$key1?>_<?=$i?>.gif);" width="56" height="56" onmouseover="tooltip(this,'<b><?=$ach?> <?=$rim[$i-1]?></b><br>Доблесть: 0 / 1000<br>Награда: <?=$nagrada[$i-1]?> Славы, 2000 NV')" onmouseout="hide_info(this)" />
+        <img id="<?= $key1 ?>_<?= $i ?>" class="img_progress"
+             style="float: left; width: 56px; height: 56px; background: url(http://legendbattles.ru/achievement/<?= $key1 ?>/a_<?= $key1 ?>_<?= $i ?>.gif);"
+             width="56" height="56"
+             onmouseover="tooltip(this,'<b><?= $ach ?> <?= $rim[$i - 1] ?></b><br>Р”РѕР±Р»РµСЃС‚СЊ: 0 / 1000<br>РќР°РіСЂР°РґР°: <?= $nagrada[$i - 1] ?> РЎР»Р°РІС‹, 2000 NV')"
+             onmouseout="hide_info(this)"/>
 	</div>
 </td>
 <?

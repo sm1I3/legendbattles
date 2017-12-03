@@ -54,18 +54,18 @@ if ((string)$message_id == '') {
 }
 
 ?>
-<h3><?=($message_id == ''?'Добавить сообщение':'Изменить сообщение')?></h3>
+    <h3><?= ($message_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ' : 'РР·РјРµРЅРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Тема сообщения: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РўРµРјР° СЃРѕРѕР±С‰РµРЅРёСЏ: &nbsp;</td>
   <td>
     <input name="theame" style="width:500px;" value="<?=_htext($message['theame'])?>">
   </td>
 <tr>
 </tr>
-  <td><span class="cms_star">*</span>Текст сообщения: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ: &nbsp;</td>
   <td>
     <textarea name="message" style="width:500px;height:350px;"><?=_htext(HtmlToBb($message['message']))?></textarea>
   </td>
@@ -73,9 +73,12 @@ if ((string)$message_id == '') {
 </table>
 
 <p></p>
-  <input name="submit" type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.edit_resource.action = 'sendmail_edit.php?<?=($message_id == ''?'':'message_id='.$message_id.'&')?>sender=true';document.edit_resource.submit(); return false;" class="cms_button1" value="Разослать" />
-  <input name="cancel" type="submit" onclick="document.location='mass_message_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.edit_resource.action = 'sendmail_edit.php?<?= ($message_id == '' ? '' : 'message_id=' . $message_id . '&') ?>sender=true';document.edit_resource.submit(); return false;"
+           class="cms_button1" value="Р Р°Р·РѕСЃР»Р°С‚СЊ"/>
+    <input name="cancel" type="submit" onclick="document.location='mass_message_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

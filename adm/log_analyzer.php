@@ -8,7 +8,7 @@ if (!userHasPermission(2)) {
 
 function getIdByNickname($nickname)
 {
-    //GET запрос указывается в строке URL
+    //GET Р·Р°РїСЂРѕСЃ СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РІ СЃС‚СЂРѕРєРµ URL
     $data = file_get_contents('http://www.neverlands.ru/modules/api/getid.cgi?'.rawurlencode(urldecode($nickname)));
     $arr = explode('|', $data);
     if (sizeof($arr) == 2)
@@ -26,7 +26,7 @@ function getNicknameById($id)
 function getIdByNickname($nickname)http://www.neverlands.ru/modules/api/getid.cgi?
 {
     $ch = curl_init();
-    //GET запрос указывается в строке URL
+    //GET Р·Р°РїСЂРѕСЃ СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РІ СЃС‚СЂРѕРєРµ URL
     curl_setopt($ch, CURLOPT_URL, 'http://www.neverlands.ru/modules/api/getid.cgi?'.$nickname);
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -43,7 +43,7 @@ function getIdByNickname($nickname)http://www.neverlands.ru/modules/api/getid.cg
 function getNicknameById($id)
 {
     $ch = curl_init();
-    //GET запрос указывается в строке URL
+    //GET Р·Р°РїСЂРѕСЃ СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РІ СЃС‚СЂРѕРєРµ URL
     curl_setopt($ch, CURLOPT_URL, 'http://www.neverlands.ru/modules/api/info.cgi?playerid='.$id.'&info=1');
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -56,29 +56,29 @@ function getNicknameById($id)
 }
  */
 $actions = array(
-    1 => 'Отчет безопасности',
-    2 => 'Передача NV',
-    4 => 'Передача/Подарок вещей',
-    8 => 'Сдача в гос',
-    16 => 'Выкидывание вещей',
-    32 => 'Продажа/Покупка вешей',
-    64 => 'Сдача в казну',
-    128 => 'Переводы NV (счета)',
-    256 => 'Счета/Сейф (Операции)',
-    512 => 'Депозиты/Ссуды/Кредиты',
-    1024 => 'Подарки',
-    2048 => 'Лицензии',
-    4096 => 'Входы с одного компьютера',
-    8192 => 'Молчанки/Тюрьма/Блок',
-    16384 => 'Проверки на чистоту',
-    32768 => 'Семьи/кланы (Движение)',
-    65536 => 'Семьи/кланы (Списания)',
-    131072 => 'Пароль/Flash/E-mail (Смена)',
-    262144 => 'Подозрительные бои',
-    1048576 => 'Лечение/нападения/абилити',
-    2097152 => 'Модификация вещей',
-    4194304 => 'Получение уровней',
-    8388608 => 'NV/Вещи (Боты)',
+    1 => 'РћС‚С‡РµС‚ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё',
+    2 => 'РџРµСЂРµРґР°С‡Р° NV',
+    4 => 'РџРµСЂРµРґР°С‡Р°/РџРѕРґР°СЂРѕРє РІРµС‰РµР№',
+    8 => 'РЎРґР°С‡Р° РІ РіРѕСЃ',
+    16 => 'Р’С‹РєРёРґС‹РІР°РЅРёРµ РІРµС‰РµР№',
+    32 => 'РџСЂРѕРґР°Р¶Р°/РџРѕРєСѓРїРєР° РІРµС€РµР№',
+    64 => 'РЎРґР°С‡Р° РІ РєР°Р·РЅСѓ',
+    128 => 'РџРµСЂРµРІРѕРґС‹ NV (СЃС‡РµС‚Р°)',
+    256 => 'РЎС‡РµС‚Р°/РЎРµР№С„ (РћРїРµСЂР°С†РёРё)',
+    512 => 'Р”РµРїРѕР·РёС‚С‹/РЎСЃСѓРґС‹/РљСЂРµРґРёС‚С‹',
+    1024 => 'РџРѕРґР°СЂРєРё',
+    2048 => 'Р›РёС†РµРЅР·РёРё',
+    4096 => 'Р’С…РѕРґС‹ СЃ РѕРґРЅРѕРіРѕ РєРѕРјРїСЊСЋС‚РµСЂР°',
+    8192 => 'РњРѕР»С‡Р°РЅРєРё/РўСЋСЂСЊРјР°/Р‘Р»РѕРє',
+    16384 => 'РџСЂРѕРІРµСЂРєРё РЅР° С‡РёСЃС‚РѕС‚Сѓ',
+    32768 => 'РЎРµРјСЊРё/РєР»Р°РЅС‹ (Р”РІРёР¶РµРЅРёРµ)',
+    65536 => 'РЎРµРјСЊРё/РєР»Р°РЅС‹ (РЎРїРёСЃР°РЅРёСЏ)',
+    131072 => 'РџР°СЂРѕР»СЊ/Flash/E-mail (РЎРјРµРЅР°)',
+    262144 => 'РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ Р±РѕРё',
+    1048576 => 'Р›РµС‡РµРЅРёРµ/РЅР°РїР°РґРµРЅРёСЏ/Р°Р±РёР»РёС‚Рё',
+    2097152 => 'РњРѕРґРёС„РёРєР°С†РёСЏ РІРµС‰РµР№',
+    4194304 => 'РџРѕР»СѓС‡РµРЅРёРµ СѓСЂРѕРІРЅРµР№',
+    8388608 => 'NV/Р’РµС‰Рё (Р‘РѕС‚С‹)',
 );
 
 if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']))
@@ -185,13 +185,13 @@ foreach($logs as &$row)
 $_SESSION['pages']['log_analyzer'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Анализатор логов</h3>
+    <h3>РђРЅР°Р»РёР·Р°С‚РѕСЂ Р»РѕРіРѕРІ</h3>
 <script type="text/javascript" src="jscript/json2.js"></script>
 <script type="text/javascript" src="jscript/swfobject.js"></script>
 
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 
 <script type="text/javascript">
@@ -216,23 +216,23 @@ function get_data_1()
 <form name="filter" id="filter" action="" method="get">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-    <td>Кто смотрел:</td>
+      <td>РљС‚Рѕ СЃРјРѕС‚СЂРµР»:</td>
     <td>
         <input type="text" name="user_login" value="<?=_htext($_GET['user_login'])?>" /> id: <input type="text" name="user_id" value="<?=_htext($_GET['user_id'])?>" />
     </td>
   </tr>
   <tr>
-    <td>Кого смотрел:</td>
+      <td>РљРѕРіРѕ СЃРјРѕС‚СЂРµР»:</td>
     <td>
         <input type="text" name="view_user_login" value="<?=_htext($_GET['view_user_login'])?>" /> id: <input type="text" name="view_user_id" value="<?=_htext($_GET['view_user_id'])?>" />
     </td>
   </tr>
   <tr>
-    <td>Дата с:</td>
+      <td>Р”Р°С‚Р° СЃ:</td>
     <td>
         <input name="date_from" id="date_from" type="text" class="cms_fieldstyle1" value="<?=(isset($_GET['date_from'])?$_GET['date_from']:'')?>" size="22" maxlength="255" />
         <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kl1jhjhdj12d1jk2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -263,8 +263,9 @@ function get_data_1()
         <img src="images/cms_icons/cms_calendar_clear.gif" align="absmiddle" onclick='document.getElementById("date_from").value=""; ' title="Clear Date" style="cursor: pointer;" >
         
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        
-        Дата по: <input name="date_to" id="date_to" type="text" class="cms_fieldstyle1" value="<?=(isset($_GET['date_to'])?$_GET['date_to']:'')?>" size="22" maxlength="255" />
+
+        Р”Р°С‚Р° РїРѕ: <input name="date_to" id="date_to" type="text" class="cms_fieldstyle1"
+                        value="<?= (isset($_GET['date_to']) ? $_GET['date_to'] : '') ?>" size="22" maxlength="255"/>
         <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kjkjdnakjdnakwnjkd2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
         <script type="text/javascript">
         
@@ -294,7 +295,7 @@ function get_data_1()
     </td>
   </tr>
   <tr>
-    <td>Действие:</td>
+      <td>Р”РµР№СЃС‚РІРёРµ:</td>
     <td>
         <?=createSelectFromArray('action', $actions, $_GET['action'])?>
     </td>
@@ -313,17 +314,17 @@ function clearFilter()
 </div>  
 </div>
 </form>
-Лог: <br />
+    Р›РѕРі: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2">Дата</td>
-      <td class="cms_cap2">Кто</td>
+        <td class="cms_cap2">Р”Р°С‚Р°</td>
+        <td class="cms_cap2">РљС‚Рѕ</td>
       <td class="cms_cap2">ID</td>
-      <td class="cms_cap2">Кого</td>
+        <td class="cms_cap2">РљРѕРіРѕ</td>
       <td class="cms_cap2">ID</td>
-      <td class="cms_cap2">Действие</td>
-      <td class="cms_cap2">С</td>
-      <td class="cms_cap2">По</td>
+        <td class="cms_cap2">Р”РµР№СЃС‚РІРёРµ</td>
+        <td class="cms_cap2">РЎ</td>
+        <td class="cms_cap2">РџРѕ</td>
       <td class="cms_cap2">IP</td>
     </tr>
     
@@ -334,7 +335,7 @@ function clearFilter()
  </div>
 <br>
 <br>
-Загрузить лог:
+    Р—Р°РіСЂСѓР·РёС‚СЊ Р»РѕРі:
 <form name="upload" action="" method="post" enctype="multipart/form-data">
 Month: 
 <?php 
@@ -348,6 +349,6 @@ for($i=intval(date('Y'))-1; $i<=intval(date('Y'))+5; $i++)
 echo createSelectFromArray('year', $years, ''); 
 ?><br>
 File: <input type="file" name="file"><br>
-<input type="submit" name="upload" value="Загрузить">
+    <input type="submit" name="upload" value="Р—Р°РіСЂСѓР·РёС‚СЊ">
 </form>
 <? require('kernel/after.php'); ?>

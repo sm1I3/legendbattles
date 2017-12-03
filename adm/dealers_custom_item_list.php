@@ -24,7 +24,7 @@ $itmp = $array['itmp'];
 $akeys = $array['akeys'];
 
 ?>
-<h3>Список типов и классов</h3>
+    <h3>РЎРїРёСЃРѕРє С‚РёРїРѕРІ Рё РєР»Р°СЃСЃРѕРІ</h3>
 <?
 
 
@@ -42,9 +42,9 @@ foreach($ins as $inscode => $insname)
     {
         
         if (in_array($inscode, $akeys[$trfcode]))
-            echo '<td>&nbsp;<a href="dealers_custom_item_edit.php?id='.$id.'&inscode='.$inscode.'&trfcode='.$trfcode.'">Редактировать</a>&nbsp;</td>';
+            echo '<td>&nbsp;<a href="dealers_custom_item_edit.php?id=' . $id . '&inscode=' . $inscode . '&trfcode=' . $trfcode . '">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>&nbsp;</td>';
         else
-            echo '<td>&nbsp;<a style="color: red;" href="dealers_custom_item_edit.php?id='.$id.'&inscode='.$inscode.'&trfcode='.$trfcode.'">Добавить</a>&nbsp;</td>';
+            echo '<td>&nbsp;<a style="color: red;" href="dealers_custom_item_edit.php?id=' . $id . '&inscode=' . $inscode . '&trfcode=' . $trfcode . '">Р”РѕР±Р°РІРёС‚СЊ</a>&nbsp;</td>';
     }
     
     echo '</tr>';

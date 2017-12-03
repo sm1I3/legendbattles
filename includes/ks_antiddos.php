@@ -13,12 +13,12 @@ class ks_antiddos
 {
 	var $seconds_limit, $hits_limit, $memlen;
 	var $status, $error_msg, $now;
-	var $visitor; // статус визитора
-	var $warm_level; // количиство хитов за seconds_limit секундпри котором статус визитора устанавливается в warm
-	var $iplist_var = 1; // номер переменной списка в шареде
-	var $auto = true; 
-	var $delay = 20; // задержка предлагаемая блокируемым визиторам
-	var $block_cnet = true; // блокировать всю сеть класса C
+    var $visitor; // СЃС‚Р°С‚СѓСЃ РІРёР·РёС‚РѕСЂР°
+    var $warm_level; // РєРѕР»РёС‡РёСЃС‚РІРѕ С…РёС‚РѕРІ Р·Р° seconds_limit СЃРµРєСѓРЅРґРїСЂРё РєРѕС‚РѕСЂРѕРј СЃС‚Р°С‚СѓСЃ РІРёР·РёС‚РѕСЂР° СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РІ warm
+    var $iplist_var = 1; // РЅРѕРјРµСЂ РїРµСЂРµРјРµРЅРЅРѕР№ СЃРїРёСЃРєР° РІ С€Р°СЂРµРґРµ
+	var $auto = true;
+    var $delay = 20; // Р·Р°РґРµСЂР¶РєР° РїСЂРµРґР»Р°РіР°РµРјР°СЏ Р±Р»РѕРєРёСЂСѓРµРјС‹Рј РІРёР·РёС‚РѕСЂР°Рј
+    var $block_cnet = true; // Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РІСЃСЋ СЃРµС‚СЊ РєР»Р°СЃСЃР° C
 
 	function doit($seconds_limit,$hits_limit,$memlen=100000)
 	{
@@ -26,24 +26,24 @@ class ks_antiddos
 		$this->seconds_limit = $seconds_limit;
 		$this->hits_limit = $hits_limit;
 		$this->memlen = $memlen;
-		$this->visitor = 'raw'; // необработан
+        $this->visitor = 'raw'; // РЅРµРѕР±СЂР°Р±РѕС‚Р°РЅ
 		if (empty($this->warm_level)) 
 			$this->warm_level = $this->hits_limit/2;
 		$this->now = time();
-	// читаем список
+        // С‡РёС‚Р°РµРј СЃРїРёСЃРѕРє
 		if (false===$this->read_iplist()) return $this->alles(false);
-	// прочистка списка
+        // РїСЂРѕС‡РёСЃС‚РєР° СЃРїРёСЃРєР°
 		$this->clean_list();
-	// добавляем этот заход
+        // РґРѕР±Р°РІР»СЏРµРј СЌС‚РѕС‚ Р·Р°С…РѕРґ
 		$ip = $_SERVER['REMOTE_ADDR'];
 		if ($this->block_cnet) $ip = substr($ip,0,strrpos($ip,'.')+1);
 		if (@!is_array($this->iplist[$ip])) $this->iplist[$ip] = array();
 		$this->iplist[$ip][] = $this->now;
-	// сохраняем список
+        // СЃРѕС…СЂР°РЅСЏРµРј СЃРїРёСЃРѕРє
 		if (false===$this->save_iplist()) return $this->alles(false);
 		$count = count($this->iplist[$ip]);
 		$this->status = 'ok';
-		if ($count==1) // если есть только этот заход в массиве
+        if ($count == 1) // РµСЃР»Рё РµСЃС‚СЊ С‚РѕР»СЊРєРѕ СЌС‚РѕС‚ Р·Р°С…РѕРґ РІ РјР°СЃСЃРёРІРµ
 			$this->visitor = "new";
 		elseif ($count>$this->hits_limit)
 			$this->visitor = "hot";
@@ -54,23 +54,22 @@ class ks_antiddos
 		return $this->alles(true);
 	}
 
-// прочистка списка	
+// РїСЂРѕС‡РёСЃС‚РєР° СЃРїРёСЃРєР°	
 	function clean_list()
 	{
 		foreach($this->iplist as $ip=>$times)
 		{
 			$times_count = count($times);
-		// исщем заход, который надо оставить вместе с последующими
+            // РёСЃС‰РµРј Р·Р°С…РѕРґ, РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ РѕСЃС‚Р°РІРёС‚СЊ РІРјРµСЃС‚Рµ СЃ РїРѕСЃР»РµРґСѓСЋС‰РёРјРё
 			$actual_ptr = -1;
 			for($i=0; $i<$times_count; $i++)
 			{
-				if ($times[$i]+$this->seconds_limit>$this->now)
-				{ // нашли
+				if ($times[$i]+$this->seconds_limit>$this->now) { // РЅР°С€Р»Рё
 					$actual_ptr = $i;
 					break;
 				}
 			}
-			if ($actual_ptr==-1) // очищаем ИП
+            if ($actual_ptr == -1) // РѕС‡РёС‰Р°РµРј РРџ
 			{
 				unset($this->iplist[$ip]);
 				continue;
@@ -87,7 +86,7 @@ class ks_antiddos
 	
 	function read_iplist()
 	{
-	// подключаемся к памяти
+        // РїРѕРґРєР»СЋС‡Р°РµРјСЃСЏ Рє РїР°РјСЏС‚Рё
 		$shm_token = ftok(__FILE__,' ');
 		$this->shm_id = shm_attach($shm_token,$this->memlen,0766);
 		if (false===$this->shm_id) 
@@ -97,8 +96,7 @@ class ks_antiddos
 			return false;
 		}
 		$this->iplist = @shm_get_var($this->shm_id,$this->iplist_var);
-		if (false===$this->iplist)
-		{ // создаем переменную в шареде
+		if (false===$this->iplist) { // СЃРѕР·РґР°РµРј РїРµСЂРµРјРµРЅРЅСѓСЋ РІ С€Р°СЂРµРґРµ
 			$this->iplist = array();
 			$res = @shm_put_var($this->shm_id,$this->iplist_var,$this->iplist);
 			if (false===$res) 
@@ -148,8 +146,7 @@ class ks_antiddos
 	}
 }
 
-if (strrchr($_SERVER['SCRIPT_NAME'],'/')==='/ks_antiddos.php')
-{ // вызов напрямую из браузера
+if (strrchr($_SERVER['SCRIPT_NAME'],'/')==='/ks_antiddos.php') { // РІС‹Р·РѕРІ РЅР°РїСЂСЏРјСѓСЋ РёР· Р±СЂР°СѓР·РµСЂР°
 	print "<h3>ks_antiddos control pannel</h3>";
 	$delete_shm = @$_GET['delete'];
 	$shm_token = ftok(__FILE__,' ');

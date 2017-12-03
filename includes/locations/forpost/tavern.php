@@ -5,9 +5,9 @@ if($_GET['get_id'] == '41'){
 	$javaQuery = '';
 	if($getId){
 		if($getId['count'] > 0){
-			$Effects = explode("@", $getId['effects']); // Список эффектов
-			$ArrStats = array(30,31,32,33,34); // Рандомные статы
-			$ArrMf = array(5,6,7,8,9); // Рандомные МФ
+            $Effects = explode("@", $getId['effects']); // РЎРїРёСЃРѕРє СЌС„С„РµРєС‚РѕРІ
+            $ArrStats = array(30, 31, 32, 33, 34); // Р Р°РЅРґРѕРјРЅС‹Рµ СЃС‚Р°С‚С‹
+            $ArrMf = array(5, 6, 7, 8, 9); // Р Р°РЅРґРѕРјРЅС‹Рµ РњР¤
 			$ParamFirst = $ParamSecond = '';
 			$updHPMP = false;
 			$EffectTime = 0;
@@ -72,7 +72,7 @@ if($_GET['get_id'] == '41'){
 			}
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `nv`=`nv`-'".$getId['price']."' WHERE `id`='" . $pers['id'] . "'");
 			mysqli_query($GLOBALS['db_link'],"UPDATE `tavern` SET `count`=`count`-'1' WHERE `id`='" . $getId['id'] . "'");
-			echo"<script>parent.jAlert('Вы использовали &quot;".$getId['name']."&quot;');</script>";
+            echo "<script>parent.jAlert('Р’С‹ РёСЃРїРѕР»СЊР·РѕРІР°Р»Рё &quot;" . $getId['name'] . "&quot;');</script>";
 			$javaQuery = 'TavernaShow('.$getId['type'].');';
 		}
 	}

@@ -70,7 +70,8 @@ $_SESSION['pages']['bot_list'] = $_SERVER['REQUEST_URI'];
 </div>
  
 <br />
-<img src="images/cms_icons/cms_add.gif" alt="Добавить бота" /><a href="faq_edit.php" title="Добавить страницу">Добавить страницу</a> &nbsp;
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ Р±РѕС‚Р°"/><a href="faq_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ">Р”РѕР±Р°РІРёС‚СЊ
+    СЃС‚СЂР°РЅРёС†Сѓ</a> &nbsp;
 <br />
 
 <? require('kernel/after.php'); ?>

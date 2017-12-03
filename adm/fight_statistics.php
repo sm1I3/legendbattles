@@ -135,29 +135,29 @@ while ($row = mysql_fetch_assoc($res))
 }
 
 $fill_types = Array(
-    0 => 'Природа',
-    1 => 'Нападение на город',
-    2 => 'Нападение по свитку',
-    3 => 'Лабиринт',
+    0 => 'РџСЂРёСЂРѕРґР°',
+    1 => 'РќР°РїР°РґРµРЅРёРµ РЅР° РіРѕСЂРѕРґ',
+    2 => 'РќР°РїР°РґРµРЅРёРµ РїРѕ СЃРІРёС‚РєСѓ',
+    3 => 'Р›Р°Р±РёСЂРёРЅС‚',
 );
 
 ?>
-<h3>Распределение в мире</h3>
+    <h3>Р Р°СЃРїСЂРµРґРµР»РµРЅРёРµ РІ РјРёСЂРµ</h3>
 
 <form name="filter" id="filter" action="" method="get">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
     <tr>
-        <td>Класс бота:</td>
+        <td>РљР»Р°СЃСЃ Р±РѕС‚Р°:</td>
         <td>
             <?=createSelectFromArray('bot_class_id', $bot_classes, (isset($_GET['bot_class_id'])?$_GET['bot_class_id']:''))?>
         </td>
     </tr>
     <tr>
-        <td>Бот:</td>
+        <td>Р‘РѕС‚:</td>
         <td>
             <?=createSelectFromArray('inf_bot', $bots, (isset($_GET['inf_bot'])?$_GET['inf_bot']:''))?>
         </td>
@@ -188,29 +188,32 @@ function clearFilter()
 </form>
 
 <div id="results">
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Бои')?></div>
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р‘РѕРё') ?></div>
 
     <div class="cms_ind">
         <br />
-        Боты: <br />
+        Р‘РѕС‚С‹: <br/>
         <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr>
                 <td class="cms_cap2"><a href="<?=sortby('playerid')?>">Player ID</a></td>
-                <td class="cms_cap2"><a href="<?=sortby('bot_uid')?>">ID бота</a></td>
-                <td class="cms_cap2"><a href="<?=sortby('nickname')?>">Имя бота</a></td>
-                <td class="cms_cap2"><a href="<?=sortby('level')?>">Уровень</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('bot_uid') ?>">ID Р±РѕС‚Р°</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('nickname') ?>">РРјСЏ Р±РѕС‚Р°</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('level') ?>">РЈСЂРѕРІРµРЅСЊ</a></td>
                 <td class="cms_cap2"><a href="<?=sortby('bot_type')?>">Bot Type</a></td>
                 <td class="cms_cap2"><a href="<?=sortby('bot_type')?>">Active</a></td>
             </tr>
             <?=$stats?>   
         </table>
         <br />
-        <a onclick="document.location='?bot_type=<?=$bot_type?>&bot_class_id=<?=$bot_class_id?>&inf_bot=<?=$inf_bot?>&deactivate_group='+prompt('Сколько деактивировать ботов?', '10'); return false;" href="#">Деактивировать группу</a><br />
-        <a onclick="return confirm('Вы действительно хотите удалить всех неактивных ботов?');" href="?action=delete_all_inactive">Удалить всех неактивных</a><br />
-        <a onclick="return confirm('Вы действительно хотите активировать всех неактивных ботов?');" href="?action=activate_all_inactive">Активировать всех неактивных</a><br />
+        <a onclick="document.location='?bot_type=<?= $bot_type ?>&bot_class_id=<?= $bot_class_id ?>&inf_bot=<?= $inf_bot ?>&deactivate_group='+prompt('РЎРєРѕР»СЊРєРѕ РґРµР°РєС‚РёРІРёСЂРѕРІР°С‚СЊ Р±РѕС‚РѕРІ?', '10'); return false;"
+           href="#">Р”РµР°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РіСЂСѓРїРїСѓ</a><br/>
+        <a onclick="return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РІСЃРµС… РЅРµР°РєС‚РёРІРЅС‹С… Р±РѕС‚РѕРІ?');"
+           href="?action=delete_all_inactive">РЈРґР°Р»РёС‚СЊ РІСЃРµС… РЅРµР°РєС‚РёРІРЅС‹С…</a><br/>
+        <a onclick="return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РІСЃРµС… РЅРµР°РєС‚РёРІРЅС‹С… Р±РѕС‚РѕРІ?');"
+           href="?action=activate_all_inactive">РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ РІСЃРµС… РЅРµР°РєС‚РёРІРЅС‹С…</a><br/>
         <br />
     </div>
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Бои')?></div> 
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р‘РѕРё') ?></div>
 </div>
 <br />
 

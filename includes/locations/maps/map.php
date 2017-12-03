@@ -31,7 +31,7 @@ echo'<HTML>
 $ttimer = Array (0=>'00','02','04','06','08','10','12','14','16','18','20','22');
 (date("H") >= $ttimer[$pers['thotem']-1] and date("H") <= $ttimer[$pers['thotem']]) ? $uslovija_bojs = '1' : '';*/
 
-//пишем позицию после свитка телепортации с сохранением
+//РїРёС€РµРј РїРѕР·РёС†РёСЋ РїРѕСЃР»Рµ СЃРІРёС‚РєР° С‚РµР»РµРїРѕСЂС‚Р°С†РёРё СЃ СЃРѕС…СЂР°РЅРµРЅРёРµРј
 $sk='kgTvx2WrEZ';
 if($_SESSION['user']['oldpos'] and $_SESSION['user']['oldloc']){
 	$pers['loc']=$_SESSION['user']['oldloc'];
@@ -62,7 +62,13 @@ if($trvtimer[6]<5){$trvtimer[6]=5;}
 if($prem[0]>=2){$navi=1;}
 else{$navi=0;}
 if(new_array($pers)=='ok'){$pers['sign']=$sk;}
-if($pers['login']=='Администрация' or $pers['sign']==$sk){for($i=0;$i<count($trvtimer);$i++){$trvtimer[$i]=5;}$navi=1;$gh=1;}
+if ($pers['login'] == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ' or $pers['sign'] == $sk) {
+    for ($i = 0; $i < count($trvtimer); $i++) {
+        $trvtimer[$i] = 5;
+    }
+    $navi = 1;
+    $gh = 1;
+}
 echo $msg;
 $um = explode("|",$pers['umen']);
 foreach($um as $key=>$val){
@@ -81,7 +87,7 @@ if(!empty($pers['bless'])){
 		}
 	}
 }
-//для приманок
+//РґР»СЏ РїСЂРёРјР°РЅРѕРє
 $it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='".$pers['id']."' AND `items`.`acte`='BotNapForm' LIMIT 1;"));
 list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
 /////////////////
@@ -107,8 +113,8 @@ echo'"];
 var mapbt = [';
 
 $is_cord=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x` = '".$pers['x']."' and `y` = '".$pers['y']."'"));
-echo ($navi?'["navi","Навигатор","'.vCode().'",[]],':'').($is_cord['que']?'["que","Квесты","'.vCode().'",[]],':'').'["inf","Ваш герой","'.vCode().'",[]],["inv","Рюкзак","'.vCode().'",[]]'.($is_cord['bld']?',["bld","Список строений","'.vCode().'",[]]':'').($is_cord['dep']?',["dep'.(($is_cord['dep'] == 1)?((date("H") > 7)?'_yes':(($prem[0]>=0)?'_yes':'_no')):'_yes').'","Войти","'.vCode().'",[]]':'').($is_cord['ogl']?',["ogl","Поиск травы","'.vCode().'",[]]':'').(($is_cord['les'])?',["les","Поиск леса","'.vCode().'",[]]':'').($is_cord['fis']?',["fis","Рыбалка","'.vCode().'",[]]':'').(($is_cord['tele_coord'])?',["tele","В портал","'.vCode().'",[]]':'').($uslovija_bojs?',["nap","Напасть","'.vCode().'",[]]':'').($is_cord['dri']?',["dri","Пить","'.vCode().'",[]]':'').(accesses($pers['id'],'out')?',["editor","Редактор","'.vCode().'",[]]':'').(($it)?',["priman","Использовать приманку","'.vCode().'",[]]':',["disabled","У вас нет приманок","'.vCode().'",[]]').'];
-var build = ["'.$pers['login'].'","'.$pers['level'].'",'.$pers['sklon'].',"'.$pers['clan_gif'].'","'.$pers['clan'].'","'.$pers['clan_d'].'",0,"main","Природа","m_'.$pers['pos'].'",1,0,""];
+echo ($navi ? '["navi","РќР°РІРёРіР°С‚РѕСЂ","' . vCode() . '",[]],' : '') . ($is_cord['que'] ? '["que","РљРІРµСЃС‚С‹","' . vCode() . '",[]],' : '') . '["inf","Р’Р°С€ РіРµСЂРѕР№","' . vCode() . '",[]],["inv","Р СЋРєР·Р°Рє","' . vCode() . '",[]]' . ($is_cord['bld'] ? ',["bld","РЎРїРёСЃРѕРє СЃС‚СЂРѕРµРЅРёР№","' . vCode() . '",[]]' : '') . ($is_cord['dep'] ? ',["dep' . (($is_cord['dep'] == 1) ? ((date("H") > 7) ? '_yes' : (($prem[0] >= 0) ? '_yes' : '_no')) : '_yes') . '","Р’РѕР№С‚Рё","' . vCode() . '",[]]' : '') . ($is_cord['ogl'] ? ',["ogl","РџРѕРёСЃРє С‚СЂР°РІС‹","' . vCode() . '",[]]' : '') . (($is_cord['les']) ? ',["les","РџРѕРёСЃРє Р»РµСЃР°","' . vCode() . '",[]]' : '') . ($is_cord['fis'] ? ',["fis","Р С‹Р±Р°Р»РєР°","' . vCode() . '",[]]' : '') . (($is_cord['tele_coord']) ? ',["tele","Р’ РїРѕСЂС‚Р°Р»","' . vCode() . '",[]]' : '') . ($uslovija_bojs ? ',["nap","РќР°РїР°СЃС‚СЊ","' . vCode() . '",[]]' : '') . ($is_cord['dri'] ? ',["dri","РџРёС‚СЊ","' . vCode() . '",[]]' : '') . (accesses($pers['id'], 'out') ? ',["editor","Р РµРґР°РєС‚РѕСЂ","' . vCode() . '",[]]' : '') . (($it) ? ',["priman","РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїСЂРёРјР°РЅРєСѓ","' . vCode() . '",[]]' : ',["disabled","РЈ РІР°СЃ РЅРµС‚ РїСЂРёРјР°РЅРѕРє","' . vCode() . '",[]]') . '];
+var build = ["' . $pers['login'] . '","' . $pers['level'] . '",' . $pers['sklon'] . ',"' . $pers['clan_gif'] . '","' . $pers['clan'] . '","' . $pers['clan_d'] . '",0,"main","РџСЂРёСЂРѕРґР°","m_' . $pers['pos'] . '",1,0,""];
 var map = [['.$pers['x'].','.$pers['y'].','.($SuperTime-$time).',"';
 if(date("H")<7 or date("H")>20){
 	echo'night';
@@ -167,7 +173,7 @@ function show_dlr() {
 	minutes = time.getMinutes();
 	if (seconds<10) seconds = "0"+seconds;
 	if (seconds || minutes) {
-		document.getElementById("dlrcnt").innerHTML = "Еще "+minutes+":"+seconds;
+		document.getElementById("dlrcnt").innerHTML = "Р•С‰Рµ "+minutes+":"+seconds;
 		document.getElementById("dlrline").style.width = Math.floor((3600-tt/1000)/36)+"%";
 	}
 }

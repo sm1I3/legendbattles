@@ -30,7 +30,7 @@ if(accesses($pers['id'],'out')){
 					$locname = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `loc` WHERE `id`='".intval($_GET['locid'])."'"));
 					echo '<br>'.$locname['city'].'<br>['.$locname['loc']?$locname['loc']:$locname['loc'].'-'.$locname['room'].']';
 				}else{
-					echo 'Никуда';
+                    echo 'РќРёРєСѓРґР°';
 				}
 			}
 		break;
@@ -97,7 +97,7 @@ if(accesses($pers['id'],'out')){
 				  $locname = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x`='".$tele['x']."' AND `y`='".$tele['y']."' LIMIT 1;"));
 				  echo '<br>'.$locname['city'].'<br>['.($locname['name']?$locname['name']:'').']';
 				}else{
-					echo 'Никуда';
+                    echo 'РќРёРєСѓРґР°';
 				}
 			}
 		break;

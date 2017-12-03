@@ -28,48 +28,74 @@ document.write('<div id="darker" style="display:none;"><table cellspacing="0" ce
 -->
 </style>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr><td align=center><input type="button" class="lbut" onClick="location='../../../main.php'" value="Вернуться"></td></tr>
+    <tr>
+        <td align=center><input type="button" class="lbut" onClick="location='../../../main.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        </td>
+    </tr>
   <tr>
     <td align=center>
-		<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=1'" value="Изготовление предметов" />
-		<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=4'" value="Редактор предметов" />
-		<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=2'" value="Добавление в магазин" />
-		<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=3'" value="Завоз" />
-		<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=99'" value="Передача вещей персонажам" />
-		<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=7'" value="Блок IP" />
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=1'"
+               value="РР·РіРѕС‚РѕРІР»РµРЅРёРµ РїСЂРµРґРјРµС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=4'"
+               value="Р РµРґР°РєС‚РѕСЂ РїСЂРµРґРјРµС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=2'"
+               value="Р”РѕР±Р°РІР»РµРЅРёРµ РІ РјР°РіР°Р·РёРЅ"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=3'"
+               value="Р—Р°РІРѕР·"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=99'"
+               value="РџРµСЂРµРґР°С‡Р° РІРµС‰РµР№ РїРµСЂСЃРѕРЅР°Р¶Р°Рј"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/adm.php?id_adm=7'"
+               value="Р‘Р»РѕРє IP"/>
 	</td>
 	</tr>
 <tr>	
 	<td align=center>
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/player_items.php'" value="Удаление вещей" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/clan_items.php'" value="Работа с КЛАНАМИ" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/tz.php'" value="ТЗ админам" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/errors.php'" value=" Сообщения об ошибках" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/alhim.php'" value="Создание алхимических рецептов" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/custom_rec.php'" value="Создание других рецептов" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/bot_drop.php'" value="Дроп ботов" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/accounts.php'" value="Аккаунты" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/presents.php'" value="Подарки" />	
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/unground.php'" value="Подарки" />	
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/player.php'" value="Персонажи" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/labyrinth.php'" value="Лабиринт" />
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/player_items.php'"
+               value="РЈРґР°Р»РµРЅРёРµ РІРµС‰РµР№"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/clan_items.php'"
+               value="Р Р°Р±РѕС‚Р° СЃ РљР›РђРќРђРњР"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/tz.php'" value="РўР— Р°РґРјРёРЅР°Рј"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/errors.php'"
+               value=" РЎРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С…"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/alhim.php'"
+               value="РЎРѕР·РґР°РЅРёРµ Р°Р»С…РёРјРёС‡РµСЃРєРёС… СЂРµС†РµРїС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/custom_rec.php'"
+               value="РЎРѕР·РґР°РЅРёРµ РґСЂСѓРіРёС… СЂРµС†РµРїС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/bot_drop.php'"
+               value="Р”СЂРѕРї Р±РѕС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/accounts.php'"
+               value="РђРєРєР°СѓРЅС‚С‹"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/presents.php'"
+               value="РџРѕРґР°СЂРєРё"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/unground.php'"
+               value="РџРѕРґР°СЂРєРё"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/player.php'"
+               value="РџРµСЂСЃРѕРЅР°Р¶Рё"/>
+        <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/labyrinth.php'"
+               value="Р›Р°Р±РёСЂРёРЅС‚"/>
 </td>
 </tr>
 <tr>	
 <td align=center>
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/ref_system.php'" value="Рефералка" />	
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/bot_edit.php'" value="Боты" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/system_messages.php'" value="Системки" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/real_dd_adm.php'" value="Продажа статов в ДЦ" />	
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/player-actions.php'" value="ЛОГИ ПЕРСОНАЖЕЙ" />	
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/chests.php'" value="Сундуки" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/chests2.php'" value="Сундуки откр" />	
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/curs.php'" value="Дилер" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/koldyn.php'" value="Колдун" />
-	<input  type="button" class="lbut"onclick="location='/core2.php?useaction=admin-action&addid=tavern'" value="Таверна"
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/panel.php'" value="Вход в игру" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/mail.php'" value="Почта" />
-	<input type="button" class="lbut" onclick="location='/includes/addons/admin-action/online.php'" value="Онлайн" />
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/ref_system.php'"
+           value="Р РµС„РµСЂР°Р»РєР°"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/bot_edit.php'" value="Р‘РѕС‚С‹"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/system_messages.php'"
+           value="РЎРёСЃС‚РµРјРєРё"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/real_dd_adm.php'"
+           value="РџСЂРѕРґР°Р¶Р° СЃС‚Р°С‚РѕРІ РІ Р”Р¦"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/player-actions.php'"
+           value="Р›РћР“Р РџР•Р РЎРћРќРђР–Р•Р™"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/chests.php'" value="РЎСѓРЅРґСѓРєРё"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/chests2.php'"
+           value="РЎСѓРЅРґСѓРєРё РѕС‚РєСЂ"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/curs.php'" value="Р”РёР»РµСЂ"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/koldyn.php'" value="РљРѕР»РґСѓРЅ"/>
+    <input type="button" class="lbut" onclick="location='/core2.php?useaction=admin-action&addid=tavern'"
+           value="РўР°РІРµСЂРЅР°"
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/panel.php'" value="Р’С…РѕРґ РІ РёРіСЂСѓ"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/mail.php'" value="РџРѕС‡С‚Р°"/>
+    <input type="button" class="lbut" onclick="location='/includes/addons/admin-action/online.php'" value="РћРЅР»Р°Р№РЅ"/>
 </td>
 </tr>
 </table>
@@ -82,7 +108,7 @@ document.write('<div id="darker" style="display:none;"><table cellspacing="0" ce
 				if(is_file(DROOT."/includes/addons/admin-action/".preg_replace('/[^a-zA-Z0-9]/','',$_GET['addid']).".php"))
 					include(DROOT."/includes/addons/admin-action/".preg_replace('/[^a-zA-Z0-9]/','',$_GET['addid']).".php");
 				else
-					echo"<font class=freetxt><div align=center><font color=#cc0000><b>Выберите раздел</b></font></div></font>";
+                    echo "<font class=freetxt><div align=center><font color=#cc0000><b>Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</b></font></div></font>";
 				?></td>
               </tr>
             </table>

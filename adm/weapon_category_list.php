@@ -28,17 +28,17 @@ while ($row = mysql_fetch_assoc($res))
 }
 
 ?>
-<h3>Список категорий оружия</h3>
+    <h3>РЎРїРёСЃРѕРє РєР°С‚РµРіРѕСЂРёР№ РѕСЂСѓР¶РёСЏ</h3>
 <div class="cms_ind">
 <br />
-Категории оружия: <br />
+    РљР°С‚РµРіРѕСЂРёРё РѕСЂСѓР¶РёСЏ: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Категории</td>
-      <td class="cms_cap2">Название категории</td>
+        <td class="cms_cap2">ID РљР°С‚РµРіРѕСЂРёРё</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё</td>
     </tr>
     
     <?=$weapon_categories?>
@@ -46,7 +46,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить категорию" /><a href="weapon_category_edit.php" title="Добавить категорию">Добавить категорию</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ"/><a href="weapon_category_edit.php"
+                                                                         title="Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ">Р”РѕР±Р°РІРёС‚СЊ
+    РєР°С‚РµРіРѕСЂРёСЋ</a> &nbsp;<br/>
  <br />
 
 <? require('kernel/after.php'); ?>

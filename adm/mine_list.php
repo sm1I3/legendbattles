@@ -2,8 +2,8 @@
 require('kernel/before.php');
 
 $types = array(
-    1 => 'Шахта простых металлов',
-    2 => 'Шахта драгоценных металлов',
+    1 => 'РЁР°С…С‚Р° РїСЂРѕСЃС‚С‹С… РјРµС‚Р°Р»Р»РѕРІ',
+    2 => 'РЁР°С…С‚Р° РґСЂР°РіРѕС†РµРЅРЅС‹С… РјРµС‚Р°Р»Р»РѕРІ',
 );
 
 if (!userHasPermission(32768)) {
@@ -25,11 +25,11 @@ while ($row = mysql_fetch_assoc($res))
 {
     $mines.='
     <tr>
-        <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы действительно хотите удалить этот лабиринт?\');" href="mine_list.php?delete_mine_code='.$row['mine_code'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-        <td class="cms_middle" align="center"><a href="mine_edit.php?mine_code='.$row['mine_code'].'" title="Изменить параметры"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
-        <td class="cms_middle" align="center"><a href="mine_view.php?mine_code='.$row['mine_code'].'" title="Редактор лабиринта"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+        <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ Р»Р°Р±РёСЂРёРЅС‚?\');" href="mine_list.php?delete_mine_code=' . $row['mine_code'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+        <td class="cms_middle" align="center"><a href="mine_edit.php?mine_code=' . $row['mine_code'] . '" title="РР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+        <td class="cms_middle" align="center"><a href="mine_view.php?mine_code=' . $row['mine_code'] . '" title="Р РµРґР°РєС‚РѕСЂ Р»Р°Р±РёСЂРёРЅС‚Р°"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
         <td align="left" class="cms_middle">'.$row['mine_code'].'</td>
-        <td align="left" class="cms_middle"><a href="mine_view.php?mine_code='.$row['mine_code'].'" title="Редактор лабиринта">'._htext($row['mine_name']).'</a></td>
+        <td align="left" class="cms_middle"><a href="mine_view.php?mine_code=' . $row['mine_code'] . '" title="Р РµРґР°РєС‚РѕСЂ Р»Р°Р±РёСЂРёРЅС‚Р°">' . _htext($row['mine_name']) . '</a></td>
         <td align="left" class="cms_middle">'.$types[$row['mine_type']].'</td>
         <td align="left" class="cms_middle">'._htext($row['levels_count']).'</td>
     </tr>
@@ -37,20 +37,20 @@ while ($row = mysql_fetch_assoc($res))
 }
 
 ?>
-<h3>Список шахт</h3> 
+    <h3>РЎРїРёСЃРѕРє С€Р°С…С‚</h3>
 <div class="cms_ind">
 <br />
-Шахты: <br />
+    РЁР°С…С‚С‹: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Параметры </td>
-      <td class="cms_cap2 normal"> Редактор </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РџР°СЂР°РјРµС‚СЂС‹</td>
+        <td class="cms_cap2 normal"> Р РµРґР°РєС‚РѕСЂ</td>
 
-      <td class="cms_cap2">Код Шахты</td>
-      <td class="cms_cap2">Название Шахты</td>
-      <td class="cms_cap2">Тип Шахты</td>
-      <td class="cms_cap2">Глубина</td>
+        <td class="cms_cap2">РљРѕРґ РЁР°С…С‚С‹</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ РЁР°С…С‚С‹</td>
+        <td class="cms_cap2">РўРёРї РЁР°С…С‚С‹</td>
+        <td class="cms_cap2">Р“Р»СѓР±РёРЅР°</td>
     </tr>
     
     <?=$mines?>
@@ -58,5 +58,6 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить шахту" /><a href="mine_edit.php" title="Добавить шахту">Добавить шахту</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ С€Р°С…С‚Сѓ"/><a href="mine_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ С€Р°С…С‚Сѓ">Р”РѕР±Р°РІРёС‚СЊ
+    С€Р°С…С‚Сѓ</a> &nbsp;<br/>
 <? require('kernel/after.php'); ?>

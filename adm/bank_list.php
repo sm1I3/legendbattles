@@ -9,7 +9,7 @@ if (!userHasPermission(1)) {
 		$b = $lr % 100;
 		$s = intval(($lr % 10000) / 100);
 		$g = intval($lr / 10000);
-		return (($g)?$g.' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Золото>  ':'').(($s)?$s.' <img src=/img/image/silver.png width=14 height=14 valign=middle title=Серебро> ':'').(($b)?$b.' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Бронза> ':'');
+        return (($g) ? $g . ' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Р—РѕР»РѕС‚Рѕ>  ' : '') . (($s) ? $s . ' <img src=/img/image/silver.png width=14 height=14 valign=middle title=РЎРµСЂРµР±СЂРѕ> ' : '') . (($b) ? $b . ' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Р‘СЂРѕРЅР·Р°> ' : '');
 	}
 if (isset($_GET['delete_bank_id']) && $_GET['delete_bank_id']!='') 
 {
@@ -24,10 +24,10 @@ while ($row = mysql_fetch_assoc($res))
 {
     $banks .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этот банк?\');" href="bank_list.php?delete_bank_id='.$row['id'].'" title="Удалить банк"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="bank_edit.php?id='.$row['id'].'" title="Изменить банк"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ Р±Р°РЅРє?\');" href="bank_list.php?delete_bank_id=' . $row['id'] . '" title="РЈРґР°Р»РёС‚СЊ Р±Р°РЅРє"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="bank_edit.php?id=' . $row['id'] . '" title="РР·РјРµРЅРёС‚СЊ Р±Р°РЅРє"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['id'].'</td>
-      <td align="left" class="cms_middle"><a href="bank_edit.php?id='.$row['id'].'" title="Изменить банк">'._htext($row['num']).'</a></td>
+      <td align="left" class="cms_middle"><a href="bank_edit.php?id=' . $row['id'] . '" title="РР·РјРµРЅРёС‚СЊ Р±Р°РЅРє">' . _htext($row['num']) . '</a></td>
 			<td align="left" class="cms_middle">'.$row['login'].'</td>
 			<td align="left" class="cms_middle">'.lr($row['lr']).'</td>
 			<td align="left" class="cms_middle">'.$row['dlr'].'</td>
@@ -36,20 +36,20 @@ while ($row = mysql_fetch_assoc($res))
 }
 
 ?>
-<h3>Список Банков</h3>
+    <h3>РЎРїРёСЃРѕРє Р‘Р°РЅРєРѕРІ</h3>
 <div class="cms_ind">
 <br />
-Банки: <br />
+    Р‘Р°РЅРєРё: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Банка</td>
-      <td class="cms_cap2">Название банка</td>
-			<td class="cms_cap2">Логин</td>
+        <td class="cms_cap2">ID Р‘Р°РЅРєР°</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ Р±Р°РЅРєР°</td>
+        <td class="cms_cap2">Р›РѕРіРёРЅ</td>
 			<td class="cms_cap2">LR</td>
-			<td class="cms_cap2">Изумруд</td>
+        <td class="cms_cap2">РР·СѓРјСЂСѓРґ</td>
     </tr>
     
     <?=$banks?>
@@ -57,7 +57,8 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить банк" /><a href="bank_edit.php" title="Добавить банк">Добавить банк</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ Р±Р°РЅРє"/><a href="bank_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ Р±Р°РЅРє">Р”РѕР±Р°РІРёС‚СЊ
+    Р±Р°РЅРє</a> &nbsp;<br/>
  <br />
 
 <? require('kernel/after.php'); ?>

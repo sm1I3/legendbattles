@@ -52,84 +52,84 @@ while($row = mysql_fetch_assoc($res)) {
 mysql_free_result($res);
     
 $fields = array(
-    'level' => 'уровень',
-    'curhp' => 'текущие ХП',
-    'maxhp' => 'максимальные ХП',
-    'addhp' => 'ХП от экипировки',
-    'curma' => 'текущие МП',
-    'addma' => 'МП от экипировки',
-    'steps' => 'очки действия',
-    'forcep' => 'сила персонажа',
-    'addforce' => 'сила от экипировки',
-    'adroitness' => 'ловкость персонажа',
-    'addadroitness' => 'ловкость от экипировки',
-    'goodluck' => 'удача персонажа',
-    'addgoodluck' => 'удача от экипировки',
-    'health' => 'здоровье персонажа',
-    'wisdom' => 'мудрость персонажа',
-    'addwisdom' => 'мудрость от экипировки',
-    'uvorot' => 'модификатор уловки',
-    'antiuvorot' => 'модификатор точности',
-    'krit' => 'модификатор сокрушения',
-    'antikrit' => 'модификатор стойкости',
-    'intellect' => 'знания персонажа',
-    'addintellect' => 'знания от экипировки',
-    'broclass' => 'класс брони',
-    'proclass' => 'пробой брони',
-    'mindamage' => 'мин. урон',
-    'maxdamage' => 'макс. урон',
+    'level' => 'СѓСЂРѕРІРµРЅСЊ',
+    'curhp' => 'С‚РµРєСѓС‰РёРµ РҐРџ',
+    'maxhp' => 'РјР°РєСЃРёРјР°Р»СЊРЅС‹Рµ РҐРџ',
+    'addhp' => 'РҐРџ РѕС‚ СЌРєРёРїРёСЂРѕРІРєРё',
+    'curma' => 'С‚РµРєСѓС‰РёРµ РњРџ',
+    'addma' => 'РњРџ РѕС‚ СЌРєРёРїРёСЂРѕРІРєРё',
+    'steps' => 'РѕС‡РєРё РґРµР№СЃС‚РІРёСЏ',
+    'forcep' => 'СЃРёР»Р° РїРµСЂСЃРѕРЅР°Р¶Р°',
+    'addforce' => 'СЃРёР»Р° РѕС‚ СЌРєРёРїРёСЂРѕРІРєРё',
+    'adroitness' => 'Р»РѕРІРєРѕСЃС‚СЊ РїРµСЂСЃРѕРЅР°Р¶Р°',
+    'addadroitness' => 'Р»РѕРІРєРѕСЃС‚СЊ РѕС‚ СЌРєРёРїРёСЂРѕРІРєРё',
+    'goodluck' => 'СѓРґР°С‡Р° РїРµСЂСЃРѕРЅР°Р¶Р°',
+    'addgoodluck' => 'СѓРґР°С‡Р° РѕС‚ СЌРєРёРїРёСЂРѕРІРєРё',
+    'health' => 'Р·РґРѕСЂРѕРІСЊРµ РїРµСЂСЃРѕРЅР°Р¶Р°',
+    'wisdom' => 'РјСѓРґСЂРѕСЃС‚СЊ РїРµСЂСЃРѕРЅР°Р¶Р°',
+    'addwisdom' => 'РјСѓРґСЂРѕСЃС‚СЊ РѕС‚ СЌРєРёРїРёСЂРѕРІРєРё',
+    'uvorot' => 'РјРѕРґРёС„РёРєР°С‚РѕСЂ СѓР»РѕРІРєРё',
+    'antiuvorot' => 'РјРѕРґРёС„РёРєР°С‚РѕСЂ С‚РѕС‡РЅРѕСЃС‚Рё',
+    'krit' => 'РјРѕРґРёС„РёРєР°С‚РѕСЂ СЃРѕРєСЂСѓС€РµРЅРёСЏ',
+    'antikrit' => 'РјРѕРґРёС„РёРєР°С‚РѕСЂ СЃС‚РѕР№РєРѕСЃС‚Рё',
+    'intellect' => 'Р·РЅР°РЅРёСЏ РїРµСЂСЃРѕРЅР°Р¶Р°',
+    'addintellect' => 'Р·РЅР°РЅРёСЏ РѕС‚ СЌРєРёРїРёСЂРѕРІРєРё',
+    'broclass' => 'РєР»Р°СЃСЃ Р±СЂРѕРЅРё',
+    'proclass' => 'РїСЂРѕР±РѕР№ Р±СЂРѕРЅРё',
+    'mindamage' => 'РјРёРЅ. СѓСЂРѕРЅ',
+    'maxdamage' => 'РјР°РєСЃ. СѓСЂРѕРЅ',
     'weaponbase' => 'weaponbase',
-    'um_0' => 'Рукопашный бой',
-    'um_1' => 'Владение мечами',
-    'um_2' => 'Владение топорами',
-    'um_3' => 'Владение дробящим оружием',
-    'um_4' => 'Владение ножами',
-    'um_5' => 'Владение метательным оружием',
-    'um_6' => 'Владение алебардами и копьями',
-    'um_7' => 'Владение посохами',
-    'um_8' => 'Владение экзотическим оружием',
-    'um_9' => 'Владение двуручным оружием',
-    'um_10' => 'Владение двумя руками',
-    'um_11' => 'Доп. очки действия',
-    'um_12' => 'Магия огня',
-    'um_13' => 'Магия воды',
-    'um_14' => 'Магия воздуха',
-    'um_15' => 'Магия земли',
-    'um_16' => 'Сопротивление магии огня',
-    'um_17' => 'Сопротивление магии воды',
-    'um_18' => 'Сопротивление магии воздуха',
-    'um_19' => 'Сопротивление магии земли',
-    'um_20' => 'Сопротивление физ. поврежд.',
-    'um_21' => 'Воровство',
-    'um_22' => 'Осторожность',
-    'um_23' => 'Скрытность',
-    'um_24' => 'Наблюдательность',
-    'um_25' => 'Торговля',
-    'um_26' => 'Странник',
-    'um_27' => 'Языковедение',
-    'um_28' => 'Каллиграфия',
-    'um_29' => 'Ювелирное дело',
-    'um_30' => 'Самолечение',
-    'um_31' => 'Оружейник',
-    'um_32' => 'Доктор',
-    'um_33' => 'Быстрое восстановление маны',
-    'um_34' => 'Лидерство',
-    'um_35' => 'Алхимия',
-    'um_36' => 'Развитие горного дела',
-    'um_37' => 'Рыбалка',
+    'um_0' => 'Р СѓРєРѕРїР°С€РЅС‹Р№ Р±РѕР№',
+    'um_1' => 'Р’Р»Р°РґРµРЅРёРµ РјРµС‡Р°РјРё',
+    'um_2' => 'Р’Р»Р°РґРµРЅРёРµ С‚РѕРїРѕСЂР°РјРё',
+    'um_3' => 'Р’Р»Р°РґРµРЅРёРµ РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј',
+    'um_4' => 'Р’Р»Р°РґРµРЅРёРµ РЅРѕР¶Р°РјРё',
+    'um_5' => 'Р’Р»Р°РґРµРЅРёРµ РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј',
+    'um_6' => 'Р’Р»Р°РґРµРЅРёРµ Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё',
+    'um_7' => 'Р’Р»Р°РґРµРЅРёРµ РїРѕСЃРѕС…Р°РјРё',
+    'um_8' => 'Р’Р»Р°РґРµРЅРёРµ СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј',
+    'um_9' => 'Р’Р»Р°РґРµРЅРёРµ РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј',
+    'um_10' => 'Р’Р»Р°РґРµРЅРёРµ РґРІСѓРјСЏ СЂСѓРєР°РјРё',
+    'um_11' => 'Р”РѕРї. РѕС‡РєРё РґРµР№СЃС‚РІРёСЏ',
+    'um_12' => 'РњР°РіРёСЏ РѕРіРЅСЏ',
+    'um_13' => 'РњР°РіРёСЏ РІРѕРґС‹',
+    'um_14' => 'РњР°РіРёСЏ РІРѕР·РґСѓС…Р°',
+    'um_15' => 'РњР°РіРёСЏ Р·РµРјР»Рё',
+    'um_16' => 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ',
+    'um_17' => 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹',
+    'um_18' => 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°',
+    'um_19' => 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё',
+    'um_20' => 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ С„РёР·. РїРѕРІСЂРµР¶Рґ.',
+    'um_21' => 'Р’РѕСЂРѕРІСЃС‚РІРѕ',
+    'um_22' => 'РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ',
+    'um_23' => 'РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ',
+    'um_24' => 'РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ',
+    'um_25' => 'РўРѕСЂРіРѕРІР»СЏ',
+    'um_26' => 'РЎС‚СЂР°РЅРЅРёРє',
+    'um_27' => 'РЇР·С‹РєРѕРІРµРґРµРЅРёРµ',
+    'um_28' => 'РљР°Р»Р»РёРіСЂР°С„РёСЏ',
+    'um_29' => 'Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ',
+    'um_30' => 'РЎР°РјРѕР»РµС‡РµРЅРёРµ',
+    'um_31' => 'РћСЂСѓР¶РµР№РЅРёРє',
+    'um_32' => 'Р”РѕРєС‚РѕСЂ',
+    'um_33' => 'Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹',
+    'um_34' => 'Р›РёРґРµСЂСЃС‚РІРѕ',
+    'um_35' => 'РђР»С…РёРјРёСЏ',
+    'um_36' => 'Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°',
+    'um_37' => 'Р С‹Р±Р°Р»РєР°',
     'nav' => 'nav',
     'wea_f' => 'wea_f',
     'wea_s' => 'wea_s',
-    'wea_od' => 'Требование ОД на удар',
-    'block_od' => 'Требование ОД на блок',
-    'w_koef' => 'Коэффициент оружия',
+    'wea_od' => 'РўСЂРµР±РѕРІР°РЅРёРµ РћР” РЅР° СѓРґР°СЂ',
+    'block_od' => 'РўСЂРµР±РѕРІР°РЅРёРµ РћР” РЅР° Р±Р»РѕРє',
+    'w_koef' => 'РљРѕСЌС„С„РёС†РёРµРЅС‚ РѕСЂСѓР¶РёСЏ',
     //'inf_totem' => 'inf_totem',
 );
 
 $slot_fields = array(
-    'Шлем', 'Амулет', 'Оружие', 'Пояс', 'Содержимое пояса', 'Содержимое пояса', 'Содержимое пояса', 
-    'Ботинки', 'Слот для кармана', 'Слот для содержимого кармана', 'Наручи', 'Перчатки', 
-    'Щит', 'Кольцо', 'Кольцо', 'Броня'
+    'РЁР»РµРј', 'РђРјСѓР»РµС‚', 'РћСЂСѓР¶РёРµ', 'РџРѕСЏСЃ', 'РЎРѕРґРµСЂР¶РёРјРѕРµ РїРѕСЏСЃР°', 'РЎРѕРґРµСЂР¶РёРјРѕРµ РїРѕСЏСЃР°', 'РЎРѕРґРµСЂР¶РёРјРѕРµ РїРѕСЏСЃР°',
+    'Р‘РѕС‚РёРЅРєРё', 'РЎР»РѕС‚ РґР»СЏ РєР°СЂРјР°РЅР°', 'РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РєР°СЂРјР°РЅР°', 'РќР°СЂСѓС‡Рё', 'РџРµСЂС‡Р°С‚РєРё',
+    'Р©РёС‚', 'РљРѕР»СЊС†Рѕ', 'РљРѕР»СЊС†Рѕ', 'Р‘СЂРѕРЅСЏ'
 );
 
 if (isset($_POST['update_tables']) && $bot_id != '')
@@ -165,11 +165,11 @@ if (isset($_POST['update_tables']) && $bot_id != '')
         //echo nl2br($query);
         if (!mysql_query($query))
             echo mysql_error();
-        echo 'Ботов обновлено: '.mysql_affected_rows().', ';
+        echo 'Р‘РѕС‚РѕРІ РѕР±РЅРѕРІР»РµРЅРѕ: ' . mysql_affected_rows() . ', ';
             
         if (!mysql_query('UPDATE e_players_slots SET sl_main = \''.mysql_real_escape_string($bot_slots['sl_main']).'\' WHERE playerid IN ('.implode(',', $players).')'))
             echo mysql_error();
-        echo 'Слотов обновлено: '.mysql_affected_rows();
+        echo 'РЎР»РѕС‚РѕРІ РѕР±РЅРѕРІР»РµРЅРѕ: ' . mysql_affected_rows();
     }
     echo '</h5>';
 }
@@ -334,10 +334,10 @@ if (isset($_POST['save']) || isset($_POST['apply']))
 }
 
 $drop_type_array = array(
-    1 => 'Деньги',
-    2 => 'Ресурсы',
-    3 => 'Оружие',
-    4 => 'Инструменты',
+    1 => 'Р”РµРЅСЊРіРё',
+    2 => 'Р РµСЃСѓСЂСЃС‹',
+    3 => 'РћСЂСѓР¶РёРµ',
+    4 => 'РРЅСЃС‚СЂСѓРјРµРЅС‚С‹',
 );
 
 $money_type_array = array(
@@ -437,21 +437,21 @@ if ($bot_slots != '')
     
     
 $weapons = array(
-    1 => 'меч',
-    2 => 'топор',
-    3 => 'дробящее',
-    4 => 'нож',
-    5 => 'метательное',
-    6 => 'алебарда',
-    7 => 'посох',
+    1 => 'РјРµС‡',
+    2 => 'С‚РѕРїРѕСЂ',
+    3 => 'РґСЂРѕР±СЏС‰РµРµ',
+    4 => 'РЅРѕР¶',
+    5 => 'РјРµС‚Р°С‚РµР»СЊРЅРѕРµ',
+    6 => 'Р°Р»РµР±Р°СЂРґР°',
+    7 => 'РїРѕСЃРѕС…',
 );
 
 ?>
-<h3><?=($bot_id == ''?'Добавить бота':'Изменить бота')?></h3>
+    <h3><?= ($bot_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ Р±РѕС‚Р°' : 'РР·РјРµРЅРёС‚СЊ Р±РѕС‚Р°') ?></h3>
 <link rel="stylesheet" href="files/modalwindow.css" type="text/css" />
-<script src="jscript/ajax.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/modal_window.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/controls/weapon_control.js" language="javascript" charset="windows-1251"></script>
+    <script src="jscript/ajax.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/modal_window.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/controls/weapon_control.js" language="javascript" charset="utf-8"></script>
 <script src="jscript/bot.js" language="javascript"></script>
 <script language="javascript">
 var last_id = <?=(int)$row_id?>;
@@ -473,35 +473,35 @@ function switchControl(row_id, index)
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Шаблон бота: &nbsp;  </td>
+    <td>РЁР°Р±Р»РѕРЅ Р±РѕС‚Р°: &nbsp;</td>
   <td><?=createSelectFromArray('bot_class_id', $bot_classes, $bot['bot_class_id'])?></td>
 </tr>
 <tr>
-  <td>Активный: &nbsp;  </td>
+    <td>РђРєС‚РёРІРЅС‹Р№: &nbsp;</td>
   <td><input type="checkbox" name="is_active" value="1" <?=($bot['is_active']==1 ? 'checked="checked"' : '')?> ></td>
 </tr>
 <tr>
-  <td>Комментарий: &nbsp;  </td>
+    <td>РљРѕРјРјРµРЅС‚Р°СЂРёР№: &nbsp;</td>
   <td><input type="text" name="comment" value="<?=(isset($bot['comment'])?_htext($bot['comment']):'')?>" /></td>
 </tr>
 <tr>
-  <td>Вероятность обыска: &nbsp;  </td>
+    <td>Р’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ РѕР±С‹СЃРєР°: &nbsp;</td>
   <td><input type="text" name="search_possibility" value="<?=(isset($bot['search_possibility'])?_htext($bot['search_possibility']):'100')?>" /></td>
 </tr>
 <tr>
-  <td>Минус сколько уровней от бота дроп: &nbsp;  </td>
+    <td>РњРёРЅСѓСЃ СЃРєРѕР»СЊРєРѕ СѓСЂРѕРІРЅРµР№ РѕС‚ Р±РѕС‚Р° РґСЂРѕРї: &nbsp;</td>
   <td><input type="text" name="drop_level_dec" value="<?=(isset($bot['drop_level_dec'])?_htext($bot['drop_level_dec']):'0')?>" /></td>
 </tr>
 <tr>
-  <td>Плюс сколько уровней от бота дроп: &nbsp;  </td>
+    <td>РџР»СЋСЃ СЃРєРѕР»СЊРєРѕ СѓСЂРѕРІРЅРµР№ РѕС‚ Р±РѕС‚Р° РґСЂРѕРї: &nbsp;</td>
   <td><input type="text" name="drop_level_inc" value="<?=(isset($bot['drop_level_inc'])?_htext($bot['drop_level_inc']):'0')?>" /></td>
 </tr>
 <!--<tr>
-  <td>Пройденный квест: &nbsp;  </td>
+  <td>РџСЂРѕР№РґРµРЅРЅС‹Р№ РєРІРµСЃС‚: &nbsp;  </td>
   <td><input type="text" name="completed_quest" value="<?=(isset($bot['completed_quest'])?_htext($bot['completed_quest']):'')?>" /></td>
 </tr>
 <tr>
-  <td>Склонность: &nbsp;  </td>
+  <td>РЎРєР»РѕРЅРЅРѕСЃС‚СЊ: &nbsp;  </td>
   <td><input type="text" name="align" value="<?=(isset($bot['align'])?_htext($bot['align']):'')?>" /></td>
 </tr>-->
 <? foreach ($fields as $code => $name) { ?>
@@ -512,45 +512,46 @@ function switchControl(row_id, index)
 <? } ?>
 </table>
 <br />
-Дроп:
+    Р”СЂРѕРї:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_drop" >
     <tr >
-        <td class="cms_cap3">Удалить</td>
-        <td class="cms_cap3">Группа</td>
-        <td class="cms_cap3">Тип дропа</td>
-        <td class="cms_cap3">Предмет</td>
-        <td class="cms_cap3">Шанс выпадения</td>
-        <td class="cms_cap3">Мин.кол-во</td>
-        <td class="cms_cap3">Макс.кол-во</td>
-        <td class="cms_cap3">Пр.квест</td>
-        <td class="cms_cap3">Деактивация по квесту</td>
-        <td class="cms_cap3">Склонность</td>
+        <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">Р“СЂСѓРїРїР°</td>
+        <td class="cms_cap3">РўРёРї РґСЂРѕРїР°</td>
+        <td class="cms_cap3">РџСЂРµРґРјРµС‚</td>
+        <td class="cms_cap3">РЁР°РЅСЃ РІС‹РїР°РґРµРЅРёСЏ</td>
+        <td class="cms_cap3">РњРёРЅ.РєРѕР»-РІРѕ</td>
+        <td class="cms_cap3">РњР°РєСЃ.РєРѕР»-РІРѕ</td>
+        <td class="cms_cap3">РџСЂ.РєРІРµСЃС‚</td>
+        <td class="cms_cap3">Р”РµР°РєС‚РёРІР°С†РёСЏ РїРѕ РєРІРµСЃС‚Сѓ</td>
+        <td class="cms_cap3">РЎРєР»РѕРЅРЅРѕСЃС‚СЊ</td>
     </tr>
     <?=$bot_drop?>
 </table>
-<a onclick="addItem_weapon_drop('table_drop', 'tr_drop_', 'drop[]', '', 'drop_chance[]', ''); return false;" href="#">Добавить</a><br />
+    <a onclick="addItem_weapon_drop('table_drop', 'tr_drop_', 'drop[]', '', 'drop_chance[]', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ</a><br/>
 <br />
 <!--
-Часы нападение (если пусто - нападает всегда):
+Р§Р°СЃС‹ РЅР°РїР°РґРµРЅРёРµ (РµСЃР»Рё РїСѓСЃС‚Рѕ - РЅР°РїР°РґР°РµС‚ РІСЃРµРіРґР°):
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_time" >
     <tr >
-        <td class="cms_cap3">Удалить</td>
-        <td class="cms_cap3">Час</td>
-        <td class="cms_cap3">Коэффициент</td>
+        <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">Р§Р°СЃ</td>
+        <td class="cms_cap3">РљРѕСЌС„С„РёС†РёРµРЅС‚</td>
     </tr>
     <?=$bot_time?>
 </table>
-<a onclick="addItem_edit('table_time', 'tr_time_', 'time[]', '', 'time_coef[]', ''); return false;" href="#">Добавить</a><br />
+<a onclick="addItem_edit('table_time', 'tr_time_', 'time[]', '', 'time_coef[]', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ</a><br />
 <br />
 -->
-Слоты:
+    РЎР»РѕС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_qe" >
     <tr >
-        <td class="cms_cap3">Слот</td>
-        <td class="cms_cap3">Название предмета</td>
-        <td class="cms_cap3">Картинка</td>
-        <td class="cms_cap3">Оружие</td>
-        <td class="cms_cap3">ОД</td>
+        <td class="cms_cap3">РЎР»РѕС‚</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°</td>
+        <td class="cms_cap3">РљР°СЂС‚РёРЅРєР°</td>
+        <td class="cms_cap3">РћСЂСѓР¶РёРµ</td>
+        <td class="cms_cap3">РћР”</td>
     </tr>
 <? foreach($slot_fields as $id=>$sname) 
    {
@@ -587,8 +588,8 @@ function switchControl(row_id, index)
 <? } ?>
 </table>
 <br>
-<b>Очки действия на удар:</b>&nbsp;<span id="kick_steps"></span><br>
-<b>Всего очков действий:</b>&nbsp;<span id="total_steps"></span>
+    <b>РћС‡РєРё РґРµР№СЃС‚РІРёСЏ РЅР° СѓРґР°СЂ:</b>&nbsp;<span id="kick_steps"></span><br>
+    <b>Р’СЃРµРіРѕ РѕС‡РєРѕРІ РґРµР№СЃС‚РІРёР№:</b>&nbsp;<span id="total_steps"></span>
 <script type="text/javascript">
 function recalc_total_steps()
 {
@@ -646,24 +647,27 @@ recalc_total_steps();
 <br />
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-    <td>Удары: </td>
+    <td>РЈРґР°СЂС‹:</td>
     <td><input type="text" name="bot_kicks[kicks]" value="<?=htmlspecialchars($bot_kicks['kicks'])?>" size="100" /></td>
 </tr>
 <tr>
-    <td>Блоки: </td>
+    <td>Р‘Р»РѕРєРё:</td>
     <td><input type="text" name="bot_kicks[blocks]" value="<?=htmlspecialchars($bot_kicks['blocks'])?>" size="100" /></td>
 </tr>
 <tr>
-    <td>Дополнительно: </td>
+    <td>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ:</td>
     <td><input type="text" name="bot_kicks[adds]" value="<?=htmlspecialchars($bot_kicks['adds'])?>" size="100" /></td>
 </tr>
 </table>
 <br />
 <p></p>
-  <input type="submit" name="save" class="cms_button1" value="Сохранить и выйти" style="width: 150px"/>
-  <input type="submit" name="apply" class="cms_button1" value="Применить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='<?=$_SESSION['pages']['bot_list']?>'; return false;" class="cms_button1" value="Отмена" />
+    <input type="submit" name="save" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ Рё РІС‹Р№С‚Рё" style="width: 150px"/>
+    <input type="submit" name="apply" class="cms_button1" value="РџСЂРёРјРµРЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.location='<?= $_SESSION['pages']['bot_list'] ?>'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
 <br><br>
-<input type="submit" name="update_tables" class="cms_button1" value="Обновить созданных ботов" style="width: 200px" onclick="return confirm('Вы уверены?');" />&nbsp;(все изменения должны быть сохранены)
+    <input type="submit" name="update_tables" class="cms_button1" value="РћР±РЅРѕРІРёС‚СЊ СЃРѕР·РґР°РЅРЅС‹С… Р±РѕС‚РѕРІ" style="width: 200px"
+           onclick="return confirm('Р’С‹ СѓРІРµСЂРµРЅС‹?');"/>&nbsp;(РІСЃРµ РёР·РјРµРЅРµРЅРёСЏ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЃРѕС…СЂР°РЅРµРЅС‹)
 </form>
 <? require('kernel/after.php'); ?>

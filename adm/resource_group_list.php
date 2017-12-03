@@ -41,8 +41,8 @@ while ($row = mysql_fetch_assoc($res))
 {
     $resource_groups.='
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить эту группу ресурсов?\');" href="resource_group_list.php?delete_resource_group_id='.$row['resource_group_id'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="resource_group_edit.php?resource_group_id='.$row['resource_group_id'].'" title="Изменить"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ РіСЂСѓРїРїСѓ СЂРµСЃСѓСЂСЃРѕРІ?\');" href="resource_group_list.php?delete_resource_group_id=' . $row['resource_group_id'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="resource_group_edit.php?resource_group_id=' . $row['resource_group_id'] . '" title="РР·РјРµРЅРёС‚СЊ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['resource_group_id'].'</td>
       <td align="left" class="cms_middle">'.$row['resource_group_name'].'</td>
     </tr>
@@ -52,31 +52,33 @@ while ($row = mysql_fetch_assoc($res))
 $_SESSION['pages']['resource_group_list'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Список групп ресурсов</h3>
+    <h3>РЎРїРёСЃРѕРє РіСЂСѓРїРї СЂРµСЃСѓСЂСЃРѕРІ</h3>
 
 <div id="results">
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Группы ресурсов')?></div>
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р“СЂСѓРїРїС‹ СЂРµСЃСѓСЂСЃРѕРІ') ?></div>
 
     <div class="cms_ind">
         <br />
-        Ресурсы: <br />
+        Р РµСЃСѓСЂСЃС‹: <br/>
          <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr >
-              <td class="cms_cap2 normal"> Удалить </td>
-              <td class="cms_cap2 normal"> Изменить </td>
+                <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-              <td class="cms_cap2"><a href="<?=sortby('resource_group_id')?>">ID Группы</a></td>
-              <td class="cms_cap2"><a href="<?=sortby('resource_group_name')?>">Название ресурса</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('resource_group_id') ?>">ID Р“СЂСѓРїРїС‹</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('resource_group_name') ?>">РќР°Р·РІР°РЅРёРµ СЂРµСЃСѓСЂСЃР°</a></td>
             </tr>
             <?=$resource_groups?>   
          </table>
          <br />
     </div>
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Группы ресурсов')?></div> 
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р“СЂСѓРїРїС‹ СЂРµСЃСѓСЂСЃРѕРІ') ?></div>
 </div>
  
  <br />
- <img src="images/cms_icons/cms_add.gif" alt="Добавить ресурс" /><a href="resource_group_edit.php" title="Добавить группу ресурсов">Добавить группу ресурсов</a> &nbsp;
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СЂРµСЃСѓСЂСЃ"/><a href="resource_group_edit.php"
+                                                                      title="Р”РѕР±Р°РІРёС‚СЊ РіСЂСѓРїРїСѓ СЂРµСЃСѓСЂСЃРѕРІ">Р”РѕР±Р°РІРёС‚СЊ РіСЂСѓРїРїСѓ
+    СЂРµСЃСѓСЂСЃРѕРІ</a> &nbsp;
  <br />
 
 <? require('kernel/after.php'); ?>

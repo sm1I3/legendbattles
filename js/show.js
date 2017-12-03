@@ -1,4 +1,4 @@
-var snowStorm = (function(window, document) {
+var snowStorm = (function (window, document) {
 
   // --- common properties ---
 

@@ -2,7 +2,7 @@
 if(!empty($_POST)){
 	$player['ABClient'] = intval($_POST['attack'])."|".intval($_POST['blocks'])."|".intval($_POST['mana'])."|".$_POST['heals']."|".$_POST['prim'];
 	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `ABClient`='".$player['ABClient']."' WHERE `id`='".$player['id']."'");
-		echo"<script>parent.jAlert('Настойки сохранены.');</script>";
+    echo "<script>parent.jAlert('РќР°СЃС‚РѕР№РєРё СЃРѕС…СЂР°РЅРµРЅС‹.');</script>";
 }
 $AutoBot = explode("|",$player['ABClient']);
 echo'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -37,7 +37,7 @@ input[type="checkbox"]:checked + label{
   <tr>
     <td bgcolor="#e2e2e2" width="50%">
       <font class="nickname">
-        <b>Настройки Web-клиента</b>
+        <b>РќР°СЃС‚СЂРѕР№РєРё Web-РєР»РёРµРЅС‚Р°</b>
       </font>
     </td>
     <td bgcolor="#e2e2e2" width="50%">
@@ -60,7 +60,7 @@ input[type="checkbox"]:checked + label{
               <div align="center">
                 <a href="?useaction=client-action'.(($_GET['addid'] == '1')?'':'&addid=1').'">
                   <font class="nickname">
-                    <b>'.(($_GET['addid'] == '1')?'Управление':'Настройки').'</b>
+                    <b>' . (($_GET['addid'] == '1') ? 'РЈРїСЂР°РІР»РµРЅРёРµ' : 'РќР°СЃС‚СЂРѕР№РєРё') . '</b>
                   </font>
                 </a>
               </div>
@@ -69,7 +69,7 @@ input[type="checkbox"]:checked + label{
               <div align="center">
                 <a href="?useaction=client-action&addid=2">
                   <font class="nickname">
-                    <b>Реклама</b>
+                    <b>Р РµРєР»Р°РјР°</b>
                   </font>
                 </a>
               </div>
@@ -78,7 +78,7 @@ input[type="checkbox"]:checked + label{
               <div align="center">
                 <a href="?useaction=client-action&addid=3">
                   <font class="nickname">
-                    <b>Другое</b>
+                    <b>Р”СЂСѓРіРѕРµ</b>
                   </font>
                 </a>
               </div>
@@ -100,22 +100,22 @@ input[type="checkbox"]:checked + label{
 	<tr>
 	<td>
       <fieldset>
-        <legend><b>Удары</b></legend>
+        <legend><b>РЈРґР°СЂС‹</b></legend>
         <table cellpadding="0" cellspacing="0" border="0" width="100%">
 		  <tr>
-			<td width="30%"><font class="freemain"><input type="radio" name="attack" value="1"'.(($AutoBot[0] == 1)?' checked="checked"':'').' /> Простой</font></td>
-			<td width="30%"><font class="freemain"><input type="radio" name="attack" value="4"'.(($AutoBot[0] == 4)?' checked="checked"':'').' /> 2 простых</font></td>
-			<td width="40%"><font class="freemain"><input type="radio" name="attack" value="6"'.(($AutoBot[0] == 6)?' checked="checked"':'').' /> 2 прицельных+простой</font></td>
+			<td width="30%"><font class="freemain"><input type="radio" name="attack" value="1"' . (($AutoBot[0] == 1) ? ' checked="checked"' : '') . ' /> РџСЂРѕСЃС‚РѕР№</font></td>
+			<td width="30%"><font class="freemain"><input type="radio" name="attack" value="4"' . (($AutoBot[0] == 4) ? ' checked="checked"' : '') . ' /> 2 РїСЂРѕСЃС‚С‹С…</font></td>
+			<td width="40%"><font class="freemain"><input type="radio" name="attack" value="6"' . (($AutoBot[0] == 6) ? ' checked="checked"' : '') . ' /> 2 РїСЂРёС†РµР»СЊРЅС‹С…+РїСЂРѕСЃС‚РѕР№</font></td>
 		  </tr>
 		  <tr>
-			<td width="30%"><font class="freemain"><input type="radio" name="attack" value="2"'.(($AutoBot[0] == 2)?' checked="checked"':'').' /> Прицельный</font></td>
-			<td width="30%"><font class="freemain"><input type="radio" name="attack" value="5"'.(($AutoBot[0] == 5)?' checked="checked"':'').' /> 2 прицельных</font></td>
-			<td width="40%"><font class="freemain"><input type="radio" name="attack" value="3"'.(($AutoBot[0] == 3)?' checked="checked"':'').' /> Прицельный+простой</font></td>
+			<td width="30%"><font class="freemain"><input type="radio" name="attack" value="2"' . (($AutoBot[0] == 2) ? ' checked="checked"' : '') . ' /> РџСЂРёС†РµР»СЊРЅС‹Р№</font></td>
+			<td width="30%"><font class="freemain"><input type="radio" name="attack" value="5"' . (($AutoBot[0] == 5) ? ' checked="checked"' : '') . ' /> 2 РїСЂРёС†РµР»СЊРЅС‹С…</font></td>
+			<td width="40%"><font class="freemain"><input type="radio" name="attack" value="3"' . (($AutoBot[0] == 3) ? ' checked="checked"' : '') . ' /> РџСЂРёС†РµР»СЊРЅС‹Р№+РїСЂРѕСЃС‚РѕР№</font></td>
 		  </tr>
 		</table>
 	  </fieldset>
 	  <fieldset>
-        <legend><b>Магические удары</b></legend>
+        <legend><b>РњР°РіРёС‡РµСЃРєРёРµ СѓРґР°СЂС‹</b></legend>
         <table cellpadding="0" cellspacing="0" border="0" width="100%">
 		  <tr>
 			<td width="30%"><font class="freemain"><input type="radio" name="attack" value="7"'.(($AutoBot[0] == 7)?' checked="checked"':'').' /> Spirit Arrow</font></td>
@@ -129,7 +129,7 @@ input[type="checkbox"]:checked + label{
 		  </tr>
 		</table>
 			<div align="center">
-			<font class="freemain">Использовать</font>
+			<font class="freemain">РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ</font>
 			<select name="mana">
 				<option '.(($AutoBot[2] == 5)?' selected':'').'>5</option>
 				<option '.(($AutoBot[2] == 10)?' selected':'').'>10</option>
@@ -172,26 +172,26 @@ input[type="checkbox"]:checked + label{
 				<option '.(($AutoBot[2] == 195)?' selected':'').'>195</option>
 				<option '.(($AutoBot[2] == 200)?' selected':'').'>200</option>
 			</select>
-			<font class="freemain"> маны на удар</font>
+			<font class="freemain"> РјР°РЅС‹ РЅР° СѓРґР°СЂ</font>
 			</div>
 	  </fieldset>
 	  <fieldset>
-        <legend><b>Блоки</b></legend>
+        <legend><b>Р‘Р»РѕРєРё</b></legend>
         <table cellpadding="0" cellspacing="0" border="0" width="100%">
 		  <tr>
-			<td width="33%"><font class="freemain"><input type="radio" name="blocks" value="3"'.(($AutoBot[1] == 3)?' checked="checked"':'').' /> Блок со щитом</font></td>
-			<td width="34%"><font class="freemain"><input type="radio" name="blocks" value="2"'.(($AutoBot[1] == 2)?' checked="checked"':'').' /> Блок двух точек</font></td>
-			<td width="33%"><font class="freemain"><input type="radio" name="blocks" value="1"'.(($AutoBot[1] == 1)?' checked="checked"':'').' /> Блок одной точки</font></td>
+			<td width="33%"><font class="freemain"><input type="radio" name="blocks" value="3"' . (($AutoBot[1] == 3) ? ' checked="checked"' : '') . ' /> Р‘Р»РѕРє СЃРѕ С‰РёС‚РѕРј</font></td>
+			<td width="34%"><font class="freemain"><input type="radio" name="blocks" value="2"' . (($AutoBot[1] == 2) ? ' checked="checked"' : '') . ' /> Р‘Р»РѕРє РґРІСѓС… С‚РѕС‡РµРє</font></td>
+			<td width="33%"><font class="freemain"><input type="radio" name="blocks" value="1"' . (($AutoBot[1] == 1) ? ' checked="checked"' : '') . ' /> Р‘Р»РѕРє РѕРґРЅРѕР№ С‚РѕС‡РєРё</font></td>
 		  </tr>
 		  <tr>
-			<td width="33%"><font class="freemain"><input type="radio" name="blocks" value="0"'.(($AutoBot[1] == 0)?' checked="checked"':'').' /> Без блоков</font></td>
+			<td width="33%"><font class="freemain"><input type="radio" name="blocks" value="0"' . (($AutoBot[1] == 0) ? ' checked="checked"' : '') . ' /> Р‘РµР· Р±Р»РѕРєРѕРІ</font></td>
 			<td width="34%">&nbsp;</td>
 			<td width="33%">&nbsp;</td>
 		  </tr>
 		</table>
 	  </fieldset>
 	  <fieldset>
-        <legend><b>Прочее</b></legend>
+        <legend><b>РџСЂРѕС‡РµРµ</b></legend>
         <table cellpadding="0" cellspacing="0" border="0" width="100%">
 		  <tr>
 			<td width="33%"><input type="checkbox" class="heals" id="heals" name="heals" '.(($AutoBot[3] == "on")?' checked':'').'><label for="heals"></label></td>
@@ -203,7 +203,7 @@ input[type="checkbox"]:checked + label{
 	</tr>
 	</table>
 	  <center>
-        <input type="submit" class="lbut" value="Сохранить" border="0" />
+        <input type="submit" class="lbut" value="РЎРѕС…СЂР°РЅРёС‚СЊ" border="0" />
       </center>
 	</form>
   </font>';
@@ -214,13 +214,13 @@ input[type="checkbox"]:checked + label{
 	<tr>
 	<td>
       <fieldset>
-        <legend><b>Текст рекламы</b></legend>
+        <legend><b>РўРµРєСЃС‚ СЂРµРєР»Р°РјС‹</b></legend>
         <table cellpadding="0" cellspacing="0" border="0" width="100%">
 		  <tr>
 		<td><p><textarea rows="10" cols="115" name="text"></textarea></p></td>
 		  </tr>
 		  <tr>
-		  <td><input type="radio" id="brek"></input><label for="brek">Выделять рекламу</label></td>
+		  <td><input type="radio" id="brek"></input><label for="brek">Р’С‹РґРµР»СЏС‚СЊ СЂРµРєР»Р°РјСѓ</label></td>
 		  </tr>
 		</table>
 	  </fieldset>
@@ -228,7 +228,7 @@ input[type="checkbox"]:checked + label{
 	</tr>
 	</table>
 	  <center>
-        <input type="submit" class="lbut" value="Сохранить" border="0" />
+        <input type="submit" class="lbut" value="РЎРѕС…СЂР°РЅРёС‚СЊ" border="0" />
       </center>
 	</form>
   </font>';
@@ -246,7 +246,7 @@ input[type="checkbox"]:checked + label{
 						  document.getElementById(\'ABColors\').color = \'#00CC00\';
 						}
 					  }
-					  document.write(\'<a href="javascript:cheangeAb();"><font color="\'+((parent.ab == true)?\'#00CC00\':\'#CC0000\')+\'" id="ABColors"><b>Автобой</b></font></a>\');
+					  document.write(\'<a href="javascript:cheangeAb();"><font color="\'+((parent.ab == true)?\'#00CC00\':\'#CC0000\')+\'" id="ABColors"><b>РђРІС‚РѕР±РѕР№</b></font></a>\');
 					</script>
                   </div>
                 </font>';
@@ -262,7 +262,7 @@ input[type="checkbox"]:checked + label{
 						  document.getElementById(\'RekColors\').color = \'#00CC00\';
 						}
 					  }
-					  document.write(\'<a href="javascript:cheangeRek();"><font color="\'+((parent.rek == true)?\'#00CC00\':\'#CC0000\')+\'" id="RekColors"><b>Автореклама</b></font></a>\');
+					  document.write(\'<a href="javascript:cheangeRek();"><font color="\'+((parent.rek == true)?\'#00CC00\':\'#CC0000\')+\'" id="RekColors"><b>РђРІС‚РѕСЂРµРєР»Р°РјР°</b></font></a>\');
 					</script>
                   </div>
                 </font>';

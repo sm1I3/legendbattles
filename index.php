@@ -7,16 +7,19 @@ include($_SERVER["DOCUMENT_ROOT"].'/includes/ks_antiddos.php');
 $ksa = new ks_antiddos();
 $ksa->doit(10,10);
 
- // разрешаем 10 хитов за 20 секунд
+// СЂР°Р·СЂРµС€Р°РµРј 10 С…РёС‚РѕРІ Р·Р° 20 СЃРµРєСѓРЅРґ
 ?><!doctype html>
 <html lang="ru">
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-	<meta name="keywords" content="браузерная онлайн игра, бесплатные онлайн игры, лучшие онлайн игры, online, game, рпг, рпг игры, скачать игры, mmorpg, mmorpg игра, онлайн рпг, rpg, rpg игры, игры онлайн, офис игры, ролевые онлайн игры, игры бесплатно, бесплатная игра, ММОРПГ, стратегия, фентези, fantasy, online игры, online игра, играть, игры, интернет игры, компьютерные игры, онлайн игры , buhs jykfq,hgu buhs,buhs d gvh,рпг игра legendBattles.ru," />
-	<meta name="description" content="Официальный сайт бесплатной ролевой онлайн игры «legend bat». Огромный фэнтезийный мир.Заходи каждый день на сайт «legendBattles.ru» и играй в лучшую рпг игру для получения навыков и побед в игре «legend bat» .Властвуй целым миром legend bat." />
-	
-	<title>Legend Battles — бесплатная онлайн игра | Браузерная MMORPG онлайн игра — одна из старейших бесплатных ролевых online игр. Скачать и играть в лучшую многопользовательскую RPG игру онлайн бесплатно.</title>
+    <meta name="keywords"
+          content="Р±СЂР°СѓР·РµСЂРЅР°СЏ РѕРЅР»Р°Р№РЅ РёРіСЂР°, Р±РµСЃРїР»Р°С‚РЅС‹Рµ РѕРЅР»Р°Р№РЅ РёРіСЂС‹, Р»СѓС‡С€РёРµ РѕРЅР»Р°Р№РЅ РёРіСЂС‹, online, game, СЂРїРі, СЂРїРі РёРіСЂС‹, СЃРєР°С‡Р°С‚СЊ РёРіСЂС‹, mmorpg, mmorpg РёРіСЂР°, РѕРЅР»Р°Р№РЅ СЂРїРі, rpg, rpg РёРіСЂС‹, РёРіСЂС‹ РѕРЅР»Р°Р№РЅ, РѕС„РёСЃ РёРіСЂС‹, СЂРѕР»РµРІС‹Рµ РѕРЅР»Р°Р№РЅ РёРіСЂС‹, РёРіСЂС‹ Р±РµСЃРїР»Р°С‚РЅРѕ, Р±РµСЃРїР»Р°С‚РЅР°СЏ РёРіСЂР°, РњРњРћР РџР“, СЃС‚СЂР°С‚РµРіРёСЏ, С„РµРЅС‚РµР·Рё, fantasy, online РёРіСЂС‹, online РёРіСЂР°, РёРіСЂР°С‚СЊ, РёРіСЂС‹, РёРЅС‚РµСЂРЅРµС‚ РёРіСЂС‹, РєРѕРјРїСЊСЋС‚РµСЂРЅС‹Рµ РёРіСЂС‹, РѕРЅР»Р°Р№РЅ РёРіСЂС‹ , buhs jykfq,hgu buhs,buhs d gvh,СЂРїРі РёРіСЂР° legendBattles.ru,"/>
+    <meta name="description"
+          content="РћС„РёС†РёР°Р»СЊРЅС‹Р№ СЃР°Р№С‚ Р±РµСЃРїР»Р°С‚РЅРѕР№ СЂРѕР»РµРІРѕР№ РѕРЅР»Р°Р№РЅ РёРіСЂС‹ В«legend batВ». РћРіСЂРѕРјРЅС‹Р№ С„СЌРЅС‚РµР·РёР№РЅС‹Р№ РјРёСЂ.Р—Р°С…РѕРґРё РєР°Р¶РґС‹Р№ РґРµРЅСЊ РЅР° СЃР°Р№С‚ В«legendBattles.ruВ» Рё РёРіСЂР°Р№ РІ Р»СѓС‡С€СѓСЋ СЂРїРі РёРіСЂСѓ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РЅР°РІС‹РєРѕРІ Рё РїРѕР±РµРґ РІ РёРіСЂРµ В«legend batВ» .Р’Р»Р°СЃС‚РІСѓР№ С†РµР»С‹Рј РјРёСЂРѕРј legend bat."/>
+
+    <title>Legend Battles вЂ” Р±РµСЃРїР»Р°С‚РЅР°СЏ РѕРЅР»Р°Р№РЅ РёРіСЂР° | Р‘СЂР°СѓР·РµСЂРЅР°СЏ MMORPG РѕРЅР»Р°Р№РЅ РёРіСЂР° вЂ” РѕРґРЅР° РёР· СЃС‚Р°СЂРµР№С€РёС… Р±РµСЃРїР»Р°С‚РЅС‹С…
+        СЂРѕР»РµРІС‹С… online РёРіСЂ. РЎРєР°С‡Р°С‚СЊ Рё РёРіСЂР°С‚СЊ РІ Р»СѓС‡С€СѓСЋ РјРЅРѕРіРѕРїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєСѓСЋ RPG РёРіСЂСѓ РѕРЅР»Р°Р№РЅ Р±РµСЃРїР»Р°С‚РЅРѕ.</title>
 
 	<link rel="stylesheet" href="/v2/style/css.php?f=jquery.formstyler|jquery.powertip|main|index">
 
@@ -38,13 +41,16 @@ $ksa->doit(10,10);
 		<div class="b-main">
 			<div class="b-mainmenu">
 				<a href="/index.php" class="b-mainmenu__item-red b-mainmenu__item-red_first" >
-					<span class="b-mainmenu__item-red-inner" data-font="PTSans">ГЛАВНАЯ</span>
+                    <span class="b-mainmenu__item-red-inner" data-font="PTSans">Р“Р›РђР’РќРђРЇ</span>
 				</a>
 					<a href="/password.php" class="b-mainmenu__item-yellow b-mainmenu__item-yellow">
-					<span class="b-mainmenu__item-yellow-inner" data-font="PTSansBlack"><cufon class="cufon cufon-canvas" alt="Востановления пароля" style="width: 51px; height: 14px;"><canvas width="57" height="18" style="width: 57px; height: 18px; top: -2px; left: 0px;"></canvas><cufontext>Востановления пароля</cufontext></cufon></span>
+                        <span class="b-mainmenu__item-yellow-inner" data-font="PTSansBlack"><cufon
+                                    class="cufon cufon-canvas" alt="Р’РѕСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РїР°СЂРѕР»СЏ"
+                                    style="width: 51px; height: 14px;"><canvas width="57" height="18"
+                                                                               style="width: 57px; height: 18px; top: -2px; left: 0px;"></canvas><cufontext>Р’РѕСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РїР°СЂРѕР»СЏ</cufontext></cufon></span>
 				</a>
 				<a href="http://forum.legendbattles.ru/" class="b-mainmenu__item-red b-mainmenu__item-red_last" >
-					<span class="b-mainmenu__item-red-inner" data-font="PTSans">ФОРУМ</span>
+                    <span class="b-mainmenu__item-red-inner" data-font="PTSans">Р¤РћР РЈРњ</span>
 				</a>
 			</div>
 				
@@ -69,10 +75,10 @@ $ksa->doit(10,10);
 						<div class="b-main-frame__cont">
 							<div class="b-index-decor b-index-decor_right">
 								<a href="/world.php" class="b-button-red-large b-button-red-large_enter-game" onclick="return openPopup('#authPopup');">
-									<span class="b-button-red-large__inner" data-font="PTSans">Войти в игру</span>
+                                    <span class="b-button-red-large__inner" data-font="PTSans">Р’РѕР№С‚Рё РІ РёРіСЂСѓ</span>
 								</a>
 								<a href="/reg.php" class="b-button-blue-large b-button-blue-large_download" onclick="return openPopup('#regPopup');">
-									<span class="b-button-blue-large__inner" data-font="PTSans">Регистрация</span>
+                                    <span class="b-button-blue-large__inner" data-font="PTSans">Р РµРіРёСЃС‚СЂР°С†РёСЏ</span>
 								</a>
 								<script type="text/javascript">
 									$(function() {
@@ -125,7 +131,7 @@ $ksa->doit(10,10);
 
 		<span class="b-common-block__header">
 			<span class="b-common-block__header-inner">
-                <span data-font="PTSans">Рейтинги</span>
+                <span data-font="PTSans">Р РµР№С‚РёРЅРіРё</span>
 			</span>
 		</span>
 
@@ -204,7 +210,7 @@ echo'<tr>
 
 		<span class="b-common-block__header">
 			<span class="b-common-block__header-inner">
-				<span data-font="PTSans">Сообщества</span>
+				<span data-font="PTSans">РЎРѕРѕР±С‰РµСЃС‚РІР°</span>
 			</span>
 		</span>
 
@@ -323,25 +329,25 @@ echo'<tr>
 				<a href="/info/uchebniki" class="b-submenu__item b-submenu__item_newbie" >
 					<span class="b-submenu__bg"></span>
 					<span class="b-submenu__button">
-						<span class="b-submenu__button-inner">Новичкам</span>
+						<span class="b-submenu__button-inner">РќРѕРІРёС‡РєР°Рј</span>
 					</span>
 				</a>
 				<a href="http://games.mail.ru/support/legendbattles/" class="b-submenu__item b-submenu__item_support" target="_blank">
 					<span class="b-submenu__bg"></span>
 					<span class="b-submenu__button">
-						<span class="b-submenu__button-inner">Медиа</span>
+						<span class="b-submenu__button-inner">РњРµРґРёР°</span>
 					</span>
 				</a>
 				<a href="/info/kommercheskii-sektor/uslugi" class="b-submenu__item b-submenu__item_services" >
 					<span class="b-submenu__bg"></span>
 					<span class="b-submenu__button">
-						<span class="b-submenu__button-inner">Квесты</span>
+						<span class="b-submenu__button-inner">РљРІРµСЃС‚С‹</span>
 					</span>
 				</a>
 				<a href="" class="b-submenu__item b-submenu__item_update" >
 					<span class="b-submenu__bg"></span>
 					<span class="b-submenu__button">
-						<span class="b-submenu__button-inner">Обновления</span>
+						<span class="b-submenu__button-inner">РћР±РЅРѕРІР»РµРЅРёСЏ</span>
 					</span>
 				</a>
 					</div>
@@ -360,7 +366,7 @@ echo'<tr>
 
 		<span class="b-common-block__header">
 			<span class="b-common-block__header-inner">
-				<span data-font="PTSans">Новости</span>
+				<span data-font="PTSans">РќРѕРІРѕСЃС‚Рё</span>
 			</span>
 		</span>
 
@@ -407,11 +413,11 @@ echo'					<div class="b-news-item">
 							<div class="b-news-footer__cont clearfix">
 								<div class="b-news-footer__more">
 									<i class="b-icon-32x32 b-icon-32x32_more"></i>&nbsp;
-									<a href="http://forum.legendbattles.ru/index.php?act=show_topic&id='.$row["id"].'" class="b-news-footer__more-link"><b>подробнее...</b></a>
+									<a href="http://forum.legendbattles.ru/index.php?act=show_topic&id=' . $row["id"] . '" class="b-news-footer__more-link"><b>РїРѕРґСЂРѕР±РЅРµРµ...</b></a>
 								</div>
 								<div class="b-news-footer__comments">
 									<i class="b-icon-32x32 b-icon-32x32_comment"></i>&nbsp;
-									<a href="http://forum.legendbattles.ru/index.php?act=show_topic&id='.$row["id"].'" class="b-news-footer__comments-link"><b>комментариев: 0</b></a>
+									<a href="http://forum.legendbattles.ru/index.php?act=show_topic&id=' . $row["id"] . '" class="b-news-footer__comments-link"><b>РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ: 0</b></a>
 								</div>
 							</div>
 						</div>
@@ -481,7 +487,7 @@ echo'					<div class="b-divider-2">
 
 			<span class="b-common-block__header">
 				<span class="b-common-block__header-inner">
-					<span data-font="PTSans">Регистрация</span>
+					<span data-font="PTSans">Р РµРіРёСЃС‚СЂР°С†РёСЏ</span>
 				</span>
 			</span>
 
@@ -504,7 +510,9 @@ echo'					<div class="b-divider-2">
 											<span class="b-news-footer__br"></span>
 
 											<div class="b-news-footer__cont clearfix">
-												<div class="b-common-form__soc" id="regError">Заполните все поля и нажмите &quot;Продолжить&quot;</div>
+                                                <div class="b-common-form__soc" id="regError">Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ Рё
+                                                    РЅР°Р¶РјРёС‚Рµ &quot;РџСЂРѕРґРѕР»Р¶РёС‚СЊ&quot;
+                                                </div>
 											</div>
 										</div>
 									</td>
@@ -513,7 +521,7 @@ echo'					<div class="b-divider-2">
 							<table class="b-common-form__table">
 								<tr>
 									<td>
-										<label class="b-common-form__label" for="userLmail">Логин:</label>
+                                        <label class="b-common-form__label" for="userLmail">Р›РѕРіРёРЅ:</label>
 									</td>
 									<td>
 										<span class="b-common-form__field">
@@ -525,15 +533,15 @@ echo'					<div class="b-divider-2">
 								</tr>
 								<tr>
 									<td>
-										<label class="b-common-form__label" for="userSex">Ваш пол:</label>
+                                        <label class="b-common-form__label" for="userSex">Р’Р°С€ РїРѕР»:</label>
 									</td>
 									<td>
 										<span class="b-common-form__field">
 											<span class="b-common-form__field-inner">
 												<select  class="b-common-form__label" name="sex" id="sex">
-													<option value="n">Выберите</option>
-													<option value="male">-- Мужской</option>
-													<option value="female">-- Женский</option>
+													<option value="n">Р’С‹Р±РµСЂРёС‚Рµ</option>
+													<option value="male">-- РњСѓР¶СЃРєРѕР№</option>
+													<option value="female">-- Р–РµРЅСЃРєРёР№</option>
 												</select>
 											</span>
 										</span>
@@ -541,7 +549,7 @@ echo'					<div class="b-divider-2">
 								</tr>
 								<tr>
 									<td>
-										<label class="b-common-form__label" for="userEmail">Ваш e-mail:</label>
+                                        <label class="b-common-form__label" for="userEmail">Р’Р°С€ e-mail:</label>
 									</td>
 									<td>
 										<span class="b-common-form__field">
@@ -553,12 +561,13 @@ echo'					<div class="b-divider-2">
 								</tr>
 								<tr>
 									<td>
-										<label class="b-common-form__label" for="userBday">Дата рождения:</label>
+                                        <label class="b-common-form__label" for="userBday">Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</label>
 									</td>
 									<td>
 										<span class="b-common-form__field">
 											<span class="b-common-form__field-inner">
-												<input type='text' name='bday' id='bday' maxlength='16' value='' placeholder='дд.мм.гггг' />
+												<input type='text' name='bday' id='bday' maxlength='16' value=''
+                                                       placeholder='РґРґ.РјРј.РіРіРіРі'/>
 											</span>
 										</span>
 									</td>
@@ -566,7 +575,7 @@ echo'					<div class="b-divider-2">
 								<tr>
 									<td colspan="2" class="text-center">
 										<button type="submit" class="b-button-red-5">
-											<span class="b-button-red-5__inner">Продолжить</span>
+                                            <span class="b-button-red-5__inner">РџСЂРѕРґРѕР»Р¶РёС‚СЊ</span>
 										</button>
 									</td>
 								</tr>
@@ -597,7 +606,7 @@ echo'					<div class="b-divider-2">
 
 			<span class="b-common-block__header">
 				<span class="b-common-block__header-inner">
-					<span data-font="PTSans">Авторизация</span>
+					<span data-font="PTSans">РђРІС‚РѕСЂРёР·Р°С†РёСЏ</span>
 				</span>
 			</span>
 
@@ -630,7 +639,7 @@ echo'					<div class="b-divider-2">
 							<table class="b-common-form__table">
 								<tr>
 									<td>
-										<label class="b-common-form__label" for="userEmail">Логин:</label>
+                                        <label class="b-common-form__label" for="userEmail">Р›РѕРіРёРЅ:</label>
 									</td>
 									<td>
 										<span class="b-common-form__field">
@@ -642,7 +651,7 @@ echo'					<div class="b-divider-2">
 								</tr>
 								<tr>
 									<td>
-										<label class="b-common-form__label" for="userPassword">Пароль:</label>
+                                        <label class="b-common-form__label" for="userPassword">РџР°СЂРѕР»СЊ:</label>
 									</td>
 									<td>
 										<span class="b-common-form__field">
@@ -655,13 +664,15 @@ echo'					<div class="b-divider-2">
 								<tr>
 									<td>&nbsp;</td>
 									<td>
-										<a href="/password.php" class="invert" onclick="changePopup('#authPopup', '#recoveryPasswordStep1'); return false;"><b>Я забыл пароль</b></a>
+                                        <a href="/password.php" class="invert"
+                                           onclick="changePopup('#authPopup', '#recoveryPasswordStep1'); return false;"><b>РЇ
+                                                Р·Р°Р±С‹Р» РїР°СЂРѕР»СЊ</b></a>
 									</td>
 								</tr>
 								<tr>
 									<td colspan="2" class="text-center">
 										<button type="submit" class="b-button-red-5">
-											<span class="b-button-red-5__inner">Начать игру</span>
+                                            <span class="b-button-red-5__inner">РќР°С‡Р°С‚СЊ РёРіСЂСѓ</span>
 										</button>
 									</td>
 								</tr>
@@ -671,12 +682,12 @@ echo'					<div class="b-divider-2">
 						<div class="b-divider-4"></div>
 
 						<p class="text-center">
-							<b>Если у вас нет логина, зарегистритуйтесь.</b>
+                            <b>Р•СЃР»Рё Сѓ РІР°СЃ РЅРµС‚ Р»РѕРіРёРЅР°, Р·Р°СЂРµРіРёСЃС‚СЂРёС‚СѓР№С‚РµСЃСЊ.</b>
 						</p>
 
 						<p class="text-center">
 							<a href="#" onclick="changePopup('#authPopup', '#regPopup'); return false;" class="b-button-green-5">
-								<span class="b-button-green-5__inner">Зарегистрироваться</span>
+                                <span class="b-button-green-5__inner">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</span>
 							</a>
 						</p>			
 					</div>
@@ -704,7 +715,7 @@ echo'					<div class="b-divider-2">
 
 			<span class="b-common-block__header">
 				<span class="b-common-block__header-inner">
-					<span data-font="PTSans">Напоминание пароля</span>
+					<span data-font="PTSans">РќР°РїРѕРјРёРЅР°РЅРёРµ РїР°СЂРѕР»СЏ</span>
 				</span>
 			</span>
 
@@ -718,7 +729,7 @@ echo'					<div class="b-divider-2">
 							<table class="b-common-form__table">
 								<tr>
 									<td>
-										<label class="b-common-form__label" for="form[email]">Ваш E-mail:</label>
+                                        <label class="b-common-form__label" for="form[email]">Р’Р°С€ E-mail:</label>
 									</td>
 									<td>
 										<span class="b-common-form__field">
@@ -732,7 +743,7 @@ echo'					<div class="b-divider-2">
 									<td colspan="2" class="text-center">
 										<button type="submit" class="b-button-red-5">
 											<span class="b-button-red-5__inner">
-												Продолжить											</span>
+												РџСЂРѕРґРѕР»Р¶РёС‚СЊ											</span>
 										</button>
 									</td>
 								</tr>
@@ -757,7 +768,7 @@ echo'					<div class="b-divider-2">
 					$('#sendPasswordContainer').html(response);
 				},
 				error: function() {
-					alert('Произошла ошибка');
+                    alert('РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°');
 				}
 			});
 		}

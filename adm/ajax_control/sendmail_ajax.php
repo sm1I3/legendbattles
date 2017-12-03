@@ -1,5 +1,5 @@
 <?php
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=utf-8');
 require('./../kernel/config.php');
 require('./../kernel/functions.php');
 
@@ -9,7 +9,7 @@ else
     exit(json_encode(array('status'=>'error')));
 
 
-// Главный запрос
+// Р“Р»Р°РІРЅС‹Р№ Р·Р°РїСЂРѕСЃ
 $topic_counts = mysql_num_rows(mysql_query("SELECT * FROM user_subscribers"));
 
 $getPage = intval($_GET['p']);
@@ -29,7 +29,7 @@ mysql_free_result($res);
 $res = mysql_query("SELECT * FROM user_subscribers LIMIT " . (($page < 0) ? 0 : $page) . ",30");
 while($row = mysql_fetch_assoc($res)){
 	$Headers  = "From: Legendbattles.ru<news@legendbattles.ru>\n";
-	$Headers .= "Content-Type: text/html; charset=windows-1251\n";
+    $Headers .= "Content-Type: text/html; charset=utf-8\n";
 	@mail($row['email'], $message['theame'], BbToHtml(nl2br($message['message'])), $Headers);
 }
 mysql_free_result($res);

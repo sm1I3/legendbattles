@@ -35,9 +35,9 @@ while ($row = mysql_fetch_assoc($res))
    $i++;
     $events.='
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы действительно хотите удалить это событие?\');" href="labyrinth_schedule.php?delete_event_id='.$row['event_id'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="labyrinth_schedule_edit.php?event_id='.$row['event_id'].'" title="Изменить параметры"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="labyrinth_schedule_edit.php?copy_event_id='.$row['event_id'].'" title="Изменить параметры"><img src="images/cms_icons/cms_add.gif" width="18" height="18" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Рѕ СЃРѕР±С‹С‚РёРµ?\');" href="labyrinth_schedule.php?delete_event_id=' . $row['event_id'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="labyrinth_schedule_edit.php?event_id=' . $row['event_id'] . '" title="РР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="labyrinth_schedule_edit.php?copy_event_id=' . $row['event_id'] . '" title="РР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹"><img src="images/cms_icons/cms_add.gif" width="18" height="18" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$labs[$row['lab_id']].'</td>
       <td align="left" class="cms_middle">'.$row['min_lvl'].'</td>
       <td align="left" class="cms_middle">'.$row['max_lvl'].'</td>
@@ -48,15 +48,15 @@ while ($row = mysql_fetch_assoc($res))
 }
 
 ?>
-<h3>Расписание лабиринтов</h3>
+    <h3>Р Р°СЃРїРёСЃР°РЅРёРµ Р»Р°Р±РёСЂРёРЅС‚РѕРІ</h3>
 <form name="filter" id="filter" action="" method="get">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-    <td>Лабиринт:</td>
+      <td>Р›Р°Р±РёСЂРёРЅС‚:</td>
     <td>
         <?=createSelectFromArray('labyrinth_id', $labs, (isset($_GET['labyrinth_id'])?$_GET['labyrinth_id']:''))?>
     </td>
@@ -78,18 +78,18 @@ function clearFilter()
 
 <div class="cms_ind">
 <br />
-Расписание: <br />
+    Р Р°СЃРїРёСЃР°РЅРёРµ: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
-      <td class="cms_cap2 normal"> Копировать </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РљРѕРїРёСЂРѕРІР°С‚СЊ</td>
 
-      <td class="cms_cap2">Лабиринт</td>
-      <td class="cms_cap2">Мин. уровень</td>
-      <td class="cms_cap2">Макс. уровень</td>
-      <td class="cms_cap2">Время начала</td>
-      <td class="cms_cap2">Время окончания</td>
+        <td class="cms_cap2">Р›Р°Р±РёСЂРёРЅС‚</td>
+        <td class="cms_cap2">РњРёРЅ. СѓСЂРѕРІРµРЅСЊ</td>
+        <td class="cms_cap2">РњР°РєСЃ. СѓСЂРѕРІРµРЅСЊ</td>
+        <td class="cms_cap2">Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р°</td>
+        <td class="cms_cap2">Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ</td>
     </tr>
     
     <?=$events?>
@@ -97,6 +97,8 @@ function clearFilter()
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить событие" /><a href="labyrinth_schedule_edit.php" title="Добавить событие">Добавить событие</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СЃРѕР±С‹С‚РёРµ"/><a href="labyrinth_schedule_edit.php"
+                                                                       title="Р”РѕР±Р°РІРёС‚СЊ СЃРѕР±С‹С‚РёРµ">Р”РѕР±Р°РІРёС‚СЊ
+    СЃРѕР±С‹С‚РёРµ</a> &nbsp;<br/>
 
 <? require('kernel/after.php'); ?>

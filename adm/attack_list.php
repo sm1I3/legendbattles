@@ -14,22 +14,22 @@ if (isset($_GET['delete_attack_id']) && $_GET['delete_attack_id']!='' && is_nume
 }
 
 $attack_type_array = array(
-    0 => 'Стандартный',
-    1 => 'Абилити / свитки / зелья',
-    2 => 'Магия огня',
-    3 => 'Магия земли',
-    4 => 'Магия воды',
-    5 => 'Магия воздуха',
+    0 => 'РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№',
+    1 => 'РђР±РёР»РёС‚Рё / СЃРІРёС‚РєРё / Р·РµР»СЊСЏ',
+    2 => 'РњР°РіРёСЏ РѕРіРЅСЏ',
+    3 => 'РњР°РіРёСЏ Р·РµРјР»Рё',
+    4 => 'РњР°РіРёСЏ РІРѕРґС‹',
+    5 => 'РњР°РіРёСЏ РІРѕР·РґСѓС…Р°',
 );
 
 $attack_action_type_array = array(
-    1 => 'Удар',
-    2 => 'Блок',
-    3 => 'Зелье',
-    4 => 'Магия',
-    5 => 'Абилити',
-    6 => 'Свитки',
-    7 => 'Расширенный',
+    1 => 'РЈРґР°СЂ',
+    2 => 'Р‘Р»РѕРє',
+    3 => 'Р—РµР»СЊРµ',
+    4 => 'РњР°РіРёСЏ',
+    5 => 'РђР±РёР»РёС‚Рё',
+    6 => 'РЎРІРёС‚РєРё',
+    7 => 'Р Р°СЃС€РёСЂРµРЅРЅС‹Р№',
 );
 
 $abilities = '';
@@ -38,30 +38,30 @@ while ($row = mysql_fetch_assoc($res))
 {
     $abilities .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этот удар?\');" href="attack_list.php?delete_attack_id='.$row['attack_id'].'" title="Удалить удар"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="attack_edit.php?attack_id='.$row['attack_id'].'" title="Изменить удар"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ СѓРґР°СЂ?\');" href="attack_list.php?delete_attack_id=' . $row['attack_id'] . '" title="РЈРґР°Р»РёС‚СЊ СѓРґР°СЂ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="attack_edit.php?attack_id=' . $row['attack_id'] . '" title="РР·РјРµРЅРёС‚СЊ СѓРґР°СЂ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['attack_id'].'</td>
       <td align="left" class="cms_middle">'.$attack_type_array[$row['type']].'</td>
       <td align="left" class="cms_middle">'.$attack_action_type_array[$row['action_type']].'</td>
-      <td align="left" class="cms_middle"><a href="attack_edit.php?attack_id='.$row['attack_id'].'" title="Изменить удар">'._htext($row['name']).'</a></td>
+      <td align="left" class="cms_middle"><a href="attack_edit.php?attack_id=' . $row['attack_id'] . '" title="РР·РјРµРЅРёС‚СЊ СѓРґР°СЂ">' . _htext($row['name']) . '</a></td>
     </tr>
     ';
 }
 
 ?>
-<h3>Список ударов</h3>
+    <h3>РЎРїРёСЃРѕРє СѓРґР°СЂРѕРІ</h3>
 <div class="cms_ind">
 <br />
-Удары: <br />
+    РЈРґР°СЂС‹: <br/>
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
 <tr>
-    <td class="cms_cap2 normal"> Удалить </td>
-    <td class="cms_cap2 normal"> Изменить </td>
+    <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+    <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-    <td class="cms_cap2">ID удара</td>
-    <td class="cms_cap2">Тип</td>
-    <td class="cms_cap2">Тип действия</td>
-    <td class="cms_cap2">Название удара</td>
+    <td class="cms_cap2">ID СѓРґР°СЂР°</td>
+    <td class="cms_cap2">РўРёРї</td>
+    <td class="cms_cap2">РўРёРї РґРµР№СЃС‚РІРёСЏ</td>
+    <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ СѓРґР°СЂР°</td>
 </tr>
 
 <?=$abilities?>
@@ -69,13 +69,14 @@ while ($row = mysql_fetch_assoc($res))
 </table>
 <br />
 </div>
-<img src="images/cms_icons/cms_add.gif" alt="Добавить удар" /><a href="attack_edit.php" title="Добавить удар">Добавить удар</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СѓРґР°СЂ"/><a href="attack_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ СѓРґР°СЂ">Р”РѕР±Р°РІРёС‚СЊ
+    СѓРґР°СЂ</a> &nbsp;<br/>
 <br />
-<a href="attack_import.php" title="Импорт конфига">Импорт</a><br />
+    <a href="attack_import.php" title="РРјРїРѕСЂС‚ РєРѕРЅС„РёРіР°">РРјРїРѕСЂС‚</a><br/>
 <br />
 <br />
 <form name="generate" action="" method="post">
-<input type="submit" name="generate" value="Генератор ударов" />
+    <input type="submit" name="generate" value="Р“РµРЅРµСЂР°С‚РѕСЂ СѓРґР°СЂРѕРІ"/>
 </form>
 <? 
 if (isset($_POST['generate'])) {

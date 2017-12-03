@@ -1,37 +1,37 @@
-<? 
-$pris=explode("|",$player['prison']);
-if($pris[0]>time()){
-	mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `used`='0' WHERE `pl_id`='".$player['id']."';");
+<?
+$pris = explode("|", $player['prison']);
+if ($pris[0] > time()) {
+    mysqli_query($GLOBALS['db_link'], "UPDATE `invent` SET `used`='0' WHERE `pl_id`='" . $player['id'] . "';");
 }
 calcstat($player['id']);
 testcompl();
-$m = array('skill','perk','settings','gifts','secure','pers-info','pay','9','33','kazino'); 
-$m1 = array('Умения','Навыки','Настройки','Подарки и Открытки','Отчёты безопасности','О Вас','Сервисы и Аккаунты','Биржа Измрудов','тт','Кости'); 
-$m2 = array('Умения','Навыки','Настройки','Подарки','Безопасность','Анкета','Сервисы','Биржа Измрудов','тт','Кости'); 
-$m3 = array('menu12','menu8','menu9','menu10','menu7','menu3','menu2','emerald','slot','kosti'); 
+$m = array('skill', 'perk', 'settings', 'gifts', 'secure', 'pers-info', 'pay', '9', '33', 'kazino');
+$m1 = array('РЈРјРµРЅРёСЏ', 'РќР°РІС‹РєРё', 'РќР°СЃС‚СЂРѕР№РєРё', 'РџРѕРґР°СЂРєРё Рё РћС‚РєСЂС‹С‚РєРё', 'РћС‚С‡С‘С‚С‹ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё', 'Рћ Р’Р°СЃ', 'РЎРµСЂРІРёСЃС‹ Рё РђРєРєР°СѓРЅС‚С‹', 'Р‘РёСЂР¶Р° РР·РјСЂСѓРґРѕРІ', 'С‚С‚', 'РљРѕСЃС‚Рё');
+$m2 = array('РЈРјРµРЅРёСЏ', 'РќР°РІС‹РєРё', 'РќР°СЃС‚СЂРѕР№РєРё', 'РџРѕРґР°СЂРєРё', 'Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ', 'РђРЅРєРµС‚Р°', 'РЎРµСЂРІРёСЃС‹', 'Р‘РёСЂР¶Р° РР·РјСЂСѓРґРѕРІ', 'С‚С‚', 'РљРѕСЃС‚Рё');
+$m3 = array('menu12', 'menu8', 'menu9', 'menu10', 'menu7', 'menu3', 'menu2', 'emerald', 'slot', 'kosti');
 ?>
 <div class="nav">
-	<a href="http://forum.legendbattles.ru" title="Форум" target="_blank">Форум</a>
-	<a href="?mselect=teach" title="Ученик">Ученик</a>
-	<a href="?mselect=achiev" title="Достижения">Достижения</a>
-	<a href="?mselect=referal" title="Ваши Рефералы - Настройки и данные">Рефералы</a>
-	<a href="?mselect=guest" title="Журнал квестов">Журнал квестов</a>
-	<a href="/maps.php" title="Карта" target="_blank">Карта</a>
-	<a href="?mselect=obmen" title="Обмен валюты">Обмен валюты <img src=img/razdor/emerald.png width=14 height=14></a>
-	<a href="?mselect=33" title="тест">тест</a>
+    <a href="http://forum.legendbattles.ru" title="Р¤РѕСЂСѓРј" target="_blank">Р¤РѕСЂСѓРј</a>
+    <a href="?mselect=teach" title="РЈС‡РµРЅРёРє">РЈС‡РµРЅРёРє</a>
+    <a href="?mselect=achiev" title="Р”РѕСЃС‚РёР¶РµРЅРёСЏ">Р”РѕСЃС‚РёР¶РµРЅРёСЏ</a>
+    <a href="?mselect=referal" title="Р’Р°С€Рё Р РµС„РµСЂР°Р»С‹ - РќР°СЃС‚СЂРѕР№РєРё Рё РґР°РЅРЅС‹Рµ">Р РµС„РµСЂР°Р»С‹</a>
+    <a href="?mselect=guest" title="Р–СѓСЂРЅР°Р» РєРІРµСЃС‚РѕРІ">Р–СѓСЂРЅР°Р» РєРІРµСЃС‚РѕРІ</a>
+    <a href="/maps.php" title="РљР°СЂС‚Р°" target="_blank">РљР°СЂС‚Р°</a>
+    <a href="?mselect=obmen" title="РћР±РјРµРЅ РІР°Р»СЋС‚С‹">РћР±РјРµРЅ РІР°Р»СЋС‚С‹ <img src=img/razdor/emerald.png width=14 height=14></a>
+    <a href="?mselect=33" title="С‚РµСЃС‚">С‚РµСЃС‚</a>
 
 </div>
 <div class="abil">
-<?
-for ($i=0;$i<=7;$i++) {
-?>
-	<div>
-		<a href="?mselect=<?=$m[$i]?>" title="<?=$m1[$i]?>">
-			<img src="img/razdor/<?=$m3[$i]?>.png" width="35" height="35">
-			<span><?=$m2[$i]?></span>
-		</a>
-	</div>
-	<?
-}
-?>
+    <?
+    for ($i = 0; $i <= 7; $i++) {
+        ?>
+        <div>
+            <a href="?mselect=<?= $m[$i] ?>" title="<?= $m1[$i] ?>">
+                <img src="img/razdor/<?= $m3[$i] ?>.png" width="35" height="35">
+                <span><?= $m2[$i] ?></span>
+            </a>
+        </div>
+        <?
+    }
+    ?>
 </div>

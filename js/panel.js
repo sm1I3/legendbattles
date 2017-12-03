@@ -12,7 +12,7 @@ var GetById = function (id) {return document.getElementById(id);}
 function set_return_win(ID_r)
 {
 	ID_return=ID_r;
-	parent.frames["top_frame"].document.getElementById(ID_return).innerHTML = '<div class=but>Загрузка<br><img src=images/loader.gif></div>';
+    parent.frames["top_frame"].document.getElementById(ID_return).innerHTML = '<div class=but>Р—Р°РіСЂСѓР·РєР°<br><img src=images/loader.gif></div>';
 }
 
 function show_return(text)
@@ -37,7 +37,7 @@ function waiter(time,upd,info)
 		  addtxt += '<img src=images/no.png height=8 style="width:190px;" id=waiter_off>&nbsp;</td></table>';
 
 		  if (info!=undefined && info!='') addtxt+= '&nbsp;'+info;
-         document.getElementById("waiter").innerHTML = '<font class=guest>&nbsp;Действие, ещё <b id=waiter_time>'+allTime+'</b> сек.<br>'+addtxt;
+    document.getElementById("waiter").innerHTML = '<font class=guest>&nbsp;Р”РµР№СЃС‚РІРёРµ, РµС‰С‘ <b id=waiter_time>' + allTime + '</b> СЃРµРє.<br>' + addtxt;
 
         curTimeFor = curTimeFor-1;
 		$(function(){$("#waiter_on").animate({width:190},1000*allTime);$("#waiter_off").animate({width:0},1000*allTime);});
@@ -62,7 +62,7 @@ function winterv(upd,info)
        else if (upd)
        {
           clearInterval(curTimeInt);
-	      document.getElementById("waiter").innerHTML = '<a href=main.php class=timef>Обновление</a></i>';
+           document.getElementById("waiter").innerHTML = '<a href=main.php class=timef>РћР±РЅРѕРІР»РµРЅРёРµ</a></i>';
 	      window.location = "main.php";
        }
 	   else
@@ -155,7 +155,7 @@ d.getElementById('znanya').innerHTML = szn;
 d.getElementById('power').innerHTML = sp;
 }
 if (ups > 0)
-d.getElementById('ups').innerHTML ='<i>Повышений:&nbsp;'+ups+'</i>';
+    d.getElementById('ups').innerHTML = '<i>РџРѕРІС‹С€РµРЅРёР№:&nbsp;' + ups + '</i>';
 else
 d.getElementById('ups').innerHTML = '';
 }
@@ -166,7 +166,7 @@ if (up==-1 | ups>0) {
 sila += up;
 d.getElementById('sila').innerHTML = pluses(sila,'stups');
 ups -= up;
-d.getElementById('ups').innerHTML ='<i>Повышений:&nbsp;'+ups+'</i>';
+    d.getElementById('ups').innerHTML = '<i>РџРѕРІС‹С€РµРЅРёР№:&nbsp;' + ups + '</i>';
 }}
 function stupl (up) {
 if ((up==-1 && lovk > slovk) | (up==1))
@@ -174,7 +174,7 @@ if (up==-1 | ups>0) {
 lovk += up;
 d.getElementById('lovk').innerHTML = pluses(lovk,'stupl');
 ups -= up;
-d.getElementById('ups').innerHTML ='<i>Повышений:&nbsp;'+ups+'</i>';
+    d.getElementById('ups').innerHTML = '<i>РџРѕРІС‹С€РµРЅРёР№:&nbsp;' + ups + '</i>';
 }}
 function stupu (up) {
 if ((up==-1 && udacha > sudacha) | (up==1))
@@ -182,7 +182,7 @@ if (up==-1 | ups>0) {
 udacha += up;
 d.getElementById('udacha').innerHTML = pluses(udacha,'stupu');
 ups -= up;
-d.getElementById('ups').innerHTML ='<i>Повышений:&nbsp;'+ups+'</i>';
+    d.getElementById('ups').innerHTML = '<i>РџРѕРІС‹С€РµРЅРёР№:&nbsp;' + ups + '</i>';
 }}
 function stupzd (up) {
 if ((up==-1 && zdorov > szdorov) | (up==1))
@@ -190,7 +190,7 @@ if (up==-1 | ups>0) {
 zdorov += up;
 d.getElementById('zdorov').innerHTML = pluses(zdorov,'stupzd');
 ups -= up;
-d.getElementById('ups').innerHTML ='<i>Повышений:&nbsp;'+ups+'</i>';
+    d.getElementById('ups').innerHTML = '<i>РџРѕРІС‹С€РµРЅРёР№:&nbsp;' + ups + '</i>';
 }}
 function stupzn (up) {
 if ((up==-1 && znanya > sznanya ) | (up==1))
@@ -198,7 +198,7 @@ if (up==-1 | ups>0) {
 znanya += up;
 d.getElementById('znanya').innerHTML = pluses(znanya,'stupzn');
 ups -= up;
-d.getElementById('ups').innerHTML ='<i>Повышений:&nbsp;'+ups+'</i>';
+    d.getElementById('ups').innerHTML = '<i>РџРѕРІС‹С€РµРЅРёР№:&nbsp;' + ups + '</i>';
 }}
 function stupp (up) {
 if ((up==-1 && power > spower) | (up==1))
@@ -206,9 +206,11 @@ if (up==-1 | ups>0) {
 power += up;
 d.getElementById('power').innerHTML = pluses(power,'stupp');
 ups -= up;
-d.getElementById('ups').innerHTML ='<i>Повышений:&nbsp;'+ups+'</i>';
-}}
-function save () { // Сохраняем
+    d.getElementById('ups').innerHTML = '<i>РџРѕРІС‹С€РµРЅРёР№:&nbsp;' + ups + '</i>';
+}
+}
+
+function save() { // РЎРѕС…СЂР°РЅСЏРµРј
 d.getElementById('SAVEstats').innerHTML = '<form method=post action="add_stat_user/stats.php" target="returner" name=stats>'+'<input type=hidden name=stats value=1><input type=hidden name=s1 value='+sila+'>'+'<input type=hidden name=s2 value='+lovk+'>'+'<input type=hidden name=s3 value='+udacha+'>'+'<input type=hidden name=s4 value='+zdorov+'>'+'<input type=hidden name=s5 value='+znanya+'>'+'<input type=hidden name=s6 value='+power+'>'+'<input type=hidden name=ups value='+ups+'>'+'</form>';
 parent.frames['top_frame'].document.stats.submit();
 set_return_win('SAVEstats');
@@ -325,7 +327,7 @@ d.getElementById('nsymen').innerHTML = nsym;
 
 function exit_confirm()
 {
-       return confirm('Вы действительно хотите покинуть игру?');
+    return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїРѕРєРёРЅСѓС‚СЊ РёРіСЂСѓ?');
 }
 function exit_redir()
 {
@@ -334,7 +336,7 @@ function exit_redir()
 
 function exit_pers()
 {
-       return confirm('Вы действительно хотите сменить персонажа?');
+    return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СЃРјРµРЅРёС‚СЊ РїРµСЂСЃРѕРЅР°Р¶Р°?');
 }
 function exit_redir_pers()
 {

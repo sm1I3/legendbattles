@@ -136,13 +136,13 @@ function chatlist_build (sort_type)
     if(str_array[4].length>1)
       sleeps="<img src=http://img.legendbattles.ru/image/signs/molch.gif width=13 height=13 border=0 title=\""+str_array[4]+"\" align=absmiddle>";
     if (str_array[5] === '1')
-      ign = "<a href=\"javascript:ch_clear_ignor('"+login+"');\"><img src=http://img.legendbattles.ru/image/signs/ignor/3.gif width=15 height=12 border=0 title=\"Снять игнорирование\"></a>";
+        ign = "<a href=\"javascript:ch_clear_ignor('" + login + "');\"><img src=http://img.legendbattles.ru/image/signs/ignor/3.gif width=15 height=12 border=0 title=\"РЎРЅСЏС‚СЊ РёРіРЅРѕСЂРёСЂРѕРІР°РЅРёРµ\"></a>";
     if (str_array[6] !== '0')
       inj = "<img src=http://img.legendbattles.ru/image/chat/tr4.gif width=13 height=13 border=0 title=\""+str_array[6]+"\" align=absmiddle>";
 
      if (str_array[7] !== '0')
      {
-       var dilers = new Array ('', 'Дилер', 'Помощник дилера');
+         var dilers = ['', 'Р”РёР»РµСЂ', 'РџРѕРјРѕС‰РЅРёРє РґРёР»РµСЂР°'];
        psg = "<img src=http://img.legendbattles.ru/image/signs/d_sm_"+str_array[7]+".gif width=13 height=13 align=absmiddle border=0 title=\""+dilers[str_array[7]]+"\">&nbsp;";
      }
      if (str_array[8] !== '0')

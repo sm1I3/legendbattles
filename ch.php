@@ -36,7 +36,9 @@ switch($_SESSION['chat']['mode']){
 	case 0: $ch_mode=0; break;
 	case 1: $ch_mode=1; break;
 	case 2: $ch_mode=2; break;
-	case 3: $ch_mode=3; break; //Системный
+    case 3:
+        $ch_mode = 3;
+        break; //РЎРёСЃС‚РµРјРЅС‹Р№
 	default: $ch_mode=0; break;
 }	
 if($a=="ign"){
@@ -51,9 +53,9 @@ $player=player();
 function is_mat($m){
 	global $player;
 	$m=" ".strtolower(trim($m))." ";
-  $mat = array('бля','пизд','fuck','сука','хуё','хуе','еба','ёба','бляд','лох','чмо','чёрт','мудак','уёбок','долбаёб','далбаеб','блят','блять'); 
+    $mat = array('Р±Р»СЏ', 'РїРёР·Рґ', 'fuck', 'СЃСѓРєР°', 'С…СѓС‘', 'С…СѓРµ', 'РµР±Р°', 'С‘Р±Р°', 'Р±Р»СЏРґ', 'Р»РѕС…', 'С‡РјРѕ', 'С‡С‘СЂС‚', 'РјСѓРґР°Рє', 'СѓС‘Р±РѕРє', 'РґРѕР»Р±Р°С‘Р±', 'РґР°Р»Р±Р°РµР±', 'Р±Р»СЏС‚', 'Р±Р»СЏС‚СЊ');
 	$a=explode(" ",$m);
-	for ($i=0;$i<=18;$i++)// количество
+    for ($i = 0; $i <= 18; $i++)// РєРѕР»РёС‡РµСЃС‚РІРѕ
 	foreach($a as $m){
 		if ($m){
 		$m=" ".$m." ";
@@ -68,10 +70,10 @@ function is_mat($m){
 function is_rvs($m){
 	global $player;
 	$m=strtolower(trim($m));
-  $rvs = array('http:','.com','.com.ua','рф','.ru','.by','.org','.ua','.net','.su','legbk','wow','old-combats','last-worlds','dark-lands','battleera','other-lands','alnoworld','antialoneislands','bkwar','qps','wonder-lands'); 
+    $rvs = array('http:', '.com', '.com.ua', 'СЂС„', '.ru', '.by', '.org', '.ua', '.net', '.su', 'legbk', 'wow', 'old-combats', 'last-worlds', 'dark-lands', 'battleera', 'other-lands', 'alnoworld', 'antialoneislands', 'bkwar', 'qps', 'wonder-lands');
 	$m=str_replace("/","",$m);
 	$a=explode(" ",$m);
-	for ($i=0;$i<=22;$i++)// количество
+    for ($i = 0; $i <= 22; $i++)// РєРѕР»РёС‡РµСЃС‚РІРѕ
 	foreach($a as $m)
 	{
 		$m=" ".$m." ";
@@ -94,7 +96,7 @@ function is_rkp($m){
 	$rkp = array('escilon','chaosroad','neverlands','ereality','lastworlds','legendworld','legbk','neolands','l e g e n d w o r l d','windland','darktimes','vayworld','alinar','dark-lands','guild-honor','genesyx','world-chaos','dwar'); 
 	$m=str_replace("/","",$m);
 	$a=explode(" ",$m);
-	for ($i=0;$i<=18;$i++)// количество
+    for ($i = 0; $i <= 18; $i++)// РєРѕР»РёС‡РµСЃС‚РІРѕ
 	foreach($a as $m)
 	{
 		$m=" ".$m." ";
@@ -129,7 +131,7 @@ if(isset($_GET['lo'])){
 <html>
 <head>
 <LINK href="/ch/list.css?v4" rel=STYLESHEET type=text/css>
-<meta content="text/html; charset=windows-1251" http-equiv=Content-type>
+    <meta content="text/html; charset=utf-8" http-equiv=Content-type>
 <META Http-Equiv=Cache-Control Content=no-cache>
 <meta http-equiv=PRAGMA content=NO-CACHE>
 <META Http-Equiv=Expires Content=0>
@@ -146,12 +148,12 @@ if(isset($_GET['lo'])){
     <td><img src="/img/image/1x1.gif" width="1" height="5"></td>
   </tr>
   <tr>
-    <td align="center" valign="middle">Авто:
+      <td align="center" valign="middle">РђРІС‚Рѕ:
       <script>
         document.write ('<input type=checkbox onclick="parent.OnlineStop=!parent.OnlineStop;parent.reload(false);" '+ (parent.OnlineStop ? '' : 'checked') + '>');
       </script>
-			<input type=button onClick="location='ch.php?lo=1&'" value='Обновить'><br>
-      Сортировка:<a href="ch.php?lo=1&order=a_z" class="sort">
+          <input type=button onClick="location='ch.php?lo=1&'" value='РћР±РЅРѕРІРёС‚СЊ'><br>
+          РЎРѕСЂС‚РёСЂРѕРІРєР°:<a href="ch.php?lo=1&order=a_z" class="sort">
       <?php
         if($_SESSION['user']['filt']=="a_z"){
 			echo '<b>a-z</b>';
@@ -190,10 +192,10 @@ if(isset($_GET['lo'])){
 <SCRIPT>
 var ChatListU=new Array(
 <?php
-$tarr[] = '"страж порядка:Страж Порядка:35;15:botsp.gif;Верховная Инквизиция;Автобот Смотритель:0:0:0:0:0:0:0:Legendbattles.ru:0:0"';
-if($player['clan']!='Служители порядка'){
+    $tarr[] = '"СЃС‚СЂР°Р¶ РїРѕСЂСЏРґРєР°:РЎС‚СЂР°Р¶ РџРѕСЂСЏРґРєР°:35;15:botsp.gif;Р’РµСЂС…РѕРІРЅР°СЏ РРЅРєРІРёР·РёС†РёСЏ;РђРІС‚РѕР±РѕС‚ РЎРјРѕС‚СЂРёС‚РµР»СЊ:0:0:0:0:0:0:0:Legendbattles.ru:0:0"';
+    if ($player['clan'] != 'РЎР»СѓР¶РёС‚РµР»Рё РїРѕСЂСЏРґРєР°') {
 	$res=mysqli_query($GLOBALS['db_link'],"SELECT `user`.`login`,`user`.`invisible`,`user`.`sleep`,`user`.`loc`,`user`.`clan_d`,`user`.`level`,`user`.`clan`,`user`.`clan_gif`,`user`.`sklon`,`user`.`last`,`user`.`affect`,`user`.`pos`,`user`.`a_m`,`user`.`premium`,`user`.`id`,`user`.`u_lvl`,`user`.`fcolor`,`user`.`fcolor_time`,`user`.`vzlomshik_nav`,`user`.`semija`,`user`.`palac` FROM `user` LEFT JOIN `loc` ON `user`.`loc`=`loc`.`id` WHERE `user`.`loc`='".$player['loc']."' ".($player['loc']!=28 ? "" : "AND `user`.`pos`='".$player['pos']."'")." AND `user`.`last`>'".(time()-300)."' and `user`.`id`!='15391743';");
-}else{//полный список чата
+    } else {//РїРѕР»РЅС‹Р№ СЃРїРёСЃРѕРє С‡Р°С‚Р°
 	$res=mysqli_query($GLOBALS['db_link'],"SELECT `user`.`login`,`user`.`invisible`,`user`.`sleep`,`user`.`loc`,`user`.`clan_d`,`user`.`level`,`user`.`clan`,`user`.`clan_gif`,`user`.`sklon`,`user`.`last`,`user`.`affect`,`user`.`pos`,`user`.`a_m`,`user`.`premium`,`user`.`id`,`user`.`u_lvl`,`user`.`fcolor`,`user`.`fcolor_time`,`user`.`vzlomshik_nav`,`user`.`semija`,`user`.`palac` FROM `user` LEFT JOIN `loc` ON `user`.`loc`=`loc`.`id` WHERE `user`.`last`>'".(time()-300)."';");
 }
 while ($row=mysqli_fetch_assoc($res)) {
@@ -225,8 +227,8 @@ while ($row=mysqli_fetch_assoc($res)) {
 		}else{
 			$traw=0;
 		}
-		if($row['invisible']<time() or $player['clan']=='Служители порядка'){
-			$tarr[]= '"'.strtolower($row['login']).':'.$row['login'].':'.$row['level'].';'.$row['u_lvl'].':'.$clan.':'.$sleep.':'.$ign.':'.$traw.':'.(accesses($row['id'],'dealer')?((accesses($row['id'],'dealer',1)!=3)?"2":"0"):"0").':'.$row['sklon'].':'.$prem[0].':'.$row['vzlomshik_nav'].':'.$row['semija'].':'.$row['palac'].':'.$row['u_lvl'].':'.$row['fcolor'].':'.$nickclr.($player['clan']=='Служители порядка'?':1:'.scode().'':':0')."\"\n";
+    if ($row['invisible'] < time() or $player['clan'] == 'РЎР»СѓР¶РёС‚РµР»Рё РїРѕСЂСЏРґРєР°') {
+        $tarr[] = '"' . strtolower($row['login']) . ':' . $row['login'] . ':' . $row['level'] . ';' . $row['u_lvl'] . ':' . $clan . ':' . $sleep . ':' . $ign . ':' . $traw . ':' . (accesses($row['id'], 'dealer') ? ((accesses($row['id'], 'dealer', 1) != 3) ? "2" : "0") : "0") . ':' . $row['sklon'] . ':' . $prem[0] . ':' . $row['vzlomshik_nav'] . ':' . $row['semija'] . ':' . $row['palac'] . ':' . $row['u_lvl'] . ':' . $row['fcolor'] . ':' . $nickclr . ($player['clan'] == 'РЎР»СѓР¶РёС‚РµР»Рё РїРѕСЂСЏРґРєР°' ? ':1:' . scode() . '' : ':0') . "\"\n";
 		}
 }
 print implode(",",$tarr);
@@ -239,7 +241,7 @@ chatlist_build('<?=$_SESSION['user']['filt']?>');
 </table>
 </body>
 <? }
-//-------пишем в чат-----------
+//-------РїРёС€РµРј РІ С‡Р°С‚-----------
 if (isset($text)){ if($player['sleep']<time()){
 	$msg=ltrim($text);
 	if($player['clan_id']!='none'){
@@ -275,7 +277,7 @@ if (isset($text)){ if($player['sleep']<time()){
 		if(strlen($message)>250){$minus = (250-strlen($message))*(-1);$message=substr($message,0,strlen($message)-$minus);}
 		$message="<font color=".$player['chcolor']."> ".str_replace("/\'/","&acute;",$message)."</font> <BR>'+'');";
 		if($player['invisible']>time() and $chtime == 'yochattime'){
-			$users=$to?'<SPL><b>невидимка</b><SPL>'.str_replace("<SPL>","",$to).'<SPL>':'<b>невидимка</b>:';
+            $users = $to ? '<SPL><b>РЅРµРІРёРґРёРјРєР°</b><SPL>' . str_replace("<SPL>", "", $to) . '<SPL>' : '<b>РЅРµРІРёРґРёРјРєР°</b>:';
 		}else{
 			$users=$to?'<SPL><font style="color: #'.($nickclr?$nickclr:'000000').'"><SPAN>'.$player['login'].'</SPAN></font><SPL>'.str_replace("<SPL>","",$to).'<SPL>':'<font style="color: #'.($nickclr?$nickclr:'000000').'"><SPAN>'.$player['login'].'</SPAN></font>:';
 		}
@@ -286,35 +288,35 @@ if (isset($text)){ if($player['sleep']<time()){
                 $_SESSION['StopFlood']['count'] = 0;
             }
             $_SESSION['StopFlood']['time'] = time();
-            if(is_rvs($message) and $player['login']!='Администрация' and $player['login']!='alexs'){
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg".($ch_mode==0?'':($ch_mode==1?'_trade':''))."('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>".$player['login']."</b> наложено заклятие молчания сроком на <b>5</b> мин. Подозрение на РВС. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');")."');");
+        if (is_rvs($message) and $player['login'] != 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ' and $player['login'] != 'alexs') {
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РќР° РїРµСЂСЃРѕРЅР°Р¶Р° <b>" . $player['login'] . "</b> РЅР°Р»РѕР¶РµРЅРѕ Р·Р°РєР»СЏС‚РёРµ РјРѕР»С‡Р°РЅРёСЏ СЃСЂРѕРєРѕРј РЅР° <b>5</b> РјРёРЅ. РџРѕРґРѕР·СЂРµРЅРёРµ РЅР° Р Р’РЎ. (<b>РЎС‚СЂР°Р¶ РЎР»СѓР¶РёС‚РµР»РµР№ РџРѕСЂСЏРґРєР°</b>)</font><BR>'+'');") . "');");
 				mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `sleep`='".(time()+5*60)."' WHERE `login`='".$player['login']."' LIMIT 1;");
-			}elseif(is_mat($message) and $player['login']!='Администрация' and $player['login']!='alexs'){
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg".($ch_mode==0?'':($ch_mode==1?'_trade':''))."('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>".$player['login']."</b> наложено заклятие молчания сроком на <b>10</b> мин. Подозрение на мат. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');")."');");
+        } elseif (is_mat($message) and $player['login'] != 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ' and $player['login'] != 'alexs') {
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РќР° РїРµСЂСЃРѕРЅР°Р¶Р° <b>" . $player['login'] . "</b> РЅР°Р»РѕР¶РµРЅРѕ Р·Р°РєР»СЏС‚РёРµ РјРѕР»С‡Р°РЅРёСЏ СЃСЂРѕРєРѕРј РЅР° <b>10</b> РјРёРЅ. РџРѕРґРѕР·СЂРµРЅРёРµ РЅР° РјР°С‚. (<b>РЎС‚СЂР°Р¶ РЎР»СѓР¶РёС‚РµР»РµР№ РџРѕСЂСЏРґРєР°</b>)</font><BR>'+'');") . "');");
 				mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `sleep`='".(time()+10*60)."' WHERE `login`='".$player['login']."' LIMIT 1;");
-			}elseif(is_rkp($message) and $player['login']!='Администрация' and $player['login']!='alexs'){
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg".($ch_mode==0?'':($ch_mode==1?'_trade':''))."('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>".$player['login']."</b> наложено заклятие молчания сроком на <b>10</b> мин. Подозрение на РКП. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');")."');");
+        } elseif (is_rkp($message) and $player['login'] != 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ' and $player['login'] != 'alexs') {
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РќР° РїРµСЂСЃРѕРЅР°Р¶Р° <b>" . $player['login'] . "</b> РЅР°Р»РѕР¶РµРЅРѕ Р·Р°РєР»СЏС‚РёРµ РјРѕР»С‡Р°РЅРёСЏ СЃСЂРѕРєРѕРј РЅР° <b>10</b> РјРёРЅ. РџРѕРґРѕР·СЂРµРЅРёРµ РЅР° Р РљРџ. (<b>РЎС‚СЂР°Р¶ РЎР»СѓР¶РёС‚РµР»РµР№ РџРѕСЂСЏРґРєР°</b>)</font><BR>'+'');") . "');");
 				mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `sleep`='".(time()+10*60)."' WHERE `login`='".$player['login']."' LIMIT 1;");
-			}elseif($_SESSION['StopFlood']['count'] > 2 and $player['login']!='Администрация' and $player['login']!='alexs'){
+        } elseif ($_SESSION['StopFlood']['count'] > 2 and $player['login'] != 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ' and $player['login'] != 'alexs') {
                 $_SESSION['StopFlood']['count'] = 0;
-                mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg".($ch_mode==0?'':($ch_mode==1?'_trade':''))."('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>".$player['login']."</b> наложено заклятие молчания сроком на <b>15</b> мин. Причина: Флуд. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РќР° РїРµСЂСЃРѕРЅР°Р¶Р° <b>" . $player['login'] . "</b> РЅР°Р»РѕР¶РµРЅРѕ Р·Р°РєР»СЏС‚РёРµ РјРѕР»С‡Р°РЅРёСЏ СЃСЂРѕРєРѕРј РЅР° <b>15</b> РјРёРЅ. РџСЂРёС‡РёРЅР°: Р¤Р»СѓРґ. (<b>РЎС‚СЂР°Р¶ РЎР»СѓР¶РёС‚РµР»РµР№ РџРѕСЂСЏРґРєР°</b>)</font><BR>'+'');") . "');");
 				mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `sleep`='".(time()+15*60)."' WHERE `login`='".$player['login']."' LIMIT 1;");
 			}else{
 				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`ot_color`,`inv`,`dlya`,`loc`,`pos`,`msg`,`mode`) VALUES ('".time()."','".varcheck($_SESSION['user']['login'])."','".($nickclr?$nickclr:'000000')."','".(($player['invisible']<time())?'0':'1')."','".$to."','".$player['loc']."','".$player['pos']."','".mysqli_real_escape_string($GLOBALS['db_link'],stripcslashes($message))."','".$ch_mode."')");
 			}
-			if($to == '<Страж Порядка> ' or $to == '%<Страж Порядка> '){
+        if ($to == '<РЎС‚СЂР°Р¶ РџРѕСЂСЏРґРєР°> ' or $to == '%<РЎС‚СЂР°Р¶ РџРѕСЂСЏРґРєР°> ') {
 				include("includes/NewChatBot.php");
-				if($to != '%<Страж Порядка> '){
+            if ($to != '%<РЎС‚СЂР°Р¶ РџРѕСЂСЏРґРєР°> ') {
 					if($response != ''){
 						
 						$response = "<font color=000000> ".$response."</font> <BR>'+'');";
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`inv`,`dlya`,`loc`,`pos`,`msg`) VALUES ('".time()."','Страж Порядка','0','<".$player['login']."> ','".$player['loc']."','".$player['pos']."','".mysqli_real_escape_string($GLOBALS['db_link'],stripcslashes($response))."');");						
-						echo"<script>parent.frames['chmain'].add_msg".($ch_mode==0?'':($ch_mode==1?'_trade':($ch_mode==3?'_system':'')))." ('<font class=yochattime>&nbsp;".date("H:i:s")."&nbsp;</font> <SPL><SPAN>Страж Порядка</SPAN><SPL><".$player['login']."> <SPL> ".$response."\nparent.set_lmid(8);\n</script>";
+                        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`inv`,`dlya`,`loc`,`pos`,`msg`) VALUES ('" . time() . "','РЎС‚СЂР°Р¶ РџРѕСЂСЏРґРєР°','0','<" . $player['login'] . "> ','" . $player['loc'] . "','" . $player['pos'] . "','" . mysqli_real_escape_string($GLOBALS['db_link'], stripcslashes($response)) . "');");
+                        echo "<script>parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : ($ch_mode == 3 ? '_system' : ''))) . " ('<font class=yochattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <SPL><SPAN>РЎС‚СЂР°Р¶ РџРѕСЂСЏРґРєР°</SPAN><SPL><" . $player['login'] . "> <SPL> " . $response . "\nparent.set_lmid(8);\n</script>";
 					}
-				}elseif($to == '%<Страж Порядка> '){
+            } elseif ($to == '%<РЎС‚СЂР°Р¶ РџРѕСЂСЏРґРєР°> ') {
 					if($response != ''){
 						$response = "<font color=000000> ".$response."</font> <BR>'+'');";
-						echo"<script>parent.frames['chmain'].add_msg".($ch_mode==0?'':($ch_mode==1?'_trade':($ch_mode==3?'_system':'')))." ('<font class=prchattime>&nbsp;".date("H:i:s")."&nbsp;</font> <SPL><SPAN>Страж Порядка</SPAN><SPL>%<".$player['login']."> <SPL> ".$response."</script>";
+                        echo "<script>parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : ($ch_mode == 3 ? '_system' : ''))) . " ('<font class=prchattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <SPL><SPAN>РЎС‚СЂР°Р¶ РџРѕСЂСЏРґРєР°</SPAN><SPL>%<" . $player['login'] . "> <SPL> " . $response . "</script>";
 					}
 				}
 			}
@@ -330,10 +332,10 @@ if($player['onlineBouns'] > (time()-37000) and $player['onlineBouns'] < time()){
 	$player['onlineHour'] += 1;
 	if($player['onlineHour'] < 10){
 		mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `onlineHour` = `onlineHour`+'1',`onlineBouns` = '".(3600+time())."' WHERE `id`='".$player['id']."' LIMIT 1;");
-		echo"<script>parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Вы находитесь в игре уже более <b>" . ($player['onlineHour']) . "</b> ч.</font> <br />'+'');</script>";
+        echo "<script>parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;Р’С‹ РЅР°С…РѕРґРёС‚РµСЃСЊ РІ РёРіСЂРµ СѓР¶Рµ Р±РѕР»РµРµ <b>" . ($player['onlineHour']) . "</b> С‡.</font> <br />'+'');</script>";
 	}else if($player['onlineHour'] >= 10){
 		mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `onlineHour` = '0',`onlineBouns` = '" . (3600+time()) . "',`baks`=`baks`+'1' WHERE `id`='" . $player['id'] . "' LIMIT 1;");
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Legend Battles&nbsp;</font>: <font color=\"#000000\">Персонаж <b>".$player['login']."</b> находиться в игре 10 часов. За это достижение он получает бонус <b>1</b> <img src=/img/razdor/emerald.png width=14 title=Изумруд height=14>.</font><BR>'+'');") . "');");
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Legend Battles&nbsp;</font>: <font color=\"#000000\">РџРµСЂСЃРѕРЅР°Р¶ <b>" . $player['login'] . "</b> РЅР°С…РѕРґРёС‚СЊСЃСЏ РІ РёРіСЂРµ 10 С‡Р°СЃРѕРІ. Р—Р° СЌС‚Рѕ РґРѕСЃС‚РёР¶РµРЅРёРµ РѕРЅ РїРѕР»СѓС‡Р°РµС‚ Р±РѕРЅСѓСЃ <b>1</b> <img src=/img/razdor/emerald.png width=14 title=РР·СѓРјСЂСѓРґ height=14>.</font><BR>'+'');") . "');");
 	}
 }
 
@@ -348,7 +350,7 @@ if(mysqli_num_rows($sqltime)>0){
 	}	
 }
 }
-//Считаем время баффов\зелий игрока
+//РЎС‡РёС‚Р°РµРј РІСЂРµРјСЏ Р±Р°С„С„РѕРІ\Р·РµР»РёР№ РёРіСЂРѕРєР°
 if($player['buffs']==''){$player['buffs']="||||";}
 $buffs=explode("|",$player['buffs']);
 $rebuff=0;
@@ -382,7 +384,7 @@ if($player['side']==1){$side=2;}else{$side=1;}
 $en=mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT `user`.`id`,`user`.`side`,`user`.`battle`,`user`.`hp`,`fight`.`eid` FROM `user` LEFT JOIN `fight` ON `user`.`id`=`fight`.`eid` WHERE `user`.`battle`='".$player['battle']."' AND `user`.`side`='".$side."' AND `user`.`hp`>'0' AND `fight`.`eid` Is Null LIMIT 1;"));
 if($en>0){echo "<script> parent.frames['main_top'].location='main.php';</script>";}}
 
-//---------------ЧАТ-----------------
+//---------------Р§РђРў-----------------
 
 /*
 
@@ -413,11 +415,11 @@ if ($msg!='' and $ot!='sys'){
 	$ShowMsg = 1;
 	if($row['inv']=='1' and ($ctimecolor == 'chattime' or $ctimecolor == 'yochattime')){
 		$ot_1=((accesses($player['id'],'pvu'))?'<i>'.$ot.'</i>':'');
-		$users=$dlya?'<SPL>'.((accesses($player['id'],'pvu'))?'<s><i><font style="color: #'.$row['ot_color'].'"><SPAN>'.$ot.'</SPAN></font></i></s>':'невидимка').'<SPL>'.$dlya.'<SPL>':((accesses($player['id'],'pvu'))?'<s><i><font style="color: #'.$row['ot_color'].'"><SPAN>'.$ot.'</SPAN></font></i></s>':'невидимка:');
+        $users = $dlya ? '<SPL>' . ((accesses($player['id'], 'pvu')) ? '<s><i><font style="color: #' . $row['ot_color'] . '"><SPAN>' . $ot . '</SPAN></font></i></s>' : 'РЅРµРІРёРґРёРјРєР°') . '<SPL>' . $dlya . '<SPL>' : ((accesses($player['id'], 'pvu')) ? '<s><i><font style="color: #' . $row['ot_color'] . '"><SPAN>' . $ot . '</SPAN></font></i></s>' : 'РЅРµРІРёРґРёРјРєР°:');
 	}else{
 		$users=$dlya?'<SPL><font style="color: #'.$row['ot_color'].'"><SPAN>'.$ot.'</SPAN></font><SPL>'.$dlya.'<SPL>':'<font style="color: #'.$row['ot_color'].'"><SPAN>'.$ot.'</SPAN></font>:';
 	}
-	if($ot == 'Страж Порядка' and $dlya == '<'.$player['login'].'> '){
+    if ($ot == 'РЎС‚СЂР°Р¶ РџРѕСЂСЏРґРєР°' and $dlya == '<' . $player['login'] . '> ') {
 		$ShowMsg = 0;
 	}
 	if($ShowMsg == 1){		
@@ -428,8 +430,8 @@ if ($msg!='' and $ot!='sys'){
 echo "parent.set_lmid(8);
 </script>";
  mysqli_free_result($result);
- 
-//-----------КЛАНЧАТ----------------
+
+//-----------РљР›РђРќР§РђРў----------------
 $resultclan=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `chat` WHERE `chat`.`dlya` LIKE '%\%<".$player['clan_id'].">%' AND `id`>'".varcheck($_SESSION['user']['lastch'])."' AND `login`!='".varcheck($_SESSION['user']['login'])."';");
 echo "<script>";
 while ($row=mysqli_fetch_assoc($resultclan)) {
@@ -441,7 +443,7 @@ while ($row=mysqli_fetch_assoc($resultclan)) {
 	$_SESSION['user']['lastch']=$row["id"]; 
 	$ctimecolor="clchattime";
 	$checkuser=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `user`.`clan_id` FROM `user` WHERE `login`='".$ot."' LIMIT 1;"));
-	if ($checkuser['clan_id'] == $player['clan_id'] or $ot == 'Администрация' or $ot == 'mozg'){
+    if ($checkuser['clan_id'] == $player['clan_id'] or $ot == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ' or $ot == 'mozg') {
 		$users=$dlya?'<SPL><font style="color: #'.$row['ot_color'].'"><SPAN>'.$ot.'</SPAN></font><SPL>'.$dlya.'<SPL>':'<SPAN>'.$ot.'</SPAN>:';
 		echo "parent.frames['chmain'].add_msg ('<font class=".$ctimecolor.">&nbsp;".$time."&nbsp;</font> ".$users." ".$msg;
 	}

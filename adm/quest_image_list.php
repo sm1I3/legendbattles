@@ -27,10 +27,10 @@ if ($mode == 'text')
     {
         $images.='
         <tr>
-          <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить эту картинку?\');" href="quest_image_list.php?delete_image_id='.$row['image_id'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-          <td class="cms_middle" align="center"><a href="quest_image_edit.php?image_id='.$row['image_id'].'" title="Изменить"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+          <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ РєР°СЂС‚РёРЅРєСѓ?\');" href="quest_image_list.php?delete_image_id=' . $row['image_id'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+          <td class="cms_middle" align="center"><a href="quest_image_edit.php?image_id=' . $row['image_id'] . '" title="РР·РјРµРЅРёС‚СЊ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
           <td align="left" class="cms_middle">'.$row['image_id'].'</td>
-          <td align="left" class="cms_middle"><a href="quest_image_edit.php?image_id='.$row['image_id'].'" title="Изменить">'._htext($row['image_name']).'</a></td>
+          <td align="left" class="cms_middle"><a href="quest_image_edit.php?image_id=' . $row['image_id'] . '" title="РР·РјРµРЅРёС‚СЊ">' . _htext($row['image_name']) . '</a></td>
         </tr>
         ';
     }
@@ -40,7 +40,7 @@ else
         $i++;
         $images.='
         <td align="center" class="cms_middle" style="padding-top: 5px;">
-            <a href="quest_image_edit.php?image_id='.$row['image_id'].'" title="Изменить">
+            <a href="quest_image_edit.php?image_id=' . $row['image_id'] . '" title="РР·РјРµРЅРёС‚СЊ">
                 <img src="http://image.neverlands.ru/gameplay/faces/'.$row['image'].'" style="border: 0px;" /><br />
                 '._htext($row['image_name']).'
             </a>
@@ -53,24 +53,24 @@ else
 $_SESSION['pages']['quest_image_list'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Список картинок квестов</h3>
+    <h3>РЎРїРёСЃРѕРє РєР°СЂС‚РёРЅРѕРє РєРІРµСЃС‚РѕРІ</h3>
 <br />
 <? if ($mode == 'text') { ?>
-<a href="?mode=img">Переключиться в режим изображений</a>
+    <a href="?mode=img">РџРµСЂРµРєР»СЋС‡РёС‚СЊСЃСЏ РІ СЂРµР¶РёРј РёР·РѕР±СЂР°Р¶РµРЅРёР№</a>
 <? } else { ?>
-<a href="?mode=text">Переключиться в текстовый режим</a>
+    <a href="?mode=text">РџРµСЂРµРєР»СЋС‡РёС‚СЊСЃСЏ РІ С‚РµРєСЃС‚РѕРІС‹Р№ СЂРµР¶РёРј</a>
 <? } ?>
 <div class="cms_ind">
 <br />
-<? if ($mode == 'text') { ?> 
-Картинки: <br />
+<? if ($mode == 'text') { ?>
+    РљР°СЂС‚РёРЅРєРё: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Картинки</td>
-      <td class="cms_cap2">Название картинки</td>
+        <td class="cms_cap2">ID РљР°СЂС‚РёРЅРєРё</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ РєР°СЂС‚РёРЅРєРё</td>
     </tr>
     
     <?=$images?>
@@ -83,7 +83,9 @@ $_SESSION['pages']['quest_image_list'] = $_SERVER['REQUEST_URI'];
  <? } ?>
     <br />
  </div>
-<img src="images/cms_icons/cms_add.gif" alt="Добавить картинку" /><a href="quest_image_edit.php" title="Добавить картинку">Добавить картинку</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ"/><a href="quest_image_edit.php"
+                                                                        title="Р”РѕР±Р°РІРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ">Р”РѕР±Р°РІРёС‚СЊ
+    РєР°СЂС‚РёРЅРєСѓ</a> &nbsp;<br/>
 <br />
 
 <? require('kernel/after.php'); ?>

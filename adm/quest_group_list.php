@@ -19,26 +19,26 @@ while ($row = mysql_fetch_assoc($res))
 {
     $categories .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить эту категорию?\');" href="quest_group_list.php?delete_quest_group_id='.$row['quest_group_id'].'" title="Удалить категорию"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="quest_group_list.php?quest_group_id='.$row['quest_group_id'].'" title="Изменить категорию"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ РєР°С‚РµРіРѕСЂРёСЋ?\');" href="quest_group_list.php?delete_quest_group_id=' . $row['quest_group_id'] . '" title="РЈРґР°Р»РёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="quest_group_list.php?quest_group_id=' . $row['quest_group_id'] . '" title="РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['quest_group_id'].'</td>
-      <td class="cms_middle"><a href="quest_group_list.php?quest_group_id='.$row['quest_group_id'].'" title="Изменить категорию">'._htext($row['quest_group_name']).'</a></td>
+      <td class="cms_middle"><a href="quest_group_list.php?quest_group_id=' . $row['quest_group_id'] . '" title="РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ">' . _htext($row['quest_group_name']) . '</a></td>
     </tr>
     ';
 }
 
 ?>
-<h3>Категории квестов</h3>
+    <h3>РљР°С‚РµРіРѕСЂРёРё РєРІРµСЃС‚РѕРІ</h3>
 <div class="cms_ind">
 <br />
-Категории квестов: <br />
+    РљР°С‚РµРіРѕСЂРёРё РєРІРµСЃС‚РѕРІ: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Категории</td>
-      <td class="cms_cap2">Название категории</td>
+        <td class="cms_cap2">ID РљР°С‚РµРіРѕСЂРёРё</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё</td>
     </tr>
     
     <?=$categories?>
@@ -46,7 +46,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить категорию" /><a href="quest_group_edit.php" title="Добавить категорию">Добавить категорию</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ"/><a href="quest_group_edit.php"
+                                                                         title="Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ">Р”РѕР±Р°РІРёС‚СЊ
+    РєР°С‚РµРіРѕСЂРёСЋ</a> &nbsp;<br/>
  <br />
 
 <? require('kernel/after.php'); ?>

@@ -32,8 +32,8 @@ while ($row = mysql_fetch_assoc($res))
     
     $services .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы действительно хотите удалить этот сервис?\');" href="fort_service_list.php?delete_fort_service_id='.$row['list_id'].'" title="Удалить сервис"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="fort_service_edit.php?fort_service_id='.$row['list_id'].'" title="Редактировать сервис"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ СЃРµСЂРІРёСЃ?\');" href="fort_service_list.php?delete_fort_service_id=' . $row['list_id'] . '" title="РЈРґР°Р»РёС‚СЊ СЃРµСЂРІРёСЃ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="fort_service_edit.php?fort_service_id=' . $row['list_id'] . '" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃРµСЂРІРёСЃ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="center" class="cms_middle">'.$row['list_id'].'</td>
       <td align="left" class="cms_middle">'.$row['service_size'].'</td>
       <td align="left" class="cms_middle">'.$row['service_time'].'</td>
@@ -46,20 +46,20 @@ while ($row = mysql_fetch_assoc($res))
 
 
 ?>
-<h3>Список сервисов</h3>
+    <h3>РЎРїРёСЃРѕРє СЃРµСЂРІРёСЃРѕРІ</h3>
 <div class="cms_ind">
 <br />
-Сервисы: <br />
+    РЎРµСЂРІРёСЃС‹: <br/>
 
 
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
       <td class="cms_cap2">ID</td>
-      <td class="cms_cap2">Размер</td>
-      <td class="cms_cap2">Время</td>
+        <td class="cms_cap2">Р Р°Р·РјРµСЂ</td>
+        <td class="cms_cap2">Р’СЂРµРјСЏ</td>
       <td class="cms_cap2">NV</td>
       <td class="cms_cap2">DNV</td>
     </tr>
@@ -69,7 +69,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить сервис" /><a href="fort_service_edit.php" title="Добавить сервис">Добавить сервис</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ"/><a href="fort_service_edit.php"
+                                                                      title="Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ">Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ</a> &nbsp;
+    <br/>
  <br />
 
 <? require('kernel/after.php'); ?>

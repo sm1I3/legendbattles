@@ -69,21 +69,21 @@ else
     mysql_free_result($res);
 }
 
-$types = array(1 => 'Выходной', 2 => 'Рабочий');
+$types = array(1 => 'Р’С‹С…РѕРґРЅРѕР№', 2 => 'Р Р°Р±РѕС‡РёР№');
 ?>
-<h3><?=($vacation_id == ''?'Добавить отпуск':'Изменить отпуск')?></h3>
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+    <h3><?= ($vacation_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РѕС‚РїСѓСЃРє' : 'РР·РјРµРЅРёС‚СЊ РѕС‚РїСѓСЃРє') ?></h3>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-    <td>Работник:</td>
+    <td>Р Р°Р±РѕС‚РЅРёРє:</td>
     <td><?=createSelectFromArray('worker_id', $workers, $vacation['worker_id'])?></td>
 </tr>
 <tr>
-  <td>С: &nbsp;  </td>
+    <td>РЎ: &nbsp;</td>
   <td><input name="date_from" id="date_from" type="text" class="cms_fieldstyle1" value="<?=$vacation['date_from']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kl1jhjhdj12d1jk2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
     <script type="text/javascript">
@@ -113,7 +113,7 @@ $types = array(1 => 'Выходной', 2 => 'Рабочий');
     <img src="images/cms_icons/cms_calendar_clear.gif" align="absmiddle" onclick='document.getElementById("date_from").value=""; ' title="Clear Date" style="cursor: pointer;" ></td>
 </tr>
 <tr>
-  <td>По: &nbsp;  </td>
+    <td>РџРѕ: &nbsp;</td>
   <td><input name="date_to" id="date_to" type="text" class="cms_fieldstyle1" value="<?=$vacation['date_to']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="awcawdcc12e12e" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
     <script type="text/javascript">
@@ -145,8 +145,9 @@ $types = array(1 => 'Выходной', 2 => 'Рабочий');
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='report_days.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='report_days.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

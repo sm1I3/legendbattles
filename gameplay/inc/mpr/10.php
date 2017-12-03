@@ -1,19 +1,19 @@
 <? echo '<tr><td width=100% bgcolor=white>
 <font class=proce>
 <FIELDSET>
-<LEGEND align=center><B><font color=gray>&nbsp;Таблица опыта&nbsp;</font></B></LEGEND>
+<LEGEND align=center><B><font color=gray>&nbsp;РўР°Р±Р»РёС†Р° РѕРїС‹С‚Р°&nbsp;</font></B></LEGEND>
 <table cellpadding=0 cellspacing=0 border=0 width=100% bgcolor=#FF3300>
 <tr><td>
 <table border=0 cellpadding=2 cellspacing=1 bordercolor=#FF3300 align=center class="smallhead" width=100%>
   <tr bgcolor=#EAEAEA align=center>
-    <td> Ур.</td>
-    <td> Опыта до уровня</td>
-    <td> Базовый опыт</td>
-    <td> Увеличение cтатов</td>
-    <td> Деньги</td>
-    <td> Навыки</td>
-    <td> Мирные Умения</td>
-    <td> Боевые умения</td>
+    <td> РЈСЂ.</td>
+    <td> РћРїС‹С‚Р° РґРѕ СѓСЂРѕРІРЅСЏ</td>
+    <td> Р‘Р°Р·РѕРІС‹Р№ РѕРїС‹С‚</td>
+    <td> РЈРІРµР»РёС‡РµРЅРёРµ cС‚Р°С‚РѕРІ</td>
+    <td> Р”РµРЅСЊРіРё</td>
+    <td> РќР°РІС‹РєРё</td>
+    <td> РњРёСЂРЅС‹Рµ РЈРјРµРЅРёСЏ</td>
+    <td> Р‘РѕРµРІС‹Рµ СѓРјРµРЅРёСЏ</td>
   </tr>
   <tr valign=middle class=nickname bgcolor=FF3301>
     <td height=20><div align=center>0</div></td>
@@ -42,14 +42,14 @@
 	$bum+=$arr['bum'];
 	$nv+=$arr['nv'];
 	$frs+=$arr['frs'];
-	echo '<td height=20><div align=center>'.$i.'</div></td>'; //уровень
-	echo '<td height=20><div align=center>'.$arr['exp'].'</div></td>'; //опыта до уровня
-	echo '<td height=20><div align=center>'.$arr['ex'].'</div></td>'; //Базовый опыт
-	echo '<td height=20><div align=center>'.$arr['frs'].'('.$frs.')</div></td>'; //Увеличение cтатов
-	echo '<td height=20><div align=center>'.$arr['nv'].'('.$nv.')</div></td>'; //Деньги
-	echo '<td height=20><div align=center>'.$arr['nav'].'('.$nav.')</div></td>'; //Навыки
-	echo '<td height=20><div align=center>'.$arr['mum'].'('.$mum.')</div></td>'; //Мирные Умения
-	echo '<td height=20><div align=center>'.$arr['bum'].'('.$bum.')</div></td>'; //Боевые умения	
+      echo '<td height=20><div align=center>' . $i . '</div></td>'; //СѓСЂРѕРІРµРЅСЊ
+      echo '<td height=20><div align=center>' . $arr['exp'] . '</div></td>'; //РѕРїС‹С‚Р° РґРѕ СѓСЂРѕРІРЅСЏ
+      echo '<td height=20><div align=center>' . $arr['ex'] . '</div></td>'; //Р‘Р°Р·РѕРІС‹Р№ РѕРїС‹С‚
+      echo '<td height=20><div align=center>' . $arr['frs'] . '(' . $frs . ')</div></td>'; //РЈРІРµР»РёС‡РµРЅРёРµ cС‚Р°С‚РѕРІ
+      echo '<td height=20><div align=center>' . $arr['nv'] . '(' . $nv . ')</div></td>'; //Р”РµРЅСЊРіРё
+      echo '<td height=20><div align=center>' . $arr['nav'] . '(' . $nav . ')</div></td>'; //РќР°РІС‹РєРё
+      echo '<td height=20><div align=center>' . $arr['mum'] . '(' . $mum . ')</div></td>'; //РњРёСЂРЅС‹Рµ РЈРјРµРЅРёСЏ
+      echo '<td height=20><div align=center>' . $arr['bum'] . '(' . $bum . ')</div></td>'; //Р‘РѕРµРІС‹Рµ СѓРјРµРЅРёСЏ
   echo '</tr>';
   $i++;
   }

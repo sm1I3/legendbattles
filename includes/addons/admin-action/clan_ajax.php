@@ -18,7 +18,7 @@ $pers = GetUser($_SESSION['user']['login']);
 switch($_GET['act']){
 	case'get':
 		$plid = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `id`='".intval($_GET['plid'])."';"));
-		if($pers['login']=='mozg' or $pers['login']=='Администрация'){
+        if ($pers['login'] == 'mozg' or $pers['login'] == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
 			$placcess = explode("|",$plid['clan_accesses']);
 			echo"OK@".$plid['id']."|".$plid['clan_d']."|".(in_array('1',$placcess)?'1':'0')."|".(in_array('2',$placcess)?'1':'0')."|".(in_array('4',$placcess)?'1':'0')."|".(in_array('8',$placcess)?'1':'0')."|".$plid['clan_status'];
 		}
@@ -50,12 +50,18 @@ switch($_GET['act']){
 				if($invit['id_item']){
 					mysqli_query($GLOBALS['db_link'],"INSERT INTO `clan_kazna` (`id_item`,`protype`,`pl_id`,`clan_id`) VALUES ('".$invit['id_item']."','".$invit['protype']."','".$glava['id']."','".$glava['clan_id']."')");
 					mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `gift`='1',`gift_from`='Lifeiswar.ru',`clan`='1' WHERE `pl_id`='".$glava['id']."' AND `id_item`='".$invit['id_item']."';");
-					echo '<br>Вещь успешно добавлена в клан: <b>'.$glava['clan_id'].'</b>';
-					echo '<br>Лидеру клана: <b>'.$glava['login'].'</b>';
-					echo '<br>Имя вещи: <b>'.$it['name'].'</b>';
-				}else{echo '<br>FAIL 3 - написать mozg';}
-			}else{echo '<br>Не найдена вещь: '.$_GET['itemname'];}
-		}else{echo '<br>Не найден глава клана: '.$_GET['clanname'];}
+                    echo '<br>Р’РµС‰СЊ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅР° РІ РєР»Р°РЅ: <b>' . $glava['clan_id'] . '</b>';
+                    echo '<br>Р›РёРґРµСЂСѓ РєР»Р°РЅР°: <b>' . $glava['login'] . '</b>';
+                    echo '<br>РРјСЏ РІРµС‰Рё: <b>' . $it['name'] . '</b>';
+                } else {
+                    echo '<br>FAIL 3 - РЅР°РїРёСЃР°С‚СЊ mozg';
+                }
+            } else {
+                echo '<br>РќРµ РЅР°Р№РґРµРЅР° РІРµС‰СЊ: ' . $_GET['itemname'];
+            }
+        } else {
+            echo '<br>РќРµ РЅР°Р№РґРµРЅ РіР»Р°РІР° РєР»Р°РЅР°: ' . $_GET['clanname'];
+        }
 	break;
 }
 

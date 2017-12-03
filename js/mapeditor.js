@@ -5,9 +5,9 @@ EditBots = function(mod,values){
 	FormPopUp('darker');
 	if(mod == 'Edit'){
 		var par = values.split("|");
-		var EditBot = '<form onSubmit="FormSubmit(\'6\');return false;"><table width="100%" align="center"><tr><td>Мин.Уровень:</td><td><input type="text" id="bot_min" value="'+par[0]+'" class="lbut" /></td></tr><tr><td>Макс.Уровень:</td><td><input type="text" id="bot_max" value="'+par[1]+'" class="lbut" /></td></tr><tr><td align="center" colspan="2"><input type="submit" value="Сохранить" class="lbut" /></td></tr></table></form>';		
+        var EditBot = '<form onSubmit="FormSubmit(\'6\');return false;"><table width="100%" align="center"><tr><td>РњРёРЅ.РЈСЂРѕРІРµРЅСЊ:</td><td><input type="text" id="bot_min" value="' + par[0] + '" class="lbut" /></td></tr><tr><td>РњР°РєСЃ.РЈСЂРѕРІРµРЅСЊ:</td><td><input type="text" id="bot_max" value="' + par[1] + '" class="lbut" /></td></tr><tr><td align="center" colspan="2"><input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ" class="lbut" /></td></tr></table></form>';
 	}else if(mod == 'Add'){
-		var EditBot = '<form onSubmit="FormSubmit(\'7\');return false;"><table width="100%" align="center"><tr><td>Мин.Уровень:</td><td><input type="text" id="bot_min" value="0" class="lbut" /></td></tr><tr><td>Макс.Уровень:</td><td><input type="text" id="bot_max" value="0" class="lbut" /></td></tr><tr><td align="center" colspan="2"><input type="submit" value="Сохранить" class="lbut" /></td></tr></table></form>';		
+        var EditBot = '<form onSubmit="FormSubmit(\'7\');return false;"><table width="100%" align="center"><tr><td>РњРёРЅ.РЈСЂРѕРІРµРЅСЊ:</td><td><input type="text" id="bot_min" value="0" class="lbut" /></td></tr><tr><td>РњР°РєСЃ.РЈСЂРѕРІРµРЅСЊ:</td><td><input type="text" id="bot_max" value="0" class="lbut" /></td></tr><tr><td align="center" colspan="2"><input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ" class="lbut" /></td></tr></table></form>';
 	}
 	$('ContentPopUp').innerHTML = EditBot;
 }
@@ -21,7 +21,7 @@ EditGrass = function(mod,ids,names,col){
 		for(var i = 0; i<col;i++){
 			options  += '<option value="'+id[i]+'" '+(i==0?'selected=selected':'')+'>'+name[i]+'</option>';
 		}
-		var EditGrass = '<form onSubmit="FormSubmit(\'9\');return false;"><table width="100%" align="center"><tr><td align=center><select id="grass">'+options+'</select></td></tr><tr><td align="center" colspan="2">Время роста (минуты): <input type="text" id="rost" value="60"><br><input type="submit" value="Сохранить" class="lbut" /></td></tr></table></form>';		
+        var EditGrass = '<form onSubmit="FormSubmit(\'9\');return false;"><table width="100%" align="center"><tr><td align=center><select id="grass">' + options + '</select></td></tr><tr><td align="center" colspan="2">Р’СЂРµРјСЏ СЂРѕСЃС‚Р° (РјРёРЅСѓС‚С‹): <input type="text" id="rost" value="60"><br><input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ" class="lbut" /></td></tr></table></form>';
 	}
 	$('ContentPopUp').innerHTML = EditGrass;
 }
@@ -35,7 +35,7 @@ EditLes = function(mod,ids,names,col){
 		for(var i = 0; i<col;i++){
 			options  += '<option value="'+id[i]+'" '+(i==0?'selected=selected':'')+'>'+name[i]+'</option>';
 		}
-		var EditLes = '<form onSubmit="FormSubmit(\'11\');return false;"><table width="100%" align="center"><tr><td align=center><select id="grass">'+options+'</select></td></tr><tr><td align="center" colspan="2">Время роста (минуты): <input type="text" id="rost" value="60"><br><input type="submit" value="Сохранить" class="lbut" /></td></tr></table></form>';		
+        var EditLes = '<form onSubmit="FormSubmit(\'11\');return false;"><table width="100%" align="center"><tr><td align=center><select id="grass">' + options + '</select></td></tr><tr><td align="center" colspan="2">Р’СЂРµРјСЏ СЂРѕСЃС‚Р° (РјРёРЅСѓС‚С‹): <input type="text" id="rost" value="60"><br><input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ" class="lbut" /></td></tr></table></form>';
 	}
 	$('ContentPopUp').innerHTML = EditLes;
 }
@@ -49,7 +49,7 @@ EditFish = function(mod,ids,names,col){
 		for(var i = 0; i<col;i++){
 			options  += '<option value="'+id[i]+'" '+(i==0?'selected=selected':'')+'>'+name[i]+'</option>';
 		}
-		var EditFish = '<form onSubmit="FormSubmit(\'12\');return false;"><table width="100%" align="center"><tr><td align=center><select id="grass">'+options+'</select></td></tr><tr><td align="center" colspan="2">Уровень "Рыбалки" для ловли: <input type="text" id="rost" value="1"><br><input type="submit" value="Сохранить" class="lbut" /></td></tr></table></form>';		
+        var EditFish = '<form onSubmit="FormSubmit(\'12\');return false;"><table width="100%" align="center"><tr><td align=center><select id="grass">' + options + '</select></td></tr><tr><td align="center" colspan="2">РЈСЂРѕРІРµРЅСЊ "Р С‹Р±Р°Р»РєРё" РґР»СЏ Р»РѕРІР»Рё: <input type="text" id="rost" value="1"><br><input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ" class="lbut" /></td></tr></table></form>';
 	}
 	$('ContentPopUp').innerHTML = EditFish;
 }
@@ -57,15 +57,15 @@ EditFish = function(mod,ids,names,col){
 LocConfig = function(){
 	FormPopUp('darker');
 	if(dataedit[4] == '0'){
-		$('ContentPopUp').innerHTML = '<form onSubmit="FormSubmit(\'4\');return false;">  <table width="100%" align="center"><tr>      <td align="center"><input type="submit" value="Сделать доступной" class="lbut" /></td>    </tr>  </table></form>';
+        $('ContentPopUp').innerHTML = '<form onSubmit="FormSubmit(\'4\');return false;">  <table width="100%" align="center"><tr>      <td align="center"><input type="submit" value="РЎРґРµР»Р°С‚СЊ РґРѕСЃС‚СѓРїРЅРѕР№" class="lbut" /></td>    </tr>  </table></form>';
 	}else if(dataedit[4] == '1'){
-		$('ContentPopUp').innerHTML = '<form onSubmit="FormSubmit(\'5\');return false;">  <table width="100%" align="center"><tr>      <td align="center"><input type="submit" value="Сделать недоступной" class="lbut" /></td>    </tr>  </table></form>';
+        $('ContentPopUp').innerHTML = '<form onSubmit="FormSubmit(\'5\');return false;">  <table width="100%" align="center"><tr>      <td align="center"><input type="submit" value="РЎРґРµР»Р°С‚СЊ РЅРµРґРѕСЃС‚СѓРїРЅРѕР№" class="lbut" /></td>    </tr>  </table></form>';
 	}
 }
 
 MoveTo = function(){
 	FormPopUp('darker');
-	$('ContentPopUp').innerHTML = '<form onSubmit="FormSubmit(\'1\');return false;">  <table width="100%" align="center">    <tr>      <td align="center"><input name="pos_x" id="pos_x" value="'+dataedit[0]+'" class="lbut" />        <input name="pos_y" id="pos_y" value="'+dataedit[1]+'" class="lbut" /></td>    </tr>    <tr>      <td align="center"><input type="submit" value="Перейти" class="lbut" /></td>    </tr>  </table></form>';
+    $('ContentPopUp').innerHTML = '<form onSubmit="FormSubmit(\'1\');return false;">  <table width="100%" align="center">    <tr>      <td align="center"><input name="pos_x" id="pos_x" value="' + dataedit[0] + '" class="lbut" />        <input name="pos_y" id="pos_y" value="' + dataedit[1] + '" class="lbut" /></td>    </tr>    <tr>      <td align="center"><input type="submit" value="РџРµСЂРµР№С‚Рё" class="lbut" /></td>    </tr>  </table></form>';
 }
 
 TeleTo = function(){
@@ -74,7 +74,7 @@ TeleTo = function(){
 	if(dataedit[3]=='0'){
 		TeleToS += 'selected="selected"';
 	}
-	TeleToS += '>Никуда</option>';
+    TeleToS += '>РќРёРєСѓРґР°</option>';
 	for(var i=0; i<teleto.length; i++){
 		if(teleto[i][0] == dataedit[3]){
 			TeleToS += '<option value="'+teleto[i][0]+'" selected="selected">'+teleto[i][1]+'</option>';
@@ -82,7 +82,7 @@ TeleTo = function(){
 			TeleToS += '<option value="'+teleto[i][0]+'">'+teleto[i][1]+'</option>';
 		}
 	}
-	TeleToS += '</select><input type="submit" value="Изменить" class="lbut" /></form>';
+    TeleToS += '</select><input type="submit" value="РР·РјРµРЅРёС‚СЊ" class="lbut" /></form>';
 	FormPopUp('darker');
 	$('ContentPopUp').innerHTML = TeleToS;
 }
@@ -93,7 +93,7 @@ GoTo = function(){
 	if(dataedit[3]=='0'){
 		GoToS += 'selected="selected"';
 	}
-	GoToS += '>Никуда</option>';
+    GoToS += '>РќРёРєСѓРґР°</option>';
 	for(var i=0; i<goto.length; i++){
 		if(goto[i][0] == dataedit[3]){
 			GoToS += '<option value="'+goto[i][0]+'" selected="selected">'+goto[i][1]+'</option>';
@@ -101,14 +101,14 @@ GoTo = function(){
 			GoToS += '<option value="'+goto[i][0]+'">'+goto[i][1]+'</option>';
 		}
 	}
-	GoToS += '</select><input type="submit" value="Изменить" class="lbut" /></form>';
+    GoToS += '</select><input type="submit" value="РР·РјРµРЅРёС‚СЊ" class="lbut" /></form>';
 	FormPopUp('darker');
 	$('ContentPopUp').innerHTML = GoToS;
 }
 
 LocName = function(){
 	FormPopUp('darker');
-	$('ContentPopUp').innerHTML = '<form onSubmit="FormSubmit(\'2\');return false;">  <table width="100%" align="center">    <tr>      <td align="center"><input name="LocName" id="LocName" value="'+dataedit[2]+'" class="lbut" /></td>    </tr>    <tr>      <td align="center"><input type="submit" value="Изменить" class="lbut" /></td>    </tr>  </table></form>';
+    $('ContentPopUp').innerHTML = '<form onSubmit="FormSubmit(\'2\');return false;">  <table width="100%" align="center">    <tr>      <td align="center"><input name="LocName" id="LocName" value="' + dataedit[2] + '" class="lbut" /></td>    </tr>    <tr>      <td align="center"><input type="submit" value="РР·РјРµРЅРёС‚СЊ" class="lbut" /></td>    </tr>  </table></form>';
 }
 
 FormSubmit = function(id){
@@ -143,17 +143,17 @@ StateReady = function(){
 	if(arr_res[0] == 'OK2'){
 		FormPopUp('darker');
 		dataedit[2] = $('LocName').value;
-		$('LocName_text').innerHTML = 'Локация: '+$('LocName').value;
+        $('LocName_text').innerHTML = 'Р›РѕРєР°С†РёСЏ: ' + $('LocName').value;
 	}else if(arr_res[0] == 'OK3'){
 		FormPopUp('darker');
 		dataedit[3] = $('go_id').value;
-		$('GoTo_text').innerHTML = 'Вход: '+arr_res[1];
+        $('GoTo_text').innerHTML = 'Р’С…РѕРґ: ' + arr_res[1];
 	}else if(arr_res[0] == 'OK4'){
 		window.location.reload();
 	}else if(arr_res[0] == 'OK5'){
 		FormPopUp('darker');
 		dataedit[3] = $('tele_id').value;
-		$('TeleTo_text').innerHTML = 'Телепорт: '+arr_res[1];
+        $('TeleTo_text').innerHTML = 'РўРµР»РµРїРѕСЂС‚: ' + arr_res[1];
 	}else if(arr_res[0] == 'NOTOK'){
 		alert('test');
 	}

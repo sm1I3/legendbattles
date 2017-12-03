@@ -1,7 +1,7 @@
 <? 
 	if($_GET['adderr']==1){
 		mysqli_query($GLOBALS['db_link'],"INSERT INTO `bug_reports` (`text`,`date`,`srok`,`from`) VALUES ('".bbCodes(addslashes(htmlspecialchars($_POST['errtext'])))."','".time()."','".intval($_POST['errtype'])."','".$player['login']."')");
-		$message="Сообщение добавлено.";
+        $message = "РЎРѕРѕР±С‰РµРЅРёРµ РґРѕР±Р°РІР»РµРЅРѕ.";
 	}
 	if($_GET['bonus']==1 and $player['compensations']=='1'){
 			$player=player();
@@ -9,7 +9,7 @@
 
 			
 			echo'
-			<br>Получено: <b>Не чего не  получил -)</b>
+			<br>РџРѕР»СѓС‡РµРЅРѕ: <b>РќРµ С‡РµРіРѕ РЅРµ  РїРѕР»СѓС‡РёР» -)</b>
 			</td></tr>
 			';
 			$player['compensations']=0;
@@ -18,24 +18,25 @@
 ?>
 <div class="block info">
 	<div class="header">
-		<span>Общая информация</span>
+        <span>РћР±С‰Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</span>
 	</div>
 	<div class="content">	
 	<p>
-		Принять участие в развитие игрового мира, поделиться своими предложениями и пожеланиями можно <a href="http://forum.legendbattles.ru/30/" target=_blank>в специальном разделе на форуме</a>.
+        РџСЂРёРЅСЏС‚СЊ СѓС‡Р°СЃС‚РёРµ РІ СЂР°Р·РІРёС‚РёРµ РёРіСЂРѕРІРѕРіРѕ РјРёСЂР°, РїРѕРґРµР»РёС‚СЊСЃСЏ СЃРІРѕРёРјРё РїСЂРµРґР»РѕР¶РµРЅРёСЏРјРё Рё РїРѕР¶РµР»Р°РЅРёСЏРјРё РјРѕР¶РЅРѕ <a
+                href="http://forum.legendbattles.ru/30/" target=_blank>РІ СЃРїРµС†РёР°Р»СЊРЅРѕРј СЂР°Р·РґРµР»Рµ РЅР° С„РѕСЂСѓРјРµ</a>.
 	</p>
 	<div class="field">
-		<label for="ref">Ваша уникальная (реф.) ссылка :</label>
+        <label for="ref">Р’Р°С€Р° СѓРЅРёРєР°Р»СЊРЅР°СЏ (СЂРµС„.) СЃСЃС‹Р»РєР° :</label>
 		<input value="http://legendbattles.ru/ref.php?<?=$player['login']?>" style="width:300px" name="ref" type="text">
 	<form method=post action="?findpers=1">
 		<div class="field">
-			<label for="nickname">Поиск персонажей:</label>
+            <label for="nickname">РџРѕРёСЃРє РїРµСЂСЃРѕРЅР°Р¶РµР№:</label>
 			<input type=text name=nickname size=20 maxlength=20>
-			<input type=submit value="Ок">
+            <input type=submit value="РћРє">
 		</div>
 <?
 	if($_GET['findpers']==1 and $_POST['nickname']!=''){
-		if($player['login']=='Администрация'){
+        if ($player['login'] == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
 		}
 		else{
 			
@@ -48,7 +49,7 @@
 				}
 			}
 			else{
-			 echo '<p>Персонажей с похожими именами не найдено</p>';
+                echo '<p>РџРµСЂСЃРѕРЅР°Р¶РµР№ СЃ РїРѕС…РѕР¶РёРјРё РёРјРµРЅР°РјРё РЅРµ РЅР°Р№РґРµРЅРѕ</p>';
 			}
 		}
 	}
@@ -56,9 +57,9 @@
 	</form>
 	<form method=post action="?kodspers=1&vcode=<?php scode()?>">
 		<div class="field">
-		<label for="nickname">Вести бонус-код:</label>
-			<input type=text name=nickname size=20 maxlength=20> 
-			<input type=submit value="Ок">
+            <label for="nickname">Р’РµСЃС‚Рё Р±РѕРЅСѓСЃ-РєРѕРґ:</label>
+			<input type=text name=nickname size=20 maxlength=20>
+            <input type=submit value="РћРє">
 		</div>
 <?	$proms = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `promo` WHERE `kol` LIMIT 1;"));
 	
@@ -69,21 +70,21 @@
 			if(mysqli_num_rows($kods)>0){
 				echo '<tr><td>';
 				while($kodsed = mysqli_fetch_assoc($kods)){
-					echo 'Вы активировали бонус-код<br>';
+                    echo 'Р’С‹ Р°РєС‚РёРІРёСЂРѕРІР°Р»Рё Р±РѕРЅСѓСЃ-РєРѕРґ<br>';
 					mysqli_query($GLOBALS['db_link'],"update `promo` set `kol`=`kol`-'1'");
 					mysqli_query($GLOBALS['db_link'],"update `user` set `promo`='1' WHERE `id`='".$player['id']."' LIMIT 1;");
-					mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Бонус&nbsp;</font> <font color=000000>&quot;<b>".$player['login']."</b>&quot; активировали бонус-код</font></i><BR>'+'');")."');");
+                    mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Р‘РѕРЅСѓСЃ&nbsp;</font> <font color=000000>&quot;<b>" . $player['login'] . "</b>&quot; Р°РєС‚РёРІРёСЂРѕРІР°Р»Рё Р±РѕРЅСѓСЃ-РєРѕРґ</font></i><BR>'+'');") . "');");
 					mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price`) VALUES ('3532',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0');");
 				}
 				echo '</td></tr>';
 			}
 			else{
-			 echo '<p>Неверный бонус-код. Попробуйте ещё раз</p>';
+                echo '<p>РќРµРІРµСЂРЅС‹Р№ Р±РѕРЅСѓСЃ-РєРѕРґ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·</p>';
 			}
 		}
 	}
 	else{
-			 echo '<p>Лимит исчерпан или вы активировали бонус-код. </p>';
+        echo '<p>Р›РёРјРёС‚ РёСЃС‡РµСЂРїР°РЅ РёР»Рё РІС‹ Р°РєС‚РёРІРёСЂРѕРІР°Р»Рё Р±РѕРЅСѓСЃ-РєРѕРґ. </p>';
 			}
 	}
 ?>
@@ -93,22 +94,22 @@
 		$pupil = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `id` = '".$player["instructor"]."'"));
 		if(@$_GET["deny"]){
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `instructor` = '0' WHERE `id` = '".$player["id"]."'");
-			chmsg("parent.frames['chmain'].add_msg('<font class=yochattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><font color=#000000><b>Системная информация.</b></font> Персонаж <b>".$player["login"]."</b>[".$player["level"]."/".$player["u_lvl"]."] отказался от обучения.</font><BR>'+'');",$pupil['login']);
+            chmsg("parent.frames['chmain'].add_msg('<font class=yochattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><font color=#000000><b>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ.</b></font> РџРµСЂСЃРѕРЅР°Р¶ <b>" . $player["login"] . "</b>[" . $player["level"] . "/" . $player["u_lvl"] . "] РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РѕР±СѓС‡РµРЅРёСЏ.</font><BR>'+'');", $pupil['login']);
 			$pupil = '';
 		}
 		if($pupil){
-				echo'<p> Вы обучаетесь у персонажа <b>'.$pupil["level"].'</b>го уровня</p>
-				<p><b>'.$pupil['login'].'</b> ['.$pupil['level'].'/'.$pupil['u_lvl'].'] <a href="/ipers.php?'.$pupil['login'].'" target="_blank"><img src="http://img.legendbattles.ru/image/chat/info.gif" width="11" height="12" border="0" align="absmiddle"></a> <input type=button class=lbut value="Отказаться от обучения" onclick="location = \'/main.php?deny=1\'"></p>';
+            echo '<p> Р’С‹ РѕР±СѓС‡Р°РµС‚РµСЃСЊ Сѓ РїРµСЂСЃРѕРЅР°Р¶Р° <b>' . $pupil["level"] . '</b>РіРѕ СѓСЂРѕРІРЅСЏ</p>
+				<p><b>' . $pupil['login'] . '</b> [' . $pupil['level'] . '/' . $pupil['u_lvl'] . '] <a href="/ipers.php?' . $pupil['login'] . '" target="_blank"><img src="http://img.legendbattles.ru/image/chat/info.gif" width="11" height="12" border="0" align="absmiddle"></a> <input type=button class=lbut value="РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РѕР±СѓС‡РµРЅРёСЏ" onclick="location = \'/main.php?deny=1\'"></p>';
 		}
 	}
 ?>
-	<font style="font-size: 13px;">С уважением, команда разработчиков проекта <?=$gamename?></font>
-<?
-	if($player['login']=='alexs' or $player['login']=='Администрация'){		
+        <font style="font-size: 13px;">РЎ СѓРІР°Р¶РµРЅРёРµРј, РєРѕРјР°РЅРґР° СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРІ РїСЂРѕРµРєС‚Р° <?= $gamename ?></font>
+        <?
+        if ($player['login'] == 'alexs' or $player['login'] == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
 		echo "<p>
 		<form method=post>
 		<input type=hidden name=testid value=1>
-		<input type=submit value='Обнулить игрокам Бонус код'>
+		<input type=submit value='РћР±РЅСѓР»РёС‚СЊ РёРіСЂРѕРєР°Рј Р‘РѕРЅСѓСЃ РєРѕРґ'>
 		</form>	";
 		if($_POST['testid']==1){
 			mysqli_query($GLOBALS['db_link'],"update `user` set `promo`='0'");	
@@ -117,7 +118,7 @@
 		echo "<p>
 		<form method=post>
 		<input type=hidden name=comid value=1>
-		<input type=submit value='Обнулить игрокам Компенсацию'>
+		<input type=submit value='РћР±РЅСѓР»РёС‚СЊ РёРіСЂРѕРєР°Рј РљРѕРјРїРµРЅСЃР°С†РёСЋ'>
 		</form>
 		";
 		if($_POST['comid']==1){

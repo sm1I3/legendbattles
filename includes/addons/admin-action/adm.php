@@ -1,7 +1,7 @@
 <? 
 session_start();
 session_register('filter');
-$sign = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"select `sign` from `user` where `login`='Администрация' LIMIT 1;"));
+$sign = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "select `sign` from `user` where `login`='РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ' LIMIT 1;"));
 ?>
 <HTML>
 <HEAD>
@@ -19,46 +19,49 @@ $sign = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"select `sign` from 
 -->
 </style>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr><td align=center><input type="button" class="lbut" onClick="location='../../../main.php'" value="Вернуться"></td></tr>
+    <tr>
+        <td align=center><input type="button" class="lbut" onClick="location='../../../main.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        </td>
+    </tr>
   <tr>
     <td align=center>
-		<input type="button" class="lbut" onclick="location='adm.php?id_adm=1'" value="Изготовление предметов" />
-		<input type="button" class="lbut" onclick="location='adm.php?id_adm=4'" value="Редактор предметов" />
-		<input type="button" class="lbut" onclick="location='adm.php?id_adm=2'" value="Добавление в магазин" />
-		<input type="button" class="lbut" onclick="location='adm.php?id_adm=3'" value="Завоз" />
-		<input type="button" class="lbut" onclick="location='adm.php?id_adm=99'" value="Передача вещей персонажам" />
-		<input type="button" class="lbut" onclick="location='adm.php?id_adm=7'" value="Блок IP" />
+        <input type="button" class="lbut" onclick="location='adm.php?id_adm=1'" value="РР·РіРѕС‚РѕРІР»РµРЅРёРµ РїСЂРµРґРјРµС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='adm.php?id_adm=4'" value="Р РµРґР°РєС‚РѕСЂ РїСЂРµРґРјРµС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='adm.php?id_adm=2'" value="Р”РѕР±Р°РІР»РµРЅРёРµ РІ РјР°РіР°Р·РёРЅ"/>
+        <input type="button" class="lbut" onclick="location='adm.php?id_adm=3'" value="Р—Р°РІРѕР·"/>
+        <input type="button" class="lbut" onclick="location='adm.php?id_adm=99'" value="РџРµСЂРµРґР°С‡Р° РІРµС‰РµР№ РїРµСЂСЃРѕРЅР°Р¶Р°Рј"/>
+        <input type="button" class="lbut" onclick="location='adm.php?id_adm=7'" value="Р‘Р»РѕРє IP"/>
 	</td>
 	</tr>
 <tr>	
 	<td align=center>
-	<input type="button" class="lbut" onclick="location='player_items.php'" value="Удаление вещей" />
-	<input type="button" class="lbut" onclick="location='clan_items.php'" value="Работа с КЛАНАМИ" />
-	<input type="button" class="lbut" onclick="location='tz.php'" value="ТЗ админам" />
-	<input type="button" class="lbut" onclick="location='errors.php'" value=" Сообщения об ошибках" />
-	<input type="button" class="lbut" onclick="location='alhim.php'" value="Создание алхимических рецептов" />
-	<input type="button" class="lbut" onclick="location='custom_rec.php'" value="Создание других рецептов" />
-	<input type="button" class="lbut" onclick="location='bot_drop.php'" value="Дроп ботов" />
-	<input type="button" class="lbut" onclick="location='accounts.php'" value="Аккаунты" />
-	<input type="button" class="lbut" onclick="location='presents.php'" value="Подарки" />	
-	<input type="button" class="lbut" onclick="location='player.php'" value="Персонажи" />	
-	<input type="button" class="lbut" onclick="location='labyrinth.php'" value="Лабиринт" />
+        <input type="button" class="lbut" onclick="location='player_items.php'" value="РЈРґР°Р»РµРЅРёРµ РІРµС‰РµР№"/>
+        <input type="button" class="lbut" onclick="location='clan_items.php'" value="Р Р°Р±РѕС‚Р° СЃ РљР›РђРќРђРњР"/>
+        <input type="button" class="lbut" onclick="location='tz.php'" value="РўР— Р°РґРјРёРЅР°Рј"/>
+        <input type="button" class="lbut" onclick="location='errors.php'" value=" РЎРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С…"/>
+        <input type="button" class="lbut" onclick="location='alhim.php'" value="РЎРѕР·РґР°РЅРёРµ Р°Р»С…РёРјРёС‡РµСЃРєРёС… СЂРµС†РµРїС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='custom_rec.php'" value="РЎРѕР·РґР°РЅРёРµ РґСЂСѓРіРёС… СЂРµС†РµРїС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='bot_drop.php'" value="Р”СЂРѕРї Р±РѕС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='accounts.php'" value="РђРєРєР°СѓРЅС‚С‹"/>
+        <input type="button" class="lbut" onclick="location='presents.php'" value="РџРѕРґР°СЂРєРё"/>
+        <input type="button" class="lbut" onclick="location='player.php'" value="РџРµСЂСЃРѕРЅР°Р¶Рё"/>
+        <input type="button" class="lbut" onclick="location='labyrinth.php'" value="Р›Р°Р±РёСЂРёРЅС‚"/>
 </td>
 </tr>
 <tr>	
 <td align=center>
-	<input type="button" class="lbut" onclick="location='ref_system.php'" value="Рефералка" />	
-	<input type="button" class="lbut" onclick="location='bot_edit.php'" value="Боты" />	
-	<input type="button" class="lbut" onclick="location='system_messages.php'" value="Системки" />
-	<input type="button" class="lbut" onclick="location='real_dd_adm.php'" value="Продажа статов в ДЦ" />	
-	<input type="button" class="lbut" onclick="location='player-actions.php'" value="ЛОГИ ПЕРСОНАЖЕЙ" />
-	<input type="button" class="lbut" onclick="location='chests2.php'" value="Сундуки откр" />
-	<input type="button" class="lbut" onclick="location='chests.php'" value="Cундуки" />
-    <input type="button" class="lbut" onclick="location='curs.php'" value="Дилер" />
-    <input type="button" class="lbut" onclick="location='koldyn.php'" value="Колдун" />	
-	<input type="button" class="lbut" onclick="location='tavern.php'" value="Таверна" />
-	<input type="button" class="lbut" onclick="location='panel.php'" value="Вход в игру" />
-	<input type="button" class="lbut" onclick="location='online.php'" value="Онлайн" />
+    <input type="button" class="lbut" onclick="location='ref_system.php'" value="Р РµС„РµСЂР°Р»РєР°"/>
+    <input type="button" class="lbut" onclick="location='bot_edit.php'" value="Р‘РѕС‚С‹"/>
+    <input type="button" class="lbut" onclick="location='system_messages.php'" value="РЎРёСЃС‚РµРјРєРё"/>
+    <input type="button" class="lbut" onclick="location='real_dd_adm.php'" value="РџСЂРѕРґР°Р¶Р° СЃС‚Р°С‚РѕРІ РІ Р”Р¦"/>
+    <input type="button" class="lbut" onclick="location='player-actions.php'" value="Р›РћР“Р РџР•Р РЎРћРќРђР–Р•Р™"/>
+    <input type="button" class="lbut" onclick="location='chests2.php'" value="РЎСѓРЅРґСѓРєРё РѕС‚РєСЂ"/>
+    <input type="button" class="lbut" onclick="location='chests.php'" value="CСѓРЅРґСѓРєРё"/>
+    <input type="button" class="lbut" onclick="location='curs.php'" value="Р”РёР»РµСЂ"/>
+    <input type="button" class="lbut" onclick="location='koldyn.php'" value="РљРѕР»РґСѓРЅ"/>
+    <input type="button" class="lbut" onclick="location='tavern.php'" value="РўР°РІРµСЂРЅР°"/>
+    <input type="button" class="lbut" onclick="location='panel.php'" value="Р’С…РѕРґ РІ РёРіСЂСѓ"/>
+    <input type="button" class="lbut" onclick="location='online.php'" value="РћРЅР»Р°Р№РЅ"/>
 </td>
 </tr>
 </table>
@@ -71,19 +74,19 @@ function varcheck($input){
 		if(is_numeric($input))
 		{
 
-		#Функция актуальна при условии, если значение больше 0
-		#Получает целочисленное значение переменной
+            #Р¤СѓРЅРєС†РёСЏ Р°РєС‚СѓР°Р»СЊРЅР° РїСЂРё СѓСЃР»РѕРІРёРё, РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ Р±РѕР»СЊС€Рµ 0
+            #РџРѕР»СѓС‡Р°РµС‚ С†РµР»РѕС‡РёСЃР»РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№
 			$number = intval($input);
 			//echo 'numeric';
 			return $number;
 		}
 		else
 		{
-			#Вырезаем html теги
+            #Р’С‹СЂРµР·Р°РµРј html С‚РµРіРё
 			$out_string= strip_tags($input);
-			#Преобразует специальные символы в HTML сущности.
+            #РџСЂРµРѕР±СЂР°Р·СѓРµС‚ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹ РІ HTML СЃСѓС‰РЅРѕСЃС‚Рё.
 			$out_string= htmlspecialchars($out_string);
-			#Экранирует специальные символы в строке,принмимая во внимание кодировку соединения.
+            #Р­РєСЂР°РЅРёСЂСѓРµС‚ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹ РІ СЃС‚СЂРѕРєРµ,РїСЂРёРЅРјРёРјР°СЏ РІРѕ РІРЅРёРјР°РЅРёРµ РєРѕРґРёСЂРѕРІРєСѓ СЃРѕРµРґРёРЅРµРЅРёСЏ.
 			$out_string= mysqli_real_escape_string($GLOBALS['db_link'],$out_string);
 			return $out_string;
 
@@ -117,32 +120,36 @@ if($id_adm==7){
 		$check = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `blocklist` WHERE `ip`='".$banip."' LIMIT 1;"));
 		if(!$check['id']){
 			mysqli_query($GLOBALS['db_link'],"INSERT INTO `blocklist` (`ip`) VALUES ('".$banip."');");
-			echo '<font class=proce>IP: '.$banip.' заблокирован!</font>';
-		}else{echo '<font class=proce>IP: '.$banip.' уже заблокирован!</font>';}
+            echo '<font class=proce>IP: ' . $banip . ' Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ!</font>';
+        } else {
+            echo '<font class=proce>IP: ' . $banip . ' СѓР¶Рµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ!</font>';
+        }
 	}
 	elseif($unbanip){
 		$check = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `blocklist` WHERE `ip`='".$unbanip."' LIMIT 1;"));
 		if($check['id']){
 			mysqli_query($GLOBALS['db_link'],"DELETE FROM `blocklist` WHERE `ip`='".$unbanip."' LIMIT 1;");
-			echo '<font class=proce>IP: '.$unbanip.' разблокирован!</font>';
-		}else{echo '<font class=proce>IP: '.$unbanip.' не найден!</font>';}
+            echo '<font class=proce>IP: ' . $unbanip . ' СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅ!</font>';
+        } else {
+            echo '<font class=proce>IP: ' . $unbanip . ' РЅРµ РЅР°Р№РґРµРЅ!</font>';
+        }
 	}
 	$allblocked = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `blocklist`");
 	echo'<br>
 	<table width="50%" border="0" cellspacing="0" cellpadding="0" align=center>
 	<tr><td align=center>
 	<form action="adm.php?id_adm=7" method="post">
-	<input name="banip" type="text" class="LogintextBox" /><input type=submit value=забанить class=lbut>
+	<input name="banip" type="text" class="LogintextBox" /><input type=submit value=Р·Р°Р±Р°РЅРёС‚СЊ class=lbut>
 	</form><br>
 	</td></tr>
 	<table width="50%" border="0" cellspacing="0" cellpadding="0" align=center>
-	<tr><td align=center><b>Заблокированные адреса</b></td></tr>
+	<tr><td align=center><b>Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ Р°РґСЂРµСЃР°</b></td></tr>
 	';
 	while($row = mysqli_fetch_array($allblocked)){
 	 echo '<tr><td align=center>
 		<form action="adm.php?id_adm=7" method="post">
 		<input name="unbanip" type="hidden" value="'.$row['ip'].'" />
-		'.$row['ip'].' <input type=submit value=разбанить class=lbut>
+		' . $row['ip'] . ' <input type=submit value=СЂР°Р·Р±Р°РЅРёС‚СЊ class=lbut>
 		</form><br>
 		</td></tr>';
 	}
@@ -153,64 +160,74 @@ if($id_adm==7){
 if($id_adm==99){?>
 <form action="adm.php?id_adm=99" method="post">
 <select name="type" >
-	<option value="" selected="selected">все типы</option>
-      <option value="w4">Ножи</option>
-      <option value="w1">Мечи</option>
-      <option value="w2">Топоры</option>
-      <option value="w3">Дробящее</option>
-      <option value="w6">Алебарды и копья</option>
-      <option value="w5">Метательное</option>
-      <option value="w7">Посохи</option>
-      <option value="w20">Щиты</option>
-      <option value="w23">Шлемы</option>
-      <option value="w26">Пояса</option>
-      <option value="w18">Кольчуги</option>
-      <option value="w19">Доспехи</option>
-      <option value="w24">Перчатки</option>
-      <option value="w80">Наручи</option>
-      <option value="w21">Сапоги</option>
-      <option value="w25">Кулоны</option>
-      <option value="w22">Кольца</option>
-      <option value="w28">Наплечники</option>
-      <option value="w90">Поножи</option>
-	  <option value="w61">Приманки</option>
-      <option value="w0">Эликсиры</option>
-	  <option value="w66">Травы</option>
-	  <option value="w67">Шкуры</option>
-	  <option value="w68">Лес</option>
-	  <option value="w69">Рыбалка</option>
-	  <option value="w70">Мази</option>
-	  <option value="w60">Квесты</option>
-	  <option value="w29">Свитки</option>
-	  <option value="w71">Руны</option>
-		<option value="w62">Сундуки</option>
-		<option value="w30">Лицензии</option>
-	  <option value="w100">Ресурсы для крафта</option>
-	  <option value="w16">татем</option>
-     </select>  <input name="smb7" type="submit" class="lbut" value="Применить фильтр" /><? $filter2="WHERE master=''"; if($smb7){if($type==""){$filter="";$filter2="WHERE master=''";}else $filter="WHERE type='$type'";$filter2=" AND master=''";}?> 
+    <option value="" selected="selected">РІСЃРµ С‚РёРїС‹</option>
+    <option value="w4">РќРѕР¶Рё</option>
+    <option value="w1">РњРµС‡Рё</option>
+    <option value="w2">РўРѕРїРѕСЂС‹</option>
+    <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+    <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+    <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+    <option value="w7">РџРѕСЃРѕС…Рё</option>
+    <option value="w20">Р©РёС‚С‹</option>
+    <option value="w23">РЁР»РµРјС‹</option>
+    <option value="w26">РџРѕСЏСЃР°</option>
+    <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+    <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+    <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+    <option value="w80">РќР°СЂСѓС‡Рё</option>
+    <option value="w21">РЎР°РїРѕРіРё</option>
+    <option value="w25">РљСѓР»РѕРЅС‹</option>
+    <option value="w22">РљРѕР»СЊС†Р°</option>
+    <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+    <option value="w90">РџРѕРЅРѕР¶Рё</option>
+    <option value="w61">РџСЂРёРјР°РЅРєРё</option>
+    <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
+    <option value="w66">РўСЂР°РІС‹</option>
+    <option value="w67">РЁРєСѓСЂС‹</option>
+    <option value="w68">Р›РµСЃ</option>
+    <option value="w69">Р С‹Р±Р°Р»РєР°</option>
+    <option value="w70">РњР°Р·Рё</option>
+    <option value="w60">РљРІРµСЃС‚С‹</option>
+    <option value="w29">РЎРІРёС‚РєРё</option>
+    <option value="w71">Р СѓРЅС‹</option>
+    <option value="w62">РЎСѓРЅРґСѓРєРё</option>
+    <option value="w30">Р›РёС†РµРЅР·РёРё</option>
+    <option value="w100">Р РµСЃСѓСЂСЃС‹ РґР»СЏ РєСЂР°С„С‚Р°</option>
+    <option value="w16">С‚Р°С‚РµРј</option>
+</select> <input name="smb7" type="submit" class="lbut" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ"/><? $filter2 = "WHERE master=''";
+    if ($smb7) {
+        if ($type == "") {
+            $filter = "";
+            $filter2 = "WHERE master=''";
+        } else $filter = "WHERE type='$type'";
+        $filter2 = " AND master=''";
+    } ?>
     
       <select name="idit" >
-      <option value=0<? if($idit==""){echo " selected=selected";}?>>Выберите тип</option>
+          <option value=0<? if ($idit == "") {
+              echo " selected=selected";
+          } ?>>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї
+          </option>
   <? $it=mysqli_query($GLOBALS['db_link'],"SELECT * FROM items $filter $filter2 ORDER BY type,name,level;");
 	  while ($row = mysqli_fetch_assoc($it)) {
 		echo "<option value=$row[id]";if($idit==$row[id]){echo " selected=selected";}echo">$row[name] [ $row[level] ] [ $row[effect] ]</option>";
 	  }
 	  ?>
   </select> <input type=text class="LoginText" name="forlogin">
-  <input name="giveitem" type="submit" class="lbut" value="Передать" />
+    <input name="giveitem" type="submit" class="lbut" value="РџРµСЂРµРґР°С‚СЊ"/>
 </form>
 <form action="adm.php?id_adm=99" method="post">
 	<select name="type" >
-	<option value="1" selected="selected">Мертвец</option>
-	<option value="2">Варвар</option>
-	<option value="3">Огонь</option>
-	<option value="4">Дикий</option>
-	<option value="5">Воме</option>
-	<option value="6">Леший</option>
-	<option value="7">Для теста</option>
+        <option value="1" selected="selected">РњРµСЂС‚РІРµС†</option>
+        <option value="2">Р’Р°СЂРІР°СЂ</option>
+        <option value="3">РћРіРѕРЅСЊ</option>
+        <option value="4">Р”РёРєРёР№</option>
+        <option value="5">Р’РѕРјРµ</option>
+        <option value="6">Р›РµС€РёР№</option>
+        <option value="7">Р”Р»СЏ С‚РµСЃС‚Р°</option>
 	</select>
 	<input type=text class="LoginText" name="forlogin">
-	<input name="giveall" type="submit" class="lbut" value="Передать" />
+    <input name="giveall" type="submit" class="lbut" value="РџРµСЂРµРґР°С‚СЊ"/>
 </form>
 
 <? 
@@ -253,299 +270,545 @@ if($giveitem and $forlogin!=''){
 <table width=100% border=1 cellpadding=3 cellspacing=1 bordercolor="#333333">
 <tr>
   <td valign="top" bgcolor="#f9f9f9"><div id="img"></div>
-        <input type="text" name="gif" value="название картинки" onClick="this.value='';">
+      <input type="text" name="gif" value="РЅР°Р·РІР°РЅРёРµ РєР°СЂС‚РёРЅРєРё" onClick="this.value='';">
 
         </select></td>
   <td width=100% bgcolor=#ffffff valign=top><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%><font class=nickname>
     <select name="type" >
-      <option value="w4" selected="selected">Ножи</option>
-      <option value="w1">Мечи</option>
-      <option value="w2">Топоры</option>
-      <option value="w3">Дробящее</option>
-      <option value="w6">Алебарды и копья</option>
-      <option value="w5">Метательное</option>
-      <option value="w7">Посохи</option>
-      <option value="w20">Щиты</option>
-      <option value="w23">Шлемы</option>
-      <option value="w26">Пояса</option>
-      <option value="w18">Кольчуги</option>
-      <option value="w19">Доспехи</option>
-      <option value="w24">Перчатки</option>
-      <option value="w80">Наручи</option>
-      <option value="w21">Сапоги</option>
-      <option value="w25">Кулоны</option>
-      <option value="w22">Кольца</option>
-      <option value="w28">Наплечники</option>
-      <option value="w90">Наколенники</option>
-	  <option value="w29">Свитки</option>
-	  <option value="w30">Лицензии</option>
-	  <option value="w61">Приманки</option>
-      <option value="w0">Эликсиры</option>
-	  <option value="w66">Травы</option>
-	  <option value="w67">Шкуры</option>
-	  <option value="w68">Лес</option>
-	  <option value="w69">Рыбалка</option>
-	  <option value="w70">Мази</option>
-	  <option value="w60">Квесты</option>
-	  <option value="w71">Руны</option>
-		<option value="w62">Сундуки</option>
-	  <option value="w100">Ресурсы для крафта</option>
-	  <option value="w16">татем</option>
+        <option value="w4" selected="selected">РќРѕР¶Рё</option>
+        <option value="w1">РњРµС‡Рё</option>
+        <option value="w2">РўРѕРїРѕСЂС‹</option>
+        <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+        <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+        <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+        <option value="w7">РџРѕСЃРѕС…Рё</option>
+        <option value="w20">Р©РёС‚С‹</option>
+        <option value="w23">РЁР»РµРјС‹</option>
+        <option value="w26">РџРѕСЏСЃР°</option>
+        <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+        <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+        <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+        <option value="w80">РќР°СЂСѓС‡Рё</option>
+        <option value="w21">РЎР°РїРѕРіРё</option>
+        <option value="w25">РљСѓР»РѕРЅС‹</option>
+        <option value="w22">РљРѕР»СЊС†Р°</option>
+        <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+        <option value="w90">РќР°РєРѕР»РµРЅРЅРёРєРё</option>
+        <option value="w29">РЎРІРёС‚РєРё</option>
+        <option value="w30">Р›РёС†РµРЅР·РёРё</option>
+        <option value="w61">РџСЂРёРјР°РЅРєРё</option>
+        <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
+        <option value="w66">РўСЂР°РІС‹</option>
+        <option value="w67">РЁРєСѓСЂС‹</option>
+        <option value="w68">Р›РµСЃ</option>
+        <option value="w69">Р С‹Р±Р°Р»РєР°</option>
+        <option value="w70">РњР°Р·Рё</option>
+        <option value="w60">РљРІРµСЃС‚С‹</option>
+        <option value="w71">Р СѓРЅС‹</option>
+        <option value="w62">РЎСѓРЅРґСѓРєРё</option>
+        <option value="w100">Р РµСЃСѓСЂСЃС‹ РґР»СЏ РєСЂР°С„С‚Р°</option>
+        <option value="w16">С‚Р°С‚РµРј</option>
     </select>
-    <input name="name" type="text" value="Название" />
+                      <input name="name" type="text" value="РќР°Р·РІР°РЅРёРµ"/>
         <select name="block" >
-      <option value="0" selected="selected">Не щит</option>
-      <option value="40">1 точка</option>
-      <option value="70">2 точки</option>
-      <option value="90">3 точки</option>
+            <option value="0" selected="selected">РќРµ С‰РёС‚</option>
+            <option value="40">1 С‚РѕС‡РєР°</option>
+            <option value="70">2 С‚РѕС‡РєРё</option>
+            <option value="90">3 С‚РѕС‡РєРё</option>
     </select>
     <select name="num_a" >
-      <option value="0" selected="selected">Не свиток/элексир</option>
-      <option value="32">+HP/Приманка/Обнул/Древесина</option>
-      <option value="33">+MP/Доски</option>
-	  <option value="1">Мощь</option>
-	  <option value="2">Проворность</option>
-	  <option value="3">Везение</option>
-	  <option value="4">Здоровье</option>
-	  <option value="5">Разум</option>
-	  <option value="6">Сноровка</option>
-	  <option value="7">Урон</option>
-	  <option value="8">Броня</option>
-	  <option value="9">Пробой брони</option>
-	  <option value="10">Уворот</option>
-	  <option value="11">Точность</option>
-	  <option value="12">Сокрушение</option>
-	  <option value="13">Стойкость</option>
-	  <option value="14">Арт зелье</option>
-	  <option value="15">Наблюдательность</option>
-	  <option value="34">Приманка для рыбы</option>
+        <option value="0" selected="selected">РќРµ СЃРІРёС‚РѕРє/СЌР»РµРєСЃРёСЂ</option>
+        <option value="32">+HP/РџСЂРёРјР°РЅРєР°/РћР±РЅСѓР»/Р”СЂРµРІРµСЃРёРЅР°</option>
+        <option value="33">+MP/Р”РѕСЃРєРё</option>
+        <option value="1">РњРѕС‰СЊ</option>
+        <option value="2">РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ</option>
+        <option value="3">Р’РµР·РµРЅРёРµ</option>
+        <option value="4">Р—РґРѕСЂРѕРІСЊРµ</option>
+        <option value="5">Р Р°Р·СѓРј</option>
+        <option value="6">РЎРЅРѕСЂРѕРІРєР°</option>
+        <option value="7">РЈСЂРѕРЅ</option>
+        <option value="8">Р‘СЂРѕРЅСЏ</option>
+        <option value="9">РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё</option>
+        <option value="10">РЈРІРѕСЂРѕС‚</option>
+        <option value="11">РўРѕС‡РЅРѕСЃС‚СЊ</option>
+        <option value="12">РЎРѕРєСЂСѓС€РµРЅРёРµ</option>
+        <option value="13">РЎС‚РѕР№РєРѕСЃС‚СЊ</option>
+        <option value="14">РђСЂС‚ Р·РµР»СЊРµ</option>
+        <option value="15">РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ</option>
+        <option value="34">РџСЂРёРјР°РЅРєР° РґР»СЏ СЂС‹Р±С‹</option>
     </select>
       <select name="acte" >
-      <option value="" selected="selected">Не свиток/элексир</option>
-      <option value="magicreform">Зелье ХП/МП</option>
-	  <option value="zelreform">Эликсир</option>
-      <option value="fightmagicform">Нападалка</option>
-      <option value="chatsleepform">Молчанка</option>
-	  <option value="licensform">Лицензия Торговца</option>
-	  <option value="licensform2">Лицензия Доктора</option>
-	  <option value="doktorreform">Свиток Доктора</option>
-	  <option value="zelinvis">Невидимость</option>
-	  <option value="BotNapForm">Приманка</option>
-	  <option value="ObnulForm">Обнуление</option>
-	  <option value="MaseForm">Мазь</option>
-	  <option value="teleport">Телепорт</option>
-	  <option value="teleport2">Телепорт (с сохранением)</option>
+          <option value="" selected="selected">РќРµ СЃРІРёС‚РѕРє/СЌР»РµРєСЃРёСЂ</option>
+          <option value="magicreform">Р—РµР»СЊРµ РҐРџ/РњРџ</option>
+          <option value="zelreform">Р­Р»РёРєСЃРёСЂ</option>
+          <option value="fightmagicform">РќР°РїР°РґР°Р»РєР°</option>
+          <option value="chatsleepform">РњРѕР»С‡Р°РЅРєР°</option>
+          <option value="licensform">Р›РёС†РµРЅР·РёСЏ РўРѕСЂРіРѕРІС†Р°</option>
+          <option value="licensform2">Р›РёС†РµРЅР·РёСЏ Р”РѕРєС‚РѕСЂР°</option>
+          <option value="doktorreform">РЎРІРёС‚РѕРє Р”РѕРєС‚РѕСЂР°</option>
+          <option value="zelinvis">РќРµРІРёРґРёРјРѕСЃС‚СЊ</option>
+          <option value="BotNapForm">РџСЂРёРјР°РЅРєР°</option>
+          <option value="ObnulForm">РћР±РЅСѓР»РµРЅРёРµ</option>
+          <option value="MaseForm">РњР°Р·СЊ</option>
+          <option value="teleport">РўРµР»РµРїРѕСЂС‚</option>
+          <option value="teleport2">РўРµР»РµРїРѕСЂС‚ (СЃ СЃРѕС…СЂР°РЅРµРЅРёРµРј)</option>
     </select>
     <br />
-<strong>Второе оружие</strong>
-    да
+                      <strong>Р’С‚РѕСЂРѕРµ РѕСЂСѓР¶РёРµ</strong>
+                      РґР°
     <input name="wtor" type="radio" value="1" />
-    нет
+                      РЅРµС‚
     <input name="wtor" type="radio" value="0" checked />
-    &nbsp; Слот: <select name="slot">
-		  <option value="0">Нельзя одеть</option>
-          <option value="1">Шлем</option>
-          <option value="2">Ожерелье</option>
-          <option value="3">Оружие</option>
-          <option value="4">Пояс</option>
-          <option value="5">Содержимое карманов пояса</option>
-          <option value="8">Слот для сапог</option>
-          <option value="9">Поножи</option>
-          <option value="10">Наплечники</option>
-          <option value="11">Наручи</option>
-          <option value="12">Перчатки</option>
-          <option value="13">Щит</option>
-          <option value="14">Кольцо</option>
-          <option value="16">Броня</option>
-          <option value="17">Кольчуга</option>
-		  <option value="20">Руна</option>
-        </select> эффект: <input name="effect" type="text" />
-    <br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3></td><td><br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3</td></tr><tr><td colspan=2 width=100%><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td width=50% bgcolor=#D8CDAF><div align=center><font class=invtitle>свойства</div></td><td bgcolor=#B9A05C><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></td><td bgcolor=#D8CDAF width=50%><div align=center><font class=invtitle>требования</div></td></tr><tr><td align="right" bgcolor="#FCFAF3"><font class=weaponch><b><label>Цена</label>
-              <input name="price" type="text" value="1" />&nbsp;<label>Цена ДД</label>&nbsp;<input name="dd_price" type="text" value="0" /><br>
+                      &nbsp; РЎР»РѕС‚: <select name="slot">
+                          <option value="0">РќРµР»СЊР·СЏ РѕРґРµС‚СЊ</option>
+                          <option value="1">РЁР»РµРј</option>
+                          <option value="2">РћР¶РµСЂРµР»СЊРµ</option>
+                          <option value="3">РћСЂСѓР¶РёРµ</option>
+                          <option value="4">РџРѕСЏСЃ</option>
+                          <option value="5">РЎРѕРґРµСЂР¶РёРјРѕРµ РєР°СЂРјР°РЅРѕРІ РїРѕСЏСЃР°</option>
+                          <option value="8">РЎР»РѕС‚ РґР»СЏ СЃР°РїРѕРі</option>
+                          <option value="9">РџРѕРЅРѕР¶Рё</option>
+                          <option value="10">РќР°РїР»РµС‡РЅРёРєРё</option>
+                          <option value="11">РќР°СЂСѓС‡Рё</option>
+                          <option value="12">РџРµСЂС‡Р°С‚РєРё</option>
+                          <option value="13">Р©РёС‚</option>
+                          <option value="14">РљРѕР»СЊС†Рѕ</option>
+                          <option value="16">Р‘СЂРѕРЅСЏ</option>
+                          <option value="17">РљРѕР»СЊС‡СѓРіР°</option>
+                          <option value="20">Р СѓРЅР°</option>
+                      </select> СЌС„С„РµРєС‚: <input name="effect" type="text"/>
+                      <br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3></td>
+              <td><br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3</td>
+          </tr>
+          <tr>
+              <td colspan=2 width=100%>
+                  <table cellpadding=0 cellspacing=0 border=0 width=100%>
+                      <tr>
+                          <td width=50% bgcolor=#D8CDAF>
+                              <div align=center><font class=invtitle>СЃРІРѕР№СЃС‚РІР°</div>
+                          </td>
+                          <td bgcolor=#B9A05C><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></td>
+                          <td bgcolor=#D8CDAF width=50%>
+                              <div align=center><font class=invtitle>С‚СЂРµР±РѕРІР°РЅРёСЏ</div>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td align="right" bgcolor="#FCFAF3"><font class=weaponch><b><label>Р¦РµРЅР°</label>
+                                      <input name="price" type="text" value="1"/>&nbsp;<label>Р¦РµРЅР°
+                                          Р”Р”</label>&nbsp;<input name="dd_price" type="text" value="0"/><br>
 			  ---------------------------------------------------------------<br>
-			  &nbsp;<label>Дополнительный урон (только если выбран мод, пример 20-30)</label><br>
+                                      &nbsp;<label>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ СѓСЂРѕРЅ (С‚РѕР»СЊРєРѕ РµСЃР»Рё РІС‹Р±СЂР°РЅ РјРѕРґ, РїСЂРёРјРµСЂ
+                                          20-30)</label><br>
 			  <select name="damage_mod">
-				  <option value="0">Без мода</option>
-				  <option value="1">Урон огнем</option>
-				  <option value="2">Урон льдом</option>
-				  <option value="3">Вампиризм</option>
-				  <option value="4">Лечение</option>
+                  <option value="0">Р‘РµР· РјРѕРґР°</option>
+                  <option value="1">РЈСЂРѕРЅ РѕРіРЅРµРј</option>
+                  <option value="2">РЈСЂРѕРЅ Р»СЊРґРѕРј</option>
+                  <option value="3">Р’Р°РјРїРёСЂРёР·Рј</option>
+                  <option value="4">Р›РµС‡РµРЅРёРµ</option>
 			  </select>
               &nbsp;<input name="damage_mod_val" type="text" value="" /><br>
 			  ---------------------------------------------------------------<br>
-			  &nbsp;<label>Иммунитет к Огню</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ Рє РћРіРЅСЋ</label>
 			  <select name="fire_immune">
-				  <option value="0">Нет</option>
-				  <option value="1">Да</option>
+                  <option value="0">РќРµС‚</option>
+                  <option value="1">Р”Р°</option>
 			  </select><br>
-			  &nbsp;<label>Иммунитет ко Льду</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ РєРѕ Р›СЊРґСѓ</label>
 			  <select name="ice_immune">
-				  <option value="0">Нет</option>
-				  <option value="1">Да</option>
+                  <option value="0">РќРµС‚</option>
+                  <option value="1">Р”Р°</option>
 			  </select><br>
-			  &nbsp;<label>Иммунитет к Вампиризму</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ Рє Р’Р°РјРїРёСЂРёР·РјСѓ</label>
 			  <select name="vamp_immune">
-				  <option value="0">Нет</option>
-				  <option value="1">Да</option>
+                  <option value="0">РќРµС‚</option>
+                  <option value="1">Р”Р°</option>
 			  </select><br>
-			  &nbsp;<label>Иммунитет к Яду</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ Рє РЇРґСѓ</label>
 			  <select name="poison_immune">
-				  <option value="0">Нет</option>
-				  <option value="1">Да</option>
+                  <option value="0">РќРµС‚</option>
+                  <option value="1">Р”Р°</option>
 			  </select><br>
-			  &nbsp;<label>Иммунитет к Физ.Урону</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ Рє Р¤РёР·.РЈСЂРѕРЅСѓ</label>
 			  <select name="phys_immune">
-				  <option value="0">Нет</option>
-				  <option value="1">Да</option>
+                  <option value="0">РќРµС‚</option>
+                  <option value="1">Р”Р°</option>
 			  </select><br>
 			  ---------------------------------------------------------------<br>
                         <?
 		  ?>
               
               </td>
-            <td bgcolor=#B9A05C><img src=http://img.Fight4Life.ru/image/1x1.gif width=1 height=1></td><td align="right" valign="top" bgcolor="#FCFAF3"><font class=weaponch><b><label>Уровень:</label>
-              <input name="level" type="text" value="" /><br><font class=weaponch><b><label>Масса:</label>
+                          <td bgcolor=#B9A05C><img src=http://img.Fight4Life.ru/image/1x1.gif width=1 height=1></td>
+                          <td align="right" valign="top" bgcolor="#FCFAF3"><font
+                                      class=weaponch><b><label>РЈСЂРѕРІРµРЅСЊ:</label>
+                                      <input name="level" type="text" value=""/><br><font class=weaponch><b><label>РњР°СЃСЃР°:</label>
               <input name="massa" type="text" value="" /><br>
-			  <font class=weaponch><b><label>Срок годности вещи (в днях)<i>0 - без срока</i>:</label>
+                                              <font class=weaponch><b><label>РЎСЂРѕРє РіРѕРґРЅРѕСЃС‚Рё РІРµС‰Рё (РІ РґРЅСЏС…)<i>0 - Р±РµР·
+                                                              СЃСЂРѕРєР°</i>:</label>
               <input name="srok" type="text" value="" /><br>
 			  <?
         for($i=0;$i<=71;$i++){
       switch($i)
 {
-case 1: $fr="Удар (пример 20-30):";break;
-case 2: $fr="Долговечность:";break;
-case 3: $fr="Карманов(3 max для поясов):";break;
-case 4: $fr="Материал:";break;
-case 5: $fr="Уловка:";break;
-case 6: $fr="Точность:";break;
-case 7: $fr="Сокрушение:";break;
-case 8: $fr="Стойкость:";break;
-case 9: $fr="Класс брони:";break;
-case 10: $fr="Пробой брони:";break;
-case 11: $fr="Пробой колющим ударом:";break;
-case 12: $fr="Пробой режущим ударом:";break;
-case 13: $fr="Пробой проникающим ударом:";break;
-case 14: $fr="Пробой пробивающим ударом:";break;
-case 15: $fr="Пробой рубящим ударом:";break;
-case 16: $fr="Пробой карающим ударом:";break;
-case 17: $fr="Пробой отсекающим ударом:";break;
-case 18: $fr="Пробой дробящим ударом:";break;
-case 19: $fr="Защита от колющих ударов:";break;
-case 20: $fr="Защита от режущих ударов:";break;
-case 21: $fr="Защита от проникающих ударов:";break;
-case 22: $fr="Защита от пробивающих ударов:";break;
-case 23: $fr="Защита от рубящих ударов:";break;
-case 24: $fr="Защита от карающих ударов:";break;
-case 25: $fr="Защита от отсекающих ударов:";break;
-case 26: $fr="Защита от дробящих ударов:";break;
-case 27: $fr="НР:";break;
-case 28: $fr="Очки действия:";break;
-case 29: $fr="Мана:";break;
-case 30: $fr="Мощь:";break;
-case 31: $fr="Проворность:";break;
-case 32: $fr="Везение:";break;
-case 33: $fr="Здоровье:";break;
-case 34: $fr="Разум:";break;
-case 35: $fr="Сноровка:";break;
-case 36: $fr="Влад. мечами:";break;
-case 37: $fr="Влад. топорами:";break;
-case 38: $fr="Влад. дробящим оружием:";break;
-case 39: $fr="Влад. ножами:";break;
-case 40: $fr="Влад. метательным оружием:";break;
-case 41: $fr="Влад. алебардами и копьями:";break;
-case 42: $fr="Влад. посохами:";break;
-case 43: $fr="Влад. экзотическим оружием:";break;
-case 44: $fr="Влад. двуручным оружием:";break;
-case 99: $fr="testТут:";break;
-case 46: $fr="Магия воды:";break;
-case 47: $fr="Магия воздуха:";break;
-case 48: $fr="Магия земли:";break;
-case 49: $fr="Сопротивление магии огня:";break;
-case 50: $fr="Сопротивление магии воды:";break;
-case 51: $fr="Сопротивление магии воздуха:";break;
-case 52: $fr="Сопротивление магии земли:";break;
-case 53: $fr="Воровство:";break;
-case 54: $fr="Осторожность:";break;
-case 55: $fr="Скрытность:";break;
-case 56: $fr="Наблюдательность:";break;
-case 57: $fr="Торговля:";break;
-case 58: $fr="Странник:";break;
-case 59: $fr="Рыболов:";break;
-case 60: $fr="Лесоруб:";break;
-case 61: $fr="Ювелирное дело:";break;
-case 62: $fr="Самолечение:";break;
-case 63: $fr="Оружейник:";break;
-case 64: $fr="Доктор:";break;
-case 65: $fr="Самолечение:";break;
-case 66: $fr="Быстрое восстановление маны:";break;
-case 67: $fr="Лидерство:";break;
-case 68: $fr="Алхимия:";break;
-case 69: $fr="Развитие горного дела:";break;
-case 70: $fr="Травничество:";break;
-case 71: $fr="Коэффициент(new):";break;
+          case 1:
+              $fr = "РЈРґР°СЂ (РїСЂРёРјРµСЂ 20-30):";
+              break;
+          case 2:
+              $fr = "Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ:";
+              break;
+          case 3:
+              $fr = "РљР°СЂРјР°РЅРѕРІ(3 max РґР»СЏ РїРѕСЏСЃРѕРІ):";
+              break;
+          case 4:
+              $fr = "РњР°С‚РµСЂРёР°Р»:";
+              break;
+          case 5:
+              $fr = "РЈР»РѕРІРєР°:";
+              break;
+          case 6:
+              $fr = "РўРѕС‡РЅРѕСЃС‚СЊ:";
+              break;
+          case 7:
+              $fr = "РЎРѕРєСЂСѓС€РµРЅРёРµ:";
+              break;
+          case 8:
+              $fr = "РЎС‚РѕР№РєРѕСЃС‚СЊ:";
+              break;
+          case 9:
+              $fr = "РљР»Р°СЃСЃ Р±СЂРѕРЅРё:";
+              break;
+          case 10:
+              $fr = "РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё:";
+              break;
+          case 11:
+              $fr = "РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј:";
+              break;
+          case 12:
+              $fr = "РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј:";
+              break;
+          case 13:
+              $fr = "РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";
+              break;
+          case 14:
+              $fr = "РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј:";
+              break;
+          case 15:
+              $fr = "РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј:";
+              break;
+          case 16:
+              $fr = "РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј:";
+              break;
+          case 17:
+              $fr = "РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";
+              break;
+          case 18:
+              $fr = "РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј:";
+              break;
+          case 19:
+              $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+              break;
+          case 20:
+              $fr = "Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ:";
+              break;
+          case 21:
+              $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+              break;
+          case 22:
+              $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+              break;
+          case 23:
+              $fr = "Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";
+              break;
+          case 24:
+              $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+              break;
+          case 25:
+              $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+              break;
+          case 26:
+              $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";
+              break;
+          case 27:
+              $fr = "РќР :";
+              break;
+          case 28:
+              $fr = "РћС‡РєРё РґРµР№СЃС‚РІРёСЏ:";
+              break;
+          case 29:
+              $fr = "РњР°РЅР°:";
+              break;
+          case 30:
+              $fr = "РњРѕС‰СЊ:";
+              break;
+          case 31:
+              $fr = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ:";
+              break;
+          case 32:
+              $fr = "Р’РµР·РµРЅРёРµ:";
+              break;
+          case 33:
+              $fr = "Р—РґРѕСЂРѕРІСЊРµ:";
+              break;
+          case 34:
+              $fr = "Р Р°Р·СѓРј:";
+              break;
+          case 35:
+              $fr = "РЎРЅРѕСЂРѕРІРєР°:";
+              break;
+          case 36:
+              $fr = "Р’Р»Р°Рґ. РјРµС‡Р°РјРё:";
+              break;
+          case 37:
+              $fr = "Р’Р»Р°Рґ. С‚РѕРїРѕСЂР°РјРё:";
+              break;
+          case 38:
+              $fr = "Р’Р»Р°Рґ. РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј:";
+              break;
+          case 39:
+              $fr = "Р’Р»Р°Рґ. РЅРѕР¶Р°РјРё:";
+              break;
+          case 40:
+              $fr = "Р’Р»Р°Рґ. РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+              break;
+          case 41:
+              $fr = "Р’Р»Р°Рґ. Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё:";
+              break;
+          case 42:
+              $fr = "Р’Р»Р°Рґ. РїРѕСЃРѕС…Р°РјРё:";
+              break;
+          case 43:
+              $fr = "Р’Р»Р°Рґ. СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј:";
+              break;
+          case 44:
+              $fr = "Р’Р»Р°Рґ. РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+              break;
+          case 99:
+              $fr = "testРўСѓС‚:";
+              break;
+          case 46:
+              $fr = "РњР°РіРёСЏ РІРѕРґС‹:";
+              break;
+          case 47:
+              $fr = "РњР°РіРёСЏ РІРѕР·РґСѓС…Р°:";
+              break;
+          case 48:
+              $fr = "РњР°РіРёСЏ Р·РµРјР»Рё:";
+              break;
+          case 49:
+              $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ:";
+              break;
+          case 50:
+              $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹:";
+              break;
+          case 51:
+              $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°:";
+              break;
+          case 52:
+              $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё:";
+              break;
+          case 53:
+              $fr = "Р’РѕСЂРѕРІСЃС‚РІРѕ:";
+              break;
+          case 54:
+              $fr = "РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ:";
+              break;
+          case 55:
+              $fr = "РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ:";
+              break;
+          case 56:
+              $fr = "РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ:";
+              break;
+          case 57:
+              $fr = "РўРѕСЂРіРѕРІР»СЏ:";
+              break;
+          case 58:
+              $fr = "РЎС‚СЂР°РЅРЅРёРє:";
+              break;
+          case 59:
+              $fr = "Р С‹Р±РѕР»РѕРІ:";
+              break;
+          case 60:
+              $fr = "Р›РµСЃРѕСЂСѓР±:";
+              break;
+          case 61:
+              $fr = "Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ:";
+              break;
+          case 62:
+              $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+              break;
+          case 63:
+              $fr = "РћСЂСѓР¶РµР№РЅРёРє:";
+              break;
+          case 64:
+              $fr = "Р”РѕРєС‚РѕСЂ:";
+              break;
+          case 65:
+              $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+              break;
+          case 66:
+              $fr = "Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹:";
+              break;
+          case 67:
+              $fr = "Р›РёРґРµСЂСЃС‚РІРѕ:";
+              break;
+          case 68:
+              $fr = "РђР»С…РёРјРёСЏ:";
+              break;
+          case 69:
+              $fr = "Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°:";
+              break;
+          case 70:
+              $fr = "РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ:";
+              break;
+          case 71:
+              $fr = "РљРѕСЌС„С„РёС†РёРµРЅС‚(new):";
+              break;
 }
 if($fr!="")echo '<label><font class=weaponch><b>'.$fr.'</b></font></label><input name=pr['.$i.'] type=text value=""><br>';
 }
-//опыт и масса
-echo '<label><font class=weaponch><b>Бонус опыта (в %)</b></font></label><input name=pr[expbonus] type=text value=""><br>';
-echo '<label><font class=weaponch><b>Бонус массы</b></font></label><input name=pr[massbonus] type=text value=""><br>';
+              //РѕРїС‹С‚ Рё РјР°СЃСЃР°
+              echo '<label><font class=weaponch><b>Р‘РѕРЅСѓСЃ РѕРїС‹С‚Р° (РІ %)</b></font></label><input name=pr[expbonus] type=text value=""><br>';
+              echo '<label><font class=weaponch><b>Р‘РѕРЅСѓСЃ РјР°СЃСЃС‹</b></font></label><input name=pr[massbonus] type=text value=""><br>';
 		  ?>
               
               </td>
-            <td bgcolor=#B9A05C><img src=http://img.Fight4Life.ru/image/1x1.gif width=1 height=1></td><td align="right" valign="top" bgcolor="#FCFAF3"><font class=weaponch><b><label>Уровень:</label>
-              <input name="level" type="text" value="" /><br><font class=weaponch><b><label>Масса:</label>
+                          <td bgcolor=#B9A05C><img src=http://img.Fight4Life.ru/image/1x1.gif width=1 height=1></td>
+                          <td align="right" valign="top" bgcolor="#FCFAF3"><font
+                                      class=weaponch><b><label>РЈСЂРѕРІРµРЅСЊ:</label>
+                                      <input name="level" type="text" value=""/><br><font class=weaponch><b><label>РњР°СЃСЃР°:</label>
               <input name="massa" type="text" value="" /><br>
-			  <font class=weaponch><b><label>Срок годности вещи (в днях)<i>0 - без срока</i>:</label>
+                                              <font class=weaponch><b><label>РЎСЂРѕРє РіРѕРґРЅРѕСЃС‚Рё РІРµС‰Рё (РІ РґРЅСЏС…)<i>0 - Р±РµР·
+                                                              СЃСЂРѕРєР°</i>:</label>
               <input name="srok" type="text" value="" /><br>
 			  <?
 		  for($i=28;$i<=74;$i++){
           switch($i)
 {
-case 28: $fr="Очки действия:";break;
+              case 28:
+                  $fr = "РћС‡РєРё РґРµР№СЃС‚РІРёСЏ:";
+                  break;
 case 29: $fr="";break;
-case 30: $fr="Мощь:";break;
-case 31: $fr="Проворность:";break;
-case 32: $fr="Везение:";break;
-case 33: $fr="Здоровье:";break;
-case 34: $fr="Разум:";break;
-case 35: $fr="Сноровка:";break;
-case 36: $fr="Влад. мечами:";break;
-case 37: $fr="Влад. топорами:";break;
-case 38: $fr="Влад. дробящим оружием:";break;
-case 39: $fr="Влад. ножами:";break;
-case 40: $fr="Влад. метательным оружием:";break;
-case 41: $fr="Влад. алебардами и копьями:";break;
-case 42: $fr="Влад. посохами:";break;
-case 43: $fr="Влад. экзотическим оружием:";break;
-case 44: $fr="Влад. двуручным оружием:";break;
-case 45: $fr="Магия огня:";break;
-case 46: $fr="Магия воды:";break;
-case 47: $fr="Магия воздуха:";break;
-case 48: $fr="Магия земли:";break;
+              case 30:
+                  $fr = "РњРѕС‰СЊ:";
+                  break;
+              case 31:
+                  $fr = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ:";
+                  break;
+              case 32:
+                  $fr = "Р’РµР·РµРЅРёРµ:";
+                  break;
+              case 33:
+                  $fr = "Р—РґРѕСЂРѕРІСЊРµ:";
+                  break;
+              case 34:
+                  $fr = "Р Р°Р·СѓРј:";
+                  break;
+              case 35:
+                  $fr = "РЎРЅРѕСЂРѕРІРєР°:";
+                  break;
+              case 36:
+                  $fr = "Р’Р»Р°Рґ. РјРµС‡Р°РјРё:";
+                  break;
+              case 37:
+                  $fr = "Р’Р»Р°Рґ. С‚РѕРїРѕСЂР°РјРё:";
+                  break;
+              case 38:
+                  $fr = "Р’Р»Р°Рґ. РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 39:
+                  $fr = "Р’Р»Р°Рґ. РЅРѕР¶Р°РјРё:";
+                  break;
+              case 40:
+                  $fr = "Р’Р»Р°Рґ. РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 41:
+                  $fr = "Р’Р»Р°Рґ. Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё:";
+                  break;
+              case 42:
+                  $fr = "Р’Р»Р°Рґ. РїРѕСЃРѕС…Р°РјРё:";
+                  break;
+              case 43:
+                  $fr = "Р’Р»Р°Рґ. СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 44:
+                  $fr = "Р’Р»Р°Рґ. РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 45:
+                  $fr = "РњР°РіРёСЏ РѕРіРЅСЏ:";
+                  break;
+              case 46:
+                  $fr = "РњР°РіРёСЏ РІРѕРґС‹:";
+                  break;
+              case 47:
+                  $fr = "РњР°РіРёСЏ РІРѕР·РґСѓС…Р°:";
+                  break;
+              case 48:
+                  $fr = "РњР°РіРёСЏ Р·РµРјР»Рё:";
+                  break;
 case 49: $fr="";break;
 case 50: $fr="";break;
 case 51: $fr="";break;
 case 52: $fr="";break;
-case 53: $fr="Воровство:";break;
-case 54: $fr="Осторожность:";break;
-case 55: $fr="Скрытность:";break;
-case 56: $fr="Наблюдательность:";break;
-case 57: $fr="Торговля:";break;
-case 58: $fr="Странник:";break;
-case 59: $fr="Рыболов:";break;
-case 60: $fr="Лесоруб:";break;
-case 61: $fr="Ювелирное дело:";break;
-case 62: $fr="Самолечение:";break;
-case 63: $fr="Оружейник:";break;
-case 64: $fr="Доктор:";break;
-case 65: $fr="Самолечение:";break;
-case 66: $fr="Быстрое восстановление маны:";break;
-case 67: $fr="Лидерство:";break;
-case 68: $fr="Алхимия:";break;
-case 69: $fr="Развитие горного дела:";break;
-case 70: $fr="Травничество:";break;
-case 73: $fr="Звание:";break;
-case 74: $fr="Взломщик:";break;
+              case 53:
+                  $fr = "Р’РѕСЂРѕРІСЃС‚РІРѕ:";
+                  break;
+              case 54:
+                  $fr = "РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ:";
+                  break;
+              case 55:
+                  $fr = "РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ:";
+                  break;
+              case 56:
+                  $fr = "РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ:";
+                  break;
+              case 57:
+                  $fr = "РўРѕСЂРіРѕРІР»СЏ:";
+                  break;
+              case 58:
+                  $fr = "РЎС‚СЂР°РЅРЅРёРє:";
+                  break;
+              case 59:
+                  $fr = "Р С‹Р±РѕР»РѕРІ:";
+                  break;
+              case 60:
+                  $fr = "Р›РµСЃРѕСЂСѓР±:";
+                  break;
+              case 61:
+                  $fr = "Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ:";
+                  break;
+              case 62:
+                  $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+                  break;
+              case 63:
+                  $fr = "РћСЂСѓР¶РµР№РЅРёРє:";
+                  break;
+              case 64:
+                  $fr = "Р”РѕРєС‚РѕСЂ:";
+                  break;
+              case 65:
+                  $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+                  break;
+              case 66:
+                  $fr = "Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹:";
+                  break;
+              case 67:
+                  $fr = "Р›РёРґРµСЂСЃС‚РІРѕ:";
+                  break;
+              case 68:
+                  $fr = "РђР»С…РёРјРёСЏ:";
+                  break;
+              case 69:
+                  $fr = "Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°:";
+                  break;
+              case 70:
+                  $fr = "РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ:";
+                  break;
+              case 73:
+                  $fr = "Р—РІР°РЅРёРµ:";
+                  break;
+              case 74:
+                  $fr = "Р’Р·Р»РѕРјС‰РёРє:";
+                  break;
 }
 if($fr!="")echo "<label><font class=weaponch><b>$fr</b></font></label><input name=tr[$i] type=text value=\"\"/><br>\n";
 }
@@ -556,57 +819,60 @@ if($fr!="")echo "<label><font class=weaponch><b>$fr</b></font></label><input nam
    </table></td></tr></table></td></tr>
 </table>
   <div align="center">
-    <input name="smb1" type="submit" class="lbut" value="Сохранить" />
+      <input name="smb1" type="submit" class="lbut" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/>
   </div>
 </form>
 <div align="center">
 <p><br>
   <? }
-  
-  // Рабочий блок. Проверено.
+
+  // Р Р°Р±РѕС‡РёР№ Р±Р»РѕРє. РџСЂРѕРІРµСЂРµРЅРѕ.
 if($id_adm==2){?><br>
    </form>
 <form name="addmark" method="post" action="adm.php?id_adm=2">
 <select name="type1" >
-	<option value="" selected="selected">все типы</option>
-      <option value="w4">Ножи</option>
-      <option value="w1">Мечи</option>
-      <option value="w2">Топоры</option>
-      <option value="w3">Дробящее</option>
-      <option value="w6">Алебарды и копья</option>
-      <option value="w5">Метательное</option>
-      <option value="w7">Посохи</option>
-      <option value="w20">Щиты</option>
-      <option value="w23">Шлемы</option>
-      <option value="w26">Пояса</option>
-      <option value="w18">Кольчуги</option>
-      <option value="w19">Доспехи</option>
-      <option value="w24">Перчатки</option>
-      <option value="w80">Наручи</option>
-      <option value="w21">Сапоги</option>
-      <option value="w25">Кулоны</option>
-      <option value="w22">Кольца</option>
-      <option value="w28">Наплечники</option>
-      <option value="w90">Поножи</option>
-	  <option value="w61">Приманки</option>
-      <option value="w0">Эликсиры</option>
-	  <option value="w30">Лицензии</option>
-	  <option value="w66">Травы</option>
-	  <option value="w67">Шкуры</option>
-	  <option value="w68">Лес</option>
-	  <option value="w69">Рыбалка</option>
-	  <option value="w70">Мази</option>
-	  <option value="w60">Квесты</option>
-	  <option value="w29">Свитки</option>
-	  <option value="w71">Руны</option>
-	  <option value="w62">Сундуки</option>
-	  <option value="w100">Ресурсы для крафта</option>
-	  <option value="w16">татем</option>
-     </select>  <input name="smb9" type="submit" class="lbut" value="Применить фильтр" />
+    <option value="" selected="selected">РІСЃРµ С‚РёРїС‹</option>
+    <option value="w4">РќРѕР¶Рё</option>
+    <option value="w1">РњРµС‡Рё</option>
+    <option value="w2">РўРѕРїРѕСЂС‹</option>
+    <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+    <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+    <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+    <option value="w7">РџРѕСЃРѕС…Рё</option>
+    <option value="w20">Р©РёС‚С‹</option>
+    <option value="w23">РЁР»РµРјС‹</option>
+    <option value="w26">РџРѕСЏСЃР°</option>
+    <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+    <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+    <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+    <option value="w80">РќР°СЂСѓС‡Рё</option>
+    <option value="w21">РЎР°РїРѕРіРё</option>
+    <option value="w25">РљСѓР»РѕРЅС‹</option>
+    <option value="w22">РљРѕР»СЊС†Р°</option>
+    <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+    <option value="w90">РџРѕРЅРѕР¶Рё</option>
+    <option value="w61">РџСЂРёРјР°РЅРєРё</option>
+    <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
+    <option value="w30">Р›РёС†РµРЅР·РёРё</option>
+    <option value="w66">РўСЂР°РІС‹</option>
+    <option value="w67">РЁРєСѓСЂС‹</option>
+    <option value="w68">Р›РµСЃ</option>
+    <option value="w69">Р С‹Р±Р°Р»РєР°</option>
+    <option value="w70">РњР°Р·Рё</option>
+    <option value="w60">РљРІРµСЃС‚С‹</option>
+    <option value="w29">РЎРІРёС‚РєРё</option>
+    <option value="w71">Р СѓРЅС‹</option>
+    <option value="w62">РЎСѓРЅРґСѓРєРё</option>
+    <option value="w100">Р РµСЃСѓСЂСЃС‹ РґР»СЏ РєСЂР°С„С‚Р°</option>
+    <option value="w16">С‚Р°С‚РµРј</option>
+</select> <input name="smb9" type="submit" class="lbut" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ"/>
 	 <? $filter2="WHERE master=''"; if($smb9){if($type1==""){$filter="";$filter2="WHERE master=''";}else $filter="WHERE type='$type1'";$filter2=" AND master=''";}?> 
     
       <select name="id" >
-      <option value=0<? if($id==""){echo " selected=selected";}?>>Выберите тип</option>
+          <option value=0<? if ($id == "") {
+              echo " selected=selected";
+          } ?>>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї
+          </option>
   <? $it=mysqli_query($GLOBALS['db_link'],"SELECT * FROM items $filter $filter2 ORDER BY type,level,name;");
 	  while ($row = mysqli_fetch_assoc($it)) {
 	  echo "<option value=$row[id]>$row[name] [ $row[level] ]</option>";
@@ -614,66 +880,66 @@ if($id_adm==2){?><br>
 	  ?>
     </select><br><br>
 <select name="type" >
-      <option value="w4">Ножи</option>
-      <option value="w1">Мечи</option>
-      <option value="w2">Топоры</option>
-      <option value="w3">Дробящее</option>
-      <option value="w6">Алебарды и копья</option>
-      <option value="w5">Метательное</option>
-      <option value="w7">Посохи</option>
-      <option value="w20">Щиты</option>
-      <option value="w23">Шлемы</option>
-      <option value="w26">Пояса</option>
-      <option value="w18">Кольчуги</option>
-      <option value="w19">Доспехи</option>
-      <option value="w24">Перчатки</option>
-      <option value="w80">Наручи</option>
-      <option value="w21">Сапоги</option>
-      <option value="w25">Кулоны</option>
-      <option value="w22">Кольца</option>
-      <option value="w28">Наплечники</option>
-      <option value="w90">Поножи</option>
-	  <option value="w29">Свитки</option>
-	  <option value="w30">Лицензии</option>
-      <option value="w0">Эликсиры</option>
-	  <option value="w66">Травы</option>
-	  <option value="w67">Шкуры</option>
-	  <option value="w68">Лес</option>
-	  <option value="w69">Рыбалка</option>
-	  <option value="w70">Мази</option>
-	  <option value="w60">Квесты</option>
-	  <option value="w61">Приманки</option>
-	  <option value="w71">Руны</option>
-		<option value="w62">Сундуки</option>
-	  <option value="w100">Ресурсы для крафта</option>
+    <option value="w4">РќРѕР¶Рё</option>
+    <option value="w1">РњРµС‡Рё</option>
+    <option value="w2">РўРѕРїРѕСЂС‹</option>
+    <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+    <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+    <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+    <option value="w7">РџРѕСЃРѕС…Рё</option>
+    <option value="w20">Р©РёС‚С‹</option>
+    <option value="w23">РЁР»РµРјС‹</option>
+    <option value="w26">РџРѕСЏСЃР°</option>
+    <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+    <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+    <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+    <option value="w80">РќР°СЂСѓС‡Рё</option>
+    <option value="w21">РЎР°РїРѕРіРё</option>
+    <option value="w25">РљСѓР»РѕРЅС‹</option>
+    <option value="w22">РљРѕР»СЊС†Р°</option>
+    <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+    <option value="w90">РџРѕРЅРѕР¶Рё</option>
+    <option value="w29">РЎРІРёС‚РєРё</option>
+    <option value="w30">Р›РёС†РµРЅР·РёРё</option>
+    <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
+    <option value="w66">РўСЂР°РІС‹</option>
+    <option value="w67">РЁРєСѓСЂС‹</option>
+    <option value="w68">Р›РµСЃ</option>
+    <option value="w69">Р С‹Р±Р°Р»РєР°</option>
+    <option value="w70">РњР°Р·Рё</option>
+    <option value="w60">РљРІРµСЃС‚С‹</option>
+    <option value="w61">РџСЂРёРјР°РЅРєРё</option>
+    <option value="w71">Р СѓРЅС‹</option>
+    <option value="w62">РЎСѓРЅРґСѓРєРё</option>
+    <option value="w100">Р РµСЃСѓСЂСЃС‹ РґР»СЏ РєСЂР°С„С‚Р°</option>
 </select> <br><br>
 <select name="pl" >
-      <option value="2">Лавка форпоста</option>
-	  <option value="34">Дом Дилеров</option>
-	  <option value="4">Госпиталь</option>
-	  <option value="45">Лавка Странников</option>
-	  <option value="48">Новогодняя ярмарка</option>
-	  <option value="49">Магазин СП</option>
-	  <option value="50">Магазин Рыбака</option>
-	  <option value="51">Магазин Лесоруба</option>
-	  <option value="112">Новогодний базар</option>
-	  <option value="44">реп</option>
-	  <option value="111">Арсенал</option>
-		<option value="1203">Сундуки</option>
-		<option value="1002">Ярмарка(новая)</option>
-		<option value="1223">компенсация</option>
+    <option value="2">Р›Р°РІРєР° С„РѕСЂРїРѕСЃС‚Р°</option>
+    <option value="34">Р”РѕРј Р”РёР»РµСЂРѕРІ</option>
+    <option value="4">Р“РѕСЃРїРёС‚Р°Р»СЊ</option>
+    <option value="45">Р›Р°РІРєР° РЎС‚СЂР°РЅРЅРёРєРѕРІ</option>
+    <option value="48">РќРѕРІРѕРіРѕРґРЅСЏСЏ СЏСЂРјР°СЂРєР°</option>
+    <option value="49">РњР°РіР°Р·РёРЅ РЎРџ</option>
+    <option value="50">РњР°РіР°Р·РёРЅ Р С‹Р±Р°РєР°</option>
+    <option value="51">РњР°РіР°Р·РёРЅ Р›РµСЃРѕСЂСѓР±Р°</option>
+    <option value="112">РќРѕРІРѕРіРѕРґРЅРёР№ Р±Р°Р·Р°СЂ</option>
+    <option value="44">СЂРµРї</option>
+    <option value="111">РђСЂСЃРµРЅР°Р»</option>
+    <option value="1203">РЎСѓРЅРґСѓРєРё</option>
+    <option value="1002">РЇСЂРјР°СЂРєР°(РЅРѕРІР°СЏ)</option>
+    <option value="1223">РєРѕРјРїРµРЅСЃР°С†РёСЏ</option>
 </select> <br><br>
 <select name="pl_dd" >
-      <option value="1">Комплект горца</option>
-	  <option value="2">Комплект мертвеца</option>
-	  <option value="9">Комплект Ледяной Стихии</option>
-	  <option value="103">Комплект Дракона</option>
-	  <option value="104">Комплект ведмака</option>
-	  <option value="99">Зелья</option>
+    <option value="1">РљРѕРјРїР»РµРєС‚ РіРѕСЂС†Р°</option>
+    <option value="2">РљРѕРјРїР»РµРєС‚ РјРµСЂС‚РІРµС†Р°</option>
+    <option value="9">РљРѕРјРїР»РµРєС‚ Р›РµРґСЏРЅРѕР№ РЎС‚РёС…РёРё</option>
+    <option value="103">РљРѕРјРїР»РµРєС‚ Р”СЂР°РєРѕРЅР°</option>
+    <option value="104">РљРѕРјРїР»РµРєС‚ РІРµРґРјР°РєР°</option>
+    <option value="99">Р—РµР»СЊСЏ</option>
 </select> <br><br>
 
 <input name="kol" type="text" value="10" size="7"/>
-<input name="smb6" type="submit" class="lbut" value="Добавить" /><br />
+    <input name="smb6" type="submit" class="lbut" value="Р”РѕР±Р°РІРёС‚СЊ"/><br/>
 </form>
   <? 
   if($smb6)
@@ -702,7 +968,7 @@ if($id_adm==2){?><br>
    if($id_adm==3){?><br>
  <form name="addmark" method="post" action="adm.php?id_adm=3">
 	<select name="id2" >
-		<option value=0 selected="selected">Все виды</option>
+        <option value=0 selected="selected">Р’СЃРµ РІРёРґС‹</option>
 		<? $it=mysqli_query($GLOBALS['db_link'],"SELECT market.id, items.name ,items.level FROM items INNER JOIN market ON items.id = market.id WHERE master='';");
 			while ($row = mysqli_fetch_assoc($it)) {
 			echo "<option value=$row[id]>$row[name] [ $row[level] ]</option>";
@@ -710,13 +976,13 @@ if($id_adm==2){?><br>
 		?>
 	</select>
 	<select name="pl" >
-      <option value=0 selected="selected">Выберите</option>
-	  <option value=2>Лавка форпоста</option>
-	  <option value=34>Дом Дилеров</option>
-	  <option value=4>Госпиталь</option>
+        <option value=0 selected="selected">Р’С‹Р±РµСЂРёС‚Рµ</option>
+        <option value=2>Р›Р°РІРєР° С„РѕСЂРїРѕСЃС‚Р°</option>
+        <option value=34>Р”РѕРј Р”РёР»РµСЂРѕРІ</option>
+        <option value=4>Р“РѕСЃРїРёС‚Р°Р»СЊ</option>
     </select>
-   <input name="kl" type="text" value="Кол-во" size="7" />
-   <input name="smb3" type="submit" class="lbut" value="Сохранить" /><br />
+     <input name="kl" type="text" value="РљРѕР»-РІРѕ" size="7"/>
+     <input name="smb3" type="submit" class="lbut" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/><br/>
    </form>
    <?
    if($smb3)
@@ -730,7 +996,7 @@ if($id_adm==2){?><br>
 
 	   mysqli_query($GLOBALS['db_link'],'UPDATE market SET kol='.AP.$kl.AP.' WHERE market='.AP.$pl.AP.' and id='.AP.$id2.AP.';');
 	  }
-	echo "<br><span class=prchattime>Предмет добавлен!</span></div>";
+        echo "<br><span class=prchattime>РџСЂРµРґРјРµС‚ РґРѕР±Р°РІР»РµРЅ!</span></div>";
 	}
 ///////////////////////////////////////////////////////////////////////  
 	?>
@@ -739,49 +1005,59 @@ if($id_adm==2){?><br>
    if($id_adm==4){?>
 <form action="adm.php?id_adm=4" method="post">
 <select name="type" >
-	<option value="" selected="selected">все типы</option>
-      <option value="w4">Ножи</option>
-      <option value="w1">Мечи</option>
-      <option value="w2">Топоры</option>
-      <option value="w3">Дробящее</option>
-      <option value="w6">Алебарды и копья</option>
-      <option value="w5">Метательное</option>
-      <option value="w7">Посохи</option>
-      <option value="w20">Щиты</option>
-      <option value="w23">Шлемы</option>
-      <option value="w26">Пояса</option>
-      <option value="w18">Кольчуги</option>
-      <option value="w19">Доспехи</option>
-      <option value="w24">Перчатки</option>
-      <option value="w80">Наручи</option>
-      <option value="w21">Сапоги</option>
-      <option value="w25">Кулоны</option>
-      <option value="w22">Кольца</option>
-      <option value="w28">Наплечники</option>
-      <option value="w90">Поножи</option>
-	  <option value="w29">Свитки</option>
-	   <option value="w30">Лицензии</option>
-      <option value="w0">Эликсиры</option>
-	  <option value="w66">Травы</option>
-	  <option value="w67">Шкуры</option>
-	  <option value="w68">Лес</option>
-	  <option value="w69">Рыбалка</option>
-	  <option value="w70">Мази</option>
-	  <option value="w60">Квесты</option>
-	  <option value="w61">Приманки</option>
-	  <option value="w71">Руны</option>
-		<option value="w62">Сундуки</option>
-	  <option value="w100">Ресурсы для крафта</option>
-    </select>  <input name="smb7" type="submit" class="lbut" value="Применить фильтр" /><? $filter2="WHERE master=''"; if($smb7){if($type==""){$filter="";$filter2="WHERE master=''";}else $filter="WHERE type='$type'";$filter2=" AND master=''";}?> 
+    <option value="" selected="selected">РІСЃРµ С‚РёРїС‹</option>
+    <option value="w4">РќРѕР¶Рё</option>
+    <option value="w1">РњРµС‡Рё</option>
+    <option value="w2">РўРѕРїРѕСЂС‹</option>
+    <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+    <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+    <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+    <option value="w7">РџРѕСЃРѕС…Рё</option>
+    <option value="w20">Р©РёС‚С‹</option>
+    <option value="w23">РЁР»РµРјС‹</option>
+    <option value="w26">РџРѕСЏСЃР°</option>
+    <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+    <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+    <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+    <option value="w80">РќР°СЂСѓС‡Рё</option>
+    <option value="w21">РЎР°РїРѕРіРё</option>
+    <option value="w25">РљСѓР»РѕРЅС‹</option>
+    <option value="w22">РљРѕР»СЊС†Р°</option>
+    <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+    <option value="w90">РџРѕРЅРѕР¶Рё</option>
+    <option value="w29">РЎРІРёС‚РєРё</option>
+    <option value="w30">Р›РёС†РµРЅР·РёРё</option>
+    <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
+    <option value="w66">РўСЂР°РІС‹</option>
+    <option value="w67">РЁРєСѓСЂС‹</option>
+    <option value="w68">Р›РµСЃ</option>
+    <option value="w69">Р С‹Р±Р°Р»РєР°</option>
+    <option value="w70">РњР°Р·Рё</option>
+    <option value="w60">РљРІРµСЃС‚С‹</option>
+    <option value="w61">РџСЂРёРјР°РЅРєРё</option>
+    <option value="w71">Р СѓРЅС‹</option>
+    <option value="w62">РЎСѓРЅРґСѓРєРё</option>
+    <option value="w100">Р РµСЃСѓСЂСЃС‹ РґР»СЏ РєСЂР°С„С‚Р°</option>
+</select> <input name="smb7" type="submit" class="lbut" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ"/><? $filter2 = "WHERE master=''";
+    if ($smb7) {
+        if ($type == "") {
+            $filter = "";
+            $filter2 = "WHERE master=''";
+        } else $filter = "WHERE type='$type'";
+        $filter2 = " AND master=''";
+    } ?>
     
       <select name="idit" >
-      <option value=0<? if($idit==""){echo " selected=selected";}?>>Выберите тип</option>
+          <option value=0<? if ($idit == "") {
+              echo " selected=selected";
+          } ?>>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї
+          </option>
   <? $it=mysqli_query($GLOBALS['db_link'],"SELECT items.id, items.name ,items.level, items.type, items.effect FROM items $filter $filter2 ORDER BY effect,level,name;");
 	  while ($row = mysqli_fetch_assoc($it)) {
 	  echo "<option value=$row[id]";if($idit==$row[id]){echo " selected=selected";}echo">$row[name] [ $row[level] ] [ $row[effect] ]</option>";
 	  }
 	  ?>
-  </select> <input name="edit" type="submit" class="lbut" value="Загрузить" />
+      </select> <input name="edit" type="submit" class="lbut" value="Р—Р°РіСЂСѓР·РёС‚СЊ"/>
 </form>
    <? if($edit){
    $it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM items WHERE id='$idit';"));
@@ -835,38 +1111,38 @@ case w100: $w[100]=" selected=selected";break;
 </select></td>
   <td width=100% bgcolor=#ffffff valign=top><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%><font class=nickname>
     <select name="type" >
-      <option value="w4"<?=$w[4]?>>Ножи</option>
-      <option value="w1"<?=$w[1]?>>Мечи</option>
-      <option value="w2"<?=$w[2]?>>Топоры</option>
-      <option value="w3"<?=$w[3]?>>Дробящее</option>
-      <option value="w6"<?=$w[5]?>>Алебарды и копья</option>
-      <option value="w5"<?=$w[6]?>>Метательное</option>
-      <option value="w7"<?=$w[7]?>>Посохи</option>
-      <option value="w20"<?=$w[8]?>>Щиты</option>
-      <option value="w23"<?=$w[9]?>>Шлемы</option>
-      <option value="w26"<?=$w[10]?>>Пояса</option>
-      <option value="w18"<?=$w[11]?>>Кольчуги</option>
-      <option value="w19"<?=$w[12]?>>Доспехи</option>
-      <option value="w24"<?=$w[13]?>>Перчатки</option>
-      <option value="w80"<?=$w[14]?>>Наручи</option>
-      <option value="w21"<?=$w[15]?>>Сапоги</option>
-      <option value="w25"<?=$w[16]?>>Кулоны</option>
-      <option value="w22"<?=$w[17]?>>Кольца</option>
-      <option value="w28"<?=$w[18]?>>Наплечники</option>
-      <option value="w90"<?=$w[19]?>>Поножи</option>
-	  <option value="w30"<?=$w[30]?>>Лицензии</option>
-	  <option value="w29"<?=$w[29]?>>Свитки</option>
-      <option value="w0"<?=$w[0]?>>Эликсиры</option>
-	  <option value="w61"<?=$w[61]?>>Приманки</option>
-	  <option value="w66"<?=$w[66]?>>Травы</option>
-	  <option value="w67"<?=$w[67]?>>Шкуры</option>
-	  <option value="w68"<?=$w[68]?>>Лес</option>
-	  <option value="w69"<?=$w[69]?>>Рыбалка</option>
-	  <option value="w70"<?=$w[70]?>>Мази</option>
-	  <option value="w60"<?=$w[60]?>>Квесты</option>
-	  <option value="w71"<?=$w[71]?>>Руны</option>
-		<option value="w62"<?=$w[62]?>>Сундуки</option>
-	  <option value="w100"<?=$w[100]?>>Ресурсы для крафта</option>
+        <option value="w4"<?= $w[4] ?>>РќРѕР¶Рё</option>
+        <option value="w1"<?= $w[1] ?>>РњРµС‡Рё</option>
+        <option value="w2"<?= $w[2] ?>>РўРѕРїРѕСЂС‹</option>
+        <option value="w3"<?= $w[3] ?>>Р”СЂРѕР±СЏС‰РµРµ</option>
+        <option value="w6"<?= $w[5] ?>>РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+        <option value="w5"<?= $w[6] ?>>РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+        <option value="w7"<?= $w[7] ?>>РџРѕСЃРѕС…Рё</option>
+        <option value="w20"<?= $w[8] ?>>Р©РёС‚С‹</option>
+        <option value="w23"<?= $w[9] ?>>РЁР»РµРјС‹</option>
+        <option value="w26"<?= $w[10] ?>>РџРѕСЏСЃР°</option>
+        <option value="w18"<?= $w[11] ?>>РљРѕР»СЊС‡СѓРіРё</option>
+        <option value="w19"<?= $w[12] ?>>Р”РѕСЃРїРµС…Рё</option>
+        <option value="w24"<?= $w[13] ?>>РџРµСЂС‡Р°С‚РєРё</option>
+        <option value="w80"<?= $w[14] ?>>РќР°СЂСѓС‡Рё</option>
+        <option value="w21"<?= $w[15] ?>>РЎР°РїРѕРіРё</option>
+        <option value="w25"<?= $w[16] ?>>РљСѓР»РѕРЅС‹</option>
+        <option value="w22"<?= $w[17] ?>>РљРѕР»СЊС†Р°</option>
+        <option value="w28"<?= $w[18] ?>>РќР°РїР»РµС‡РЅРёРєРё</option>
+        <option value="w90"<?= $w[19] ?>>РџРѕРЅРѕР¶Рё</option>
+        <option value="w30"<?= $w[30] ?>>Р›РёС†РµРЅР·РёРё</option>
+        <option value="w29"<?= $w[29] ?>>РЎРІРёС‚РєРё</option>
+        <option value="w0"<?= $w[0] ?>>Р­Р»РёРєСЃРёСЂС‹</option>
+        <option value="w61"<?= $w[61] ?>>РџСЂРёРјР°РЅРєРё</option>
+        <option value="w66"<?= $w[66] ?>>РўСЂР°РІС‹</option>
+        <option value="w67"<?= $w[67] ?>>РЁРєСѓСЂС‹</option>
+        <option value="w68"<?= $w[68] ?>>Р›РµСЃ</option>
+        <option value="w69"<?= $w[69] ?>>Р С‹Р±Р°Р»РєР°</option>
+        <option value="w70"<?= $w[70] ?>>РњР°Р·Рё</option>
+        <option value="w60"<?= $w[60] ?>>РљРІРµСЃС‚С‹</option>
+        <option value="w71"<?= $w[71] ?>>Р СѓРЅС‹</option>
+        <option value="w62"<?= $w[62] ?>>РЎСѓРЅРґСѓРєРё</option>
+        <option value="w100"<?= $w[100] ?>>Р РµСЃСѓСЂСЃС‹ РґР»СЏ РєСЂР°С„С‚Р°</option>
     </select>
     <input name="name" type="text" value="<?=$it[name]?>" />
 <? unset($w);
@@ -879,10 +1155,10 @@ case 90: $w[3]=" selected=selected";break;
 }
     ?>
     <select name="block" >
-      <option value="0"<?=$w[0]?>>Не щит</option>
-      <option value="40"<?=$w[1]?>>1 точка</option>
-      <option value="70"<?=$w[2]?>>2 точки</option>
-      <option value="90"<?=$w[3]?>>3 точки</option>
+        <option value="0"<?= $w[0] ?>>РќРµ С‰РёС‚</option>
+        <option value="40"<?= $w[1] ?>>1 С‚РѕС‡РєР°</option>
+        <option value="70"<?= $w[2] ?>>2 С‚РѕС‡РєРё</option>
+        <option value="90"<?= $w[3] ?>>3 С‚РѕС‡РєРё</option>
     </select>
     <? unset($w);
 switch($it[num_a])
@@ -910,25 +1186,25 @@ case 34:$w[34]=" selected=selected";break;
     ?>
     
     <select name="num_a">
-      <option value="0"<?=$w[0]?>>Не свиток/элексир</option>
-      <option value="32"<?=$w[32]?>>+HP/Приманка/Обнул/Древесина</option>
-      <option value="33"<?=$w[33]?>>+MP/Доски</option>
-	  <option value="1"<?=$w[1]?>>Мощь</option>
-	  <option value="2"<?=$w[2]?>>Проворность</option>
-	  <option value="3"<?=$w[3]?>>Везение</option>
-	  <option value="4"<?=$w[4]?>>Здоровье</option>
-	  <option value="5"<?=$w[5]?>>Разум</option>
-	  <option value="6"<?=$w[6]?>>Сноровка</option>
-	  <option value="7"<?=$w[7]?>>Урон</option>
-	  <option value="8"<?=$w[8]?>>Броня</option>
-	  <option value="9"<?=$w[9]?>>Пробой брони</option>
-	  <option value="10"<?=$w[10]?>>Уворот</option>
-	  <option value="11"<?=$w[11]?>>Точность</option>
-	  <option value="12"<?=$w[12]?>>Сокрушение</option>
-	  <option value="13"<?=$w[13]?>>Стойкость</option>
-	  <option value="14"<?=$w[14]?>>Арт зелье</option>
-	  <option value="15"<?=$w[15]?>>Наблюдательность</option>
-	  <option value="34"<?=$w[34]?>>Приманка для рыбы</option>
+        <option value="0"<?= $w[0] ?>>РќРµ СЃРІРёС‚РѕРє/СЌР»РµРєСЃРёСЂ</option>
+        <option value="32"<?= $w[32] ?>>+HP/РџСЂРёРјР°РЅРєР°/РћР±РЅСѓР»/Р”СЂРµРІРµСЃРёРЅР°</option>
+        <option value="33"<?= $w[33] ?>>+MP/Р”РѕСЃРєРё</option>
+        <option value="1"<?= $w[1] ?>>РњРѕС‰СЊ</option>
+        <option value="2"<?= $w[2] ?>>РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ</option>
+        <option value="3"<?= $w[3] ?>>Р’РµР·РµРЅРёРµ</option>
+        <option value="4"<?= $w[4] ?>>Р—РґРѕСЂРѕРІСЊРµ</option>
+        <option value="5"<?= $w[5] ?>>Р Р°Р·СѓРј</option>
+        <option value="6"<?= $w[6] ?>>РЎРЅРѕСЂРѕРІРєР°</option>
+        <option value="7"<?= $w[7] ?>>РЈСЂРѕРЅ</option>
+        <option value="8"<?= $w[8] ?>>Р‘СЂРѕРЅСЏ</option>
+        <option value="9"<?= $w[9] ?>>РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё</option>
+        <option value="10"<?= $w[10] ?>>РЈРІРѕСЂРѕС‚</option>
+        <option value="11"<?= $w[11] ?>>РўРѕС‡РЅРѕСЃС‚СЊ</option>
+        <option value="12"<?= $w[12] ?>>РЎРѕРєСЂСѓС€РµРЅРёРµ</option>
+        <option value="13"<?= $w[13] ?>>РЎС‚РѕР№РєРѕСЃС‚СЊ</option>
+        <option value="14"<?= $w[14] ?>>РђСЂС‚ Р·РµР»СЊРµ</option>
+        <option value="15"<?= $w[15] ?>>РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ</option>
+        <option value="34"<?= $w[34] ?>>РџСЂРёРјР°РЅРєР° РґР»СЏ СЂС‹Р±С‹</option>
     </select>
 
     <? unset($w);
@@ -951,27 +1227,27 @@ case teleport2: $w[13]=" selected=selected";break;
 }
     ?>
         <select name="acte" >
-      <option value=""<?=$w[0]?>>Не свиток/элексир</option>
-      <option value="magicreform"<?=$w[1]?>>Зелье ХП/МП</option>
-	   <option value="zelreform"<?=$w[4]?>>Эликсир</option>
-      <option value="fightmagicform"<?=$w[2]?>>Нападалка</option>
-      <option value="chatsleepform"<?=$w[3]?>>Молчанка</option>
-	  <option value="licensform"<?=$w[5]?>>Лицензия Торговца</option>
-	  <option value="licensform2"<?=$w[6]?>>Лицензия Доктора</option>
-	  <option value="doktorreform"<?=$w[7]?>>Свиток Доктора</option>
-	  <option value="zelinvis"<?=$w[8]?>>Невидимость</option>
-	  <option value="BotNapForm"<?=$w[9]?>>Приманка</option>
-	  <option value="ObnulForm"<?=$w[10]?>>Обнул</option>
-	  <option value="MaseForm"<?=$w[11]?>>Мазь</option>
-	  <option value="teleport"<?=$w[12]?>>Телепорт</option>
-	  <option value="teleport2"<?=$w[13]?>>Телепорт (с сохранением)</option>	  
-    </select>
+            <option value=""<?= $w[0] ?>>РќРµ СЃРІРёС‚РѕРє/СЌР»РµРєСЃРёСЂ</option>
+            <option value="magicreform"<?= $w[1] ?>>Р—РµР»СЊРµ РҐРџ/РњРџ</option>
+            <option value="zelreform"<?= $w[4] ?>>Р­Р»РёРєСЃРёСЂ</option>
+            <option value="fightmagicform"<?= $w[2] ?>>РќР°РїР°РґР°Р»РєР°</option>
+            <option value="chatsleepform"<?= $w[3] ?>>РњРѕР»С‡Р°РЅРєР°</option>
+            <option value="licensform"<?= $w[5] ?>>Р›РёС†РµРЅР·РёСЏ РўРѕСЂРіРѕРІС†Р°</option>
+            <option value="licensform2"<?= $w[6] ?>>Р›РёС†РµРЅР·РёСЏ Р”РѕРєС‚РѕСЂР°</option>
+            <option value="doktorreform"<?= $w[7] ?>>РЎРІРёС‚РѕРє Р”РѕРєС‚РѕСЂР°</option>
+            <option value="zelinvis"<?= $w[8] ?>>РќРµРІРёРґРёРјРѕСЃС‚СЊ</option>
+            <option value="BotNapForm"<?= $w[9] ?>>РџСЂРёРјР°РЅРєР°</option>
+            <option value="ObnulForm"<?= $w[10] ?>>РћР±РЅСѓР»</option>
+            <option value="MaseForm"<?= $w[11] ?>>РњР°Р·СЊ</option>
+            <option value="teleport"<?= $w[12] ?>>РўРµР»РµРїРѕСЂС‚</option>
+            <option value="teleport2"<?= $w[13] ?>>РўРµР»РµРїРѕСЂС‚ (СЃ СЃРѕС…СЂР°РЅРµРЅРёРµРј)</option>
+        </select>
     <br />
     <? if($it['2w']==1){$w1="checked";}else{$w2="checked";}?>
-<strong>Второе оружие</strong>
-    да
+                      <strong>Р’С‚РѕСЂРѕРµ РѕСЂСѓР¶РёРµ</strong>
+                      РґР°
     <input name="wtor" type="radio" value="1" <?=$w1?> />
-    нет
+                      РЅРµС‚
     <input name="wtor" type="radio" value="0" <?=$w2?> />
    
     <?
@@ -1008,31 +1284,31 @@ else{
 $immunes = explode("|",$it['immunes']);
 foreach($immunes as $key=>$val){
 	switch($key){
-		case 0: //огонь
+        case 0: //РѕРіРѕРЅСЊ
 			switch($val){
 				case 0: $fire[$val]=" selected=selected";break;
 				case 1: $fire[$val]=" selected=selected";break;
 			}
-		break; 
-		case 1: //лед
+		break;
+        case 1: //Р»РµРґ
 			switch($val){
 				case 0: $ice[$val]=" selected=selected";break;
 				case 1: $ice[$val]=" selected=selected";break;
 			}
-		break; 
-		case 2://вампир
+		break;
+        case 2://РІР°РјРїРёСЂ
 			switch($val){
 				case 0: $vamp[$val]=" selected=selected";break;
 				case 1: $vamp[$val]=" selected=selected";break;
 			}		
-		break; 
-		case 3: //яд
+		break;
+        case 3: //СЏРґ
 			switch($val){
 				case 0: $poison[$val]=" selected=selected";break;
 				case 1: $poison[$val]=" selected=selected";break;
 			}	
-		break; 
-		case 4: //физ. урон
+		break;
+        case 4: //С„РёР·. СѓСЂРѕРЅ
 			switch($val){
 				case 0: $phys[$val]=" selected=selected";break;
 				case 1: $phys[$val]=" selected=selected";break;
@@ -1041,62 +1317,81 @@ foreach($immunes as $key=>$val){
 	}
 }
 ?>
-    
-    &nbsp; Слот: <select name="slot">
-		  <option value="0"<?=$w[0]?>>Нельзя одеть</option>	
-          <option value="1"<?=$w[1]?>>Шлем</option>
-          <option value="2"<?=$w[2]?>>Ожерелье</option>
-          <option value="3"<?=$w[3]?>>Оружие</option>
-          <option value="4"<?=$w[4]?>>Пояс</option>
-          <option value="5"<?=$w[5]?>>Содержимое карманов пояса</option>
-          <option value="8"<?=$w[8]?>>Слот для сапог</option>
-          <option value="9"<?=$w[9]?>>Поножи</option>
-          <option value="10"<?=$w[10]?>>Наплечники</option>
-          <option value="11"<?=$w[11]?>>Наручи</option>
-          <option value="12"<?=$w[12]?>>Перчатки</option>
-          <option value="13"<?=$w[13]?>>Щит</option>
-          <option value="14"<?=$w[14]?>>Кольцо</option>
-          <option value="16"<?=$w[16]?>>Броня</option>
-          <option value="17"<?=$w[17]?>>Кольчуга</option>
-		  <option value="20"<?=$w[20]?>>Руна</option>
-        </select> эффект: <input name="effect" type="text" value="<?=$it[effect]?>"/>
-    <br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3></td><td><br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3</td></tr><tr><td colspan=2 width=100%><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td width=50% bgcolor=#D8CDAF><div align=center><font class=invtitle>свойства</div></td><td bgcolor=#B9A05C><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></td><td bgcolor=#D8CDAF width=50%><div align=center><font class=invtitle>требования</div></td></tr><tr><td align="right" bgcolor="#FCFAF3"><font class=weaponch><b><label>Цена</label>
-              <input name="price" type="text" value="<?=$it[price]?>" />&nbsp;<label>Цена ДД</label>&nbsp;<input name="dd_price" type="text" value="<?=$it[dd_price]?>" /><br>
+
+                      &nbsp; РЎР»РѕС‚: <select name="slot">
+                          <option value="0"<?= $w[0] ?>>РќРµР»СЊР·СЏ РѕРґРµС‚СЊ</option>
+                          <option value="1"<?= $w[1] ?>>РЁР»РµРј</option>
+                          <option value="2"<?= $w[2] ?>>РћР¶РµСЂРµР»СЊРµ</option>
+                          <option value="3"<?= $w[3] ?>>РћСЂСѓР¶РёРµ</option>
+                          <option value="4"<?= $w[4] ?>>РџРѕСЏСЃ</option>
+                          <option value="5"<?= $w[5] ?>>РЎРѕРґРµСЂР¶РёРјРѕРµ РєР°СЂРјР°РЅРѕРІ РїРѕСЏСЃР°</option>
+                          <option value="8"<?= $w[8] ?>>РЎР»РѕС‚ РґР»СЏ СЃР°РїРѕРі</option>
+                          <option value="9"<?= $w[9] ?>>РџРѕРЅРѕР¶Рё</option>
+                          <option value="10"<?= $w[10] ?>>РќР°РїР»РµС‡РЅРёРєРё</option>
+                          <option value="11"<?= $w[11] ?>>РќР°СЂСѓС‡Рё</option>
+                          <option value="12"<?= $w[12] ?>>РџРµСЂС‡Р°С‚РєРё</option>
+                          <option value="13"<?= $w[13] ?>>Р©РёС‚</option>
+                          <option value="14"<?= $w[14] ?>>РљРѕР»СЊС†Рѕ</option>
+                          <option value="16"<?= $w[16] ?>>Р‘СЂРѕРЅСЏ</option>
+                          <option value="17"<?= $w[17] ?>>РљРѕР»СЊС‡СѓРіР°</option>
+                          <option value="20"<?= $w[20] ?>>Р СѓРЅР°</option>
+                      </select> СЌС„С„РµРєС‚: <input name="effect" type="text" value="<?= $it[effect] ?>"/>
+                      <br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3></td>
+              <td><br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3</td>
+          </tr>
+          <tr>
+              <td colspan=2 width=100%>
+                  <table cellpadding=0 cellspacing=0 border=0 width=100%>
+                      <tr>
+                          <td width=50% bgcolor=#D8CDAF>
+                              <div align=center><font class=invtitle>СЃРІРѕР№СЃС‚РІР°</div>
+                          </td>
+                          <td bgcolor=#B9A05C><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></td>
+                          <td bgcolor=#D8CDAF width=50%>
+                              <div align=center><font class=invtitle>С‚СЂРµР±РѕРІР°РЅРёСЏ</div>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td align="right" bgcolor="#FCFAF3"><font class=weaponch><b><label>Р¦РµРЅР°</label>
+                                      <input name="price" type="text" value="<?= $it[price] ?>"/>&nbsp;<label>Р¦РµРЅР°
+                                          Р”Р”</label>&nbsp;<input name="dd_price" type="text"
+                                                                 value="<?= $it[dd_price] ?>"/><br>
               ---------------------------------------------------------------<br>
-			  &nbsp;<label>Дополнительный урон (только если выбран мод, пример 20-30)</label><br>
+                                      &nbsp;<label>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ СѓСЂРѕРЅ (С‚РѕР»СЊРєРѕ РµСЃР»Рё РІС‹Р±СЂР°РЅ РјРѕРґ, РїСЂРёРјРµСЂ
+                                          20-30)</label><br>
 			  <select name="damage_mod">
-				  <option value="0"<?=$dm[0]?>>Без мода</option>
-				  <option value="1"<?=$dm[1]?>>Урон огнем</option>
-				  <option value="2"<?=$dm[2]?>>Урон льдом</option>
-				  <option value="3"<?=$dm[3]?>>Вампиризм</option>
-				  <option value="4"<?=$dm[4]?>>Лечение</option>
+                  <option value="0"<?= $dm[0] ?>>Р‘РµР· РјРѕРґР°</option>
+                  <option value="1"<?= $dm[1] ?>>РЈСЂРѕРЅ РѕРіРЅРµРј</option>
+                  <option value="2"<?= $dm[2] ?>>РЈСЂРѕРЅ Р»СЊРґРѕРј</option>
+                  <option value="3"<?= $dm[3] ?>>Р’Р°РјРїРёСЂРёР·Рј</option>
+                  <option value="4"<?= $dm[4] ?>>Р›РµС‡РµРЅРёРµ</option>
 			  </select>
               &nbsp;<input name="damage_mod_val" type="text" value="<?=$dmod[1]?>" /><br>
 			  ---------------------------------------------------------------<br>
-			  &nbsp;<label>Иммунитет к Огню</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ Рє РћРіРЅСЋ</label>
 			  <select name="fire_immune">
-				  <option value="0"<?=$fire[0]?>>Нет</option>
-				  <option value="1"<?=$fire[1]?>>Да</option>
+                  <option value="0"<?= $fire[0] ?>>РќРµС‚</option>
+                  <option value="1"<?= $fire[1] ?>>Р”Р°</option>
 			  </select><br>
-			  &nbsp;<label>Иммунитет ко Льду</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ РєРѕ Р›СЊРґСѓ</label>
 			  <select name="ice_immune">
-				  <option value="0"<?=$ice[0]?>>Нет</option>
-				  <option value="1"<?=$ice[1]?>>Да</option>
+                  <option value="0"<?= $ice[0] ?>>РќРµС‚</option>
+                  <option value="1"<?= $ice[1] ?>>Р”Р°</option>
 			  </select><br>
-			  &nbsp;<label>Иммунитет к Вампиризму</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ Рє Р’Р°РјРїРёСЂРёР·РјСѓ</label>
 			  <select name="vamp_immune">
-				  <option value="0"<?=$vamp[0]?>>Нет</option>
-				  <option value="1"<?=$vamp[1]?>>Да</option>
+                  <option value="0"<?= $vamp[0] ?>>РќРµС‚</option>
+                  <option value="1"<?= $vamp[1] ?>>Р”Р°</option>
 			  </select><br>
-			  &nbsp;<label>Иммунитет к Яду</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ Рє РЇРґСѓ</label>
 			  <select name="poison_immune">
-				  <option value="0"<?=$poison[0]?>>Нет</option>
-				  <option value="1"<?=$poison[1]?>>Да</option>
+                  <option value="0"<?= $poison[0] ?>>РќРµС‚</option>
+                  <option value="1"<?= $poison[1] ?>>Р”Р°</option>
 			  </select><br>
-			  &nbsp;<label>Иммунитет к Физ.Урону</label>
+                                      &nbsp;<label>РРјРјСѓРЅРёС‚РµС‚ Рє Р¤РёР·.РЈСЂРѕРЅСѓ</label>
 			  <select name="phys_immune">
-				  <option value="0"<?=$phys[0]?>>Нет</option>
-				  <option value="1"<?=$phys[1]?>>Да</option>
+                  <option value="0"<?= $phys[0] ?>>РќРµС‚</option>
+                  <option value="1"<?= $phys[1] ?>>Р”Р°</option>
 			  </select><br>
 			  ---------------------------------------------------------------<br>
                         <?
@@ -1108,89 +1403,235 @@ $par[$stat[0]]=$stat[1];}
 		  for($i=0;$i<=71;$i++){
           switch($i)
 {
-case 1: $fr="Удар (пример 20-30):";break;
-case 2: $fr="Долговечность:";break;
-case 3: $fr="Карманов(3 max для поясов):";break;
-case 4: $fr="Материал:";break;
-case 5: $fr="Уловка:";break;
-case 6: $fr="Точность:";break;
-case 7: $fr="Сокрушение:";break;
-case 8: $fr="Стойкость:";break;
-case 9: $fr="Класс брони:";break;
-case 10: $fr="Пробой брони:";break;
-case 11: $fr="Пробой колющим ударом:";break;
-case 12: $fr="Пробой режущим ударом:";break;
-case 13: $fr="Пробой проникающим ударом:";break;
-case 14: $fr="Пробой пробивающим ударом:";break;
-case 15: $fr="Пробой рубящим ударом:";break;
-case 16: $fr="Пробой карающим ударом:";break;
-case 17: $fr="Пробой отсекающим ударом:";break;
-case 18: $fr="Пробой дробящим ударом:";break;
-case 19: $fr="Защита от колющих ударов:";break;
-case 20: $fr="Защита от режущих ударов:";break;
-case 21: $fr="Защита от проникающих ударов:";break;
-case 22: $fr="Защита от пробивающих ударов:";break;
-case 23: $fr="Защита от рубящих ударов:";break;
-case 24: $fr="Защита от карающих ударов:";break;
-case 25: $fr="Защита от отсекающих ударов:";break;
-case 26: $fr="Защита от дробящих ударов:";break;
-case 27: $fr="НР:";break;
-case 28: $fr="Очки действия:";break;
-case 29: $fr="Мана:";break;
-case 30: $fr="Мощь:";break;
-case 31: $fr="Проворность:";break;
-case 32: $fr="Везение:";break;
-case 33: $fr="Здоровье:";break;
-case 34: $fr="Разум:";break;
-case 35: $fr="Сноровка:";break;
-case 36: $fr="Влад. мечами:";break;
-case 37: $fr="Влад. топорами:";break;
-case 38: $fr="Влад. дробящим оружием:";break;
-case 39: $fr="Влад. ножами:";break;
-case 40: $fr="Влад. метательным оружием:";break;
-case 41: $fr="Влад. алебардами и копьями:";break;
-case 42: $fr="Влад. посохами:";break;
-case 43: $fr="Влад. экзотическим оружием:";break;
-case 44: $fr="Влад. двуручным оружием:";break;
-case 99: $fr="testТут:";break;
-case 46: $fr="Магия воды:";break;
-case 47: $fr="Магия воздуха:";break;
-case 48: $fr="Магия земли:";break;
-case 49: $fr="Сопротивление магии огня:";break;
-case 50: $fr="Сопротивление магии воды:";break;
-case 51: $fr="Сопротивление магии воздуха:";break;
-case 52: $fr="Сопротивление магии земли:";break;
-case 53: $fr="Воровство:";break;
-case 54: $fr="Осторожность:";break;
-case 55: $fr="Скрытность:";break;
-case 56: $fr="Наблюдательность:";break;
-case 57: $fr="Торговля:";break;
-case 58: $fr="Странник:";break;
-case 59: $fr="Рыболов:";break;
-case 60: $fr="Лесоруб:";break;
-case 61: $fr="Ювелирное дело:";break;
-case 62: $fr="Самолечение:";break;
-case 63: $fr="Оружейник:";break;
-case 64: $fr="Доктор:";break;
-case 65: $fr="Самолечение:";break;
-case 66: $fr="Быстрое восстановление маны:";break;
-case 67: $fr="Лидерство:";break;
-case 68: $fr="Алхимия:";break;
-case 69: $fr="Развитие горного дела:";break;
-case 70: $fr="Травничество:";break;
-case 71: $fr="Коэффициент:";break;
+              case 1:
+                  $fr = "РЈРґР°СЂ (РїСЂРёРјРµСЂ 20-30):";
+                  break;
+              case 2:
+                  $fr = "Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ:";
+                  break;
+              case 3:
+                  $fr = "РљР°СЂРјР°РЅРѕРІ(3 max РґР»СЏ РїРѕСЏСЃРѕРІ):";
+                  break;
+              case 4:
+                  $fr = "РњР°С‚РµСЂРёР°Р»:";
+                  break;
+              case 5:
+                  $fr = "РЈР»РѕРІРєР°:";
+                  break;
+              case 6:
+                  $fr = "РўРѕС‡РЅРѕСЃС‚СЊ:";
+                  break;
+              case 7:
+                  $fr = "РЎРѕРєСЂСѓС€РµРЅРёРµ:";
+                  break;
+              case 8:
+                  $fr = "РЎС‚РѕР№РєРѕСЃС‚СЊ:";
+                  break;
+              case 9:
+                  $fr = "РљР»Р°СЃСЃ Р±СЂРѕРЅРё:";
+                  break;
+              case 10:
+                  $fr = "РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё:";
+                  break;
+              case 11:
+                  $fr = "РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј:";
+                  break;
+              case 12:
+                  $fr = "РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј:";
+                  break;
+              case 13:
+                  $fr = "РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";
+                  break;
+              case 14:
+                  $fr = "РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј:";
+                  break;
+              case 15:
+                  $fr = "РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј:";
+                  break;
+              case 16:
+                  $fr = "РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј:";
+                  break;
+              case 17:
+                  $fr = "РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";
+                  break;
+              case 18:
+                  $fr = "РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј:";
+                  break;
+              case 19:
+                  $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+                  break;
+              case 20:
+                  $fr = "Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ:";
+                  break;
+              case 21:
+                  $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+                  break;
+              case 22:
+                  $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+                  break;
+              case 23:
+                  $fr = "Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";
+                  break;
+              case 24:
+                  $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+                  break;
+              case 25:
+                  $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";
+                  break;
+              case 26:
+                  $fr = "Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";
+                  break;
+              case 27:
+                  $fr = "РќР :";
+                  break;
+              case 28:
+                  $fr = "РћС‡РєРё РґРµР№СЃС‚РІРёСЏ:";
+                  break;
+              case 29:
+                  $fr = "РњР°РЅР°:";
+                  break;
+              case 30:
+                  $fr = "РњРѕС‰СЊ:";
+                  break;
+              case 31:
+                  $fr = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ:";
+                  break;
+              case 32:
+                  $fr = "Р’РµР·РµРЅРёРµ:";
+                  break;
+              case 33:
+                  $fr = "Р—РґРѕСЂРѕРІСЊРµ:";
+                  break;
+              case 34:
+                  $fr = "Р Р°Р·СѓРј:";
+                  break;
+              case 35:
+                  $fr = "РЎРЅРѕСЂРѕРІРєР°:";
+                  break;
+              case 36:
+                  $fr = "Р’Р»Р°Рґ. РјРµС‡Р°РјРё:";
+                  break;
+              case 37:
+                  $fr = "Р’Р»Р°Рґ. С‚РѕРїРѕСЂР°РјРё:";
+                  break;
+              case 38:
+                  $fr = "Р’Р»Р°Рґ. РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 39:
+                  $fr = "Р’Р»Р°Рґ. РЅРѕР¶Р°РјРё:";
+                  break;
+              case 40:
+                  $fr = "Р’Р»Р°Рґ. РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 41:
+                  $fr = "Р’Р»Р°Рґ. Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё:";
+                  break;
+              case 42:
+                  $fr = "Р’Р»Р°Рґ. РїРѕСЃРѕС…Р°РјРё:";
+                  break;
+              case 43:
+                  $fr = "Р’Р»Р°Рґ. СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 44:
+                  $fr = "Р’Р»Р°Рґ. РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 99:
+                  $fr = "testРўСѓС‚:";
+                  break;
+              case 46:
+                  $fr = "РњР°РіРёСЏ РІРѕРґС‹:";
+                  break;
+              case 47:
+                  $fr = "РњР°РіРёСЏ РІРѕР·РґСѓС…Р°:";
+                  break;
+              case 48:
+                  $fr = "РњР°РіРёСЏ Р·РµРјР»Рё:";
+                  break;
+              case 49:
+                  $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ:";
+                  break;
+              case 50:
+                  $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹:";
+                  break;
+              case 51:
+                  $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°:";
+                  break;
+              case 52:
+                  $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё:";
+                  break;
+              case 53:
+                  $fr = "Р’РѕСЂРѕРІСЃС‚РІРѕ:";
+                  break;
+              case 54:
+                  $fr = "РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ:";
+                  break;
+              case 55:
+                  $fr = "РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ:";
+                  break;
+              case 56:
+                  $fr = "РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ:";
+                  break;
+              case 57:
+                  $fr = "РўРѕСЂРіРѕРІР»СЏ:";
+                  break;
+              case 58:
+                  $fr = "РЎС‚СЂР°РЅРЅРёРє:";
+                  break;
+              case 59:
+                  $fr = "Р С‹Р±РѕР»РѕРІ:";
+                  break;
+              case 60:
+                  $fr = "Р›РµСЃРѕСЂСѓР±:";
+                  break;
+              case 61:
+                  $fr = "Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ:";
+                  break;
+              case 62:
+                  $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+                  break;
+              case 63:
+                  $fr = "РћСЂСѓР¶РµР№РЅРёРє:";
+                  break;
+              case 64:
+                  $fr = "Р”РѕРєС‚РѕСЂ:";
+                  break;
+              case 65:
+                  $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+                  break;
+              case 66:
+                  $fr = "Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹:";
+                  break;
+              case 67:
+                  $fr = "Р›РёРґРµСЂСЃС‚РІРѕ:";
+                  break;
+              case 68:
+                  $fr = "РђР»С…РёРјРёСЏ:";
+                  break;
+              case 69:
+                  $fr = "Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°:";
+                  break;
+              case 70:
+                  $fr = "РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ:";
+                  break;
+              case 71:
+                  $fr = "РљРѕСЌС„С„РёС†РёРµРЅС‚:";
+                  break;
 }
 if($fr!="")echo '<label><font class=weaponch><b>'.$fr.'</b></font></label><input name=pr['.$i.'] type=text value="'.$par[$i].'"/><br>';
 }
-echo '<label><font class=weaponch><b>Бонус опыта (в %)</b></font></label><input name=pr[expbonus] type=text value="'.$par['expbonus'].'"><br>';
-echo '<label><font class=weaponch><b>Бонус массы</b></font></label><input name=pr[massbonus] type=text value="'.$par['massbonus'].'"><br>';
+                        echo '<label><font class=weaponch><b>Р‘РѕРЅСѓСЃ РѕРїС‹С‚Р° (РІ %)</b></font></label><input name=pr[expbonus] type=text value="' . $par['expbonus'] . '"><br>';
+                        echo '<label><font class=weaponch><b>Р‘РѕРЅСѓСЃ РјР°СЃСЃС‹</b></font></label><input name=pr[massbonus] type=text value="' . $par['massbonus'] . '"><br>';
 		  ?>
               
               </td>
-            <td bgcolor=#B9A05C><img src=http://img.Fight4Life.ru/image/1x1.gif width=1 height=1></td><td align="right" valign="top" bgcolor="#FCFAF3"><font class=weaponch><b><label>Уровень:</label>
-              <input name="level" type="text" value="<?=$it[level]?>" /><br><font class=weaponch><b><label>Масса:</label>
+                          <td bgcolor=#B9A05C><img src=http://img.Fight4Life.ru/image/1x1.gif width=1 height=1></td>
+                          <td align="right" valign="top" bgcolor="#FCFAF3"><font
+                                      class=weaponch><b><label>РЈСЂРѕРІРµРЅСЊ:</label>
+                                      <input name="level" type="text" value="<?= $it[level] ?>"/><br><font
+                                              class=weaponch><b><label>РњР°СЃСЃР°:</label>
               <input name="massa" type="text" value="<?=$it[massa]?>" /><br>
-			  <font class=weaponch><b><label>Срок годности вещи (в днях)<i>0 - без срока</i>:</label>
+                                              <font class=weaponch><b><label>РЎСЂРѕРє РіРѕРґРЅРѕСЃС‚Рё РІРµС‰Рё (РІ РґРЅСЏС…)<i>0 - Р±РµР·
+                                                              СЃСЂРѕРєР°</i>:</label>
               <input name="srok" type="text" value="<?=$it[srok]?>" /><br>
 			  <?
 			  
@@ -1201,51 +1642,131 @@ $ned[$stat[0]]=$stat[1];}
 		  for($i=28;$i<=74;$i++){
           switch($i)
 {
-case 28: $fr="Очки действия:";break;
+              case 28:
+                  $fr = "РћС‡РєРё РґРµР№СЃС‚РІРёСЏ:";
+                  break;
 case 29: $fr="";break;
-case 30: $fr="Мощь:";break;
-case 31: $fr="Проворность:";break;
-case 32: $fr="Везение:";break;
-case 33: $fr="Здоровье:";break;
-case 34: $fr="Разум:";break;
-case 35: $fr="Сноровка:";break;
-case 36: $fr="Влад. мечами:";break;
-case 37: $fr="Влад. топорами:";break;
-case 38: $fr="Влад. дробящим оружием:";break;
-case 39: $fr="Влад. ножами:";break;
-case 40: $fr="Влад. метательным оружием:";break;
-case 41: $fr="Влад. алебардами и копьями:";break;
-case 42: $fr="Влад. посохами:";break;
-case 43: $fr="Влад. экзотическим оружием:";break;
-case 44: $fr="Влад. двуручным оружием:";break;
-case 45: $fr="Магия огня:";break;
-case 46: $fr="Магия воды:";break;
-case 47: $fr="Магия воздуха:";break;
-case 48: $fr="Магия земли:";break;
+              case 30:
+                  $fr = "РњРѕС‰СЊ:";
+                  break;
+              case 31:
+                  $fr = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ:";
+                  break;
+              case 32:
+                  $fr = "Р’РµР·РµРЅРёРµ:";
+                  break;
+              case 33:
+                  $fr = "Р—РґРѕСЂРѕРІСЊРµ:";
+                  break;
+              case 34:
+                  $fr = "Р Р°Р·СѓРј:";
+                  break;
+              case 35:
+                  $fr = "РЎРЅРѕСЂРѕРІРєР°:";
+                  break;
+              case 36:
+                  $fr = "Р’Р»Р°Рґ. РјРµС‡Р°РјРё:";
+                  break;
+              case 37:
+                  $fr = "Р’Р»Р°Рґ. С‚РѕРїРѕСЂР°РјРё:";
+                  break;
+              case 38:
+                  $fr = "Р’Р»Р°Рґ. РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 39:
+                  $fr = "Р’Р»Р°Рґ. РЅРѕР¶Р°РјРё:";
+                  break;
+              case 40:
+                  $fr = "Р’Р»Р°Рґ. РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 41:
+                  $fr = "Р’Р»Р°Рґ. Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё:";
+                  break;
+              case 42:
+                  $fr = "Р’Р»Р°Рґ. РїРѕСЃРѕС…Р°РјРё:";
+                  break;
+              case 43:
+                  $fr = "Р’Р»Р°Рґ. СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 44:
+                  $fr = "Р’Р»Р°Рґ. РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                  break;
+              case 45:
+                  $fr = "РњР°РіРёСЏ РѕРіРЅСЏ:";
+                  break;
+              case 46:
+                  $fr = "РњР°РіРёСЏ РІРѕРґС‹:";
+                  break;
+              case 47:
+                  $fr = "РњР°РіРёСЏ РІРѕР·РґСѓС…Р°:";
+                  break;
+              case 48:
+                  $fr = "РњР°РіРёСЏ Р·РµРјР»Рё:";
+                  break;
 case 49: $fr="";break;
 case 50: $fr="";break;
 case 51: $fr="";break;
 case 52: $fr="";break;
-case 53: $fr="Воровство:";break;
-case 54: $fr="Осторожность:";break;
-case 55: $fr="Скрытность:";break;
-case 56: $fr="Наблюдательность:";break;
-case 57: $fr="Торговля:";break;
-case 58: $fr="Странник:";break;
-case 59: $fr="Рыболов:";break;
-case 60: $fr="Лесоруб:";break;
-case 61: $fr="Ювелирное дело:";break;
-case 62: $fr="Самолечение:";break;
-case 63: $fr="Оружейник:";break;
-case 64: $fr="Доктор:";break;
-case 65: $fr="Самолечение:";break;
-case 66: $fr="Быстрое восстановление маны:";break;
-case 67: $fr="Лидерство:";break;
-case 68: $fr="Алхимия:";break;
-case 69: $fr="Развитие горного дела:";break;
-case 70: $fr="Травничество:";break;
-case 73: $fr="Звание:";break;
-case 74: $fr="Взломщик:";break;
+              case 53:
+                  $fr = "Р’РѕСЂРѕРІСЃС‚РІРѕ:";
+                  break;
+              case 54:
+                  $fr = "РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ:";
+                  break;
+              case 55:
+                  $fr = "РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ:";
+                  break;
+              case 56:
+                  $fr = "РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ:";
+                  break;
+              case 57:
+                  $fr = "РўРѕСЂРіРѕРІР»СЏ:";
+                  break;
+              case 58:
+                  $fr = "РЎС‚СЂР°РЅРЅРёРє:";
+                  break;
+              case 59:
+                  $fr = "Р С‹Р±РѕР»РѕРІ:";
+                  break;
+              case 60:
+                  $fr = "Р›РµСЃРѕСЂСѓР±:";
+                  break;
+              case 61:
+                  $fr = "Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ:";
+                  break;
+              case 62:
+                  $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+                  break;
+              case 63:
+                  $fr = "РћСЂСѓР¶РµР№РЅРёРє:";
+                  break;
+              case 64:
+                  $fr = "Р”РѕРєС‚РѕСЂ:";
+                  break;
+              case 65:
+                  $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+                  break;
+              case 66:
+                  $fr = "Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹:";
+                  break;
+              case 67:
+                  $fr = "Р›РёРґРµСЂСЃС‚РІРѕ:";
+                  break;
+              case 68:
+                  $fr = "РђР»С…РёРјРёСЏ:";
+                  break;
+              case 69:
+                  $fr = "Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°:";
+                  break;
+              case 70:
+                  $fr = "РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ:";
+                  break;
+              case 73:
+                  $fr = "Р—РІР°РЅРёРµ:";
+                  break;
+              case 74:
+                  $fr = "Р’Р·Р»РѕРјС‰РёРє:";
+                  break;
 }
 if($fr!="")echo "<label><font class=weaponch><b>$fr</b></font></label><input name=tr[$i] type=text value=\"$ned[$i]\"/><br>\n";
 }
@@ -1256,7 +1777,8 @@ if($fr!="")echo "<label><font class=weaponch><b>$fr</b></font></label><input nam
    </table></td></tr></table></td></tr>
 </table>
   <div align="center">
-    <input name="smb4" type="submit" class="lbut" value="Сохранить" /> <input name="smb1" type="submit" class="lbut" value="Сохранить как новый" />
+      <input name="smb4" type="submit" class="lbut" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/> <input name="smb1" type="submit" class="lbut"
+                                                                               value="РЎРѕС…СЂР°РЅРёС‚СЊ РєР°Рє РЅРѕРІС‹Р№"/>
   </div>
 </form>
 <div align="center">
@@ -1283,12 +1805,13 @@ else{$insmod=$damage_mod."@".$damage_mod_val;}
 $immunes_arr = ($fire_immune==1?'1':'0').'|'.($ice_immune==1?'1':'0').'|'.($vamp_immune==1?'1':'0').'|'.($poison_immune==1?'1':'0').'|'.($phys_immune==1?'1':'0');
 mysqli_query($GLOBALS['db_link'],'INSERT INTO items (gif,name,block,2w,type,param,need,acte,num_a,level,price,dd_price,massa,slot,effect,srok,damage_mod,immunes) VALUES ('.AP.$gif.AP.','.AP.$name.AP.','.AP.$block.AP.','.AP.$wtor.AP.','.AP.$type.AP.','.AP.$par.AP.','.AP.$need.AP.','.AP.$acte.AP.','.AP.$num_a.AP.','.AP.$level.AP.','.AP.$price.AP.','.AP.$dd_price.AP.','.AP.$massa.AP.','.AP.$slot.AP.','.AP.$effect.AP.','.AP.$insmod.AP.','.AP.$srok.AP.','.AP.$immunes_arr.AP.');');
 
-echo "<br><span class=prchattime>Предмет добавлен!</span></div>";
+    echo "<br><span class=prchattime>РџСЂРµРґРјРµС‚ РґРѕР±Р°РІР»РµРЅ!</span></div>";
 
 
 }
 if($smb2){mysqli_query($GLOBALS['db_link'],'INSERT INTO market (id,market,kol,ty) VALUES ('.AP.$id.AP.','.AP.$mark.AP.','.AP.$kol.AP.','.AP.$type.AP.');');
-echo "<br><span class=prchattime>Предмет добавлен!</span></div>";}
+    echo "<br><span class=prchattime>РџСЂРµРґРјРµС‚ РґРѕР±Р°РІР»РµРЅ!</span></div>";
+}
 
 
   if($smb4){
@@ -1310,7 +1833,8 @@ else{$insmod=$damage_mod."@".$damage_mod_val;}
 $immunes_arr = ($fire_immune==1?'1':'0').'|'.($ice_immune==1?'1':'0').'|'.($vamp_immune==1?'1':'0').'|'.($poison_immune==1?'1':'0').'|'.($phys_immune==1?'1':'0');
 mysqli_query($GLOBALS['db_link'],'UPDATE items SET immunes='.AP.$immunes_arr.AP.',gif='.AP.$gif.AP.',name='.AP.$name.AP.',block='.AP.$block.AP.',2w='.AP.$wtor.AP.',type='.AP.$type.AP.',param='.AP.$par.AP.',need='.AP.$need.AP.',acte='.AP.$acte.AP.',num_a='.AP.$num_a.AP.',effect='.AP.$effect.AP.',level='.AP.$level.AP.',price='.AP.$price.AP.',dd_price='.AP.$dd_price.AP.',massa='.AP.$massa.AP.',slot='.AP.$slot.AP.',damage_mod='.AP.$insmod.AP.',srok='.AP.$srok.AP.' WHERE id='.AP.$idit.AP.';');
 
-echo "<br><span class=prchattime>Предмет Сохранен!</span></div>";}
+      echo "<br><span class=prchattime>РџСЂРµРґРјРµС‚ РЎРѕС…СЂР°РЅРµРЅ!</span></div>";
+  }
 ?>
     
 <script>

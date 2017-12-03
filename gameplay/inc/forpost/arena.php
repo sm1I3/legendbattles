@@ -21,12 +21,16 @@ $room = array ("6"=>0,"7"=>1,"8"=>2,"9"=>3,"10"=>4,"11"=>5,"12"=>6,"13"=>7,"14"=
 if(isset($_GET['sh'])){$_SESSION[user]['sh']=$_GET['sh'];}
 if(isset($_GET['ft'])){$_SESSION[user]['ft']=$_GET['ft'];}
 if($_SESSION[user]['sh']==''){$_SESSION[user]['sh']=1;}
-if($player['battle']!=0)$msg="Ожидание начала боя!";
+if ($player['battle'] != 0) $msg = "РћР¶РёРґР°РЅРёРµ РЅР°С‡Р°Р»Р° Р±РѕСЏ!";
 if($_SESSION[user]['sh']==1 and $_SESSION[user]['ft']!=1){$fir="(((arena.style)='".$_SESSION[user][ft]."') AND ((arena.vis)='1') AND ((arena.downl)<='$player[level]') AND ((arena.upl)>='$player[level]')) OR (((arena.style)='".$_SESSION[user][ft]."') AND ((arena.vis)='1') AND ((arena.arena)='$player[loc]') AND ((arena.downr)<='$player[level]') AND ((arena.upr)>='$player[level]'))";}
 else if($_SESSION[user]['sh']==1 and $_SESSION[user]['ft']==1){$fir="style='".$_SESSION[user][ft]."' AND upl='$player[level]' AND vis='1' AND arena='$player[loc]'";}
 else{$fir="style='".$_SESSION[user][ft]."' and vis='1' AND arena='$player[loc]'";}
-if($_SESSION[user]['ft']==3 and $player['level']<5){$msg="В жертвенных боях можно участвовать только с 5 левела!";}
-if($_SESSION[user]['ft']==4){$msg="Статистика пока не доступна";}
+if ($_SESSION[user]['ft'] == 3 and $player['level'] < 5) {
+    $msg = "Р’ Р¶РµСЂС‚РІРµРЅРЅС‹С… Р±РѕСЏС… РјРѕР¶РЅРѕ СѓС‡Р°СЃС‚РІРѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ СЃ 5 Р»РµРІРµР»Р°!";
+}
+if ($_SESSION[user]['ft'] == 4) {
+    $msg = "РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕРєР° РЅРµ РґРѕСЃС‚СѓРїРЅР°";
+}
 $locname = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `loc` WHERE `id`='".$player['loc']."' LIMIT 1;"));
 echo '
 <div class="block info">

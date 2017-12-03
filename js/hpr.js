@@ -8,6 +8,9 @@ if(!document.present.prtext.value) Error = 1;
 if(parseInt(document.present.prtext.value.length) > 40){
 	document.present.prtext.value = document.present.prtext.value.substr(0,40);
 }
-if(Error==1) { alert('Заполните все поля!'); return false; }
+    if (Error == 1) {
+        alert('Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ!');
+        return false;
+    }
 return true;
 }

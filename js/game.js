@@ -191,8 +191,8 @@ function change_chatsetup()
           ChatFyo = 1;
    	      parent.frames['ch_buttons'].document.FBT.fyo.value = 1;
    	      parent.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_me.gif';
-   	      parent.frames['ch_buttons'].document.FBT.schat.alt = 'Режим чата (Показывать только личные сообщения)';
-		  parent.frames['ch_buttons'].document.FBT.schat.title = 'Режим чата (Показывать только личные сообщения)';
+           parent.frames['ch_buttons'].document.FBT.schat.alt = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+           parent.frames['ch_buttons'].document.FBT.schat.title = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
        }
        else if(ChatFyo == 1)
        {
@@ -200,8 +200,8 @@ function change_chatsetup()
    	      parent.frames['ch_buttons'].document.FBT.fyo.value = 2;
     	      ch_stop_refresh();
     	      parent.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_none.gif';
-    	      parent.frames['ch_buttons'].document.FBT.schat.alt = 'Режим чата (Не показывать сообщения)';
-			  parent.frames['ch_buttons'].document.FBT.schat.title = 'Режим чата (Не показывать сообщения)';
+           parent.frames['ch_buttons'].document.FBT.schat.alt = 'Р РµР¶РёРј С‡Р°С‚Р° (РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+           parent.frames['ch_buttons'].document.FBT.schat.title = 'Р РµР¶РёРј С‡Р°С‚Р° (РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ)';
        }
        else
        {
@@ -209,8 +209,8 @@ function change_chatsetup()
     	      parent.frames['ch_buttons'].document.FBT.fyo.value = 0;
     	      ch_refresh();
     	      parent.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_all.gif';
-    	      parent.frames['ch_buttons'].document.FBT.schat.alt = 'Режим чата (Показывать все сообщения)';
-			  parent.frames['ch_buttons'].document.FBT.schat.title = 'Режим чата (Показывать все сообщения)';
+           parent.frames['ch_buttons'].document.FBT.schat.alt = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ РІСЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+           parent.frames['ch_buttons'].document.FBT.schat.title = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ РІСЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
        }
 }
 
@@ -222,7 +222,7 @@ function change_chatspeed()
        else ChatDelay = 10;
        ChatTimerID = setTimeout('ch_refresh()', ChatDelay*1000);
        parent.frames['ch_buttons'].document.FBT.spchat.src = 'http://img.legendbattles.ru/image/chat/bb_'+ChatDelay+'.gif';
-       parent.frames['ch_buttons'].document.FBT.spchat.alt = 'Скорость обновления (раз в '+ChatDelay+' секунд)';
+    parent.frames['ch_buttons'].document.FBT.spchat.alt = 'РЎРєРѕСЂРѕСЃС‚СЊ РѕР±РЅРѕРІР»РµРЅРёСЏ (СЂР°Р· РІ ' + ChatDelay + ' СЃРµРєСѓРЅРґ)';
 }
 
 function change_latrus()
@@ -231,13 +231,13 @@ function change_latrus()
        {
               latrus = 1;
     	      parent.frames['ch_buttons'].document.FBT.lrchat.src = 'http://img.legendbattles.ru/image/chat/bb4_ac.gif';
-    	      parent.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (Транслит включён)';
+           parent.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (РўСЂР°РЅСЃР»РёС‚ РІРєР»СЋС‡С‘РЅ)';
        }
        else
        {
               latrus = 0;
        	      parent.frames['ch_buttons'].document.FBT.lrchat.src = 'http://img.legendbattles.ru/image/chat/bb4_nc.gif';
-       	      parent.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (Транслит выключен)';
+           parent.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (РўСЂР°РЅСЃР»РёС‚ РІС‹РєР»СЋС‡РµРЅ)';
        }
 }
 
@@ -250,12 +250,12 @@ function start()
 
 function exit_confirm()
 {
-       return confirm('Вы действительно хотите покинуть игру?');
+    return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїРѕРєРёРЅСѓС‚СЊ РёРіСЂСѓ?');
 }
 
 function delete_confirm(wnametxt)
 {
-       return confirm('Вы действительно хотите выбросить "'+wnametxt+'"?');
+    return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РІС‹Р±СЂРѕСЃРёС‚СЊ "' + wnametxt + '"?');
 }
 
 function exit_redir()
@@ -270,7 +270,7 @@ function DeleteTrue(wname)
 
 function delete_confirm_NG(wnametxt)
 {
-       return confirm('Открыть и удалить "'+wnametxt+'"? Подарок может сожержать полезные предметы, бонусы, или не содержать ничего.');
+    return confirm('РћС‚РєСЂС‹С‚СЊ Рё СѓРґР°Р»РёС‚СЊ "' + wnametxt + '"? РџРѕРґР°СЂРѕРє РјРѕР¶РµС‚ СЃРѕР¶РµСЂР¶Р°С‚СЊ РїРѕР»РµР·РЅС‹Рµ РїСЂРµРґРјРµС‚С‹, Р±РѕРЅСѓСЃС‹, РёР»Рё РЅРµ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРёС‡РµРіРѕ.');
 }
 
 function DeleteTrueNG(wname)
@@ -280,7 +280,7 @@ function DeleteTrueNG(wname)
 
 function ClanConfirm(wnametxt)
 {
-       return confirm('Положить в казну "'+wnametxt+'"?');
+    return confirm('РџРѕР»РѕР¶РёС‚СЊ РІ РєР°Р·РЅСѓ "' + wnametxt + '"?');
 }
 
 function ClanKaznaTrue(wname)

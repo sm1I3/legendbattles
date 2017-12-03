@@ -78,20 +78,20 @@ if ((string)$fort_id == '') {
 }
 
 ?>
-<h3><?=($fort_id == ''?'Добавить замок':'Изменить замок')?></h3>
+    <h3><?= ($fort_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ Р·Р°РјРѕРє' : 'РР·РјРµРЅРёС‚СЊ Р·Р°РјРѕРє') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID Замка: &nbsp;  </td>
+    <td>ID Р—Р°РјРєР°: &nbsp;</td>
   <td><input name="fort_id" type="text" class="cms_fieldstyle1" value="<?=$fort['fort_id']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Класс замка: &nbsp;  </td>
+    <td>РљР»Р°СЃСЃ Р·Р°РјРєР°: &nbsp;</td>
   <td><?=createSelectFromArray('fort_class', $fort_classes, $fort['fort_class'])?></td>
 </tr>
 <tr>
-  <td>Телепорт: &nbsp;  </td>
+    <td>РўРµР»РµРїРѕСЂС‚: &nbsp;</td>
   <td><input name="teleport" type="text" class="cms_fieldstyle1" value="<?=$fort['teleport']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
@@ -103,18 +103,19 @@ if ((string)$fort_id == '') {
   <td><input name="mp" type="text" class="cms_fieldstyle1" value="<?=$fort['mp']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Масса: &nbsp;  </td>
+    <td>РњР°СЃСЃР°: &nbsp;</td>
   <td><input name="massa" type="text" class="cms_fieldstyle1" value="<?=$fort['massa']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Масса: &nbsp;  </td>
+    <td>РњР°СЃСЃР°: &nbsp;</td>
   <td><input name="cmassa" type="text" class="cms_fieldstyle1" value="<?=$fort['cmassa']?>" size="10" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='fort_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='fort_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

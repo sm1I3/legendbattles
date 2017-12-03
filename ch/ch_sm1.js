@@ -7,8 +7,8 @@ function insert_smile(numberofsmile) {
 }
 
 function view_smiles(){
-	document.write("<FONT class=freetxt><b>Примечание</b>. Разрешено не более 3 смайлов в одном сообщении.<br>");
-	document.write("<center><a href=# onclick='window.close()'><font class=nickname><b>Закрыть</b></font></a></center><br>");
+    document.write("<FONT class=freetxt><b>РџСЂРёРјРµС‡Р°РЅРёРµ</b>. Р Р°Р·СЂРµС€РµРЅРѕ РЅРµ Р±РѕР»РµРµ 3 СЃРјР°Р№Р»РѕРІ РІ РѕРґРЅРѕРј СЃРѕРѕР±С‰РµРЅРёРё.<br>");
+    document.write("<center><a href=# onclick='window.close()'><font class=nickname><b>Р—Р°РєСЂС‹С‚СЊ</b></font></a></center><br>");
 	for(csm=0; csm<smiles.length; csm++){
 		document.write("<a href=# onclick=\"insert_smile('"+smiles[csm]+"')\"><img src='/img/chat/smiles/smiles_"+smiles[csm]+".gif' border=0></a> ");
 	}

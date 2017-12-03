@@ -24,10 +24,8 @@ $quit="parent.location='index.php';";
     die;
   }
 
-  // ���������, ������� ��������� �� ������ � ��������� ��������������
-  // ������������ �� ������� ��������
 
-  function goto_error($err_text)
+function goto_error($err_text)
   {
     echo '<br><b>����� �������: </b><br>'.$err_text.'<br><INPUT TYPE="button" VALUE="�����" onClick="history.back()">';
     die;

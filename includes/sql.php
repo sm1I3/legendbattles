@@ -1,14 +1,14 @@
 <?php
 
 class InitVars {
-# Недопустимые слова в запросах fff
+# РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃР»РѕРІР° РІ Р·Р°РїСЂРѕСЃР°С… fff
         var $deny_words = array("union","char","players","from","truncate","table","select","update","drop","delete","benchmark", "order", "limit", "UNION","CHAR", "DROP", "FROM", "SELECT", "UPDATE", "DELETE", "ORDER", "PLAYERS", "TRUNCATE", "LIMIT", "TABLE", "Union","Players","From","Truncate","Table","Select","Update","Char","Drop","Delete","Benchmark","Order","Limit", "or","OR","Or","and","AND","And");
 
 function InitVars() {
 }
 
-# Метод конвентирует суперглобальные массивы $_POST, $_GET в перемнные
-# Например : $_GET['psw'] будет переобразовано в $psw с тем же значением
+# РњРµС‚РѕРґ РєРѕРЅРІРµРЅС‚РёСЂСѓРµС‚ СЃСѓРїРµСЂРіР»РѕР±Р°Р»СЊРЅС‹Рµ РјР°СЃСЃРёРІС‹ $_POST, $_GET РІ РїРµСЂРµРјРЅРЅС‹Рµ
+# РќР°РїСЂРёРјРµСЂ : $_GET['psw'] Р±СѓРґРµС‚ РїРµСЂРµРѕР±СЂР°Р·РѕРІР°РЅРѕ РІ $psw СЃ С‚РµРј Р¶Рµ Р·РЅР°С‡РµРЅРёРµРј
 function convertArray2Vars () {
 
         foreach($_GET as $_ind => $_val) {
@@ -24,15 +24,15 @@ function convertArray2Vars () {
 }
 
 
-# Метод проверяет $_GET и $_POST переменные на наличие опасных данных и SQL инъекций  
+# РњРµС‚РѕРґ РїСЂРѕРІРµСЂСЏРµС‚ $_GET Рё $_POST РїРµСЂРµРјРµРЅРЅС‹Рµ РЅР° РЅР°Р»РёС‡РёРµ РѕРїР°СЃРЅС‹С… РґР°РЅРЅС‹С… Рё SQL РёРЅСЉРµРєС†РёР№  
 function checkVars() {
-        //Проверка опасных данных.  
+    //РџСЂРѕРІРµСЂРєР° РѕРїР°СЃРЅС‹С… РґР°РЅРЅС‹С….
         foreach($_GET as $_ind => $_val) {
                         $_GET[$_ind] = htmlspecialchars(stripslashes($_val));
 
                         $exp = explode(" ",$_GET[$_ind]);
                         foreach($exp as $ind => $val) {
-                                if(in_array($val,$this->deny_words)) $this->antihack("Запрещено!Доступ закрыт!<br>");
+                            if (in_array($val, $this->deny_words)) $this->antihack("Р—Р°РїСЂРµС‰РµРЅРѕ!Р”РѕСЃС‚СѓРї Р·Р°РєСЂС‹С‚!<br>");
                         }
         }
 
@@ -41,7 +41,7 @@ function checkVars() {
 
                         $exp = explode(" ",$_POST[$_ind]);
                         foreach($exp as $ind => $val) {
-                                if(in_array($val,$this->deny_words)) $this->antihack("Запрещено!Доступ закрыт!<br>");
+                            if (in_array($val, $this->deny_words)) $this->antihack("Р—Р°РїСЂРµС‰РµРЅРѕ!Р”РѕСЃС‚СѓРї Р·Р°РєСЂС‹С‚!<br>");
                         }
         }
 

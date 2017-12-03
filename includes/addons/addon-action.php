@@ -3,7 +3,7 @@ save_hp();
 $player=player();
 if(!empty($_REQUEST['action'])){
 	switch($_REQUEST['action']){
-		case'5': // Встаем на проверку!
+        case'5': // Р’СЃС‚Р°РµРј РЅР° РїСЂРѕРІРµСЂРєСѓ!
 			$VeriF = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `verification` WHERE `uid` = '".$player['id']."'"));
 			if(empty($VeriF)){
 				switch($_REQUEST['ver_type']){
@@ -22,7 +22,7 @@ if(!empty($_REQUEST['action'])){
 				}
 			}
 		break;
-		case'6': // Удаляем заявку!
+        case'6': // РЈРґР°Р»СЏРµРј Р·Р°СЏРІРєСѓ!
 			mysqli_query($GLOBALS['db_link'],"DELETE FROM `verification` WHERE `uid` = '".$player['id']."' AND `status` = '0'");
 		break;		
 	}
@@ -31,7 +31,14 @@ if(!empty($_REQUEST['action'])){
 ?>
 <HEAD><LINK href=../css/game.css rel=STYLESHEET type=text/css><LINK href=../css/stl.css rel=STYLESHEET type=text/css><meta content="text/html; charset=windows-1251" http-equiv=Content-type><META Http-Equiv=Cache-Control Content=no-cache><meta http-equiv=PRAGMA content=NO-CACHE><META Http-Equiv=Expires Content=0></HEAD><body bgcolor=#ffffff topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0 link=#336699 alink=#336699 vlink=#336699>
 	<div id="overDiv" style="position:absolute;visibility:hidden;z-index:1000;"></div>
-	<div id="header"><table cellpadding=4 cellspacing=0 border=0 width=100%><tr><td><font class=nickname><b>Дополнительные возможности персонажа</b></font></td><td align="right"><input type=button class=lbut onClick="location='/main.php'" value="Вернуться"></td><td><div align=right><script language="JavaScript">
+    <div id="header">
+        <table cellpadding=4 cellspacing=0 border=0 width=100%>
+            <tr>
+                <td><font class=nickname><b>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїРµСЂСЃРѕРЅР°Р¶Р°</b></font></td>
+                <td align="right"><input type=button class=lbut onClick="location='/main.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ"></td>
+                <td>
+                    <div align=right>
+                        <script language="JavaScript">
 <!-- 
 document.write("<a href='javascript:parent.exit_redir();'>");
 // -->
@@ -44,9 +51,19 @@ document.write("<a href='javascript:parent.exit_redir();'>");
       <tr>
         <td bgcolor=#cccccc><table cellpadding=0 cellspacing=1 width=100% border=0>
           <tr>
-            <td bgcolor=<?php echo (($_GET['addid'] == '1')?'#FFFFFF':'#F0F0F0'); ?> width=25%><div align=center><a href=?useaction=addon-action&addid=1><font class=nickname><b>Возможности</b></font></a></div></td>
-            <td bgcolor=<?php echo (($_GET['addid'] == '2')?'#FFFFFF':'#F0F0F0'); ?> width=25%><div align=center><a href=?useaction=addon-action&addid=2><font class=nickname><b>Ваши лицензии</b></font></a></div></td>
-            <td bgcolor=<?php echo (($_GET['addid'] == '3')?'#FFFFFF':'#F0F0F0'); ?> width=25%><div align=center><a href=?useaction=addon-action&addid=3><font class=nickname><b>Проверка на чистоту</b></font></a></div></td></tr>
+              <td bgcolor=<?php echo(($_GET['addid'] == '1') ? '#FFFFFF' : '#F0F0F0'); ?> width=25%>
+                  <div align=center><a href=?useaction=addon-action&addid=1><font
+                                  class=nickname><b>Р’РѕР·РјРѕР¶РЅРѕСЃС‚Рё</b></font></a></div>
+              </td>
+              <td bgcolor=<?php echo(($_GET['addid'] == '2') ? '#FFFFFF' : '#F0F0F0'); ?> width=25%>
+                  <div align=center><a href=?useaction=addon-action&addid=2><font class=nickname><b>Р’Р°С€Рё
+                                  Р»РёС†РµРЅР·РёРё</b></font></a></div>
+              </td>
+              <td bgcolor=<?php echo(($_GET['addid'] == '3') ? '#FFFFFF' : '#F0F0F0'); ?> width=25%>
+                  <div align=center><a href=?useaction=addon-action&addid=3><font class=nickname><b>РџСЂРѕРІРµСЂРєР° РЅР°
+                                  С‡РёСЃС‚РѕС‚Сѓ</b></font></a></div>
+              </td>
+          </tr>
         </table></td>
       </tr>
       <tr>
@@ -56,31 +73,31 @@ document.write("<a href='javascript:parent.exit_redir();'>");
               <tr>
                 <td bgcolor=#FFFFFF><?php
 if(empty($_GET['addid'])){
-	//echo'<font class=freetxt><div align=center><font color=#cc0000><b>Выберите раздел</b></font></div></font>';
-	//обменник снежинок от невидимка 
+    //echo'<font class=freetxt><div align=center><font color=#cc0000><b>Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</b></font></div></font>';
+    //РѕР±РјРµРЅРЅРёРє СЃРЅРµР¶РёРЅРѕРє РѕС‚ РЅРµРІРёРґРёРјРєР°
 $sneginv = mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT protype, pl_id FROM invent WHERE protype='2735' and pl_id='".$player["id"]."' "));
 if(!$sneginv) $sneginv = 0;
-		if($sneginv==1) $n='ка';
-			elseif($sneginv>1 and $sneginv<=4) $n='ки';
-			elseif($sneginv>4 or $sneginv==0) $n='ок';
+    if ($sneginv == 1) $n = 'РєР°';
+    elseif ($sneginv > 1 and $sneginv <= 4) $n = 'РєРё';
+    elseif ($sneginv > 4 or $sneginv == 0) $n = 'РѕРє';
 echo"<div class='block info'>
 	   <div class='header'>
-		<span>Обменник снежинок</span>
+		<span>РћР±РјРµРЅРЅРёРє СЃРЅРµР¶РёРЅРѕРє</span>
 	</div>
 		<font>
 			<p>
-				На данный момент у вас в инвентаре <b>$sneginv</b> снежин$n. Обменять снежинки на новогоднюю валюту можно тут.
+				РќР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ Сѓ РІР°СЃ РІ РёРЅРІРµРЅС‚Р°СЂРµ <b>$sneginv</b> СЃРЅРµР¶РёРЅ$n. РћР±РјРµРЅСЏС‚СЊ СЃРЅРµР¶РёРЅРєРё РЅР° РЅРѕРІРѕРіРѕРґРЅСЋСЋ РІР°Р»СЋС‚Сѓ РјРѕР¶РЅРѕ С‚СѓС‚.
 			</p>
 			<p>
 				<form type='get' action='main.php?'>
-				Введите количество для обмена: <input type='text' name='sncount'> <input type='submit' name='change' value='Обменять'>
+				Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґР»СЏ РѕР±РјРµРЅР°: <input type='text' name='sncount'> <input type='submit' name='change' value='РћР±РјРµРЅСЏС‚СЊ'>
 				</form>
 			</p>
 		</font>";
 
-//конец обменника
+//РєРѕРЅРµС† РѕР±РјРµРЅРЅРёРєР°
 }elseif($_GET['addid'] == '1'){
-//склонки
+//СЃРєР»РѕРЅРєРё
 if($_GET['act'] and $player['sklon']!=0 and $player['sklon']!=''){
 	if($_POST['tologin']){
 	$val_tologin=varcheck($_POST['tologin']);
@@ -92,25 +109,25 @@ if($_GET['act'] and $player['sklon']!=0 and $player['sklon']!=''){
 					 case 1: 
 						if($nowa[1]>0){
 							switch($player['sklon']){
-								 case 5:  //лечение
+                                case 5:  //Р»РµС‡РµРЅРёРµ
 									if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `affect`='' WHERE `id`='".$target['id']."' LIMIT 1;")){
-										echo '<div align=center><font class=proce><b>Персонаж '.$target['login'].' успешно излечен от травм.</b></font></div>';
+                                        echo '<div align=center><font class=proce><b>РџРµСЂСЃРѕРЅР°Р¶ ' . $target['login'] . ' СѓСЃРїРµС€РЅРѕ РёР·Р»РµС‡РµРЅ РѕС‚ С‚СЂР°РІРј.</b></font></div>';
 									}
-								 break; 
-								 case 6: //Темное нападение
+								 break;
+                                case 6: //РўРµРјРЅРѕРµ РЅР°РїР°РґРµРЅРёРµ
 										$ret=PlayerAttack($target['login'],0,80,3);
 										$msg=$ret[msg];
 										echo $msg;
-								 break; 
-								 case 7: //Ускорение
+								 break;
+                                case 7: //РЈСЃРєРѕСЂРµРЅРёРµ
 									$insert = $target['buffs']."|16@100@".(time()+3600);
 									if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `buffs`='".$insert."' WHERE `id`='".$target['id']."' LIMIT 1;")){
-										echo '<div align=center><font class=proce><b>Персонаж '.$target['login'].' успешно получил +100 к страннику.</b></font></div>';
+                                        echo '<div align=center><font class=proce><b>РџРµСЂСЃРѕРЅР°Р¶ ' . $target['login'] . ' СѓСЃРїРµС€РЅРѕ РїРѕР»СѓС‡РёР» +100 Рє СЃС‚СЂР°РЅРЅРёРєСѓ.</b></font></div>';
 									}
-								 break; 
-								 case 8: //Облегчение
+								 break;
+                                case 8: //РћР±Р»РµРіС‡РµРЅРёРµ
 									if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `affect`='',`buffs`='' WHERE `id`='".$target['id']."' LIMIT 1;")){
-										echo '<div align=center><font class=proce><b>Персонаж '.$target['login'].' успешно излечен от травм и избавлен от эффектов зелий.</b></font></div>';
+                                        echo '<div align=center><font class=proce><b>РџРµСЂСЃРѕРЅР°Р¶ ' . $target['login'] . ' СѓСЃРїРµС€РЅРѕ РёР·Р»РµС‡РµРЅ РѕС‚ С‚СЂР°РІРј Рё РёР·Р±Р°РІР»РµРЅ РѕС‚ СЌС„С„РµРєС‚РѕРІ Р·РµР»РёР№.</b></font></div>';
 									} 
 								 break; 
 							}
@@ -121,7 +138,7 @@ if($_GET['act'] and $player['sklon']!=0 and $player['sklon']!=''){
 					 case 2:
 						if($nowa[2]>0){
 							switch($player['sklon']){
-								case 5: //Аура света
+                                case 5: //РђСѓСЂР° СЃРІРµС‚Р°
 									switch($target['sklon']){
 										case 5: $params=25; break;
 										case 6: $params=-15; break;
@@ -131,10 +148,10 @@ if($_GET['act'] and $player['sklon']!=0 and $player['sklon']!=''){
 									}
 									$insert = $target['buffs']."|14@".$params."@".(time()+3600);
 									if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `buffs`='".$insert."' WHERE `id`='".$target['id']."' LIMIT 1;")){
-										echo '<div align=center><font class=proce><b>Персонаж '.$target['login'].' успешно получил '.$params.'% к мф и статам.</b></font></div>';
+                                        echo '<div align=center><font class=proce><b>РџРµСЂСЃРѕРЅР°Р¶ ' . $target['login'] . ' СѓСЃРїРµС€РЅРѕ РїРѕР»СѓС‡РёР» ' . $params . '% Рє РјС„ Рё СЃС‚Р°С‚Р°Рј.</b></font></div>';
 									}
-								break; 
-								case 6: //Аура Тьмы
+								break;
+                                case 6: //РђСѓСЂР° РўСЊРјС‹
 									switch($target['sklon']){
 										case 5: $params=-15; break;
 										case 6: $params=30; break;
@@ -143,20 +160,22 @@ if($_GET['act'] and $player['sklon']!=0 and $player['sklon']!=''){
 										default: $params=20; break;
 									}
 									$insert = $target['buffs']."|14@".$params."@".(time()+3600);
-									if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `buffs`='".$insert."' WHERE `id`='".$target['id']."' LIMIT 1;")){										
-										echo '<div align=center><font class=proce><b>Персонаж '.$target['login'].' успешно получил '.$params.'% к мф и статам.</b></font></div>';
+									if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `buffs`='".$insert."' WHERE `id`='".$target['id']."' LIMIT 1;")){
+                                        echo '<div align=center><font class=proce><b>РџРµСЂСЃРѕРЅР°Р¶ ' . $target['login'] . ' СѓСЃРїРµС€РЅРѕ РїРѕР»СѓС‡РёР» ' . $params . '% Рє РјС„ Рё СЃС‚Р°С‚Р°Рј.</b></font></div>';
 									}
 								break;
-								case 7: //Аура Сумерек
+                                case 7: //РђСѓСЂР° РЎСѓРјРµСЂРµРє
 									if($target['invisible']>time()){
 										mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `invisible`='".($target['invisible']+1800)."' WHERE `id`='".$target['id']."'");
 									}
 									elseif($target['invisible']<=time()){
 										mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `invisible`='".(time()+1800)."' WHERE `id`='".$target['id']."'");
 									}
-									echo '<div align=center><font class=proce><b>Персонаж '.$target['login'].' успешно стал невидимкой.</b></font></div>';
-								break; 
-								case 8: echo '<div align=center><font class=proce><b>Недоступно!</b></font></div>'; break; //Рука хаоса
+                                    echo '<div align=center><font class=proce><b>РџРµСЂСЃРѕРЅР°Р¶ ' . $target['login'] . ' СѓСЃРїРµС€РЅРѕ СЃС‚Р°Р» РЅРµРІРёРґРёРјРєРѕР№.</b></font></div>';
+								break;
+                                case 8:
+                                    echo '<div align=center><font class=proce><b>РќРµРґРѕСЃС‚СѓРїРЅРѕ!</b></font></div>';
+                                    break; //Р СѓРєР° С…Р°РѕСЃР°
 							}
 							$nskact=$nowa[1]."@".($nowa[2]-1);
 							mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `sklon_abil`='".$nskact."' WHERE `login`='".$player['login']."' LIMIT 1;");
@@ -168,162 +187,177 @@ if($_GET['act'] and $player['sklon']!=0 and $player['sklon']!=''){
 				if(intval($_GET['act'])==1 and $nowa[1]>0){$nskact=($nowa[1]-1)."@".$nowa[2];}
 				elseif(intval($_GET['act'])==2 and $nowa[2]>0){$nskact=$nowa[1]."@".($nowa[2]-1);}
 				if($nskact){mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `sklon_abil`='".$nskact."' WHERE `login`='".$player['login']."' LIMIT 1;");}
-				echo '<div align=center><font class=proce><b>Склонность не сработала!</b></font></div>';
+                echo '<div align=center><font class=proce><b>РЎРєР»РѕРЅРЅРѕСЃС‚СЊ РЅРµ СЃСЂР°Р±РѕС‚Р°Р»Р°!</b></font></div>';
 			}
-		}else{echo '<div align=center><font class=proce><b>Игрок с таким именем не найден!</b></font></div>';}
-	}else{echo '<div align=center><font class=proce><b>Укажите имя цели!</b></font></div>';}
+        } else {
+            echo '<div align=center><font class=proce><b>РРіСЂРѕРє СЃ С‚Р°РєРёРј РёРјРµРЅРµРј РЅРµ РЅР°Р№РґРµРЅ!</b></font></div>';
+        }
+    } else {
+        echo '<div align=center><font class=proce><b>РЈРєР°Р¶РёС‚Рµ РёРјСЏ С†РµР»Рё!</b></font></div>';
+    }
 
 }
 $player=player();
 if($player['sklon']!=0 and $player['sklon']!=''){
-	$allinputs='<input type=hidden namve=vcode value="'.scode().'">Ник:<input type=text name=tologin class=logintextbox8 value=""><input type=submit class=lbut value="Использовать"><br>';
+    $allinputs = '<input type=hidden namve=vcode value="' . scode() . '">РќРёРє:<input type=text name=tologin class=logintextbox8 value=""><input type=submit class=lbut value="РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ"><br>';
 	$formact[1]='<form method=post action="main.php?useaction=addon-action&addid=1&act=1"><font class=freetxt>';
 	$formact[2]='<form method=post action="main.php?useaction=addon-action&addid=1&act=2"><font class=freetxt>';
-	echo'<font class=freetxt><font class=nickname><font color=#222222><FIELDSET><LEGEND align=center><B>Возможности склонности</B></LEGEND>
+    echo '<font class=freetxt><font class=nickname><font color=#222222><FIELDSET><LEGEND align=center><B>Р’РѕР·РјРѕР¶РЅРѕСЃС‚Рё СЃРєР»РѕРЅРЅРѕСЃС‚Рё</B></LEGEND>
 	<table cellpadding=0 cellspacing=0 border=0 width=100%>
 	<tr><td bgcolor=cccccc>	
 	<table cellpadding=5 cellspacing=1 border=0 width=100% >
-	<tr><td colspan=2 bgcolor=white><div align=center><font class=freetxt>Время действия способностей 30-60 минут.</font></div></td></tr>
+	<tr><td colspan=2 bgcolor=white><div align=center><font class=freetxt>Р’СЂРµРјСЏ РґРµР№СЃС‚РІРёСЏ СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№ 30-60 РјРёРЅСѓС‚.</font></div></td></tr>
 	<tr>';
-		if($player['login']=='Администрация'){$player['sklon']=5;}
+    if ($player['login'] == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
+        $player['sklon'] = 5;
+    }
 		list($nowa[1], $nowa[2]) = explode('@', $player['sklon_abil']);
 		switch($player['sklon']){
-			case 5: //свет
+            case 5: //СЃРІРµС‚
 				echo '
 				<td align=center bgcolor=white width=50%>
 					'.$formact[1].'						
 						<div align=center>
-							<b>Лечение</b> ['.$nowa[1].'/3]<br>
+							<b>Р›РµС‡РµРЅРёРµ</b> [' . $nowa[1] . '/3]<br>
 							<img src="http://img.legendbattles.ru/image/sklonab/light_doc.gif"><br>
 							'.$allinputs.'
 						</div>
 						<div align=center>
-						Возможность использовать на любого персонажа.<br>Лечение всех видов травм.<br>Шанс срабатывания 80%
+						Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РЅР° Р»СЋР±РѕРіРѕ РїРµСЂСЃРѕРЅР°Р¶Р°.<br>Р›РµС‡РµРЅРёРµ РІСЃРµС… РІРёРґРѕРІ С‚СЂР°РІРј.<br>РЁР°РЅСЃ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ 80%
 						</div>
 					</font></form>
 				</td>
 				<td align=center bgcolor=white width=50%>
 					'.$formact[2].'	
 						<div align=center>
-							<b>Аура света</b> ['.$nowa[2].'/3]<br>
+							<b>РђСѓСЂР° СЃРІРµС‚Р°</b> [' . $nowa[2] . '/3]<br>
 							<img src="http://img.legendbattles.ru/image/sklonab/light_aura.gif"><br>
 							'.$allinputs.'
 						</div>
 						<div align=center>
-							<b>Свет и Сумерки</b> (Повышение МФ или Статов на 25%)<br>
-							<b>Тьма и Хаос</b> (Понижение МФ или Статов на 15%)<br>
-							<b>Игрок без склонности</b> (Повышение МФ или Статов на 20%)<br>
-							Шанс срабатывания 80%
+							<b>РЎРІРµС‚ Рё РЎСѓРјРµСЂРєРё</b> (РџРѕРІС‹С€РµРЅРёРµ РњР¤ РёР»Рё РЎС‚Р°С‚РѕРІ РЅР° 25%)<br>
+							<b>РўСЊРјР° Рё РҐР°РѕСЃ</b> (РџРѕРЅРёР¶РµРЅРёРµ РњР¤ РёР»Рё РЎС‚Р°С‚РѕРІ РЅР° 15%)<br>
+							<b>РРіСЂРѕРє Р±РµР· СЃРєР»РѕРЅРЅРѕСЃС‚Рё</b> (РџРѕРІС‹С€РµРЅРёРµ РњР¤ РёР»Рё РЎС‚Р°С‚РѕРІ РЅР° 20%)<br>
+							РЁР°РЅСЃ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ 80%
 						</div>
 					</font></form>
 				</td>';
-				if($player['login']!='Администрация'){break;}
+                if ($player['login'] != 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
+                    break;
+                }
 				else{echo '</tr><tr>';}
-			case 6: //тьма
+            case 6: //С‚СЊРјР°
 				echo '
 				<td align=center bgcolor=white width=50%>
 					'.$formact[1].'	
 						<div align=center>
-							<b>Темное нападение</b> ['.$nowa[1].'/3]<br>
+							<b>РўРµРјРЅРѕРµ РЅР°РїР°РґРµРЅРёРµ</b> [' . $nowa[1] . '/3]<br>
 							<img src="http://img.legendbattles.ru/image/sklonab/dark_attack.gif"><br>
 							'.$allinputs.'
 						</div>
 						<div align=center>
-							Темное нападение<br>Нападение, если даже персонаж находиться на другой клетке.<br>Шанс срабатывания 80%
+							РўРµРјРЅРѕРµ РЅР°РїР°РґРµРЅРёРµ<br>РќР°РїР°РґРµРЅРёРµ, РµСЃР»Рё РґР°Р¶Рµ РїРµСЂСЃРѕРЅР°Р¶ РЅР°С…РѕРґРёС‚СЊСЃСЏ РЅР° РґСЂСѓРіРѕР№ РєР»РµС‚РєРµ.<br>РЁР°РЅСЃ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ 80%
 						</div>
 					</font></form>
 				</td>
 				<td align=center bgcolor=white width=50%>
 					'.$formact[2].'	
 						<div align=center>
-							<b>Аура Тьмы</b> ['.$nowa[2].'/3]<br>
+							<b>РђСѓСЂР° РўСЊРјС‹</b> [' . $nowa[2] . '/3]<br>
 							<img src="http://img.legendbattles.ru/image/sklonab/dark_aura.gif"><br>
 							'.$allinputs.'
 						</div>
 						<div align=center>
-							<b>Свет и Сумерки</b> (Понижение МФ или Статов на 15%)<br>
-							<b>Тьма и Хаос</b> (Повышение МФ или Статов на 30%)<br>
-							<b>Игрок без склонности</b> (Повышение МФ или Статов на 20%)<br>
-							Шанс срабатывания 80%
+							<b>РЎРІРµС‚ Рё РЎСѓРјРµСЂРєРё</b> (РџРѕРЅРёР¶РµРЅРёРµ РњР¤ РёР»Рё РЎС‚Р°С‚РѕРІ РЅР° 15%)<br>
+							<b>РўСЊРјР° Рё РҐР°РѕСЃ</b> (РџРѕРІС‹С€РµРЅРёРµ РњР¤ РёР»Рё РЎС‚Р°С‚РѕРІ РЅР° 30%)<br>
+							<b>РРіСЂРѕРє Р±РµР· СЃРєР»РѕРЅРЅРѕСЃС‚Рё</b> (РџРѕРІС‹С€РµРЅРёРµ РњР¤ РёР»Рё РЎС‚Р°С‚РѕРІ РЅР° 20%)<br>
+							РЁР°РЅСЃ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ 80%
 						</div>
 					</font></form>
 				</td>';
-				if($player['login']!='Администрация'){break;}
+                if ($player['login'] != 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
+                    break;
+                }
 				else{echo '</tr><tr>';}
-			case 7: //сумерки
+            case 7: //СЃСѓРјРµСЂРєРё
 				echo '
 				<td align=center bgcolor=white width=50%>
 					'.$formact[1].'	
 						<div align=center>
-							<b>Ускорение</b> ['.$nowa[1].'/3]<br>
+							<b>РЈСЃРєРѕСЂРµРЅРёРµ</b> [' . $nowa[1] . '/3]<br>
 							<img src="http://img.legendbattles.ru/image/sklonab/neut_fast.gif"><br>
 							'.$allinputs.'
 						</div>
 						<div align=center>
-						Перемещение персонажа увеличивается в “+100” Странника.<br>Шанс срабатывания 80%
+						РџРµСЂРµРјРµС‰РµРЅРёРµ РїРµСЂСЃРѕРЅР°Р¶Р° СѓРІРµР»РёС‡РёРІР°РµС‚СЃСЏ РІ вЂњ+100вЂќ РЎС‚СЂР°РЅРЅРёРєР°.<br>РЁР°РЅСЃ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ 80%
 						</div>
 					</font></form>
 				</td>
 				<td align=center bgcolor=white width=50%>
 					'.$formact[2].'	
 						<div align=center>
-							<b>Аура Сумерек</b> ['.$nowa[2].'/3]<br>
+							<b>РђСѓСЂР° РЎСѓРјРµСЂРµРє</b> [' . $nowa[2] . '/3]<br>
 							<img src="http://img.legendbattles.ru/image/sklonab/neut_invis.gif"><br>
 							'.$allinputs.'
 						</div>
 						<div align=center>
-							Персонаж становится невидимым.<br>
-							Шанс срабатывания 80%
+							РџРµСЂСЃРѕРЅР°Р¶ СЃС‚Р°РЅРѕРІРёС‚СЃСЏ РЅРµРІРёРґРёРјС‹Рј.<br>
+							РЁР°РЅСЃ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ 80%
 						</div>
 					</font></form>
 				</td>';
-				if($player['login']!='Администрация'){break;}
+                if ($player['login'] != 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
+                    break;
+                }
 				else{echo '</tr><tr>';}
-			case 8:  //хаос
+            case 8:  //С…Р°РѕСЃ
 				echo '
 				<td align=center bgcolor=white width=50%>
 					<form  method=post action="main.php?useaction=addon-action&addid=1&act=1"><font class=freetxt>
 						<div align=center>
-							<b>Облегчение</b> ['.$nowa[1].'/3]<br>
+							<b>РћР±Р»РµРіС‡РµРЅРёРµ</b> [' . $nowa[1] . '/3]<br>
 							<img src="http://img.legendbattles.ru/image/sklonab/chaos_obl.gif"><br>
 							'.$allinputs.'
 						</div>
 						<div align=center>
-						Персонаж, который подвергся заклинанию Света или Тьмы, накинув “Облегчение”.<br> Убирает все эффекты в то числе и зелья.<br>Шанс срабатывания 80%
+						РџРµСЂСЃРѕРЅР°Р¶, РєРѕС‚РѕСЂС‹Р№ РїРѕРґРІРµСЂРіСЃСЏ Р·Р°РєР»РёРЅР°РЅРёСЋ РЎРІРµС‚Р° РёР»Рё РўСЊРјС‹, РЅР°РєРёРЅСѓРІ вЂњРћР±Р»РµРіС‡РµРЅРёРµвЂќ.<br> РЈР±РёСЂР°РµС‚ РІСЃРµ СЌС„С„РµРєС‚С‹ РІ С‚Рѕ С‡РёСЃР»Рµ Рё Р·РµР»СЊСЏ.<br>РЁР°РЅСЃ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ 80%
 						</div>
 					</font></form>
 				</td>
 				<td align=center bgcolor=white width=50%>
 					<form method=post action="main.php?useaction=addon-action&addid=1&act=2"><font class=freetxt>
 						<div align=center>
-							<b>Рука хаоса</b> ['.$nowa[2].'/3]<br>
+							<b>Р СѓРєР° С…Р°РѕСЃР°</b> [' . $nowa[2] . '/3]<br>
 							<img src="http://img.legendbattles.ru/image/sklonab/chaos_power.gif"><br>
-							Временно недоступно.
+							Р’СЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРЅРѕ.
 						</div>
 						<div align=center>
-							Позволяет из любого боя изъять человека и начать закрытый бой.<br>
-							Шанс срабатывания 80%
+							РџРѕР·РІРѕР»СЏРµС‚ РёР· Р»СЋР±РѕРіРѕ Р±РѕСЏ РёР·СЉСЏС‚СЊ С‡РµР»РѕРІРµРєР° Рё РЅР°С‡Р°С‚СЊ Р·Р°РєСЂС‹С‚С‹Р№ Р±РѕР№.<br>
+							РЁР°РЅСЃ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ 80%
 						</div>
 					</font></form>
 				</td>';
-			if($player['login']!='Администрация'){break;}
+                if ($player['login'] != 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
+                    break;
+                }
 			else{echo '</tr><tr>';}
 		}
 	echo'
 	</tr>
 	</table></td></tr></table></FIELDSET>';
 }
-//енд_склонки
-$thotems = array('0'=>'Час Сфинкса','1'=>'Час Саблезубого тигра','2'=>'Час Мудрого Льва','3'=>'Час Изумрудного Дракона','4'=>'Час Василиска','5'=>'Час Скорпиона','6'=>'Час Ужасающей Рыбы','7'=>'Час мутанта-острозуба','8'=>'Час Небесного кита','9'=>'Час Древнего Ящера','10'=>'Час Ворона Смерти','11'=>'Час Острых Клинков','17'=>'Официальный дилер');
-	echo'<font class=freetxt><font class=nickname><font color=#222222><div class="block info"><div class="header"><span>Общие Возможности</span></div><table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><font class=freetxt><b>УСЛУГИ САНИТАРА</b> (помощь людям с тяжелыми травмами - перенос людей в больницу)<SCRIPT src=\'java/sanitar.js\'></SCRIPT><div id=sanitardiv><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></div><a href="javascript:sanitar(\''.scode().'\')"><b>использовать</b></a><br><br><b>ВОССТАНОВИТЬ HP</b> (за счет маны - доступно '.ceil($player['mp']).' маны)<SCRIPT src=\'java/addon.js\'></SCRIPT><div id=addondiv><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></div><a href="javascript:addon_ma2hp(\''.scode().'\')"><b>использовать</b></a></font></td></tr></table></div>';
-	if($player[obnul]>0){echo'<br><div class="block info"><div class="header"><span>Обнуление Вашего Персонажа</span></div><table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%><form method=POST><div align=center><table cellpadding=2 cellspacing=0 border=0><tr><td colspan=2><font class=freetxt>Вы можете сбросить статы или сменить тотем. Возможных действий: '.$player[obnul].'</font></td></tr><tr><td><input type=button class=lbut onClick="location=\'main.php?get_id=14&vcode='.scode().'\'" value="Сбросить статы, умения и навыки"></td><td><font class=freetxt> <b>стоимость</b>: 1 действие</font></td></tr><tr><td>
+//РµРЅРґ_СЃРєР»РѕРЅРєРё
+    $thotems = array('0' => 'Р§Р°СЃ РЎС„РёРЅРєСЃР°', '1' => 'Р§Р°СЃ РЎР°Р±Р»РµР·СѓР±РѕРіРѕ С‚РёРіСЂР°', '2' => 'Р§Р°СЃ РњСѓРґСЂРѕРіРѕ Р›СЊРІР°', '3' => 'Р§Р°СЃ РР·СѓРјСЂСѓРґРЅРѕРіРѕ Р”СЂР°РєРѕРЅР°', '4' => 'Р§Р°СЃ Р’Р°СЃРёР»РёСЃРєР°', '5' => 'Р§Р°СЃ РЎРєРѕСЂРїРёРѕРЅР°', '6' => 'Р§Р°СЃ РЈР¶Р°СЃР°СЋС‰РµР№ Р С‹Р±С‹', '7' => 'Р§Р°СЃ РјСѓС‚Р°РЅС‚Р°-РѕСЃС‚СЂРѕР·СѓР±Р°', '8' => 'Р§Р°СЃ РќРµР±РµСЃРЅРѕРіРѕ РєРёС‚Р°', '9' => 'Р§Р°СЃ Р”СЂРµРІРЅРµРіРѕ РЇС‰РµСЂР°', '10' => 'Р§Р°СЃ Р’РѕСЂРѕРЅР° РЎРјРµСЂС‚Рё', '11' => 'Р§Р°СЃ РћСЃС‚СЂС‹С… РљР»РёРЅРєРѕРІ', '17' => 'РћС„РёС†РёР°Р»СЊРЅС‹Р№ РґРёР»РµСЂ');
+    echo '<font class=freetxt><font class=nickname><font color=#222222><div class="block info"><div class="header"><span>РћР±С‰РёРµ Р’РѕР·РјРѕР¶РЅРѕСЃС‚Рё</span></div><table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><font class=freetxt><b>РЈРЎР›РЈР“Р РЎРђРќРРўРђР Рђ</b> (РїРѕРјРѕС‰СЊ Р»СЋРґСЏРј СЃ С‚СЏР¶РµР»С‹РјРё С‚СЂР°РІРјР°РјРё - РїРµСЂРµРЅРѕСЃ Р»СЋРґРµР№ РІ Р±РѕР»СЊРЅРёС†Сѓ)<SCRIPT src=\'java/sanitar.js\'></SCRIPT><div id=sanitardiv><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></div><a href="javascript:sanitar(\'' . scode() . '\')"><b>РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ</b></a><br><br><b>Р’РћРЎРЎРўРђРќРћР’РРўР¬ HP</b> (Р·Р° СЃС‡РµС‚ РјР°РЅС‹ - РґРѕСЃС‚СѓРїРЅРѕ ' . ceil($player['mp']) . ' РјР°РЅС‹)<SCRIPT src=\'java/addon.js\'></SCRIPT><div id=addondiv><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></div><a href="javascript:addon_ma2hp(\'' . scode() . '\')"><b>РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ</b></a></font></td></tr></table></div>';
+    if ($player[obnul] > 0) {
+        echo '<br><div class="block info"><div class="header"><span>РћР±РЅСѓР»РµРЅРёРµ Р’Р°С€РµРіРѕ РџРµСЂСЃРѕРЅР°Р¶Р°</span></div><table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%><form method=POST><div align=center><table cellpadding=2 cellspacing=0 border=0><tr><td colspan=2><font class=freetxt>Р’С‹ РјРѕР¶РµС‚Рµ СЃР±СЂРѕСЃРёС‚СЊ СЃС‚Р°С‚С‹ РёР»Рё СЃРјРµРЅРёС‚СЊ С‚РѕС‚РµРј. Р’РѕР·РјРѕР¶РЅС‹С… РґРµР№СЃС‚РІРёР№: ' . $player[obnul] . '</font></td></tr><tr><td><input type=button class=lbut onClick="location=\'main.php?get_id=14&vcode=' . scode() . '\'" value="РЎР±СЂРѕСЃРёС‚СЊ СЃС‚Р°С‚С‹, СѓРјРµРЅРёСЏ Рё РЅР°РІС‹РєРё"></td><td><font class=freetxt> <b>СЃС‚РѕРёРјРѕСЃС‚СЊ</b>: 1 РґРµР№СЃС‚РІРёРµ</font></td></tr><tr><td>
 <input type=hidden name=get_id value=11><input type=hidden name=vcode value='.scode().'><select name=ch_tot class=LogintextBox6>
-<option value=n>Выберите тотем</option>';
+<option value=n>Р’С‹Р±РµСЂРёС‚Рµ С‚РѕС‚РµРј</option>';
 foreach($thotems as $key=>$val){
 	if($key<=11){echo '<option value="'.$key.'">'.$val.'</option>';}else{break;}
 }
 echo'
-</select> <input type=submit value="Сменить тотем" class=lbut></td><td><font class=freetxt> <b>стоимость</b>: 1 действие</font></td></tr></table></div></form></td></tr></table></div>';
+</select> <input type=submit value="РЎРјРµРЅРёС‚СЊ С‚РѕС‚РµРј" class=lbut></td><td><font class=freetxt> <b>СЃС‚РѕРёРјРѕСЃС‚СЊ</b>: 1 РґРµР№СЃС‚РІРёРµ</font></td></tr></table></div></form></td></tr></table></div>';
 	}
 	echo'</font></font></font>';
 }elseif($_GET['addid'] == '2'){
@@ -339,26 +373,26 @@ echo'
 					$do[$key]="0".$val;
 				}
 			}
-			$str.='<img src=http://img.legendbattles.ru/image/weapon/'.($arr[0]==1?'torg_lic_1':'doc_lic_3').'.gif width=42 height=21 title="'.($arr[0]==1?'Торговые':'Докторские').' лицензии"> Действительна до: <b>'.$do['mday'].'.'.$do['mon'].'.'.$do['year'].' '.$do['hours'].':'.$do['minutes'].':'.$do['seconds'].'</b>.<br>';
+            $str .= '<img src=http://img.legendbattles.ru/image/weapon/' . ($arr[0] == 1 ? 'torg_lic_1' : 'doc_lic_3') . '.gif width=42 height=21 title="' . ($arr[0] == 1 ? 'РўРѕСЂРіРѕРІС‹Рµ' : 'Р”РѕРєС‚РѕСЂСЃРєРёРµ') . ' Р»РёС†РµРЅР·РёРё"> Р”РµР№СЃС‚РІРёС‚РµР»СЊРЅР° РґРѕ: <b>' . $do['mday'] . '.' . $do['mon'] . '.' . $do['year'] . ' ' . $do['hours'] . ':' . $do['minutes'] . ':' . $do['seconds'] . '</b>.<br>';
 		}
 	}
 	if($str!=''){
 		echo $str;
 	}else{
-		echo'<font class=freetxt><div align=center><b><font color=#cc0000>У Вас нет лицензий</font></b></div></font>';
+        echo '<font class=freetxt><div align=center><b><font color=#cc0000>РЈ Р’Р°СЃ РЅРµС‚ Р»РёС†РµРЅР·РёР№</font></b></div></font>';
 	}
 }elseif($_GET['addid'] == '3'){
 	
 	$verification = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `verification` WHERE `uid`='".$player['id']."'"));
 	echo'<font class=freetxt>';
 	if(!empty($verification['id']) and $verification['status'] == 0){
-		echo'Заявка на проверку принята.<br>Статус проверки: В ожидании (номер в очереди: '.mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `verification` WHERE `vTime`<='".$verification['vTime']."' AND `status`!='1' AND `type`='".$verification['type']."'")).') <a href="javascript: if(confirm(\'Вы точно хотите удалить заявку?\')) { location=\'main.php?useaction=addon-action&addid=3&pg_id=1&action=6&vcode='.scode().'\' }">Удалить</a>';
+        echo 'Р—Р°СЏРІРєР° РЅР° РїСЂРѕРІРµСЂРєСѓ РїСЂРёРЅСЏС‚Р°.<br>РЎС‚Р°С‚СѓСЃ РїСЂРѕРІРµСЂРєРё: Р’ РѕР¶РёРґР°РЅРёРё (РЅРѕРјРµСЂ РІ РѕС‡РµСЂРµРґРё: ' . mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `verification` WHERE `vTime`<='" . $verification['vTime'] . "' AND `status`!='1' AND `type`='" . $verification['type'] . "'")) . ') <a href="javascript: if(confirm(\'Р’С‹ С‚РѕС‡РЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ Р·Р°СЏРІРєСѓ?\')) { location=\'main.php?useaction=addon-action&addid=3&pg_id=1&action=6&vcode=' . scode() . '\' }">РЈРґР°Р»РёС‚СЊ</a>';
 	}else if(!empty($verification['id']) and $verification['status'] == 1 and $verification['vTime']>time()){
-		echo'<center>Проверка действительна до: '.date("d.m.Y H:i:s",$verification['vTime']).'</center>';
+        echo '<center>РџСЂРѕРІРµСЂРєР° РґРµР№СЃС‚РІРёС‚РµР»СЊРЅР° РґРѕ: ' . date("d.m.Y H:i:s", $verification['vTime']) . '</center>';
 	}else if(!empty($verification['id']) and $verification['status'] == 2){
-		echo'Заявка на проверку принята.<br>Статус проверки: Условно пройдена (Скан паспорта на <a href="mailto:ork.order.legend battles@hotmail.com" target="_blank">ork.order.legend battles@hotmail.com</a>)';
+        echo 'Р—Р°СЏРІРєР° РЅР° РїСЂРѕРІРµСЂРєСѓ РїСЂРёРЅСЏС‚Р°.<br>РЎС‚Р°С‚СѓСЃ РїСЂРѕРІРµСЂРєРё: РЈСЃР»РѕРІРЅРѕ РїСЂРѕР№РґРµРЅР° (РЎРєР°РЅ РїР°СЃРїРѕСЂС‚Р° РЅР° <a href="mailto:ork.order.legend battles@hotmail.com" target="_blank">ork.order.legend battles@hotmail.com</a>)';
 	}else{
-		echo'<form method="POST" action="">'.(($player['level']>5)?'<input type=hidden name=action value=5><input type=hidden name=useaction value="addon-action"><input type=hidden name=addid value=3><input type=hidden name=vcode value='.scode().'><input type=hidden name=pg_id value=1>':'').'<select name="ver_type" class="textBox"><option value=0>Выбрать</option><option value=1>Обычная проверка (1500 LR)</option><option value=2>Коммерческая проверка (5 изумруд)</option></select> <input type=submit class="textBox" value="Ок"'.(($player['level']<5)?' DISABLED':'').'></form>';
+        echo '<form method="POST" action="">' . (($player['level'] > 5) ? '<input type=hidden name=action value=5><input type=hidden name=useaction value="addon-action"><input type=hidden name=addid value=3><input type=hidden name=vcode value=' . scode() . '><input type=hidden name=pg_id value=1>' : '') . '<select name="ver_type" class="textBox"><option value=0>Р’С‹Р±СЂР°С‚СЊ</option><option value=1>РћР±С‹С‡РЅР°СЏ РїСЂРѕРІРµСЂРєР° (1500 LR)</option><option value=2>РљРѕРјРјРµСЂС‡РµСЃРєР°СЏ РїСЂРѕРІРµСЂРєР° (5 РёР·СѓРјСЂСѓРґ)</option></select> <input type=submit class="textBox" value="РћРє"' . (($player['level'] < 5) ? ' DISABLED' : '') . '></form>';
 	}
 	echo'</font>';
 }

@@ -190,60 +190,60 @@ else
 }
 
 ?>
-<h3><?=($bot_class_id == ''?'Добавить класс бота':'Изменить класс бота')?></h3>
+    <h3><?= ($bot_class_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєР»Р°СЃСЃ Р±РѕС‚Р°' : 'РР·РјРµРЅРёС‚СЊ РєР»Р°СЃСЃ Р±РѕС‚Р°') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID Шаблона: &nbsp;  </td>
+    <td>ID РЁР°Р±Р»РѕРЅР°: &nbsp;</td>
   <td><input name="bot_class_id" type="text" class="cms_fieldstyle1" value="<?=$bot_class['bot_class_id']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Имя бота: &nbsp;  </td>
+    <td>РРјСЏ Р±РѕС‚Р°: &nbsp;</td>
   <td><input name="nickname" type="text" class="cms_fieldstyle1" value="<?=$bot_class['nickname']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Короткое имя: &nbsp;  </td>
+    <td>РљРѕСЂРѕС‚РєРѕРµ РёРјСЏ: &nbsp;</td>
   <td><input name="shortnn" type="text" class="cms_fieldstyle1" value="<?=$bot_class['shortnn']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Картинка: &nbsp;  </td>
+    <td>РљР°СЂС‚РёРЅРєР°: &nbsp;</td>
   <td><input name="image" type="text" class="cms_fieldstyle1" value="<?=$bot_class['image']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Пол: &nbsp;  </td>
-  <td><?=createSelectFromArray('intsex', array(0 => 'Мужской', 1 => 'Женский'), $bot_class['intsex'], '', false)?></td>
+    <td>РџРѕР»: &nbsp;</td>
+    <td><?= createSelectFromArray('intsex', array(0 => 'РњСѓР¶СЃРєРѕР№', 1 => 'Р–РµРЅСЃРєРёР№'), $bot_class['intsex'], '', false) ?></td>
 </tr>
 <tr>
-  <td>Имя: &nbsp;  </td>
+    <td>РРјСЏ: &nbsp;</td>
   <td><input name="inf_name" type="text" class="cms_fieldstyle1" value="<?=$bot_class['inf_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Страна: &nbsp;  </td>
+    <td>РЎС‚СЂР°РЅР°: &nbsp;</td>
   <td><input name="inf_country" type="text" class="cms_fieldstyle1" value="<?=$bot_class['inf_country']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Город: &nbsp;  </td>
+    <td>Р“РѕСЂРѕРґ: &nbsp;</td>
   <td><input name="inf_city" type="text" class="cms_fieldstyle1" value="<?=$bot_class['inf_city']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Домашняя страница: &nbsp;  </td>
+    <td>Р”РѕРјР°С€РЅСЏСЏ СЃС‚СЂР°РЅРёС†Р°: &nbsp;</td>
   <td><input name="inf_url" type="text" class="cms_fieldstyle1" value="<?=$bot_class['inf_url']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>О себе: &nbsp;  </td>
+    <td>Рћ СЃРµР±Рµ: &nbsp;</td>
   <td><input name="inf_infoabout" type="text" class="cms_fieldstyle1" value="<?=$bot_class['inf_infoabout']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
   <td colspan="2">&nbsp;</td>
 </tr>
 <tr>
-  <td>Коэфф. бота: &nbsp;  </td>
+    <td>РљРѕСЌС„С„. Р±РѕС‚Р°: &nbsp;</td>
   <td><input name="bot_koef" type="text" class="cms_fieldstyle1" value="<?=$bot_koef?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 <br />
-Время нападения:<br />
+    Р’СЂРµРјСЏ РЅР°РїР°РґРµРЅРёСЏ:<br/>
 <table>
 <tr>
     <? for ($i=0; $i<24; $i++) { if ($i<10) $h = '0'.$i; else $h = $i; ?>
@@ -256,34 +256,38 @@ else
     <? } ?>
 </tr>
 </table>
-<input type="checkbox" name="change_exp" id="change_exp" value="Y" <?=($change_exp == 1 ? 'checked="checked"' : '')?> /><label for="change_exp">Применять коэффициенты к опыту</label><br>
+    <input type="checkbox" name="change_exp" id="change_exp"
+           value="Y" <?= ($change_exp == 1 ? 'checked="checked"' : '') ?> /><label for="change_exp">РџСЂРёРјРµРЅСЏС‚СЊ
+        РєРѕСЌС„С„РёС†РёРµРЅС‚С‹ Рє РѕРїС‹С‚Сѓ</label><br>
 <br />
-Условия нападения: <input type="checkbox" name="check_attack_conditions" value="Y" <?=($bot_class['check_attack_conditions']!='1'?'':'checked="checked"')?> /><br />
+    РЈСЃР»РѕРІРёСЏ РЅР°РїР°РґРµРЅРёСЏ: <input type="checkbox" name="check_attack_conditions"
+                              value="Y" <?= ($bot_class['check_attack_conditions'] != '1' ? '' : 'checked="checked"') ?> /><br/>
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-    <td>Минимальный уровень нападения: &nbsp;  </td>
+    <td>РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ РЅР°РїР°РґРµРЅРёСЏ: &nbsp;</td>
     <td><input name="min_attack_level" type="text" class="cms_fieldstyle1" value="<?=$bot_class['min_attack_level']?>" size="5" maxlength="5" /></td>
 </tr>
 <tr>
-    <td>Максимальный уровень нападения: &nbsp;  </td>
+    <td>РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ РЅР°РїР°РґРµРЅРёСЏ: &nbsp;</td>
     <td><input name="max_attack_level" type="text" class="cms_fieldstyle1" value="<?=$bot_class['max_attack_level']?>" size="5" maxlength="5" /></td>
 </tr>
 <tr>
-    <td>Пройденный квест, при котором стартуются нападения: &nbsp;  </td>
+    <td>РџСЂРѕР№РґРµРЅРЅС‹Р№ РєРІРµСЃС‚, РїСЂРё РєРѕС‚РѕСЂРѕРј СЃС‚Р°СЂС‚СѓСЋС‚СЃСЏ РЅР°РїР°РґРµРЅРёСЏ: &nbsp;</td>
     <td><input name="quest_attack_start" type="text" class="cms_fieldstyle1" value="<?=$bot_class['quest_attack_start']?>" size="10" maxlength="10" /></td>
 </tr>
 <tr>
-    <td>Пройденный квест, при котором завершаются нападения: &nbsp;  </td>
+    <td>РџСЂРѕР№РґРµРЅРЅС‹Р№ РєРІРµСЃС‚, РїСЂРё РєРѕС‚РѕСЂРѕРј Р·Р°РІРµСЂС€Р°СЋС‚СЃСЏ РЅР°РїР°РґРµРЅРёСЏ: &nbsp;</td>
     <td><input name="quest_attack_finish" type="text" class="cms_fieldstyle1" value="<?=$bot_class['quest_attack_finish']?>" size="10" maxlength="10" /></td>
 </tr>
 <tr>
-    <td>ID эффекта, для защиты от нападений: &nbsp;  </td>
+    <td>ID СЌС„С„РµРєС‚Р°, РґР»СЏ Р·Р°С‰РёС‚С‹ РѕС‚ РЅР°РїР°РґРµРЅРёР№: &nbsp;</td>
     <td><input name="attack_disable_effect" type="text" class="cms_fieldstyle1" value="<?=$bot_class['attack_disable_effect']?>" size="10" maxlength="10" /></td>
 </tr>
 </table>
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='bot_class_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='bot_class_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

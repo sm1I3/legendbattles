@@ -92,7 +92,7 @@ function fImg($L_img,$L_view,$TunelIMG = NULL){
             $rotation['270']['rsw0'] = array('y'=>-1,'x'=>0);
         break;
     }
-    // Масив 3 клеток перед собой
+    // РњР°СЃРёРІ 3 РєР»РµС‚РѕРє РїРµСЂРµРґ СЃРѕР±РѕР№
     for($i = 3;$i > 0;$i--){
         if($TunelIMG[($pers['y']+$rotation[$pers['rotation']]['lw'.$i]['y'])][($pers['x']+$rotation[$pers['rotation']]['lw'.$i]['x'])][0] == false){
             $ViewImg .= '<div class="lw'.$i.'"></div>';
@@ -110,7 +110,7 @@ function fImg($L_img,$L_view,$TunelIMG = NULL){
                 $ViewImg .= '<div class="rsw'.$i.'"></div>';
             }
         }
-        // Двери и калитки
+        // Р”РІРµСЂРё Рё РєР°Р»РёС‚РєРё
         if($TunelIMG[($pers['y']+$rotation[$pers['rotation']]['cw'.$i]['y'])][($pers['x']+$rotation[$pers['rotation']]['cw'.$i]['x'])][0] == 2 or $TunelIMG[($pers['y']+$rotation[$pers['rotation']]['cw'.$i]['y'])][($pers['x']+$rotation[$pers['rotation']]['cw'.$i]['x'])][0] == 4 ){
             if($pers['rotation'] == 180 or $pers['rotation'] == 90){
                 if($i < 3){
@@ -120,27 +120,27 @@ function fImg($L_img,$L_view,$TunelIMG = NULL){
                 $ViewImg .= '<div class="'.$ObjectsImages[$TunelIMG[($pers['y']+$rotation[$pers['rotation']]['cw'.$i]['y'])][($pers['x']+$rotation[$pers['rotation']]['cw'.$i]['x'])][0]].'_'.$TunelIMG[($pers['y']+$rotation[$pers['rotation']]['cw'.$i]['y'])][($pers['x']+$rotation[$pers['rotation']]['cw'.$i]['x'])][2].'_'.($i-1).'"></div>';
             }
         }
-        // Обьекты
+        // РћР±СЊРµРєС‚С‹
         if($i < 3){
             if($TunelIMG[($pers['y']+$rotation[$pers['rotation']]['cw'.$i]['y'])][($pers['x']+$rotation[$pers['rotation']]['cw'.$i]['x'])][0] >= 3 and $TunelIMG[($pers['y']+$rotation[$pers['rotation']]['cw'.$i]['y'])][($pers['x']+$rotation[$pers['rotation']]['cw'.$i]['x'])][0] != 4 ){
                 $ViewImg .= '<div class="'.$ObjectsImages[$TunelIMG[($pers['y']+$rotation[$pers['rotation']]['cw'.$i]['y'])][($pers['x']+$rotation[$pers['rotation']]['cw'.$i]['x'])][0]].$i.'"></div>';
             }
         }
     }
-    // Смотрим перед носом
+    // РЎРјРѕС‚СЂРёРј РїРµСЂРµРґ РЅРѕСЃРѕРј
     if($TunelIMG[($pers['y']+$rotation[$pers['rotation']]['lsw0']['y'])][($pers['x']+$rotation[$pers['rotation']]['lsw0']['x'])][0] == false){
         $ViewImg .= '<div class="lsw0"></div>';
     }
     if($TunelIMG[($pers['y']+$rotation[$pers['rotation']]['rsw0']['y'])][($pers['x']+$rotation[$pers['rotation']]['rsw0']['x'])][0] == false){
         $ViewImg .= '<div class="rsw0"></div>';
     }
-    // Двери и калитки
+    // Р”РІРµСЂРё Рё РєР°Р»РёС‚РєРё
     if($TunelIMG[($pers['y']+$rotation[$pers['rotation']]['lsw0']['y'])][($pers['x']+$rotation[$pers['rotation']]['lsw0']['x'])][0] == false and ($TunelIMG[($pers['y'])][($pers['x'])][0] == 2 or $TunelIMG[($pers['y'])][($pers['x'])][0] == 4)){
         if($pers['rotation'] == 180 or $pers['rotation'] == 90){
             $ViewImg .= '<div class="'.$ObjectsImages[$TunelIMG[($pers['y'])][($pers['x'])][0]].'_'.$TunelIMG[($pers['y'])][($pers['x'])][2].'_0"></div>';
         }
     }
-    // Обьекты
+    // РћР±СЊРµРєС‚С‹
     if($TunelIMG[($pers['y']+$rotation[$pers['rotation']]['lsw0']['y'])][($pers['x']+$rotation[$pers['rotation']]['lsw0']['x'])][0] == false and $TunelIMG[($pers['y']+$rotation[$pers['rotation']]['cw1']['y'])][($pers['x']+$rotation[$pers['rotation']]['cw1']['x'])][0] == false and $TunelIMG[($pers['y']+$rotation[$pers['rotation']]['rsw0']['y'])][($pers['x']+$rotation[$pers['rotation']]['rsw0']['x'])][0] == false and $TunelIMG[($pers['y'])][($pers['x'])][0] >= 3 and $TunelIMG[($pers['y'])][($pers['x'])][0] != 4){
         $ViewImg .= '<div class="'.$ObjectsImages[$TunelIMG[($pers['y'])][($pers['x'])][0]].'0"></div>';
     }
@@ -154,7 +154,7 @@ echo'<HTML>
 <LINK href="/css/frame.css?'.$VersJS.'" rel="STYLESHEET" type="text/css">
 <LINK href="/css/labyrinth.css?'.$VersJS.'" rel="STYLESHEET" type="text/css">
 <LINK href="/css/NewDesign.css?'.$VersJS.'" rel="STYLESHEET" type="text/css">
-<META Http-Equiv="Content-Type" Content="text/html; charset=windows-1251">
+<META Http-Equiv="Content-Type" Content="text/html; charset=utf-8">
 <META Http-Equiv="Cache-Control" Content="No-Cache">
 <META Http-Equiv="Pragma" Content="No-Cache">
 <META Http-Equiv="Expires" Content="0">
@@ -167,31 +167,31 @@ echo'<HTML>
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/scroll.js"></script>
   <style type="text/css">
-	/* Зданий фон */
+	/* Р—РґР°РЅРёР№ С„РѕРЅ */
 	.rbg {position:relative;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/background.jpg);}
-	/* Стенка перед лицом */
+	/* РЎС‚РµРЅРєР° РїРµСЂРµРґ Р»РёС†РѕРј */
 	.cw1 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/cw1.gif);}
 	.cw2 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/cw2.gif);}
 	.cw3 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/cw3.gif);}
-	/* Проход с лева */
+	/* РџСЂРѕС…РѕРґ СЃ Р»РµРІР° */
 	.lw1 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/lw1.gif);}
 	.lw2 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/lw2.gif);}
 	.lw3 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/lw3.gif);}
-	/* Проход с права */
+	/* РџСЂРѕС…РѕРґ СЃ РїСЂР°РІР° */
 	.rw1 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/rw1.gif);}
 	.rw2 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/rw2.gif);}
 	.rw3 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/rw3.gif);}
-	/* Левая стена */
+	/* Р›РµРІР°СЏ СЃС‚РµРЅР° */
 	.lsw0 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/lsw0.gif);}
 	.lsw1 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/lsw1.gif);}
 	.lsw2 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/lsw2.gif);}
 	.lsw3 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/lsw3.gif);}
-	/* Правая стена */
+	/* РџСЂР°РІР°СЏ СЃС‚РµРЅР° */
 	.rsw0 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/rsw0.gif);}
 	.rsw1 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/rsw1.gif);}
 	.rsw2 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/rsw2.gif);}
 	.rsw3 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/images/'.$LabCat.'/rsw3.gif);}
-    /* Разные обьекты */
+    /* Р Р°Р·РЅС‹Рµ РѕР±СЊРµРєС‚С‹ */
     .grill_0_0 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/objects/grill1.png);}
 	.grill_0_1 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/objects/grill2.png);}
 	.grill_0_2 {position:absolute;left:0px;top:0px;width:297px;height:204px;background-image:url(http://img.legendbattles.ru/image/gameplay/labyrinth/objects/grill3.png);}
@@ -233,7 +233,7 @@ var inshp = ['.InsHP().'];
 var vcode = [[1,"'.vCode().'"],[1,"'.vCode().'"],[1,"'.(($labyrinth['L_img'] == 11)? vCode() : '' ).'"]];
 var build = ["'.$pers['login'].'","'.$pers['level'].'/'.$pers['u_lvl'].'",'.$pers['sklon'].',"'.$pers['clan_gif'].'","'.$pers['clan'].'","'.$pers['clan_d'].'",'.$build['but'].',"main","'.$build['disbut'].'","'.$build['textid'].'",0,0,""];
 ';
-// тут мы строим сетку кординат
+// С‚СѓС‚ РјС‹ СЃС‚СЂРѕРёРј СЃРµС‚РєСѓ РєРѕСЂРґРёРЅР°С‚
 $Cord = '';
 for($y=($pers['y']-3); $y<=($pers['y']+3); $y++){
 	$Cordx = '';
@@ -249,24 +249,24 @@ if($labyrinth['L_img'] == 11){
     $pers['rotation'] = 0;
 	echo'var param = [[0,\''.fImg($labyrinth['L_img'],$labyrinth['L_view'],$ArrayMiniMap).'\',["'.GoBut(0).'"],[],"",[0,"",""]]];';
 }else{
-	// построили
+    // РїРѕСЃС‚СЂРѕРёР»Рё
 	echo'var param = [[1,\''.fImg($labyrinth['L_img'],$labyrinth['L_view'],$ArrayMiniMap).'\',["'.GoBut(0).'","'.GoBut(1).'","'.GoBut(2).'","'.GoBut(3).'"],[],"",['.$pers['rotation'].',"'.vCode().'","'.vCode().'"]],';
 	if($labyrinth['L_img'] == '3'){
-		echo'["Дернуть Рычаг","10","'.vCode().'"]';
+        echo '["Р”РµСЂРЅСѓС‚СЊ Р С‹С‡Р°Рі","10","' . vCode() . '"]';
 	}elseif($labyrinth['L_img'] == '7'){
-		echo'["Открыть Сундук","test","'.vCode().'"]';
+        echo '["РћС‚РєСЂС‹С‚СЊ РЎСѓРЅРґСѓРє","test","' . vCode() . '"]';
 	}elseif($labyrinth['L_img'] == '8'){
-		echo'["Телепортироваться","10","'.vCode().'"]';
+        echo '["РўРµР»РµРїРѕСЂС‚РёСЂРѕРІР°С‚СЊСЃСЏ","10","' . vCode() . '"]';
 	}elseif($labyrinth['L_img'] == '9'){
-		echo'["Разведать Лаз","10","'.vCode().'"]';
+        echo '["Р Р°Р·РІРµРґР°С‚СЊ Р›Р°Р·","10","' . vCode() . '"]';
 	}elseif($labyrinth['L_img'] == '10'){
-		echo'["Сделать Глоток","tset","test"]';
+        echo '["РЎРґРµР»Р°С‚СЊ Р“Р»РѕС‚РѕРє","tset","test"]';
 	}elseif($labyrinth['L_img'] == '11'){
-		echo'["Открыть Сундук","tset","test"]';
+        echo '["РћС‚РєСЂС‹С‚СЊ РЎСѓРЅРґСѓРє","tset","test"]';
 	}else{
 		echo'[]';
 	}
-	echo',[[/* Ключи */],[/* Карты */],[/*[10,1,1,"'.vCode().'"]*/],[/* Вещи */]],[[],[],[],[]],[';
+    echo ',[[/* РљР»СЋС‡Рё */],[/* РљР°СЂС‚С‹ */],[/*[10,1,1,"' . vCode() . '"]*/],[/* Р’РµС‰Рё */]],[[],[],[],[]],[';
 	$Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `loc`='501' and `pos`='".$pers['pos']."' and `last`>'".(time()-300)."'");
 	$view_lab_nicks = '';
 	while($row = mysqli_fetch_assoc($Query)){

@@ -90,7 +90,7 @@ else
     $item = array();
 
 ?>
-<h3>Редактирование - <span style="color: #<?=$color_a[$trfcode]?>"><?=$trfcode?> <?=$ins[$inscode]?></span></h3> 
+<h3>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ - <span style="color: #<?= $color_a[$trfcode] ?>"><?= $trfcode ?> <?= $ins[$inscode] ?></span></h3>
 
 <script language="javascript">
 function add_fields(param)
@@ -126,8 +126,8 @@ foreach($group as $gcode => $params)
     echo '<tr><td class="cms_cap2"><b>'.$grpn[$gcode].'</b></span></td><td class="cms_cap2">&nbsp;</td><td class="cms_cap2">&nbsp;</td></tr>';
     foreach($params as $param)
     {
-        $vals = '<table><tr id="tr_val_'.$param.'"><td>Значение</td>';
-        $prices = '</tr><tr id="tr_price_'.$param.'"><td>Цена</td>';
+        $vals = '<table><tr id="tr_val_' . $param . '"><td>Р—РЅР°С‡РµРЅРёРµ</td>';
+        $prices = '</tr><tr id="tr_price_' . $param . '"><td>Р¦РµРЅР°</td>';
         if (isset($item[$gcode][$param]) && is_array($item[$gcode][$param]))
         foreach($item[$gcode][$param] as $val => $price)
         {
@@ -142,7 +142,7 @@ foreach($group as $gcode => $params)
             <td class="cms_middle">
                 '.$vals.$prices.'
             </td>
-            <td class="cms_middle"><a onclick="add_fields(\''.$param.'\'); return false;" href="#">Добавить</a></td></tr>';
+            <td class="cms_middle"><a onclick="add_fields(\'' . $param . '\'); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ</a></td></tr>';
     }
 }
 
@@ -151,5 +151,8 @@ echo '</table>';
 ?>
 <br />
 <input type="hidden" name="action" value="save" />
-<input type="submit" name="save" value="Сохранить" />&nbsp;<input type="button" name="save" value="Отмена" onclick="document.location = 'dealers_custom_item_list.php'" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="return confirm('Вы уверены что хотите удалть этот предмет?');" type="submit" name="delete" value="Удалить" />
+    <input type="submit" name="save" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/>&nbsp;<input type="button" name="save" value="РћС‚РјРµРЅР°"
+                                                                     onclick="document.location = 'dealers_custom_item_list.php'"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            onclick="return confirm('Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»С‚СЊ СЌС‚РѕС‚ РїСЂРµРґРјРµС‚?');" type="submit" name="delete"
+            value="РЈРґР°Р»РёС‚СЊ"/>
 </form>

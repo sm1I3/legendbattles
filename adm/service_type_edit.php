@@ -86,7 +86,7 @@ if ($service_type_id != '')
 }
 
 ?>
-<h3><?=($service_type == ''?'Добавить сервис':'Изменить сервис')?></h3>
+    <h3><?= ($service_type == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ' : 'РР·РјРµРЅРёС‚СЊ СЃРµСЂРІРёСЃ') ?></h3>
 <script language="javascript">
 var last_id = <?=$row_id?>;
 <?=createJsArray('service_array', $service_array)?>
@@ -94,29 +94,31 @@ var last_id = <?=$row_id?>;
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Класс сервиса: &nbsp;  </td>
+    <td>РљР»Р°СЃСЃ СЃРµСЂРІРёСЃР°: &nbsp;</td>
   <td><input name="service_class" type="text" class="cms_fieldstyle1" value="<?=$service_type['service_class']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Название сервиса: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ СЃРµСЂРІРёСЃР°: &nbsp;</td>
   <td><input name="service_name" type="text" class="cms_fieldstyle1" value="<?=$service_type['service_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
-Дополнительные сервисы:
+    Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРµСЂРІРёСЃС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_services" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Сервис</td>
-        <td class="cms_cap3">Цена</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РЎРµСЂРІРёСЃ</td>
+        <td class="cms_cap3">Р¦РµРЅР°</td>
     </tr>
     <?=$add_services?>
 </table>
-<a onclick="addItem_select('table_services', 'tr_service', 'add_service[]', service_array, 'add_service_price[]', ''); return false;" href="#">Добавить сервис</a><br />
+    <a onclick="addItem_select('table_services', 'tr_service', 'add_service[]', service_array, 'add_service_price[]', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ</a><br/>
 <br />
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='service_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='service_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

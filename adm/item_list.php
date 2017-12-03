@@ -50,22 +50,22 @@ while ($row = mysql_fetch_assoc($res))
 $_SESSION['pages']['item_list'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Список предметов</h3>
+    <h3>РЎРїРёСЃРѕРє РїСЂРµРґРјРµС‚РѕРІ</h3>
 <div id="results">
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Предметы')?></div>
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'РџСЂРµРґРјРµС‚С‹') ?></div>
 
     <div class="cms_ind">
         <br />
-        Предметы: <br />
+        РџСЂРµРґРјРµС‚С‹: <br/>
          <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr >
-              <td class="cms_cap2 normal"> Удалить </td>
-              <td class="cms_cap2 normal"> Изменить </td>
-              <td class="cms_cap2 normal"> Клонировать </td>
+                <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РљР»РѕРЅРёСЂРѕРІР°С‚СЊ</td>
 
-              <td class="cms_cap2"><a href="<?=sortby('id')?>">ID Предмета</a></td>
-              <td class="cms_cap2"><a href="<?=sortby('name')?>">Название предмета</a></td>
-              <td class="cms_cap2"><a href="<?=sortby('price')?>">Стоимость</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('id') ?>">ID РџСЂРµРґРјРµС‚Р°</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('name') ?>">РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('price') ?>">РЎС‚РѕРёРјРѕСЃС‚СЊ</a></td>
             </tr>
             
             <?=$items?>
@@ -73,9 +73,10 @@ $_SESSION['pages']['item_list'] = $_SERVER['REQUEST_URI'];
             </table>
             <br />
     </div>
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Предметы')?></div> 
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'РџСЂРµРґРјРµС‚С‹') ?></div>
 </div>
 <br />
-<img src="images/cms_icons/cms_add.gif" alt="Добавить предмет" /><a href="item_edit.php" title="Добавить предмет">Добавить предмет</a><br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РїСЂРµРґРјРµС‚"/><a href="item_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ РїСЂРµРґРјРµС‚">Р”РѕР±Р°РІРёС‚СЊ
+    РїСЂРµРґРјРµС‚</a><br/>
 <br />
 <? require('kernel/after.php'); ?>

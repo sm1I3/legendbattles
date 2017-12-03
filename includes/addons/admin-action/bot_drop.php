@@ -1,6 +1,6 @@
 <?php
 session_start();
-//$_POST['bot']=varcheck($_POST['bot']); // Илья не знаю причину, но выдавало белый экран
+//$_POST['bot']=varcheck($_POST['bot']); // РР»СЊСЏ РЅРµ Р·РЅР°СЋ РїСЂРёС‡РёРЅСѓ, РЅРѕ РІС‹РґР°РІР°Р»Рѕ Р±РµР»С‹Р№ СЌРєСЂР°РЅ
 ?>
 <HTML>
 <HEAD>
@@ -23,16 +23,22 @@ $(document).ready(function(){
 });
 showHide = function(e,ev,a){
 	switch(ev){
-		case 'Показать': $("tr."+a).show(250); $(e).val('Скрыть');break;
-		case 'Скрыть':  $("tr."+a).hide(250); $(e).val('Показать');break;
+        case 'РџРѕРєР°Р·Р°С‚СЊ':
+            $("tr." + a).show(250);
+            $(e).val('РЎРєСЂС‹С‚СЊ');
+            break;
+        case 'РЎРєСЂС‹С‚СЊ':
+            $("tr." + a).hide(250);
+            $(e).val('РџРѕРєР°Р·Р°С‚СЊ');
+            break;
 	}
 }
 </script>
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location='adm.php'" value="Вернуться">
-		<input type=button class=lbut onClick="location='bot_drop.php'" value="обновить">
+        <input type=button class=lbut onClick="location='adm.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        <input type=button class=lbut onClick="location='bot_drop.php'" value="РѕР±РЅРѕРІРёС‚СЊ">
 	</td>
    </tr>
 </table>
@@ -44,79 +50,147 @@ function ShowParBot($i,$par,$type){
 			$fr="";	
 			$str="";			
 			switch($i){
-				case 1: $fr="Удар (пример 20-30):";break;
-				//case 2: $fr="Долговечность:";break;
-				//case 3: $fr="Карманов(3 max для поясов):";break;
-				//case 4: $fr="Материал:";break;
-				case 5: $fr="Уловка:";break;
-				case 6: $fr="Точность:";break;
-				case 7: $fr="Сокрушение:";break;
-				case 8: $fr="Стойкость:";break;
-				case 9: $fr="Класс брони:";break;
-				case 10: $fr="Пробой брони:";break;
-				/*case 11: $fr="Пробой колющим ударом:";break;
-				case 12: $fr="Пробой режущим ударом:";break;
-				case 13: $fr="Пробой проникающим ударом:";break;
-				case 14: $fr="Пробой пробивающим ударом:";break;
-				case 15: $fr="Пробой рубящим ударом:";break;
-				case 16: $fr="Пробой карающим ударом:";break;
-				case 17: $fr="Пробой отсекающим ударом:";break;
-				case 18: $fr="Пробой дробящим ударом:";break;
-				case 19: $fr="Защита от колющих ударов:";break;
-				case 20: $fr="Защита от режущих ударов:";break;
-				case 21: $fr="Защита от проникающих ударов:";break;
-				case 22: $fr="Защита от пробивающих ударов:";break;
-				case 23: $fr="Защита от рубящих ударов:";break;
-				case 24: $fr="Защита от карающих ударов:";break;
-				case 25: $fr="Защита от отсекающих ударов:";break;
-				case 26: $fr="Защита от дробящих ударов:";break;*/
-				case 27: $fr="НР:";break;
-				case 28: $fr="Очки действия:";break;
-				case 29: $fr="Мана:";break;
-				case 30: $fr="Мощь:";break;
-				case 31: $fr="Проворность:";break;
-				case 32: $fr="Везение:";break;
-				case 33: $fr="Здоровье:";break;
-				case 34: $fr="Разум:";break;
-				case 35: $fr="Сноровка:";break;
-				case 36: $fr="Влад. мечами:";break;
-				case 37: $fr="Влад. топорами:";break;
-				case 38: $fr="Влад. дробящим оружием:";break;
-				case 39: $fr="Влад. ножами:";break;
-				case 40: $fr="Влад. метательным оружием:";break;
-				case 41: $fr="Влад. алебардами и копьями:";break;
-				case 42: $fr="Влад. посохами:";break;
-				case 43: $fr="Влад. экзотическим оружием:";break;
-				case 44: $fr="Влад. двуручным оружием:";break;
-				case 45: $fr="Магия огня:";break;
-				case 46: $fr="Магия воды:";break;
-				case 47: $fr="Магия воздуха:";break;
-				case 48: $fr="Магия земли:";break;
-				case 49: $fr="Сопротивление магии огня:";break;
-				case 50: $fr="Сопротивление магии воды:";break;
-				case 51: $fr="Сопротивление магии воздуха:";break;
-				case 52: $fr="Сопротивление магии земли:";break;
-				/*case 53: $fr="Воровство:";break;
-				case 54: $fr="Осторожность:";break;
-				case 55: $fr="Скрытность:";break;
-				case 56: $fr="Наблюдательность:";break;
-				case 57: $fr="Торговля:";break;
-				case 58: $fr="Странник:";break;
-				case 59: $fr="Рыболов:";break;
-				case 60: $fr="Лесоруб:";break;
-				case 61: $fr="Ювелирное дело:";break;
-				case 62: $fr="Самолечение:";break;
-				case 63: $fr="Оружейник:";break;
-				case 64: $fr="Доктор:";break;
-				case 65: $fr="Самолечение:";break;
-				case 66: $fr="Быстрое восстановление маны:";break;
-				case 67: $fr="Лидерство:";break;
-				case 68: $fr="Алхимия:";break;
-				case 69: $fr="Развитие горного дела:";break;
-				case 70: $fr="Травничество:";break;*/
-				case 71: $fr="Коэффициент(new):";break;
-				/*case 'expbonus': $fr="Бонус опыта (в %):";break;
-				case 'massbonus': $fr="Бонус массы:";break;*/
+                case 1:
+                    $fr = "РЈРґР°СЂ (РїСЂРёРјРµСЂ 20-30):";
+                    break;
+                //case 2: $fr="Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ:";break;
+                //case 3: $fr="РљР°СЂРјР°РЅРѕРІ(3 max РґР»СЏ РїРѕСЏСЃРѕРІ):";break;
+                //case 4: $fr="РњР°С‚РµСЂРёР°Р»:";break;
+                case 5:
+                    $fr = "РЈР»РѕРІРєР°:";
+                    break;
+                case 6:
+                    $fr = "РўРѕС‡РЅРѕСЃС‚СЊ:";
+                    break;
+                case 7:
+                    $fr = "РЎРѕРєСЂСѓС€РµРЅРёРµ:";
+                    break;
+                case 8:
+                    $fr = "РЎС‚РѕР№РєРѕСЃС‚СЊ:";
+                    break;
+                case 9:
+                    $fr = "РљР»Р°СЃСЃ Р±СЂРѕРЅРё:";
+                    break;
+                case 10:
+                    $fr = "РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё:";
+                    break;
+                /*case 11: $fr="РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 12: $fr="РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 13: $fr="РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 14: $fr="РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 15: $fr="РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 16: $fr="РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 17: $fr="РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 18: $fr="РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 19: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 20: $fr="Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 21: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 22: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 23: $fr="Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 24: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 25: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 26: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";break;*/
+                case 27:
+                    $fr = "РќР :";
+                    break;
+                case 28:
+                    $fr = "РћС‡РєРё РґРµР№СЃС‚РІРёСЏ:";
+                    break;
+                case 29:
+                    $fr = "РњР°РЅР°:";
+                    break;
+                case 30:
+                    $fr = "РњРѕС‰СЊ:";
+                    break;
+                case 31:
+                    $fr = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ:";
+                    break;
+                case 32:
+                    $fr = "Р’РµР·РµРЅРёРµ:";
+                    break;
+                case 33:
+                    $fr = "Р—РґРѕСЂРѕРІСЊРµ:";
+                    break;
+                case 34:
+                    $fr = "Р Р°Р·СѓРј:";
+                    break;
+                case 35:
+                    $fr = "РЎРЅРѕСЂРѕРІРєР°:";
+                    break;
+                case 36:
+                    $fr = "Р’Р»Р°Рґ. РјРµС‡Р°РјРё:";
+                    break;
+                case 37:
+                    $fr = "Р’Р»Р°Рґ. С‚РѕРїРѕСЂР°РјРё:";
+                    break;
+                case 38:
+                    $fr = "Р’Р»Р°Рґ. РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј:";
+                    break;
+                case 39:
+                    $fr = "Р’Р»Р°Рґ. РЅРѕР¶Р°РјРё:";
+                    break;
+                case 40:
+                    $fr = "Р’Р»Р°Рґ. РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                    break;
+                case 41:
+                    $fr = "Р’Р»Р°Рґ. Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё:";
+                    break;
+                case 42:
+                    $fr = "Р’Р»Р°Рґ. РїРѕСЃРѕС…Р°РјРё:";
+                    break;
+                case 43:
+                    $fr = "Р’Р»Р°Рґ. СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј:";
+                    break;
+                case 44:
+                    $fr = "Р’Р»Р°Рґ. РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                    break;
+                case 45:
+                    $fr = "РњР°РіРёСЏ РѕРіРЅСЏ:";
+                    break;
+                case 46:
+                    $fr = "РњР°РіРёСЏ РІРѕРґС‹:";
+                    break;
+                case 47:
+                    $fr = "РњР°РіРёСЏ РІРѕР·РґСѓС…Р°:";
+                    break;
+                case 48:
+                    $fr = "РњР°РіРёСЏ Р·РµРјР»Рё:";
+                    break;
+                case 49:
+                    $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ:";
+                    break;
+                case 50:
+                    $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹:";
+                    break;
+                case 51:
+                    $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°:";
+                    break;
+                case 52:
+                    $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё:";
+                    break;
+                /*case 53: $fr="Р’РѕСЂРѕРІСЃС‚РІРѕ:";break;
+                case 54: $fr="РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ:";break;
+                case 55: $fr="РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ:";break;
+                case 56: $fr="РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ:";break;
+                case 57: $fr="РўРѕСЂРіРѕРІР»СЏ:";break;
+                case 58: $fr="РЎС‚СЂР°РЅРЅРёРє:";break;
+                case 59: $fr="Р С‹Р±РѕР»РѕРІ:";break;
+                case 60: $fr="Р›РµСЃРѕСЂСѓР±:";break;
+                case 61: $fr="Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ:";break;
+                case 62: $fr="РЎР°РјРѕР»РµС‡РµРЅРёРµ:";break;
+                case 63: $fr="РћСЂСѓР¶РµР№РЅРёРє:";break;
+                case 64: $fr="Р”РѕРєС‚РѕСЂ:";break;
+                case 65: $fr="РЎР°РјРѕР»РµС‡РµРЅРёРµ:";break;
+                case 66: $fr="Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹:";break;
+                case 67: $fr="Р›РёРґРµСЂСЃС‚РІРѕ:";break;
+                case 68: $fr="РђР»С…РёРјРёСЏ:";break;
+                case 69: $fr="Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°:";break;
+                case 70: $fr="РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ:";break;*/
+                case 71:
+                    $fr = "РљРѕСЌС„С„РёС†РёРµРЅС‚(new):";
+                    break;
+                /*case 'expbonus': $fr="Р‘РѕРЅСѓСЃ РѕРїС‹С‚Р° (РІ %):";break;
+                case 'massbonus': $fr="Р‘РѕРЅСѓСЃ РјР°СЃСЃС‹:";break;*/
 			}
 			if($type==1 and $fr){
 				$str = '<font class=weaponch><b>'.$fr.'</b></font>&nbsp;<input type=text name=pr['.$i.'] value="'.$par.'">';
@@ -147,14 +221,14 @@ echo '
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 <tr align=center><td>
 <select name=bot>
-<option value="none" '.(($_POST['bot']!='none' and $_POST['bot']!='')?'':'selected=selected').'>Выберите бота</option>
+<option value="none" ' . (($_POST['bot'] != 'none' and $_POST['bot'] != '') ? '' : 'selected=selected') . '>Р’С‹Р±РµСЂРёС‚Рµ Р±РѕС‚Р°</option>
 ';
 while($bot = mysqli_fetch_assoc($bots)){
 	echo '<option value="'.$bot['id'].'" '.(($_POST['bot']==$bot['id'])?'selected=selected':'').'>'.$bot['login'].'</option>';
 }
 echo '
 </select>
-<input class=lbut type=submit value="Выбрать">
+<input class=lbut type=submit value="Р’С‹Р±СЂР°С‚СЊ">
 </td></tr>
 </table>
 </form>
@@ -255,7 +329,8 @@ if($_POST['bot']!='none'){
 	$val_bot=varcheck($_POST['bot']);
 		$chbot=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `bot_drop`  WHERE `bot_id`='".$val_bot."' LIMIT 1;"));
 		if(!empty($chbot)){
-			$chclr="green";$msg="Бот найден в базе!";
+            $chclr = "green";
+            $msg = "Р‘РѕС‚ РЅР°Р№РґРµРЅ РІ Р±Р°Р·Рµ!";
 			$ich=$chbot['items_chance'];
 			$lch=$chbot['leather_chance'];
 			$bch=$chbot['bottle_chance'];
@@ -263,7 +338,8 @@ if($_POST['bot']!='none'){
 			$err=0;
 		}
 		else{
-			$chclr="red";$msg="Бот не найден в базе! Заполните нужные поля и нажмите \"сохранить\".";
+            $chclr = "red";
+            $msg = "Р‘РѕС‚ РЅРµ РЅР°Р№РґРµРЅ РІ Р±Р°Р·Рµ! Р—Р°РїРѕР»РЅРёС‚Рµ РЅСѓР¶РЅС‹Рµ РїРѕР»СЏ Рё РЅР°Р¶РјРёС‚Рµ \"СЃРѕС…СЂР°РЅРёС‚СЊ\".";
 			$ich=10;
 			$lch=10;
 			$bch=10;
@@ -283,36 +359,36 @@ if($_POST['bot']!='none'){
 			<tr><td>
 			<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 				<tr class=nickname bgcolor=#EAEAEA>
-					<td align=center width=30%><b>Имя и ид бота</b></td>
-					<td align=center><b>Вещи</b></td>
-					<td align=center><b>Кожа</b></td>
-					<td align=center><b>Бутылки</b></td>
-					<td align=center><b>Деньги</b></td>
+					<td align=center width=30%><b>РРјСЏ Рё РёРґ Р±РѕС‚Р°</b></td>
+					<td align=center><b>Р’РµС‰Рё</b></td>
+					<td align=center><b>РљРѕР¶Р°</b></td>
+					<td align=center><b>Р‘СѓС‚С‹Р»РєРё</b></td>
+					<td align=center><b>Р”РµРЅСЊРіРё</b></td>
 				</tr>';
 				$val_bot=varcheck($_POST['bot']);
 		$botdrop=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `user`.`id`,`user`.`login` FROM `user` WHERE `user`.`type`='3' AND `user`.`id`='".$val_bot."' LIMIT 1;"));
 		echo'
 		<tr class=freetxt bgcolor=white>
 			<td align=center width=30%>
-				Имя: '.$botdrop['login'].'<br>
-				Ид: '.$botdrop['id'].'
+				РРјСЏ: ' . $botdrop['login'] . '<br>
+				РРґ: ' . $botdrop['id'] . '
 			</td>
 			<td align=center>
-				<b>Шанс выпадения вещей:</b><br> <b>1</b> из <input type=text class=logintextbox6 name="items_chance" value="'.$ich.'" />
+				<b>РЁР°РЅСЃ РІС‹РїР°РґРµРЅРёСЏ РІРµС‰РµР№:</b><br> <b>1</b> РёР· <input type=text class=logintextbox6 name="items_chance" value="' . $ich . '" />
 			</td>
 			<td align=center>
-				<b>Шанс, что будет доступна опция "снять кожу":</b><br> <b>1</b> из <input type=text class=logintextbox6 name="leather_chance" value="'.$lch.'" />
+				<b>РЁР°РЅСЃ, С‡С‚Рѕ Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРЅР° РѕРїС†РёСЏ "СЃРЅСЏС‚СЊ РєРѕР¶Сѓ":</b><br> <b>1</b> РёР· <input type=text class=logintextbox6 name="leather_chance" value="' . $lch . '" />
 			</td>
 			<td align=center>
-				<b>Шанс выпадения бутылок:</b><br> <b>1</b> из <input type=text class=logintextbox6 name="bottle_chance" value="'.$bch.'" />
+				<b>РЁР°РЅСЃ РІС‹РїР°РґРµРЅРёСЏ Р±СѓС‚С‹Р»РѕРє:</b><br> <b>1</b> РёР· <input type=text class=logintextbox6 name="bottle_chance" value="' . $bch . '" />
 			</td>
 			<td align=center>
-				<b>Шанс выпадения денег:</b><br> <b>1</b> из <input type=text class=logintextbox6 name="money_chance" value="'.$mch.'" />
+				<b>РЁР°РЅСЃ РІС‹РїР°РґРµРЅРёСЏ РґРµРЅРµРі:</b><br> <b>1</b> РёР· <input type=text class=logintextbox6 name="money_chance" value="' . $mch . '" />
 			</td>
 		</tr>
 		<tr class=freetxt bgcolor=white>
 			<td align=center width=100% colspan=5>
-			<input class=lbut type=submit value="Сохранить">
+			<input class=lbut type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 			<input type=hidden name=bot_login value="'.$botdrop['login'].'">
 			<input type=hidden name=bot value="'.$_POST['bot'].'">
 			</td>
@@ -323,40 +399,40 @@ if($_POST['bot']!='none'){
 			<form method="post" action="bot_drop.php?add=1">
 			<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 			<tr align=left class=nickname><td align=center>
-			<b>Добавить вещи в дроп:</b> 
+			<b>Р”РѕР±Р°РІРёС‚СЊ РІРµС‰Рё РІ РґСЂРѕРї:</b> 
 			<select name="type" >
-				<option value="" selected="selected">все типы</option>
-				  <option value="w4">Ножи</option>
-				  <option value="w1">Мечи</option>
-				  <option value="w2">Топоры</option>
-				  <option value="w3">Дробящее</option>
-				  <option value="w6">Алебарды и копья</option>
-				  <option value="w5">Метательное</option>
-				  <option value="w7">Посохи</option>
-				  <option value="w20">Щиты</option>
-				  <option value="w23">Шлемы</option>
-				  <option value="w26">Пояса</option>
-				  <option value="w18">Кольчуги</option>
-				  <option value="w19">Доспехи</option>
-				  <option value="w24">Перчатки</option>
-				  <option value="w80">Наручи</option>
-				  <option value="w21">Сапоги</option>
-				  <option value="w25">Кулоны</option>
-				  <option value="w22">Кольца</option>
-				  <option value="w28">Наплечники</option>
-				  <option value="w90">Поножи</option>
-				  <option value="w61">Приманки</option>
-				  <option value="w0">Эликсиры</option>
-				  <option value="w66">Травы</option>
-				  <option value="w67">Шкуры</option>
-				  <option value="w69">Рыбалка</option>
-				  <option value="w29">Свитки</option>
-				  <option value="w60">Квесты</option>
-				  <option value="w71">Руны</option>
-				  <option value="w70">Мази</option>
-				  <option value="w62">Сундуки</option>
-				  <option value="w100">Ресурсы</option>
-				 </select>  <input name="smb7" type="submit" class="lbut" value="Применить фильтр" />';
+				<option value="" selected="selected">РІСЃРµ С‚РёРїС‹</option>
+				  <option value="w4">РќРѕР¶Рё</option>
+				  <option value="w1">РњРµС‡Рё</option>
+				  <option value="w2">РўРѕРїРѕСЂС‹</option>
+				  <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+				  <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+				  <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+				  <option value="w7">РџРѕСЃРѕС…Рё</option>
+				  <option value="w20">Р©РёС‚С‹</option>
+				  <option value="w23">РЁР»РµРјС‹</option>
+				  <option value="w26">РџРѕСЏСЃР°</option>
+				  <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+				  <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+				  <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+				  <option value="w80">РќР°СЂСѓС‡Рё</option>
+				  <option value="w21">РЎР°РїРѕРіРё</option>
+				  <option value="w25">РљСѓР»РѕРЅС‹</option>
+				  <option value="w22">РљРѕР»СЊС†Р°</option>
+				  <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+				  <option value="w90">РџРѕРЅРѕР¶Рё</option>
+				  <option value="w61">РџСЂРёРјР°РЅРєРё</option>
+				  <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
+				  <option value="w66">РўСЂР°РІС‹</option>
+				  <option value="w67">РЁРєСѓСЂС‹</option>
+				  <option value="w69">Р С‹Р±Р°Р»РєР°</option>
+				  <option value="w29">РЎРІРёС‚РєРё</option>
+				  <option value="w60">РљРІРµСЃС‚С‹</option>
+				  <option value="w71">Р СѓРЅС‹</option>
+				  <option value="w70">РњР°Р·Рё</option>
+				  <option value="w62">РЎСѓРЅРґСѓРєРё</option>
+				  <option value="w100">Р РµСЃСѓСЂСЃС‹</option>
+				 </select>  <input name="smb7" type="submit" class="lbut" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ" />';
 				 $filter2="WHERE master=''";
 				 if($smb7){
 					if($type==""){
@@ -369,7 +445,7 @@ if($_POST['bot']!='none'){
 				  <select name="idit" >
 				  <option value=0';
 				if($idit==""){echo " selected=selected";}
-				echo'>Выберите тип</option>';
+            echo '>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї</option>';
 				$it=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `items` ".$filter." ".$filter2." ORDER BY type,name,level;");
 				  while ($row = mysqli_fetch_assoc($it)) {
 					echo "<option value=".$row['id']."";if($idit==$row['id']){echo " selected=selected";}echo">".$row['name']." [ ".$row['level']." ]</option>";
@@ -379,12 +455,12 @@ if($_POST['bot']!='none'){
 			if(!empty($_POST['type'])){
 				echo'
 				<select name=dropadd>
-					<option value=none selected=selected>Выберите категорию</option>
-					<option value=1>Вещи</option>
-					<option value=2>Кожа</option>
-					<option value=3>Бутылки</option>
+					<option value=none selected=selected>Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ</option>
+					<option value=1>Р’РµС‰Рё</option>
+					<option value=2>РљРѕР¶Р°</option>
+					<option value=3>Р‘СѓС‚С‹Р»РєРё</option>
 				</select>
-				<input class=lbut type=submit value="Добавить в дроп">
+				<input class=lbut type=submit value="Р”РѕР±Р°РІРёС‚СЊ РІ РґСЂРѕРї">
 				';
 			}
 			echo'
@@ -397,7 +473,7 @@ if($_POST['bot']!='none'){
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td><b>Добавленные вещи:</b> <input type=button onClick="showHide(this,this.value,\'itemstr\');" value="Показать" class=klbut /></td></tr>';
+				<tr align=center class=nickname><td><b>Р”РѕР±Р°РІР»РµРЅРЅС‹Рµ РІРµС‰Рё:</b> <input type=button onClick="showHide(this,this.value,\'itemstr\');" value="РџРѕРєР°Р·Р°С‚СЊ" class=klbut /></td></tr>';
 				$itemsin=explode("|",$chbot['items_id']);
 				foreach($itemsin as $val){
 					if($val!=''){
@@ -426,7 +502,7 @@ if($_POST['bot']!='none'){
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td><b>Добавленные бутылки:</b> <input type=button onClick="showHide(this,this.value,\'bottletr\');" value="Показать" class=klbut /></td></tr>';
+				<tr align=center class=nickname><td><b>Р”РѕР±Р°РІР»РµРЅРЅС‹Рµ Р±СѓС‚С‹Р»РєРё:</b> <input type=button onClick="showHide(this,this.value,\'bottletr\');" value="РџРѕРєР°Р·Р°С‚СЊ" class=klbut /></td></tr>';
 				$itemsin=explode("|",$chbot['bottle_id']);
 				foreach($itemsin as $val){
 					if($val!=''){
@@ -455,7 +531,7 @@ if($_POST['bot']!='none'){
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td><b>Добавленная кожа:</b> <input type=button onClick="showHide(this,this.value,\'leathertr\');" value="Показать" class=klbut /></td></tr>';
+				<tr align=center class=nickname><td><b>Р”РѕР±Р°РІР»РµРЅРЅР°СЏ РєРѕР¶Р°:</b> <input type=button onClick="showHide(this,this.value,\'leathertr\');" value="РџРѕРєР°Р·Р°С‚СЊ" class=klbut /></td></tr>';
 				$itemsin=explode("|",$chbot['leather_id']);
 				foreach($itemsin as $val){
 					if($val!=''){
@@ -481,7 +557,7 @@ if($_POST['bot']!='none'){
 			}			
 		}		
 	}
-	#а тут мы будем редактировать все статы бота
+    #Р° С‚СѓС‚ РјС‹ Р±СѓРґРµРј СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РІСЃРµ СЃС‚Р°С‚С‹ Р±РѕС‚Р°
 	if($player['login']=='alexs' and $_POST['bot']){
 		$botparams = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `id`='".intval($_POST['bot'])."' LIMIT 1;"));
 		$stats = explode("|",$botparams['st']);
@@ -493,7 +569,7 @@ if($_POST['bot']!='none'){
 			<tr><td>
 			<form method=post>
 			<table border=0 cellpadding=4 cellspacing=1 bordercolor=gray align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td align=center colspan=2><b>Парамерты с вещей:</b> <input type=button onClick="showHide(this,this.value,\'paramsitr\');" value="Показать" class=klbut /></td></tr>';
+				<tr align=center class=nickname><td align=center colspan=2><b>РџР°СЂР°РјРµСЂС‚С‹ СЃ РІРµС‰РµР№:</b> <input type=button onClick="showHide(this,this.value,\'paramsitr\');" value="РџРѕРєР°Р·Р°С‚СЊ" class=klbut /></td></tr>';
 				$t=array(0=> 0,2,3,4,72,73);
 				$tr=0;
 				for($i=1;$i<=73;$i++){
@@ -519,7 +595,7 @@ if($_POST['bot']!='none'){
 			echo'
 			<tr bgcolor=white class="paramsitr freetxt">
 				<td align=center width=100% colspan=5>
-					<input class=lbut type=submit value="Сохранить">
+					<input class=lbut type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 					<input type=hidden name=post_id value="1">
 					<input type=hidden name=bot value="'.$_POST['bot'].'">
 				</td>
@@ -533,18 +609,42 @@ if($_POST['bot']!='none'){
 			<tr><td>
 			<form method=post>
 			<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td align=center colspan=2><b>Парамерты базовые:</b> <input type=button onClick="showHide(this,this.value,\'paramstr\');" value="Показать" class=klbut /></td></tr>';
+				<tr align=center class=nickname><td align=center colspan=2><b>РџР°СЂР°РјРµСЂС‚С‹ Р±Р°Р·РѕРІС‹Рµ:</b> <input type=button onClick="showHide(this,this.value,\'paramstr\');" value="РџРѕРєР°Р·Р°С‚СЊ" class=klbut /></td></tr>';
 				$str = "";
 				$tr=0;
 				for($i=30;$i<=35;$i++){
 					$fr="";
 					switch($i){
-						case 30: $fr="Мощь:"; $stat=$botparams['sila']; $name='sila'; break;
-						case 31: $fr="Проворность:"; $stat=$botparams['lovk']; $name='lovk';break;
-						case 32: $fr="Везение:"; $stat=$botparams['uda4a']; $name='uda4a';break;
-						case 33: $fr="Здоровье:"; $stat=$botparams['zdorov']; $name='zdorov';break;
-						case 34: $fr="Разум:"; $stat=$botparams['znan']; $name='znan';break;
-						case 35: $fr="Сноровка:"; $stat=$botparams['mudr']; $name='mudr';break;
+                        case 30:
+                            $fr = "РњРѕС‰СЊ:";
+                            $stat = $botparams['sila'];
+                            $name = 'sila';
+                            break;
+                        case 31:
+                            $fr = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ:";
+                            $stat = $botparams['lovk'];
+                            $name = 'lovk';
+                            break;
+                        case 32:
+                            $fr = "Р’РµР·РµРЅРёРµ:";
+                            $stat = $botparams['uda4a'];
+                            $name = 'uda4a';
+                            break;
+                        case 33:
+                            $fr = "Р—РґРѕСЂРѕРІСЊРµ:";
+                            $stat = $botparams['zdorov'];
+                            $name = 'zdorov';
+                            break;
+                        case 34:
+                            $fr = "Р Р°Р·СѓРј:";
+                            $stat = $botparams['znan'];
+                            $name = 'znan';
+                            break;
+                        case 35:
+                            $fr = "РЎРЅРѕСЂРѕРІРєР°:";
+                            $stat = $botparams['mudr'];
+                            $name = 'mudr';
+                            break;
 					}
 					if($fr){
 						if($tr==0){echo '<tr bgcolor=white class="paramstr freetxt">';}
@@ -556,7 +656,7 @@ if($_POST['bot']!='none'){
 			echo'
 			<tr bgcolor=white class="paramstr freetxt">
 				<td align=center width=100% colspan=5>
-					<input class=lbut type=submit value="Сохранить">
+					<input class=lbut type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 					<input type=hidden name=post_id value="2">
 					<input type=hidden name=bot value="'.$_POST['bot'].'">
 				</td>

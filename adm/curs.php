@@ -2,7 +2,7 @@
 <HTML>
 <HEAD>
 <SCRIPT src="../../../js/stooltip.js?v11"></SCRIPT>
-<META Http-Equiv=Content-Type Content="text/html; charset=windows-1251">
+    <META Http-Equiv=Content-Type Content="text/html; charset=utf-8">
 <META Http-Equiv=Cache-Control Content=No-Cache>
 <META Http-Equiv=Pragma Content=No-Cache>
 <META Http-Equiv=Expires Content=0>
@@ -17,31 +17,30 @@ db_open();
 		$GetUser = GetUser($_POST['nickname']);
 		$_POST['valute'] = floatval($_POST['valute']);
 		if(!empty($GetUser) and $_POST['valute'] > 0){
-			echo"<center>Вы удачно зачислили персонажу <b>".$GetUser['login']."</b> игровую валюту в размере <b>".($_POST['valute'])."</b> Изумруд (а).</center>";
+            echo "<center>Р’С‹ СѓРґР°С‡РЅРѕ Р·Р°С‡РёСЃР»РёР»Рё РїРµСЂСЃРѕРЅР°Р¶Сѓ <b>" . $GetUser['login'] . "</b> РёРіСЂРѕРІСѓСЋ РІР°Р»СЋС‚Сѓ РІ СЂР°Р·РјРµСЂРµ <b>" . ($_POST['valute']) . "</b> РР·СѓРјСЂСѓРґ (Р°).</center>";
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `baks`=`baks`+'".round($_POST['valute'], 2)."' WHERE `id`='".$GetUser['id']."'");
 			mysqli_query($GLOBALS['db_link'],"INSERT INTO `payments` (`uid`, `time_unix`, `time_norm`, `tpay`, `count`, `dealer`) VALUES ('".$GetUser['id']."', '".time()."', '".date("Y-m-d")."',  'DealerPay','".($_POST['valute'])."','".$pers['id']."');");
-			chmsg("<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Системная информация</font></b>:</font>&nbsp;Вам удачно начислена игровая валюта в размере <b>".($_POST['valute'])." </b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b> Изумруд (а). (<b>Банк</b>).</font>",$GetUser['login']);
-		}
-		elseif($_POST['nickname']=='всем' and $_POST['valute'] > 0){
-			echo"<center>Вы удачно зачислили всем игровую валюту в размере <b>".($_POST['valute'])."</b> Изумруд.</center>";
+            chmsg("<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</font></b>:</font>&nbsp;Р’Р°Рј СѓРґР°С‡РЅРѕ РЅР°С‡РёСЃР»РµРЅР° РёРіСЂРѕРІР°СЏ РІР°Р»СЋС‚Р° РІ СЂР°Р·РјРµСЂРµ <b>" . ($_POST['valute']) . " </b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b> РР·СѓРјСЂСѓРґ (Р°). (<b>Р‘Р°РЅРє</b>).</font>", $GetUser['login']);
+        } elseif ($_POST['nickname'] == 'РІСЃРµРј' and $_POST['valute'] > 0) {
+            echo "<center>Р’С‹ СѓРґР°С‡РЅРѕ Р·Р°С‡РёСЃР»РёР»Рё РІСЃРµРј РёРіСЂРѕРІСѓСЋ РІР°Р»СЋС‚Сѓ РІ СЂР°Р·РјРµСЂРµ <b>" . ($_POST['valute']) . "</b> РР·СѓРјСЂСѓРґ.</center>";
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `baks`=`baks`+'".round($_POST['valute'], 2)."' WHERE `id`>0 and `type`!=3");
-			chmsg("<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Системная информация</font></b>:</font>&nbsp;Вам удачно начислена игровая валюта в размере <b>".($_POST['valute'])." </b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b> Изумруд (а). (<b>Банк</b>).</font>",$GetUser['login']);
+            chmsg("<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</font></b>:</font>&nbsp;Р’Р°Рј СѓРґР°С‡РЅРѕ РЅР°С‡РёСЃР»РµРЅР° РёРіСЂРѕРІР°СЏ РІР°Р»СЋС‚Р° РІ СЂР°Р·РјРµСЂРµ <b>" . ($_POST['valute']) . " </b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b> РР·СѓРјСЂСѓРґ (Р°). (<b>Р‘Р°РЅРє</b>).</font>", $GetUser['login']);
 		}
 	}
 	if($_POST['method'] == 'bday'){
 		$GetUser = GetUser($_POST['nickname']);
 		if(!empty($GetUser) and ($_POST['bday'] != "n" or $_POST['bmouth'] != "n" or $_POST['byear'] != "n")){
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `bday`='".(intval($_POST['bday']).".".intval($_POST['bmonth']).".".intval($_POST['byear']))."',`baks`=baks-30 WHERE `id`='".$GetUser['id']."'");
-			echo"<center>Вы удачно изменили дату рождения персонажу персонажу <b>".$GetUser['login']."</b>.</center>";
-			chmsg("<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Системная информация</font></b>:</font>&nbsp;Ваша дата рождения была изменина с &quot;".$GetUser['bday']."&quot; на &quot;".(intval($_POST['bday']).".".intval($_POST['bmonth']).".".intval($_POST['byear']))."&quot; с вашего счеты было списано <b>30</b></b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b> Изумруд (а). (<b>Банк</b>).</font>",$GetUser['login']);
+            echo "<center>Р’С‹ СѓРґР°С‡РЅРѕ РёР·РјРµРЅРёР»Рё РґР°С‚Сѓ СЂРѕР¶РґРµРЅРёСЏ РїРµСЂСЃРѕРЅР°Р¶Сѓ РїРµСЂСЃРѕРЅР°Р¶Сѓ <b>" . $GetUser['login'] . "</b>.</center>";
+            chmsg("<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</font></b>:</font>&nbsp;Р’Р°С€Р° РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ Р±С‹Р»Р° РёР·РјРµРЅРёРЅР° СЃ &quot;" . $GetUser['bday'] . "&quot; РЅР° &quot;" . (intval($_POST['bday']) . "." . intval($_POST['bmonth']) . "." . intval($_POST['byear'])) . "&quot; СЃ РІР°С€РµРіРѕ СЃС‡РµС‚С‹ Р±С‹Р»Рѕ СЃРїРёСЃР°РЅРѕ <b>30</b></b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b> РР·СѓРјСЂСѓРґ (Р°). (<b>Р‘Р°РЅРє</b>).</font>", $GetUser['login']);
 		}
 	}
 	if($_POST['method'] == 'otkat'){
 		$GetUser = GetUser($_POST['nickname']);
 		if(!empty($GetUser)){
-		echo"<center>Вы удачно cписали <b>".($_POST['OtkatCount'])."</b> Изумруд у <b>".$GetUser['login']."</b>.</center>";
+            echo "<center>Р’С‹ СѓРґР°С‡РЅРѕ cРїРёСЃР°Р»Рё <b>" . ($_POST['OtkatCount']) . "</b> РР·СѓРјСЂСѓРґ Сѓ <b>" . $GetUser['login'] . "</b>.</center>";
 		mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `baks`='".($GetUser['baks']-$_POST['OtkatCount'])."' WHERE `id`='".$GetUser['id']."'");
-		chmsg("<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Системная информация</font></b>:</font>&nbsp;С вашего счета удачно списана игровая валюта в размере <b>".($_POST['OtkatCount'])."</b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b> Изумруд (а). (<b>Банк</b>).</font></b>По причине: <b>".$_POST['OtkatDesc']."</b></font>",$GetUser['login']);
+            chmsg("<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</font></b>:</font>&nbsp;РЎ РІР°С€РµРіРѕ СЃС‡РµС‚Р° СѓРґР°С‡РЅРѕ СЃРїРёСЃР°РЅР° РёРіСЂРѕРІР°СЏ РІР°Р»СЋС‚Р° РІ СЂР°Р·РјРµСЂРµ <b>" . ($_POST['OtkatCount']) . "</b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b> РР·СѓРјСЂСѓРґ (Р°). (<b>Р‘Р°РЅРє</b>).</font></b>РџРѕ РїСЂРёС‡РёРЅРµ: <b>" . $_POST['OtkatDesc'] . "</b></font>", $GetUser['login']);
 		}
 	}
 ?>
@@ -52,13 +51,15 @@ db_open();
 <form method="post" action="">
   <table border='0' cellspacing='0' cellpadding='0' class='interchange_currency' align="center">
     <tr class='interchange_header' align='center'>
-      <td><a href='http://valuta-ukraina.info/convert-valut' style='text-decoration:none; display:none;' id='interchange_link'></a><span class='invtitle'>Конвертер валют онлайн</span></td>
+        <td><a href='http://valuta-ukraina.info/convert-valut' style='text-decoration:none; display:none;'
+               id='interchange_link'></a><span class='invtitle'>РљРѕРЅРІРµСЂС‚РµСЂ РІР°Р»СЋС‚ РѕРЅР»Р°Р№РЅ</span></td>
     </tr>
     <tr align='center' valign='top'>
       <td><span id='interchange_echo_kurs_insert_html'></span>
         <script language='JavaScript' src='http://valuta-ukraina.info/xml/script3.js' type="text/javascript"></script>
         <script>
-		var interchange_echo_kurs_str_hidden_kurs = new String("<input type='hidden' value='8.491138' id='interchange_echo_kurs_AUD'><input type='hidden' value='12.778857' id='interchange_echo_kurs_GBP'><input type='hidden' value='1.504294' id='interchange_echo_kurs_DKK'><input type='hidden' value='11.198113' id='interchange_echo_kurs_EUR'><input type='hidden' value='0.053953' id='interchange_echo_kurs_KZT'><input type='hidden' value='15.899635' id='interchange_echo_kurs_LVL'><input type='hidden' value='0.684351' id='interchange_echo_kurs_MDL'><input type='hidden' value='2.579022' id='interchange_echo_kurs_PLN'><input type='hidden' value='6.378874' id='interchange_echo_kurs_SGD'><input type='hidden' value='4.515732' id='interchange_echo_kurs_TRL'><input type='hidden' value='0.0370553' id='interchange_echo_kurs_HUF'><input type='hidden' value='0.450937' id='interchange_echo_kurs_CZK'><input type='hidden' value='9.169011' id='interchange_echo_kurs_CHF'><input type='hidden' value='0.1052553' id='interchange_echo_kurs_JPY'><input type='hidden' value='10.137247' id='interchange_echo_kurs_AZM'><input type='hidden' value='0.00093' id='interchange_echo_kurs_BYR'><input type='hidden' value='7.977' id='interchange_echo_kurs_USD'><input type='hidden' value='0.038614' id='interchange_echo_kurs_ISK'><input type='hidden' value='8.019273' id='interchange_echo_kurs_CAD'><input type='hidden' value='3.243198' id='interchange_echo_kurs_LTL'><input type='hidden' value='1.462658' id='interchange_echo_kurs_NOK'><input type='hidden' value='0.26377' id='interchange_echo_kurs_RUB'><input type='hidden' value='12.690771' id='interchange_echo_kurs_XDR'><input type='hidden' value='2.798947' id='interchange_echo_kurs_TMM'><input type='hidden' value='0.004528' id='interchange_echo_kurs_UZS'><input type='hidden' value='1.240376' id='interchange_echo_kurs_SEK'><input type='hidden' value='1.254213' id='interchange_echo_kurs_CNY'><input type='hidden' value='1' id='interchange_echo_kurs_UAH'>");var interchange_echo_kurs_str_select = "<table border=0 cellpadding=2 cellspacing=2 width='100%' class='interchange_currency' style='border: none;'><tr align='right'><td><select id='interchange_echo_kurs_select_valuta_start' onChange='interchange_echo_kurs_fcn_otvet()' class='interchange_informer'><option value='AUD'>Австралийский доллар (AUD)</option><option value='GBP'>Фунт стерлингов (GBP)</option><option value='DKK'>Датская крона (DKK)</option><option value='EUR'>Евро (EUR)</option><option value='KZT'>Казахский тенге (KZT)</option><option value='LVL'>Литовский лит (LVL)</option><option value='MDL'>Молдавский лей (MDL)</option><option value='PLN'>Польский злотый (PLN)</option><option value='SGD'>Сингапурский доллар (SGD)</option><option value='TRL'>Турецкая лира (TRL)</option><option value='HUF'>Венгерский форинт (HUF)</option><option value='CZK'>Чешская крона (CZK)</option><option value='CHF'>Швейцарский франк (CHF)</option><option value='JPY'>Японская йена (JPY)</option><option value='AZM'>Азербайджанский манат (AZM)</option><option value='BYR'>Белорусский рубль (BYR)</option><option value='USD'>Американский доллар (USD)</option><option value='ISK'>Исландская крона (ISK)</option><option value='CAD'>Канадский доллар (CAD)</option><option value='LTL'>Латвийский лат (LTL)</option><option value='NOK'>Норвежская крона (NOK)</option><option value='RUB'>Российский рубль (RUB)</option><option value='XDR'>Ед-цы МВФ ОАЭ (XDR)</option><option value='TMM'>Туркменский манат (TMM)</option><option value='UZS'>Узбекский сум (UZS)</option><option value='SEK'>Шведская крона (SEK)</option><option value='CNY'>Китайский юань (CNY)</option><option value='UAH' selected>Украинская гривна (UAH)</option></select><td>Сумма <input type='text' class='interchange_informer' size=5 id='interchange_echo_kurs_text' value=0 onKeyUp='interchange_echo_kurs_fcn_otvet()'><td><img src='http://valuta-ukraina.info/img/UAH.gif' id='img_start_money'><td> | </td><td align=right><select id='interchange_echo_kurs_select_valuta_end' onChange='interchange_echo_kurs_fcn_otvet()' class='interchange_informer'><option value='AUD'>Австралийский доллар (AUD)</option><option value='GBP'>Фунт стерлингов (GBP)</option><option value='DKK'>Датская крона (DKK)</option><option value='EUR'>Евро (EUR)</option><option value='KZT'>Казахский тенге (KZT)</option><option value='LVL'>Литовский лит (LVL)</option><option value='MDL'>Молдавский лей (MDL)</option><option value='PLN'>Польский злотый (PLN)</option><option value='SGD'>Сингапурский доллар (SGD)</option><option value='TRL'>Турецкая лира (TRL)</option><option value='HUF'>Венгерский форинт (HUF)</option><option value='CZK'>Чешская крона (CZK)</option><option value='CHF'>Швейцарский франк (CHF)</option><option value='JPY'>Японская йена (JPY)</option><option value='AZM'>Азербайджанский манат (AZM)</option><option value='BYR'>Белорусский рубль (BYR)</option><option value='USD' selected>Американский доллар (USD)</option><option value='ISK'>Исландская крона (ISK)</option><option value='CAD'>Канадский доллар (CAD)</option><option value='LTL'>Латвийский лат (LTL)</option><option value='NOK'>Норвежская крона (NOK)</option><option value='RUB'>Российский рубль (RUB)</option><option value='XDR'>Ед-цы МВФ ОАЭ (XDR)</option><option value='TMM'>Туркменский манат (TMM)</option><option value='UZS'>Узбекский сум (UZS)</option><option value='SEK'>Шведская крона (SEK)</option><option value='CNY'>Китайский юань (CNY)</option><option value='UAH'>Украинская гривна (UAH)</option></select><td>Сумма <input type='text' class='interchange_informer' size=5 id='interchange_echo_kurs_insert_otvet' value=0><td><img src='http://valuta-ukraina.info/img/USD.gif' id='img_end_money'></table>";
+            var interchange_echo_kurs_str_hidden_kurs = new String("<input type='hidden' value='8.491138' id='interchange_echo_kurs_AUD'><input type='hidden' value='12.778857' id='interchange_echo_kurs_GBP'><input type='hidden' value='1.504294' id='interchange_echo_kurs_DKK'><input type='hidden' value='11.198113' id='interchange_echo_kurs_EUR'><input type='hidden' value='0.053953' id='interchange_echo_kurs_KZT'><input type='hidden' value='15.899635' id='interchange_echo_kurs_LVL'><input type='hidden' value='0.684351' id='interchange_echo_kurs_MDL'><input type='hidden' value='2.579022' id='interchange_echo_kurs_PLN'><input type='hidden' value='6.378874' id='interchange_echo_kurs_SGD'><input type='hidden' value='4.515732' id='interchange_echo_kurs_TRL'><input type='hidden' value='0.0370553' id='interchange_echo_kurs_HUF'><input type='hidden' value='0.450937' id='interchange_echo_kurs_CZK'><input type='hidden' value='9.169011' id='interchange_echo_kurs_CHF'><input type='hidden' value='0.1052553' id='interchange_echo_kurs_JPY'><input type='hidden' value='10.137247' id='interchange_echo_kurs_AZM'><input type='hidden' value='0.00093' id='interchange_echo_kurs_BYR'><input type='hidden' value='7.977' id='interchange_echo_kurs_USD'><input type='hidden' value='0.038614' id='interchange_echo_kurs_ISK'><input type='hidden' value='8.019273' id='interchange_echo_kurs_CAD'><input type='hidden' value='3.243198' id='interchange_echo_kurs_LTL'><input type='hidden' value='1.462658' id='interchange_echo_kurs_NOK'><input type='hidden' value='0.26377' id='interchange_echo_kurs_RUB'><input type='hidden' value='12.690771' id='interchange_echo_kurs_XDR'><input type='hidden' value='2.798947' id='interchange_echo_kurs_TMM'><input type='hidden' value='0.004528' id='interchange_echo_kurs_UZS'><input type='hidden' value='1.240376' id='interchange_echo_kurs_SEK'><input type='hidden' value='1.254213' id='interchange_echo_kurs_CNY'><input type='hidden' value='1' id='interchange_echo_kurs_UAH'>");
+            var interchange_echo_kurs_str_select = "<table border=0 cellpadding=2 cellspacing=2 width='100%' class='interchange_currency' style='border: none;'><tr align='right'><td><select id='interchange_echo_kurs_select_valuta_start' onChange='interchange_echo_kurs_fcn_otvet()' class='interchange_informer'><option value='AUD'>РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ РґРѕР»Р»Р°СЂ (AUD)</option><option value='GBP'>Р¤СѓРЅС‚ СЃС‚РµСЂР»РёРЅРіРѕРІ (GBP)</option><option value='DKK'>Р”Р°С‚СЃРєР°СЏ РєСЂРѕРЅР° (DKK)</option><option value='EUR'>Р•РІСЂРѕ (EUR)</option><option value='KZT'>РљР°Р·Р°С…СЃРєРёР№ С‚РµРЅРіРµ (KZT)</option><option value='LVL'>Р›РёС‚РѕРІСЃРєРёР№ Р»РёС‚ (LVL)</option><option value='MDL'>РњРѕР»РґР°РІСЃРєРёР№ Р»РµР№ (MDL)</option><option value='PLN'>РџРѕР»СЊСЃРєРёР№ Р·Р»РѕС‚С‹Р№ (PLN)</option><option value='SGD'>РЎРёРЅРіР°РїСѓСЂСЃРєРёР№ РґРѕР»Р»Р°СЂ (SGD)</option><option value='TRL'>РўСѓСЂРµС†РєР°СЏ Р»РёСЂР° (TRL)</option><option value='HUF'>Р’РµРЅРіРµСЂСЃРєРёР№ С„РѕСЂРёРЅС‚ (HUF)</option><option value='CZK'>Р§РµС€СЃРєР°СЏ РєСЂРѕРЅР° (CZK)</option><option value='CHF'>РЁРІРµР№С†Р°СЂСЃРєРёР№ С„СЂР°РЅРє (CHF)</option><option value='JPY'>РЇРїРѕРЅСЃРєР°СЏ Р№РµРЅР° (JPY)</option><option value='AZM'>РђР·РµСЂР±Р°Р№РґР¶Р°РЅСЃРєРёР№ РјР°РЅР°С‚ (AZM)</option><option value='BYR'>Р‘РµР»РѕСЂСѓСЃСЃРєРёР№ СЂСѓР±Р»СЊ (BYR)</option><option value='USD'>РђРјРµСЂРёРєР°РЅСЃРєРёР№ РґРѕР»Р»Р°СЂ (USD)</option><option value='ISK'>РСЃР»Р°РЅРґСЃРєР°СЏ РєСЂРѕРЅР° (ISK)</option><option value='CAD'>РљР°РЅР°РґСЃРєРёР№ РґРѕР»Р»Р°СЂ (CAD)</option><option value='LTL'>Р›Р°С‚РІРёР№СЃРєРёР№ Р»Р°С‚ (LTL)</option><option value='NOK'>РќРѕСЂРІРµР¶СЃРєР°СЏ РєСЂРѕРЅР° (NOK)</option><option value='RUB'>Р РѕСЃСЃРёР№СЃРєРёР№ СЂСѓР±Р»СЊ (RUB)</option><option value='XDR'>Р•Рґ-С†С‹ РњР’Р¤ РћРђР­ (XDR)</option><option value='TMM'>РўСѓСЂРєРјРµРЅСЃРєРёР№ РјР°РЅР°С‚ (TMM)</option><option value='UZS'>РЈР·Р±РµРєСЃРєРёР№ СЃСѓРј (UZS)</option><option value='SEK'>РЁРІРµРґСЃРєР°СЏ РєСЂРѕРЅР° (SEK)</option><option value='CNY'>РљРёС‚Р°Р№СЃРєРёР№ СЋР°РЅСЊ (CNY)</option><option value='UAH' selected>РЈРєСЂР°РёРЅСЃРєР°СЏ РіСЂРёРІРЅР° (UAH)</option></select><td>РЎСѓРјРјР° <input type='text' class='interchange_informer' size=5 id='interchange_echo_kurs_text' value=0 onKeyUp='interchange_echo_kurs_fcn_otvet()'><td><img src='http://valuta-ukraina.info/img/UAH.gif' id='img_start_money'><td> | </td><td align=right><select id='interchange_echo_kurs_select_valuta_end' onChange='interchange_echo_kurs_fcn_otvet()' class='interchange_informer'><option value='AUD'>РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ РґРѕР»Р»Р°СЂ (AUD)</option><option value='GBP'>Р¤СѓРЅС‚ СЃС‚РµСЂР»РёРЅРіРѕРІ (GBP)</option><option value='DKK'>Р”Р°С‚СЃРєР°СЏ РєСЂРѕРЅР° (DKK)</option><option value='EUR'>Р•РІСЂРѕ (EUR)</option><option value='KZT'>РљР°Р·Р°С…СЃРєРёР№ С‚РµРЅРіРµ (KZT)</option><option value='LVL'>Р›РёС‚РѕРІСЃРєРёР№ Р»РёС‚ (LVL)</option><option value='MDL'>РњРѕР»РґР°РІСЃРєРёР№ Р»РµР№ (MDL)</option><option value='PLN'>РџРѕР»СЊСЃРєРёР№ Р·Р»РѕС‚С‹Р№ (PLN)</option><option value='SGD'>РЎРёРЅРіР°РїСѓСЂСЃРєРёР№ РґРѕР»Р»Р°СЂ (SGD)</option><option value='TRL'>РўСѓСЂРµС†РєР°СЏ Р»РёСЂР° (TRL)</option><option value='HUF'>Р’РµРЅРіРµСЂСЃРєРёР№ С„РѕСЂРёРЅС‚ (HUF)</option><option value='CZK'>Р§РµС€СЃРєР°СЏ РєСЂРѕРЅР° (CZK)</option><option value='CHF'>РЁРІРµР№С†Р°СЂСЃРєРёР№ С„СЂР°РЅРє (CHF)</option><option value='JPY'>РЇРїРѕРЅСЃРєР°СЏ Р№РµРЅР° (JPY)</option><option value='AZM'>РђР·РµСЂР±Р°Р№РґР¶Р°РЅСЃРєРёР№ РјР°РЅР°С‚ (AZM)</option><option value='BYR'>Р‘РµР»РѕСЂСѓСЃСЃРєРёР№ СЂСѓР±Р»СЊ (BYR)</option><option value='USD' selected>РђРјРµСЂРёРєР°РЅСЃРєРёР№ РґРѕР»Р»Р°СЂ (USD)</option><option value='ISK'>РСЃР»Р°РЅРґСЃРєР°СЏ РєСЂРѕРЅР° (ISK)</option><option value='CAD'>РљР°РЅР°РґСЃРєРёР№ РґРѕР»Р»Р°СЂ (CAD)</option><option value='LTL'>Р›Р°С‚РІРёР№СЃРєРёР№ Р»Р°С‚ (LTL)</option><option value='NOK'>РќРѕСЂРІРµР¶СЃРєР°СЏ РєСЂРѕРЅР° (NOK)</option><option value='RUB'>Р РѕСЃСЃРёР№СЃРєРёР№ СЂСѓР±Р»СЊ (RUB)</option><option value='XDR'>Р•Рґ-С†С‹ РњР’Р¤ РћРђР­ (XDR)</option><option value='TMM'>РўСѓСЂРєРјРµРЅСЃРєРёР№ РјР°РЅР°С‚ (TMM)</option><option value='UZS'>РЈР·Р±РµРєСЃРєРёР№ СЃСѓРј (UZS)</option><option value='SEK'>РЁРІРµРґСЃРєР°СЏ РєСЂРѕРЅР° (SEK)</option><option value='CNY'>РљРёС‚Р°Р№СЃРєРёР№ СЋР°РЅСЊ (CNY)</option><option value='UAH'>РЈРєСЂР°РёРЅСЃРєР°СЏ РіСЂРёРІРЅР° (UAH)</option></select><td>РЎСѓРјРјР° <input type='text' class='interchange_informer' size=5 id='interchange_echo_kurs_insert_otvet' value=0><td><img src='http://valuta-ukraina.info/img/USD.gif' id='img_end_money'></table>";
 
 tmplink = document.getElementById('interchange_link').href;
 reg_str = new RegExp("^http://valuta-ukraina.info/", "i");
@@ -76,15 +77,21 @@ if (arr_val && arr_val['index']==0)
 }
 else
 {
-document.getElementById('interchange_echo_kurs_insert_html').innerHTML = '<p style="color: red;">Изменен код конвертера! Ссылка в заголовке имеет неправильный параметр HREF (он должен быть равен = <b>"http://valuta-ukraina.info/"</b>)</p>';
+    document.getElementById('interchange_echo_kurs_insert_html').innerHTML = '<p style="color: red;">РР·РјРµРЅРµРЅ РєРѕРґ РєРѕРЅРІРµСЂС‚РµСЂР°! РЎСЃС‹Р»РєР° РІ Р·Р°РіРѕР»РѕРІРєРµ РёРјРµРµС‚ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ HREF (РѕРЅ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂР°РІРµРЅ = <b>"http://valuta-ukraina.info/"</b>)</p>';
 }
 		</script>
         <script>
 	  var a = document.getElementById('interchange_echo_kurs_select_valuta_end');
-	  a.innerHTML = '<option value="USD" selected="selected">Изумруд</option>';
+      a.innerHTML = '<option value="USD" selected="selected">РР·СѓРјСЂСѓРґ</option>';
 	  interchange_echo_kurs_fcn_otvet();
 	  document.getElementById('interchange_echo_kurs_insert_otvet').name = "valute";
-      </script><input name="nickname"  class="lbut" type="text"  onBlur="if (value == '') {value='кому'}" onFocus="if (value == 'кому') {value = ''}" value="кому"><input type="hidden" name="valute_type" id="valute_type" value="USD" /><input onclick="SelectValute();" type="submit" class="lbut" value="Выдать" /><input type="hidden" name="method" value="valute" /></td>
+        </script>
+          <input name="nickname" class="lbut" type="text" onBlur="if (value == '') {value='РєРѕРјСѓ'}"
+                 onFocus="if (value == 'РєРѕРјСѓ') {value = ''}" value="РєРѕРјСѓ"><input type="hidden" name="valute_type"
+                                                                                 id="valute_type" value="USD"/><input
+                  onclick="SelectValute();" type="submit" class="lbut" value="Р’С‹РґР°С‚СЊ"/><input type="hidden"
+                                                                                              name="method"
+                                                                                              value="valute"/></td>
     </tr>
   </table>
 </form>
@@ -94,7 +101,9 @@ document.getElementById('interchange_echo_kurs_insert_html').innerHTML = '<p sty
 <form method="post" action="">
   <table cellpadding="3" cellspacing="1" width="40%" border="0" style="background:#D8CDAF;" align="center">
     <tr>
-      <td bgcolor="#D8CDAF"><div align=center><font class=invtitle>смена даты рождения</font></div></td>
+        <td bgcolor="#D8CDAF">
+            <div align=center><font class=invtitle>СЃРјРµРЅР° РґР°С‚С‹ СЂРѕР¶РґРµРЅРёСЏ</font></div>
+        </td>
     </tr>
     <tr>
       <td bgcolor="#FCFAF3" align="center"><select name="bday" class="LogintextBox6">
@@ -123,7 +132,10 @@ for($i=1950;$i<=(date("Y")-7);$i++){
               </select></td>
     </tr>
     <tr>
-      <td bgcolor="#FCFAF3" align="center"><input name="nickname"  class="lbut" type="text"  onBlur="if (value == '') {value='кому'}" onFocus="if (value == 'кому') {value = ''}" value="кому"><input type="hidden" name="method" value="bday" /><input type="submit" class="lbut" value="Изменить" /></td>
+        <td bgcolor="#FCFAF3" align="center"><input name="nickname" class="lbut" type="text"
+                                                    onBlur="if (value == '') {value='РєРѕРјСѓ'}"
+                                                    onFocus="if (value == 'РєРѕРјСѓ') {value = ''}" value="РєРѕРјСѓ"><input
+                    type="hidden" name="method" value="bday"/><input type="submit" class="lbut" value="РР·РјРµРЅРёС‚СЊ"/></td>
     </tr>
   </table>
 </form>
@@ -135,11 +147,24 @@ for($i=1950;$i<=(date("Y")-7);$i++){
 <form method="post" action="">
   <table cellpadding="3" cellspacing="1" width="40%" border="0" style="background:#D8CDAF;" align="center">
     <tr>
-      <td bgcolor="#D8CDAF"><div align=center><font class=invtitle>Списание Изумруда</font></div></td>
+        <td bgcolor="#D8CDAF">
+            <div align=center><font class=invtitle>РЎРїРёСЃР°РЅРёРµ РР·СѓРјСЂСѓРґР°</font></div>
+        </td>
     </tr>
-    <tr><td bgcolor="#FCFAF3" align="center"><input name="nickname" class="lbut" type="text" onBlur="if (value == '') {value='кому'}" onFocus="if (value == 'кому') {value = ''}" value="кому"><input type="text" class="lbut" name="OtkatCount" onBlur="if (value == '') {value='сколько'}" onFocus="if (value == 'сколько') {value = ''}" value="сколько"><input type="text" class="lbut" name="OtkatDesc" onBlur="if (value == '') {value='поясни'}" onFocus="if (value == 'поясни') {value = ''}" value="поясни"></td>
+      <tr>
+          <td bgcolor="#FCFAF3" align="center"><input name="nickname" class="lbut" type="text"
+                                                      onBlur="if (value == '') {value='РєРѕРјСѓ'}"
+                                                      onFocus="if (value == 'РєРѕРјСѓ') {value = ''}" value="РєРѕРјСѓ"><input
+                      type="text" class="lbut" name="OtkatCount" onBlur="if (value == '') {value='СЃРєРѕР»СЊРєРѕ'}"
+                      onFocus="if (value == 'СЃРєРѕР»СЊРєРѕ') {value = ''}" value="СЃРєРѕР»СЊРєРѕ"><input type="text" class="lbut"
+                                                                                            name="OtkatDesc"
+                                                                                            onBlur="if (value == '') {value='РїРѕСЏСЃРЅРё'}"
+                                                                                            onFocus="if (value == 'РїРѕСЏСЃРЅРё') {value = ''}"
+                                                                                            value="РїРѕСЏСЃРЅРё"></td>
     </tr>
-      <td bgcolor="#FCFAF3" align="center"><input type="submit" class="lbut" value="Готово" /><input type="hidden" name="method" value="otkat" /></td>
+      <td bgcolor="#FCFAF3" align="center"><input type="submit" class="lbut" value="Р“РѕС‚РѕРІРѕ"/><input type="hidden"
+                                                                                                    name="method"
+                                                                                                    value="otkat"/></td>
     </tr>
   </table>
 </form>

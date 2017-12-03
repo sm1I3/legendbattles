@@ -1,9 +1,56 @@
-html, body { height:100%; width: 100%; margin: 0px; padding: 0px; }
-iframe{ border: 0 none; padding: 0; margin: 0; display:block; }
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
 
-.bbg { background: url('/img/image/gameplay/labyrinth/bbg.gif') repeat-x; }
+iframe {
+    border: 0 none;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
 
-#Loading { z-index: 1; position: absolute; left: 0px; top: 0px; background: url(/ch/chbg.gif) repeat-x; background-color: #FFFFFF; height:100%; width: 100%; }
-#barBgPlace { z-index: 2; position: relative; width: 210px; height: 70px;  }
-#textPlace { position: absolute; z-index: 3; width: 165px; height: 30px; text-align: center; left: 22px; top: 20px; font-family: Georgia, "Times New Roman", Times, serif; font-size: 11px; color: #4d4d4d; }
-#barPlace { position: absolute; z-index: 4; width: 160px; bottom: 10px; left: 25px; }
+.bbg {
+    background: url('/img/image/gameplay/labyrinth/bbg.gif') repeat-x;
+}
+
+#Loading {
+    z-index: 1;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: url(/ch/chbg.gif) repeat-x;
+    background-color: #FFFFFF;
+    height: 100%;
+    width: 100%;
+}
+
+#barBgPlace {
+    z-index: 2;
+    position: relative;
+    width: 210px;
+    height: 70px;
+}
+
+#textPlace {
+    position: absolute;
+    z-index: 3;
+    width: 165px;
+    height: 30px;
+    text-align: center;
+    left: 22px;
+    top: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 11px;
+    color: #4d4d4d;
+}
+
+#barPlace {
+    position: absolute;
+    z-index: 4;
+    width: 160px;
+    bottom: 10px;
+    left: 25px;
+}

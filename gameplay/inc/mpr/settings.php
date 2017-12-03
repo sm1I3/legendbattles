@@ -10,18 +10,137 @@ $col = explode("|",$player['obr_col']);
 ?>
 <div class="block settings">
 	<div class="header">
-		<span>Настройка персонажа</span>
+        <span>РќР°СЃС‚СЂРѕР№РєР° РїРµСЂСЃРѕРЅР°Р¶Р°</span>
 	</div>
 	<div class="content">
 		<form action="main.php?mselect=settings" method=POST><input type=hidden name=post_id value=9>
 			<div class="field">
-				<label for="rframe">Автообновление фрейма(раз в 60 секунд)</label>
+                <label for="rframe">РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ С„СЂРµР№РјР°(СЂР°Р· РІ 60 СЃРµРєСѓРЅРґ)</label>
 				<select name=rframe>
-					<option value="0"<?=(($player['rframe']==0)?' selected="selected"':'')?>>Выключено</option>
-					<option value="1"<?=(($player['rframe']==1)?' selected="selected"':'')?>>Включено</option>
+                    <option value="0"<?= (($player['rframe'] == 0) ? ' selected="selected"' : '') ?>>Р’С‹РєР»СЋС‡РµРЅРѕ</option>
+                    <option value="1"<?= (($player['rframe'] == 1) ? ' selected="selected"' : '') ?>>Р’РєР»СЋС‡РµРЅРѕ</option>
 				</select>
 			</div>
-<tr><td><font class=freemain><b><font color="#336699">Сортировка списка чата</td><td><div align=right><select name=inf_sort class=LogintextBox6><option value=a_z <? if($player[filt]=='a_z')echo " SELECTED";?>>a-z</option><option value=z_a <? if($player[filt]=='z_a')echo " SELECTED";?>>z-a</option><option value=0_35 <? if($player[filt]=='0_35')echo " SELECTED";?>>0-35</option><option value=35_0<? if($player[filt]=='35_0')echo " SELECTED";?>>35-0</option></select></div></td></tr><tr><td><font class=freemain><b><font color=#777777>Цвет сообщений в чате</b></font></td><td><div align=right><font class=freemain><b>Текущий цвет: </font><font style="background: #<?=$player[chcolor]?>"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></font> <select class=LogintextBox name=newchatcolor><option value=000000 SELECTED style="BACKGROUND: #000000"></option><option value=FF3366 style="background: #FF3366"></option><option value=CC0033 style="background: #CC0033"></option><option value=FF3399 style="background: #FF3399"></option><option value=CC0066 style="background: #CC0066"></option><option value=FF6699 style="background: #FF6699"></option><option value=CC3366 style="background: #CC3366"></option><option value=990033 style="background: #990033"></option><option value=FF6633 style="background: #FF6633"></option><option value=CC3300 style="background: #CC3300"></option><option value=FF3300 style="background: #FF3300"></option><option value=FF6600 style="background: #FF6600"></option><option value=FF9966 style="background: #FF9966"></option><option value=CC6633 style="background: #CC6633"></option><option value=993300 style="background: #993300"></option><option value=FF9933 style="background: #FF9933"></option><option value=CC6600 style="background: #CC6600"></option><option value=FF9900 style="background: #FF9900"></option><option value=FF99CC style="background: #FF99CC"></option><option value=CC6699 style="background: #CC6699"></option><option value=993366 style="background: #993366"></option><option value=660033 style="background: #660033"></option><option value=FF66CC style="background: #FF66CC"></option><option value=CC3399 style="background: #CC3399"></option><option value=990066 style="background: #990066"></option><option value=FF33CC style="background: #FF33CC"></option><option value=CC0099 style="background: #CC0099"></option><option value=FF00CC style="background: #FF00CC"></option><option value=FF0099 style="background: #FF0099"></option><option value=FF0066 style="background: #FF0066"></option><option value=FF0033 style="background: #FF0033"></option><option value=FF0000 style="background: #FF0000"></option><option value=FF3333 style="background: #FF3333"></option><option value=CC0000 style="background: #CC0000"></option><option value=FF6666 style="background: #FF6666"></option><option value=CC3333 style="background: #CC3333"></option><option value=990000 style="background: #990000"></option><option value=FF9999 style="background: #FF9999"></option><option value=CC6666 style="background: #CC6666"></option><option value=993333 style="background: #993333"></option><option value=660000 style="background: #660000"></option><option value=CC9999 style="background: #CC9999"></option><option value=996666 style="background: #996666"></option><option value=663333 style="background: #663333"></option><option value=FFCC99 style="background: #FFCC99"></option><option value=CC9966 style="background: #CC9966"></option><option value=996633 style="background: #996633"></option><option value=663300 style="background: #663300"></option><option value=FFCC66 style="background: #FFCC66"></option><option value=CC9933 style="background: #CC9933"></option><option value=996600 style="background: #996600"></option><option value=FFCC33 style="background: #FFCC33"></option><option value=CC9900 style="background: #CC9900"></option><option value=FFCC00 style="background: #FFCC00"></option><option value=CC99FF style="background: #CC99FF"></option><option value=9966CC style="background: #9966CC"></option><option value=9966FF style="background: #9966FF"></option><option value=FFCCFF style="background: #FFCCFF"></option><option value=CC99CC style="background: #CC99CC"></option><option value=996699 style="background: #996699"></option><option value=663366 style="background: #663366"></option><option value=FF99FF style="background: #FF99FF"></option><option value=CC66CC style="background: #CC66CC"></option><option value=CC33CC style="background: #CC33CC"></option><option value=CC00CC style="background: #CC00CC"></option><option value=6666CC style="background: #6666CC"></option><option value=3333CC style="background: #3333CC"></option><option value=000099 style="background: #000099"></option><option value=000066 style="background: #000066"></option><option value=0000CC style="background: #0000CC"></option><option value=0000FF style="background: #0000FF"></option><option value=336633 style="background: #336633"></option><option value=339933 style="background: #339933"></option><option value=669966 style="background: #669966"></option><option value=009900 style="background: #009900"></option><option value=006600 style="background: #006600"></option><option value=00CC00 style="background: #00CC00"></option><option value=3300FF style="background: #3300FF"></option><option value=00CCCC style="background: #00CCCC"></option><option value=009999 style="background: #009999"></option><option value=33CCCC style="background: #33CCCC"></option><option value=006666 style="background: #006666"></option><option value=336699 style="background: #336699"></option><option value=003366 style="background: #003366"></option><option value=003399 style="background: #003399"></option><option value=0033CC style="background: #0033CC"></option><option value=3366FF style="background: #3366FF"></option><option value=336600 style="background: #336600"></option><option value=339900 style="background: #339900"></option><option value=33CC00 style="background: #33CC00"></option><option value=00CC33 style="background: #00CC33"></option><option value=00CCFF style="background: #00CCFF"></option><option value=33CCFF style="background: #33CCFF"></option><option value=0066CC style="background: #0066CC"></option><option value=6600FF style="background: #6600FF"></option></select></div></td></tr><tr><td colspan=2><input type=hidden name=vcode value=<?=scode()?>><input type=submit value="Отправить"></td></tr></form>
+            <tr>
+                <td><font class=freemain><b><font color="#336699">РЎРѕСЂС‚РёСЂРѕРІРєР° СЃРїРёСЃРєР° С‡Р°С‚Р°</td>
+                <td>
+                    <div align=right><select name=inf_sort class=LogintextBox6>
+                            <option value=a_z <? if ($player[filt] == 'a_z') echo " SELECTED"; ?>>a-z</option>
+                            <option value=z_a <? if ($player[filt] == 'z_a') echo " SELECTED"; ?>>z-a</option>
+                            <option value=0_35 <? if ($player[filt] == '0_35') echo " SELECTED"; ?>>0-35</option>
+                            <option value=35_0<? if ($player[filt] == '35_0') echo " SELECTED"; ?>>35-0</option>
+                        </select></div>
+                </td>
+            </tr>
+            <tr>
+                <td><font class=freemain><b><font color=#777777>Р¦РІРµС‚ СЃРѕРѕР±С‰РµРЅРёР№ РІ С‡Р°С‚Рµ</b></font></td>
+                <td>
+                    <div align=right><font class=freemain><b>РўРµРєСѓС‰РёР№ С†РІРµС‚: </font><font
+                                style="background: #<?= $player[chcolor] ?>"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></font>
+                        <select class=LogintextBox name=newchatcolor>
+                            <option value=000000 SELECTED style="BACKGROUND: #000000"></option>
+                            <option value=FF3366 style="background: #FF3366"></option>
+                            <option value=CC0033 style="background: #CC0033"></option>
+                            <option value=FF3399 style="background: #FF3399"></option>
+                            <option value=CC0066 style="background: #CC0066"></option>
+                            <option value=FF6699 style="background: #FF6699"></option>
+                            <option value=CC3366 style="background: #CC3366"></option>
+                            <option value=990033 style="background: #990033"></option>
+                            <option value=FF6633 style="background: #FF6633"></option>
+                            <option value=CC3300 style="background: #CC3300"></option>
+                            <option value=FF3300 style="background: #FF3300"></option>
+                            <option value=FF6600 style="background: #FF6600"></option>
+                            <option value=FF9966 style="background: #FF9966"></option>
+                            <option value=CC6633 style="background: #CC6633"></option>
+                            <option value=993300 style="background: #993300"></option>
+                            <option value=FF9933 style="background: #FF9933"></option>
+                            <option value=CC6600 style="background: #CC6600"></option>
+                            <option value=FF9900 style="background: #FF9900"></option>
+                            <option value=FF99CC style="background: #FF99CC"></option>
+                            <option value=CC6699 style="background: #CC6699"></option>
+                            <option value=993366 style="background: #993366"></option>
+                            <option value=660033 style="background: #660033"></option>
+                            <option value=FF66CC style="background: #FF66CC"></option>
+                            <option value=CC3399 style="background: #CC3399"></option>
+                            <option value=990066 style="background: #990066"></option>
+                            <option value=FF33CC style="background: #FF33CC"></option>
+                            <option value=CC0099 style="background: #CC0099"></option>
+                            <option value=FF00CC style="background: #FF00CC"></option>
+                            <option value=FF0099 style="background: #FF0099"></option>
+                            <option value=FF0066 style="background: #FF0066"></option>
+                            <option value=FF0033 style="background: #FF0033"></option>
+                            <option value=FF0000 style="background: #FF0000"></option>
+                            <option value=FF3333 style="background: #FF3333"></option>
+                            <option value=CC0000 style="background: #CC0000"></option>
+                            <option value=FF6666 style="background: #FF6666"></option>
+                            <option value=CC3333 style="background: #CC3333"></option>
+                            <option value=990000 style="background: #990000"></option>
+                            <option value=FF9999 style="background: #FF9999"></option>
+                            <option value=CC6666 style="background: #CC6666"></option>
+                            <option value=993333 style="background: #993333"></option>
+                            <option value=660000 style="background: #660000"></option>
+                            <option value=CC9999 style="background: #CC9999"></option>
+                            <option value=996666 style="background: #996666"></option>
+                            <option value=663333 style="background: #663333"></option>
+                            <option value=FFCC99 style="background: #FFCC99"></option>
+                            <option value=CC9966 style="background: #CC9966"></option>
+                            <option value=996633 style="background: #996633"></option>
+                            <option value=663300 style="background: #663300"></option>
+                            <option value=FFCC66 style="background: #FFCC66"></option>
+                            <option value=CC9933 style="background: #CC9933"></option>
+                            <option value=996600 style="background: #996600"></option>
+                            <option value=FFCC33 style="background: #FFCC33"></option>
+                            <option value=CC9900 style="background: #CC9900"></option>
+                            <option value=FFCC00 style="background: #FFCC00"></option>
+                            <option value=CC99FF style="background: #CC99FF"></option>
+                            <option value=9966CC style="background: #9966CC"></option>
+                            <option value=9966FF style="background: #9966FF"></option>
+                            <option value=FFCCFF style="background: #FFCCFF"></option>
+                            <option value=CC99CC style="background: #CC99CC"></option>
+                            <option value=996699 style="background: #996699"></option>
+                            <option value=663366 style="background: #663366"></option>
+                            <option value=FF99FF style="background: #FF99FF"></option>
+                            <option value=CC66CC style="background: #CC66CC"></option>
+                            <option value=CC33CC style="background: #CC33CC"></option>
+                            <option value=CC00CC style="background: #CC00CC"></option>
+                            <option value=6666CC style="background: #6666CC"></option>
+                            <option value=3333CC style="background: #3333CC"></option>
+                            <option value=000099 style="background: #000099"></option>
+                            <option value=000066 style="background: #000066"></option>
+                            <option value=0000CC style="background: #0000CC"></option>
+                            <option value=0000FF style="background: #0000FF"></option>
+                            <option value=336633 style="background: #336633"></option>
+                            <option value=339933 style="background: #339933"></option>
+                            <option value=669966 style="background: #669966"></option>
+                            <option value=009900 style="background: #009900"></option>
+                            <option value=006600 style="background: #006600"></option>
+                            <option value=00CC00 style="background: #00CC00"></option>
+                            <option value=3300FF style="background: #3300FF"></option>
+                            <option value=00CCCC style="background: #00CCCC"></option>
+                            <option value=009999 style="background: #009999"></option>
+                            <option value=33CCCC style="background: #33CCCC"></option>
+                            <option value=006666 style="background: #006666"></option>
+                            <option value=336699 style="background: #336699"></option>
+                            <option value=003366 style="background: #003366"></option>
+                            <option value=003399 style="background: #003399"></option>
+                            <option value=0033CC style="background: #0033CC"></option>
+                            <option value=3366FF style="background: #3366FF"></option>
+                            <option value=336600 style="background: #336600"></option>
+                            <option value=339900 style="background: #339900"></option>
+                            <option value=33CC00 style="background: #33CC00"></option>
+                            <option value=00CC33 style="background: #00CC33"></option>
+                            <option value=00CCFF style="background: #00CCFF"></option>
+                            <option value=33CCFF style="background: #33CCFF"></option>
+                            <option value=0066CC style="background: #0066CC"></option>
+                            <option value=6600FF style="background: #6600FF"></option>
+                        </select></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2><input type=hidden name=vcode value=<?= scode() ?>><input type=submit value="РћС‚РїСЂР°РІРёС‚СЊ">
+                </td>
+            </tr>
+        </form>
 			</div>
 <?
 if($col[0]>0){
@@ -34,7 +153,7 @@ if($col[0]>0){
 			<label><img src="/img/image/forum/avatars/<?=((($player['sex'] == "male")?100:150)+$i)?>.jpg" width=80 height=80 border=0><input type=radio name=ava value=<?=(100+$i)?>></label>
 <?	}?>
 			<div class="save">
-				<input type=submit value="Сменить образ">
+                <input type=submit value="РЎРјРµРЅРёС‚СЊ РѕР±СЂР°Р·">
 			</div>
 		</form>
 <?} 
@@ -47,7 +166,7 @@ if($col[1]>0){?>
 			<label><img src="/img/image/obrazy/<?=$player['sex']?>_<?=$i?>.gif" width=115 height=255 border=0><input type=radio name=selectob value=<?=$i?>></label>
 <?	}?>
 			<div class="save">
-				<input type=submit value="Сменить образ">
+                <input type=submit value="РЎРјРµРЅРёС‚СЊ РѕР±СЂР°Р·">
 			</div>
 		</form>
 <?php

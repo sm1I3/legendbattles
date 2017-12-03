@@ -7,10 +7,10 @@ if (!userHasPermission(1)) {
 }
 
 $property_types = array(
-    1 => 'Основные требования',
-    2 => 'Требования умений',
-    3 => 'Основные хар-ки',
-    4 => 'Дополнительные умения'
+    1 => 'РћСЃРЅРѕРІРЅС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ',
+    2 => 'РўСЂРµР±РѕРІР°РЅРёСЏ СѓРјРµРЅРёР№',
+    3 => 'РћСЃРЅРѕРІРЅС‹Рµ С…Р°СЂ-РєРё',
+    4 => 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓРјРµРЅРёСЏ'
 );
 
 if (isset($_GET['delete_property_code']) && $_GET['delete_property_code']!='') {
@@ -25,28 +25,28 @@ while ($row = mysql_fetch_assoc($res))
 {
     $weapon_properties .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этот параметр оружия?\');" href="weapon_property_list.php?delete_property_code='.$row['property_code'].'" title="Удалить параметр оружия"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="weapon_property_edit.php?property_code='.$row['property_code'].'" title="Изменить параметр оружия"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ РїР°СЂР°РјРµС‚СЂ РѕСЂСѓР¶РёСЏ?\');" href="weapon_property_list.php?delete_property_code=' . $row['property_code'] . '" title="РЈРґР°Р»РёС‚СЊ РїР°СЂР°РјРµС‚СЂ РѕСЂСѓР¶РёСЏ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="weapon_property_edit.php?property_code=' . $row['property_code'] . '" title="РР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂ РѕСЂСѓР¶РёСЏ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$property_types[$row['property_type']].'</td>
       <td align="left" class="cms_middle">'.$row['property_code'].'</td>
-      <td align="left" class="cms_middle"><a href="weapon_property_edit.php?property_code='.$row['property_code'].'" title="Изменить параметр оружия">'._htext($row['property_name']).'</a></td>
+      <td align="left" class="cms_middle"><a href="weapon_property_edit.php?property_code=' . $row['property_code'] . '" title="РР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂ РѕСЂСѓР¶РёСЏ">' . _htext($row['property_name']) . '</a></td>
     </tr>
     ';
 }
 
 ?>
-<h3>Список параметров оружия</h3>
+    <h3>РЎРїРёСЃРѕРє РїР°СЂР°РјРµС‚СЂРѕРІ РѕСЂСѓР¶РёСЏ</h3>
 <div class="cms_ind">
 <br />
-Параметры оружия: <br />
+    РџР°СЂР°РјРµС‚СЂС‹ РѕСЂСѓР¶РёСЏ: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">Тип параметра</td>
-      <td class="cms_cap2">Код параметра</td>
-      <td class="cms_cap2">Название параметра</td>
+        <td class="cms_cap2">РўРёРї РїР°СЂР°РјРµС‚СЂР°</td>
+        <td class="cms_cap2">РљРѕРґ РїР°СЂР°РјРµС‚СЂР°</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ РїР°СЂР°РјРµС‚СЂР°</td>
     </tr>
     
     <?=$weapon_properties?>
@@ -54,7 +54,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить параметр" /><a href="weapon_property_edit.php" title="Добавить параметр">Добавить параметр</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РїР°СЂР°РјРµС‚СЂ"/><a href="weapon_property_edit.php"
+                                                                        title="Р”РѕР±Р°РІРёС‚СЊ РїР°СЂР°РјРµС‚СЂ">Р”РѕР±Р°РІРёС‚СЊ
+    РїР°СЂР°РјРµС‚СЂ</a> &nbsp;<br/>
  <br />
 
 <? require('kernel/after.php'); ?>

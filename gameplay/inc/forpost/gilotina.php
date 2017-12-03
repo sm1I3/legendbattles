@@ -6,7 +6,7 @@ echo'
 <tr><td>
 <font class=proce>
 <FIELDSET>
-<LEGEND align=center><B><font color=gray>&nbsp;Гильотина&nbsp;</font></B></LEGEND>
+<LEGEND align=center><B><font color=gray>&nbsp;Р“РёР»СЊРѕС‚РёРЅР°&nbsp;</font></B></LEGEND>
 <table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><table cellpadding=0 cellspacing=2 border=0 width=100%>
 <tr><td><div align=center><font class=nickname>';
 if($_GET['gil']==1 and !empty($_POST['login'])){
@@ -14,7 +14,7 @@ if($_GET['gil']==1 and !empty($_POST['login'])){
 	if(mysqli_num_rows($usertodie)){
 		if($player['baks']>=25){
 				$usr=mysqli_fetch_assoc($usertodie);
-				$prison=(time()+18000)."|Спасен от казни на гильотине.";
+            $prison = (time() + 18000) . "|РЎРїР°СЃРµРЅ РѕС‚ РєР°Р·РЅРё РЅР° РіРёР»СЊРѕС‚РёРЅРµ.";
 				$par.="33/-100@".(time()+18000)."@3|";
 				$old=test_affect($usr['affect']);
 				$newaff="".$par."".$old."";
@@ -24,46 +24,46 @@ if($_GET['gil']==1 and !empty($_POST['login'])){
 				calcstat($usr['id']);				
 				$ret=substr($ret,0,strlen($ret)-2);
 				$ret=substr($ret,2);
-				$msg[1]="Персонажу <b>".$usr['login']."</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?".$usr['login']."\" target=\"_blank\"><img src=/img/image/chat/info.gif width=11 height=12 border=0 onClick=\"window.open(\'http://legendbattles.ru/ipers.php?".$usr['login']."\');\" ></a>&nbsp;пытались отрубить голову! Но с помощью вмешательства Инквизиции мера наказания <b>".$usr['login']."</b> была изменена на тюремное заключение...";
-				$msg[2]="<b>".$usr['login']."&nbsp;<font color=#CC0000>Отправлен в тюрьму на 5 часов!</font></b>";
-				echo "<b>".$usr['login']."</b>&nbsp;<b><font color=#CC0000>Казнен!</font></b>";
-				$ms[1]="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b>&nbsp;".$msg[1]."<BR>'+'');";
-				$ms[2]="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b>&nbsp;".$msg[2]."<BR>'+'');";
+            $msg[1] = "РџРµСЂСЃРѕРЅР°Р¶Сѓ <b>" . $usr['login'] . "</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?" . $usr['login'] . "\" target=\"_blank\"><img src=/img/image/chat/info.gif width=11 height=12 border=0 onClick=\"window.open(\'http://legendbattles.ru/ipers.php?" . $usr['login'] . "\');\" ></a>&nbsp;РїС‹С‚Р°Р»РёСЃСЊ РѕС‚СЂСѓР±РёС‚СЊ РіРѕР»РѕРІСѓ! РќРѕ СЃ РїРѕРјРѕС‰СЊСЋ РІРјРµС€Р°С‚РµР»СЊСЃС‚РІР° РРЅРєРІРёР·РёС†РёРё РјРµСЂР° РЅР°РєР°Р·Р°РЅРёСЏ <b>" . $usr['login'] . "</b> Р±С‹Р»Р° РёР·РјРµРЅРµРЅР° РЅР° С‚СЋСЂРµРјРЅРѕРµ Р·Р°РєР»СЋС‡РµРЅРёРµ...";
+            $msg[2] = "<b>" . $usr['login'] . "&nbsp;<font color=#CC0000>РћС‚РїСЂР°РІР»РµРЅ РІ С‚СЋСЂСЊРјСѓ РЅР° 5 С‡Р°СЃРѕРІ!</font></b>";
+            echo "<b>" . $usr['login'] . "</b>&nbsp;<b><font color=#CC0000>РљР°Р·РЅРµРЅ!</font></b>";
+            $ms[1] = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b>&nbsp;" . $msg[1] . "<BR>'+'');";
+            $ms[2] = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b>&nbsp;" . $msg[2] . "<BR>'+'');";
 				chmsg($ms[1],'');
 				chmsg($ms[2],'');
 				chmsg($redirect,$usr['login']);
 		}
 		else{
-			echo 'Недостаточно средств!<br>';
+            echo 'РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ!<br>';
 		}
 	}
 	else{
-		echo 'Персонажа <b>'.$_POST['login']."</b> не существует!<br>";
+        echo 'РџРµСЂСЃРѕРЅР°Р¶Р° <b>' . $_POST['login'] . "</b> РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!<br>";
 	}
 }
 echo'
 <br>
 <b>
 <i>
-Эй не трожь! Лезвия такие острые, что разрубают перо.<br>
- Что? Не знаешь что это такое? Это гильотина.<br><br>
- Правитель установил её…хм…для того, чтобы наказывать изменников…или для развлечения…<br>
- Видел когда-нибудь кого-то казнят? Нет? Счастливчик. Такого никому не пожелаешь…Или пожелаешь? <br>
- По приказу всевышнего, всего за 25 изумруда голова твоего неприятеля покатится, оставляя за собой алую дорогу!<br><br>
- Ну что? Мне подготовить  для твоего врага место на кладбище? <br><br>
+Р­Р№ РЅРµ С‚СЂРѕР¶СЊ! Р›РµР·РІРёСЏ С‚Р°РєРёРµ РѕСЃС‚СЂС‹Рµ, С‡С‚Рѕ СЂР°Р·СЂСѓР±Р°СЋС‚ РїРµСЂРѕ.<br>
+ Р§С‚Рѕ? РќРµ Р·РЅР°РµС€СЊ С‡С‚Рѕ СЌС‚Рѕ С‚Р°РєРѕРµ? Р­С‚Рѕ РіРёР»СЊРѕС‚РёРЅР°.<br><br>
+ РџСЂР°РІРёС‚РµР»СЊ СѓСЃС‚Р°РЅРѕРІРёР» РµС‘вЂ¦С…РјвЂ¦РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РЅР°РєР°Р·С‹РІР°С‚СЊ РёР·РјРµРЅРЅРёРєРѕРІвЂ¦РёР»Рё РґР»СЏ СЂР°Р·РІР»РµС‡РµРЅРёСЏвЂ¦<br>
+ Р’РёРґРµР» РєРѕРіРґР°-РЅРёР±СѓРґСЊ РєРѕРіРѕ-С‚Рѕ РєР°Р·РЅСЏС‚? РќРµС‚? РЎС‡Р°СЃС‚Р»РёРІС‡РёРє. РўР°РєРѕРіРѕ РЅРёРєРѕРјСѓ РЅРµ РїРѕР¶РµР»Р°РµС€СЊвЂ¦РР»Рё РїРѕР¶РµР»Р°РµС€СЊ? <br>
+ РџРѕ РїСЂРёРєР°Р·Сѓ РІСЃРµРІС‹С€РЅРµРіРѕ, РІСЃРµРіРѕ Р·Р° 25 РёР·СѓРјСЂСѓРґР° РіРѕР»РѕРІР° С‚РІРѕРµРіРѕ РЅРµРїСЂРёСЏС‚РµР»СЏ РїРѕРєР°С‚РёС‚СЃСЏ, РѕСЃС‚Р°РІР»СЏСЏ Р·Р° СЃРѕР±РѕР№ Р°Р»СѓСЋ РґРѕСЂРѕРіСѓ!<br><br>
+ РќСѓ С‡С‚Рѕ? РњРЅРµ РїРѕРґРіРѕС‚РѕРІРёС‚СЊ  РґР»СЏ С‚РІРѕРµРіРѕ РІСЂР°РіР° РјРµСЃС‚Рѕ РЅР° РєР»Р°РґР±РёС‰Рµ? <br><br>
 
 ';
 echo'
 </i>
 <form method=post action="?gil=1">
 <input type=hidden name=vcode value='.scode().'>
-<font class=nickname>Имя: <input type=text name=login class=logintextbox6>
-<input type=submit class=lbut value="Отрубить голову [25 Изумруд]"> (анонимность гарантируется)</font>
+<font class=nickname>РРјСЏ: <input type=text name=login class=logintextbox6>
+<input type=submit class=lbut value="РћС‚СЂСѓР±РёС‚СЊ РіРѕР»РѕРІСѓ [25 РР·СѓРјСЂСѓРґ]"> (Р°РЅРѕРЅРёРјРЅРѕСЃС‚СЊ РіР°СЂР°РЅС‚РёСЂСѓРµС‚СЃСЏ)</font>
 </form>';
 echo'
 <br>
-<font class=freetxt style="color:#dd0000">Примечание: <font color=blue>Вы здесь от Инквизиции?</font> После гильотины персонаж получает травму, а так же не может совершать никаких действий в течении 5 часов.<br>
-<font class=nickname><i>Вы обращались в Мэрию с жалобой ?! как? Вам не помогли, вы по адресу...</i></font>
+<font class=freetxt style="color:#dd0000">РџСЂРёРјРµС‡Р°РЅРёРµ: <font color=blue>Р’С‹ Р·РґРµСЃСЊ РѕС‚ РРЅРєРІРёР·РёС†РёРё?</font> РџРѕСЃР»Рµ РіРёР»СЊРѕС‚РёРЅС‹ РїРµСЂСЃРѕРЅР°Р¶ РїРѕР»СѓС‡Р°РµС‚ С‚СЂР°РІРјСѓ, Р° С‚Р°Рє Р¶Рµ РЅРµ РјРѕР¶РµС‚ СЃРѕРІРµСЂС€Р°С‚СЊ РЅРёРєР°РєРёС… РґРµР№СЃС‚РІРёР№ РІ С‚РµС‡РµРЅРёРё 5 С‡Р°СЃРѕРІ.<br>
+<font class=nickname><i>Р’С‹ РѕР±СЂР°С‰Р°Р»РёСЃСЊ РІ РњСЌСЂРёСЋ СЃ Р¶Р°Р»РѕР±РѕР№ ?! РєР°Рє? Р’Р°Рј РЅРµ РїРѕРјРѕРіР»Рё, РІС‹ РїРѕ Р°РґСЂРµСЃСѓ...</i></font>
 </div></td></tr>
 </table></td></tr></table></FIELDSET></td></tr>
 <tr><td><img src=/img/image/1x1.gif width=1 height=3></td></tr>

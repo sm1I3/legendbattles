@@ -19,26 +19,26 @@ while ($row = mysql_fetch_assoc($res))
 {
     $abilities .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить это сообщение?\');" href="mass_message_list.php?delete_message_id='.$row['msg_id'].'" title="Удалить сообщение"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="mass_message_edit.php?message_id='.$row['msg_id'].'" title="Изменить сообщение"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ?\');" href="mass_message_list.php?delete_message_id=' . $row['msg_id'] . '" title="РЈРґР°Р»РёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="mass_message_edit.php?message_id=' . $row['msg_id'] . '" title="РР·РјРµРЅРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['msg_id'].'</td>
-      <td align="left" class="cms_middle"><a href="mass_message_edit.php?message_id='.$row['msg_id'].'" title="Изменить сообщение">'._htext(substr($row['msg_text'], 0, 100)).'</a></td>
+      <td align="left" class="cms_middle"><a href="mass_message_edit.php?message_id=' . $row['msg_id'] . '" title="РР·РјРµРЅРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ">' . _htext(substr($row['msg_text'], 0, 100)) . '</a></td>
     </tr>
     ';
 }
 
 ?>
-<h3>Список сообщений</h3>
+    <h3>РЎРїРёСЃРѕРє СЃРѕРѕР±С‰РµРЅРёР№</h3>
 <div class="cms_ind">
 <br />
-Сообщения: <br />
+    РЎРѕРѕР±С‰РµРЅРёСЏ: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Сообщения</td>
-      <td class="cms_cap2">Текст сообщения</td>
+        <td class="cms_cap2">ID РЎРѕРѕР±С‰РµРЅРёСЏ</td>
+        <td class="cms_cap2">РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ</td>
     </tr>
     
     <?=$abilities?>
@@ -46,7 +46,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить сообщение" /><a href="mass_message_edit.php" title="Добавить сообщение">Добавить сообщение</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ"/><a href="mass_message_edit.php"
+                                                                         title="Р”РѕР±Р°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ">Р”РѕР±Р°РІРёС‚СЊ
+    СЃРѕРѕР±С‰РµРЅРёРµ</a> &nbsp;<br/>
  <br />
 
 <? require('kernel/after.php'); ?>

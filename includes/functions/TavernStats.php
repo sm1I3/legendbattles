@@ -1,84 +1,236 @@
 <?php
 
 function TavernStats($descr){
-	$st = $descr[2] ? ' ('.($descr[2] / 60).' ч)' : '';
+    $st = $descr[2] ? ' (' . ($descr[2] / 60) . ' С‡)' : '';
 	switch($descr[0]){
-		case 'LI': echo'&nbsp;Лимит: <B>'.(!$descr[1] ? 'без ограничений' : $descr[1].' шт').'</B>'.$st.'<br>'; break;
-		case 'EFF': echo'&nbsp;<font color=#CC0000><B>Побочный эффект</B> (через <B>'.($descr[1] / 60).'</B> ч):</font><br>'; break;
-		case 'HP': echo'&nbsp;Восстановление HP: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case 'MP': echo'&nbsp;Восстановление MP: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case 'US': echo'&nbsp;Усталость: -<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case 'R_ST': echo'&nbsp;Случайный стат: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case 'R_MF': echo'&nbsp;Случайный МФ: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case 'RB_ST': echo'&nbsp;Случайный стат: '.($descr[4] == '1' ? '+' : '-').'<B>'.$descr[1].'-'.$descr[3].'</B>'.$st.'<br>'; break;
-		case 'RB_MF': echo'&nbsp;Случайный МФ: '.($descr[4] == '1' ? '+' : '-').'<B>'.$descr[1].'-'.$descr[3].'</B>'.$st.'<br>'; break;
-		case'1': echo'&nbsp;Удар: <B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'5': echo'&nbsp;Уловка: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'6': echo'&nbsp;Точность: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'7': echo'&nbsp;Сокрушение: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'8': echo'&nbsp;Стойкость: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'9': echo'&nbsp;Класс брони: <B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'10': echo'&nbsp;Пробой брони: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'11': echo'&nbsp;Пробой колющим ударом: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'12': echo'&nbsp;Пробой режущим ударом: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'13': echo'&nbsp;Пробой проникающим ударом: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'14': echo'&nbsp;Пробой пробивающим ударом: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'15': echo'&nbsp;Пробой рубящим ударом: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'16': echo'&nbsp;Пробой карающим ударом: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'17': echo'&nbsp;Пробой отсекающим ударом: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'18': echo'&nbsp;Пробой дробящим ударом: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'19': echo'&nbsp;Защита от колющих ударов: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'20': echo'&nbsp;Защита от режущих ударов: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'21': echo'&nbsp;Защита от проникающих ударов: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'22': echo'&nbsp;Защита от пробивающих ударов: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'23': echo'&nbsp;Защита от рубящих ударов: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'24': echo'&nbsp;Защита от карающих ударов: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'25': echo'&nbsp;Защита от отсекающих ударов: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'26': echo'&nbsp;Защита от дробящих ударов: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'27': echo'&nbsp;НР: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'28': echo'&nbsp;Очки действия: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'29': echo'&nbsp;Мана: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'30': echo'&nbsp;Мощь: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'31': echo'&nbsp;Проворность: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'32': echo'&nbsp;Везение: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'33': echo'&nbsp;Здоровье: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'34': echo'&nbsp;Разум: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'35': echo'&nbsp;Сноровка: +<B>'.$descr[1].'</B>'.$st.'<br>'; break;
-		case'36': echo'&nbsp;Владение мечами: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'37': echo'&nbsp;Владение топорами: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'38': echo'&nbsp;Владение дробящим оружием: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'39': echo'&nbsp;Владение ножами: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'40': echo'&nbsp;Владение метательным оружием: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'41': echo'&nbsp;Владение алебардами и копьями: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'42': echo'&nbsp;Владение посохами: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'43': echo'&nbsp;Владение экзотическим оружием: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'44': echo'&nbsp;Владение двуручным оружием: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'45': echo'&nbsp;Магия огня: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'46': echo'&nbsp;Магия воды: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'47': echo'&nbsp;Магия воздуха: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'48': echo'&nbsp;Магия земли: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'49': echo'&nbsp;Сопротивление магии огня: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'50': echo'&nbsp;Сопротивление магии воды: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'51': echo'&nbsp;Сопротивление магии воздуха: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'52': echo'&nbsp;Сопротивление магии земли: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'53': echo'&nbsp;Воровство: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'54': echo'&nbsp;Осторожность: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'55': echo'&nbsp;Скрытность: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'56': echo'&nbsp;Наблюдательность: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'57': echo'&nbsp;Торговля: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'58': echo'&nbsp;Странник: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'59': echo'&nbsp;Рыболов: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'60': echo'&nbsp;Лесоруб: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'61': echo'&nbsp;Ювелирное дело: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'62': echo'&nbsp;Самолечение: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'63': echo'&nbsp;Оружейник: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'64': echo'&nbsp;Доктор: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'65': echo'&nbsp;Самолечение: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'66': echo'&nbsp;Быстрое восстановление маны: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'67': echo'&nbsp;Лидерство: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'68': echo'&nbsp;Алхимия: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'69': echo'&nbsp;Развитие горного дела: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
-		case'70': echo'&nbsp;Травничество: +<B>'.$descr[1].'%</B>'.$st.'<br>'; break;
+        case 'LI':
+            echo '&nbsp;Р›РёРјРёС‚: <B>' . (!$descr[1] ? 'Р±РµР· РѕРіСЂР°РЅРёС‡РµРЅРёР№' : $descr[1] . ' С€С‚') . '</B>' . $st . '<br>';
+            break;
+        case 'EFF':
+            echo '&nbsp;<font color=#CC0000><B>РџРѕР±РѕС‡РЅС‹Р№ СЌС„С„РµРєС‚</B> (С‡РµСЂРµР· <B>' . ($descr[1] / 60) . '</B> С‡):</font><br>';
+            break;
+        case 'HP':
+            echo '&nbsp;Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ HP: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case 'MP':
+            echo '&nbsp;Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ MP: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case 'US':
+            echo '&nbsp;РЈСЃС‚Р°Р»РѕСЃС‚СЊ: -<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case 'R_ST':
+            echo '&nbsp;РЎР»СѓС‡Р°Р№РЅС‹Р№ СЃС‚Р°С‚: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case 'R_MF':
+            echo '&nbsp;РЎР»СѓС‡Р°Р№РЅС‹Р№ РњР¤: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case 'RB_ST':
+            echo '&nbsp;РЎР»СѓС‡Р°Р№РЅС‹Р№ СЃС‚Р°С‚: ' . ($descr[4] == '1' ? '+' : '-') . '<B>' . $descr[1] . '-' . $descr[3] . '</B>' . $st . '<br>';
+            break;
+        case 'RB_MF':
+            echo '&nbsp;РЎР»СѓС‡Р°Р№РЅС‹Р№ РњР¤: ' . ($descr[4] == '1' ? '+' : '-') . '<B>' . $descr[1] . '-' . $descr[3] . '</B>' . $st . '<br>';
+            break;
+        case'1':
+            echo '&nbsp;РЈРґР°СЂ: <B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'5':
+            echo '&nbsp;РЈР»РѕРІРєР°: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'6':
+            echo '&nbsp;РўРѕС‡РЅРѕСЃС‚СЊ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'7':
+            echo '&nbsp;РЎРѕРєСЂСѓС€РµРЅРёРµ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'8':
+            echo '&nbsp;РЎС‚РѕР№РєРѕСЃС‚СЊ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'9':
+            echo '&nbsp;РљР»Р°СЃСЃ Р±СЂРѕРЅРё: <B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'10':
+            echo '&nbsp;РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'11':
+            echo '&nbsp;РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'12':
+            echo '&nbsp;РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'13':
+            echo '&nbsp;РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'14':
+            echo '&nbsp;РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'15':
+            echo '&nbsp;РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'16':
+            echo '&nbsp;РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'17':
+            echo '&nbsp;РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'18':
+            echo '&nbsp;РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'19':
+            echo '&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'20':
+            echo '&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'21':
+            echo '&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'22':
+            echo '&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'23':
+            echo '&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'24':
+            echo '&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'25':
+            echo '&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'26':
+            echo '&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'27':
+            echo '&nbsp;РќР : +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'28':
+            echo '&nbsp;РћС‡РєРё РґРµР№СЃС‚РІРёСЏ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'29':
+            echo '&nbsp;РњР°РЅР°: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'30':
+            echo '&nbsp;РњРѕС‰СЊ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'31':
+            echo '&nbsp;РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'32':
+            echo '&nbsp;Р’РµР·РµРЅРёРµ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'33':
+            echo '&nbsp;Р—РґРѕСЂРѕРІСЊРµ: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'34':
+            echo '&nbsp;Р Р°Р·СѓРј: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'35':
+            echo '&nbsp;РЎРЅРѕСЂРѕРІРєР°: +<B>' . $descr[1] . '</B>' . $st . '<br>';
+            break;
+        case'36':
+            echo '&nbsp;Р’Р»Р°РґРµРЅРёРµ РјРµС‡Р°РјРё: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'37':
+            echo '&nbsp;Р’Р»Р°РґРµРЅРёРµ С‚РѕРїРѕСЂР°РјРё: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'38':
+            echo '&nbsp;Р’Р»Р°РґРµРЅРёРµ РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'39':
+            echo '&nbsp;Р’Р»Р°РґРµРЅРёРµ РЅРѕР¶Р°РјРё: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'40':
+            echo '&nbsp;Р’Р»Р°РґРµРЅРёРµ РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'41':
+            echo '&nbsp;Р’Р»Р°РґРµРЅРёРµ Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'42':
+            echo '&nbsp;Р’Р»Р°РґРµРЅРёРµ РїРѕСЃРѕС…Р°РјРё: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'43':
+            echo '&nbsp;Р’Р»Р°РґРµРЅРёРµ СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'44':
+            echo '&nbsp;Р’Р»Р°РґРµРЅРёРµ РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'45':
+            echo '&nbsp;РњР°РіРёСЏ РѕРіРЅСЏ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'46':
+            echo '&nbsp;РњР°РіРёСЏ РІРѕРґС‹: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'47':
+            echo '&nbsp;РњР°РіРёСЏ РІРѕР·РґСѓС…Р°: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'48':
+            echo '&nbsp;РњР°РіРёСЏ Р·РµРјР»Рё: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'49':
+            echo '&nbsp;РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'50':
+            echo '&nbsp;РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'51':
+            echo '&nbsp;РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'52':
+            echo '&nbsp;РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'53':
+            echo '&nbsp;Р’РѕСЂРѕРІСЃС‚РІРѕ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'54':
+            echo '&nbsp;РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'55':
+            echo '&nbsp;РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'56':
+            echo '&nbsp;РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'57':
+            echo '&nbsp;РўРѕСЂРіРѕРІР»СЏ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'58':
+            echo '&nbsp;РЎС‚СЂР°РЅРЅРёРє: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'59':
+            echo '&nbsp;Р С‹Р±РѕР»РѕРІ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'60':
+            echo '&nbsp;Р›РµСЃРѕСЂСѓР±: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'61':
+            echo '&nbsp;Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'62':
+            echo '&nbsp;РЎР°РјРѕР»РµС‡РµРЅРёРµ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'63':
+            echo '&nbsp;РћСЂСѓР¶РµР№РЅРёРє: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'64':
+            echo '&nbsp;Р”РѕРєС‚РѕСЂ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'65':
+            echo '&nbsp;РЎР°РјРѕР»РµС‡РµРЅРёРµ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'66':
+            echo '&nbsp;Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'67':
+            echo '&nbsp;Р›РёРґРµСЂСЃС‚РІРѕ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'68':
+            echo '&nbsp;РђР»С…РёРјРёСЏ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'69':
+            echo '&nbsp;Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
+        case'70':
+            echo '&nbsp;РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ: +<B>' . $descr[1] . '%</B>' . $st . '<br>';
+            break;
 	}
 	return $str_params;
 }

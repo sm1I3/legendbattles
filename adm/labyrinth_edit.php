@@ -88,17 +88,17 @@ if ($lab_id == '') {
 }
 
 ?>
-<h3><?=($lab_id == ''?'Добавить лабиринт':'Параметры лабиринта')?></h3>
+    <h3><?= ($lab_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ Р»Р°Р±РёСЂРёРЅС‚' : 'РџР°СЂР°РјРµС‚СЂС‹ Р»Р°Р±РёСЂРёРЅС‚Р°') ?></h3>
 
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Название лабиринта: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ Р»Р°Р±РёСЂРёРЅС‚Р°: &nbsp;</td>
   <td><input name="labyrinth_name" type="text" class="cms_fieldstyle1" value="<?=$labyrinth['labyrinth_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
@@ -106,11 +106,11 @@ if ($lab_id == '') {
 <br />
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span> Ширина лабиринта (в ячейках): &nbsp;  </td>
+    <td><span class="cms_star">*</span> РЁРёСЂРёРЅР° Р»Р°Р±РёСЂРёРЅС‚Р° (РІ СЏС‡РµР№РєР°С…): &nbsp;</td>
   <td><input name="width" type="text" class="cms_fieldstyle1" value="25" size="10" maxlength="5" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span> Высота лабиринта (в ячейках): &nbsp;  </td>
+    <td><span class="cms_star">*</span> Р’С‹СЃРѕС‚Р° Р»Р°Р±РёСЂРёРЅС‚Р° (РІ СЏС‡РµР№РєР°С…): &nbsp;</td>
   <td><input name="height" type="text" class="cms_fieldstyle1" value="14" size="10" maxlength="5" /></td>
 </tr>
 </table>
@@ -130,7 +130,7 @@ function validate(frm) {
   value = frm.elements['labyrinth_name'].value;
   if (value == '' && !errFlag['labyrinth_name']) {
     errFlag['labyrinth_name'] = true;
-    _qfMsg = _qfMsg + '\n - Поле \'Название лабиринта\' обязательно для заполнения!';
+      _qfMsg = _qfMsg + '\n - РџРѕР»Рµ \'РќР°Р·РІР°РЅРёРµ Р»Р°Р±РёСЂРёРЅС‚Р°\' РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ!';
   }
   
   <? if ($lab_id == '') { ?> 
@@ -138,33 +138,33 @@ function validate(frm) {
       value = frm.elements['width'].value;
       if (value == '' && !errFlag['width']) {
         errFlag['width'] = true;
-        _qfMsg = _qfMsg + '\n - Поле \'Ширина лабиринта\' обязательно для заполнения!';
+          _qfMsg = _qfMsg + '\n - РџРѕР»Рµ \'РЁРёСЂРёРЅР° Р»Р°Р±РёСЂРёРЅС‚Р°\' РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ!';
       }
       
       value = frm.elements['width'].value;
       if (!isPositiveInteger(value) && !errFlag['width']) {
         errFlag['width'] = true;
-        _qfMsg = _qfMsg + '\n - Поле \'Ширина лабиринта\' должно содержать положительное целое число!';
+          _qfMsg = _qfMsg + '\n - РџРѕР»Рµ \'РЁРёСЂРёРЅР° Р»Р°Р±РёСЂРёРЅС‚Р°\' РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ С†РµР»РѕРµ С‡РёСЃР»Рѕ!';
       }
       
       value = frm.elements['height'].value;
       if (value == '' && !errFlag['height']) {
         errFlag['height'] = true;
-        _qfMsg = _qfMsg + '\n - Поле \'Высота лабиринта\' обязательно для заполнения!';
+          _qfMsg = _qfMsg + '\n - РџРѕР»Рµ \'Р’С‹СЃРѕС‚Р° Р»Р°Р±РёСЂРёРЅС‚Р°\' РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ!';
       }
       
       value = frm.elements['height'].value;
       if (!isPositiveInteger(value) && !errFlag['height']) {
         errFlag['height'] = true;
-        _qfMsg = _qfMsg + '\n - Поле \'Высота лабиринта\' должно содержать положительное целое число!';
+          _qfMsg = _qfMsg + '\n - РџРѕР»Рµ \'Р’С‹СЃРѕС‚Р° Р»Р°Р±РёСЂРёРЅС‚Р°\' РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ С†РµР»РѕРµ С‡РёСЃР»Рѕ!';
       }
       
   <? } ?>
   
 
   if (_qfMsg != '') {
-    _qfMsg = 'Введена неверная информация.' + _qfMsg;
-    _qfMsg = _qfMsg + '\nПожалуйста исправьте эти поля.';
+      _qfMsg = 'Р’РІРµРґРµРЅР° РЅРµРІРµСЂРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ.' + _qfMsg;
+      _qfMsg = _qfMsg + '\nРџРѕР¶Р°Р»СѓР№СЃС‚Р° РёСЃРїСЂР°РІСЊС‚Рµ СЌС‚Рё РїРѕР»СЏ.';
     alert(_qfMsg);
     return false;
   }
@@ -172,8 +172,10 @@ function validate(frm) {
 }
 
 </script>
-<input name="submit" onclick="return validate(this.form);" type="submit" class="cms_button1" value="Сохранить" style="width: 150px"  <?=(!userHasPermission(8) && $is_confirmed=='Y'?'disabled="disabled"':'')?> />
-<input name="cancel" type="submit" onclick="document.location='labyrinth_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" onclick="return validate(this.form);" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ"
+           style="width: 150px" <?= (!userHasPermission(8) && $is_confirmed == 'Y' ? 'disabled="disabled"' : '') ?> />
+    <input name="cancel" type="submit" onclick="document.location='labyrinth_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

@@ -11,8 +11,8 @@
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location='/core2.php?useaction=admin-action'" value="Вернуться">
-		<input type=button class=lbut onClick="location='chests.php'" value="обновить">
+        <input type=button class=lbut onClick="location='/core2.php?useaction=admin-action'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        <input type=button class=lbut onClick="location='chests.php'" value="РѕР±РЅРѕРІРёС‚СЊ">
 	</td>
    </tr>
 </table>
@@ -48,7 +48,7 @@ echo '
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 <tr align=center><td>
 <select name=present>
-<option value="none" '.(($_POST['present']!='none' and $_POST['present']!='')?'':'selected=selected').'>Выберите сундук</option>
+<option value="none" ' . (($_POST['present'] != 'none' and $_POST['present'] != '') ? '' : 'selected=selected') . '>Р’С‹Р±РµСЂРёС‚Рµ СЃСѓРЅРґСѓРє</option>
 ';
 while($present = mysqli_fetch_array($chests)){
 	if(mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `items` WHERE `chests`='1' and `id`='".$present['cid']."'")) > 0){
@@ -59,7 +59,7 @@ while($present = mysqli_fetch_array($chests)){
 }
 echo '
 </select>
-<input class=lbut type=submit value="Выбрать">
+<input class=lbut type=submit value="Р’С‹Р±СЂР°С‚СЊ">
 </td></tr>
 </table>
 </form>
@@ -104,23 +104,23 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 					<tr class=nickname bgcolor=#EAEAEA>
-						<td align=center width=30%><b>Имя</b></td>
+						<td align=center width=30%><b>РРјСЏ</b></td>
 					</tr>';
 			echo'
 			<tr class=freetxt bgcolor=white>
 				<td align=center width=30%>
-					Имя: <input type=text class=logintextbox6 name="present_name" value="'.$present['name'].'" /><br>
-					Ид: '.$present['id'].'
+					РРјСЏ: <input type=text class=logintextbox6 name="present_name" value="' . $present['name'] . '" /><br>
+					РРґ: ' . $present['id'] . '
 				</td>
 				<td align=center>
-					Деньги: <input type=text class=logintextbox6 name="present_lr" value="'.$present['lr'].'" /><br>
-					Репутация: <input type=text class=logintextbox6 name="present_reput" value="'.$present['reput'].'" /><br>
-					Репутация1: <input type=text class=logintextbox6 name="present_RepsPodvod" value="'.$present['RepsPodvod'].'" /><br>
+					Р”РµРЅСЊРіРё: <input type=text class=logintextbox6 name="present_lr" value="' . $present['lr'] . '" /><br>
+					Р РµРїСѓС‚Р°С†РёСЏ: <input type=text class=logintextbox6 name="present_reput" value="' . $present['reput'] . '" /><br>
+					Р РµРїСѓС‚Р°С†РёСЏ1: <input type=text class=logintextbox6 name="present_RepsPodvod" value="' . $present['RepsPodvod'] . '" /><br>
 				</td>
 			</tr>
 			<tr class=freetxt bgcolor=white>
 				<td align=center width=100% colspan=5>
-				<input class=lbut type=submit value="Сохранить">
+				<input class=lbut type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				<input type=hidden name=present value="'.$_POST['present'].'">
 				</td>
 			</tr>	
@@ -131,38 +131,38 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 			<form method="post" action="?useaction=admin-action&addid=chests&add=1">
 			<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 			<tr align=left class=nickname><td align=center>
-			<b>Добавить вещи в сундук:</b> 
+			<b>Р”РѕР±Р°РІРёС‚СЊ РІРµС‰Рё РІ СЃСѓРЅРґСѓРє:</b> 
 			<select name="type" >
-				<option value="" selected="selected">все типы</option>
-				  <option value="w4">Ножи</option>
-				  <option value="w1">Мечи</option>
-				  <option value="w2">Топоры</option>
-				  <option value="w3">Дробящее</option>
-				  <option value="w6">Алебарды и копья</option>
-				  <option value="w5">Метательное</option>
-				  <option value="w7">Посохи</option>
-				  <option value="w20">Щиты</option>
-				  <option value="w23">Шлемы</option>
-				  <option value="w26">Пояса</option>
-				  <option value="w18">Кольчуги</option>
-				  <option value="w19">Доспехи</option>
-				  <option value="w24">Перчатки</option>
-				  <option value="w80">Наручи</option>
-				  <option value="w21">Сапоги</option>
-				  <option value="w25">Кулоны</option>
-				  <option value="w22">Кольца</option>
-				  <option value="w28">Наплечники</option>
-				  <option value="w90">Поножи</option>
-				  <option value="w61">Приманки</option>
-				  <option value="w0">Эликсиры</option>
-				  <option value="w66">Травы</option>
-				  <option value="w67">Шкуры</option>
-				  <option value="w60">Квесты</option>
-			      <option value="w29">Свитки</option>
-					<option value="w71">Руны</option>
-				  <option value="w70">Мази</option>
-				  <option value="w100">Ресурсы</option>
-				 </select>  <input name="smb7" type="submit" class="lbut" value="Применить фильтр" />';
+				<option value="" selected="selected">РІСЃРµ С‚РёРїС‹</option>
+				  <option value="w4">РќРѕР¶Рё</option>
+				  <option value="w1">РњРµС‡Рё</option>
+				  <option value="w2">РўРѕРїРѕСЂС‹</option>
+				  <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+				  <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+				  <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+				  <option value="w7">РџРѕСЃРѕС…Рё</option>
+				  <option value="w20">Р©РёС‚С‹</option>
+				  <option value="w23">РЁР»РµРјС‹</option>
+				  <option value="w26">РџРѕСЏСЃР°</option>
+				  <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+				  <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+				  <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+				  <option value="w80">РќР°СЂСѓС‡Рё</option>
+				  <option value="w21">РЎР°РїРѕРіРё</option>
+				  <option value="w25">РљСѓР»РѕРЅС‹</option>
+				  <option value="w22">РљРѕР»СЊС†Р°</option>
+				  <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+				  <option value="w90">РџРѕРЅРѕР¶Рё</option>
+				  <option value="w61">РџСЂРёРјР°РЅРєРё</option>
+				  <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
+				  <option value="w66">РўСЂР°РІС‹</option>
+				  <option value="w67">РЁРєСѓСЂС‹</option>
+				  <option value="w60">РљРІРµСЃС‚С‹</option>
+			      <option value="w29">РЎРІРёС‚РєРё</option>
+					<option value="w71">Р СѓРЅС‹</option>
+				  <option value="w70">РњР°Р·Рё</option>
+				  <option value="w100">Р РµСЃСѓСЂСЃС‹</option>
+				 </select>  <input name="smb7" type="submit" class="lbut" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ" />';
 				 $filter2="WHERE master=''";
 				 if($smb7){
 					if($type==""){
@@ -175,14 +175,14 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 				  <select name="idit" >
 				  <option value=0';
 				if($idit==""){echo " selected=selected";}
-				echo'>Выберите тип</option>';
+        echo '>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї</option>';
 				$it=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `items` ".$filter." ".$filter2." ORDER BY type,name,level;");
 				  while ($row = mysqli_fetch_assoc($it)) {
 					echo "<option value=".$row['id']."";if($idit==$row['id']){echo " selected=selected";}echo">".$row['name']." [ ".$row['level']." ] (".($row['dd_price']>0?$row['dd_price'].' reput':$row['price'].' LR').")</option>";
 				  }
 				  echo'
 			<input type=hidden name=present value="'.$_POST['present'].'">
-			<input class=lbut type=submit value="Добавить в дроп">
+			<input class=lbut type=submit value="Р”РѕР±Р°РІРёС‚СЊ РІ РґСЂРѕРї">
 			</td></tr>
 			</table>
 			</form><br>
@@ -192,7 +192,7 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-				<tr align=center class=nickname><td><b>Добавленные вещи:</b></td></tr>';
+				<tr align=center class=nickname><td><b>Р”РѕР±Р°РІР»РµРЅРЅС‹Рµ РІРµС‰Рё:</b></td></tr>';
 				$itemsin=explode("|",$present['items']);
 				foreach($itemsin as $val){
 					if($val!=''){

@@ -24,14 +24,14 @@ echo'<table cellpadding="0" cellspacing="5" border="0" align="center" width="50%
         <td bgcolor="#cccccc"><table cellpadding="2" cellspacing="1" border="0" align="center" width="100%">
           <tr>';
             if($player['hp']<$player['hp_all']*0.6){
-				echo'<td width=100% bgcolor=#f5f5f5><div align=center><b><font class=nickname><font color=#cc0000>Вы слишком ослаблены для боев!</font></font></b></div></td>';
+                echo '<td width=100% bgcolor=#f5f5f5><div align=center><b><font class=nickname><font color=#cc0000>Р’С‹ СЃР»РёС€РєРѕРј РѕСЃР»Р°Р±Р»РµРЅС‹ РґР»СЏ Р±РѕРµРІ!</font></font></b></div></td>';
 			}elseif($player['level'] < 2){
-				echo'<td width="100%" bgcolor="#f5f5f5" colspan="3"><div align="center">Здравствуй путник ты попал к нам в школу для начала обучения.<br /><font color=#6600FF>Но прежде тем,как вы начнёте поединок ,обратись к Вождю Торгора  <tr>
+                echo '<td width="100%" bgcolor="#f5f5f5" colspan="3"><div align="center">Р—РґСЂР°РІСЃС‚РІСѓР№ РїСѓС‚РЅРёРє С‚С‹ РїРѕРїР°Р» Рє РЅР°Рј РІ С€РєРѕР»Сѓ РґР»СЏ РЅР°С‡Р°Р»Р° РѕР±СѓС‡РµРЅРёСЏ.<br /><font color=#6600FF>РќРѕ РїСЂРµР¶РґРµ С‚РµРј,РєР°Рє РІС‹ РЅР°С‡РЅС‘С‚Рµ РїРѕРµРґРёРЅРѕРє ,РѕР±СЂР°С‚РёСЃСЊ Рє Р’РѕР¶РґСЋ РўРѕСЂРіРѕСЂР°  <tr>
 	<table cellpadding="0" cellspacing="0" border="0" align="center" width="50%">
-			<a class="bbutton" id="skill" HREF="main.php?get=3&go=160&vcode='.scode().'" COORDS="'.$coord[10].'" title="вождь торгор">&nbsp;</a>
-              А теперь нажми &quot;<a href="main.php?StartTrane=1"><font class="zaya"><b>Начать тренировочный бой</b></font></a>&quot; и ты поподешь в бой, ну что желаем тебе успеха в твоих начинаниях.</div></td>';
+			<a class="bbutton" id="skill" HREF="main.php?get=3&go=160&vcode=' . scode() . '" COORDS="' . $coord[10] . '" title="РІРѕР¶РґСЊ С‚РѕСЂРіРѕСЂ">&nbsp;</a>
+              Рђ С‚РµРїРµСЂСЊ РЅР°Р¶РјРё &quot;<a href="main.php?StartTrane=1"><font class="zaya"><b>РќР°С‡Р°С‚СЊ С‚СЂРµРЅРёСЂРѕРІРѕС‡РЅС‹Р№ Р±РѕР№</b></font></a>&quot; Рё С‚С‹ РїРѕРїРѕРґРµС€СЊ РІ Р±РѕР№, РЅСѓ С‡С‚Рѕ Р¶РµР»Р°РµРј С‚РµР±Рµ СѓСЃРїРµС…Р° РІ С‚РІРѕРёС… РЅР°С‡РёРЅР°РЅРёСЏС….</div></td>';
           }else{
-				echo'<td width=100% bgcolor=#f5f5f5><div align=center><b><font class=nickname><font color=#cc0000>Вы уже слишком большой чтоб тренироваться в школе.!</font></font></b></div></td>';
+                echo '<td width=100% bgcolor=#f5f5f5><div align=center><b><font class=nickname><font color=#cc0000>Р’С‹ СѓР¶Рµ СЃР»РёС€РєРѕРј Р±РѕР»СЊС€РѕР№ С‡С‚РѕР± С‚СЂРµРЅРёСЂРѕРІР°С‚СЊСЃСЏ РІ С€РєРѕР»Рµ.!</font></font></b></div></td>';
 		  }
 		  echo'</table></td>
       </tr>

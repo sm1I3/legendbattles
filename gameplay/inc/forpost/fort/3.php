@@ -1,21 +1,21 @@
-<div style="text-align:center;font-weight:bold;">Благословений доступно: <?php echo $Fort['bless']; ?></div>
-Здесь владельцы форта смогут за LR получать различные временные благословения<!--, а так же восстанавливать жизни, ману и усталость-->. Получить благословение можно не чаще одного раза в сутки для одного игрока, длительность благословения - 5 часов.
-<div style="font-weight:bold;">Возможные благословения:</div>
+<div style="text-align:center;font-weight:bold;">Р‘Р»Р°РіРѕСЃР»РѕРІРµРЅРёР№ РґРѕСЃС‚СѓРїРЅРѕ: <?php echo $Fort['bless']; ?></div>
+Р—РґРµСЃСЊ РІР»Р°РґРµР»СЊС†С‹ С„РѕСЂС‚Р° СЃРјРѕРіСѓС‚ Р·Р° LR РїРѕР»СѓС‡Р°С‚СЊ СЂР°Р·Р»РёС‡РЅС‹Рµ РІСЂРµРјРµРЅРЅС‹Рµ Р±Р»Р°РіРѕСЃР»РѕРІРµРЅРёСЏ<!--, Р° С‚Р°Рє Р¶Рµ РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ Р¶РёР·РЅРё, РјР°РЅСѓ Рё СѓСЃС‚Р°Р»РѕСЃС‚СЊ-->. РџРѕР»СѓС‡РёС‚СЊ Р±Р»Р°РіРѕСЃР»РѕРІРµРЅРёРµ РјРѕР¶РЅРѕ РЅРµ С‡Р°С‰Рµ РѕРґРЅРѕРіРѕ СЂР°Р·Р° РІ СЃСѓС‚РєРё РґР»СЏ РѕРґРЅРѕРіРѕ РёРіСЂРѕРєР°, РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ Р±Р»Р°РіРѕСЃР»РѕРІРµРЅРёСЏ - 5 С‡Р°СЃРѕРІ.
+<div style="font-weight:bold;">Р’РѕР·РјРѕР¶РЅС‹Рµ Р±Р»Р°РіРѕСЃР»РѕРІРµРЅРёСЏ:</div>
 <form method="post">
 <?php
 $GetBless = explode('/',$Fort['bless']);
 if($GetBless[1] > 7){
-echo'<input type="radio" name="bless" value="1" class="check">Ускорение регенерации маны на 30%<br>
-<input type="radio" name="bless" value="2" class="check">Ускорение регенерации жизней на 30%<br>
-<input type="radio" name="bless" value="3" class="check">Ускорение поиска и добычи ресурсов на 10%<br>
-<input type="radio" name="bless" value="4" class="check">Ускорение передвижения по природе на 20%<br>';
+    echo '<input type="radio" name="bless" value="1" class="check">РЈСЃРєРѕСЂРµРЅРёРµ СЂРµРіРµРЅРµСЂР°С†РёРё РјР°РЅС‹ РЅР° 30%<br>
+<input type="radio" name="bless" value="2" class="check">РЈСЃРєРѕСЂРµРЅРёРµ СЂРµРіРµРЅРµСЂР°С†РёРё Р¶РёР·РЅРµР№ РЅР° 30%<br>
+<input type="radio" name="bless" value="3" class="check">РЈСЃРєРѕСЂРµРЅРёРµ РїРѕРёСЃРєР° Рё РґРѕР±С‹С‡Рё СЂРµСЃСѓСЂСЃРѕРІ РЅР° 10%<br>
+<input type="radio" name="bless" value="4" class="check">РЈСЃРєРѕСЂРµРЅРёРµ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ РїРѕ РїСЂРёСЂРѕРґРµ РЅР° 20%<br>';
 }else{
-echo'<input type="radio" name="bless" value="1" class="check">Ускорение регенерации маны на 15%<br>
-<input type="radio" name="bless" value="2" class="check">Ускорение регенерации жизней на 15%<br>
-<input type="radio" name="bless" value="3" class="check">Ускорение поиска и добычи ресурсов на 5%<br>
-<input type="radio" name="bless" value="4" class="check">Ускорение передвижения по природе на 10%<br>';
+    echo '<input type="radio" name="bless" value="1" class="check">РЈСЃРєРѕСЂРµРЅРёРµ СЂРµРіРµРЅРµСЂР°С†РёРё РјР°РЅС‹ РЅР° 15%<br>
+<input type="radio" name="bless" value="2" class="check">РЈСЃРєРѕСЂРµРЅРёРµ СЂРµРіРµРЅРµСЂР°С†РёРё Р¶РёР·РЅРµР№ РЅР° 15%<br>
+<input type="radio" name="bless" value="3" class="check">РЈСЃРєРѕСЂРµРЅРёРµ РїРѕРёСЃРєР° Рё РґРѕР±С‹С‡Рё СЂРµСЃСѓСЂСЃРѕРІ РЅР° 5%<br>
+<input type="radio" name="bless" value="4" class="check">РЈСЃРєРѕСЂРµРЅРёРµ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ РїРѕ РїСЂРёСЂРѕРґРµ РЅР° 10%<br>';
 }
 ?>
 <input type="hidden" name="cat" value="3" />
-<input type="submit" name="process" value="Активировать" class="lbut">
+    <input type="submit" name="process" value="РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ" class="lbut">
 </form>

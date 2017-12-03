@@ -8,11 +8,11 @@ if (!userHasPermission(1)) {
 }
 
 $object_type_array = Array(
-    0 => 'Нет кнопки',
-    1 => 'Природа',
-    2 => 'Город',
-    3 => 'Деревня',
-    4 => 'Выйти',
+    0 => 'РќРµС‚ РєРЅРѕРїРєРё',
+    1 => 'РџСЂРёСЂРѕРґР°',
+    2 => 'Р“РѕСЂРѕРґ',
+    3 => 'Р”РµСЂРµРІРЅСЏ',
+    4 => 'Р’С‹Р№С‚Рё',
 );
 
 if (!isset($_GET['object_code']))
@@ -96,46 +96,48 @@ if ($object_code == '') {
 }
 
 ?>
-<h3><?=($object_code == ''?'Добавить объект':'Изменить объект')?></h3>
+    <h3><?= ($object_code == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РѕР±СЉРµРєС‚' : 'РР·РјРµРЅРёС‚СЊ РѕР±СЉРµРєС‚') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Код объекта: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РљРѕРґ РѕР±СЉРµРєС‚Р°: &nbsp;</td>
   <td><input name="object_code" type="text" class="cms_fieldstyle1" value="<?=$object['object_code']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Название объекта: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ РѕР±СЉРµРєС‚Р°: &nbsp;</td>
   <td><input name="object_name" type="text" class="cms_fieldstyle1" value="<?=$object['object_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Модуль: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РњРѕРґСѓР»СЊ: &nbsp;</td>
   <td><input name="object_module" type="text" class="cms_fieldstyle1" value="<?=$object['object_module']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Зона: &nbsp;  </td>
+    <td><span class="cms_star">*</span>Р—РѕРЅР°: &nbsp;</td>
   <td><?=createSelectFromArray('zone_code', $zones, $object['zone_code'])?></td>
 </tr>
 <tr>
     <td colspan="2">&nbsp;</td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Род. объект: &nbsp;  </td>
+    <td><span class="cms_star">*</span>Р РѕРґ. РѕР±СЉРµРєС‚: &nbsp;</td>
   <td>
         <?=createSelectFromArray('parent_code', $object_array, (isset($object['parent_code'])?$object['parent_code']:''))?><br />
         <input type="text" name="parent_code_map" value="<?=(isset($object['parent_code']) && isset($object_array[$object['parent_code']])?'': (isset($object['parent_code'])?$object['parent_code']:''))?>" />
   </td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Тип родительского объекта: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РўРёРї СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ РѕР±СЉРµРєС‚Р°: &nbsp;</td>
   <td><?=createSelectFromArray('object_type', $object_type_array, (isset($object['object_type'])?$object['object_type']:''))?></td>
 </tr>
 
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='<?=$_SESSION['pages']['world_map_object_list']?>'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.location='<?= $_SESSION['pages']['world_map_object_list'] ?>'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

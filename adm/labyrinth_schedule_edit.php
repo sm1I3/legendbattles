@@ -7,8 +7,8 @@ if (!userHasPermission(1)) {
 }
 
 $labyrinth_classes = array(
-    1 => 'Поиск сундука',
-    2 => 'Клановое соревнование',
+    1 => 'РџРѕРёСЃРє СЃСѓРЅРґСѓРєР°',
+    2 => 'РљР»Р°РЅРѕРІРѕРµ СЃРѕСЂРµРІРЅРѕРІР°РЅРёРµ',
 );
 
 if (!isset($_GET['event_id']) || !is_numeric($_GET['event_id']))
@@ -139,29 +139,29 @@ while($row = mysql_fetch_assoc($res))
 mysql_free_result($res);
 
 ?>
-<h3><?=($event_id == ''?'Добавить событие':'Изменить событие')?></h3>
+    <h3><?= ($event_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СЃРѕР±С‹С‚РёРµ' : 'РР·РјРµРЅРёС‚СЊ СЃРѕР±С‹С‚РёРµ') ?></h3>
 
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-    <td>Лабиринт: &nbsp;  </td>
+    <td>Р›Р°Р±РёСЂРёРЅС‚: &nbsp;</td>
     <td><?=createSelectFromArray('lab_id', $labs, $event['lab_id'])?></td>
 </tr>
 <tr>
-    <td>Минимальный уровень: &nbsp;  </td>
+    <td>РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ: &nbsp;</td>
     <td><input name="min_lvl" type="text" class="cms_fieldstyle1" value="<?=$event['min_lvl']?>" size="8" maxlength="5" /></td>
 </tr>
 <tr>
-    <td>Максимальный уровень: &nbsp;  </td>
+    <td>РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ: &nbsp;</td>
     <td><input name="max_lvl" type="text" class="cms_fieldstyle1" value="<?=$event['max_lvl']?>" size="8" maxlength="5" /></td>
 </tr>
 <tr>
-  <td>Активен с: &nbsp;  </td>
+    <td>РђРєС‚РёРІРµРЅ СЃ: &nbsp;</td>
   <td>
     <input name="date_from" id="date_from" type="text" class="cms_fieldstyle1" value="<?=$event['date_from']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kl1jhjhdj12d1jk2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -193,7 +193,7 @@ mysql_free_result($res);
   </td>
 </tr>
 <tr>
-  <td>Активен по: &nbsp;  </td>
+    <td>РђРєС‚РёРІРµРЅ РїРѕ: &nbsp;</td>
   <td>
     <input name="date_to" id="date_to" type="text" class="cms_fieldstyle1" value="<?=$event['date_to']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kjkjdnakjdnakwnjkd2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -225,7 +225,7 @@ mysql_free_result($res);
   </td>
 </tr>
 <tr>
-  <td>Вход открыт с: &nbsp;  </td>
+    <td>Р’С…РѕРґ РѕС‚РєСЂС‹С‚ СЃ: &nbsp;</td>
   <td>
     <input name="opened_from" id="opened_from" type="text" class="cms_fieldstyle1" value="<?=$event['opened_from']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="jhgdjk1hjdk1l2mkkl12" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -257,7 +257,7 @@ mysql_free_result($res);
   </td>
 </tr>
 <tr>
-  <td>Вход открыт по: &nbsp;  </td>
+    <td>Р’С…РѕРґ РѕС‚РєСЂС‹С‚ РїРѕ: &nbsp;</td>
   <td>
     <input name="opened_to" id="opened_to" type="text" class="cms_fieldstyle1" value="<?=$event['opened_to']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="awdhauijowidj2mod" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -289,23 +289,25 @@ mysql_free_result($res);
   </td>
 </tr>
 <tr>
-  <td>Максимальный раунд (уровень) (0-99): &nbsp;  </td>
+    <td>РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°СѓРЅРґ (СѓСЂРѕРІРµРЅСЊ) (0-99): &nbsp;</td>
   <td><input name="round_max_level" type="text" class="cms_fieldstyle1" value="<?=$params['round_max_level']?>" size="25" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Шаг раунда (0.01 - 10): &nbsp;  </td>
+    <td>РЁР°Рі СЂР°СѓРЅРґР° (0.01 - 10): &nbsp;</td>
   <td><input name="round_step" type="text" class="cms_fieldstyle1" value="<?=$params['round_step']?>" size="25" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Системное сообщение: &nbsp;  </td>
+    <td>РЎРёСЃС‚РµРјРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: &nbsp;</td>
   <td><input name="system_message" type="checkbox" value="1" <?=($event['system_message']==1 ? 'checked="checked"' : '')?> /></td>
 </tr>
 <tr>
-  <td>Точка старта: &nbsp;  </td>
-  <td><input name="start_point" type="text" class="cms_fieldstyle1" value="<?=$event['start_point']?>" size="25" maxlength="255" /> (Пусто - по умолчанию)</td>
+    <td>РўРѕС‡РєР° СЃС‚Р°СЂС‚Р°: &nbsp;</td>
+    <td><input name="start_point" type="text" class="cms_fieldstyle1" value="<?= $event['start_point'] ?>" size="25"
+               maxlength="255"/> (РџСѓСЃС‚Рѕ - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ)
+    </td>
 </tr>
 <tr>
-  <td>Время оповещения: &nbsp;  </td>
+    <td>Р’СЂРµРјСЏ РѕРїРѕРІРµС‰РµРЅРёСЏ: &nbsp;</td>
   <td>
     <input name="notification_time" id="notification_time" type="text" class="cms_fieldstyle1" value="<?=$event['notification_time']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="jklkj12v12" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -337,19 +339,20 @@ mysql_free_result($res);
   </td>
 </tr>
 <tr>
-  <td>Тип лабиринта: &nbsp;  </td>
+    <td>РўРёРї Р»Р°Р±РёСЂРёРЅС‚Р°: &nbsp;</td>
   <td><input name="labyrinth_type" type="text" class="cms_fieldstyle1" value="<?=(isset($params['labyrinth_type']) ? $params['labyrinth_type'] : 0)?>" size="25" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Вид лабиринта: &nbsp;  </td>
+    <td>Р’РёРґ Р»Р°Р±РёСЂРёРЅС‚Р°: &nbsp;</td>
   <td><?=createSelectFromArray('labyrinth_class', $labyrinth_classes, (isset($params['labyrinth_class']) ? $params['labyrinth_class'] : 1))?></td>
 </tr>
 </table>
     
 <p></p>
 
-<input name="submit" onclick="" type="submit" class="cms_button1" value="Сохранить" style="width: 150px" />
-<input name="cancel" type="submit" onclick="document.location='labyrinth_schedule.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" onclick="" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='labyrinth_schedule.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

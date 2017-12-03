@@ -34,8 +34,9 @@ switch(intval($_GET['act'])){
 						$pnature .= '['.$nature['x'].','.$nature['y'].',"'.vCode().'"],';
 					//}
 				}
-			}
-			else{$error='Навигатор недоступен в этой локации!';}
+			} else {
+                $error = 'РќР°РІРёРіР°С‚РѕСЂ РЅРµРґРѕСЃС‚СѓРїРµРЅ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!';
+            }
 			$captcha="00000";
 			header("Content-type: text/html; charset=windows-1251");
 			echo 'NAVI@["'.($error?$error:'').'",""]@[0,"'.$captcha.'","'.(($serp)?$serp['id_item']:'').'",1,1000,'.substr($pnature,0,strlen($pnature)-1).']';
@@ -63,10 +64,11 @@ switch(intval($_GET['act'])){
 							if($key==1){$pnature .= '['.$x.','.$y.',"'.vCode().'","'.$key.'|'.$val.'"],';}			
 						}	
 					
-				}
-				else{$error='Путь не найден!';}
+				} else {
+                    $error = 'РџСѓС‚СЊ РЅРµ РЅР°Р№РґРµРЅ!';
+                }
 			//}
-			//else{$error='Навигатор недоступен в этой локации!';}
+            //else{$error='РќР°РІРёРіР°С‚РѕСЂ РЅРµРґРѕСЃС‚СѓРїРµРЅ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!';}
 			echo 'NAVIGO@["'.($error?$error:'').'",""]@[0,"'.$captcha.'","'.(($serp)?$serp['id_item']:'').'",1,1000,'.substr($pnature,0,strlen($pnature)-1).']';
 		}
 	break;
@@ -92,8 +94,8 @@ function check_way($way){
 function findpath($x,$y,$xn,$yn){
 		$start['c'] = $x."_".$y;
 		$end['c'] = $xn."_".$yn;
-		$closedset = "";		
-		$start['f'] = way($start['c'],$end['c']); // Эвристическая оценка расстояние до цели. h(x)
+		$closedset = "";
+    $start['f'] = way($start['c'], $end['c']); // Р­РІСЂРёСЃС‚РёС‡РµСЃРєР°СЏ РѕС†РµРЅРєР° СЂР°СЃСЃС‚РѕСЏРЅРёРµ РґРѕ С†РµР»Рё. h(x)
 		$openset [] = $start['c'];
 		$fset[]=$start['f'];
 		$err='';
@@ -115,7 +117,7 @@ function findpath($x,$y,$xn,$yn){
 				}
 			}
 			if($low == $end['c']){
-				$err = recpath($start,$kletka[$openset[$lowi]],$kletka); //заполняем карту path_map
+                $err = recpath($start, $kletka[$openset[$lowi]], $kletka); //Р·Р°РїРѕР»РЅСЏРµРј РєР°СЂС‚Сѓ path_map
 				break;
 			}
 			unset($openset[$lowi]);
@@ -149,11 +151,11 @@ function findpath($x,$y,$xn,$yn){
 }
 
 function recpath($start, $goal, $kletka){
-// Добавляем в карту все вершины от finish_node до start_node.
+// Р”РѕР±Р°РІР»СЏРµРј РІ РєР°СЂС‚Сѓ РІСЃРµ РІРµСЂС€РёРЅС‹ РѕС‚ finish_node РґРѕ start_node.
 	$path_map = '';
-    $current['c'] = $goal['c']; // поиск начинается от финиша
-	while ($current['c']!=''){		
-        $path_map .= $current['c']."|"; // Добавить вершину в карту
+    $current['c'] = $goal['c']; // РїРѕРёСЃРє РЅР°С‡РёРЅР°РµС‚СЃСЏ РѕС‚ С„РёРЅРёС€Р°
+	while ($current['c']!=''){
+        $path_map .= $current['c'] . "|"; // Р”РѕР±Р°РІРёС‚СЊ РІРµСЂС€РёРЅСѓ РІ РєР°СЂС‚Сѓ
 		$current['c'] = $goal['came_from'];		
 		$goal = $kletka[$goal['came_from']];		
 	}

@@ -1,5 +1,5 @@
 <?php
-/* СОРТИРОВКА */
+/* РЎРћР РўРР РћР’РљРђ */
 if(!empty($_POST['min_lev']) or !empty($_POST['max_lev']) or !empty($_POST['max_nv']) or !empty($_POST['sorttype'])){
 	$_SESSION['min_lev'] = intval($_POST['min_lev']);
 	$_SESSION['max_lev'] = intval($_POST['max_lev']);
@@ -21,7 +21,7 @@ if(empty($_SESSION['max_lev'])){
 if(empty($_SESSION['sorttype'])){
 	$_SESSION['sorttype'] = 'level';
 }
-/* КАТЕГОРИИ */
+/* РљРђРўР•Р“РћР РР */
 if(isset($_GET['weapon_category'])){
 	$_SESSION['mark']=$_GET['weapon_category'];
 }
@@ -42,19 +42,20 @@ echo "<SCRIPT>MessBoxDiv('".$msg."',0,0,0,0);</SCRIPT>";
 
 <table cellpadding=0 cellspacing=1 border=0 align=center width=100%>
 <tr align=center><td align=center><?$locname = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `loc` WHERE `id`='".$player['loc']."' LIMIT 1;"));?><fieldset><legend align="center"><b><font color="gray"><?=$locname['loc'];?></font></b></legend><img src=/img/image/shops/Alar.png width=760 height=255 border=0 align=center></fieldset></td></tr>
-<!----><tr><td bgcolor=#f5f5f5><?php 
-echo'<form method=post><div align=center><font class=freetxt><font color=#3564A5><b>Фильтр: </b></font>уровень от <select name=min_lev class=zayavki>';
+<!----><tr><td bgcolor=#f5f5f5><?php
+            echo '<form method=post><div align=center><font class=freetxt><font color=#3564A5><b>Р¤РёР»СЊС‚СЂ: </b></font>СѓСЂРѕРІРµРЅСЊ РѕС‚ <select name=min_lev class=zayavki>';
 for($i=0;$i<=33;$i++){
 	echo'<option value='.$i.(($_SESSION['min_lev']==$i)?' SELECTED':'').'>'.$i.'</option>';
 }
-echo'</select> до <select name=max_lev class=zayavki>';
+            echo '</select> РґРѕ <select name=max_lev class=zayavki>';
 for($i=0;$i<=33;$i++){
 	echo'<option value='.$i.(($_SESSION['max_lev']==$i)?' SELECTED':'').'>'.$i.'</option>';
 }
-echo'</select> не дороже <input type=text size=2 name=max_nv value="'.(($_SESSION['max_nv']=='0')?'':$_SESSION['max_nv']).'" class=LogintextBox6><b>LR</b> сортировка по <select name=sorttype class=zayavki><option value=1'.(($_SESSION['sorttype']=='level')?' SELECTED':'').'>уровню</option><option value=0'.(($_SESSION['sorttype']=='price')?' SELECTED':'').'>стоимости</option></select> <input type=submit value=" ok " class=lbut></font></div></form>';
+            echo '</select> РЅРµ РґРѕСЂРѕР¶Рµ <input type=text size=2 name=max_nv value="' . (($_SESSION['max_nv'] == '0') ? '' : $_SESSION['max_nv']) . '" class=LogintextBox6><b>LR</b> СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ <select name=sorttype class=zayavki><option value=1' . (($_SESSION['sorttype'] == 'level') ? ' SELECTED' : '') . '>СѓСЂРѕРІРЅСЋ</option><option value=0' . (($_SESSION['sorttype'] == 'price') ? ' SELECTED' : '') . '>СЃС‚РѕРёРјРѕСЃС‚Рё</option></select> <input type=submit value=" ok " class=lbut></font></div></form>';
 ?></td></tr><tr><td bgcolor=#CCCCCC width=100%><img src=/img/image/1x1.gif width=1 height=1 width=40 height=50></td></tr>
 <tr><td>
-<input type=image src=/img/image/gameplay/shop/ddf.png onClick="location='?weapon_category=w62'" title="Сундуки" width=40 height=50>
+        <input type=image src=/img/image/gameplay/shop/ddf.png onClick="location='?weapon_category=w62'" title="РЎСѓРЅРґСѓРєРё"
+               width=40 height=50>
 </table></td></tr></table>
 <? if(isset($_GET['weapon_category'])){
 $ITEMS = mysqli_query($GLOBALS['db_link'],"SELECT market.*, items.*
@@ -65,7 +66,10 @@ if($num>0){
 	echo '</table></td></tr></table>'; echo show_shop(0,$ITEMS,$mass);
 }
 else{?>
-<table cellpadding=5 cellspacing=1 border=0 width=100%><tr><td bgcolor=#F5F5F5 align=center colspan=2><font class=inv><b>Нет товаров в данной категории.</b></font></td></tr>
+    <table cellpadding=5 cellspacing=1 border=0 width=100%>
+    <tr>
+        <td bgcolor=#F5F5F5 align=center colspan=2><font class=inv><b>РќРµС‚ С‚РѕРІР°СЂРѕРІ РІ РґР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёРё.</b></font></td>
+    </tr>
 <? }?>
 </table>
 
@@ -74,9 +78,15 @@ function blocks($bl){
 	if($bl!="") {
 	switch($bl)
        	{
-            case 40: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 1-ой точки</font></b><br>"; break;
-            case 70: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 2-х точек</font></b><br>"; break;
-	    	case 90: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 3-х точек</font></b><br>"; break;
+        case 40:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 1-РѕР№ С‚РѕС‡РєРё</font></b><br>";
+            break;
+        case 70:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 2-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
+        case 90:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 3-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
     	}}}
 ?>
 </td></tr>

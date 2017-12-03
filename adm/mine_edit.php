@@ -2,8 +2,8 @@
 require('kernel/before.php');
 
 $types = array(
-    1 => 'Шахта простых металлов',
-    2 => 'Шахта драгоценных металлов',
+    1 => 'РЁР°С…С‚Р° РїСЂРѕСЃС‚С‹С… РјРµС‚Р°Р»Р»РѕРІ',
+    2 => 'РЁР°С…С‚Р° РґСЂР°РіРѕС†РµРЅРЅС‹С… РјРµС‚Р°Р»Р»РѕРІ',
 );
 
 if (!userHasPermission(32768)) {
@@ -391,7 +391,7 @@ else
 }
 
 ?>
-<h3><?=($mine_code == ''?'Добавить шахту':'Параметры шахты')?></h3>
+    <h3><?= ($mine_code == '' ? 'Р”РѕР±Р°РІРёС‚СЊ С€Р°С…С‚Сѓ' : 'РџР°СЂР°РјРµС‚СЂС‹ С€Р°С…С‚С‹') ?></h3>
 <script type="text/javascript" src="jscript/mine.js"></script>
 <script language="javascript">
 var last_id = <?=(int)$row_id?>;
@@ -400,51 +400,51 @@ var last_id = <?=(int)$row_id?>;
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Код шахты: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РљРѕРґ С€Р°С…С‚С‹: &nbsp;</td>
   <td><input name="mine_code" type="text" class="cms_fieldstyle1" value="<?=$mine['mine_code']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Название шахты: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ С€Р°С…С‚С‹: &nbsp;</td>
   <td><input name="mine_name" type="text" class="cms_fieldstyle1" value="<?=$mine['mine_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Тип шахты: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РўРёРї С€Р°С…С‚С‹: &nbsp;</td>
   <td><?= createSelectFromArray('mine_type', $types, $mine['mine_type']) ?></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Открыто уровней: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РћС‚РєСЂС‹С‚Рѕ СѓСЂРѕРІРЅРµР№: &nbsp;</td>
   <td><input name="levels_opened" type="text" class="cms_fieldstyle1" value="<?=$mine['levels_opened']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Время на перемещение: &nbsp;  </td>
+    <td>Р’СЂРµРјСЏ РЅР° РїРµСЂРµРјРµС‰РµРЅРёРµ: &nbsp;</td>
   <td><input name="move_time" type="text" class="cms_fieldstyle1" value="<?=$mine['move_time']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Усталость при перемещении: &nbsp;  </td>
+    <td>РЈСЃС‚Р°Р»РѕСЃС‚СЊ РїСЂРё РїРµСЂРµРјРµС‰РµРЅРёРё: &nbsp;</td>
   <td><input name="move_ust" type="text" class="cms_fieldstyle1" value="<?=$mine['move_ust']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Время на спуск/подъём: &nbsp;  </td>
+    <td>Р’СЂРµРјСЏ РЅР° СЃРїСѓСЃРє/РїРѕРґСЉС‘Рј: &nbsp;</td>
   <td><input name="elev_time" type="text" class="cms_fieldstyle1" value="<?=$mine['elev_time']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Усталость при спуске/подъёме: &nbsp;  </td>
+    <td>РЈСЃС‚Р°Р»РѕСЃС‚СЊ РїСЂРё СЃРїСѓСЃРєРµ/РїРѕРґСЉС‘РјРµ: &nbsp;</td>
   <td><input name="elev_ust" type="text" class="cms_fieldstyle1" value="<?=$mine['elev_ust']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Время на добычу: &nbsp;  </td>
+    <td>Р’СЂРµРјСЏ РЅР° РґРѕР±С‹С‡Сѓ: &nbsp;</td>
   <td><input name="digg_time" type="text" class="cms_fieldstyle1" value="<?=$mine['digg_time']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Усталость при добыче: &nbsp;  </td>
+    <td>РЈСЃС‚Р°Р»РѕСЃС‚СЊ РїСЂРё РґРѕР±С‹С‡Рµ: &nbsp;</td>
   <td><input name="digg_ust" type="text" class="cms_fieldstyle1" value="<?=$mine['digg_ust']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Время на ожидание (при неудачной добыче): &nbsp;  </td>
+    <td>Р’СЂРµРјСЏ РЅР° РѕР¶РёРґР°РЅРёРµ (РїСЂРё РЅРµСѓРґР°С‡РЅРѕР№ РґРѕР±С‹С‡Рµ): &nbsp;</td>
   <td><input name="wait_time" type="text" class="cms_fieldstyle1" value="<?=$mine['wait_time']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Усталость при ожидании: &nbsp;  </td>
+    <td>РЈСЃС‚Р°Р»РѕСЃС‚СЊ РїСЂРё РѕР¶РёРґР°РЅРёРё: &nbsp;</td>
   <td><input name="wait_ust" type="text" class="cms_fieldstyle1" value="<?=$mine['wait_ust']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
@@ -452,37 +452,39 @@ var last_id = <?=(int)$row_id?>;
 <br />
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span> Глубина шахты: &nbsp;  </td>
+    <td><span class="cms_star">*</span> Р“Р»СѓР±РёРЅР° С€Р°С…С‚С‹: &nbsp;</td>
   <td><input name="mine_depth" type="text" class="cms_fieldstyle1" value="10" size="10" maxlength="5" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span> Длина этажа: &nbsp;  </td>
+    <td><span class="cms_star">*</span> Р”Р»РёРЅР° СЌС‚Р°Р¶Р°: &nbsp;</td>
   <td><input name="mine_width" type="text" class="cms_fieldstyle1" value="5" size="10" maxlength="5" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span> Ширина этажа: &nbsp;  </td>
+    <td><span class="cms_star">*</span> РЁРёСЂРёРЅР° СЌС‚Р°Р¶Р°: &nbsp;</td>
   <td><input name="mine_height" type="text" class="cms_fieldstyle1" value="5" size="10" maxlength="5" /></td>
 </tr>
 </table>
 <br />
-Добываемые ресурсы:
+    Р”РѕР±С‹РІР°РµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_res" >
     <tr >
-        <td class="cms_cap3">Удалить</td>
-        <td class="cms_cap3">Ресурс</td>
-        <td class="cms_cap3">Количество</td>
-        <td class="cms_cap3">Умение</td>
-        <td class="cms_cap3">Разброс</td>
+        <td class="cms_cap3">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">Р РµСЃСѓСЂСЃ</td>
+        <td class="cms_cap3">РљРѕР»РёС‡РµСЃС‚РІРѕ</td>
+        <td class="cms_cap3">РЈРјРµРЅРёРµ</td>
+        <td class="cms_cap3">Р Р°Р·Р±СЂРѕСЃ</td>
     </tr>
 </table>
-<a onclick="addItem_mine_res('table_res', 'tr_res_', 'res', res_array); return false;" href="#">Добавить</a><br />
+    <a onclick="addItem_mine_res('table_res', 'tr_res_', 'res', res_array); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ</a><br/>
 <br />
 <? } ?>
     
     
 <p></p>
-<input name="submit" onclick="return validate(this.form);" type="submit" class="cms_button1" value="Сохранить" style="width: 150px"  <?=(!userHasPermission(8) && $is_confirmed=='Y'?'disabled="disabled"':'')?> />
-<input name="cancel" type="submit" onclick="document.location='mine_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" onclick="return validate(this.form);" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ"
+           style="width: 150px" <?= (!userHasPermission(8) && $is_confirmed == 'Y' ? 'disabled="disabled"' : '') ?> />
+    <input name="cancel" type="submit" onclick="document.location='mine_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

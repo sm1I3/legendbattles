@@ -5,6 +5,9 @@ function check_pres() {
 var Error = 0;
 if(!document.present.prnick.value) Error = 1;
 if(!document.present.prtext.value) Error = 1;
-if(Error==1) { alert("Заполните все поля!"); return false; }
+    if (Error == 1) {
+        alert("Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ!");
+        return false;
+    }
 return true;
 }

@@ -6,27 +6,27 @@ echo'
 <tr valign=top align=left>
 	<td width=1>
 	<select name="type" onChange="writeparams(this.value);clearparams(\'2\');">
-	  <option value="" selected="selected">Выберите тип</option>
-      <option value="w4">Ножи</option>
-      <option value="w1">Мечи</option>
-      <option value="w2">Топоры</option>
-      <option value="w3">Дробящее</option>
-      <option value="w6">Алебарды и копья</option>
-      <option value="w5">Метательное</option>
-      <option value="w7">Посохи</option>
-      <option value="w20">Щиты</option>
-      <option value="w23">Шлемы</option>
-      <option value="w26">Пояса</option>
-      <option value="w18">Кольчуги</option>
-      <option value="w19">Доспехи</option>
-      <option value="w24">Перчатки</option>
-      <option value="w80">Наручи</option>
-      <option value="w21">Сапоги</option>
-      <option value="w25">Кулоны</option>
-      <option value="w22">Кольца</option>
-      <option value="w28">Наплечники</option>
-      <option value="w90">Поножи</option>
-      <option value="w0">Эликсиры</option>
+	  <option value="" selected="selected">Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї</option>
+      <option value="w4">РќРѕР¶Рё</option>
+      <option value="w1">РњРµС‡Рё</option>
+      <option value="w2">РўРѕРїРѕСЂС‹</option>
+      <option value="w3">Р”СЂРѕР±СЏС‰РµРµ</option>
+      <option value="w6">РђР»РµР±Р°СЂРґС‹ Рё РєРѕРїСЊСЏ</option>
+      <option value="w5">РњРµС‚Р°С‚РµР»СЊРЅРѕРµ</option>
+      <option value="w7">РџРѕСЃРѕС…Рё</option>
+      <option value="w20">Р©РёС‚С‹</option>
+      <option value="w23">РЁР»РµРјС‹</option>
+      <option value="w26">РџРѕСЏСЃР°</option>
+      <option value="w18">РљРѕР»СЊС‡СѓРіРё</option>
+      <option value="w19">Р”РѕСЃРїРµС…Рё</option>
+      <option value="w24">РџРµСЂС‡Р°С‚РєРё</option>
+      <option value="w80">РќР°СЂСѓС‡Рё</option>
+      <option value="w21">РЎР°РїРѕРіРё</option>
+      <option value="w25">РљСѓР»РѕРЅС‹</option>
+      <option value="w22">РљРѕР»СЊС†Р°</option>
+      <option value="w28">РќР°РїР»РµС‡РЅРёРєРё</option>
+      <option value="w90">РџРѕРЅРѕР¶Рё</option>
+      <option value="w0">Р­Р»РёРєСЃРёСЂС‹</option>
     </select>
 	</td>
 	<td id="params1" width=250 align=left>

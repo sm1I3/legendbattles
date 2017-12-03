@@ -19,26 +19,26 @@ while ($row = mysql_fetch_assoc($res))
 {
     $fort_classes .= '
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этот класс?\');" href="fort_service_class_list.php?delete_fort_service_class_id='.$row['service_id'].'" title="Удалить класс"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="fort_service_class_edit.php?fort_service_class_id='.$row['service_id'].'" title="Изменить класс"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ РєР»Р°СЃСЃ?\');" href="fort_service_class_list.php?delete_fort_service_class_id=' . $row['service_id'] . '" title="РЈРґР°Р»РёС‚СЊ РєР»Р°СЃСЃ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="fort_service_class_edit.php?fort_service_class_id=' . $row['service_id'] . '" title="РР·РјРµРЅРёС‚СЊ РєР»Р°СЃСЃ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['service_id'].'</td>
-      <td align="left" class="cms_middle"><a href="fort_service_class_edit.php?fort_service_class_id='.$row['service_id'].'" title="Изменить класс">'._htext($row['service_name']).'</a></td>
+      <td align="left" class="cms_middle"><a href="fort_service_class_edit.php?fort_service_class_id=' . $row['service_id'] . '" title="РР·РјРµРЅРёС‚СЊ РєР»Р°СЃСЃ">' . _htext($row['service_name']) . '</a></td>
     </tr>
     ';
 }
 
 ?>
-<h3>Список классов сервисов</h3>
+    <h3>РЎРїРёСЃРѕРє РєР»Р°СЃСЃРѕРІ СЃРµСЂРІРёСЃРѕРІ</h3>
 <div class="cms_ind">
 <br />
-Классы сервисов: <br />
+    РљР»Р°СЃСЃС‹ СЃРµСЂРІРёСЃРѕРІ: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Класса</td>
-      <td class="cms_cap2">Название класса</td>
+        <td class="cms_cap2">ID РљР»Р°СЃСЃР°</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ РєР»Р°СЃСЃР°</td>
     </tr>
     
     <?=$fort_classes?>
@@ -46,7 +46,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить класс" /><a href="fort_service_class_edit.php" title="Добавить класс">Добавить класс</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РєР»Р°СЃСЃ"/><a href="fort_service_class_edit.php"
+                                                                     title="Р”РѕР±Р°РІРёС‚СЊ РєР»Р°СЃСЃ">Р”РѕР±Р°РІРёС‚СЊ РєР»Р°СЃСЃ</a> &nbsp;
+    <br/>
  <br />
 
 <? require('kernel/after.php'); ?>

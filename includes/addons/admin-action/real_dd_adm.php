@@ -15,8 +15,8 @@
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location='adm.php'" value="Вернуться">
-		<input type=button class=lbut onClick="location='real_dd_adm.php'" value="обновить">
+        <input type=button class=lbut onClick="location='adm.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        <input type=button class=lbut onClick="location='real_dd_adm.php'" value="РѕР±РЅРѕРІРёС‚СЊ">
 	</td>
    </tr>
 </table>
@@ -54,11 +54,11 @@ echo'
 	<form method=post> 	
 	<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 		<tr class=nickname bgcolor=#EAEAEA>
-			<td align=center width=100%  colspan=4><b>Цены за продажу статов</b><br><font class=proceb>цена в DLR</font></td>
+			<td align=center width=100%  colspan=4><b>Р¦РµРЅС‹ Р·Р° РїСЂРѕРґР°Р¶Сѓ СЃС‚Р°С‚РѕРІ</b><br><font class=proceb>С†РµРЅР° РІ DLR</font></td>
 		</tr>
 		<tr class=nickname bgcolor=#EAEAEA>
 			<td align=center width=100%  colspan=4>
-				Коэфф. увеличения начальный цены [<font class=proce><b>за каждый доп.стат в %</b></font>]: <input class=Logintextbox8 name=kf type=text value="'.$getstats['kf'].'">
+				РљРѕСЌС„С„. СѓРІРµР»РёС‡РµРЅРёСЏ РЅР°С‡Р°Р»СЊРЅС‹Р№ С†РµРЅС‹ [<font class=proce><b>Р·Р° РєР°Р¶РґС‹Р№ РґРѕРї.СЃС‚Р°С‚ РІ %</b></font>]: <input class=Logintextbox8 name=kf type=text value="' . $getstats['kf'] . '">
 			</td>
 		</tr>
 		<tr class=nickname bgcolor=#EAEAEA>
@@ -74,87 +74,189 @@ for($i=0;$i<=71;$i++){
 	}
 	$fr="";	
 	switch($i){
-		case 1: $fr="Удар [<font class=proce><b>за 1-1</b></font>]:";break;
-		case 5: $fr="Уловка  [<font class=proce><b>за 1%</b></font>]:";break;
-		case 6: $fr="Точность  [<font class=proce><b>за 1%</b></font>]:";break;
-		case 7: $fr="Сокрушение  [<font class=proce><b>за 1%</b></font>]:";break;
-		case 8: $fr="Стойкость  [<font class=proce><b>за 1%</b></font>]:";break;
-		case 9: $fr="Класс брони  [<font class=proce><b>за 1кб</b></font>]:";break;
-		case 10: $fr="Пробой брони  [<font class=proce><b>за 1%</b></font>]:";break;
-		/*case 11: $fr="Пробой колющим ударом:";break;
-		case 12: $fr="Пробой режущим ударом:";break;
-		case 13: $fr="Пробой проникающим ударом:";break;
-		case 14: $fr="Пробой пробивающим ударом:";break;
-		case 15: $fr="Пробой рубящим ударом:";break;
-		case 16: $fr="Пробой карающим ударом:";break;
-		case 17: $fr="Пробой отсекающим ударом:";break;
-		case 18: $fr="Пробой дробящим ударом:";break;
-		case 19: $fr="Защита от колющих ударов:";break;
-		case 20: $fr="Защита от режущих ударов:";break;
-		case 21: $fr="Защита от проникающих ударов:";break;
-		case 22: $fr="Защита от пробивающих ударов:";break;
-		case 23: $fr="Защита от рубящих ударов:";break;
-		case 24: $fr="Защита от карающих ударов:";break;
-		case 25: $fr="Защита от отсекающих ударов:";break;
-		case 26: $fr="Защита от дробящих ударов:";break;*/
-		case 27: $fr="НР [<font class=proce><b>за +1</b></font>]:";break;
-		case 28: $fr="Очки действия:  [<font class=proce><b>за +1</b></font>]";break;
-		case 29: $fr="Мана  [<font class=proce><b>за +1</b></font>]:";break;
-		case 30: $fr="Мощь  [<font class=proce><b>за +1</b></font>]:";break;
-		case 31: $fr="Проворность  [<font class=proce><b>за +1</b></font>]:";break;
-		case 32: $fr="Везение  [<font class=proce><b>за +1</b></font>]:";break;
-		case 33: $fr="Здоровье  [<font class=proce><b>за +1</b></font>]:";break;
-		case 34: $fr="Разум [<font class=proce><b>за +1</b></font>]:";break;
-		//case 35: $fr="Сноровка:";break;
-		case 36: $fr="Влад. мечами [<font class=proce><b>за +1</b></font>]:";break;
-		case 37: $fr="Влад. топорами [<font class=proce><b>за +1</b></font>]:";break;
-		case 38: $fr="Влад. дробящим оружием [<font class=proce><b>за +1</b></font>]:";break;
-		case 39: $fr="Влад. ножами [<font class=proce><b>за +1</b></font>]:";break;
-		case 40: $fr="Влад. метательным оружием [<font class=proce><b>за +1</b></font>]:";break;
-		case 41: $fr="Влад. алебардами и копьями [<font class=proce><b>за +1</b></font>]:";break;
-		case 42: $fr="Влад. посохами [<font class=proce><b>за +1</b></font>]:";break;
-		case 43: $fr="Влад. экзотическим оружием [<font class=proce><b>за +1</b></font>]:";break;
-		case 44: $fr="Влад. двуручным оружием [<font class=proce><b>за +1</b></font>]:";break;
-		case 45: $fr="Магия огня [<font class=proce><b>за +1</b></font>]:";break;
-		case 46: $fr="Магия воды [<font class=proce><b>за +1</b></font>]:";break;
-		case 47: $fr="Магия воздуха [<font class=proce><b>за +1</b></font>]:";break;
-		case 48: $fr="Магия земли [<font class=proce><b>за +1</b></font>]:";break;
-		case 49: $fr="Сопротивление магии огня [<font class=proce><b>за +1</b></font>]:";break;
-		case 50: $fr="Сопротивление магии воды [<font class=proce><b>за +1</b></font>]:";break;
-		case 51: $fr="Сопротивление магии воздуха [<font class=proce><b>за +1</b></font>]:";break;
-		case 52: $fr="Сопротивление магии земли [<font class=proce><b>за +1</b></font>]:";break;
-		case 53: $fr="Воровство [<font class=proce><b>за +1</b></font>]:";break;
-		case 54: $fr="Осторожность [<font class=proce><b>за +1</b></font>]:";break;
-		case 55: $fr="Скрытность [<font class=proce><b>за +1</b></font>]:";break;
-		case 56: $fr="Наблюдательность [<font class=proce><b>за +1</b></font>]:";break;
-		case 57: $fr="Торговля [<font class=proce><b>за +1</b></font>]:";break;
-		case 58: $fr="Странник [<font class=proce><b>за +1</b></font>]:";break;
-		case 59: $fr="Рыболов [<font class=proce><b>за +1</b></font>]:";break;
-		case 60: $fr="Лесоруб [<font class=proce><b>за +1</b></font>]:";break;
-		case 61: $fr="Ювелирное дело [<font class=proce><b>за +1</b></font>]:";break;
-		case 62: $fr="Самолечение [<font class=proce><b>за +1</b></font>]:";break;
-		case 63: $fr="Оружейник [<font class=proce><b>за +1</b></font>]:";break;
-		case 64: $fr="Доктор [<font class=proce><b>за +1</b></font>]:";break;
-		case 65: $fr="Самолечение [<font class=proce><b>за +1</b></font>]:";break;
-		case 66: $fr="Быстрое восстановление маны [<font class=proce><b>за +1</b></font>]:";break;
-		case 67: $fr="Лидерство [<font class=proce><b>за +1</b></font>]:";break;
-		case 68: $fr="Алхимия [<font class=proce><b>за +1</b></font>]:";break;
-		case 69: $fr="Развитие горного дела [<font class=proce><b>за +1</b></font>]:";break;
-		case 70: $fr="Травничество [<font class=proce><b>за +1</b></font>]:";break;
-		case 71: $fr="Коэффициент(new) [<font class=proce><b>за +1</b></font>]:";break;
+        case 1:
+            $fr = "РЈРґР°СЂ [<font class=proce><b>Р·Р° 1-1</b></font>]:";
+            break;
+        case 5:
+            $fr = "РЈР»РѕРІРєР°  [<font class=proce><b>Р·Р° 1%</b></font>]:";
+            break;
+        case 6:
+            $fr = "РўРѕС‡РЅРѕСЃС‚СЊ  [<font class=proce><b>Р·Р° 1%</b></font>]:";
+            break;
+        case 7:
+            $fr = "РЎРѕРєСЂСѓС€РµРЅРёРµ  [<font class=proce><b>Р·Р° 1%</b></font>]:";
+            break;
+        case 8:
+            $fr = "РЎС‚РѕР№РєРѕСЃС‚СЊ  [<font class=proce><b>Р·Р° 1%</b></font>]:";
+            break;
+        case 9:
+            $fr = "РљР»Р°СЃСЃ Р±СЂРѕРЅРё  [<font class=proce><b>Р·Р° 1РєР±</b></font>]:";
+            break;
+        case 10:
+            $fr = "РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё  [<font class=proce><b>Р·Р° 1%</b></font>]:";
+            break;
+        /*case 11: $fr="РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+        case 12: $fr="РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј:";break;
+        case 13: $fr="РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+        case 14: $fr="РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+        case 15: $fr="РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј:";break;
+        case 16: $fr="РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+        case 17: $fr="РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+        case 18: $fr="РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј:";break;
+        case 19: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+        case 20: $fr="Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ:";break;
+        case 21: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+        case 22: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+        case 23: $fr="Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";break;
+        case 24: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+        case 25: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+        case 26: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";break;*/
+        case 27:
+            $fr = "РќР  [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 28:
+            $fr = "РћС‡РєРё РґРµР№СЃС‚РІРёСЏ:  [<font class=proce><b>Р·Р° +1</b></font>]";
+            break;
+        case 29:
+            $fr = "РњР°РЅР°  [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 30:
+            $fr = "РњРѕС‰СЊ  [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 31:
+            $fr = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ  [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 32:
+            $fr = "Р’РµР·РµРЅРёРµ  [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 33:
+            $fr = "Р—РґРѕСЂРѕРІСЊРµ  [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 34:
+            $fr = "Р Р°Р·СѓРј [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        //case 35: $fr="РЎРЅРѕСЂРѕРІРєР°:";break;
+        case 36:
+            $fr = "Р’Р»Р°Рґ. РјРµС‡Р°РјРё [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 37:
+            $fr = "Р’Р»Р°Рґ. С‚РѕРїРѕСЂР°РјРё [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 38:
+            $fr = "Р’Р»Р°Рґ. РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 39:
+            $fr = "Р’Р»Р°Рґ. РЅРѕР¶Р°РјРё [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 40:
+            $fr = "Р’Р»Р°Рґ. РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 41:
+            $fr = "Р’Р»Р°Рґ. Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 42:
+            $fr = "Р’Р»Р°Рґ. РїРѕСЃРѕС…Р°РјРё [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 43:
+            $fr = "Р’Р»Р°Рґ. СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 44:
+            $fr = "Р’Р»Р°Рґ. РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 45:
+            $fr = "РњР°РіРёСЏ РѕРіРЅСЏ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 46:
+            $fr = "РњР°РіРёСЏ РІРѕРґС‹ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 47:
+            $fr = "РњР°РіРёСЏ РІРѕР·РґСѓС…Р° [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 48:
+            $fr = "РњР°РіРёСЏ Р·РµРјР»Рё [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 49:
+            $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 50:
+            $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 51:
+            $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р° [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 52:
+            $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 53:
+            $fr = "Р’РѕСЂРѕРІСЃС‚РІРѕ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 54:
+            $fr = "РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 55:
+            $fr = "РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 56:
+            $fr = "РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 57:
+            $fr = "РўРѕСЂРіРѕРІР»СЏ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 58:
+            $fr = "РЎС‚СЂР°РЅРЅРёРє [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 59:
+            $fr = "Р С‹Р±РѕР»РѕРІ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 60:
+            $fr = "Р›РµСЃРѕСЂСѓР± [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 61:
+            $fr = "Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 62:
+            $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 63:
+            $fr = "РћСЂСѓР¶РµР№РЅРёРє [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 64:
+            $fr = "Р”РѕРєС‚РѕСЂ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 65:
+            $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 66:
+            $fr = "Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 67:
+            $fr = "Р›РёРґРµСЂСЃС‚РІРѕ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 68:
+            $fr = "РђР»С…РёРјРёСЏ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 69:
+            $fr = "Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р° [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 70:
+            $fr = "РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
+        case 71:
+            $fr = "РљРѕСЌС„С„РёС†РёРµРЅС‚(new) [<font class=proce><b>Р·Р° +1</b></font>]:";
+            break;
 	}
 	if($fr!="")echo '<font class=weaponch><b>'.$fr.'</b></font>&nbsp;<input class=Logintextbox8 name=pr['.$i.'] type=text value="'.$par[$i].'"><br>';
 }
-//опыт и масса
+//РѕРїС‹С‚ Рё РјР°СЃСЃР°
 if(!$par['expbonus']){$par['expbonus']=0;}
 if(!$par['massbonus']){$par['massbonus']=0;}
-echo '<font class=weaponch><b>Бонус опыта (в %) [<font class=proce><b>за 1%</b></font>]:</b></font>&nbsp;<input class=Logintextbox8 name=pr[expbonus] type=text value="'.$par['expbonus'].'"><br>';
-echo '<font class=weaponch><b>Бонус массы [<font class=proce><b>за +1</b></font>]:</b></font>&nbsp;<input class=Logintextbox8 name=pr[massbonus] type=text value="'.$par['massbonus'].'"><br>';
+echo '<font class=weaponch><b>Р‘РѕРЅСѓСЃ РѕРїС‹С‚Р° (РІ %) [<font class=proce><b>Р·Р° 1%</b></font>]:</b></font>&nbsp;<input class=Logintextbox8 name=pr[expbonus] type=text value="' . $par['expbonus'] . '"><br>';
+echo '<font class=weaponch><b>Р‘РѕРЅСѓСЃ РјР°СЃСЃС‹ [<font class=proce><b>Р·Р° +1</b></font>]:</b></font>&nbsp;<input class=Logintextbox8 name=pr[massbonus] type=text value="' . $par['massbonus'] . '"><br>';
 echo '</td></tr>
 		<tr class=nickname bgcolor=#EAEAEA>
 			<td align=center width=100%  colspan=4>
 				<input type=hidden name=post_id value=1>
-				<input class=lbut name=koeffpercent type=submit value="Сохранить">
+				<input class=lbut name=koeffpercent type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 			</td>
 		</tr>
 </table></form></td></tr></table>';

@@ -70,20 +70,20 @@ if ((string)$fort_service_id == '') {
 }
 
 ?>
-<h3><?=($fort_service_id == ''?'Добавить сервис':'Изменить сервис')?></h3>
+    <h3><?= ($fort_service_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ' : 'РР·РјРµРЅРёС‚СЊ СЃРµСЂРІРёСЃ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Сервис: &nbsp;  </td>
+    <td>РЎРµСЂРІРёСЃ: &nbsp;</td>
   <td><?=createSelectFromArray('service_id', $service_classes, $fort_service['service_id'])?></td>
 </tr>
 <tr>
-  <td>Размер: &nbsp;  </td>
+    <td>Р Р°Р·РјРµСЂ: &nbsp;</td>
   <td><input name="service_size" type="text" class="cms_fieldstyle1" value="<?=$fort_service['service_size']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Время: &nbsp;  </td>
+    <td>Р’СЂРµРјСЏ: &nbsp;</td>
   <td><input name="service_time" type="text" class="cms_fieldstyle1" value="<?=$fort_service['service_time']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
@@ -97,8 +97,9 @@ if ((string)$fort_service_id == '') {
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='fort_service_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='fort_service_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

@@ -1,7 +1,8 @@
 var d = document;
 var price = new Array('35:75:125:170:255','5:10:15:20:25:30:35:40:45:50:55:60:65:70:75:80:85:90:95:100','15:30:45:60:75:90:105:120:135:150:165:180:195:210:225:240:255:270:285:300','10:20:30:40:50:60:70:80:90:100','15:25:35:45:55:65:75:85:95:100:110','30:45:60:75:90:105:120:135:150:165:180:195:200','50:100:150:200:250:300:350:400');
-var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','Владение дробящим оружием','Владение ножами','Владение копьями и метательным оружием','Владение тяжёлыми алебардами','Владение магическими посохами','Владение экзотическим оружием','Владение двуручным оружием','Владение двумя руками','Дополнительные очки действия в бою','Магия огня','Магия воды','Магия воздуха','Магия земли','Сопротивление магии огня','Сопротивление магии воды','Сопротивление магии воздуха','Сопротивление магии земли','Сопротивление повреждениям','Воровство','Осторожность','Скрытность','Наблюдательность','Торговля','Странник','Рыболов','Лесоруб','Ювелирное дело','Самолечение','Оружейник','Доктор','Быстрое восстановление маны','Лидерство','Развитие науки алхимика','Развитие горного дела');
-//урон, статы, мф, умения, пробой брони
+var navarr = new Array('Р СѓРєРѕРїР°С€РЅС‹Р№ Р±РѕР№', 'Р’Р»Р°РґРµРЅРёРµ РјРµС‡Р°РјРё', 'Р’Р»Р°РґРµРЅРёРµ С‚РѕРїРѕСЂР°РјРё', 'Р’Р»Р°РґРµРЅРёРµ РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј', 'Р’Р»Р°РґРµРЅРёРµ РЅРѕР¶Р°РјРё', 'Р’Р»Р°РґРµРЅРёРµ РєРѕРїСЊСЏРјРё Рё РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј', 'Р’Р»Р°РґРµРЅРёРµ С‚СЏР¶С‘Р»С‹РјРё Р°Р»РµР±Р°СЂРґР°РјРё', 'Р’Р»Р°РґРµРЅРёРµ РјР°РіРёС‡РµСЃРєРёРјРё РїРѕСЃРѕС…Р°РјРё', 'Р’Р»Р°РґРµРЅРёРµ СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј', 'Р’Р»Р°РґРµРЅРёРµ РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј', 'Р’Р»Р°РґРµРЅРёРµ РґРІСѓРјСЏ СЂСѓРєР°РјРё', 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РѕС‡РєРё РґРµР№СЃС‚РІРёСЏ РІ Р±РѕСЋ', 'РњР°РіРёСЏ РѕРіРЅСЏ', 'РњР°РіРёСЏ РІРѕРґС‹', 'РњР°РіРёСЏ РІРѕР·РґСѓС…Р°', 'РњР°РіРёСЏ Р·РµРјР»Рё', 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ', 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹', 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°', 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё', 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РїРѕРІСЂРµР¶РґРµРЅРёСЏРј', 'Р’РѕСЂРѕРІСЃС‚РІРѕ', 'РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ', 'РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ', 'РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ', 'РўРѕСЂРіРѕРІР»СЏ', 'РЎС‚СЂР°РЅРЅРёРє', 'Р С‹Р±РѕР»РѕРІ', 'Р›РµСЃРѕСЂСѓР±', 'Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ', 'РЎР°РјРѕР»РµС‡РµРЅРёРµ', 'РћСЂСѓР¶РµР№РЅРёРє', 'Р”РѕРєС‚РѕСЂ', 'Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹', 'Р›РёРґРµСЂСЃС‚РІРѕ', 'Р Р°Р·РІРёС‚РёРµ РЅР°СѓРєРё Р°Р»С…РёРјРёРєР°', 'Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°');
+
+//СѓСЂРѕРЅ, СЃС‚Р°С‚С‹, РјС„, СѓРјРµРЅРёСЏ, РїСЂРѕР±РѕР№ Р±СЂРѕРЅРё
 
  function writeparams(e){
  var armor = "<input type=hidden id=armor value=none>";
@@ -10,109 +11,124 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 	    switch (e){
 		case 'w1': 
 			var param = new Array('40-50:50-60:60-70:70-80:85-100','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','15:25:35:45:55:65:75:85:95:100:110','30:45:60:75:90:105:120:135:150:165:180:195:200','25:50:75:100:125:150:175:200');
-			var dmgkb = "урон:";
+            var dmgkb = "СѓСЂРѕРЅ:";
 			armor = "<input type=hidden id=armor value=none>";
 		break;
 		case 'w2': 
 			var param = new Array('35-60:45-70:55-80:65-90:84-111','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','15:25:35:45:55:65:75:85:95:100:110','30:45:60:75:90:105:120:135:150:165:180:195:200','25:50:75:100:125:150:175:200');
-			var dmgkb = "урон:";
+            var dmgkb = "СѓСЂРѕРЅ:";
 			armor = "<input type=hidden id=armor value=none>";
 		break;
 		case 'w3': 
 			var param = new Array('40-60:50-70:60-80:70-90:92-113','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','15:25:35:45:55:65:75:85:95:100:110','30:45:60:75:90:105:120:135:150:165:180:195:200','25:50:75:100:125:150:175:200');
-			var dmgkb = "урон:";
+            var dmgkb = "СѓСЂРѕРЅ:";
 			armor = "<input type=hidden id=armor value=none>";
 		break;
 		case 'w4': 
 			var param = new Array('15-25:25-40:40-55:55-70:75-94','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','15:25:35:45:55:65:75:85:95:100:110','30:45:60:75:90:105:120:135:150:165:180:195:200','25:50:75:100:125:150:175:200');
-			var dmgkb = "урон:";
+            var dmgkb = "СѓСЂРѕРЅ:";
 			armor = "<input type=hidden id=armor value=none>";
 		break;
 		case 'w5': 
 			var param = new Array('35-60:45-70:55-80:65-95:95-105','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','15:25:35:45:55:65:75:85:95:100:110','30:45:60:75:90:105:120:135:150:165:180:195:200','25:50:75:100:125:150:175:200');
-			var dmgkb = "урон:";
+            var dmgkb = "СѓСЂРѕРЅ:";
 			armor = "<input type=hidden id=armor value=none>";
 		break;
 		case 'w6': 
 			var param = new Array('35-65:45-75:55-85:65-100:107-135','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','15:25:35:45:55:65:75:85:95:100:110','30:45:60:75:90:105:120:135:150:165:180:195:200','25:50:75:100:125:150:175:200');
-			var dmgkb = "урон:";
+            var dmgkb = "СѓСЂРѕРЅ:";
 			armor = "<input type=hidden id=armor value=none>";
 		break;
 		case 'w7': 
 			var param = new Array('35-65:45-75:55-85:65-85:85-107','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','15:25:35:45:55:65:75:85:95:100:110','30:45:60:75:90:105:120:135:150:165:180:195:200','25:50:75:100:125:150:175:200');
-			var dmgkb = "урон:";
+            var dmgkb = "СѓСЂРѕРЅ:";
 			armor = "<input type=hidden id=armor value=none>";
 		break;
 		case 'w18': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','30:45:60:75:90:105:120:135:150:165:180:195:200','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;
 		case 'w19': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','50:70:100:130:150:170:200:250:300:350:400:450:500','60:120:180:240:300:360:420:500');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; price[5] = "50:70:100:130:150:170:200:250:300:350:400:450:1000"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            price[5] = "50:70:100:130:150:170:200:250:300:350:400:450:1000";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "120:240:360:480:600:720:840:1000";
 		break;
 		case 'w20': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','50:70:100:130:150:170:200:250:300:350:400:450:500','60:120:180:240:300:360:420:500');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; price[5] = "50:70:100:130:150:170:200:250:300:350:400:450:1000";  armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            price[5] = "50:70:100:130:150:170:200:250:300:350:400:450:1000";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "120:240:360:480:600:720:840:1000";
 		break;
 		case 'w21': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','30:45:60:75:90:105:120:135:150:165:180:195:200','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;
 		case 'w22': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','25:30:35:40:45:50:55:60:65:70:75','10:20:30:40:50:60:70:80:90:100:110:120:130','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; price[5] = "50:70:100:130:150:170:200:250:300:350:400:450:650"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            price[5] = "50:70:100:130:150:170:200:250:300:350:400:450:650";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;
 		case 'w23': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','30:45:60:75:90:105:120:135:150:165:180:195:200','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;
 		case 'w24': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','30:45:60:75:90:105:120:135:150:165:180:195:200','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;
 		case 'w25': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','30:45:60:75:90:105:120:135:150:165:180:195:200','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;
 		case 'w26': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','30:45:60:75:90:105:120:135:150:165:180:195:200','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;
 		case 'w28': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','30:45:60:75:90:105:120:135:150:165:180:195:200','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;
 		case 'w80': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','30:45:60:75:90:105:120:135:150:165:180:195:200','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;	
 		case 'w90': 
 			var param = new Array('5-9:10-13:14-17:18-22:23-27','1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20','10:20:30:40:50:60:70:80:90:100:110:120:130:140:150:160:170:180:190:200','5:10:15:20:25:30:35:40:45:50','1:3:5:10:15:25:30:35:40:45:50','30:45:60:75:90:105:120:135:150:165:180:195:200','40:80:120:160:200:240:270:300');
-			var dmgkb = "урон:";
-			price[4] = "75:90:105:120:135:150:165:180:195:210:225"; armor = "броня: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+            var dmgkb = "СѓСЂРѕРЅ:";
+            price[4] = "75:90:105:120:135:150:165:180:195:210:225";
+            armor = "Р±СЂРѕРЅСЏ: <select id=armor name=armor onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 			price[6] = "80:160:240:320:400:480:540:600";
 		break;		
 	  }
@@ -126,13 +142,13 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 				sts++;
 			}
 		}
-		//урон
+     //СѓСЂРѕРЅ
 		var damage = ""+dmgkb+" <select id=damage name=damage onChange=\"getPrice();\"><option value=none selected=selected>0</option><option value=0>"+param[0].split(':')[0]+"</option><option value=1>"+param[0].split(':')[1]+"</option><option value=2>"+param[0].split(':')[2]+"</option><option value=3>"+param[0].split(':')[3]+"</option><option value=4>"+param[0].split(':')[4]+"</option></select> <br>";
-		//статы
-		var stats1 = "Мощь: <select id=sila name=sila onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
-		var stats2 = "Проворность: <select id=lovkost name=lovkost onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
-		var stats3 = "Везение: <select id=udacha name=udacha onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
-		var stats4 = "Разум: <select id=znan name=znan onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+     //СЃС‚Р°С‚С‹
+     var stats1 = "РњРѕС‰СЊ: <select id=sila name=sila onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+     var stats2 = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ: <select id=lovkost name=lovkost onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+     var stats3 = "Р’РµР·РµРЅРёРµ: <select id=udacha name=udacha onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+     var stats4 = "Р Р°Р·СѓРј: <select id=znan name=znan onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 		sts = 0;
 		while (sts <= 19){
 				stats1 += "<option value="+sts+">"+param[1].split(':')[sts]+"</option>";
@@ -148,11 +164,11 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 			sts++;
 		}
 		sts = 0;
-		//модификаторы
-		var modif1 = "уловка: <select id=ylov name=ylov onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
-		var modif2 = "точность: <select id=toch name=toch onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
-		var modif3 = "сокрушение: <select id=sokr name=sokr onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
-		var modif4 = "стойкость: <select id=stoi name=stoi onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+     //РјРѕРґРёС„РёРєР°С‚РѕСЂС‹
+     var modif1 = "СѓР»РѕРІРєР°: <select id=ylov name=ylov onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+     var modif2 = "С‚РѕС‡РЅРѕСЃС‚СЊ: <select id=toch name=toch onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+     var modif3 = "СЃРѕРєСЂСѓС€РµРЅРёРµ: <select id=sokr name=sokr onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+     var modif4 = "СЃС‚РѕР№РєРѕСЃС‚СЊ: <select id=stoi name=stoi onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 		while (sts <= 19){
 				modif1 += "<option value="+sts+">"+param[2].split(':')[sts]+"</option>";
 				modif2 += "<option value="+sts+">"+param[2].split(':')[sts]+"</option>";
@@ -166,9 +182,9 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 				}
 			sts++;
 		}
-		//пробой брони	
+     //РїСЂРѕР±РѕР№ Р±СЂРѕРЅРё
 		sts = 0;
-		var proboi = "пробой брони: <select id=proboi name=proboi onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
+     var proboi = "РїСЂРѕР±РѕР№ Р±СЂРѕРЅРё: <select id=proboi name=proboi onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 		while (sts <= 10){
 			proboi += "<option value="+sts+">"+param[4].split(':')[sts]+"</option>";
 			if(sts == 10){
@@ -177,7 +193,7 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 			sts++;
 		}
 		sts = 0;
-		var hp = "жизнь: <select id=hp name=hp onChange=\"getPrice();\"><option value=none selected=selected>0</option>"; 
+     var hp = "Р¶РёР·РЅСЊ: <select id=hp name=hp onChange=\"getPrice();\"><option value=none selected=selected>0</option>";
 		while (sts <= 7){
 			hp += "<option value="+sts+">"+param[6].split(':')[sts]+"</option>";
 			if(sts == 7){
@@ -185,7 +201,7 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 			}
 			sts++;
 		}
-		//умения
+     //СѓРјРµРЅРёСЏ
 		var navstr = "onChange=\"getPrice();\"><option value='none' selected=selected>0</option><option value=0>"+param[3].split(':')[0]+"</option><option value=1>"+param[3].split(':')[1]+"</option><option value=2>"+param[3].split(':')[2]+"</option><option value=3>"+param[3].split(':')[3]+"</option><option value=4>"+param[3].split(':')[4]+"</option><option value=5>"+param[3].split(':')[5]+"</option><option value=6>"+param[3].split(':')[6]+"</option><option value=7>"+param[3].split(':')[7]+"</option><option value=8>"+param[3].split(':')[8]+"</option><option value=9>"+param[3].split(':')[9]+"</option></select> <br>";
 		var b = 1;
 		var navor = '';
@@ -202,7 +218,7 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 			navmir += ""+nav[b]+"";
 			b++;
 		}
-		d.getElementById('params').innerHTML = '<FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;Основные характеристики&nbsp;</font></B></LEGEND>'+damage+''+armor+''+hp+''+stats1+''+stats2+''+stats3+''+stats4+''+modif1+''+modif2+''+modif3+''+modif4+''+proboi+'</FIELDSET><FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;Умения владения оружием&nbsp;</font></B></LEGEND>'+navor+'</FIELDSET><FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;Мирные умения&nbsp;</font></B></LEGEND>'+navmir+'</FIELDSET>';
+     d.getElementById('params').innerHTML = '<FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;РћСЃРЅРѕРІРЅС‹Рµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё&nbsp;</font></B></LEGEND>' + damage + '' + armor + '' + hp + '' + stats1 + '' + stats2 + '' + stats3 + '' + stats4 + '' + modif1 + '' + modif2 + '' + modif3 + '' + modif4 + '' + proboi + '</FIELDSET><FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;РЈРјРµРЅРёСЏ РІР»Р°РґРµРЅРёСЏ РѕСЂСѓР¶РёРµРј&nbsp;</font></B></LEGEND>' + navor + '</FIELDSET><FIELDSET><LEGEND align=center><B><font color=gray>&nbsp;РњРёСЂРЅС‹Рµ СѓРјРµРЅРёСЏ&nbsp;</font></B></LEGEND>' + navmir + '</FIELDSET>';
 	}
 	else {
 		d.getElementById('params').innerHTML = '';
@@ -215,7 +231,7 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 	var el = d.getElementById('dealprice');	
 	el.innerHTML = '';
 	var c = 1;	var prval = 0;	var i = 0; var complete = '';
-	//проверяем все навыки
+     //РїСЂРѕРІРµСЂСЏРµРј РІСЃРµ РЅР°РІС‹РєРё
 	while (c <= 9){
 		if (d.getElementById(c).value != 'none'){
 			prval += parseInt(price[3].split(':')[d.getElementById(c).value]);
@@ -229,8 +245,8 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 		}
 		c++;
 	}
-	//считаем коэфф
-	//проверяем все параметры для подсчета	
+     //СЃС‡РёС‚Р°РµРј РєРѕСЌС„С„
+     //РїСЂРѕРІРµСЂСЏРµРј РІСЃРµ РїР°СЂР°РјРµС‚СЂС‹ РґР»СЏ РїРѕРґСЃС‡РµС‚Р°
 	if (d.getElementById('sila').value != 'none'){
 		prval += parseInt(price[1].split(':')[d.getElementById('sila').value]);
 	}
@@ -267,24 +283,24 @@ var navarr = new Array('Рукопашный бой','Владение мечами','Владение топорами','В
 	if (d.getElementById('hp').value != 'none'){
 		prval += parseInt(price[6].split(':')[d.getElementById('hp').value]);
 	}
-	//проверка параметров артефакта
+     //РїСЂРѕРІРµСЂРєР° РїР°СЂР°РјРµС‚СЂРѕРІ Р°СЂС‚РµС„Р°РєС‚Р°
 	if(prval>0 && d.getElementById('artname').value!='' && d.getElementById('artname').value.length >= 5){
-		complete = "<input type=submit class=klbut title=\"Подать заявку\" value=\"ПОДАТЬ ЗАЯВКУ\" />"		
+        complete = "<input type=submit class=klbut title=\"РџРѕРґР°С‚СЊ Р·Р°СЏРІРєСѓ\" value=\"РџРћР”РђРўР¬ Р—РђРЇР’РљРЈ\" />"
 	}
 	else if (prval>0 && d.getElementById('artname').value==''){
-		complete = "<font class=weaponchdis>укажите название артефакта</font></form>";
+        complete = "<font class=weaponchdis>СѓРєР°Р¶РёС‚Рµ РЅР°Р·РІР°РЅРёРµ Р°СЂС‚РµС„Р°РєС‚Р°</font></form>";
 	}
 	else if (prval>0 && d.getElementById('artname').value!='' && d.getElementById('artname').value.length < 5){
-		complete = "<font class=weaponchdis>название должно быть не короче 5 символов</font>";
+        complete = "<font class=weaponchdis>РЅР°Р·РІР°РЅРёРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РЅРµ РєРѕСЂРѕС‡Рµ 5 СЃРёРјРІРѕР»РѕРІ</font>";
 	}
 	else if(prval <= 0){
-		complete = "<font class=weaponchdis>выберите хотя бы 1 параметр для артефакта</font>";
+        complete = "<font class=weaponchdis>РІС‹Р±РµСЂРёС‚Рµ С…РѕС‚СЏ Р±С‹ 1 РїР°СЂР°РјРµС‚СЂ РґР»СЏ Р°СЂС‚РµС„Р°РєС‚Р°</font>";
 	}
 	while(parseInt(koeff[i].split(':')[0]) < prval){
 			i++;
 	}
-	//вывод цены, коэффа
-	el.innerHTML = "<font color=black>цена: "+prval+"<br>коэффициэнт: "+i+"<br><br>"+complete+"";
+     //РІС‹РІРѕРґ С†РµРЅС‹, РєРѕСЌС„С„Р°
+     el.innerHTML = "<font color=black>С†РµРЅР°: " + prval + "<br>РєРѕСЌС„С„РёС†РёСЌРЅС‚: " + i + "<br><br>" + complete + "";
  }
 
  

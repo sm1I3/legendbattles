@@ -28,13 +28,13 @@ if($_GET['mone']){
 
 else{
 	echo'<HTML><HEAD>
-	<TITLE>legendbat™ | Карта - Жизнь в мире сильнейших...</TITLE>
+	<TITLE>legendbatв„ў | РљР°СЂС‚Р° - Р–РёР·РЅСЊ РІ РјРёСЂРµ СЃРёР»СЊРЅРµР№С€РёС…...</TITLE>
 	<LINK href="/css/mapinfo.css" rel="STYLESHEET" type="text/css">
 	<LINK href="/css/game.css" rel="STYLESHEET" type="text/css">
 	<SCRIPT LANGUAGE="JavaScript" SRC="./js/game.js"></SCRIPT>
 	<SCRIPT  LANGUAGE="JavaScript" src="./js/ft_v01.js"></SCRIPT>
 	<SCRIPT  LANGUAGE="JavaScript" src="./js/png.js"></SCRIPT>
-	<META Http-Equiv=CONTENT-TYPE Content="text/html; charset=windows-1251">
+	<META Http-Equiv=CONTENT-TYPE Content="text/html; charset=utf-8">
 	<META Http-Equiv=PRAGMA Content="NO-CACHE">
 	<META Http-Equiv=CACHE-CONTROL Content="NO-CACHE, NO-STORE">
 	<META Http-Equiv=EXPIRES Content="0">
@@ -46,7 +46,7 @@ else{
 	}
 	echo'
 			<table border=0 cellpadding="1" cellspacing="0" align="center" width=100 height=20>
-			<tr align=center><td align=right width=49%><a href="?map=1&info=1" style="color:black;"><b>Боты<b></a></td><td width=2%> | </td><td width=49% align=left><a href="?map=1&info=2" style="color:green;"><b>Травы</b></a></td><td width=2%> | </td><td width=49% align=left><a href="?map=1&info=3" style="color:brown;"><b>Леса</b></a></td><td width=2%> | </td><td width=49% align=left><a href="?map=1&info=4" style="color:blue;"><b>Рыба</b></a></td></tr>
+			<tr align=center><td align=right width=49%><a href="?map=1&info=1" style="color:black;"><b>Р‘РѕС‚С‹<b></a></td><td width=2%> | </td><td width=49% align=left><a href="?map=1&info=2" style="color:green;"><b>РўСЂР°РІС‹</b></a></td><td width=2%> | </td><td width=49% align=left><a href="?map=1&info=3" style="color:brown;"><b>Р›РµСЃР°</b></a></td><td width=2%> | </td><td width=49% align=left><a href="?map=1&info=4" style="color:blue;"><b>Р С‹Р±Р°</b></a></td></tr>
 			</table>
 			<table border=1 cellpadding="0" cellspacing="0" align="center" width=2250 height=900>
 			<tr>
@@ -68,20 +68,20 @@ else{
 							$c=$bot['lvlmax'];
 							while($b<=$c){
 								if($b==6){
-									$boss="<font style=\"color: red;font-weight: bold;background:white;\"><b color=red>&nbsp;БОСС </b> 6 уровня</font>";
-									echo'<tr><td valign=top align=center><a href="ipers.php?Тёмный Огр" target="_blank"><b class=boss>'.$boss.'</b></td></tr>';
+                                    $boss = "<font style=\"color: red;font-weight: bold;background:white;\"><b color=red>&nbsp;Р‘РћРЎРЎ </b> 6 СѓСЂРѕРІРЅСЏ</font>";
+                                    echo '<tr><td valign=top align=center><a href="ipers.php?РўС‘РјРЅС‹Р№ РћРіСЂ" target="_blank"><b class=boss>' . $boss . '</b></td></tr>';
 								}
 								if($b==9){
-									$boss="<font style=\"color: red;font-weight: bold;background:white;\"><b color=red>&nbsp;БОСС </b> 9 уровня</font>";
-									echo'<tr><td valign=top align=center><a href="ipers.php?Восставший Командир" target="_blank"><b class=boss>'.$boss.'</b></td></tr>';
+                                    $boss = "<font style=\"color: red;font-weight: bold;background:white;\"><b color=red>&nbsp;Р‘РћРЎРЎ </b> 9 СѓСЂРѕРІРЅСЏ</font>";
+                                    echo '<tr><td valign=top align=center><a href="ipers.php?Р’РѕСЃСЃС‚Р°РІС€РёР№ РљРѕРјР°РЅРґРёСЂ" target="_blank"><b class=boss>' . $boss . '</b></td></tr>';
 								}
 								if($b==12){
-									$boss="<font style=\"color: red;font-weight: bold;background:white;\"><b color=red>&nbsp;БОСС </b> 12 уровня</font>";
-									echo'<tr><td valign=top align=center><a href="ipers.php?Дикий Варвар" target="_blank"><b class=boss>'.$boss.'</b></a></td></tr>';
+                                    $boss = "<font style=\"color: red;font-weight: bold;background:white;\"><b color=red>&nbsp;Р‘РћРЎРЎ </b> 12 СѓСЂРѕРІРЅСЏ</font>";
+                                    echo '<tr><td valign=top align=center><a href="ipers.php?Р”РёРєРёР№ Р’Р°СЂРІР°СЂ" target="_blank"><b class=boss>' . $boss . '</b></a></td></tr>';
 								}
 								if($b==20){
-									$boss="<font style=\"color: red;font-weight: bold;background:white;\"><b color=red>&nbsp;БОСС </b> 20 уровня</font>";
-									echo'<tr><td valign=top align=center><a href="ipers.php?Горец из Атинии" target="_blank"><b class=boss>'.$boss.'</b></a></td></tr>';
+                                    $boss = "<font style=\"color: red;font-weight: bold;background:white;\"><b color=red>&nbsp;Р‘РћРЎРЎ </b> 20 СѓСЂРѕРІРЅСЏ</font>";
+                                    echo '<tr><td valign=top align=center><a href="ipers.php?Р“РѕСЂРµС† РёР· РђС‚РёРЅРёРё" target="_blank"><b class=boss>' . $boss . '</b></a></td></tr>';
 								}
 								$b++;
 							}
@@ -141,7 +141,8 @@ else{
 ?>
 </table>
 <div align=center>
-<font class=weaponchdis align=center> ©  Команда «legendbat LLC. inc.», Copyright  2012-2015 | Все права защищены.</font>
+    <font class=weaponchdis align=center> В© РљРѕРјР°РЅРґР° В«legendbat LLC. inc.В», Copyright 2012-2015 | Р’СЃРµ РїСЂР°РІР°
+        Р·Р°С‰РёС‰РµРЅС‹.</font>
 </div>
 </body>
 </HTML>

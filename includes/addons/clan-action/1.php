@@ -7,7 +7,7 @@ function locations($loc,$pos){
 	else{
 		list($x, $y) = explode('_', $pos);
 		$location = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x`='".$x."' and `y`='".$y."' LIMIT 1;"));
-		return $location['city']." [".(($location['name'])?$location['name']:'неизвестно')."]";
+		return $location['city']." [".(($location['name'])?$location['name']:'РЅРµРёР·РІРµСЃС‚РЅРѕ')."]";
 	}	
 }
 $clanid = $pers['clan_id'];
@@ -15,7 +15,7 @@ echo'
 <SCRIPT src="/js/clan.js"></SCRIPT>
 <table table border=0 cellpadding=0 cellspacing=0 bordercolor=#e0e0e0 align=center class="smallhead" width=100% bgcolor=#e0e0e0>
 <tr><td colspan=9 class=nickname bgcolor=white>
-<font class=nickname><b><a href="javascript:clan_private(\''.$clanid.'\')"><img src=/img/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a></font>&nbsp;<font color=#336699>Всему составу</font></b><br>
+<font class=nickname><b><a href="javascript:clan_private(\''.$clanid.'\')"><img src=/img/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a></font>&nbsp;<font color=#336699>Р’СЃРµРјСѓ СЃРѕСЃС‚Р°РІСѓ</font></b><br>
 </td></tr>
 <tr><td colspan=10 class=nickname bgcolor=white><img src=/img/image/1x1.gif width=1 height=2></td></tr>
 <tr><td colspan=10 bgcolor=#E0D6BB><img src=/img/image/1x1.gif width=1 height=1></td></tr>
@@ -23,19 +23,19 @@ echo'
 <table border=0 cellpadding=2 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 <tr align=center bgcolor=#EAEAEA>
 	<td align=left class=nickname>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font class=nickname align=center color=gray>ник
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font class=nickname align=center color=gray>РЅРёРє
 	</font></td>
 	<td align=left class=nickname>
-		&nbsp;&nbsp;<font class=nickname align=center color=gray>должность
+		&nbsp;&nbsp;<font class=nickname align=center color=gray>РґРѕР»Р¶РЅРѕСЃС‚СЊ
 	</font></td>
 	<td align=center class=nickname>
-		<font class=nickname align=center color=gray>статус
+		<font class=nickname align=center color=gray>СЃС‚Р°С‚СѓСЃ
 	</td>
 	<td align=left class=nickname>
-		&nbsp;&nbsp;<font class=nickname align=center color=gray>местоположение
+		&nbsp;&nbsp;<font class=nickname align=center color=gray>РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ
 	</td>
 	<td align=center class=nickname>
-	<font class=nickname align=center color=gray>опции
+	<font class=nickname align=center color=gray>РѕРїС†РёРё
 	</td>
 </tr>
 <SCRIPT>
@@ -62,15 +62,15 @@ if(in_array('8',$access) or $pers['clan_status'] >= '8'){
 echo'<form method="post">
   <font class="nickname">
   <hr size="1" color="#CCCCCC" />
-  <b>Принять<br />
-  <font color="#aa0000">Имя персонажа:</font></b></font>
+  <b>РџСЂРёРЅСЏС‚СЊ<br />
+  <font color="#aa0000">РРјСЏ РїРµСЂСЃРѕРЅР°Р¶Р°:</font></b></font>
   <input type="hidden" name="useaction" value="clan-action" />
   <input type="hidden" name="addid" value="1" />
   <input type="hidden" name="post_id" value="47" />
   <input type="hidden" name="clan_act" value="1" />
   <input type="hidden" name="vcode" value="'.vCode().'" />
   <input type="text" name="fnick" class="LogintextBox" />
-  <input type="submit" class="lbut" value="Принять [ 1000 Бронзы ]" />
+  <input type="submit" class="lbut" value="РџСЂРёРЅСЏС‚СЊ [ 1000 Р‘СЂРѕРЅР·С‹ ]" />
 </form>';
 }
 ?>

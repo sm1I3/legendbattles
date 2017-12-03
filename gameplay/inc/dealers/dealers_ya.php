@@ -6,7 +6,7 @@ echo'
 </td>
 </tr>
 <table cellpadding=0 cellspacing=0 border=0 width=100%>
-<tr><td><FIELDSET name=field_dealers id=field_dealers><LEGEND align=center><b> <font color=gray>У Вас с собой '.$player[baks].' Изумруд</font> </b></LEGEND><table cellpadding=3 cellspacing=1 border=0 width=100%></form>
+<tr><td><FIELDSET name=field_dealers id=field_dealers><LEGEND align=center><b> <font color=gray>РЈ Р’Р°СЃ СЃ СЃРѕР±РѕР№ ' . $player[baks] . ' РР·СѓРјСЂСѓРґ</font> </b></LEGEND><table cellpadding=3 cellspacing=1 border=0 width=100%></form>
 ';
 $vklad = $player['vklad_bank']!=0 ? explode("|",$player['vklad_bank']) : $vklad[1]="";
 		if($vklad[0]!=""){
@@ -14,21 +14,21 @@ $vklad = $player['vklad_bank']!=0 ? explode("|",$player['vklad_bank']) : $vklad[
 			<font class=proce><font color=#222222>
 			<table cellpadding=0 cellspacing=0 border=0 width=100%>
 				<tr><td align=center class=nickname2>
-					Вложенная сумма: '.$vklad[1].'<br>
-					Дата начисления процентов: '.date("d.m.yг.",$vklad[0]).'<br>
-					Сумма получения с учетом процентов: '.$vklad[2].'<br>
+					Р’Р»РѕР¶РµРЅРЅР°СЏ СЃСѓРјРјР°: ' . $vklad[1] . '<br>
+					Р”Р°С‚Р° РЅР°С‡РёСЃР»РµРЅРёСЏ РїСЂРѕС†РµРЅС‚РѕРІ: ' . date("d.m.yРі.", $vklad[0]) . '<br>
+					РЎСѓРјРјР° РїРѕР»СѓС‡РµРЅРёСЏ СЃ СѓС‡РµС‚РѕРј РїСЂРѕС†РµРЅС‚РѕРІ: ' . $vklad[2] . '<br>
 					</td></tr>
 					<tr><td align=center class=nickname2>
-					<br><b>Возможные действия:</b><br>
+					<br><b>Р’РѕР·РјРѕР¶РЅС‹Рµ РґРµР№СЃС‚РІРёСЏ:</b><br>
 					'.(
-					$vklad[0]>time() ? 
-					'Забрать вклад можно будет '.date("d.m.yг.",$vklad[0])
+					$vklad[0]>time() ?
+                        'Р—Р°Р±СЂР°С‚СЊ РІРєР»Р°Рґ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ ' . date("d.m.yРі.", $vklad[0])
 					:
 					'
 					<form method=POST>
 					<input type=hidden name=post_id value=100>
 					<input type="hidden" name="vcode" value="'.scode().'" />
-					<input type=submit class=lbut value=" Забрать вклад '.$vklad[2].' " ></form>	'				
+					<input type=submit class=lbut value=" Р—Р°Р±СЂР°С‚СЊ РІРєР»Р°Рґ ' . $vklad[2] . ' " ></form>	'
 					).
 					'
 				</td></tr>
@@ -48,12 +48,12 @@ echo'<FIELDSET>
 		<table cellpadding=0 cellspacing=0 border=0 width=100%>
 			<tr><td align=center>
 				<select onChange="writevklad(this.value);" >
-					<option value=0 selected>Выберите тип ячейки</option>
+					<option value=0 selected>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї СЏС‡РµР№РєРё</option>
 					<option value=1 >Platinum (<b>$</b>)</option>
 					<option value=2 >Gold (<b>DLR</b>)</option>
 				</select>	
 			<font id="vk_type1"></font>	
-			<input id="vk_sum" type="hidden" onblur="if (value == \'\') {value=\' Введите сумму вклада \' }" onfocus="if (value == \' Введите сумму вклада \') {value = \'\'}" value=" Введите сумму вклада " onkeyup="chvk();" />			
+			<input id="vk_sum" type="hidden" onblur="if (value == \'\') {value=\' Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РІРєР»Р°РґР° \' }" onfocus="if (value == \' Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РІРєР»Р°РґР° \') {value = \'\'}" value=" Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РІРєР»Р°РґР° " onkeyup="chvk();" />			
 			</td>
 			</tr>
 			<tr><td align=center>
@@ -62,7 +62,7 @@ echo'<FIELDSET>
 					<input type=hidden name="sum" id="vk_sum_hid" value="0">
 					<input type=hidden name="type1" id="vk_type1_hid" value="0">
 					<input type=hidden name="type2" id="vk_type2_hid" value="0">
-					<font class=freetxt><div id="vk_uslov">Выберите тип вклада.</div></font>
+					<font class=freetxt><div id="vk_uslov">Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РІРєР»Р°РґР°.</div></font>
 				</form>	
 			</td></tr>
 		</table>

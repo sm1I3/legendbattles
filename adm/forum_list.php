@@ -31,10 +31,10 @@ foreach($categories as $cat)
     $forums = array();
         $forum .= '
         <tr>
-          <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить эту категорию?\');" href="forum_list.php?delete_cat_id='.$cat[0].'" title="Удалить класс"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-          <td class="cms_middle" align="center"><a href="forum_cat_edit.php?cat_id='.$cat[0].'" title="Изменить категорию"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+          <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ РєР°С‚РµРіРѕСЂРёСЋ?\');" href="forum_list.php?delete_cat_id=' . $cat[0] . '" title="РЈРґР°Р»РёС‚СЊ РєР»Р°СЃСЃ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+          <td class="cms_middle" align="center"><a href="forum_cat_edit.php?cat_id=' . $cat[0] . '" title="РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
           <td class="cms_middle" style="background: #EEE;"><b>'.$cat[0].'</b></td>
-          <td class="cms_middle" colspan="5" style="background: #EEE;"><b>'.$cat[1].'</b>&nbsp;&nbsp;<img src="images/cms_icons/cms_add.gif" alt="Добавить форум" /><a href="forum_edit.php?cat_id='.$cat[0].'" title="Добавить форум">Добавить форум</a></td>
+          <td class="cms_middle" colspan="5" style="background: #EEE;"><b>' . $cat[1] . '</b>&nbsp;&nbsp;<img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ С„РѕСЂСѓРј" /><a href="forum_edit.php?cat_id=' . $cat[0] . '" title="Р”РѕР±Р°РІРёС‚СЊ С„РѕСЂСѓРј">Р”РѕР±Р°РІРёС‚СЊ С„РѕСЂСѓРј</a></td>
         </tr>';
     
     frm_get_forum_list($cat[0], $forums);
@@ -42,8 +42,8 @@ foreach($categories as $cat)
     {
         $forum .= '
         <tr>
-          <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этот форум?\');" href="forum_list.php?delete_forum_id='.$f[0].'" title="Удалить класс"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-          <td class="cms_middle" align="center"><a href="forum_edit.php?cat_id='.$cat[0].'&forum_id='.$f[0].'" title="Изменить форум"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+          <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ С„РѕСЂСѓРј?\');" href="forum_list.php?delete_forum_id=' . $f[0] . '" title="РЈРґР°Р»РёС‚СЊ РєР»Р°СЃСЃ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+          <td class="cms_middle" align="center"><a href="forum_edit.php?cat_id=' . $cat[0] . '&forum_id=' . $f[0] . '" title="РР·РјРµРЅРёС‚СЊ С„РѕСЂСѓРј"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
           <td align="left" class="cms_middle">'.$f[0].'</td>
           <td align="left" class="cms_middle">'.$f[1].'</td>
           <td align="left" class="cms_middle">'.$f[2].'</td>
@@ -56,21 +56,21 @@ foreach($categories as $cat)
 }
 
 ?>
-<h3>Форумы</h3>
+    <h3>Р¤РѕСЂСѓРјС‹</h3>
 <div class="cms_ind">
 <br />
-Форумы: <br />
+    Р¤РѕСЂСѓРјС‹: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Форума</td>
-      <td class="cms_cap2">Название форума</td>
-      <td class="cms_cap2">Картинка</td>
-      <td class="cms_cap2">Описание</td>
-      <td class="cms_cap2">Тем</td>
-      <td class="cms_cap2">Ответов</td>
+        <td class="cms_cap2">ID Р¤РѕСЂСѓРјР°</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ С„РѕСЂСѓРјР°</td>
+        <td class="cms_cap2">РљР°СЂС‚РёРЅРєР°</td>
+        <td class="cms_cap2">РћРїРёСЃР°РЅРёРµ</td>
+        <td class="cms_cap2">РўРµРј</td>
+        <td class="cms_cap2">РћС‚РІРµС‚РѕРІ</td>
     </tr>
     
     <?=$forum?>
@@ -78,7 +78,9 @@ foreach($categories as $cat)
     </table>
     <br />
  </div>
-<img src="images/cms_icons/cms_add.gif" alt="Добавить категорию" /><a href="forum_cat_edit.php" title="Добавить категорию">Добавить категорию</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ"/><a href="forum_cat_edit.php"
+                                                                         title="Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ">Р”РѕР±Р°РІРёС‚СЊ
+    РєР°С‚РµРіРѕСЂРёСЋ</a> &nbsp;<br/>
 <br />
 
 <? require('kernel/after.php'); ?>

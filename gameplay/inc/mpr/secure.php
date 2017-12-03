@@ -1,10 +1,10 @@
 <div class="block secure">
 	<div class="header">
-		<span>Безопасность</span>
+        <span>Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ</span>
 	</div>
 	<div class="content">
 		<div class="field">
-			<label>Текущий E-mail:</label>
+            <label>РўРµРєСѓС‰РёР№ E-mail:</label>
 			<span style="line-height:28px"><?=$player[email]?></span>
 		</div>
 <?if($player[finblock]<time()){?>
@@ -13,10 +13,11 @@
 			<input type=hidden name=post_id value=49>
 			<input type=hidden name=act value=1>
 			<div class="field">
-				<label for="newmail">Новый E-mail:</label>
+                <label for="newmail">РќРѕРІС‹Р№ E-mail:</label>
 				<input type=text name=newmail size=30 maxlength=50>
 				<div class="info">
-					После смены e-mail персонаж не может проводить операции с финансами, передавать, дарить и выкидывать предметы в течение 24 часов. Также пароль можно сменить только через 48 часов после смены e-mail.
+                    РџРѕСЃР»Рµ СЃРјРµРЅС‹ e-mail РїРµСЂСЃРѕРЅР°Р¶ РЅРµ РјРѕР¶РµС‚ РїСЂРѕРІРѕРґРёС‚СЊ РѕРїРµСЂР°С†РёРё СЃ С„РёРЅР°РЅСЃР°РјРё, РїРµСЂРµРґР°РІР°С‚СЊ, РґР°СЂРёС‚СЊ Рё РІС‹РєРёРґС‹РІР°С‚СЊ
+                    РїСЂРµРґРјРµС‚С‹ РІ С‚РµС‡РµРЅРёРµ 24 С‡Р°СЃРѕРІ. РўР°РєР¶Рµ РїР°СЂРѕР»СЊ РјРѕР¶РЅРѕ СЃРјРµРЅРёС‚СЊ С‚РѕР»СЊРєРѕ С‡РµСЂРµР· 48 С‡Р°СЃРѕРІ РїРѕСЃР»Рµ СЃРјРµРЅС‹ e-mail.
 				</div>
 			</div>
 		</form>
@@ -25,25 +26,26 @@
 			<input type=hidden name=post_id value=49>
 			<input type=hidden name=act value=2>
 			<div class="field">
-				<label for="opass">Старый пароль: </label>
+                <label for="opass">РЎС‚Р°СЂС‹Р№ РїР°СЂРѕР»СЊ: </label>
 				<input type=password name=opass size=15 maxlength=50>
 			</div>
 			<div class="field">
-				<label for="npass">Новый: </label>
+                <label for="npass">РќРѕРІС‹Р№: </label>
 				<input type=password name=npass size=15 maxlength=50>
 				<div class="info">
-					Минимальная длина пароля 4 символа.
+                    РњРёРЅРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РїР°СЂРѕР»СЏ 4 СЃРёРјРІРѕР»Р°.
 				</div>
 			</div>
 			<div class="field">
-				<label for="vpass">Повтор: </label>
+                <label for="vpass">РџРѕРІС‚РѕСЂ: </label>
 				<input type=password name=vpass size=15 maxlength=50>
 				<div class="info">
-					После смены пароля персонаж не может проводить операции с финансами, передавать, дарить и выкидывать предметы в течение 24 часов. Также e-mail можно сменить только через 48 часов после смены пароля.
+                    РџРѕСЃР»Рµ СЃРјРµРЅС‹ РїР°СЂРѕР»СЏ РїРµСЂСЃРѕРЅР°Р¶ РЅРµ РјРѕР¶РµС‚ РїСЂРѕРІРѕРґРёС‚СЊ РѕРїРµСЂР°С†РёРё СЃ С„РёРЅР°РЅСЃР°РјРё, РїРµСЂРµРґР°РІР°С‚СЊ, РґР°СЂРёС‚СЊ Рё РІС‹РєРёРґС‹РІР°С‚СЊ
+                    РїСЂРµРґРјРµС‚С‹ РІ С‚РµС‡РµРЅРёРµ 24 С‡Р°СЃРѕРІ. РўР°РєР¶Рµ e-mail РјРѕР¶РЅРѕ СЃРјРµРЅРёС‚СЊ С‚РѕР»СЊРєРѕ С‡РµСЂРµР· 48 С‡Р°СЃРѕРІ РїРѕСЃР»Рµ СЃРјРµРЅС‹ РїР°СЂРѕР»СЏ.
 				</div>
 			</div>
 			<div class="save">
-				<input type="submit" value="Сохранить">
+                <input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 			</div>
 			<?=$msg?>
 		</form>
@@ -53,29 +55,29 @@
 			<input type=hidden name=post_id value=49>
 			<input type=hidden name=act value=3>
 			<div class="field">
-				<label for="pa_long">Второй пароль</label>
-				<input type=checkbox name=emailc value=1 CHECKED> Копия пароля на Ваш E-mail.<br />
-				<input type=radio name=pa_long value=5 CHECKED> <b>простой уровень</b> (5 цифр) 
-				<input type=radio name=pa_long value=9> <b>сложный уровень</b> (9 цифр) 
+                <label for="pa_long">Р’С‚РѕСЂРѕР№ РїР°СЂРѕР»СЊ</label>
+                <input type=checkbox name=emailc value=1 CHECKED> РљРѕРїРёСЏ РїР°СЂРѕР»СЏ РЅР° Р’Р°С€ E-mail.<br/>
+                <input type=radio name=pa_long value=5 CHECKED> <b>РїСЂРѕСЃС‚РѕР№ СѓСЂРѕРІРµРЅСЊ</b> (5 С†РёС„СЂ)
+                <input type=radio name=pa_long value=9> <b>СЃР»РѕР¶РЅС‹Р№ СѓСЂРѕРІРµРЅСЊ</b> (9 С†РёС„СЂ)
 				<div class="info">
-					Устанавливается цифровой пароль для ввода с помощью мыши. Восстановить пароль невозможно. <br />
-					<b>ПРИ УСТАНОВКЕ ОБЯЗАТЕЛЬНО ЗАПИШИТЕ ПАРОЛЬ, КОТОРЫЙ ПОЯВИТСЯ НА ЭКРАНЕ.</b>
+                    РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ С†РёС„СЂРѕРІРѕР№ РїР°СЂРѕР»СЊ РґР»СЏ РІРІРѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ РјС‹С€Рё. Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ РЅРµРІРѕР·РјРѕР¶РЅРѕ. <br/>
+                    <b>РџР Р РЈРЎРўРђРќРћР’РљР• РћР‘РЇР—РђРўР•Р›Р¬РќРћ Р—РђРџРРЁРРўР• РџРђР РћР›Р¬, РљРћРўРћР Р«Р™ РџРћРЇР’РРўРЎРЇ РќРђ Р­РљР РђРќР•.</b>
 				</div>
 			</div>
 			<div class="save">
-				<input type=submit value="установить">
+                <input type=submit value="СѓСЃС‚Р°РЅРѕРІРёС‚СЊ">
 			</div>
 		</form>
 <?}
 } else {?>
-		<div>Вы не можете менять пароль и email!</div>
+    <div>Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РјРµРЅСЏС‚СЊ РїР°СЂРѕР»СЊ Рё email!</div>
 <?}?>
-		<div class="header">Отчет по 30 последним заходам игрока в игру.</div>
+        <div class="header">РћС‚С‡РµС‚ РїРѕ 30 РїРѕСЃР»РµРґРЅРёРј Р·Р°С…РѕРґР°Рј РёРіСЂРѕРєР° РІ РёРіСЂСѓ.</div>
 		<table width=100% class="otch">
 <?  $sql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM mlog WHERE typ='1' and login='".$player[login]."' ORDER BY time DESC LIMIT 0,30;");
 $col=array(0=>"FCFAF3","FCFAF3");$i=0;
 while ($row = mysqli_fetch_assoc($sql)) {
-if($row[action]=="err: пароль")$row[action]="<font color=#FF0000><b>err: пароль</b></font>";
+    if ($row[action] == "err: РїР°СЂРѕР»СЊ") $row[action] = "<font color=#FF0000><b>err: РїР°СЂРѕР»СЊ</b></font>";
 ?>
 			<tr>
 				<td>

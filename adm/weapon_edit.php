@@ -123,10 +123,10 @@ while($row = mysql_fetch_assoc($res)) {
 */
 
 $property_types = array(
-    1 => 'Основные требования',
-    2 => 'Требования умений',
-    3 => 'Основные хар-ки',
-    4 => 'Дополнительные умения'
+    1 => 'РћСЃРЅРѕРІРЅС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ',
+    2 => 'РўСЂРµР±РѕРІР°РЅРёСЏ СѓРјРµРЅРёР№',
+    3 => 'РћСЃРЅРѕРІРЅС‹Рµ С…Р°СЂ-РєРё',
+    4 => 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓРјРµРЅРёСЏ'
 );
 
 $weapon_properties = array();
@@ -284,20 +284,20 @@ foreach($property_types as $type=>$name) {
     '.$name.':
     <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_prop'.$type.'" >
         <tr >
-            <td class="cms_cap3 normal">Удалить</td>
-            <td class="cms_cap3">Название Характеристики</td>
-            <td class="cms_cap3">Значение</td>
+            <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+            <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё</td>
+            <td class="cms_cap3">Р—РЅР°С‡РµРЅРёРµ</td>
         </tr>
         '.(isset($prop_html[$type])?$prop_html[$type]:'').'
     </table>
-    <a onclick="addItem_select(\'table_prop'.$type.'\', \'tr_prop'.$type.'\', \'property[\'+(++last_id)+\']\', prop'.$type.'_array, \'property_value[\'+last_id+\']\', \'0\'); return false;" href="#">Добавить</a><br />
+    <a onclick="addItem_select(\'table_prop' . $type . '\', \'tr_prop' . $type . '\', \'property[\'+(++last_id)+\']\', prop' . $type . '_array, \'property_value[\'+last_id+\']\', \'0\'); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ</a><br />
     <br />
     ';
     
 }
 
 ?>
-<h3><?=($w_uid == ''?'Добавить оружие':'Изменить оружие')?></h3>
+    <h3><?= ($w_uid == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РѕСЂСѓР¶РёРµ' : 'РР·РјРµРЅРёС‚СЊ РѕСЂСѓР¶РёРµ') ?></h3>
 <script language="javascript">
 var last_id = <?=(int)$row_id?>;
 <? foreach($property_types as $type=>$name) { ?>
@@ -307,21 +307,21 @@ var last_id = <?=(int)$row_id?>;
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Название оружия: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ РѕСЂСѓР¶РёСЏ: &nbsp;</td>
   <td><input name="w_name" type="text" class="cms_fieldstyle1" value="<?=_htext($_POST['w_name'])?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Изображение: &nbsp;  </td>
+    <td>РР·РѕР±СЂР°Р¶РµРЅРёРµ: &nbsp;</td>
   <td><input name="w_image" type="text" class="cms_fieldstyle1" value="<?=_htext($_POST['w_image'])?>" size="30" maxlength="255" /></td>
 </tr>
 <? if ($_POST['w_image'] != '') { ?>
 <tr>
-  <td>Картинка: &nbsp;  </td>
+    <td>РљР°СЂС‚РёРЅРєР°: &nbsp;</td>
   <td><img src="http://image.neverlands.ru/weapon/<?=$_POST['w_image']?>" /></td>
 </tr>
 <? } ?>
 <tr>
-  <td>Категория оружия: &nbsp;  </td>
+    <td>РљР°С‚РµРіРѕСЂРёСЏ РѕСЂСѓР¶РёСЏ: &nbsp;</td>
   <td><?=createSelectFromArray('w_category', $weapon_categories, $_POST['w_category'])?></td>
 </tr>
 <tr>
@@ -343,8 +343,10 @@ var last_id = <?=(int)$row_id?>;
     
     
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='<?=$_SESSION['pages']['weapon_list']?>'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.location='<?= $_SESSION['pages']['weapon_list'] ?>'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

@@ -1,6 +1,6 @@
 
 <html>
-<META content="text/html; charset=windows-1251" Http-Equiv=Content-type>
+<META content="text/html; charset=utf-8" Http-Equiv=Content-type>
 <META Http-Equiv=Cache-Control Content=no-cache>
 <META Http-Equiv=PRAGMA content=NO-CACHE>
 <META Http-Equiv=Expires Content=0>
@@ -30,7 +30,7 @@ d.write('<TABLE cellpadding=0 cellspacing=0 width=100%><TR><TD>');
 </script>
 <div class="block info">
 	<div class="header">
-		<span>Гильдия мастеров</span>
+        <span>Р“РёР»СЊРґРёСЏ РјР°СЃС‚РµСЂРѕРІ</span>
 	
 <table width=100% cellspacing=0 border=0 cellpadding=0>
 <td valign=top>
@@ -41,7 +41,7 @@ d.write('<TABLE cellpadding=0 cellspacing=0 width=100%><TR><TD>');
 <div class="block info">
 	<div class="header">
 		<span><?
-echo "<center>У вас с собой <b>".lr($player["nv"])."  ".$player["baks"]." <img src=/img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд></b></center>";
+            echo "<center>РЈ РІР°СЃ СЃ СЃРѕР±РѕР№ <b>" . lr($player["nv"]) . "  " . $player["baks"] . " <img src=/img/razdor/emerald.png width=14 height=14 valign=middle title=РР·СѓРјСЂСѓРґ></b></center>";
 ?></span></div>
 <table width=80% cellspacing=0 cellpadding=0  border=0 style="width: 550;" align=center>
 
@@ -49,172 +49,172 @@ echo "<center>У вас с собой <b>".lr($player["nv"])."  ".$player["baks"]." <img s
 <script>
 function learn_um(params) {
 w = params.split('|');
-inner = '<form action=main.php method=get id=learn_um><input type=hidden name=um_name value="'+w[0]+'"><input type=hidden name=learn_um value="'+w[1]+'"><input type=hidden name=mode value=um><table width=100% cellpadding=7><tr><td width=10></td><td valign=top><b>Изучить  &laquo;'+w[0]+'&raquo;</b></td></tr></table></FORM>';
-message_window ('confirm','<b>Изучить  &laquo;'+w[0]+'&raquo;</b>',inner,'accept|cancel','click|d.getElementById(\'learn_um\').submit();')
+    inner = '<form action=main.php method=get id=learn_um><input type=hidden name=um_name value="' + w[0] + '"><input type=hidden name=learn_um value="' + w[1] + '"><input type=hidden name=mode value=um><table width=100% cellpadding=7><tr><td width=10></td><td valign=top><b>РР·СѓС‡РёС‚СЊ  &laquo;' + w[0] + '&raquo;</b></td></tr></table></FORM>';
+    message_window('confirm', '<b>РР·СѓС‡РёС‚СЊ  &laquo;' + w[0] + '&raquo;</b>', inner, 'accept|cancel', 'click|d.getElementById(\'learn_um\').submit();')
 }
 </script>
 
 <?
 if (@$_GET["mode"]=='' and (@$_GET["mode"]!='um' or @$_GET["mode"]!='pr')) {
-echo "<center><b><font color='#990000'>Выберите действие</font></b></center>";
+    echo "<center><b><font color='#990000'>Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ</font></b></center>";
 }
-## Само изучение.
+## РЎР°РјРѕ РёР·СѓС‡РµРЅРёРµ.
 
 
 if (@$_GET["learn_um"] == 'alhim'){
 if ($player["alhim"]>0)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `alhim`=1,`nv`=`nv`-100 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Получено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РџРѕР»СѓС‡РµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'alhim1'){
 if ($player["alhim"]<1)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `alhim`=0 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Отменено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РћС‚РјРµРЅРµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'trav'){
 if ($player["trav"]>0)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `trav`=1,`nv`=`nv`-100 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Получено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РџРѕР»СѓС‡РµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'trav1'){
 if ($player["trav"]<1)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `trav`=0 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Отменено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РћС‚РјРµРЅРµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'les'){
 if ($player["les"]>0)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `les`=1,`nv`=`nv`-100 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Получено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РџРѕР»СѓС‡РµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'les1'){
 if ($player["les"]<1)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `les`=0 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Отменено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РћС‚РјРµРЅРµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'koldyn'){
 if ($player["koldyn"]>0)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `koldyn`=1,`nv`=`nv`-100 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Получено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РџРѕР»СѓС‡РµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'koldyn1'){
 if ($player["koldyn"]<1)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `koldyn`=0 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Отменено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РћС‚РјРµРЅРµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'fish_skill'){
 if ($player["fish_skill"]>0)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `fish_skill`=1,`nv`=`nv`-100 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Получено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РџРѕР»СѓС‡РµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'fish_skill1'){
 if ($player["fish_skill"]<1)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["nv"]<100)
-$message = '<strong>Не хватает монет.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РјРѕРЅРµС‚.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `fish_skill`=0 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Отменено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РћС‚РјРµРЅРµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 if (@$_GET["learn_um"] == 'vzlomshik_nav'){
 if ($player["vzlomshik_nav"]>0)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["baks"]<5)
-$message = '<strong>Не хватает Измурда.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РР·РјСѓСЂРґР°.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `vzlomshik_nav`=1,`baks`=`baks`-5 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Получено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РџРѕР»СѓС‡РµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 
 if (@$_GET["learn_um"] == 'vzlomshik_nav1'){
 if ($player["vzlomshik_nav"]<1)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["baks"]<5)
-$message = '<strong>Не хватает Измурда.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РР·РјСѓСЂРґР°.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `vzlomshik_nav`=0 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Отменено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РћС‚РјРµРЅРµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 
 if (@$_GET["learn_um"] == 'palac'){
 if ($player["palac"]>0)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["baks"]<5)
-$message = '<strong>Не хватает Измурда.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РР·РјСѓСЂРґР°.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `palac`=1,`baks`=`baks`-5 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Получено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РџРѕР»СѓС‡РµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
 
 if (@$_GET["learn_um"] == 'palac1'){
 if ($player["palac"]<1)
-$message = '<strong>Уже изучено.</strong>';
+    $message = '<strong>РЈР¶Рµ РёР·СѓС‡РµРЅРѕ.</strong>';
 elseif ($player["baks"]<5)
-$message = '<strong>Не хватает Измурда.</strong>';
+    $message = '<strong>РќРµ С…РІР°С‚Р°РµС‚ РР·РјСѓСЂРґР°.</strong>';
 else {
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `palac`=0 WHERE `id`='".$player["id"]."' LIMIT 1 ");
-chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font><font color=000000><b><font color=#cc0000>Внимание! </font></b>Отменено умение <b>".$_GET["um_name"]."</b>.<BR>'+'');",$player['login']);
+    chmsg("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>РћС‚РјРµРЅРµРЅРѕ СѓРјРµРЅРёРµ <b>" . $_GET["um_name"] . "</b>.<BR>'+'');", $player['login']);
 echo('<script>location = "main.php?mode=um";</script>');
 }
 }
@@ -225,60 +225,60 @@ echo('<script>location = "main.php?mode=um";</script>');
 echo"
 <table class='block info' cellspacing=0 cellpadding=3 bordercolor=FFFFFF border=0 width=100% style='background-image: url(\"./image//fon3.jpg\");' align=center>
 <tr align=center>
-<td width=180><b><font color=red>Умение</font></b></td>
-<td width=150><b><font color=red>Действие</font></b></td>
-<td width=140><b><font color=red>Отмена</font></b></td>
+<td width=180><b><font color=red>РЈРјРµРЅРёРµ</font></b></td>
+<td width=150><b><font color=red>Р”РµР№СЃС‚РІРёРµ</font></b></td>
+<td width=140><b><font color=red>РћС‚РјРµРЅР°</font></b></td>
 </tr>";
-if ($player["alhim"]<1) $sb10 = 'Отменина'; else $sb10 = '<input type=button class=lbut value="Отменить" onclick="learn_um(\'Алхимия|alhim1\');">';
-if ($player["alhim"]>0) $sb1 = 'Изучено'; else $sb1 = '<input type=button class=lbut value="Изучить" onclick="learn_um(\'Алхимия|alhim\');">';
+if ($player["alhim"] < 1) $sb10 = 'РћС‚РјРµРЅРёРЅР°'; else $sb10 = '<input type=button class=lbut value="РћС‚РјРµРЅРёС‚СЊ" onclick="learn_um(\'РђР»С…РёРјРёСЏ|alhim1\');">';
+if ($player["alhim"] > 0) $sb1 = 'РР·СѓС‡РµРЅРѕ'; else $sb1 = '<input type=button class=lbut value="РР·СѓС‡РёС‚СЊ" onclick="learn_um(\'РђР»С…РёРјРёСЏ|alhim\');">';
 echo"<tr style='background-image: url(\"./image//fon3.jpg\");'>
-	<td class='tbl b' align=center>Алхимия</td>
+	<td class='tbl b' align=center>РђР»С…РёРјРёСЏ</td>
 	<td class='tbl b' align=center>".$sb1."</td>
 	<td class='tbl b' align=center>".$sb10."</td>
 </tr>";
-if ($player["trav"]<1) $sb9 = 'Отменина'; else $sb9 = '<input type=button class=lbut value="Отменить" onclick="learn_um(\'Травничество|trav1\');">';
-if ($player["trav"]>0) $sb2 = 'Изучено'; else $sb2 = '<input type=button class=lbut value="Изучить" onclick="learn_um(\'Травничество|trav\');">';
+if ($player["trav"] < 1) $sb9 = 'РћС‚РјРµРЅРёРЅР°'; else $sb9 = '<input type=button class=lbut value="РћС‚РјРµРЅРёС‚СЊ" onclick="learn_um(\'РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ|trav1\');">';
+if ($player["trav"] > 0) $sb2 = 'РР·СѓС‡РµРЅРѕ'; else $sb2 = '<input type=button class=lbut value="РР·СѓС‡РёС‚СЊ" onclick="learn_um(\'РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ|trav\');">';
 echo"<tr style='background-image: url(\"./image//fon3.jpg\");'>
-	<td class='tbl b' align=center>Травничество</td>
+	<td class='tbl b' align=center>РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ</td>
 	<td class='tbl b' align=center>".$sb2."</td>
 	<td class='tbl b' align=center>".$sb9."</td>
 </tr>";
-if ($player["les"]<1) $sb9 = 'Отменина'; else $sb9 = '<input type=button class=lbut value="Отменить" onclick="learn_um(\'Лесоруб|les1\');">';
-if ($player["les"]>0) $sb2 = 'Изучено'; else $sb2 = '<input type=button class=lbut value="Изучить" onclick="learn_um(\'Лесоруб|les\');">';
+if ($player["les"] < 1) $sb9 = 'РћС‚РјРµРЅРёРЅР°'; else $sb9 = '<input type=button class=lbut value="РћС‚РјРµРЅРёС‚СЊ" onclick="learn_um(\'Р›РµСЃРѕСЂСѓР±|les1\');">';
+if ($player["les"] > 0) $sb2 = 'РР·СѓС‡РµРЅРѕ'; else $sb2 = '<input type=button class=lbut value="РР·СѓС‡РёС‚СЊ" onclick="learn_um(\'Р›РµСЃРѕСЂСѓР±|les\');">';
 echo"<tr style='background-image: url(\"./image//fon3.jpg\");'>
-	<td class='tbl b' align=center>Лесоруб</td>
+	<td class='tbl b' align=center>Р›РµСЃРѕСЂСѓР±</td>
 	<td class='tbl b' align=center>".$sb2."</td>
 	<td class='tbl b' align=center>".$sb9."</td>
 </tr>";
-if ($player["koldyn"]<1) $sb8 = 'Отменина'; else $sb8 = '<input type=button class=lbut value="Отменить" onclick="learn_um(\'Колдун|koldyn1\');">';
-if ($player["koldyn"]>0) $sb3 = 'Изучено'; else $sb3 = '<input type=button class=lbut value="Изучить" onclick="learn_um(\'Колдун|koldyn\');">';
+if ($player["koldyn"] < 1) $sb8 = 'РћС‚РјРµРЅРёРЅР°'; else $sb8 = '<input type=button class=lbut value="РћС‚РјРµРЅРёС‚СЊ" onclick="learn_um(\'РљРѕР»РґСѓРЅ|koldyn1\');">';
+if ($player["koldyn"] > 0) $sb3 = 'РР·СѓС‡РµРЅРѕ'; else $sb3 = '<input type=button class=lbut value="РР·СѓС‡РёС‚СЊ" onclick="learn_um(\'РљРѕР»РґСѓРЅ|koldyn\');">';
 echo"<tr style='background-image: url(\"./image//fon3.jpg\");'>
-	<td class='tbl b' align=center>Колдун</td>
+	<td class='tbl b' align=center>РљРѕР»РґСѓРЅ</td>
 	<td class='tbl b' align=center>".$sb3."</td>
 	<td class='tbl b' align=center>".$sb8."</td>
 </tr>";
-if ($player["fish_skill"]<1) $sb7 = 'Отменина'; else $sb7 = '<input type=button class=lbut value="Отменить" onclick="learn_um(\'Рыболов|fish_skill1\');">';
-if ($player["fish_skill"]>0) $sb4 = 'Изучено'; else $sb4 = '<input type=button class=lbut value="Изучить" onclick="learn_um(\'Рыболов|fish_skill\');">';
+if ($player["fish_skill"] < 1) $sb7 = 'РћС‚РјРµРЅРёРЅР°'; else $sb7 = '<input type=button class=lbut value="РћС‚РјРµРЅРёС‚СЊ" onclick="learn_um(\'Р С‹Р±РѕР»РѕРІ|fish_skill1\');">';
+if ($player["fish_skill"] > 0) $sb4 = 'РР·СѓС‡РµРЅРѕ'; else $sb4 = '<input type=button class=lbut value="РР·СѓС‡РёС‚СЊ" onclick="learn_um(\'Р С‹Р±РѕР»РѕРІ|fish_skill\');">';
 echo"<tr style='background-image: url(\"./image//fon3.jpg\");'>
-	<td class='tbl b' align=center>Рыболов</td>
+	<td class='tbl b' align=center>Р С‹Р±РѕР»РѕРІ</td>
 	<td class='tbl b' align=center>".$sb4."</td>
 	<td class='tbl b' align=center>".$sb7."</td>
 </tr>";
-if ($player["vzlomshik_nav"]<1) $sb6 = 'Отменина'; else $sb6 = '<input type=button class=lbut value="Отменить" onclick="learn_um(\'Взломщик|vzlomshik_nav1\');">';
+if ($player["vzlomshik_nav"] < 1) $sb6 = 'РћС‚РјРµРЅРёРЅР°'; else $sb6 = '<input type=button class=lbut value="РћС‚РјРµРЅРёС‚СЊ" onclick="learn_um(\'Р’Р·Р»РѕРјС‰РёРє|vzlomshik_nav1\');">';
 if ($player["palac"]<1){
-if ($player["vzlomshik_nav"]>0) $sb5 = 'Изучено'; else $sb5 = '<input type=button class=lbut value="Изучить" onclick="learn_um(\'Взломщик|vzlomshik_nav\');">';
+    if ($player["vzlomshik_nav"] > 0) $sb5 = 'РР·СѓС‡РµРЅРѕ'; else $sb5 = '<input type=button class=lbut value="РР·СѓС‡РёС‚СЊ" onclick="learn_um(\'Р’Р·Р»РѕРјС‰РёРє|vzlomshik_nav\');">';
 }
 echo"
-	<td class='tbl b' align=center>Взломщик: <font color=red>Стоимость изучения:</font> <font color=Blue Green>5 </font> <font color=red><img src=/img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд></font>
+	<td class='tbl b' align=center>Р’Р·Р»РѕРјС‰РёРє: <font color=red>РЎС‚РѕРёРјРѕСЃС‚СЊ РёР·СѓС‡РµРЅРёСЏ:</font> <font color=Blue Green>5 </font> <font color=red><img src=/img/razdor/emerald.png width=14 height=14 valign=middle title=РР·СѓРјСЂСѓРґ></font>
 	<td class='tbl b' align=center>".$sb5."</td>
 	<td class='tbl b' align=center>".$sb6."</td>
 </tr>";
-if ($player["palac"]<1) $sb12 = 'Отменина'; else $sb12 = '<input type=button class=lbut value="Отменить" onclick="learn_um(\'Палач|palac1\');">';
+if ($player["palac"] < 1) $sb12 = 'РћС‚РјРµРЅРёРЅР°'; else $sb12 = '<input type=button class=lbut value="РћС‚РјРµРЅРёС‚СЊ" onclick="learn_um(\'РџР°Р»Р°С‡|palac1\');">';
 if ($player["vzlomshik_nav"]<1){
-if ($player["palac"]>0) $sb11 = 'Изучено'; else $sb11 = '<input type=button class=lbut value="Изучить" onclick="learn_um(\'Палач|palac\');">';
+    if ($player["palac"] > 0) $sb11 = 'РР·СѓС‡РµРЅРѕ'; else $sb11 = '<input type=button class=lbut value="РР·СѓС‡РёС‚СЊ" onclick="learn_um(\'РџР°Р»Р°С‡|palac\');">';
 }
 echo"
-	<td class='tbl b' align=center>Палач: <font color=red>Стоимость изучения:</font> <font color=Blue Green>5 </font> <font color=red><img src=/img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд></font>
+	<td class='tbl b' align=center>РџР°Р»Р°С‡: <font color=red>РЎС‚РѕРёРјРѕСЃС‚СЊ РёР·СѓС‡РµРЅРёСЏ:</font> <font color=Blue Green>5 </font> <font color=red><img src=/img/razdor/emerald.png width=14 height=14 valign=middle title=РР·СѓРјСЂСѓРґ></font>
 	<td class='tbl b' align=center>".$sb11."</td>
 	<td class='tbl b' align=center>".$sb12."</td>
 </tr>";

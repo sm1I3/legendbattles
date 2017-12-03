@@ -21,7 +21,7 @@ function BuildBut($array){
 		$b = $lr % 100;
 		$s = intval(($lr % 10000) / 100);
 		$g = intval($lr / 10000);
-		return (($g)?$g.' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Çîëîòî>  ':'').(($s)?$s.' <img src=/img/image/silver.png width=14 height=14 valign=middle title=Ñåðåáðî> ':'').(($b)?$b.' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Áðîíçà> ':'');
+        return (($g) ? $g . ' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Ð—Ð¾Ð»Ð¾Ñ‚Ð¾>  ' : '') . (($s) ? $s . ' <img src=/img/image/silver.png width=14 height=14 valign=middle title=Ð¡ÐµÑ€ÐµÐ±Ñ€Ð¾> ' : '') . (($b) ? $b . ' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Ð‘Ñ€Ð¾Ð½Ð·Ð°> ' : '');
 	}
 
 function ConvertParams($params){
@@ -36,6 +36,6 @@ function ConvertParams($params){
 $Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `tavern` WHERE `type`='" . intval($_GET['type']) . "'");
 $response = '1';
 while($row = mysqli_fetch_assoc($Query)){
-	$response .= '@'.$row['id'].'|'.$row['count'].'|'.$row['img'].'|'.$row['name'].'|'.lr($row['price'])."|['".$row['name']."',".ConvertParams((($row['LI']>0)?"LI|".$row['LI']."@":'LI@').$row['effects'])."]|[[".(($row['count']>0 && $pers['nv']>=$row['price'])?"'fr_but','Âûïèòü',1":"'fr_but_dis','Âûïèòü',0")."],[".(($row['count']>0 && $pers['nv']>=$row['price'])?BuildBut(array(array('get_id','41'),array('id',$row['id']),array('vcode',vCode()))):'')."]]";
+    $response .= '@' . $row['id'] . '|' . $row['count'] . '|' . $row['img'] . '|' . $row['name'] . '|' . lr($row['price']) . "|['" . $row['name'] . "'," . ConvertParams((($row['LI'] > 0) ? "LI|" . $row['LI'] . "@" : 'LI@') . $row['effects']) . "]|[[" . (($row['count'] > 0 && $pers['nv'] >= $row['price']) ? "'fr_but','Ð’Ñ‹Ð¿Ð¸Ñ‚ÑŒ',1" : "'fr_but_dis','Ð’Ñ‹Ð¿Ð¸Ñ‚ÑŒ',0") . "],[" . (($row['count'] > 0 && $pers['nv'] >= $row['price']) ? BuildBut(array(array('get_id', '41'), array('id', $row['id']), array('vcode', vCode()))) : '') . "]]";
 }
 exit($response);

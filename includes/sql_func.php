@@ -1,53 +1,103 @@
 <?
 
-## функции логов действий игрока
+## С„СѓРЅРєС†РёРё Р»РѕРіРѕРІ РґРµР№СЃС‚РІРёР№ РёРіСЂРѕРєР°
 
-	// функция записи в лог
+// С„СѓРЅРєС†РёСЏ Р·Р°РїРёСЃРё РІ Р»РѕРі
 		function player_actions($id,$type,$about){
-			# $id = ид персонажа
+            # $id = РёРґ РїРµСЂСЃРѕРЅР°Р¶Р°
 			$pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT SQL_CACHE * FROM `user` WHERE `id`='".$id."' LIMIT 1;"));
 			$txt = player_actions_text($type,$about,$pl);
 			mysqli_query($GLOBALS['db_link'],"INSERT INTO `user_actions` (`pl_id`,`pl_login`,`pl_ip`,`pl_action`,`type`) VALUES ('".$pl['id']."','".$pl['login']."','".$pl['ip']."','".$txt."','".$type."');");
 		}
 	// end
-	
-	// функция форматирования строки для записи
+
+// С„СѓРЅРєС†РёСЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ СЃС‚СЂРѕРєРё РґР»СЏ Р·Р°РїРёСЃРё
 		function player_actions_text($type,$abt,$pl){
-			# $about = строка с текстовым описанием действия. $type = тип действия
+            # $about = СЃС‚СЂРѕРєР° СЃ С‚РµРєСЃС‚РѕРІС‹Рј РѕРїРёСЃР°РЅРёРµРј РґРµР№СЃС‚РІРёСЏ. $type = С‚РёРї РґРµР№СЃС‚РІРёСЏ
 			$a = explode("@",$type);
 			$about = explode("@",$abt);
 			$fulltxt = array();
 			for($i=0;$i<=count($a);$i++){
-				if($about[$i]==''){$about[$i]='данные не найдены, тип эвента: '.intval($a[$i]);} // если вдруг забуду сделать описание
+                if ($about[$i] == '') {
+                    $about[$i] = 'РґР°РЅРЅС‹Рµ РЅРµ РЅР°Р№РґРµРЅС‹, С‚РёРї СЌРІРµРЅС‚Р°: ' . intval($a[$i]);
+                } // РµСЃР»Рё РІРґСЂСѓРі Р·Р°Р±СѓРґСѓ СЃРґРµР»Р°С‚СЊ РѕРїРёСЃР°РЅРёРµ
 				switch(intval($a[$i])){
-					case 1: $fulltxt[$i] = $pl['login'].' получил уровень: <b><font color=#CC0000>'.$about[$i].'</font></b>.'; break; # получил уровень
-					case 2: $fulltxt[$i] = $pl['login'].' получил опыт: <b><font color=#CC0000>'.$about[$i].'</font></b>.'; break; # получил опыт 
-					case 3: $fulltxt[$i] = '<b>DLR</b>: '.$about[$i];  break; # изменения в балансе DLR
-					case 4: $fulltxt[$i] = '<b><img src=img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд></b>: '.$about[$i];  break; # изменения в балансе BAKS
-					case 5: $fulltxt[$i] = '';  break; # изменения в балансе LR
-					case 6: $fulltxt[$i] = '';  break; # счет в банке - LR(пополнение)
-					case 7: $fulltxt[$i] = '';  break; # счет в банке - LR(снятие) 
-					case 8: $fulltxt[$i] = '';  break; # счет в банке - DLR(пополнение)
-					case 9: $fulltxt[$i] = '';  break; # счет в банке - DLR(снятие)
-					case 10: $fulltxt[$i] = 'Куплен предмет (в дц): '.$about[$i];  break; # покупка в ДЦ
-					case 11: $fulltxt[$i] = 'Продан предмет (в дц): '.$about[$i];    break; # продажа в ДЦ
-					case 12: $fulltxt[$i] = 'Куплен предмет (в магазин): '.$about[$i];  break; # покупка в магазине
-					case 13: $fulltxt[$i] = 'Продан предмет (в магазин): '.$about[$i];  break; # продажа в магазин
-					case 14: $fulltxt[$i] = 'Арендован артефакт: '.$about[$i];  break; # аренда в ДЦ
-					case 15: $fulltxt[$i] = 'Взят в рассрочку артефакт: '.$about[$i];  break; # рассрочка в ДЦ
-					case 16: $fulltxt[$i] = 'Первод ЛР другому игроку: '.$about[$i];  break; # перевод другим персонажам (LR)
-					case 17: $fulltxt[$i] = 'Первод ДЛР другому игроку: '.$about[$i];  break; # перевод другим персонажам (DLR)
-					case 18: $fulltxt[$i] = '';  break; # перевод от других персонажей (LR)
-					case 19: $fulltxt[$i] = '';  break; # перевод от других персонажей (DLR)
-					case 20: $fulltxt[$i] = 'Куплен предмет (у игрока): '.$about[$i];  break; # покупка у игрока
-					case 21: $fulltxt[$i] = 'Продан предмет (игроку): '.$about[$i];  break; # продажа игроку
-					case 22: $fulltxt[$i] = $pl['login'].' получил бонус по реферальной системе: <b><font color=#CC0000>+'.$about[$i].'</font> LR</b>.';  break; # бонус по рефералке (LR)
-					case 23: $fulltxt[$i] = 'Лицензии: '.$about[$i]; break; # лицензии
-					case 24: $fulltxt[$i] = $about[$i].' <b>[рынок]</b>'; break; # рынок
+                    case 1:
+                        $fulltxt[$i] = $pl['login'] . ' РїРѕР»СѓС‡РёР» СѓСЂРѕРІРµРЅСЊ: <b><font color=#CC0000>' . $about[$i] . '</font></b>.';
+                        break; # РїРѕР»СѓС‡РёР» СѓСЂРѕРІРµРЅСЊ
+                    case 2:
+                        $fulltxt[$i] = $pl['login'] . ' РїРѕР»СѓС‡РёР» РѕРїС‹С‚: <b><font color=#CC0000>' . $about[$i] . '</font></b>.';
+                        break; # РїРѕР»СѓС‡РёР» РѕРїС‹С‚
+                    case 3:
+                        $fulltxt[$i] = '<b>DLR</b>: ' . $about[$i];
+                        break; # РёР·РјРµРЅРµРЅРёСЏ РІ Р±Р°Р»Р°РЅСЃРµ DLR
+                    case 4:
+                        $fulltxt[$i] = '<b><img src=img/razdor/emerald.png width=14 height=14 valign=middle title=РР·СѓРјСЂСѓРґ></b>: ' . $about[$i];
+                        break; # РёР·РјРµРЅРµРЅРёСЏ РІ Р±Р°Р»Р°РЅСЃРµ BAKS
+                    case 5:
+                        $fulltxt[$i] = '';
+                        break; # РёР·РјРµРЅРµРЅРёСЏ РІ Р±Р°Р»Р°РЅСЃРµ LR
+                    case 6:
+                        $fulltxt[$i] = '';
+                        break; # СЃС‡РµС‚ РІ Р±Р°РЅРєРµ - LR(РїРѕРїРѕР»РЅРµРЅРёРµ)
+                    case 7:
+                        $fulltxt[$i] = '';
+                        break; # СЃС‡РµС‚ РІ Р±Р°РЅРєРµ - LR(СЃРЅСЏС‚РёРµ)
+                    case 8:
+                        $fulltxt[$i] = '';
+                        break; # СЃС‡РµС‚ РІ Р±Р°РЅРєРµ - DLR(РїРѕРїРѕР»РЅРµРЅРёРµ)
+                    case 9:
+                        $fulltxt[$i] = '';
+                        break; # СЃС‡РµС‚ РІ Р±Р°РЅРєРµ - DLR(СЃРЅСЏС‚РёРµ)
+                    case 10:
+                        $fulltxt[$i] = 'РљСѓРїР»РµРЅ РїСЂРµРґРјРµС‚ (РІ РґС†): ' . $about[$i];
+                        break; # РїРѕРєСѓРїРєР° РІ Р”Р¦
+                    case 11:
+                        $fulltxt[$i] = 'РџСЂРѕРґР°РЅ РїСЂРµРґРјРµС‚ (РІ РґС†): ' . $about[$i];
+                        break; # РїСЂРѕРґР°Р¶Р° РІ Р”Р¦
+                    case 12:
+                        $fulltxt[$i] = 'РљСѓРїР»РµРЅ РїСЂРµРґРјРµС‚ (РІ РјР°РіР°Р·РёРЅ): ' . $about[$i];
+                        break; # РїРѕРєСѓРїРєР° РІ РјР°РіР°Р·РёРЅРµ
+                    case 13:
+                        $fulltxt[$i] = 'РџСЂРѕРґР°РЅ РїСЂРµРґРјРµС‚ (РІ РјР°РіР°Р·РёРЅ): ' . $about[$i];
+                        break; # РїСЂРѕРґР°Р¶Р° РІ РјР°РіР°Р·РёРЅ
+                    case 14:
+                        $fulltxt[$i] = 'РђСЂРµРЅРґРѕРІР°РЅ Р°СЂС‚РµС„Р°РєС‚: ' . $about[$i];
+                        break; # Р°СЂРµРЅРґР° РІ Р”Р¦
+                    case 15:
+                        $fulltxt[$i] = 'Р’Р·СЏС‚ РІ СЂР°СЃСЃСЂРѕС‡РєСѓ Р°СЂС‚РµС„Р°РєС‚: ' . $about[$i];
+                        break; # СЂР°СЃСЃСЂРѕС‡РєР° РІ Р”Р¦
+                    case 16:
+                        $fulltxt[$i] = 'РџРµСЂРІРѕРґ Р›Р  РґСЂСѓРіРѕРјСѓ РёРіСЂРѕРєСѓ: ' . $about[$i];
+                        break; # РїРµСЂРµРІРѕРґ РґСЂСѓРіРёРј РїРµСЂСЃРѕРЅР°Р¶Р°Рј (LR)
+                    case 17:
+                        $fulltxt[$i] = 'РџРµСЂРІРѕРґ Р”Р›Р  РґСЂСѓРіРѕРјСѓ РёРіСЂРѕРєСѓ: ' . $about[$i];
+                        break; # РїРµСЂРµРІРѕРґ РґСЂСѓРіРёРј РїРµСЂСЃРѕРЅР°Р¶Р°Рј (DLR)
+                    case 18:
+                        $fulltxt[$i] = '';
+                        break; # РїРµСЂРµРІРѕРґ РѕС‚ РґСЂСѓРіРёС… РїРµСЂСЃРѕРЅР°Р¶РµР№ (LR)
+                    case 19:
+                        $fulltxt[$i] = '';
+                        break; # РїРµСЂРµРІРѕРґ РѕС‚ РґСЂСѓРіРёС… РїРµСЂСЃРѕРЅР°Р¶РµР№ (DLR)
+                    case 20:
+                        $fulltxt[$i] = 'РљСѓРїР»РµРЅ РїСЂРµРґРјРµС‚ (Сѓ РёРіСЂРѕРєР°): ' . $about[$i];
+                        break; # РїРѕРєСѓРїРєР° Сѓ РёРіСЂРѕРєР°
+                    case 21:
+                        $fulltxt[$i] = 'РџСЂРѕРґР°РЅ РїСЂРµРґРјРµС‚ (РёРіСЂРѕРєСѓ): ' . $about[$i];
+                        break; # РїСЂРѕРґР°Р¶Р° РёРіСЂРѕРєСѓ
+                    case 22:
+                        $fulltxt[$i] = $pl['login'] . ' РїРѕР»СѓС‡РёР» Р±РѕРЅСѓСЃ РїРѕ СЂРµС„РµСЂР°Р»СЊРЅРѕР№ СЃРёСЃС‚РµРјРµ: <b><font color=#CC0000>+' . $about[$i] . '</font> LR</b>.';
+                        break; # Р±РѕРЅСѓСЃ РїРѕ СЂРµС„РµСЂР°Р»РєРµ (LR)
+                    case 23:
+                        $fulltxt[$i] = 'Р›РёС†РµРЅР·РёРё: ' . $about[$i];
+                        break; # Р»РёС†РµРЅР·РёРё
+                    case 24:
+                        $fulltxt[$i] = $about[$i] . ' <b>[СЂС‹РЅРѕРє]</b>';
+                        break; # СЂС‹РЅРѕРє
 				}
-				
+
 			}
-			# формируем табличку
+            # С„РѕСЂРјРёСЂСѓРµРј С‚Р°Р±Р»РёС‡РєСѓ
 			$text = '
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" align=center>';
 			 for($b=0;$b<=count($fulltxt);$b++){
@@ -61,26 +111,26 @@
 			return $text;
 
 		}
-		
+
 function color_opt($font,$type){
 	$color = array("000000","FF3366","CC0033","FF3399","CC0066","FF6699","CC3366","990033","FF6633","CC3300","FF3300","FF6600","FF9966","CC6633","993300","FF9933","CC6600","FF9900","FF99CC","CC6699","993366","660033","FF66CC","CC3399","990066","FF33CC","CC0099","FF00CC","FF0099","FF0066","FF0033","FF0000","FF3333","CC0000","FF6666","CC3333","990000","FF9999","CC6666","993333","660000","CC9999","996666","663333","FFCC99","CC9966","996633","663300","FFCC66","CC9933","996600","FFCC33","CC9900","FFCC00","CC99FF","9966CC","9966FF","FFCCFF","CC99CC","996699","663366","FF99FF","CC66CC","CC33CC","CC00CC","6666CC","3333CC","000099","000066","0000CC","0000FF","336633","339933","669966","009900","006600","00CC00","3300FF","00CCCC","009999","33CCCC","006666","336699","003366","003399","0033CC","3366FF","336600","339900","33CC00","00CC33","00CCFF","33CCFF","0066CC","6600FF");
 	foreach ($color as $value) {
-		$ret .= '<option value="'.$value.'" style="BACKGROUND: #'.((!$ret)?'FFFFFF':$value).'"'.($font==$value?' selected=selected':'').'>'.((!$ret)?'СТАНДАРТНЫЙ':'').'</option>';
+        $ret .= '<option value="' . $value . '" style="BACKGROUND: #' . ((!$ret) ? 'FFFFFF' : $value) . '"' . ($font == $value ? ' selected=selected' : '') . '>' . ((!$ret) ? 'РЎРўРђРќР”РђР РўРќР«Р™' : '') . '</option>';
 	}
 	return $ret;
 }
 //function itemparams($par,$eff,$modstat,$damage_mod,$iz,$dolg,$slot,$need,$plstt,$itlevel,$itmass){
-function itemparams($inv,$ITEM,$player,$plstt,$mass){	
-	$par_i='';$tr_b[0]='';$tr_b[1]=0;	
+function itemparams($inv,$ITEM,$player,$plstt,$mass){
+	$par_i='';$tr_b[0]='';$tr_b[1]=0;
 							if($ITEM['slot']==16){
-						$par_i .= "<font class=weaponch><b><font color=#cc0000>Можно одевать на кольчуги</font></b><br>";
+                                $par_i .= "<font class=weaponch><b><font color=#cc0000>РњРѕР¶РЅРѕ РѕРґРµРІР°С‚СЊ РЅР° РєРѕР»СЊС‡СѓРіРё</font></b><br>";
 					}
 					$par_i .= blocks2($ITEM['block']);
 	$par=explode("|",$ITEM['param']);
 	$mod=explode("|",$ITEM['mod']);
 	$need=explode("|",$ITEM['need']);
 	if($inv==1){
-		//торговая лицензия персонажа
+        //С‚РѕСЂРіРѕРІР°СЏ Р»РёС†РµРЅР·РёСЏ РїРµСЂСЃРѕРЅР°Р¶Р°
 			if($player[level]<5){$licen=1;}
 			else{$licen=tradelic($player['licens'],1);}
 		//
@@ -101,32 +151,50 @@ function itemparams($inv,$ITEM,$player,$plstt,$mass){
 			if($price<1){$price=1;}
 		}
 		$arr[3] = $price;
-		$arr[4] = $price_dd;	
+		$arr[4] = $price_dd;
 	}
 	$modstat='';
 	foreach ($mod as $value){
 		$modstats=explode("@",$value);
 		$modstat[$modstats[0]]=$modstats[1];
-	}	
-	//параметры
-	//if($par){	
-		if($ITEM['type']=='w70'){ 
-			if($ITEM['effect']>0){$par_i.="&nbsp;Время действия: <font color=#BB0000><b>".$ITEM['effect']."</b></font> минут<br>";}
+	}
+    //РїР°СЂР°РјРµС‚СЂС‹
+	//if($par){
+		if($ITEM['type']=='w70'){
+            if ($ITEM['effect'] > 0) {
+                $par_i .= "&nbsp;Р’СЂРµРјСЏ РґРµР№СЃС‚РІРёСЏ: <font color=#BB0000><b>" . $ITEM['effect'] . "</b></font> РјРёРЅСѓС‚<br>";
+            }
 			switch($ITEM['num_a']){
-				case '32': $par_i.="&nbsp;Снимает эффекты: <font color=#BB0000><b>мази.</b></font><br>";break;
-				case '33': $par_i.="&nbsp;Снимает эффекты: <font color=#BB0000><b>травмы.</b></font><br>";break;
-				case '34': $par_i.="&nbsp;Снимает эффекты: <font color=#BB0000><b>зелья, абилки.</b></font><br>";break;
-				case '1': $par_i.="&nbsp;Снимает эффекты: <font color=#BB0000><b>травмы, зелья, абилки, мази.</b></font><br>";break;
-				case '2': $par_i.="&nbsp;Снимает эффекты: <font color=#BB0000><b>травмы, зелья, абилки, мази.<br>&nbsp;Со всех персонажей на клетке.</b></font><br>"; break;
-				case '3': $par_i.="&nbsp;Снимает эффекты: <font color=#BB0000><b>мази.<br>&nbsp;Со всех персонажей на клетке.</b></font><br>"; break;
-				case '4': $par_i.="&nbsp;Снимает эффекты: <font color=#BB0000><b>травмы.<br>&nbsp;Со всех персонажей на клетке.</b></font><br>"; break;
-				case '5': $par_i.="&nbsp;Снимает эффекты: <font color=#BB0000><b>зелья, абилки.<br>&nbsp;Со всех персонажей на клетке.</b></font><br>"; break;
+                case '32':
+                    $par_i .= "&nbsp;РЎРЅРёРјР°РµС‚ СЌС„С„РµРєС‚С‹: <font color=#BB0000><b>РјР°Р·Рё.</b></font><br>";
+                    break;
+                case '33':
+                    $par_i .= "&nbsp;РЎРЅРёРјР°РµС‚ СЌС„С„РµРєС‚С‹: <font color=#BB0000><b>С‚СЂР°РІРјС‹.</b></font><br>";
+                    break;
+                case '34':
+                    $par_i .= "&nbsp;РЎРЅРёРјР°РµС‚ СЌС„С„РµРєС‚С‹: <font color=#BB0000><b>Р·РµР»СЊСЏ, Р°Р±РёР»РєРё.</b></font><br>";
+                    break;
+                case '1':
+                    $par_i .= "&nbsp;РЎРЅРёРјР°РµС‚ СЌС„С„РµРєС‚С‹: <font color=#BB0000><b>С‚СЂР°РІРјС‹, Р·РµР»СЊСЏ, Р°Р±РёР»РєРё, РјР°Р·Рё.</b></font><br>";
+                    break;
+                case '2':
+                    $par_i .= "&nbsp;РЎРЅРёРјР°РµС‚ СЌС„С„РµРєС‚С‹: <font color=#BB0000><b>С‚СЂР°РІРјС‹, Р·РµР»СЊСЏ, Р°Р±РёР»РєРё, РјР°Р·Рё.<br>&nbsp;РЎРѕ РІСЃРµС… РїРµСЂСЃРѕРЅР°Р¶РµР№ РЅР° РєР»РµС‚РєРµ.</b></font><br>";
+                    break;
+                case '3':
+                    $par_i .= "&nbsp;РЎРЅРёРјР°РµС‚ СЌС„С„РµРєС‚С‹: <font color=#BB0000><b>РјР°Р·Рё.<br>&nbsp;РЎРѕ РІСЃРµС… РїРµСЂСЃРѕРЅР°Р¶РµР№ РЅР° РєР»РµС‚РєРµ.</b></font><br>";
+                    break;
+                case '4':
+                    $par_i .= "&nbsp;РЎРЅРёРјР°РµС‚ СЌС„С„РµРєС‚С‹: <font color=#BB0000><b>С‚СЂР°РІРјС‹.<br>&nbsp;РЎРѕ РІСЃРµС… РїРµСЂСЃРѕРЅР°Р¶РµР№ РЅР° РєР»РµС‚РєРµ.</b></font><br>";
+                    break;
+                case '5':
+                    $par_i .= "&nbsp;РЎРЅРёРјР°РµС‚ СЌС„С„РµРєС‚С‹: <font color=#BB0000><b>Р·РµР»СЊСЏ, Р°Р±РёР»РєРё.<br>&nbsp;РЎРѕ РІСЃРµС… РїРµСЂСЃРѕРЅР°Р¶РµР№ РЅР° РєР»РµС‚РєРµ.</b></font><br>";
+                    break;
 			}
-		}		
+		}
 		foreach ($par as $value){
 			$stat=explode("@",$value);
 			if($stat[1]>0){
-				$plus = "+";		
+				$plus = "+";
 			}else{
 				$plus ="";
 			}
@@ -136,32 +204,32 @@ function itemparams($inv,$ITEM,$player,$plstt,$mass){
 				$percent="";
 			}
 			if($stat[0]==1){
-				$pr=explode("-",$modstat[1]);		
+				$pr=explode("-",$modstat[1]);
 				$pri=explode("-",$stat[1]);
 				if($stat[1]){
 					$modstroke="".($modstat[1]!='' ?  ($pr[0]+$pri[0])."-".($pr[1]+$pri[1])."$percent  </b>[".($modstat[1]>0 ? "<font color=green> <b>".$modstat[1]."</b>$percent" : "<font color=red><b>".$modstat[1]."</b>$percent")."</font></b> ]<b> " : "$stat[1]$percent")."";
-				}	
+				}
 			}else{
 				$modstroke="".($modstat[$stat[0]]!='' ?  $stat[1]+$modstat[$stat[0]]."$percent  </b>[".($modstat[$stat[0]]>0 ? "<font color=green>+<b>".$modstat[$stat[0]]."</b>$percent" : "<font color=red><b>".$modstat[$stat[0]]."</b>$percent")."</font></b> ]<b> " : "$stat[1]$percent")."";
 			}
 			$use5 = array('1','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','expbonus','massbonus');
-			$use3 = array('Удар:','Карманов:','Материал:','Уловка:','Точность:','Сокрушение:','Стойкость:','Класс брони:','Пробой брони:','Пробой колющим ударом:','Пробой режущим ударом:','Пробой проникающим ударом:','Пробой пробивающим ударом:','Пробой рубящим ударом:','Пробой карающим ударом:','Пробой отсекающим ударом:','Пробой дробящим ударом:','Защита от колющих ударов:','Защита от режущих ударов:','Защита от проникающих ударов:','Защита от пробивающих ударов:','Защита от рубящих ударов:','Защита от карающих ударов:','Защита от отсекающих ударов:','Защита от дробящих ударов:','НР:','Очки действия:','Мана:','Мощь:','Проворность:','Везение:','Здоровье:','Разум:','Сноровка:','Владение мечами:','Владение топорами:','Владение дробящим оружием:','Владение ножами:','Владение метательным оружием:','Владение алебардами и копьями:','Владение посохами:','Владение экзотическим оружием:','Владение двуручным оружием:','Магия огня:','Магия воды:','Магия воздуха:','Магия земли:','Сопротивление магии огня:','Сопротивление магии воды:','Сопротивление магии воздуха:','Сопротивление магии земли:','Воровство:','Осторожность:','Скрытность:','Наблюдательность:','Торговля:','Странник:','Рыболов:','Лесоруб:','Ювелирное дело:','Самолечение:','Оружейник:','Доктор:','Самолечение:','Быстрое восстановление маны:','Лидерство:','Алхимия:','Развитие горного дела:','Травничество:',"<font color=#BB0000>Коэффициент: $plus</font>","Бонус опыта: <font color=#BB0000>$plus<b>".$modstroke."%</b></font><br> Максимальный опыт: <font color=#BB0000>$plus<b>".$modstroke."%</b></font><br>","Масса: <font color=#BB0000>$plus<b>".$modstroke."</b></font>");
+            $use3 = array('РЈРґР°СЂ:', 'РљР°СЂРјР°РЅРѕРІ:', 'РњР°С‚РµСЂРёР°Р»:', 'РЈР»РѕРІРєР°:', 'РўРѕС‡РЅРѕСЃС‚СЊ:', 'РЎРѕРєСЂСѓС€РµРЅРёРµ:', 'РЎС‚РѕР№РєРѕСЃС‚СЊ:', 'РљР»Р°СЃСЃ Р±СЂРѕРЅРё:', 'РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё:', 'РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј:', 'РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј:', 'РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:', 'РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј:', 'РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј:', 'РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј:', 'РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:', 'РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј:', 'Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ:', 'Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ:', 'Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:', 'Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ:', 'Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ:', 'Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ:', 'Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:', 'Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ:', 'РќР :', 'РћС‡РєРё РґРµР№СЃС‚РІРёСЏ:', 'РњР°РЅР°:', 'РњРѕС‰СЊ:', 'РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ:', 'Р’РµР·РµРЅРёРµ:', 'Р—РґРѕСЂРѕРІСЊРµ:', 'Р Р°Р·СѓРј:', 'РЎРЅРѕСЂРѕРІРєР°:', 'Р’Р»Р°РґРµРЅРёРµ РјРµС‡Р°РјРё:', 'Р’Р»Р°РґРµРЅРёРµ С‚РѕРїРѕСЂР°РјРё:', 'Р’Р»Р°РґРµРЅРёРµ РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј:', 'Р’Р»Р°РґРµРЅРёРµ РЅРѕР¶Р°РјРё:', 'Р’Р»Р°РґРµРЅРёРµ РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј:', 'Р’Р»Р°РґРµРЅРёРµ Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё:', 'Р’Р»Р°РґРµРЅРёРµ РїРѕСЃРѕС…Р°РјРё:', 'Р’Р»Р°РґРµРЅРёРµ СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј:', 'Р’Р»Р°РґРµРЅРёРµ РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј:', 'РњР°РіРёСЏ РѕРіРЅСЏ:', 'РњР°РіРёСЏ РІРѕРґС‹:', 'РњР°РіРёСЏ РІРѕР·РґСѓС…Р°:', 'РњР°РіРёСЏ Р·РµРјР»Рё:', 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ:', 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹:', 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°:', 'РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё:', 'Р’РѕСЂРѕРІСЃС‚РІРѕ:', 'РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ:', 'РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ:', 'РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ:', 'РўРѕСЂРіРѕРІР»СЏ:', 'РЎС‚СЂР°РЅРЅРёРє:', 'Р С‹Р±РѕР»РѕРІ:', 'Р›РµСЃРѕСЂСѓР±:', 'Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ:', 'РЎР°РјРѕР»РµС‡РµРЅРёРµ:', 'РћСЂСѓР¶РµР№РЅРёРє:', 'Р”РѕРєС‚РѕСЂ:', 'РЎР°РјРѕР»РµС‡РµРЅРёРµ:', 'Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹:', 'Р›РёРґРµСЂСЃС‚РІРѕ:', 'РђР»С…РёРјРёСЏ:', 'Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°:', 'РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ:', "<font color=#BB0000>РљРѕСЌС„С„РёС†РёРµРЅС‚: $plus</font>", "Р‘РѕРЅСѓСЃ РѕРїС‹С‚Р°: <font color=#BB0000>$plus<b>" . $modstroke . "%</b></font><br> РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕРїС‹С‚: <font color=#BB0000>$plus<b>" . $modstroke . "%</b></font><br>", "РњР°СЃСЃР°: <font color=#BB0000>$plus<b>" . $modstroke . "</b></font>");
 		  for ($i=0;$i<=72;$i++)
 			switch($stat[0]){
-				//case 0: $par_i.= "&nbsp;Гравировка: <b>".$modstroke."</b><br>"; break;
+                //case 0: $par_i.= "&nbsp;Р“СЂР°РІРёСЂРѕРІРєР°: <b>".$modstroke."</b><br>"; break;
 
 				case $use5[$i]: $par_i.= "&nbsp;$use3[$i] <b>".$modstroke."</b><br>";break;
 
-				
-			}			
-		}		
-		
+
+			}
+		}
+
 		if($ITEM['type']=='w71'){
-			$par_i.= "&nbsp;<b>Комплект:</b> <font color=#BB0000><b>4 одинаковые руны</b></font><br>";
-			$par_i.= "&nbsp;<b>Бонус комплекта:</b> <font color=#BB0000>+<b>100% к статам рун</b> </font><br>";
+            $par_i .= "&nbsp;<b>РљРѕРјРїР»РµРєС‚:</b> <font color=#BB0000><b>4 РѕРґРёРЅР°РєРѕРІС‹Рµ СЂСѓРЅС‹</b></font><br>";
+            $par_i .= "&nbsp;<b>Р‘РѕРЅСѓСЃ РєРѕРјРїР»РµРєС‚Р°:</b> <font color=#BB0000>+<b>100% Рє СЃС‚Р°С‚Р°Рј СЂСѓРЅ</b> </font><br>";
 		}
 		if($ITEM['damage_mod']){
-			$dmodarr = array(1=>'&nbsp;Урон огнем',2=>'&nbsp;Урон льдом',3=>'&nbsp;Вампиризм',4=>'&nbsp;Лечение');
+            $dmodarr = array(1 => '&nbsp;РЈСЂРѕРЅ РѕРіРЅРµРј', 2 => '&nbsp;РЈСЂРѕРЅ Р»СЊРґРѕРј', 3 => '&nbsp;Р’Р°РјРїРёСЂРёР·Рј', 4 => '&nbsp;Р›РµС‡РµРЅРёРµ');
 			$dmgm=explode("|",$ITEM['damage_mod']);
 			foreach($dmgm as $val){
 				$dmod=explode("@",$val);
@@ -171,15 +239,15 @@ function itemparams($inv,$ITEM,$player,$plstt,$mass){
 					case 3: $par_i .= $dmodarr[$dmod[0]].': <b><font color="#6633CC">'.$dmod[1].'</b></font><br>'; break;
 					case 4: $par_i .= $dmodarr[$dmod[0]].': <b><font color="#FFBB88">'.$dmod[1].'</b></font><br>'; break;
 				}
-			}				
+			}
 		}
 		$immunes = explode("|",$ITEM['immunes']);
 		$immunes_arr = array(
-			0=>'&nbsp;<b><font color="#993399">Иммунитет к огню.</b></font><br><b><font color="#B00000">Одновременно у персонажа может быть только 1 иммунитет.</b></font><br>',
-			1=>'&nbsp;<b><font color="#993399">Иммунитет к льду.</b></font><br><b><font color="#B00000">Одновременно у персонажа может быть только 1 иммунитет.</b></font>',
-			2=>'&nbsp;<b><font color="#993399">Иммунитет к вампиризму.</b></font><br><b><font color="#B00000">Одновременно у персонажа может быть только 1 иммунитет.</b></font>',
-			3=>'&nbsp;<b><font color="#993399">Иммунитет к яду.</b></font><br><b><font color="#B00000">Одновременно у персонажа может быть только 1 иммунитет.</b></font>',
-			4=>'&nbsp;<b><font color="#993399">Иммунитет к физическому урону.</b></font><br><b><font color="#B00000">Одновременно у персонажа может быть только 1 иммунитет.</b></font>'
+            0 => '&nbsp;<b><font color="#993399">РРјРјСѓРЅРёС‚РµС‚ Рє РѕРіРЅСЋ.</b></font><br><b><font color="#B00000">РћРґРЅРѕРІСЂРµРјРµРЅРЅРѕ Сѓ РїРµСЂСЃРѕРЅР°Р¶Р° РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ 1 РёРјРјСѓРЅРёС‚РµС‚.</b></font><br>',
+            1 => '&nbsp;<b><font color="#993399">РРјРјСѓРЅРёС‚РµС‚ Рє Р»СЊРґСѓ.</b></font><br><b><font color="#B00000">РћРґРЅРѕРІСЂРµРјРµРЅРЅРѕ Сѓ РїРµСЂСЃРѕРЅР°Р¶Р° РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ 1 РёРјРјСѓРЅРёС‚РµС‚.</b></font>',
+            2 => '&nbsp;<b><font color="#993399">РРјРјСѓРЅРёС‚РµС‚ Рє РІР°РјРїРёСЂРёР·РјСѓ.</b></font><br><b><font color="#B00000">РћРґРЅРѕРІСЂРµРјРµРЅРЅРѕ Сѓ РїРµСЂСЃРѕРЅР°Р¶Р° РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ 1 РёРјРјСѓРЅРёС‚РµС‚.</b></font>',
+            3 => '&nbsp;<b><font color="#993399">РРјРјСѓРЅРёС‚РµС‚ Рє СЏРґСѓ.</b></font><br><b><font color="#B00000">РћРґРЅРѕРІСЂРµРјРµРЅРЅРѕ Сѓ РїРµСЂСЃРѕРЅР°Р¶Р° РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ 1 РёРјРјСѓРЅРёС‚РµС‚.</b></font>',
+            4 => '&nbsp;<b><font color="#993399">РРјРјСѓРЅРёС‚РµС‚ Рє С„РёР·РёС‡РµСЃРєРѕРјСѓ СѓСЂРѕРЅСѓ.</b></font><br><b><font color="#B00000">РћРґРЅРѕРІСЂРµРјРµРЅРЅРѕ Сѓ РїРµСЂСЃРѕРЅР°Р¶Р° РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ 1 РёРјРјСѓРЅРёС‚РµС‚.</b></font>'
 		);
 		foreach($immunes as $key=>$val){
 			if($val==1){
@@ -188,7 +256,7 @@ function itemparams($inv,$ITEM,$player,$plstt,$mass){
 		}
 		//return $par_i;
 	//}
-	//требования
+    //С‚СЂРµР±РѕРІР°РЅРёСЏ
 	//if($need and $plstt and $ITEM['level']>=0 and $Imass>=0){
 		foreach ($need as $value) {
 			$treb=explode("@",$value);
@@ -202,7 +270,7 @@ function itemparams($inv,$ITEM,$player,$plstt,$mass){
 				}
 			}
 			if($treb[0]==73){
-	   $Doblest = array(0=>'Стажер',1=>'Солдaт',2=>'Боeц',3=>'Воин',4=>'Элитный воин',5=>'Чeмпион',6=>'Глaдиaтор',7=>'Полководeц',8=>'Мaстeр войны',9=>'Гeрой',10=>'Военный эксперт',11=>'Магистр войны',12=>'Вершитель',13=>'Высший магистр',14=>'Повелитель');
+                $Doblest = array(0 => 'РЎС‚Р°Р¶РµСЂ', 1 => 'РЎРѕР»РґaС‚', 2 => 'Р‘РѕeС†', 3 => 'Р’РѕРёРЅ', 4 => 'Р­Р»РёС‚РЅС‹Р№ РІРѕРёРЅ', 5 => 'Р§eРјРїРёРѕРЅ', 6 => 'Р“Р»aРґРёaС‚РѕСЂ', 7 => 'РџРѕР»РєРѕРІРѕРґeС†', 8 => 'РњaСЃС‚eСЂ РІРѕР№РЅС‹', 9 => 'Р“eСЂРѕР№', 10 => 'Р’РѕРµРЅРЅС‹Р№ СЌРєСЃРїРµСЂС‚', 11 => 'РњР°РіРёСЃС‚СЂ РІРѕР№РЅС‹', 12 => 'Р’РµСЂС€РёС‚РµР»СЊ', 13 => 'Р’С‹СЃС€РёР№ РјР°РіРёСЃС‚СЂ', 14 => 'РџРѕРІРµР»РёС‚РµР»СЊ');
 	    $trtmp = $treb[1];
 	    $treb[1] = $Doblest[$treb[1]];
 	    if($player['u_lvl']<$trtmp){
@@ -225,72 +293,158 @@ function itemparams($inv,$ITEM,$player,$plstt,$mass){
 				}
 			}
 			switch($treb[0]){
-				case 28: $tr_b[0].="&nbsp;Очки действия: <b>$treb[1]</b><br>";break;
-				case 30: $tr_b[0].="&nbsp;Мощь: <b>$treb[1]</b><br>";break;
-				case 31: $tr_b[0].="&nbsp;Проворность: <b>$treb[1]</b><br>";break;
-				case 32: $tr_b[0].="&nbsp;Везение: <b>$treb[1]</b><br>";break;
-				case 33: $tr_b[0].="&nbsp;Здоровье: <b>$treb[1]</b><br>";break;
-				case 34: $tr_b[0].="&nbsp;Разум: <b>$treb[1]</b><br>";break;
-				case 35: $tr_b[0].="&nbsp;Сноровка: <b>$treb[1]</b><br>";break;
-				case 36: $tr_b[0].="&nbsp;Владение мечами: <b>$treb[1]</b><br>";break;
-				case 37: $tr_b[0].="&nbsp;Владение топорами: <b>$treb[1]</b><br>";break;
-				case 38: $tr_b[0].="&nbsp;Владение дробящим оружием: <b>$treb[1]</b><br>";break;
-				case 39: $tr_b[0].="&nbsp;Владение ножами: <b>$treb[1]</b><br>";break;
-				case 40: $tr_b[0].="&nbsp;Владение метательным оружием: <b>$treb[1]</b><br>";break;
-				case 41: $tr_b[0].="&nbsp;Владение алебардами и копьями: <b>$treb[1]</b><br>";break;
-				case 42: $tr_b[0].="&nbsp;Владение посохами: <b>$treb[1]</b><br>";break;
-				case 43: $tr_b[0].="&nbsp;Владение экзотическим оружием: <b>$treb[1]</b><br>";break;
-				case 44: $tr_b[0].="&nbsp;Владение двуручным оружием: <b>$treb[1]</b><br>";break;
-				case 45: $tr_b[0].="&nbsp;Магия огня: <b>$treb[1]</b><br>";break;
-				case 46: $tr_b[0].="&nbsp;Магия воды: <b>$treb[1]</b><br>";break;
-				case 47: $tr_b[0].="&nbsp;Магия воздуха: <b>$treb[1]</b><br>";break;
-				case 48: $tr_b[0].="&nbsp;Магия земли: <b>$treb[1]</b><br>";break;
-				case 53: $tr_b[0].="&nbsp;Воровство: <b>$treb[1]</b><br>";break;
-				case 54: $tr_b[0].="&nbsp;Осторожность: <b>$treb[1]</b><br>";break;
-				case 55: $tr_b[0].="&nbsp;Палач: <b>$treb[1]</b><br>";break;
-				case 56: $tr_b[0].="&nbsp;Наблюдательность: <b>$treb[1]</b><br>";break;
-				case 57: $tr_b[0].="&nbsp;Торговля: <b>$treb[1]</b><br>";break;
-				case 58: $tr_b[0].="&nbsp;Странник: <b>$treb[1]</b><br>";break;
-				case 59: $tr_b[0].="&nbsp;Рыболов: <b>$treb[1]</b><br>";break;
-				case 60: $tr_b[0].="&nbsp;Лесоруб: <b>$treb[1]</b><br>";break;
-				case 61: $tr_b[0].="&nbsp;Ювелирное дело: <b>$treb[1]</b><br>";break;
-				case 62: $tr_b[0].="&nbsp;Самолечение: <b>$treb[1]</b><br>";break;
-				case 63: $tr_b[0].="&nbsp;Оружейник: <b>$treb[1]</b><br>";break;
-				case 64: $tr_b[0].="&nbsp;Доктор: <b>$treb[1]</b><br>";break;
-				case 65: $tr_b[0].="&nbsp;Самолечение: <b>$treb[1]</b><br>";break;
-				case 66: $tr_b[0].="&nbsp;Быстрое восстановление маны: <b>$treb[1]</b><br>";break;
-				case 67: $tr_b[0].="&nbsp;Лидерство: <b>$treb[1]</b><br>";break;
-				case 68: $tr_b[0].="&nbsp;Алхимия: <b>$treb[1]</b><br>";break;
-				case 69: $tr_b[0].="&nbsp;Развитие горного дела: <b>$treb[1]</b><br>";break;
-				case 70: $tr_b[0].="&nbsp;Травничество: <b>$treb[1]</b><br>";break;
-				case 71: $tr_b[0].="&nbsp;Масса: <b>$treb[1]</b><br>";break;
-				case 72: $tr_b[0].="&nbsp;Уровень: <b>$treb[1]</b><br>";break;
-				case 73: $tr_b[0].="&nbsp;Звание: <b>$treb[1]</b><br>";break;
-				case 74: $tr_b[0].="&nbsp;Взломщик: <b>$treb[1]</b><br>";break;
-				case 75: $tr_b[0].="&nbsp;Колдун: <b>$treb[1]</b><br>";break;
+                case 28:
+                    $tr_b[0] .= "&nbsp;РћС‡РєРё РґРµР№СЃС‚РІРёСЏ: <b>$treb[1]</b><br>";
+                    break;
+                case 30:
+                    $tr_b[0] .= "&nbsp;РњРѕС‰СЊ: <b>$treb[1]</b><br>";
+                    break;
+                case 31:
+                    $tr_b[0] .= "&nbsp;РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ: <b>$treb[1]</b><br>";
+                    break;
+                case 32:
+                    $tr_b[0] .= "&nbsp;Р’РµР·РµРЅРёРµ: <b>$treb[1]</b><br>";
+                    break;
+                case 33:
+                    $tr_b[0] .= "&nbsp;Р—РґРѕСЂРѕРІСЊРµ: <b>$treb[1]</b><br>";
+                    break;
+                case 34:
+                    $tr_b[0] .= "&nbsp;Р Р°Р·СѓРј: <b>$treb[1]</b><br>";
+                    break;
+                case 35:
+                    $tr_b[0] .= "&nbsp;РЎРЅРѕСЂРѕРІРєР°: <b>$treb[1]</b><br>";
+                    break;
+                case 36:
+                    $tr_b[0] .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РјРµС‡Р°РјРё: <b>$treb[1]</b><br>";
+                    break;
+                case 37:
+                    $tr_b[0] .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ С‚РѕРїРѕСЂР°РјРё: <b>$treb[1]</b><br>";
+                    break;
+                case 38:
+                    $tr_b[0] .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј: <b>$treb[1]</b><br>";
+                    break;
+                case 39:
+                    $tr_b[0] .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РЅРѕР¶Р°РјРё: <b>$treb[1]</b><br>";
+                    break;
+                case 40:
+                    $tr_b[0] .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј: <b>$treb[1]</b><br>";
+                    break;
+                case 41:
+                    $tr_b[0] .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё: <b>$treb[1]</b><br>";
+                    break;
+                case 42:
+                    $tr_b[0] .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РїРѕСЃРѕС…Р°РјРё: <b>$treb[1]</b><br>";
+                    break;
+                case 43:
+                    $tr_b[0] .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј: <b>$treb[1]</b><br>";
+                    break;
+                case 44:
+                    $tr_b[0] .= "&nbsp;Р’Р»Р°РґРµРЅРёРµ РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј: <b>$treb[1]</b><br>";
+                    break;
+                case 45:
+                    $tr_b[0] .= "&nbsp;РњР°РіРёСЏ РѕРіРЅСЏ: <b>$treb[1]</b><br>";
+                    break;
+                case 46:
+                    $tr_b[0] .= "&nbsp;РњР°РіРёСЏ РІРѕРґС‹: <b>$treb[1]</b><br>";
+                    break;
+                case 47:
+                    $tr_b[0] .= "&nbsp;РњР°РіРёСЏ РІРѕР·РґСѓС…Р°: <b>$treb[1]</b><br>";
+                    break;
+                case 48:
+                    $tr_b[0] .= "&nbsp;РњР°РіРёСЏ Р·РµРјР»Рё: <b>$treb[1]</b><br>";
+                    break;
+                case 53:
+                    $tr_b[0] .= "&nbsp;Р’РѕСЂРѕРІСЃС‚РІРѕ: <b>$treb[1]</b><br>";
+                    break;
+                case 54:
+                    $tr_b[0] .= "&nbsp;РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ: <b>$treb[1]</b><br>";
+                    break;
+                case 55:
+                    $tr_b[0] .= "&nbsp;РџР°Р»Р°С‡: <b>$treb[1]</b><br>";
+                    break;
+                case 56:
+                    $tr_b[0] .= "&nbsp;РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ: <b>$treb[1]</b><br>";
+                    break;
+                case 57:
+                    $tr_b[0] .= "&nbsp;РўРѕСЂРіРѕРІР»СЏ: <b>$treb[1]</b><br>";
+                    break;
+                case 58:
+                    $tr_b[0] .= "&nbsp;РЎС‚СЂР°РЅРЅРёРє: <b>$treb[1]</b><br>";
+                    break;
+                case 59:
+                    $tr_b[0] .= "&nbsp;Р С‹Р±РѕР»РѕРІ: <b>$treb[1]</b><br>";
+                    break;
+                case 60:
+                    $tr_b[0] .= "&nbsp;Р›РµСЃРѕСЂСѓР±: <b>$treb[1]</b><br>";
+                    break;
+                case 61:
+                    $tr_b[0] .= "&nbsp;Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ: <b>$treb[1]</b><br>";
+                    break;
+                case 62:
+                    $tr_b[0] .= "&nbsp;РЎР°РјРѕР»РµС‡РµРЅРёРµ: <b>$treb[1]</b><br>";
+                    break;
+                case 63:
+                    $tr_b[0] .= "&nbsp;РћСЂСѓР¶РµР№РЅРёРє: <b>$treb[1]</b><br>";
+                    break;
+                case 64:
+                    $tr_b[0] .= "&nbsp;Р”РѕРєС‚РѕСЂ: <b>$treb[1]</b><br>";
+                    break;
+                case 65:
+                    $tr_b[0] .= "&nbsp;РЎР°РјРѕР»РµС‡РµРЅРёРµ: <b>$treb[1]</b><br>";
+                    break;
+                case 66:
+                    $tr_b[0] .= "&nbsp;Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹: <b>$treb[1]</b><br>";
+                    break;
+                case 67:
+                    $tr_b[0] .= "&nbsp;Р›РёРґРµСЂСЃС‚РІРѕ: <b>$treb[1]</b><br>";
+                    break;
+                case 68:
+                    $tr_b[0] .= "&nbsp;РђР»С…РёРјРёСЏ: <b>$treb[1]</b><br>";
+                    break;
+                case 69:
+                    $tr_b[0] .= "&nbsp;Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°: <b>$treb[1]</b><br>";
+                    break;
+                case 70:
+                    $tr_b[0] .= "&nbsp;РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ: <b>$treb[1]</b><br>";
+                    break;
+                case 71:
+                    $tr_b[0] .= "&nbsp;РњР°СЃСЃР°: <b>$treb[1]</b><br>";
+                    break;
+                case 72:
+                    $tr_b[0] .= "&nbsp;РЈСЂРѕРІРµРЅСЊ: <b>$treb[1]</b><br>";
+                    break;
+                case 73:
+                    $tr_b[0] .= "&nbsp;Р—РІР°РЅРёРµ: <b>$treb[1]</b><br>";
+                    break;
+                case 74:
+                    $tr_b[0] .= "&nbsp;Р’Р·Р»РѕРјС‰РёРє: <b>$treb[1]</b><br>";
+                    break;
+                case 75:
+                    $tr_b[0] .= "&nbsp;РљРѕР»РґСѓРЅ: <b>$treb[1]</b><br>";
+                    break;
 			}
 		}
 		$arr[0] = $par_i;
 		$arr[1] = $tr_b;
-		$arr[2] = $iz;		
+		$arr[2] = $iz;
 		return $arr;
-	//}	
+	//}
 }
 
 function show_shop($type,$ITEMS,$mass){
 	$player=player();
-	$plstt=allparam($player);	
+	$plstt=allparam($player);
 	$freemass=$plstt[71];
 	$shop = '';
 	if($type == '0'){
-		//бабло
+        //Р±Р°Р±Р»Рѕ
 		$shop .= '
 		<table cellpadding=0 cellspacing=0 border=0 width=100%>
 			<tr><td >
 			<table cellpadding=0 cellspacing=1 border=0 width=90% align=center bgcolor="#B9A05C">
 			<tr>
 				<td colspan=3 bgcolor="#FCFAF3">
-					<div align=center><font class=inv><b> У Вас с собой '.lr($player[nv]).' и вещей массой: '.$plstt[71].' Максимальный вес: '.$mass.'</b></div>
+					<div align=center><font class=inv><b> РЈ Р’Р°СЃ СЃ СЃРѕР±РѕР№ ' . lr($player[nv]) . ' Рё РІРµС‰РµР№ РјР°СЃСЃРѕР№: ' . $plstt[71] . ' РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РІРµСЃ: ' . $mass . '</b></div>
 				</td>
 			</tr>';
 		//
@@ -298,25 +452,26 @@ function show_shop($type,$ITEMS,$mass){
 		while ($ITEM = mysqli_fetch_assoc($ITEMS)){
 			$bt=0;$tr_b='';$par_i='';$pararr ='';$m=1;
 			$pararr = itemparams(0,$ITEM,$player,$plstt,$mass);
-			$tr_b = $pararr[1][0]; $iz = $pararr[2];//требования
-			$bt = $pararr[1][1]; //доступность кнопок
-			$par_i = $pararr[0]; //параметры
+            $tr_b = $pararr[1][0];
+            $iz = $pararr[2];//С‚СЂРµР±РѕРІР°РЅРёСЏ
+            $bt = $pararr[1][1]; //РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РєРЅРѕРїРѕРє
+            $par_i = $pararr[0]; //РїР°СЂР°РјРµС‚СЂС‹
 			if($i==0){$shop .= '<tr id="test_'.$r.'">';}
 			$shop .= '	
 			<td width=33% height=100% valign=top>			 
 				<table cellpadding=0 cellspacing=0 border=0 width=100% class="t'.$r.'" bgcolor="#FCFAF3" onmouseover="light(this);" onmouseout="unlight(this);">
 				<tr><td width=100% height=35 valign=middle align=center colspan=5><font class=nickname><b>';
 				if($player['nv']>=$ITEM['price'] AND $ITEM['kol']>0 and $m!=0){
-					//$shop .= '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid='.$ITEM['id'].'&vcode='.scode().'\'" value="купить">&nbsp;';
-					$shop .= 'Количество: <input type=text class=logintextbox7 name=col value=1 onkeyup="writeBuyShops(this.value,\''.$ITEM['id'].'\',\''.scode().'\');">&nbsp;';
-					$shop .= '<b id="buybutton_'.$ITEM['id'].'"><input type=button class=invbut onclick="location=\'main.php?post_id=110&act=3&col=1&uid='.$ITEM['id'].'&vcode='.scode().'\'" value="Купить"></b>&nbsp;';
+                    //$shop .= '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid='.$ITEM['id'].'&vcode='.scode().'\'" value="РєСѓРїРёС‚СЊ">&nbsp;';
+                    $shop .= 'РљРѕР»РёС‡РµСЃС‚РІРѕ: <input type=text class=logintextbox7 name=col value=1 onkeyup="writeBuyShops(this.value,\'' . $ITEM['id'] . '\',\'' . scode() . '\');">&nbsp;';
+                    $shop .= '<b id="buybutton_' . $ITEM['id'] . '"><input type=button class=invbut onclick="location=\'main.php?post_id=110&act=3&col=1&uid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="РљСѓРїРёС‚СЊ"></b>&nbsp;';
 				}
-				if($player['login']=='Зов Ада' or $player['login']=='Администрация'){
-					$shop .=  '<input type=button class=invbut onclick="location=\'main.php?post_id=111&wsuid='.$ITEM['id'].'&market='.$ITEM['market'].'&vcode='.scode().'\'" value="Удалить из магазина">';
+            if ($player['login'] == 'Р—РѕРІ РђРґР°' or $player['login'] == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
+                $shop .= '<input type=button class=invbut onclick="location=\'main.php?post_id=111&wsuid=' . $ITEM['id'] . '&market=' . $ITEM['market'] . '&vcode=' . scode() . '\'" value="РЈРґР°Р»РёС‚СЊ РёР· РјР°РіР°Р·РёРЅР°">';
 					$shop .=  '	<script>
 						AddItem = function(iditem,name){
 							jQuery.get(\'/includes/addons/admin-action/adm.php\',{ id_adm: 99, giveitem: 1, forlogin: \''.$player['login'].'\', idit: iditem});
-							parent.$(\'#basic-modal-content\').html("Получен предмет: <b>"+name+"</b>.");
+							parent.$(\'#basic-modal-content\').html("РџРѕР»СѓС‡РµРЅ РїСЂРµРґРјРµС‚: <b>"+name+"</b>.");
 							parent.ShowModal();
 						}
 						Edit = function(id){
@@ -325,24 +480,24 @@ function show_shop($type,$ITEMS,$mass){
 						}
 						</script>
 					';
-					$shop .= " <input type=button class=invbut onclick=\"Edit(".$ITEM['id'].");\" value=\"Редактировать\">";
+                $shop .= " <input type=button class=invbut onclick=\"Edit(" . $ITEM['id'] . ");\" value=\"Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ\">";
 
 				}
-				$shop .= '<br>'.$ITEM['name'].'</b><font class=weaponch> (количество: '.(($ITEM['kol']>0)?'<font color=green>'.$ITEM['kol'].'</font>':'<font color=red>'.$ITEM['kol'].'</font>').')
+            $shop .= '<br>' . $ITEM['name'] . '</b><font class=weaponch> (РєРѕР»РёС‡РµСЃС‚РІРѕ: ' . (($ITEM['kol'] > 0) ? '<font color=green>' . $ITEM['kol'] . '</font>' : '<font color=red>' . $ITEM['kol'] . '</font>') . ')
 				</td></tr>
 				<tr>			
 				<td height=100% rowspan=2>
 					<div align=center><img src=img/image/weapon/'.$ITEM['gif'].' border=0></div>
 				</td>
 					<td bgcolor=#D8CDAF width=50% height=15>
-					<div align=center><font class=invtitle>свойства</div></td>
+					<div align=center><font class=invtitle>СЃРІРѕР№СЃС‚РІР°</div></td>
 					<td bgcolor=#B9A05C><img src=img/image/1x1.gif width=1 height=1></td>
-					<td bgcolor=#D8CDAF width=50%><div align=center><font class=invtitle>требования</div></td></tr>
+					<td bgcolor=#D8CDAF width=50%><div align=center><font class=invtitle>С‚СЂРµР±РѕРІР°РЅРёСЏ</div></td></tr>
 					<tr><td>
-					<font class=weaponch>&nbsp;Цена: <b>';
-					if($player['login']=='Зов Ада'){					
+					<font class=weaponch>&nbsp;Р¦РµРЅР°: <b>';
+            if ($player['login'] == 'Р—РѕРІ РђРґР°') {
 						$shop .= '<input type=text class=logintextbox8 name=col value='.$ITEM['price'].' onkeyup="editPriceShops(this.value,\''.$ITEM['id'].'\',\''.scode().'\');">&nbsp;';
-						$shop .= '<b id="edbutton_'.$ITEM['id'].'"><input type=button class=invbut onclick="location=\'main.php?post_id=110&act=5&pr='.$ITEM['price'].'&uid='.$ITEM['id'].'&vcode='.scode().'\'" value="Изменить цену"></b>&nbsp;';
+                $shop .= '<b id="edbutton_' . $ITEM['id'] . '"><input type=button class=invbut onclick="location=\'main.php?post_id=110&act=5&pr=' . $ITEM['price'] . '&uid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="РР·РјРµРЅРёС‚СЊ С†РµРЅСѓ"></b>&nbsp;';
 					}
 					elseif($ITEM['price']>$player['nv']){
 						$shop .= '<font color=#cc0000>'.lr($ITEM['price']).'</font>';
@@ -379,7 +534,7 @@ function show_shop($type,$ITEMS,$mass){
 				}
 			</script>';
 	}
-	elseif($type == 'dealers'){		
+	elseif($type == 'dealers'){
 			$shop .= '
 			<script>
 			var buttons;
@@ -391,53 +546,54 @@ function show_shop($type,$ITEMS,$mass){
 			</td>
 			</tr>
 			<table cellpadding=0 cellspacing=0 border=0 width=100%>
-			<tr><td><FIELDSET style="background: white;" name=field_dealers id=field_dealers><LEGEND align=center style="background: white; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border: solid 1px gray;"><b> <font color=gray>У Вас с собой '.$player[baks].' <img src=img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд></font> </b></LEGEND><table cellpadding=3 cellspacing=1 border=0 width=100% bgcolor=#e0e0e0>
+			<tr><td><FIELDSET style="background: white;" name=field_dealers id=field_dealers><LEGEND align=center style="background: white; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border: solid 1px gray;"><b> <font color=gray>РЈ Р’Р°СЃ СЃ СЃРѕР±РѕР№ ' . $player[baks] . ' <img src=img/razdor/emerald.png width=14 height=14 valign=middle title=РР·СѓРјСЂСѓРґ></font> </b></LEGEND><table cellpadding=3 cellspacing=1 border=0 width=100% bgcolor=#e0e0e0>
 			';
 			$freemass=$plstt[71];
 			while ($ITEM = mysqli_fetch_assoc($ITEMS)) {
 				$bt=0;$tr_b='';$par_i='';$pararr ='';$m=1;
 				$pararr = itemparams(0,$ITEM,$player,$plstt,$mass);
-				$tr_b = $pararr[1][0]; $iz = $pararr[2];//требования
-				$bt = $pararr[1][1]; //доступность кнопок
-				$par_i = $pararr[0]; //параметры
-				//аренда артов
+                $tr_b = $pararr[1][0];
+                $iz = $pararr[2];//С‚СЂРµР±РѕРІР°РЅРёСЏ
+                $bt = $pararr[1][1]; //РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РєРЅРѕРїРѕРє
+                $par_i = $pararr[0]; //РїР°СЂР°РјРµС‚СЂС‹
+                //Р°СЂРµРЅРґР° Р°СЂС‚РѕРІ
 				$buttons= Array();
 				$buttons[1]='';
 				$buttons[2]='';
 					if($ITEM[kol]>0 and $m!=0 and $ITEM[type]!='w61' and $ITEM[type]!='w0' and $ITEM[type]!='w66' and $ITEM[type]!='w69'  and $ITEM[type]!='w68' and $ITEM[type]!='w29' and $ITEM[type]!='w70'){
-						$buttons[1].='<input type=button class=invbut '.($player[baks]>=round($ITEM[dd_price]*3/110+1)?'onclick="location=\\\'main.php?post_id=94&act=4&wsuid='.$ITEM[id].'&vcode='.scode().'\\\'"':'').' value="3 дня ('.round($ITEM[dd_price]*3/110+1).'$) ">';
-						$buttons[1].='&nbsp;<input type=button class=invbut '.($player[baks]>=round($ITEM[dd_price]*3/80+2)?'onclick="location=\\\'main.php?post_id=94&act=5&wsuid='.$ITEM[id].'&vcode='.scode().'\\\'"':'').' value="7 дней ('.round($ITEM[dd_price]*3/80+2).'$) ">';
-						$buttons[1].='&nbsp;<input type=button class=invbut '.($player[baks]>=round($ITEM[dd_price]*3/50+3)?'onclick="location=\\\'main.php?post_id=94&act=1&wsuid='.$ITEM[id].'&vcode='.scode().'\\\'"':'').' value="10 дней ('.round($ITEM[dd_price]*3/50+3).'$) ">';
-						$buttons[1].='&nbsp;<input type=button class=invbut '.($player[baks]>=round($ITEM[dd_price]*3/35+4)?'onclick="location=\\\'main.php?post_id=94&act=2&wsuid='.$ITEM[id].'&vcode='.scode().'\\\'"':'').' value="20 дней ('.round($ITEM[dd_price]*3/35+4).'$) ">';
-						$buttons[1].='&nbsp;<input type=button class=invbut '.($player[baks]>=round($ITEM[dd_price]*3/20+5)?'onclick="location=\\\'main.php?post_id=94&act=3&wsuid='.$ITEM[id].'&vcode='.scode().'\\\'"':'').' value="30 дней ('.round($ITEM[dd_price]*3/20+5).'$) ">';
+                        $buttons[1] .= '<input type=button class=invbut ' . ($player[baks] >= round($ITEM[dd_price] * 3 / 110 + 1) ? 'onclick="location=\\\'main.php?post_id=94&act=4&wsuid=' . $ITEM[id] . '&vcode=' . scode() . '\\\'"' : '') . ' value="3 РґРЅСЏ (' . round($ITEM[dd_price] * 3 / 110 + 1) . '$) ">';
+                        $buttons[1] .= '&nbsp;<input type=button class=invbut ' . ($player[baks] >= round($ITEM[dd_price] * 3 / 80 + 2) ? 'onclick="location=\\\'main.php?post_id=94&act=5&wsuid=' . $ITEM[id] . '&vcode=' . scode() . '\\\'"' : '') . ' value="7 РґРЅРµР№ (' . round($ITEM[dd_price] * 3 / 80 + 2) . '$) ">';
+                        $buttons[1] .= '&nbsp;<input type=button class=invbut ' . ($player[baks] >= round($ITEM[dd_price] * 3 / 50 + 3) ? 'onclick="location=\\\'main.php?post_id=94&act=1&wsuid=' . $ITEM[id] . '&vcode=' . scode() . '\\\'"' : '') . ' value="10 РґРЅРµР№ (' . round($ITEM[dd_price] * 3 / 50 + 3) . '$) ">';
+                        $buttons[1] .= '&nbsp;<input type=button class=invbut ' . ($player[baks] >= round($ITEM[dd_price] * 3 / 35 + 4) ? 'onclick="location=\\\'main.php?post_id=94&act=2&wsuid=' . $ITEM[id] . '&vcode=' . scode() . '\\\'"' : '') . ' value="20 РґРЅРµР№ (' . round($ITEM[dd_price] * 3 / 35 + 4) . '$) ">';
+                        $buttons[1] .= '&nbsp;<input type=button class=invbut ' . ($player[baks] >= round($ITEM[dd_price] * 3 / 20 + 5) ? 'onclick="location=\\\'main.php?post_id=94&act=3&wsuid=' . $ITEM[id] . '&vcode=' . scode() . '\\\'"' : '') . ' value="30 РґРЅРµР№ (' . round($ITEM[dd_price] * 3 / 20 + 5) . '$) ">';
 					}
-				//рассрочка
+                //СЂР°СЃСЃСЂРѕС‡РєР°
 				if($ITEM[kol]>0 and $m!=0 and $ITEM[type]!='w61' and $ITEM[type]!='w0' and $ITEM[type]!='w66' and $ITEM[type]!='w69' and $ITEM[type]!='w68' and $ITEM[type]!='w29' and $ITEM[type]!='w70'){
-					$buttons[2].='<input type=button class=invbut '.($player[baks]>=round($ITEM[dd_price]/2+1)?'onclick="location=\\\'main.php?post_id=95&act=1&wsuid='.$ITEM[id].'&vcode='.scode().'\\\'"':'').' value="1 месяц ('.round($ITEM[dd_price]/2+1).'$) ">';
-					$buttons[2].='&nbsp;<input type=button class=invbut '.($player[baks]>=round($ITEM[dd_price]/3+1)?'onclick="location=\\\'main.php?post_id=95&act=2&wsuid='.$ITEM[id].'&vcode='.scode().'\\\'"':'').' value="2 месяца ('.round($ITEM[dd_price]/3+1).'$) ">';
-					$buttons[2].='&nbsp;<input type=button class=invbut '.($player[baks]>=round($ITEM[dd_price]/4+1)?'onclick="location=\\\'main.php?post_id=95&act=3&wsuid='.$ITEM[id].'&vcode='.scode().'\\\'"':'').' value="3 месяца ('.round($ITEM[dd_price]/4+1).'$) ">';
+                    $buttons[2] .= '<input type=button class=invbut ' . ($player[baks] >= round($ITEM[dd_price] / 2 + 1) ? 'onclick="location=\\\'main.php?post_id=95&act=1&wsuid=' . $ITEM[id] . '&vcode=' . scode() . '\\\'"' : '') . ' value="1 РјРµСЃСЏС† (' . round($ITEM[dd_price] / 2 + 1) . '$) ">';
+                    $buttons[2] .= '&nbsp;<input type=button class=invbut ' . ($player[baks] >= round($ITEM[dd_price] / 3 + 1) ? 'onclick="location=\\\'main.php?post_id=95&act=2&wsuid=' . $ITEM[id] . '&vcode=' . scode() . '\\\'"' : '') . ' value="2 РјРµСЃСЏС†Р° (' . round($ITEM[dd_price] / 3 + 1) . '$) ">';
+                    $buttons[2] .= '&nbsp;<input type=button class=invbut ' . ($player[baks] >= round($ITEM[dd_price] / 4 + 1) ? 'onclick="location=\\\'main.php?post_id=95&act=3&wsuid=' . $ITEM[id] . '&vcode=' . scode() . '\\\'"' : '') . ' value="3 РјРµСЃСЏС†Р° (' . round($ITEM[dd_price] / 4 + 1) . '$) ">';
 				}
 				$shop .= '
 				<tr><td bgcolor=#f9f9f9><div align=center>
 				<img src=img/image/weapon/'.$ITEM[gif].' border=0></div>
 				</td><td width=100% bgcolor=#ffffff valign=top><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%>
 				<font class=nickname2><b>';
-				$shop .=  $ITEM[name].' </b><font class=weaponch> (количество: '.(($ITEM[kol]>0)?'<font color=green>'.$ITEM[kol].'</font>':'<font color=red>'.$ITEM[kol].'</font>').')';
+                $shop .= $ITEM[name] . ' </b><font class=weaponch> (РєРѕР»РёС‡РµСЃС‚РІРѕ: ' . (($ITEM[kol] > 0) ? '<font color=green>' . $ITEM[kol] . '</font>' : '<font color=red>' . $ITEM[kol] . '</font>') . ')';
 				if($ITEM[type]!='w61' and $ITEM[type]!='w0' and $ITEM[type]!='w66' and $ITEM[type]!='w29' and $ITEM[type]!='w69' and $ITEM[type]!='w68' and $ITEM[type]!='w70'){
-					$shop .= '<br><b>Доступно:</b><a onClick="writebuttons(\'rassrok\',\''.$ITEM['id'].'\');"><b id="'.$ITEM['id'].'rassrok">&nbsp; Приобрести в рассрочку</b></a>&nbsp;|&nbsp;<a onClick="writebuttons(\'arenda\',\''.$ITEM['id'].'\');"><b id="'.$ITEM['id'].'arenda">Взять в аренду</b></a><br>';
+                    $shop .= '<br><b>Р”РѕСЃС‚СѓРїРЅРѕ:</b><a onClick="writebuttons(\'rassrok\',\'' . $ITEM['id'] . '\');"><b id="' . $ITEM['id'] . 'rassrok">&nbsp; РџСЂРёРѕР±СЂРµСЃС‚Рё РІ СЂР°СЃСЃСЂРѕС‡РєСѓ</b></a>&nbsp;|&nbsp;<a onClick="writebuttons(\'arenda\',\'' . $ITEM['id'] . '\');"><b id="' . $ITEM['id'] . 'arenda">Р’Р·СЏС‚СЊ РІ Р°СЂРµРЅРґСѓ</b></a><br>';
 				}
 				$shop .= '
 				<script>
 				writebuttons = function(e,a){
 					switch(e){
 						case \'arenda\':
-							document.getElementById(a).innerHTML = buttons[a][1]+\'<br><b>Арендованные вещи пропадают после окончания срока аренды!</b>\';
+							document.getElementById(a).innerHTML = buttons[a][1]+\'<br><b>РђСЂРµРЅРґРѕРІР°РЅРЅС‹Рµ РІРµС‰Рё РїСЂРѕРїР°РґР°СЋС‚ РїРѕСЃР»Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° Р°СЂРµРЅРґС‹!</b>\';
 							document.getElementById(a).className = "";
 							document.getElementById(a+\'arenda\').className = "cc0000";
 							document.getElementById(a+\'rassrok\').className = "";
 						break;
 						case \'rassrok\':
-							document.getElementById(a).innerHTML = buttons[a][2]+\'<br><b>При неуплате оставшейся суммы рассрочки вещь будет изъята!</b>\';
+							document.getElementById(a).innerHTML = buttons[a][2]+\'<br><b>РџСЂРё РЅРµСѓРїР»Р°С‚Рµ РѕСЃС‚Р°РІС€РµР№СЃСЏ СЃСѓРјРјС‹ СЂР°СЃСЃСЂРѕС‡РєРё РІРµС‰СЊ Р±СѓРґРµС‚ РёР·СЉСЏС‚Р°!</b>\';
 							document.getElementById(a).className = "";
 							document.getElementById(a+\'arenda\').className = "";
 							document.getElementById(a+\'rassrok\').className = "cc0000";
@@ -453,43 +609,36 @@ function show_shop($type,$ITEMS,$mass){
 				<br><div id='.$ITEM['id'].' class="invis">
 				</div><br>';
 				if($player[baks]>=$ITEM[dd_price] AND $ITEM[kol]>0 and $m!=0){
-					$shop .=  '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid='.$ITEM[id].'&vcode='.scode().'\'" value="купить ('.$ITEM[dd_price].'$)"> ';
+                    $shop .= '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM[id] . '&vcode=' . scode() . '\'" value="РєСѓРїРёС‚СЊ (' . $ITEM[dd_price] . '$)"> ';
 				}
 				if($player['clan']=='Life'){
-					$shop .=  '<input type=button class=invbut onclick="location=\'main.php?post_id=111&wsuid='.$ITEM['id'].'&market='.$ITEM['market'].'&vcode='.scode().'\'" value="Удалить из магазина">';
+                    $shop .= '<input type=button class=invbut onclick="location=\'main.php?post_id=111&wsuid=' . $ITEM['id'] . '&market=' . $ITEM['market'] . '&vcode=' . scode() . '\'" value="РЈРґР°Р»РёС‚СЊ РёР· РјР°РіР°Р·РёРЅР°">';
 					$shop .=  '	<script>
 						AddItem = function(iditem,name){
-							jQuery.get(\'/includes/addons/admin-action/adm.php\',{ id_adm: 99, giveitem: 1, forlogin: \''.$player['login'].'\', idit: iditem});
-							parent.$(\'#basic-modal-content\').html("Получен предмет: <b>"+name+"</b>.");
-							parent.ShowModal();
-						}
-						Edit = function(id){
-							parent.$(\'#basic-modal-content\').html(\'<iframe src="/includes/addons/admin-action/adm.php?id_adm=4&edit=yes&idit=\'+id+\'" id="useaction" name="useaction" scrolling="auto" style="width:\'+(screen.width-100)+\'px;height:\'+(screen.height-300)+\'px;" frameborder="0"></iframe>\');
-							parent.ShowModal();
-						}
-						</script>
-					';
-					$shop .= " <input type=button class=invbut onclick=\"Edit(".$ITEM['id'].");\" value=\"Редактировать\">";
+							jQuery.get(\'/includes/addons/admin-action/adm.php\',{ id_adm: 99, giveitem: 1, forlogin: \'' . $player['login'] . ';
+					$shop .= " <input type=button class=invbut onclick=\"Edit(".$ITEM['id'].");\" value=\"Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ\">";
 
 				}
 				$shop .= '<br />
 				<img src=img/image/1x1.gif width=1 height=3></td><td><br>
 				<img src=img/image/1x1.gif width=1 height=3</td></tr><tr>
 				<td colspan=2 width=100%><table cellpadding=0 cellspacing=0 border=0 width=100%><tr>
-				<td bgcolor=#D8CDAF width=50%><div align=center><font class=proce style="font-size : 11px;"><b>свойства</b></div></td>
+				<td bgcolor =#D8CDAF width=50%><div align=center><font class=proce style="font-size : 11px;"><b>СЃРІРѕР№СЃС‚РІР°</b></div></td>
 				<td bgcolor=#B9A05C><img src=img/image/1x1.gif width=1 height=1></td><td bgcolor=#D8CDAF width=50%>
-				<div align=center><font class=proce style="font-size : 11px;"><b>требования</b></div></td></tr><tr><td bgcolor=#FCFAF3>
-				<font class=weaponch>&nbsp;Цена: <b>';
+				<div align = center ><font class=proce style = "font-size : 11px;" ><b > С‚СЂРµР±РѕРІР°РЅРёСЏ</b ></div ></td ></tr ><tr ><td bgcolor =#FCFAF3>
+				<font class=weaponch >&nbsp;Р¦РµРЅР°: <b > ';
 				if($player['clan']=='Life'){					
 					$shop .= '<input type=text class=logintextbox8 name=col value='.$ITEM['dd_price'].' onkeyup="editPrice(this.value,\''.$ITEM['id'].'\',\''.scode().'\');">&nbsp;';
-					$shop .= '<b id="edbutton_'.$ITEM['id'].'"><input type=button class=invbut onclick="location=\'main.php?post_id=110&act=4&pr='.$ITEM['dd_price'].'&uid='.$ITEM['id'].'&vcode='.scode().'\'" value="Изменить цену"></b>&nbsp;';
+					$shop .= ' < b id = "edbutton_'.$ITEM['id'].'" ><input type = button class=invbut onclick = "location=\'main.php?post_id=110&act=4&pr='.$ITEM['dd_price'].'&uid='.$ITEM['id'].'&vcode='.scode().'\'" value = "РР·РјРµРЅРёС‚СЊ С†РµРЅСѓ" ></b >&nbsp;';
 				}
 				elseif($ITEM[dd_price]>$player[baks]){$shop .=  '<font color=#cc0000>'.$ITEM[dd_price].' $</font>';}
-				else{$shop .=  ''.$ITEM[dd_price].' <img src=img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд>';}
+				else{
+                        $shop .= '' . $ITEM[dd_price] . ' <img src=img/razdor/emerald.png width=14 height=14 valign=middle title=РР·СѓРјСЂСѓРґ>';
+                    }
 				$shop .= '</b><br>';
-				
-				//============= новая функция вывода параметров вещи => sql_func.php: function itemparams($par,$eff,$modstat,$damage_mod,$iz,$dolg,$slot,$need,$plstt,$itlevel,$itmass).
-				//Адаптирована под магазины или вывод эффектов мазей. $par,$eff,$modstat,$damage_mod,$iz,$dolg,$slot,$need,$plstt,$itlevel,$itmass - могут быть пустыми. надо передать либо $par либо need
+
+				//============= РЅРѕРІР°СЏ С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РїР°СЂР°РјРµС‚СЂРѕРІ РІРµС‰Рё => sql_func.php: function itemparams($par,$eff,$modstat,$damage_mod,$iz,$dolg,$slot,$need,$plstt,$itlevel,$itmass).
+				//РђРґР°РїС‚РёСЂРѕРІР°РЅР° РїРѕРґ РјР°РіР°Р·РёРЅС‹ РёР»Рё РІС‹РІРѕРґ СЌС„С„РµРєС‚РѕРІ РјР°Р·РµР№. $par,$eff,$modstat,$damage_mod,$iz,$dolg,$slot,$need,$plstt,$itlevel,$itmass - РјРѕРіСѓС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹РјРё. РЅР°РґРѕ РїРµСЂРµРґР°С‚СЊ Р»РёР±Рѕ $par Р»РёР±Рѕ need
 				$shop .=  $par_i;
 				//==== END ====
 				$shop .= '
@@ -505,9 +654,15 @@ function blocks2($bl){
 	$block = '';
 	if($bl!=""){
 		switch($bl){
-				case 40: $block = "<font class=weaponch><b><font color=#cc0000>Блокировка 1-ой точки</font></b><br>"; break;
-				case 70: $block = "<font class=weaponch><b><font color=#cc0000>Блокировка 2-х точек</font></b><br>"; break;
-				case 90: $block = "<font class=weaponch><b><font color=#cc0000>Блокировка 3-х точек</font></b><br>"; break;
+            case 40:
+                $block = "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 1-РѕР№ С‚РѕС‡РєРё</font></b><br>";
+                break;
+            case 70:
+                $block = "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 2-С… С‚РѕС‡РµРє</font></b><br>";
+                break;
+            case 90:
+                $block = "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 3-С… С‚РѕС‡РµРє</font></b><br>";
+                break;
 		}
 	}
 	return $block;
@@ -520,19 +675,19 @@ function varcheck($input){
 		if(is_numeric($input))
 		{
 
-		#Функция актуальна при условии, если значение больше 0
-		#Получает целочисленное значение переменной
+            #Р¤СѓРЅРєС†РёСЏ Р°РєС‚СѓР°Р»СЊРЅР° РїСЂРё СѓСЃР»РѕРІРёРё, РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ Р±РѕР»СЊС€Рµ 0
+            #РџРѕР»СѓС‡Р°РµС‚ С†РµР»РѕС‡РёСЃР»РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№
 			$number = intval($input);
 			//echo 'numeric';
 			return $number;
 		}
 		else
 		{
-			#Вырезаем html теги
+            #Р’С‹СЂРµР·Р°РµРј html С‚РµРіРё
 			$out_string= strip_tags($input);
-			#Преобразует специальные символы в HTML сущности.
+            #РџСЂРµРѕР±СЂР°Р·СѓРµС‚ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹ РІ HTML СЃСѓС‰РЅРѕСЃС‚Рё.
 			$out_string= htmlspecialchars($out_string);
-			#Экранирует специальные символы в строке,принмимая во внимание кодировку соединения.
+            #Р­РєСЂР°РЅРёСЂСѓРµС‚ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹ РІ СЃС‚СЂРѕРєРµ,РїСЂРёРЅРјРёРјР°СЏ РІРѕ РІРЅРёРјР°РЅРёРµ РєРѕРґРёСЂРѕРІРєСѓ СЃРѕРµРґРёРЅРµРЅРёСЏ.
 			$out_string= mysqli_real_escape_string($GLOBALS['db_link'],$out_string);
 			return $out_string;
 
@@ -544,9 +699,10 @@ function varcheck($input){
 		return $out_string;
 	}
 }
-//тотемы
-function totembuffs(){	
-	$player=player();	
+
+//С‚РѕС‚РµРјС‹
+function totembuffs(){
+	$player=player();
 	//$totemtime = Array('00','02','04','06','08','10','12','14','16','18','20','22');
 	$totemtime = Array('10','20','02','00','22','18','12','04','14','06','08','16');
 	$bufftime = $totemtime[$player['thotem']]; $buff=0;
@@ -554,13 +710,15 @@ function totembuffs(){
 	elseif($bufftime == (date("H")-1)){$buff = 1;}
 	return $buff;
 }
-//енд_тотемы
-//фильтр для предметов, которые не поддаются модификации, ремонту и т.д
+
+//РµРЅРґ_С‚РѕС‚РµРјС‹
+//С„РёР»СЊС‚СЂ РґР»СЏ РїСЂРµРґРјРµС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РЅРµ РїРѕРґРґР°СЋС‚СЃСЏ РјРѕРґРёС„РёРєР°С†РёРё, СЂРµРјРѕРЅС‚Сѓ Рё С‚.Рґ
 function itemfilter(){
 	$filt=" AND `items`.`type`!='w0'  AND `items`.`type`!='w29' AND `items`.`type`!='w61'  AND `items`.`type`!='w66'  AND `items`.`type`!='w67' AND `items`.`type`!='w68' AND `items`.`type`!='w69' ";
 	return $filt;
 }
-//наоборот
+
+//РЅР°РѕР±РѕСЂРѕС‚
 function itemfilter2(){
 	$filt=" `items`.`type`='w0'  AND `items`.`type`='w29' AND `items`.`type`='w61'  AND `items`.`type`='w66'  AND `items`.`type`='w67' AND `items`.`type`='w68' AND `items`.`type`='w69' ";
 	return $filt;
@@ -602,7 +760,7 @@ if($od<140){$s[ud]=rand(0,3).$s2;}else{$s1=rand(0,2);$s[ud]=$s1.$s2.($s1+1).$s2;
 $s[bl]="0_".rand(4,25)."_0@";
 return $s;}
 
-function chlevel($exp,$lev,$id){	
+function chlevel($exp,$lev,$id){
 	$user=$_SESSION['user'];
 	$pers = player();
 	$arr=exp_level($lev);
@@ -618,59 +776,62 @@ function chlevel($exp,$lev,$id){
 			$PlExps = explode("|",$pl['exp']);
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `nv`=`nv`+'".((($row['good_pupils_count']+1)%5 == 0)?2500:500)."',`baks`=`baks`+'0.15',`exp`='".$PlExps[0]."|".($PlExps[1]+100)."|".$PlExps[2]."',`good_pupils_count`=`good_pupils_count`+'1' WHERE `id`='".$pers['instructor']."'");
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `instructor`='0' WHERE `id`='".$pers['id']."'");
-			chmsg("parent.frames['chmain'].add_msg('<font class=yochattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><font color=#000000><b>Системная информация.</b></font> Персонаж <b>".$pers["login"]."</b>[".$pers["level"]."/".$pers["u_lvl"]."] закончил свое обучение, вы получили награду.</font><BR>'+'');",$pl['login']);
-			echo"<script>parent.frames['chmain'].add_msg('<font class=yochattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><font color=#000000><b>Системная информация.</b></font> Вы успешно закончили свое обучение.</font><BR>'+'');</script>";
+            chmsg("parent.frames['chmain'].add_msg('<font class=yochattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><font color=#000000><b>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ.</b></font> РџРµСЂСЃРѕРЅР°Р¶ <b>" . $pers["login"] . "</b>[" . $pers["level"] . "/" . $pers["u_lvl"] . "] Р·Р°РєРѕРЅС‡РёР» СЃРІРѕРµ РѕР±СѓС‡РµРЅРёРµ, РІС‹ РїРѕР»СѓС‡РёР»Рё РЅР°РіСЂР°РґСѓ.</font><BR>'+'');", $pl['login']);
+            echo "<script>parent.frames['chmain'].add_msg('<font class=yochattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><font color=#000000><b>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ.</b></font> Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°РєРѕРЅС‡РёР»Рё СЃРІРѕРµ РѕР±СѓС‡РµРЅРёРµ.</font><BR>'+'');</script>";
 		}
 		mysqli_query($GLOBALS['db_link'],"UPDATE user SET level=level+1, nv=nv+$arr[nv],fr_bum=fr_bum+$arr[bum],fr_mum=fr_mum+$arr[mum],free_stat=free_stat+$arr[frs],nav=nav+$arr[nav] WHERE id='$id';");
-		$typetolog .= '@1'; $abouttolog .= '@'.$pers['level']+1; # получил уровень
-		if($ref_bonus['who_id']){ //бонус по рефералке
+        $typetolog .= '@1';
+        $abouttolog .= '@' . $pers['level'] + 1; # РїРѕР»СѓС‡РёР» СѓСЂРѕРІРµРЅСЊ
+        if ($ref_bonus['who_id']) { //Р±РѕРЅСѓСЃ РїРѕ СЂРµС„РµСЂР°Р»РєРµ
 			$usrb = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `id`='".$ref_bonus['who_id']."' LIMIT 1;"));
 			if($usrb['id']){
 				$refparams = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `ref_adm` WHERE `id`='1' LIMIT 1;"));
-				if($refparams['money_bonus']>0){		
-					$givebonus = round($arr['nv']*($refparams['money_bonus']/100))+1;					
+				if($refparams['money_bonus']>0){
+					$givebonus = round($arr['nv']*($refparams['money_bonus']/100))+1;
 					if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `nv`=`nv`+'".$givebonus."' WHERE `id`='".$usrb['id']."' LIMIT 1;")){
-						$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><font color=#000000><b>Системная информация.</b></font> Вы получили бонус за взяние уровня рефералом: <b>".lr($givebonus)."</b>.</font><BR>'+'');";
-						chmsg($ms,$usrb['login']);	
-						$typetolog2 = '0'; $abouttolog2 = '0'; # переменные для логов: первая всегда 0
-						$typetolog2 .= '@20'; $abouttolog2 .= '@'.$givebonus; # получил бонус по рефералке
-						# пишем в лог все что произошло
+                        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><font color=#000000><b>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ.</b></font> Р’С‹ РїРѕР»СѓС‡РёР»Рё Р±РѕРЅСѓСЃ Р·Р° РІР·СЏРЅРёРµ СѓСЂРѕРІРЅСЏ СЂРµС„РµСЂР°Р»РѕРј: <b>" . lr($givebonus) . "</b>.</font><BR>'+'');";
+						chmsg($ms,$usrb['login']);
+                        $typetolog2 = '0';
+                        $abouttolog2 = '0'; # РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ Р»РѕРіРѕРІ: РїРµСЂРІР°СЏ РІСЃРµРіРґР° 0
+                        $typetolog2 .= '@20';
+                        $abouttolog2 .= '@' . $givebonus; # РїРѕР»СѓС‡РёР» Р±РѕРЅСѓСЃ РїРѕ СЂРµС„РµСЂР°Р»РєРµ
+                        # РїРёС€РµРј РІ Р»РѕРі РІСЃРµ С‡С‚Рѕ РїСЂРѕРёР·РѕС€Р»Рѕ
 							player_actions($usrb['id'],$typetolog2,$abouttolog2);
-						# 
+						#
 					}
 					mysqli_query($GLOBALS['db_link'],"UPDATE `ref_system` SET `bonus_lr`=`bonus_lr`+'".$givebonus."' WHERE `ref_id`='".$pers['id']."' AND `who_id`='".$usrb['id']."' LIMIT 1;");
 				}
 			}
-		}		
+		}
 		//event_to_log(date("H:i:s"),5,0,(($pers['clan_id']!='none') ? $pers['clan_gif'].':'.$pers['clan'].':'.$pers['clan_d'] : 'none'),$pers["login"],$pers["level"],$pers['sklon'],($pers["level"]+1));
-		$ms="top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b><font color=FF3300> Персонаж <b>" . $pers['login'] . "</b> Достиг <b>".($lev+1)."</b> уровня.<img src=img/image/gg1.gif></font><BR>'+'');";
-		chmsg($ms);		
+        $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b><font color=FF3300> РџРµСЂСЃРѕРЅР°Р¶ <b>" . $pers['login'] . "</b> Р”РѕСЃС‚РёРі <b>" . ($lev + 1) . "</b> СѓСЂРѕРІРЅСЏ.<img src=img/image/gg1.gif></font><BR>'+'');";
+		chmsg($ms);
 	}
 	$PlExps = explode("|",$pers['exp']);
 	$arr = doblest_level($pers['u_lvl']);
 	if($PlExps[2]>=$arr[1]){
 		mysqli_query($GLOBALS['db_link'],"UPDATE user SET u_lvl=u_lvl+1 WHERE id='$id';");
-		$ms="top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000>Персонаж <b>" . $pers['login'] . "</b> достиг очередного звания &quot;<b>" . $arr[2] . "</b>&quot;.</font><BR>'+'');";
+        $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000>РџРµСЂСЃРѕРЅР°Р¶ <b>" . $pers['login'] . "</b> РґРѕСЃС‚РёРі РѕС‡РµСЂРµРґРЅРѕРіРѕ Р·РІР°РЅРёСЏ &quot;<b>" . $arr[2] . "</b>&quot;.</font><BR>'+'');";
 		chmsg($ms);
 	}
 }
 function doblest_level($level){
 	$Doblest = array(
-	    0=>array(0,0,'Солдaт'),
-		1=>array(1,1000,'Боец'),
-		2=>array(2,8000,'Воин'),
-		3=>array(3,30000,'Элитный воин'),
-		4=>array(4,1140000000,'Чeмпион'),
-		5=>array(5,39600000000,'Глaдиaтор'),
-		6=>array(6,300000000000,'Полководeц'),
-		7=>array(7,4000000000000,'Мaстeр войны'),
-		8=>array(8,50000000000000,'Гeрой'),
-		9=>array(9,600000000000000,'Военный эксперт'),
-		10=>array(10,70000000000000,'Магистр войны'),
-		11=>array(11,800000000000000,'Вершитель'),
-		12=>array(12,1200000000000000,'Высший магистр'),
-		13=>array(13,18000000000000000,'Повелитель'),
-		14=>array(14,270000000000000000000000000000,'Повелитель Миров')
+        0 => array(0, 0, 'РЎРѕР»РґaС‚'),
+        1 => array(1, 1000, 'Р‘РѕРµС†'),
+        2 => array(2, 8000, 'Р’РѕРёРЅ'),
+        3 => array(3, 30000, 'Р­Р»РёС‚РЅС‹Р№ РІРѕРёРЅ'),
+        4 => array(4, 1140000000, 'Р§eРјРїРёРѕРЅ'),
+        5 => array(5, 39600000000, 'Р“Р»aРґРёaС‚РѕСЂ'),
+        6 => array(6, 300000000000, 'РџРѕР»РєРѕРІРѕРґeС†'),
+        7 => array(7, 4000000000000, 'РњaСЃС‚eСЂ РІРѕР№РЅС‹'),
+        8 => array(8, 50000000000000, 'Р“eСЂРѕР№'),
+        9 => array(9, 600000000000000, 'Р’РѕРµРЅРЅС‹Р№ СЌРєСЃРїРµСЂС‚'),
+        10 => array(10, 70000000000000, 'РњР°РіРёСЃС‚СЂ РІРѕР№РЅС‹'),
+        11 => array(11, 800000000000000, 'Р’РµСЂС€РёС‚РµР»СЊ'),
+        12 => array(12, 1200000000000000, 'Р’С‹СЃС€РёР№ РјР°РіРёСЃС‚СЂ'),
+        13 => array(13, 18000000000000000, 'РџРѕРІРµР»РёС‚РµР»СЊ'),
+        14 => array(14, 270000000000000000000000000000, 'РџРѕРІРµР»РёС‚РµР»СЊ РњРёСЂРѕРІ')
 	);
 	return $Doblest[$level];
 }
@@ -723,7 +884,7 @@ function log_write($act,$idit,$sum,$to,$ty){
   elseif (strpos($user_agent, "Chrome") !== false) $browser = "Chrome";
   elseif (strpos($user_agent, "MSIE") !== false) $browser = "Internet Explorer";
   elseif (strpos($user_agent, "Safari") !== false) $browser = "Safari";
-  else $browser = "Неизвестный";
+  else $browser = "РќРµРёР·РІРµСЃС‚РЅС‹Р№";
 	mysqli_query($GLOBALS['db_link'],'INSERT INTO mlog (action,ip,brouser,id_item,sum,login,tologin,typ) VALUES ('.AP.$act.AP.','.AP.$ip.AP.','.AP.$browser.AP.','.AP.$idit.AP.','.AP.$sum.AP.','.AP.$user['login'].AP.','.AP.$to.AP.','.AP.$ty.AP.');');
 }
 
@@ -739,9 +900,11 @@ $count= mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT user.id, user.l
 if($loc==28){
 list($pers['x'], $pers['y']) = explode('_', $pos);
 $rooms = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `city`,`name` FROM `nature` WHERE `x`='".$pers['x']."' AND `y`='".$pers['y']."' LIMIT 1;"));
-$rooms['city'] = $rooms['city']?$rooms['city']:'Земли Баруса';
+    $rooms['city'] = $rooms['city'] ? $rooms['city'] : 'Р—РµРјР»Рё Р‘Р°СЂСѓСЃР°';
 if($rooms['name']!=""){$room=", <font title=\"( ".$pers['x']." : ".$pers['y']." )\">$rooms[name]</font>";}
-if($rooms['loc']==''){$city="Земли Баруса";}
+    if ($rooms['loc'] == '') {
+        $city = "Р—РµРјР»Рё Р‘Р°СЂСѓСЃР°";
+    }
 $count= mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT user.id FROM user WHERE last >$time AND pos = '$pos' AND loc='$loc'"));
 }
 if(strlen($count.$ct)<3){$wdth = 100*1.1;}
@@ -756,19 +919,19 @@ echo'<table border=0 cellpadding=0 cellspacing=0 width=100%>
     <left>
 <table width=300 border=0>
   <tr>
-    <td width=135><span class="placename">Вы находитесь в локации:</span></td>
+    <td width=135><span class="placename">Р’С‹ РЅР°С…РѕРґРёС‚РµСЃСЊ РІ Р»РѕРєР°С†РёРё:</span></td>
     <td width=155><span class="placename"><b>'.$city.$rooms['loc'].$room.'</b></span></td>
   </tr>
   <tr>
-    <td><span class="placename">Ваша позиция:</span></td>
+    <td><span class="placename">Р’Р°С€Р° РїРѕР·РёС†РёСЏ:</span></td>
     <td><span class="placename"><b>'.$pos.'</b></span></td>
   </tr>
   <tr>
-    <td><span class="placename">Онлайн в игре сейчас:</span></td>
+    <td><span class="placename">РћРЅР»Р°Р№РЅ РІ РёРіСЂРµ СЃРµР№С‡Р°СЃ:</span></td>
     <td><span class="placename"><b>'.$ct.'</b></td>
   </tr>
   <tr>
-    <td><span class="placename">Игроков в локации:</span></td>
+    <td><span class="placename">РРіСЂРѕРєРѕРІ РІ Р»РѕРєР°С†РёРё:</span></td>
     <td><span class="placename"><b>'.$count.'</b></span></td>
   </tr>
 </table>
@@ -785,12 +948,12 @@ $a[$r['loc']]=$r['Count'];
 }echo "$a[6],$a[7],$a[8],$a[9],$a[10],$a[11],$a[12],$a[13],$a[14],$a[15]";}
 
 function online($login,$pcid)
-{//------добавление, обновление online----------------
+{//------РґРѕР±Р°РІР»РµРЅРёРµ, РѕР±РЅРѕРІР»РµРЅРёРµ online----------------
 mysqli_query($GLOBALS['db_link'],'UPDATE user SET pcid='.AP.$pcid.AP.',last='.AP.time().AP.' WHERE login='.AP.$login.AP.'LIMIT 1;');
 }
 
 function online_now($loc)
-{//------количество человек online------
+{//------РєРѕР»РёС‡РµСЃС‚РІРѕ С‡РµР»РѕРІРµРє online------
 if($loc=='0'){$sql = "SELECT * FROM user WHERE last >".(time()-300).";";}else{$sql = "SELECT user.login FROM user LEFT JOIN loc ON user.loc = loc.id WHERE (((user.loc)='".$loc."') AND ((user.last)>'".(time()-300)."'));";}
 $result = mysqli_query($GLOBALS['db_link'],$sql);
 return mysqli_num_rows($result);
@@ -956,7 +1119,7 @@ mysqli_query($GLOBALS['db_link'],'INSERT INTO chat (time,login,dlya,msg) VALUES 
 }
 function updatebatt($id){
 if(testarena2($id)==0){
-sumbat($id,"parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Заявка не набрана!</font><BR>'+'');$redirect",0);
+    sumbat($id, "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;Р—Р°СЏРІРєР° РЅРµ РЅР°Р±СЂР°РЅР°!</font><BR>'+'');$redirect", 0);
 mysqli_query($GLOBALS['db_link'],"DELETE FROM arena WHERE id_battle=".$id.";");
 mysqli_query($GLOBALS['db_link'],"UPDATE user SET battle=0 WHERE battle=".$id.";");
 }
@@ -967,7 +1130,7 @@ else{
 }
 
 function startbat($id,$fy){
-	$log=",[[0,\"".date("H:i")."\"],\"Бой между \" ";
+    $log = ",[[0,\"" . date("H:i") . "\"],\"Р‘РѕР№ РјРµР¶РґСѓ \" ";
 	$pl= mysqli_query($GLOBALS['db_link'],"SELECT user.side, user.battle, user.level, user.sklon, user.clan_gif, user.login FROM user WHERE battle=".$id.";");
 	while ($val = mysqli_fetch_assoc($pl)) {
 		if($val[side]==1){$log.=",[1,$val[side],\"$val[login]\",$val[level],$val[sklon],\"$val[clan_gif]\"],\",\"";}
@@ -977,7 +1140,7 @@ function startbat($id,$fy){
 	}
 	$log=substr_replace($log, '', -3);
 	$log2=substr_replace($log2, '', -3);
-	//$log.="\" и \"$log2\" начался.\"]";
+    //$log.="\" Рё \"$log2\" РЅР°С‡Р°Р»СЃСЏ.\"]";
 	//mysqli_query($GLOBALS['db_link'],"INSERT INTO logs (bid,log) VALUES (".$id.", ".$log.");");
 	mysqli_query($GLOBALS['db_link'],"LOCK TABLES arena READ, fight arena;");
 	mysqli_query($GLOBALS['db_link'],"UPDATE arena SET vis=0, t2=".time()." WHERE id_battle=".$id." LIMIT 1;");
@@ -998,31 +1161,31 @@ if($pl['hp_all']!=$pl['hp'] or $pl['mp_all']!=$pl['mp']){mysqli_query($GLOBALS['
 function botslot($id,$s)
 {
 $sl_free = array(
-1 => 
-'sl_l_0.gif:Слот для шлема',
-'sl_l_1.gif:Слот для ожерелья',
-'sl_l_2.gif:Слот для оружия',
-'sl_l_3.gif:Слот для пояса',
-'sl_l_4.gif:Слот для содержимого пояса',
-'sl_l_4.gif:Слот для содержимого пояса',
-'sl_l_4.gif:Слот для содержимого пояса',
-'sl_l_6.gif:Слот для сапог',
-'sl_l_7.gif:Слот для поножей',
-'sl_r_4.gif:Слот для наплечников',
-'sl_r_2.gif:Слот для наручей',
-'sl_r_3.gif:Слот для перчаток',
-'sl_l_2.gif:Слот для оружия/щита',
-'sl_r_5.gif:Слот для кольца',
-'sl_r_5.gif:Слот для кольца',
-'sl_r_6.gif:Слот для брони',
-'sl_r_6.gif:Слот для кольчуги',
-'sl_r_0.gif:Слот для лука',
-'sl_r_1.gif:Слот для лука',
+1 =>
+    'sl_l_0.gif:РЎР»РѕС‚ РґР»СЏ С€Р»РµРјР°',
+    'sl_l_1.gif:РЎР»РѕС‚ РґР»СЏ РѕР¶РµСЂРµР»СЊСЏ',
+    'sl_l_2.gif:РЎР»РѕС‚ РґР»СЏ РѕСЂСѓР¶РёСЏ',
+    'sl_l_3.gif:РЎР»РѕС‚ РґР»СЏ РїРѕСЏСЃР°',
+    'sl_l_4.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РїРѕСЏСЃР°',
+    'sl_l_4.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РїРѕСЏСЃР°',
+    'sl_l_4.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РїРѕСЏСЃР°',
+    'sl_l_6.gif:РЎР»РѕС‚ РґР»СЏ СЃР°РїРѕРі',
+    'sl_l_7.gif:РЎР»РѕС‚ РґР»СЏ РїРѕРЅРѕР¶РµР№',
+    'sl_r_4.gif:РЎР»РѕС‚ РґР»СЏ РЅР°РїР»РµС‡РЅРёРєРѕРІ',
+    'sl_r_2.gif:РЎР»РѕС‚ РґР»СЏ РЅР°СЂСѓС‡РµР№',
+    'sl_r_3.gif:РЎР»РѕС‚ РґР»СЏ РїРµСЂС‡Р°С‚РѕРє',
+    'sl_l_2.gif:РЎР»РѕС‚ РґР»СЏ РѕСЂСѓР¶РёСЏ/С‰РёС‚Р°',
+    'sl_r_5.gif:РЎР»РѕС‚ РґР»СЏ РєРѕР»СЊС†Р°',
+    'sl_r_5.gif:РЎР»РѕС‚ РґР»СЏ РєРѕР»СЊС†Р°',
+    'sl_r_6.gif:РЎР»РѕС‚ РґР»СЏ Р±СЂРѕРЅРё',
+    'sl_r_6.gif:РЎР»РѕС‚ РґР»СЏ РєРѕР»СЊС‡СѓРіРё',
+    'sl_r_0.gif:РЎР»РѕС‚ РґР»СЏ Р»СѓРєР°',
+    'sl_r_1.gif:РЎР»РѕС‚ РґР»СЏ Р»СѓРєР°',
 //runes
-'rune_001.gif:Слот для руны',
-'rune_001.gif:Слот для руны',
-'rune_001.gif:Слот для руны',
-'rune_001.gif:Слот для руны'
+    'rune_001.gif:РЎР»РѕС‚ РґР»СЏ СЂСѓРЅС‹',
+    'rune_001.gif:РЎР»РѕС‚ РґР»СЏ СЂСѓРЅС‹',
+    'rune_001.gif:РЎР»РѕС‚ РґР»СЏ СЂСѓРЅС‹',
+    'rune_001.gif:РЎР»РѕС‚ РґР»СЏ СЂСѓРЅС‹'
 );
 $q = mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `used`='1' AND `pl_id`='".$id."';");
 while ($row = mysqli_fetch_assoc($q)) {
@@ -1069,33 +1232,33 @@ function getPF($id){
 
 function slotwiev($id,$s)
 {
-//18-19 слоты карман и свиток
+//18-19 СЃР»РѕС‚С‹ РєР°СЂРјР°РЅ Рё СЃРІРёС‚РѕРє
 $sl_free = array(
-1 => 
-'sl_l_0.gif:Слот для шлема',
-'sl_l_1.gif:Слот для ожерелья',
-'sl_l_2.gif:Слот для оружия',
-'sl_l_3.gif:Слот для пояса',
-'sl_l_4.gif:Слот для содержимого пояса',
-'sl_l_4.gif:Слот для содержимого пояса',
-'sl_l_4.gif:Слот для содержимого пояса',
-'sl_l_6.gif:Слот для сапог',
-'sl_l_7.gif:Слот для поножей',
-'sl_r_4.gif:Слот для наплечников',
-'sl_r_2.gif:Слот для наручей',
-'sl_r_3.gif:Слот для перчаток',
-'sl_l_2.gif:Слот для оружия/щита',
-'sl_r_5.gif:Слот для кольца',
-'sl_r_5.gif:Слот для кольца',
-'sl_r_6.gif:Слот для брони',
-'sl_r_6.gif:Слот для брони',
-'sl_r_0.gif:Слот для кошелька',
-'sl_r_1.gif:Слот для содержимого кошелька',
+1 =>
+    'sl_l_0.gif:РЎР»РѕС‚ РґР»СЏ С€Р»РµРјР°',
+    'sl_l_1.gif:РЎР»РѕС‚ РґР»СЏ РѕР¶РµСЂРµР»СЊСЏ',
+    'sl_l_2.gif:РЎР»РѕС‚ РґР»СЏ РѕСЂСѓР¶РёСЏ',
+    'sl_l_3.gif:РЎР»РѕС‚ РґР»СЏ РїРѕСЏСЃР°',
+    'sl_l_4.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РїРѕСЏСЃР°',
+    'sl_l_4.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РїРѕСЏСЃР°',
+    'sl_l_4.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РїРѕСЏСЃР°',
+    'sl_l_6.gif:РЎР»РѕС‚ РґР»СЏ СЃР°РїРѕРі',
+    'sl_l_7.gif:РЎР»РѕС‚ РґР»СЏ РїРѕРЅРѕР¶РµР№',
+    'sl_r_4.gif:РЎР»РѕС‚ РґР»СЏ РЅР°РїР»РµС‡РЅРёРєРѕРІ',
+    'sl_r_2.gif:РЎР»РѕС‚ РґР»СЏ РЅР°СЂСѓС‡РµР№',
+    'sl_r_3.gif:РЎР»РѕС‚ РґР»СЏ РїРµСЂС‡Р°С‚РѕРє',
+    'sl_l_2.gif:РЎР»РѕС‚ РґР»СЏ РѕСЂСѓР¶РёСЏ/С‰РёС‚Р°',
+    'sl_r_5.gif:РЎР»РѕС‚ РґР»СЏ РєРѕР»СЊС†Р°',
+    'sl_r_5.gif:РЎР»РѕС‚ РґР»СЏ РєРѕР»СЊС†Р°',
+    'sl_r_6.gif:РЎР»РѕС‚ РґР»СЏ Р±СЂРѕРЅРё',
+    'sl_r_6.gif:РЎР»РѕС‚ РґР»СЏ Р±СЂРѕРЅРё',
+    'sl_r_0.gif:РЎР»РѕС‚ РґР»СЏ РєРѕС€РµР»СЊРєР°',
+    'sl_r_1.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РєРѕС€РµР»СЊРєР°',
 //runes
-'rune_001.gif:Слот для руны',
-'rune_001.gif:Слот для руны',
-'rune_001.gif:Слот для руны',
-'rune_001.gif:Слот для руны'
+    'rune_001.gif:РЎР»РѕС‚ РґР»СЏ СЂСѓРЅС‹',
+    'rune_001.gif:РЎР»РѕС‚ РґР»СЏ СЂСѓРЅС‹',
+    'rune_001.gif:РЎР»РѕС‚ РґР»СЏ СЂСѓРЅС‹',
+    'rune_001.gif:РЎР»РѕС‚ РґР»СЏ СЂСѓРЅС‹'
 );
 $q = mysqli_query($GLOBALS['db_link'],"SELECT invent.*, items.* FROM items INNER JOIN invent ON items.id = invent.protype WHERE used=1 AND pl_id=".$id.";");
 while ($row = mysqli_fetch_assoc($q)) {
@@ -1125,7 +1288,7 @@ switch($stat[0]){
 	$par[2]=$ud[1]+$tmp[1];
 	break;
 	case 2: $par[7]=$row['dolg'];break;
-	case 9: 
+	case 9:
 	$par[3]=$stat[1]+$modstat[9];
 	break;
 	case 10: $par[4]="$stat[1]";break;
@@ -1134,10 +1297,18 @@ switch($stat[0]){
 }
 }
 switch($row['mod_color']){
-	case 0: $rnn="<b>".$row[name].($row['modified']==1 ? "</b> [ап]" : "")."</b>"; break;
-	case 1: $rnn="<b><font color=#006600>".$row[name]." [мод]".($row['modified']==1 ? "</b> [ап]" : "")."</b></font>"; break;
-	case 2: $rnn="<b><font color=#3333CC>".$row[name]." [мод]".($row['modified']==1 ? "</b> [ап]" : "")."</b></font>"; break;
-	case 3: $rnn="<b><font color=#AF51B5>".$row[name]." [мод]".($row['modified']==1 ? "</b> [ап]" : "")."</b></font>"; break;
+    case 0:
+        $rnn = "<b>" . $row[name] . ($row['modified'] == 1 ? "</b> [Р°Рї]" : "") . "</b>";
+        break;
+    case 1:
+        $rnn = "<b><font color=#006600>" . $row[name] . " [РјРѕРґ]" . ($row['modified'] == 1 ? "</b> [Р°Рї]" : "") . "</b></font>";
+        break;
+    case 2:
+        $rnn = "<b><font color=#3333CC>" . $row[name] . " [РјРѕРґ]" . ($row['modified'] == 1 ? "</b> [Р°Рї]" : "") . "</b></font>";
+        break;
+    case 3:
+        $rnn = "<b><font color=#AF51B5>" . $row[name] . " [РјРѕРґ]" . ($row['modified'] == 1 ? "</b> [Р°Рї]" : "") . "</b></font>";
+        break;
 }
 $p="$par[0]|$par[1]|$par[2]|$par[3]|$par[4]|$par[5]|$par[6]|$par[7]";
 $sl_free[$row['curslot']]=$row[gif].":".$rnn.":".$p;
@@ -1155,7 +1326,7 @@ for($i=1; $i<=23; $i++){
 /*$pr=substr($pr,0,strlen($pr)-1);
 $item=substr($item,0,strlen($item)-1);
 $idd=substr($idd,0,strlen($idd)-1);
-$vcod=substr($vcod,0,strlen($vcod)-1);*/	
+$vcod=substr($vcod,0,strlen($vcod)-1);*/
 
 
 
@@ -1172,7 +1343,7 @@ function updateslot($act,$item,$pid,$slot)
 	switch($act){
 		case 0: mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `used`='0', `curslot`='0' WHERE `id_item`='".$item."' and `pl_id`='".$pid."'");break;
 		case 1: mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `used`='1', `curslot`='".$slot."' WHERE `id_item`='".$item."' and `pl_id`='".$pid."';");break;
-		case 2: 
+		case 2:
 			mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `used`='0', `curslot`='0' WHERE `curslot`='".$slot."' and `pl_id`='".$pid."'");
 			mysqli_query($GLOBALS['db_link'],"UPDATE invent SET used='1', `curslot`='".$slot."' WHERE `id_item`='".$item."' and `pl_id`='".$pid."'");break;
 		case 3: mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `used`='0', `curslot`='0' WHERE  `pl_id`='".$pid."';");break;
@@ -1188,16 +1359,16 @@ $t=array(0=> 0,2,4);
 $od=0;
 $bl=0;
 $runecount = Array();
-//статы с вещей
+//СЃС‚Р°С‚С‹ СЃ РІРµС‰РµР№
 $mysql=mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `used`='1' AND `pl_id`='".$id."' ;");
 while ($row = mysqli_fetch_assoc($mysql)) {
 $is_rune=0;
 if($row['type']=='w71'){
-	#считаем одинаковые руны
+    #СЃС‡РёС‚Р°РµРј РѕРґРёРЅР°РєРѕРІС‹Рµ СЂСѓРЅС‹
 	$is_rune=1;
 	$runecount[$row['protype']]++;
 }
-//рассчет иммунок
+//СЂР°СЃСЃС‡РµС‚ РёРјРјСѓРЅРѕРє
 $immunes = explode("|",$row['immunes']);
 foreach($immunes as $key=>$val){
 	$immune[$key] += $val;
@@ -1210,7 +1381,7 @@ foreach ($mod as $value){
 	if($modstats[0]=='33' and $modstats[1]<0){$modstats[1]=0;}
 	$par[$modstats[0]]+=$modstats[1];
 
-		
+
 }
 
 if($row['type']=='w20'){$bl=$row['block'];$tw=$row['type'];}
@@ -1246,11 +1417,11 @@ if($row['slot']>0 and $row['type']!='w20'){
 			$tmp[0]+=$tmp1[0]+$tmp2[0];$tmp[1]+=$tmp1[1]+$tmp2[1]; continue;
 		}
 		if($is_rune==1 and $runecount[$row['protype']]==4){
-			#если руны одинаковые и их 4шт - умножаем стат с последней на 5 (1 за текущую руну и двойной бонус за каждую)
+            #РµСЃР»Рё СЂСѓРЅС‹ РѕРґРёРЅР°РєРѕРІС‹Рµ Рё РёС… 4С€С‚ - СѓРјРЅРѕР¶Р°РµРј СЃС‚Р°С‚ СЃ РїРѕСЃР»РµРґРЅРµР№ РЅР° 5 (1 Р·Р° С‚РµРєСѓС‰СѓСЋ СЂСѓРЅСѓ Рё РґРІРѕР№РЅРѕР№ Р±РѕРЅСѓСЃ Р·Р° РєР°Р¶РґСѓСЋ)
 			$par[1]=implode("-",$tmp);
 			$par[$stat[0]]+=$stat[1]*5;
 		}else{
-			$par[1]=implode("-",$tmp);			
+			$par[1]=implode("-",$tmp);
 			$par[$stat[0]]+=$stat[1];
 		}
 	}
@@ -1258,23 +1429,23 @@ if($row['slot']>0 and $row['type']!='w20'){
 		$dmod=explode("@",$row['damage_mod']);
 		$dmoddmg=explode("-",$dmod[1]);
 		if($is_rune==1 and $runecount[$row['protype']]==4){
-			#если руны одинаковые и их 4шт - умножаем стат с последней на 5 (1 за текущую руну и двойной бонус за каждую)
-			$damage_mod[$dmod[0]][0]+=$dmoddmg[0]*5; 
+            #РµСЃР»Рё СЂСѓРЅС‹ РѕРґРёРЅР°РєРѕРІС‹Рµ Рё РёС… 4С€С‚ - СѓРјРЅРѕР¶Р°РµРј СЃС‚Р°С‚ СЃ РїРѕСЃР»РµРґРЅРµР№ РЅР° 5 (1 Р·Р° С‚РµРєСѓС‰СѓСЋ СЂСѓРЅСѓ Рё РґРІРѕР№РЅРѕР№ Р±РѕРЅСѓСЃ Р·Р° РєР°Р¶РґСѓСЋ)
+			$damage_mod[$dmod[0]][0]+=$dmoddmg[0]*5;
 			$damage_mod[$dmod[0]][1]+=$dmoddmg[1]*5;
 		}else{
-			$damage_mod[$dmod[0]][0]+=$dmoddmg[0]; 
-			$damage_mod[$dmod[0]][1]+=$dmoddmg[1];	
-		}		
+			$damage_mod[$dmod[0]][0]+=$dmoddmg[0];
+			$damage_mod[$dmod[0]][1]+=$dmoddmg[1];
+		}
 	}
 }
 
 
-//статы с мазей
+//СЃС‚Р°С‚С‹ СЃ РјР°Р·РµР№
 $maseit='';
 $newmase='';
 $plmases = explode("|",$pl['masebonus']);
 foreach ($plmases as $val){
-	$mase = explode("@",$val);	
+	$mase = explode("@",$val);
 	if($mase[1]>=time() and $mase[0]){
 		if($maseit==''){
 			$maseit = "`id`='".$mase[0]."'";
@@ -1282,7 +1453,7 @@ foreach ($plmases as $val){
 		else{
 			$maseit .= " OR `id`='".$mase[0]."'";
 		}
-		$newmase.=$mase[0].'@'.$mase[1].($mase[2]?'@'.$mase[2]:'').'|';		
+		$newmase.=$mase[0].'@'.$mase[1].($mase[2]?'@'.$mase[2]:'').'|';
 	}
 }
 $newmase=substr($newmase,0,strlen($newmase)-1);
@@ -1335,12 +1506,12 @@ if($row['slot']>0 and $row['type']!='w20'){
 	if($row['damage_mod']!=0){
 		$dmod=explode("@",$row['damage_mod']);
 		$dmoddmg=explode("-",$dmod[1]);
-		$damage_mod[$dmod[0]][0]+=$dmoddmg[0]; 
-		$damage_mod[$dmod[0]][1]+=$dmoddmg[1]; 
+		$damage_mod[$dmod[0]][0]+=$dmoddmg[0];
+		$damage_mod[$dmod[0]][1]+=$dmoddmg[1];
 	}
 }
 
-//статы с ДЦ
+//СЃС‚Р°С‚С‹ СЃ Р”Р¦
 
 		$getstatsusr = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `real_dd_bonus` WHERE `pl_id`='".$pl['id']."' LIMIT 1;"));
 		$stats_user = explode("|",$getstatsusr['param']);
@@ -1385,7 +1556,7 @@ if($row['slot']>0 and $row['type']!='w20'){
 				}
 			}
 			if($i=='expbonus'){$i=72;}
-			if($i=='massbonus'){$i=73;}	
+			if($i=='massbonus'){$i=73;}
 		}
 //
 
@@ -1396,7 +1567,7 @@ for($dm=1;$dm<=4;$dm++){
 }
 if($dmgmod==''){$dmgmod=0;}
 switch($tw){
-	case '': 
+	case '':
 		$od=45;
 		$od=round($od/(($um[0]/100+$um[10]/200)*0.15+1));
 		$tmp=explode("-",$par[1]);
@@ -1429,17 +1600,17 @@ else{$affect="";}
 if($pl['type']!=3){
 	$sk='kgTvx2WrEZ';
 	$buff=totembuffs();
-//	$totembuff = Array('9@0'/*сфинкс +100кб*/,'63@0'/*тигр +50 оружейника*/,'58@0'/*лев +50 странника*/,'invis@0'/*дракон невидимость*/,'attack@0'/*василиск нападение*/,'32@5'/*скорпион +10 Везение +50% уловки*/,'31@6'/*рыба  +10 ловкости +50% точности*/,'61@0'/*мутант +50 ювы*/,'mass@30'/*небесный кит +15 силы и +150 массы*/,'56@0'/*древний ящер +50 наблюд*/,'7@8'/*ворон смерти +50 мф сокрушения и стойкости*/,'exp@0'/*клинки 20% экспы на час*/);                                        
+//	$totembuff = Array('9@0'/*СЃС„РёРЅРєСЃ +100РєР±*/,'63@0'/*С‚РёРіСЂ +50 РѕСЂСѓР¶РµР№РЅРёРєР°*/,'58@0'/*Р»РµРІ +50 СЃС‚СЂР°РЅРЅРёРєР°*/,'invis@0'/*РґСЂР°РєРѕРЅ РЅРµРІРёРґРёРјРѕСЃС‚СЊ*/,'attack@0'/*РІР°СЃРёР»РёСЃРє РЅР°РїР°РґРµРЅРёРµ*/,'32@5'/*СЃРєРѕСЂРїРёРѕРЅ +10 Р’РµР·РµРЅРёРµ +50% СѓР»РѕРІРєРё*/,'31@6'/*СЂС‹Р±Р°  +10 Р»РѕРІРєРѕСЃС‚Рё +50% С‚РѕС‡РЅРѕСЃС‚Рё*/,'61@0'/*РјСѓС‚Р°РЅС‚ +50 СЋРІС‹*/,'mass@30'/*РЅРµР±РµСЃРЅС‹Р№ РєРёС‚ +15 СЃРёР»С‹ Рё +150 РјР°СЃСЃС‹*/,'56@0'/*РґСЂРµРІРЅРёР№ СЏС‰РµСЂ +50 РЅР°Р±Р»СЋРґ*/,'7@8'/*РІРѕСЂРѕРЅ СЃРјРµСЂС‚Рё +50 РјС„ СЃРѕРєСЂСѓС€РµРЅРёСЏ Рё СЃС‚РѕР№РєРѕСЃС‚Рё*/,'exp@0'/*РєР»РёРЅРєРё 20% СЌРєСЃРїС‹ РЅР° С‡Р°СЃ*/);
 	if($buff==1){
 		switch($pl['thotem']){
-			case 0: $par[9]+=100; break;		
+			case 0: $par[9]+=100; break;
 			case 1: $par[63]+=50; break;
 			case 2: $par[58]+=50; break;
 			case 3: break;
 			case 4: break;
 			case 5: $par[32]+=10; $par[5]+=50; break;
 			case 6: $par[31]+=10; $par[6]+=50; break;
-			case 7: $par[61]+=50; break; 
+			case 7: $par[61]+=50; break;
 			case 8: $par[30]+=15; break;
 			case 9: $par[56]+=50; break;
 			case 10: $par[7]+=50; $par[8]+=50; break;
@@ -1452,42 +1623,90 @@ if($pl['type']!=3){
 		$buff=explode("@",$value);
 			if($buff[0]!=14){
 				switch($buff[0]){
-					case 1:	$par[30]+=$buff[1];break;//Мощь
-					case 2: $par[31]+=$buff[1];break;//Проворность
-					case 3: $par[32]+=$buff[1];break;//Везение
-					case 4: $par[33]+=$buff[1];break;//здоровье
-					case 5: $par[34]+=$buff[1]; break;//Разум
-					case 6: $par[35]+=$buff[1];break;//сноровка
-					case 7: $dmg=explode("-",$par[1]); $dmg[0]+=$buff[1]; $dmg[1]+=$buff[1]; $par[1]=implode("-",$dmg);break;//удар
-					case 8: $par[9]+=$buff[1];break;//кб
-					case 9: $par[10]+=$buff[1];break;//пробой брони
-					case 10: $par[5]+=$buff[1];break;//уловка
-					case 11: $par[6]+=$buff[1];break;//точность
-					case 12: $par[7]+=$buff[1];break;//сокрушение
-					case 13: $par[8]+=$buff[1];break;//стойкость
-					case 15: $par[56]+=$buff[1]; break;//зелье наблюдательности
-					case 16: $par[58]+=$buff[1]; break; //странник
+                    case 1:
+                        $par[30] += $buff[1];
+                        break;//РњРѕС‰СЊ
+                    case 2:
+                        $par[31] += $buff[1];
+                        break;//РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ
+                    case 3:
+                        $par[32] += $buff[1];
+                        break;//Р’РµР·РµРЅРёРµ
+                    case 4:
+                        $par[33] += $buff[1];
+                        break;//Р·РґРѕСЂРѕРІСЊРµ
+                    case 5:
+                        $par[34] += $buff[1];
+                        break;//Р Р°Р·СѓРј
+                    case 6:
+                        $par[35] += $buff[1];
+                        break;//СЃРЅРѕСЂРѕРІРєР°
+                    case 7:
+                        $dmg = explode("-", $par[1]);
+                        $dmg[0] += $buff[1];
+                        $dmg[1] += $buff[1];
+                        $par[1] = implode("-", $dmg);
+                        break;//СѓРґР°СЂ
+                    case 8:
+                        $par[9] += $buff[1];
+                        break;//РєР±
+                    case 9:
+                        $par[10] += $buff[1];
+                        break;//РїСЂРѕР±РѕР№ Р±СЂРѕРЅРё
+                    case 10:
+                        $par[5] += $buff[1];
+                        break;//СѓР»РѕРІРєР°
+                    case 11:
+                        $par[6] += $buff[1];
+                        break;//С‚РѕС‡РЅРѕСЃС‚СЊ
+                    case 12:
+                        $par[7] += $buff[1];
+                        break;//СЃРѕРєСЂСѓС€РµРЅРёРµ
+                    case 13:
+                        $par[8] += $buff[1];
+                        break;//СЃС‚РѕР№РєРѕСЃС‚СЊ
+                    case 15:
+                        $par[56] += $buff[1];
+                        break;//Р·РµР»СЊРµ РЅР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚Рё
+                    case 16:
+                        $par[58] += $buff[1];
+                        break; //СЃС‚СЂР°РЅРЅРёРє
 				}
 			}
 			else{$fb=1;$fullbuff[0]=$buff[0];$fullbuff[1]=$buff[1];}
 	}
 	if($fb==1){
 					$buff[1]=$fullbuff[1]/100+1;
-					$par[30]*=$buff[1];$par[30]=round($par[30]);//Мощь
-					$par[31]*=$buff[1];$par[31]=round($par[31]);//Проворность
-					$par[32]*=$buff[1];$par[32]=round($par[32]);//Везение
-					$par[33]*=$buff[1];$par[33]=round($par[33]);//здоровье
-					$par[34]*=$buff[1];$par[34]=round($par[34]);//Разум
-					$par[35]*=$buff[1];$par[35]=round($par[35]);//сноровка
-					$dmg=explode("-",$par[1]); $dmg[0]*=$buff[1]; $dmg[1]*=$buff[1]*1.5; $par[1]=implode("-",$dmg);//удар
-					$par[9]*=$buff[1];$par[9]=round($par[9]);//кб
-					$par[10]*=$buff[1];$par[10]=round($par[10]);//пробой брони
-					$par[5]*=$buff[1];$par[5]=round($par[5]);//уловка
-					$par[6]*=$buff[1];$par[6]=round($par[6]);//точность
-					$par[7]*=$buff[1];$par[7]=round($par[7]);//сокрушение
-					$par[8]*=$buff[1];$par[8]=round($par[8]);//стойкость			
+        $par[30] *= $buff[1];
+        $par[30] = round($par[30]);//РњРѕС‰СЊ
+        $par[31] *= $buff[1];
+        $par[31] = round($par[31]);//РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ
+        $par[32] *= $buff[1];
+        $par[32] = round($par[32]);//Р’РµР·РµРЅРёРµ
+        $par[33] *= $buff[1];
+        $par[33] = round($par[33]);//Р·РґРѕСЂРѕРІСЊРµ
+        $par[34] *= $buff[1];
+        $par[34] = round($par[34]);//Р Р°Р·СѓРј
+        $par[35] *= $buff[1];
+        $par[35] = round($par[35]);//СЃРЅРѕСЂРѕРІРєР°
+        $dmg = explode("-", $par[1]);
+        $dmg[0] *= $buff[1];
+        $dmg[1] *= $buff[1] * 1.5;
+        $par[1] = implode("-", $dmg);//СѓРґР°СЂ
+        $par[9] *= $buff[1];
+        $par[9] = round($par[9]);//РєР±
+        $par[10] *= $buff[1];
+        $par[10] = round($par[10]);//РїСЂРѕР±РѕР№ Р±СЂРѕРЅРё
+        $par[5] *= $buff[1];
+        $par[5] = round($par[5]);//СѓР»РѕРІРєР°
+        $par[6] *= $buff[1];
+        $par[6] = round($par[6]);//С‚РѕС‡РЅРѕСЃС‚СЊ
+        $par[7] *= $buff[1];
+        $par[7] = round($par[7]);//СЃРѕРєСЂСѓС€РµРЅРёРµ
+        $par[8] *= $buff[1];
+        $par[8] = round($par[8]);//СЃС‚РѕР№РєРѕСЃС‚СЊ
 	}
-	$podsql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `podarki` WHERE `id`='".$id."' AND `srok`>'".time()."' AND `podarok`>'999';");	
+	$podsql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `podarki` WHERE `id`='".$id."' AND `srok`>'".time()."' AND `podarok`>'999';");
 	$up="";$updmg[0]=0;$updmg[1]=0;$uphp=0;$upmp=0;$upstat=0;
 	if(mysqli_num_rows($podsql)>0){
 		while($podrow = mysqli_fetch_assoc($podsql)){
@@ -1512,15 +1731,15 @@ if($pl['type']!=3){
 		$par[34]+=$clsql['cl_znan'];
 		$uphp+=$clsql['cl_hp'];
 		$upmp+=$clsql['cl_mp'];
-		$clnablud=100-$clsql['cl_up']-$clsql['cl_buyup'];		
+		$clnablud=100-$clsql['cl_up']-$clsql['cl_buyup'];
 	}
-	
+
 	$par[71]+=$pl['level'];
 	$sil=$par[30]+$pl['sila'];
 	$dmg=explode("-",$par[1]);
 	if($pl['sign']==$sk){$dmg[0]+=23;$dmg[1]+=35;}
 	$dmg[0]+=$sil*0.4+$updmg[0];
-	$dmg[1]+=$sil*1.5+$updmg[1];	
+	$dmg[1]+=$sil*1.5+$updmg[1];
 	$par[1]=implode("-",$dmg);
 }
 else {
@@ -1540,7 +1759,7 @@ for($i=0;$i<=71;$i++){
 }
 if($par['expbonus']){ $expb = ($par['expbonus']/100)+1; } else { $expb = 1; }
 if($par['massbonus']){ $massb = $par['massbonus']; } else { $massb = 1; }
-# бонус опыта, убирать ручками $expb+0.1  = 10% бонус
+# Р±РѕРЅСѓСЃ РѕРїС‹С‚Р°, СѓР±РёСЂР°С‚СЊ СЂСѓС‡РєР°РјРё $expb+0.1  = 10% Р±РѕРЅСѓСЃ
 $bonusbd = 'expbonus@'.($expb+0.1).'|massbonus@'.$massb;
 for($i=0;$i<count($immune);$i++){
 	$immunes_arr .= ($immune[$i]>0?'1':'0').'|';
@@ -1577,8 +1796,10 @@ if($pl['level']<5){$od=80;}else if($pl['level']<10){$od=90;}else $od=100;
 $pt[28]=$od+$um[11]+$pt[28];
 $pt[36]+=$um[1];$pt[37]+=$um[2];$pt[38]+=$um[3];$pt[39]+=$um[4];$pt[40]+=$um[5];
 $pt[41]+=$um[6];$pt[42]+=$um[7];$pt[43]+=$um[8];$pt[44]+=$um[9];
-$pt[45]+=$um[12]+($perk[27]*25);$pt[46]+=$um[13]+($perk[24]*25);//магия огня и воды
-$pt[49]+=$um[16]+($perk[28]*25);$pt[50]+=$um[17]+($perk[29]*25);//сопротивление магии огня и воды
+    $pt[45] += $um[12] + ($perk[27] * 25);
+    $pt[46] += $um[13] + ($perk[24] * 25);//РјР°РіРёСЏ РѕРіРЅСЏ Рё РІРѕРґС‹
+    $pt[49] += $um[16] + ($perk[28] * 25);
+    $pt[50] += $um[17] + ($perk[29] * 25);//СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ Рё РІРѕРґС‹
 $pt[53]+=$um[21];
 $pt[54]+=$um[22];
 $pt[55]+=$um[23];
@@ -1622,50 +1843,70 @@ return $pt;
 function used($id,$login,$loc){
 $user=$_SESSION['user'];
 $pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login'"));
-if($pl==''){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" несуществует!</font></font></b><br>";}
-else if($pl[last]<(time()-300)){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в игре!</font></font></b><br>";}
-else if($loc!=$pl[loc]){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в этой локации!</font></font></b><br>";}
-else if($pl[fight]>0){$msg[msg]="<b><font class=nickname><font color=#cc0000>Неудачно! Персонаж \"$login\" в бою!</font></font></b><br>";}
+    if ($pl == '') {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµСЃСѓС‰РµСЃС‚РІСѓРµС‚!</font></font></b><br>";
+    } else if ($pl[last] < (time() - 300)) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ РёРіСЂРµ!</font></font></b><br>";
+    } else if ($loc != $pl[loc]) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!</font></font></b><br>";
+    } else if ($pl[fight] > 0) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµСѓРґР°С‡РЅРѕ! РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РІ Р±РѕСЋ!</font></font></b><br>";
+    }
 else{
 $it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT invent.*, items.* FROM items INNER JOIN invent ON items.id = invent.protype WHERE id_item='$id'"));
 switch ($it[num_a]) {
-    case 32: $pl[hp]+=$it[effect];$msg[0]="Зелье Восстановления $it[effect] HP"; break;
-	case 33: $pl[mp]+=$it[effect];$msg[0]="Зелье Восстановления $it[effect] MP";break;
+    case 32:
+        $pl[hp] += $it[effect];
+        $msg[0] = "Р—РµР»СЊРµ Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ $it[effect] HP";
+        break;
+    case 33:
+        $pl[mp] += $it[effect];
+        $msg[0] = "Р—РµР»СЊРµ Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ $it[effect] MP";
+        break;
 }
 if($pl[hp]>$pl[hp_all]){$pl[hp]=$pl[hp_all];}
 if($pl[mp]>$pl[mp_all]){$pl[mp]=$pl[mp_all];}
-//---пересчет восстановления
+//---РїРµСЂРµСЃС‡РµС‚ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ
 $hps=$pl['hp_all']/$pl['hps'];
 $mps=$pl['mp_all']/$pl['mps'];
 $chp=time()+(($pl['hp_all']-$pl['hp'])/$hps);
 $cmp=time()+(($pl['mp_all']-$pl['mp'])/$mps);
 //-----------------
 if($user['login']!=$login){
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к вам <b>\"$it[name]\".</b></font><BR>'+'');";chmsg($ms,$login);
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РІР°Рј <b>\"$it[name]\".</b></font><BR>'+'');";
+    chmsg($ms, $login);
 }
-mysqli_query($GLOBALS['db_link'],'UPDATE user SET hp='.AP.$pl[hp].AP.', mp='.AP.$pl[mp].AP.', chp='.AP.$chp.AP.', cmp='.AP.$cmp.AP.' WHERE id='.AP.$pl[id].AP.'LIMIT 1;');$msg[msg]="<b><font class=nickname><font color=#cc0000>Вы удачно применили \"$msg[0]\"!</font></font></b><br>"; it_break($id);}
+    mysqli_query($GLOBALS['db_link'], 'UPDATE user SET hp=' . AP . $pl[hp] . AP . ', mp=' . AP . $pl[mp] . AP . ', chp=' . AP . $chp . AP . ', cmp=' . AP . $cmp . AP . ' WHERE id=' . AP . $pl[id] . AP . 'LIMIT 1;');
+    $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ СѓРґР°С‡РЅРѕ РїСЂРёРјРµРЅРёР»Рё \"$msg[0]\"!</font></font></b><br>";
+    it_break($id);
+}
 return $msg;
 }
 
 function mute($login,$from,$id,$fromid){
 	$us=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='".$login."' LIMIT 1;"));
-	if($us['id']){	
+	if($us['id']){
 
 			$item=mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],'SELECT `invent`.*,  `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `pl_id`="'.$fromid.'" AND `id_item`="'.$id.'" LIMIT 1;'));
 			if($item['id_item']){
 				mysqli_query($GLOBALS['db_link'],"UPDATE user SET sleep='".(time()+300)."' WHERE login='".$us[login]."'LIMIT 1;");
-				$timemolch = '<b>5</b> минут';
-				$msg[msg]="<b><font class=nickname><font color=#cc0000>Вы успешно наложили заклятие молчания на \"$login\"!</font></font></b><br>";
-				$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>".$us['login']."</b> наложено заклятие молчания сроком на ".$timemolch.". (<b>".$from."</b>)</font><BR>'+'');";
+                $timemolch = '<b>5</b> РјРёРЅСѓС‚';
+                $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ СѓСЃРїРµС€РЅРѕ РЅР°Р»РѕР¶РёР»Рё Р·Р°РєР»СЏС‚РёРµ РјРѕР»С‡Р°РЅРёСЏ РЅР° \"$login\"!</font></font></b><br>";
+                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РќР° РїРµСЂСЃРѕРЅР°Р¶Р° <b>" . $us['login'] . "</b> РЅР°Р»РѕР¶РµРЅРѕ Р·Р°РєР»СЏС‚РёРµ РјРѕР»С‡Р°РЅРёСЏ СЃСЂРѕРєРѕРј РЅР° " . $timemolch . ". (<b>" . $from . "</b>)</font><BR>'+'');";
 				chmsg($ms,'');
 				it_break($item['id_item']);
-			}else{$msg[msg]='<font class=proce>Предмет не найден.</font>';}
-		
-	}else{$msg[msg]='<font class=proce>Игрок не найден.</font>';}
+            } else {
+                $msg[msg] = '<font class=proce>РџСЂРµРґРјРµС‚ РЅРµ РЅР°Р№РґРµРЅ.</font>';
+            }
+
+    } else {
+        $msg[msg] = '<font class=proce>РРіСЂРѕРє РЅРµ РЅР°Р№РґРµРЅ.</font>';
+    }
 	return $msg;
 }
 function addlic($login,$item,$type){
-	$typetolog = '0'; $abouttolog = '0'; # переменные для логов: первая всегда 0
+    $typetolog = '0';
+    $abouttolog = '0'; # РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ Р»РѕРіРѕРІ: РїРµСЂРІР°СЏ РІСЃРµРіРґР° 0
 	$pl=allparam($login);
 	$time=$item[effect]*86400;
 	$bt=0;
@@ -1691,17 +1932,20 @@ function addlic($login,$item,$type){
 						else{$licens[1]+=$time;}
 						$newlic.=implode("@",$licens)."|";
 						$addlic=1;
-						$msg[msg]="\"$item[name]\" продлена на $item[effect] дней.";						
+                        $msg[msg] = "\"$item[name]\" РїСЂРѕРґР»РµРЅР° РЅР° $item[effect] РґРЅРµР№.";
 					}
 					else if($licens[1]<time()){
 						$newlic.="";
 					}
 					else{$newlic.=implode("@",$licens)."|";}
 				}
-				if($addlic==0){$newlic.="1@".(time()+$time)."|"; $msg[msg]="Использована \"$item[name]\" на $item[effect] дней.";}
-				mysqli_query($GLOBALS['db_link'],"UPDATE user SET licens='".$newlic."' WHERE id=".$login[id]." ;");	
-				it_break($item['id_item']);		
-			}			
+                if ($addlic == 0) {
+                    $newlic .= "1@" . (time() + $time) . "|";
+                    $msg[msg] = "РСЃРїРѕР»СЊР·РѕРІР°РЅР° \"$item[name]\" РЅР° $item[effect] РґРЅРµР№.";
+                }
+				mysqli_query($GLOBALS['db_link'],"UPDATE user SET licens='".$newlic."' WHERE id=".$login[id]." ;");
+				it_break($item['id_item']);
+			}
 		break;
 		case 2:
 			if($bt==0){
@@ -1711,19 +1955,27 @@ function addlic($login,$item,$type){
 				foreach($lic as $value){
 					$licens=explode("@",$value);
 					if($licens[0]==2){
-						if($licens[1]<time()){$licens[1]=time()+$time; $msg[msg]="Использована \"$item[name]\" на $item[effect] дней.";}
-						else{$licens[1]+=$time;$msg[msg]="\"$item[name]\" продлена на $item[effect] дней.";}
+                        if ($licens[1] < time()) {
+                            $licens[1] = time() + $time;
+                            $msg[msg] = "РСЃРїРѕР»СЊР·РѕРІР°РЅР° \"$item[name]\" РЅР° $item[effect] РґРЅРµР№.";
+                        } else {
+                            $licens[1] += $time;
+                            $msg[msg] = "\"$item[name]\" РїСЂРѕРґР»РµРЅР° РЅР° $item[effect] РґРЅРµР№.";
+                        }
 						$newlic.=implode("@",$licens)."|";
-						$addlic=1;		
+						$addlic=1;
 					}
 					else if($licens[1]<time()){
 						$newlic.="";
 					}
 					else{$newlic.=implode("@",$licens)."|";}
 				}
-				if($addlic==0){$newlic.="2@".(time()+$time)."|"; $msg[msg]="Использована \"$item[name]\" на $item[effect] дней.";}
-				mysqli_query($GLOBALS['db_link'],"UPDATE user SET licens='".$newlic."' WHERE id=".$login[id]." ;");	
-				it_break($item['id_item']);				
+                if ($addlic == 0) {
+                    $newlic .= "2@" . (time() + $time) . "|";
+                    $msg[msg] = "РСЃРїРѕР»СЊР·РѕРІР°РЅР° \"$item[name]\" РЅР° $item[effect] РґРЅРµР№.";
+                }
+				mysqli_query($GLOBALS['db_link'],"UPDATE user SET licens='".$newlic."' WHERE id=".$login[id]." ;");
+				it_break($item['id_item']);
 			}
 		break;
 	}
@@ -1739,10 +1991,15 @@ function zelused($id,$login,$loc){
 	$user=$_SESSION['user'];
 	$pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login'"));
 	$pl_st=allparam($pl);
-	if($pl==''){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" несуществует!</font></font></b><br>";}
-	else if($pl[last]<(time()-300)){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в игре!</font></font></b><br>";}
-	else if($loc!=$pl[loc]){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в этой локации!</font></font></b><br>";}
-	else if($pl[fight]>0){$msg[msg]="<b><font class=nickname><font color=#cc0000>Неудачно! Персонаж \"$login\" в бою!</font></font></b><br>";}
+    if ($pl == '') {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµСЃСѓС‰РµСЃС‚РІСѓРµС‚!</font></font></b><br>";
+    } else if ($pl[last] < (time() - 300)) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ РёРіСЂРµ!</font></font></b><br>";
+    } else if ($loc != $pl[loc]) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!</font></font></b><br>";
+    } else if ($pl[fight] > 0) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµСѓРґР°С‡РЅРѕ! РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РІ Р±РѕСЋ!</font></font></b><br>";
+    }
 	else{
 	$it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT invent.*, items.* FROM items INNER JOIN invent ON items.id = invent.protype WHERE id_item='$id'"));
 	if($pl['buffs']==''){$pl['buffs']="||||";}
@@ -1765,39 +2022,72 @@ function zelused($id,$login,$loc){
 	}
 	if($i==99){
 		switch ($it[num_a]) {
-			case 1: $msg[0]="Зелье +$it[effect] силы"; break;//Мощь
-			case 2: $msg[0]="Зелье +$it[effect] ловкости"; break;//Проворность
-			case 3: $msg[0]="Зелье +$it[effect] удачи"; break;//Везение
-			case 4: $msg[0]="Зелье +$it[effect] здоровья"; break;//здоровье
-			case 5: $msg[0]="Зелье +$it[effect] знаний"; break;//Разум
-			case 6: $msg[0]="Зелье +$it[effect] сноровки"; break;//сноровка
-			case 7: $msg[0]="Зелье +$it[effect] урона"; break;//удар
-			case 8: $msg[0]="Зелье +$it[effect] брони"; break;//кб
-			case 9: $msg[0]="Зелье +$it[effect] пробоя брони"; break;//пробой брони
-			case 10: $msg[0]="Зелье +$it[effect] уворота"; break;//уловка
-			case 11: $msg[0]="Зелье +$it[effect] точности"; break;//точность
-			case 12: $msg[0]="Зелье +$it[effect] сокрушения"; break;//сокрушение
-			case 13: $msg[0]="Зелье +$it[effect] стойкости"; break;//стойкость
+            case 1:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] СЃРёР»С‹";
+                break;//РњРѕС‰СЊ
+            case 2:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] Р»РѕРІРєРѕСЃС‚Рё";
+                break;//РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ
+            case 3:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] СѓРґР°С‡Рё";
+                break;//Р’РµР·РµРЅРёРµ
+            case 4:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] Р·РґРѕСЂРѕРІСЊСЏ";
+                break;//Р·РґРѕСЂРѕРІСЊРµ
+            case 5:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] Р·РЅР°РЅРёР№";
+                break;//Р Р°Р·СѓРј
+            case 6:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] СЃРЅРѕСЂРѕРІРєРё";
+                break;//СЃРЅРѕСЂРѕРІРєР°
+            case 7:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] СѓСЂРѕРЅР°";
+                break;//СѓРґР°СЂ
+            case 8:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] Р±СЂРѕРЅРё";
+                break;//РєР±
+            case 9:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] РїСЂРѕР±РѕСЏ Р±СЂРѕРЅРё";
+                break;//РїСЂРѕР±РѕР№ Р±СЂРѕРЅРё
+            case 10:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] СѓРІРѕСЂРѕС‚Р°";
+                break;//СѓР»РѕРІРєР°
+            case 11:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] С‚РѕС‡РЅРѕСЃС‚Рё";
+                break;//С‚РѕС‡РЅРѕСЃС‚СЊ
+            case 12:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] СЃРѕРєСЂСѓС€РµРЅРёСЏ";
+                break;//СЃРѕРєСЂСѓС€РµРЅРёРµ
+            case 13:
+                $msg[0] = "Р—РµР»СЊРµ +$it[effect] СЃС‚РѕР№РєРѕСЃС‚Рё";
+                break;//СЃС‚РѕР№РєРѕСЃС‚СЊ
 			case 14:
 				$msg[0]="$it[name]";
 					foreach($buffs as $value){
 						$buff_check=explode("@",$value);
 						if($buff_check[0]==14){$stopbuff=1;}
-					}	
-			break;//арт зелье
-			case 15: $msg[0]="Зелье наблюдательности"; break;//зелье наблюдательности
+					}
+                break;//Р°СЂС‚ Р·РµР»СЊРµ
+            case 15:
+                $msg[0] = "Р—РµР»СЊРµ РЅР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚Рё";
+                break;//Р·РµР»СЊРµ РЅР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚Рё
 		}
 		if($stopbuff==0){
-			$msg[msg]="<b><font class=nickname><font color=#cc0000>Вы удачно применили \"$msg[0]\"!</font></font></b><br>";
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ СѓРґР°С‡РЅРѕ РїСЂРёРјРµРЅРёР»Рё \"$msg[0]\"!</font></font></b><br>";
 			mysqli_query($GLOBALS['db_link'],"UPDATE user SET buffs='$buff' WHERE login='$login'");
 			mysqli_query($GLOBALS['db_link'],"INSERT INTO `effects` (`uid`,`eff_id`,`effects`,`side_effects`,`time`,`side_time`) VALUES ('".$pl['id']."','".$it['eff_id']."','".$it['effects']."','".$it['side_effects']."','".($it['eftime']+time())."','".(($it['efside_time']>0)?$it['efside_time']+time():'0')."');");
 			calcstat($pl[id]);
-			if($user['login']!=$login){$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к вам <b>\"$it[name]\".</b></font><BR>'+'');";chmsg($ms,$login);}
+            if ($user['login'] != $login) {
+                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РІР°Рј <b>\"$it[name]\".</b></font><BR>'+'');";
+                chmsg($ms, $login);
+            }
 			it_break($id);
-		}
-		else{$msg[msg]="<b><font class=nickname><font color=#cc0000>Зелье такого типа может быть использовано только 1 раз!</font></font></b><br>";}
-	}
-	else{$msg[msg]="<b><font class=nickname><font color=#cc0000>Вы выпили максимальное количество зелий!</font></font></b><br>";}
+		} else {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р—РµР»СЊРµ С‚Р°РєРѕРіРѕ С‚РёРїР° РјРѕР¶РµС‚ Р±С‹С‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРѕ С‚РѕР»СЊРєРѕ 1 СЂР°Р·!</font></font></b><br>";
+        }
+    } else {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ РІС‹РїРёР»Рё РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РµР»РёР№!</font></font></b><br>";
+    }
 }
 return $msg;
 }
@@ -1805,10 +2095,15 @@ return $msg;
 function zelinvis($id,$login,$loc){
 	$user=$_SESSION['user'];
 	$pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login'"));
-	if($pl==''){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" несуществует!</font></font></b><br>";}
-	else if($pl[last]<(time()-300)){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в игре!</font></font></b><br>";}
-	else if($loc!=$pl[loc]){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в этой локации!</font></font></b><br>";}
-	else if($pl[fight]>0){$msg[msg]="<b><font class=nickname><font color=#cc0000>Неудачно! Персонаж \"$login\" в бою!</font></font></b><br>";}
+    if ($pl == '') {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµСЃСѓС‰РµСЃС‚РІСѓРµС‚!</font></font></b><br>";
+    } else if ($pl[last] < (time() - 300)) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ РёРіСЂРµ!</font></font></b><br>";
+    } else if ($loc != $pl[loc]) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!</font></font></b><br>";
+    } else if ($pl[fight] > 0) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµСѓРґР°С‡РЅРѕ! РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РІ Р±РѕСЋ!</font></font></b><br>";
+    }
 	else{
 			$it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT invent.*, items.* FROM items INNER JOIN invent ON items.id = invent.protype WHERE id_item='$id'"));
 			if($pl['invisible']>time()){
@@ -1818,8 +2113,11 @@ function zelinvis($id,$login,$loc){
 				mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `invisible`='".($it['effect']+time())."' WHERE `id`='".$pl['id']."'");
 				it_break($it['id_item']);
 			}
-			$msg[msg]='<b><font class=nickname><font color=#cc0000>Ветер развеял образ '.$pl['login'].', и он растворился в воздухе.</font></font></b>';
-			if($user['login']!=$login){$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к вам <b>\"$it[name]\".</b></font><BR>'+'');";chmsg($ms,$login);}
+        $msg[msg] = '<b><font class=nickname><font color=#cc0000>Р’РµС‚РµСЂ СЂР°Р·РІРµСЏР» РѕР±СЂР°Р· ' . $pl['login'] . ', Рё РѕРЅ СЂР°СЃС‚РІРѕСЂРёР»СЃСЏ РІ РІРѕР·РґСѓС…Рµ.</font></font></b>';
+        if ($user['login'] != $login) {
+            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РІР°Рј <b>\"$it[name]\".</b></font><BR>'+'');";
+            chmsg($ms, $login);
+        }
 	}
 return $msg;
 }
@@ -1830,19 +2128,37 @@ function doktor($svpar,$login,$loc){
 	$pl_st=allparam($pl);
 	$vis=explode("|",$pl['viselica']);
 	switch($svpar['effect']){
-		case 1: $formsg="легких травм";break;
-		case 2: $formsg="средних травм";break;
-		case 3: $formsg="тяжелых травм";break;
-		case 4: $formsg="осложненных травм";break;
-		case 999: $formsg="легких травм";break;
-        case 998: $formsg="средних травм";break;		
+        case 1:
+            $formsg = "Р»РµРіРєРёС… С‚СЂР°РІРј";
+            break;
+        case 2:
+            $formsg = "СЃСЂРµРґРЅРёС… С‚СЂР°РІРј";
+            break;
+        case 3:
+            $formsg = "С‚СЏР¶РµР»С‹С… С‚СЂР°РІРј";
+            break;
+        case 4:
+            $formsg = "РѕСЃР»РѕР¶РЅРµРЅРЅС‹С… С‚СЂР°РІРј";
+            break;
+        case 999:
+            $formsg = "Р»РµРіРєРёС… С‚СЂР°РІРј";
+            break;
+        case 998:
+            $formsg = "СЃСЂРµРґРЅРёС… С‚СЂР°РІРј";
+            break;
 		case 666: break;
 	}
-	if($pl==''){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" несуществует!</font></font></b><br>";}
-	else if($pl[last]<(time()-300)){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в игре!</font></font></b><br>";}
-	else if($user[loc]!=$pl[loc]){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в этой локации!</font></font></b><br>";}
-	else if($pl[fight]>0){$msg[msg]="<b><font class=nickname><font color=#cc0000>Неудачно! Персонаж \"$login\" в бою!</font></font></b><br>";}
-	else if($vis[1]>time()){$msg[msg]="<b><font class=nickname><font color=#cc0000>Неудачно! Персонаж \"$login\" не поддается лечению упав с виселицы!</font></font></b><br>";}
+    if ($pl == '') {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµСЃСѓС‰РµСЃС‚РІСѓРµС‚!</font></font></b><br>";
+    } else if ($pl[last] < (time() - 300)) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ РёРіСЂРµ!</font></font></b><br>";
+    } else if ($user[loc] != $pl[loc]) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!</font></font></b><br>";
+    } else if ($pl[fight] > 0) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµСѓРґР°С‡РЅРѕ! РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РІ Р±РѕСЋ!</font></font></b><br>";
+    } else if ($vis[1] > time()) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµСѓРґР°С‡РЅРѕ! РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РЅРµ РїРѕРґРґР°РµС‚СЃСЏ Р»РµС‡РµРЅРёСЋ СѓРїР°РІ СЃ РІРёСЃРµР»РёС†С‹!</font></font></b><br>";
+    }
 	else{
 		$aff=test_affect($pl['affect']);
 		$newaff="";
@@ -1850,13 +2166,14 @@ function doktor($svpar,$login,$loc){
 			$msg[msg]="aff: $aff";
 			$lech=0;
 			if($svpar['effect']==666){
-				$newaff="";$msg[msg]="<b><font class=nickname><font color=#cc0000>Вы вылечили все травмы персонажу \"$login\"!</font></font></b><br>";
+                $newaff = "";
+                $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ РІС‹Р»РµС‡РёР»Рё РІСЃРµ С‚СЂР°РІРјС‹ РїРµСЂСЃРѕРЅР°Р¶Сѓ \"$login\"!</font></font></b><br>";
 				mysqli_query($GLOBALS['db_link'],"UPDATE user SET affect='".$newaff."' WHERE id=".$pl['id'].";");
 				calcstat($pl['id']);
 				it_break($svpar[id]);
-				log_write("doktor",$svpar[name],"Все травмы",$pl[login]);
+                log_write("doktor", $svpar[name], "Р’СЃРµ С‚СЂР°РІРјС‹", $pl[login]);
 				if($pl['login']!=$user['login']){
-					$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b> вылечил вам <b>Все травмы</b>! Не забывайте оплачивать работу доктора.</b></font><BR>'+'');";
+                    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b> РІС‹Р»РµС‡РёР» РІР°Рј <b>Р’СЃРµ С‚СЂР°РІРјС‹</b>! РќРµ Р·Р°Р±С‹РІР°Р№С‚Рµ РѕРїР»Р°С‡РёРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ РґРѕРєС‚РѕСЂР°.</b></font><BR>'+'');";
 					chmsg($ms,$pl['login']);
 				}
 			}
@@ -1869,55 +2186,75 @@ function doktor($svpar,$login,$loc){
 								if($svpar['effect']==1 or $svpar['effect']==999){
 									$lech=1;
 									$affect[$key]="";
-								}
-								else{$msg[msg]="<b><font class=nickname><font color=#cc0000>У персонажа \"$login\" нет $formsg!</font></font></b><br>";}	
+								} else {
+                                    $msg[msg] = "<b><font class=nickname><font color=#cc0000>РЈ РїРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ $formsg!</font></font></b><br>";
+                                }
 							}
 							else if($travm[2]==2){
 								if($svpar['effect']==2){
 									$lech=1;
 									$affect[$key]="";
-								}
-								else{$msg[msg]="<b><font class=nickname><font color=#cc0000>У персонажа \"$login\" нет $formsg!</font></font></b><br>";}								
+								} else {
+                                    $msg[msg] = "<b><font class=nickname><font color=#cc0000>РЈ РїРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ $formsg!</font></font></b><br>";
+                                }
 							}
 							else if($travm[2]==3){
 								if($svpar['effect']==3){
 									$lech=1;
 									$affect[$key]="";
-								}
-								else{$msg[msg]="<b><font class=nickname><font color=#cc0000>У персонажа \"$login\" нет $formsg!</font></font></b><br>";}							
+								} else {
+                                    $msg[msg] = "<b><font class=nickname><font color=#cc0000>РЈ РїРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ $formsg!</font></font></b><br>";
+                                }
 							}
 							else if($travm[2]==4){
 								if($svpar['effect']==4){
 									$lech=1;
 									$affect[$key]="";
-								}
-								else{$msg[msg]="<b><font class=nickname><font color=#cc0000>У персонажа \"$login\" нет $formsg!</font></font></b><br>";}							
+								} else {
+                                    $msg[msg] = "<b><font class=nickname><font color=#cc0000>РЈ РїРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ $formsg!</font></font></b><br>";
+                                }
 							}
-						}					
+						}
 					if($affect[$key]!=''){$newaff.=$affect[$key]."|";}
-					else{$newaff.="";}			
+					else{$newaff.="";}
 				}
 				if($lech!=0){
 					switch($svpar['effect']){
-						case 1: $msg[msg]="<b><font class=nickname><font color=#cc0000>Вы вылечили легкую травму персонажу \"$login\"!</font></font></b><br>";$log="легкую травму";break;
-						case 2: $msg[msg]="<b><font class=nickname><font color=#cc0000>Вы вылечили среднюю травму персонажу \"$login\"!</font></font></b><br>";$log="среднюю травму";break;
-						case 3: $msg[msg]="<b><font class=nickname><font color=#cc0000>Вы вылечили тяжелую травму персонажу \"$login\"!</font></font></b><br>";$log="тяжелую травму";break;
-						case 4: $msg[msg]="<b><font class=nickname><font color=#cc0000>Вы вылечили осложненную травму персонажу \"$login\"!</font></font></b><br>";$log="осложненную травму";break;
-						case 999: $msg[msg]="<b><font class=nickname><font color=#cc0000>Вы вылечили легкую травму себе!</font></font></b><br>";$log="самолечение";break;
+                        case 1:
+                            $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ РІС‹Р»РµС‡РёР»Рё Р»РµРіРєСѓСЋ С‚СЂР°РІРјСѓ РїРµСЂСЃРѕРЅР°Р¶Сѓ \"$login\"!</font></font></b><br>";
+                            $log = "Р»РµРіРєСѓСЋ С‚СЂР°РІРјСѓ";
+                            break;
+                        case 2:
+                            $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ РІС‹Р»РµС‡РёР»Рё СЃСЂРµРґРЅСЋСЋ С‚СЂР°РІРјСѓ РїРµСЂСЃРѕРЅР°Р¶Сѓ \"$login\"!</font></font></b><br>";
+                            $log = "СЃСЂРµРґРЅСЋСЋ С‚СЂР°РІРјСѓ";
+                            break;
+                        case 3:
+                            $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ РІС‹Р»РµС‡РёР»Рё С‚СЏР¶РµР»СѓСЋ С‚СЂР°РІРјСѓ РїРµСЂСЃРѕРЅР°Р¶Сѓ \"$login\"!</font></font></b><br>";
+                            $log = "С‚СЏР¶РµР»СѓСЋ С‚СЂР°РІРјСѓ";
+                            break;
+                        case 4:
+                            $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ РІС‹Р»РµС‡РёР»Рё РѕСЃР»РѕР¶РЅРµРЅРЅСѓСЋ С‚СЂР°РІРјСѓ РїРµСЂСЃРѕРЅР°Р¶Сѓ \"$login\"!</font></font></b><br>";
+                            $log = "РѕСЃР»РѕР¶РЅРµРЅРЅСѓСЋ С‚СЂР°РІРјСѓ";
+                            break;
+                        case 999:
+                            $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ РІС‹Р»РµС‡РёР»Рё Р»РµРіРєСѓСЋ С‚СЂР°РІРјСѓ СЃРµР±Рµ!</font></font></b><br>";
+                            $log = "СЃР°РјРѕР»РµС‡РµРЅРёРµ";
+                            break;
 					}
 					mysqli_query($GLOBALS['db_link'],"UPDATE user SET affect='".$newaff."' WHERE id=".$pl['id'].";");
 					it_break($svpar[id_item]);
 					log_write("doktor",$svpar[name],$log,$pl[login]);
 					calcstat($pl['id']);
 					if($pl['login']!=$user['login']){
-						$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b> вылечил вам <b>$log</b>! Не забывайте оплачивать работу доктора.</b></font><BR>'+'');";
+                        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b> РІС‹Р»РµС‡РёР» РІР°Рј <b>$log</b>! РќРµ Р·Р°Р±С‹РІР°Р№С‚Рµ РѕРїР»Р°С‡РёРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ РґРѕРєС‚РѕСЂР°.</b></font><BR>'+'');";
 						chmsg($ms,$pl['login']);
 					}
 				}
 			}
-			
-		}
-		else{$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонаж \"$login\" здоров!</font></font></b><br>";}
+
+		} else {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶ \"$login\" Р·РґРѕСЂРѕРІ!</font></font></b><br>";
+        }
 	}
 	return $msg;
 }
@@ -1940,41 +2277,52 @@ function transfer($id,$login,$loc,$name,$transferer,$sum,$ttext = NULL){
 global $player;
 $login=chars($login);
 $pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login'"));
-if($pl==''){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" несуществует!</font></font></b><br>";}
-else if($pl[last]<(time()-300)){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в игре!</font></font></b><br>";}
-else if($loc!=$pl[loc]){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в этой локации!</font></font></b><br>";}
-else if($pl[fight]>0){$msg[msg]="<b><font class=nickname><font color=#cc0000>Неудачно! Персонаж \"$login\" в бою!</font></font></b><br>";}
+    if ($pl == '') {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµСЃСѓС‰РµСЃС‚РІСѓРµС‚!</font></font></b><br>";
+    } else if ($pl[last] < (time() - 300)) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ РёРіСЂРµ!</font></font></b><br>";
+    } else if ($loc != $pl[loc]) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!</font></font></b><br>";
+    } else if ($pl[fight] > 0) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµСѓРґР°С‡РЅРѕ! РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РІ Р±РѕСЋ!</font></font></b><br>";
+    }
 else{
 	if($id>1) {
 		$GetItem = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,`items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `id_item`='".$id."' AND `pl_id`='".$player['id']."'"));
 		if($GetItem){
 			mysqli_query($GLOBALS['db_link'],'UPDATE invent SET pl_id='.AP.$pl[id].AP.' WHERE id_item='.AP.$id.AP.'LIMIT 1;');
-			$msg[msg]="<b><font class=nickname><font color=#cc0000>Вы удачно передали \"$name\"!</font></font></b><br>"; log_write("transfer",$name,$sum,$pl[login]);
-			$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$transferer</b>  передал вам <b>\"$name\".</b></font><BR>'+'');";
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ СѓРґР°С‡РЅРѕ РїРµСЂРµРґР°Р»Рё \"$name\"!</font></font></b><br>";
+            log_write("transfer", $name, $sum, $pl[login]);
+            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$transferer</b>  РїРµСЂРµРґР°Р» РІР°Рј <b>\"$name\".</b></font><BR>'+'');";
 			pvu_logs($player['id'],"4","|0|".getIP()."|".$pl['ip']."|".$pl['level']."|".$pl['login']."|".$GetItem['level']."|".lr($GetItem['price'])."|".($GetItem['dolg']-$GetItem['iznos'])."|".$GetItem['dolg']."|0|".$GetItem['name']);
 			pvu_logs($pl['id'],"4","|1|".$pl['ip']."|".getIP()."|".$player['level']."|".$player['login']."|".$GetItem['level']."|".lr($GetItem['price'])."|".($GetItem['dolg']-$GetItem['iznos'])."|".$GetItem['dolg']."|0|".$GetItem['name']);
 			chmsg($ms,$login);
 		}
-	}
-	else if($pl[level]<5){$msg[msg]="<b><font class=nickname><font color=#cc0000>Игровую валюту можно передовать только персонажам достигшим 5 уровень!</font></font></b><br>";}
+	} else if ($pl[level] < 5) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РРіСЂРѕРІСѓСЋ РІР°Р»СЋС‚Сѓ РјРѕР¶РЅРѕ РїРµСЂРµРґРѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ РїРµСЂСЃРѕРЅР°Р¶Р°Рј РґРѕСЃС‚РёРіС€РёРј 5 СѓСЂРѕРІРµРЅСЊ!</font></font></b><br>";
+    }
 	else {
-		$typetolog = '0'; $abouttolog = '0';  # переменные для логов: первая всегда 0
+        $typetolog = '0';
+        $abouttolog = '0';  # РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ Р»РѕРіРѕРІ: РїРµСЂРІР°СЏ РІСЃРµРіРґР° 0
 		if ($id == 0 ) {
 					$plbablo = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],'SELECT * FROM user WHERE login='.AP.$transferer.AP.';'));
 					$bablo = $plbablo[nv];
-						if ($bablo>=$sum) { 
+						if ($bablo>=$sum) {
 							mysqli_query($GLOBALS['db_link'],'UPDATE user SET nv=nv+'.AP.$sum.AP.' WHERE id='.AP.$pl[id].AP.'LIMIT 1;');
 							mysqli_query($GLOBALS['db_link'],'UPDATE user SET nv=nv-'.AP.$sum.AP.' WHERE login='.AP.$transferer.AP.'LIMIT 1;');
-							$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$transferer</b> передал вам <b>\"$name\"</b> в размере <b>".lr($sum)."</b></font><BR>'+'');";
+                            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$transferer</b> РїРµСЂРµРґР°Р» РІР°Рј <b>\"$name\"</b> РІ СЂР°Р·РјРµСЂРµ <b>" . lr($sum) . "</b></font><BR>'+'');";
 							chmsg($ms,$login);
-							$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Вы передали персонажу <b>$login</b> <b>".lr($sum)."</b></font><BR>'+'');";
+                            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;Р’С‹ РїРµСЂРµРґР°Р»Рё РїРµСЂСЃРѕРЅР°Р¶Сѓ <b>$login</b> <b>" . lr($sum) . "</b></font><BR>'+'');";
 							chmsg($ms,$transferer);
 							pvu_logs($player['id'],"2","|0|".getIP()."|".$pl['ip']."|".$pl['level']."|".$pl['login']."|".$sum."|0|".$ttext);
 							pvu_logs($pl['id'],"2","|1|".$pl['ip']."|".getIP()."|".$player['level']."|".$player['login']."|".$sum."|0|".$ttext);
 							log_write("transfer","LR",$sum,$pl[login]);
-							$typetolog .= '@16';  
-							$abouttolog .= '@<b><font color="#CC0000">'.lr($sum).'</font></b> персонажу: <b>'.$pl['login'].'</b>';
-						}else {$ms="parent.frames['chmain'].add_msg('<b><font class=nickname><font color=#cc0000>У Вас нехватает денег!</font></font></b><br>'+'');"; chmsg($ms,$transferer);}
+							$typetolog .= '@16';
+                            $abouttolog .= '@<b><font color="#CC0000">' . lr($sum) . '</font></b> РїРµСЂСЃРѕРЅР°Р¶Сѓ: <b>' . $pl['login'] . '</b>';
+                        } else {
+                            $ms = "parent.frames['chmain'].add_msg('<b><font class=nickname><font color=#cc0000>РЈ Р’Р°СЃ РЅРµС…РІР°С‚Р°РµС‚ РґРµРЅРµРі!</font></font></b><br>'+'');";
+                            chmsg($ms, $transferer);
+                        }
 				} else {
 					if (($id == 1) and ($login == $transferer)) {
 					$plbablo = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],'SELECT * FROM user WHERE login='.AP.$transferer.AP.';'));
@@ -1982,9 +2330,12 @@ else{
 						if ($bablo>=$sum) {
 							mysqli_query($GLOBALS['db_link'],'UPDATE user SET baks=baks+'.AP.$sum.AP.' WHERE id='.AP.$pl[id].AP.'LIMIT 1;');
 							mysqli_query($GLOBALS['db_link'],'UPDATE user SET dd=dd-'.AP.$sum.AP.' WHERE login='.AP.$transferer.AP.'LIMIT 1;');
-							$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> Вы обменяли <b>$sum DLR</b> на <b>$</b>. Зачислено <b>$sum $.</b></b></font><BR>'+'');";
+                            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> Р’С‹ РѕР±РјРµРЅСЏР»Рё <b>$sum DLR</b> РЅР° <b>$</b>. Р—Р°С‡РёСЃР»РµРЅРѕ <b>$sum $.</b></b></font><BR>'+'');";
 							chmsg($ms,$login);
-						} else {$ms="parent.frames['chmain'].add_msg('<b><font class=nickname><font color=#cc0000>У Вас нехватает денег!</font></font></b><br>'+'');"; chmsg($ms,$transferer);}
+                        } else {
+                            $ms = "parent.frames['chmain'].add_msg('<b><font class=nickname><font color=#cc0000>РЈ Р’Р°СЃ РЅРµС…РІР°С‚Р°РµС‚ РґРµРЅРµРі!</font></font></b><br>'+'');";
+                            chmsg($ms, $transferer);
+                        }
 					} else {
 						if (($id == 1) and ($login != $transferer)) {
 							$plbablo = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],'SELECT * FROM user WHERE login='.AP.$transferer.AP.';'));
@@ -1992,14 +2343,17 @@ else{
 								if ($bablo>=$sum) {
 								mysqli_query($GLOBALS['db_link'],'UPDATE user SET dd=dd+'.AP.$sum.AP.' WHERE id='.AP.$pl[id].AP.'LIMIT 1;');
 								mysqli_query($GLOBALS['db_link'],'UPDATE user SET dd=dd-'.AP.$sum.AP.' WHERE login='.AP.$transferer.AP.'LIMIT 1;');
-								$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$transferer</b> передал вам <b>DLR</b> в размере <b>$sum DLR.</b></font><BR>'+'');";
+                                    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$transferer</b> РїРµСЂРµРґР°Р» РІР°Рј <b>DLR</b> РІ СЂР°Р·РјРµСЂРµ <b>$sum DLR.</b></font><BR>'+'');";
 								chmsg($ms,$login);
-								$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Вы передали персонажу <b>$login</b> <b>$sum DLR.</b></font><BR>'+'');";
+                                    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;Р’С‹ РїРµСЂРµРґР°Р»Рё РїРµСЂСЃРѕРЅР°Р¶Сѓ <b>$login</b> <b>$sum DLR.</b></font><BR>'+'');";
 								chmsg($ms,$transferer);
 								log_write("transfer","DLR",$sum,$pl[login]);
-								$typetolog .= '@17';  
-								$abouttolog .= '@<b><font color="#CC0000">'.$sum.'</font></b> DLR персонажу: <b>'.$pl['login'].'</b>';
-								} else {$ms="parent.frames['chmain'].add_msg('<b><font class=nickname><font color=#cc0000>У Вас нехватает денег!</font></font></b><br>'+'');"; chmsg($ms,$transferer);}
+								$typetolog .= '@17';
+                                    $abouttolog .= '@<b><font color="#CC0000">' . $sum . '</font></b> DLR РїРµСЂСЃРѕРЅР°Р¶Сѓ: <b>' . $pl['login'] . '</b>';
+                                } else {
+                                    $ms = "parent.frames['chmain'].add_msg('<b><font class=nickname><font color=#cc0000>РЈ Р’Р°СЃ РЅРµС…РІР°С‚Р°РµС‚ РґРµРЅРµРі!</font></font></b><br>'+'');";
+                                    chmsg($ms, $transferer);
+                                }
 						}
 				   }
 				}
@@ -2014,9 +2368,20 @@ return $msg;
 }
 function gift($id,$login,$loc,$name,$gifter,$sum){$login=chars($login);
 $pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login'"));
-if($pl==''){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" несуществует!</font></font></b><br>";}else if($pl[last]<(time()-300)){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в игре!</font></font></b><br>";}else if($loc!=$pl[loc]){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в этой локации!</font></font></b><br>";}else if($pl[fight]>0){$msg[msg]="<b><font class=nickname><font color=#cc0000>Неудачно! Персонаж \"$login\" в бою!</font></font></b><br>";}else{$gift="Подарок от \"$gifter\"";
-mysqli_query($GLOBALS['db_link'],'UPDATE invent SET pl_id='.AP.$pl[id].AP.', gift='.AP.$gift.AP.' WHERE id_item='.AP.$id.AP.'LIMIT 1;');$msg[msg]="<b><font class=nickname><font color=#cc0000>Вы подарили \"$name\" для $login!</font></font></b><br>"; log_write("present",$name,$sum,$login);
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Получен подарок <b>\"$name\"</b> от <b>$gifter.</b></font><BR>'+'');";
+    if ($pl == '') {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµСЃСѓС‰РµСЃС‚РІСѓРµС‚!</font></font></b><br>";
+    } else if ($pl[last] < (time() - 300)) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ РёРіСЂРµ!</font></font></b><br>";
+    } else if ($loc != $pl[loc]) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!</font></font></b><br>";
+    } else if ($pl[fight] > 0) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµСѓРґР°С‡РЅРѕ! РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РІ Р±РѕСЋ!</font></font></b><br>";
+    } else {
+        $gift = "РџРѕРґР°СЂРѕРє РѕС‚ \"$gifter\"";
+        mysqli_query($GLOBALS['db_link'], 'UPDATE invent SET pl_id=' . AP . $pl[id] . AP . ', gift=' . AP . $gift . AP . ' WHERE id_item=' . AP . $id . AP . 'LIMIT 1;');
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ РїРѕРґР°СЂРёР»Рё \"$name\" РґР»СЏ $login!</font></font></b><br>";
+        log_write("present", $name, $sum, $login);
+        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРѕР»СѓС‡РµРЅ РїРѕРґР°СЂРѕРє <b>\"$name\"</b> РѕС‚ <b>$gifter.</b></font><BR>'+'');";
 chmsg($ms,$login);}
 return $msg;
 }
@@ -2050,29 +2415,29 @@ function testcompl(){
 
 function affect($aff, $var, $travm = NULL){
 	/* DataBase */
-	$effects = array('','Легкая травма','Средняя травма','Тяжелая травма','Осложненная травма','Излечение','','','Темное проклятие','Благословение ангела','Магическое зеркало','Берсеркер','Милосердие Создателя','Алкогольное опьянение11','Свиток Покровительства','Блок','Тюрьма','Молчанка','Форумная молчанка','Свиток Неизбежности','Зелье Колкости','Зелье Загрубелой Кожи','Зелье Просветления','Зелье Гения','Яд','Зелье Иммунитета','Зелье Силы','Зелье Защиты От Ожогов','Зелье Арктических Вьюг','Зелье Жизни','Зелье Сокрушительных Ударов','Зелье Стойкости','Зелье Недосягаемости','Зелье Точного Попадания','Зелье Ловкости','Зелье Удачи','Зелье Огненного Ореола','Зелье Метаболизма','Зелье Медитации','Зелье Громоотвода','Зелье Сильной Спины','Зелье Скорбь Лешего','Зелье Боевой Славы','Зелье Ловких Ударов','Зелье Спокойствия','Зелье Мужества','Зелье Человек-Гора','Зелье Секрет Волшебника','Зелье Инквизитора','Зелье Панциря','','Секретное Зелье','Зелье Скорости','Зелье Соколиный Взор','Зелье Подвижности','Фронтовые 100 грамм','','','','','','','','','','','','','','','Зелье Кровожадности','Зелье Быстроты','Свиток Величия','Свиток Каменной кожи','Слеза Создателя','Гнев Локара','Дар Иланы','Новогодний бонус','Эликсир из Подснежника','Молодильное яблочко','Благословение Иланы','День всех влюбленных','Галантный кавалер','Рыбный Самогон','Рыбная Водка');
+    $effects = array('', 'Р›РµРіРєР°СЏ С‚СЂР°РІРјР°', 'РЎСЂРµРґРЅСЏСЏ С‚СЂР°РІРјР°', 'РўСЏР¶РµР»Р°СЏ С‚СЂР°РІРјР°', 'РћСЃР»РѕР¶РЅРµРЅРЅР°СЏ С‚СЂР°РІРјР°', 'РР·Р»РµС‡РµРЅРёРµ', '', '', 'РўРµРјРЅРѕРµ РїСЂРѕРєР»СЏС‚РёРµ', 'Р‘Р»Р°РіРѕСЃР»РѕРІРµРЅРёРµ Р°РЅРіРµР»Р°', 'РњР°РіРёС‡РµСЃРєРѕРµ Р·РµСЂРєР°Р»Рѕ', 'Р‘РµСЂСЃРµСЂРєРµСЂ', 'РњРёР»РѕСЃРµСЂРґРёРµ РЎРѕР·РґР°С‚РµР»СЏ', 'РђР»РєРѕРіРѕР»СЊРЅРѕРµ РѕРїСЊСЏРЅРµРЅРёРµ11', 'РЎРІРёС‚РѕРє РџРѕРєСЂРѕРІРёС‚РµР»СЊСЃС‚РІР°', 'Р‘Р»РѕРє', 'РўСЋСЂСЊРјР°', 'РњРѕР»С‡Р°РЅРєР°', 'Р¤РѕСЂСѓРјРЅР°СЏ РјРѕР»С‡Р°РЅРєР°', 'РЎРІРёС‚РѕРє РќРµРёР·Р±РµР¶РЅРѕСЃС‚Рё', 'Р—РµР»СЊРµ РљРѕР»РєРѕСЃС‚Рё', 'Р—РµР»СЊРµ Р—Р°РіСЂСѓР±РµР»РѕР№ РљРѕР¶Рё', 'Р—РµР»СЊРµ РџСЂРѕСЃРІРµС‚Р»РµРЅРёСЏ', 'Р—РµР»СЊРµ Р“РµРЅРёСЏ', 'РЇРґ', 'Р—РµР»СЊРµ РРјРјСѓРЅРёС‚РµС‚Р°', 'Р—РµР»СЊРµ РЎРёР»С‹', 'Р—РµР»СЊРµ Р—Р°С‰РёС‚С‹ РћС‚ РћР¶РѕРіРѕРІ', 'Р—РµР»СЊРµ РђСЂРєС‚РёС‡РµСЃРєРёС… Р’СЊСЋРі', 'Р—РµР»СЊРµ Р–РёР·РЅРё', 'Р—РµР»СЊРµ РЎРѕРєСЂСѓС€РёС‚РµР»СЊРЅС‹С… РЈРґР°СЂРѕРІ', 'Р—РµР»СЊРµ РЎС‚РѕР№РєРѕСЃС‚Рё', 'Р—РµР»СЊРµ РќРµРґРѕСЃСЏРіР°РµРјРѕСЃС‚Рё', 'Р—РµР»СЊРµ РўРѕС‡РЅРѕРіРѕ РџРѕРїР°РґР°РЅРёСЏ', 'Р—РµР»СЊРµ Р›РѕРІРєРѕСЃС‚Рё', 'Р—РµР»СЊРµ РЈРґР°С‡Рё', 'Р—РµР»СЊРµ РћРіРЅРµРЅРЅРѕРіРѕ РћСЂРµРѕР»Р°', 'Р—РµР»СЊРµ РњРµС‚Р°Р±РѕР»РёР·РјР°', 'Р—РµР»СЊРµ РњРµРґРёС‚Р°С†РёРё', 'Р—РµР»СЊРµ Р“СЂРѕРјРѕРѕС‚РІРѕРґР°', 'Р—РµР»СЊРµ РЎРёР»СЊРЅРѕР№ РЎРїРёРЅС‹', 'Р—РµР»СЊРµ РЎРєРѕСЂР±СЊ Р›РµС€РµРіРѕ', 'Р—РµР»СЊРµ Р‘РѕРµРІРѕР№ РЎР»Р°РІС‹', 'Р—РµР»СЊРµ Р›РѕРІРєРёС… РЈРґР°СЂРѕРІ', 'Р—РµР»СЊРµ РЎРїРѕРєРѕР№СЃС‚РІРёСЏ', 'Р—РµР»СЊРµ РњСѓР¶РµСЃС‚РІР°', 'Р—РµР»СЊРµ Р§РµР»РѕРІРµРє-Р“РѕСЂР°', 'Р—РµР»СЊРµ РЎРµРєСЂРµС‚ Р’РѕР»С€РµР±РЅРёРєР°', 'Р—РµР»СЊРµ РРЅРєРІРёР·РёС‚РѕСЂР°', 'Р—РµР»СЊРµ РџР°РЅС†РёСЂСЏ', '', 'РЎРµРєСЂРµС‚РЅРѕРµ Р—РµР»СЊРµ', 'Р—РµР»СЊРµ РЎРєРѕСЂРѕСЃС‚Рё', 'Р—РµР»СЊРµ РЎРѕРєРѕР»РёРЅС‹Р№ Р’Р·РѕСЂ', 'Р—РµР»СЊРµ РџРѕРґРІРёР¶РЅРѕСЃС‚Рё', 'Р¤СЂРѕРЅС‚РѕРІС‹Рµ 100 РіСЂР°РјРј', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Р—РµР»СЊРµ РљСЂРѕРІРѕР¶Р°РґРЅРѕСЃС‚Рё', 'Р—РµР»СЊРµ Р‘С‹СЃС‚СЂРѕС‚С‹', 'РЎРІРёС‚РѕРє Р’РµР»РёС‡РёСЏ', 'РЎРІРёС‚РѕРє РљР°РјРµРЅРЅРѕР№ РєРѕР¶Рё', 'РЎР»РµР·Р° РЎРѕР·РґР°С‚РµР»СЏ', 'Р“РЅРµРІ Р›РѕРєР°СЂР°', 'Р”Р°СЂ РР»Р°РЅС‹', 'РќРѕРІРѕРіРѕРґРЅРёР№ Р±РѕРЅСѓСЃ', 'Р­Р»РёРєСЃРёСЂ РёР· РџРѕРґСЃРЅРµР¶РЅРёРєР°', 'РњРѕР»РѕРґРёР»СЊРЅРѕРµ СЏР±Р»РѕС‡РєРѕ', 'Р‘Р»Р°РіРѕСЃР»РѕРІРµРЅРёРµ РР»Р°РЅС‹', 'Р”РµРЅСЊ РІСЃРµС… РІР»СЋР±Р»РµРЅРЅС‹С…', 'Р“Р°Р»Р°РЅС‚РЅС‹Р№ РєР°РІР°Р»РµСЂ', 'Р С‹Р±РЅС‹Р№ РЎР°РјРѕРіРѕРЅ', 'Р С‹Р±РЅР°СЏ Р’РѕРґРєР°');
 	/* Effects Show */
 	$s = $st = '';
 	$affect=explode("|",$aff);
-	
+
 	foreach ($affect as $val){
 		list($row['f_params'], $row['time'], $row['eff_id']) = explode('@', $val);
 
 		$TimeOr = $row['time'];
-			
-		/* Вычесляем время */
+
+        /* Р’С‹С‡РµСЃР»СЏРµРј РІСЂРµРјСЏ */
 		if($row['time']>time()){
 			$row['time']-=time();
 			$ch=floor($row['time']/3600);
 			$min=floor(($row['time']-($ch*3600))/60);
 			$sec=floor(($row['time']-($ch*3600))%60);
 			if($var == 0){
-				$TimeOut = $ch."ч ".$min."мин ";
+                $TimeOut = $ch . "С‡ " . $min . "РјРёРЅ ";
 			}elseif($var==1){
 				$TimeOut = (($ch<10)?'0'.$ch:$ch).":".(($min<10)?'0'.$min:$min).":".(($sec<10)?'0'.$sec:$sec);
 			}
-		
-			/* Считаем статы */
+
+            /* РЎС‡РёС‚Р°РµРј СЃС‚Р°С‚С‹ */
 			$params = explode(";",$row['f_params']);
 			foreach($params as $f_params){
 			$sts = explode("/",$f_params);
@@ -2090,19 +2455,19 @@ function affect($aff, $var, $travm = NULL){
 				}
 			}
 			if($var == 0 and !empty($effects[$row['eff_id']]) and $travm == true and $row['eff_id'] < 5){
-				$s .= $effects[$row['eff_id']] . ' еще '.$TimeOut.',';
+                $s .= $effects[$row['eff_id']] . ' РµС‰Рµ ' . $TimeOut . ',';
 			}
 			if($var == 1 and !empty($effects[$row['eff_id']])){
 				$s .= $row['eff_id']."@".$effects[$row['eff_id']]."@".$TimeOut."|";
 			}
 			if($var == 2 and !empty($effects[$row['eff_id']])){
-				$s .= $effects[$row['eff_id']] .'<br />еще '.$TimeOut.'<br />';
+                $s .= $effects[$row['eff_id']] . '<br />РµС‰Рµ ' . $TimeOut . '<br />';
 			}
 			if($var == 4 and !empty($effects[$row['eff_id']])){
 				$s .= "[".$row['eff_id'].",".($TimeOr-time()).",'".$row['f_params']."'],";
 			}
 		}
-		
+
 	}
 	if($var==3){
 		foreach ($stat as $key => $val){
@@ -2145,7 +2510,7 @@ if($persent<100)
 	if($rand<=40){
 		$tr=1;
 		$m0ne_tr = 4;
-		$travm="легкую";
+        $travm = "Р»РµРіРєСѓСЋ";
 		$time=time()+round(trw_time(rand(1,2))/$trwtime);
 		$sts[1]=0.1;
 		$sts[2]=0.2;
@@ -2153,7 +2518,7 @@ if($persent<100)
 	else if($rand<=60){
 		$tr=2;
 		$m0ne_tr = 3;
-		$travm="среднюю";
+        $travm = "СЃСЂРµРґРЅСЋСЋ";
 		$time=time()+round(trw_time(rand(3,5))/$trwtime);
 		$sts[1]=0.2;
 		$sts[2]=0.3;
@@ -2161,7 +2526,7 @@ if($persent<100)
 	else if($rand<=100){
 		$tr=3;
 		$m0ne_tr = 2;
-		$travm="тяжелую";
+        $travm = "С‚СЏР¶РµР»СѓСЋ";
 		$time=time()+round(trw_time(rand(6,8))/$trwtime);
 		$sts[1]=0.3;
 		$sts[2]=0.5;
@@ -2170,9 +2535,21 @@ if($persent<100)
 	$minus=round(rand(30*$sts[1],30*$sts[2]));
 	switch($stt)
 	{
-		case 0: $st="30/-".$minus; $m0ne_st = "30@-".$minus; $stat="<font color=black>Характеристика персонажа снижена: </font><font color=red><b color=red>-".$minus."</b></font><font color=black> силы.";break;
-		case 1: $st="31/-".$minus; $m0ne_st = "31@-".$minus; $stat="<font color=black>Характеристика персонажа снижена: </font><font color=red><b color=red>-".$minus."</b></font><font color=black> ловкости.";break;
-		case 2: $st="32/-".$minus; $m0ne_st = "32@-".$minus; $stat="<font color=black>Характеристика персонажа снижена: </font><font color=red><b color=red>-".$minus."</b></font><font color=black> удачи.";break;
+        case 0:
+            $st = "30/-" . $minus;
+            $m0ne_st = "30@-" . $minus;
+            $stat = "<font color=black>РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєР° РїРµСЂСЃРѕРЅР°Р¶Р° СЃРЅРёР¶РµРЅР°: </font><font color=red><b color=red>-" . $minus . "</b></font><font color=black> СЃРёР»С‹.";
+            break;
+        case 1:
+            $st = "31/-" . $minus;
+            $m0ne_st = "31@-" . $minus;
+            $stat = "<font color=black>РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєР° РїРµСЂСЃРѕРЅР°Р¶Р° СЃРЅРёР¶РµРЅР°: </font><font color=red><b color=red>-" . $minus . "</b></font><font color=black> Р»РѕРІРєРѕСЃС‚Рё.";
+            break;
+        case 2:
+            $st = "32/-" . $minus;
+            $m0ne_st = "32@-" . $minus;
+            $stat = "<font color=black>РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєР° РїРµСЂСЃРѕРЅР°Р¶Р° СЃРЅРёР¶РµРЅР°: </font><font color=red><b color=red>-" . $minus . "</b></font><font color=black> СѓРґР°С‡Рё.";
+            break;
 	}
 	$par.="$st@$time@$tr|";
 }
@@ -2183,8 +2560,8 @@ else
 	$m0ne_st = "all@-".$minus;
 	$tr=4;
 	$m0ne_tr = 1;
-	$travm="осложненную боевую";
-	$stat="<font color=black>Характеристики персонажа снижены: </font><font color=red><b color=red>-".$minus."</b></font><font color=black> силы, ловкости и удачи. Модификаторы персонажа снижены: </font><font color=red><b color=red>-".($minus*2)."</b></font><font color=black> уворота, стойкости, сокрушения, точности, пробоя брони и класса брони.";
+    $travm = "РѕСЃР»РѕР¶РЅРµРЅРЅСѓСЋ Р±РѕРµРІСѓСЋ";
+    $stat = "<font color=black>РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё РїРµСЂСЃРѕРЅР°Р¶Р° СЃРЅРёР¶РµРЅС‹: </font><font color=red><b color=red>-" . $minus . "</b></font><font color=black> СЃРёР»С‹, Р»РѕРІРєРѕСЃС‚Рё Рё СѓРґР°С‡Рё. РњРѕРґРёС„РёРєР°С‚РѕСЂС‹ РїРµСЂСЃРѕРЅР°Р¶Р° СЃРЅРёР¶РµРЅС‹: </font><font color=red><b color=red>-" . ($minus * 2) . "</b></font><font color=black> СѓРІРѕСЂРѕС‚Р°, СЃС‚РѕР№РєРѕСЃС‚Рё, СЃРѕРєСЂСѓС€РµРЅРёСЏ, С‚РѕС‡РЅРѕСЃС‚Рё, РїСЂРѕР±РѕСЏ Р±СЂРѕРЅРё Рё РєР»Р°СЃСЃР° Р±СЂРѕРЅРё.";
 	$time=time()+round(trw_time(8)/$trwtime);
 	$par.="$st@$time@$tr|";
 
@@ -2197,7 +2574,7 @@ mysqli_query($GLOBALS['db_link'],"INSERT INTO `effects` (`uid`,`eff_id`,`effects
 mysqli_query($GLOBALS['db_link'],"UPDATE user SET affect='".$newaff."' ".(($pl['ability']>0 and $pl['sklon']==5 and $pl['lastability']<=time() and $trwtime==2)?',ability=ability-1,lastability='.(time()+1800).'':'')." WHERE id=".$pl['id']." LIMIT 1;");
 calcstat($pl[id]);
 testcompl();
-$ret.=",\" <font color=#CC0000><b>Получает $travm травму.".($trwtime==2?' Силы света помогают ему, время травмы сократилось в 2 раза!':'')."</b> $stat\"]";
+    $ret .= ",\" <font color=#CC0000><b>РџРѕР»СѓС‡Р°РµС‚ $travm С‚СЂР°РІРјСѓ." . ($trwtime == 2 ? ' РЎРёР»С‹ СЃРІРµС‚Р° РїРѕРјРѕРіР°СЋС‚ РµРјСѓ, РІСЂРµРјСЏ С‚СЂР°РІРјС‹ СЃРѕРєСЂР°С‚РёР»РѕСЃСЊ РІ 2 СЂР°Р·Р°!' : '') . "</b> $stat\"]";
 return $ret;
 }
 
@@ -2216,7 +2593,7 @@ function trw_time($t){
 return $tr;}
 
 
-// Дроп с ботов!
+// Р”СЂРѕРї СЃ Р±РѕС‚РѕРІ!
 function add_drops($pl,$persent){
 	if($persent<100){
 		$rand=rand(0,100);
@@ -2272,17 +2649,233 @@ function add_drops($pl,$persent){
 	$old=test_affect($pl['affect']);
 	// New Database
 	mysqli_query($GLOBALS['db_link'],"INSERT INTO `effects` (`uid`,`eff_id`,`effects`,`time`) VALUES ('".$pl['id']."','".$m0ne_tr."','".$m0ne_st."','".$time."');");
-	// New Database	
+	// New Database
 	mysqli_query($GLOBALS['db_link'],'UPDATE user SET affect='.AP.$par.$old[0].AP.' WHERE id='.AP.$pl[id].AP.'LIMIT 1;');
 	testcompl();
-	$ret.=",\" <font color=#CC0000><b>Получает травму</b>\",";
+    $ret .= ",\" <font color=#CC0000><b>РџРѕР»СѓС‡Р°РµС‚ С‚СЂР°РІРјСѓ</b>\",";
 	return $ret;
 }
 
 
 function stats($st){
-switch($st)
-{/*case 0: $st="Гравировка"; break;*/case 1: $st="Удар";break;case 2: $st="Долговечность";break;case 3: $st="Карманов";break;case 4: $st="Материал";break;case 5: $st="Уловка";break;case 6: $st="Точность";break;case 7: $st="Сокрушение";break;case 8: $st="Стойкость";break;case 9: $st="Класс брони";break;case 10: $st="Пробой брони";break;case 11: $st="Пробой колющим ударом";break;case 12: $st="Пробой режущим ударом";break;case 13: $st="Пробой проникающим ударом";break;case 14: $st="Пробой пробивающим ударом";break;case 15: $st="Пробой рубящим ударом";break;case 16: $st="Пробой карающим ударом";break;case 17: $st="Пробой отсекающим ударом";break;case 18: $st="Пробой дробящим ударом";break;case 19: $st="Защита от колющих ударов";break;case 20: $st="Защита от режущих ударов";break;case 21: $st="Защита от проникающих ударов";break;case 22: $st="Защита от пробивающих ударов";break;case 23: $st="Защита от рубящих ударов";break;case 24: $st="Защита от карающих ударов";break;case 25: $st="Защита от отсекающих ударов";break;case 26: $st="Защита от дробящих ударов";break;case 27: $st="НР";break;case 28: $st="Очки действия";break;case 29: $st="Мана";break;case 30: $st="Мощь";break;case 31: $st="Проворность";break;case 32: $st="Везение";break;case 33: $st="Здоровье";break;case 34: $st="Разум";break;case 35: $st="Сноровка";break;case 36: $st="Владение мечами";break;case 37: $st="Владение топорами";break;case 38: $st="Владение дробящим оружием";break;case 39: $st="Владение ножами";break;case 40: $st="Владение метательным оружием";break;case 41: $st="Владение алебардами и копьями";break;case 42: $st="Владение посохами";break;case 43: $st="Владение экзотическим оружием";break;case 44: $st="Владение двуручным оружием";break;case 45: $st="Магия огня";break;case 46: $st="Магия воды";break;case 47: $st="Магия воздуха";break;case 48: $st="Магия земли";break;case 49: $st="Сопротивление магии огня";break;case 50: $st="Сопротивление магии воды";break;case 51: $st="Сопротивление магии воздуха";break;case 52: $st="Сопротивление магии земли";break;case 53: $st="Воровство";break;case 54: $st="Осторожность";break;case 55: $st="Скрытность";break;case 56: $st="Наблюдательность";break;case 57: $st="Торговля";break;case 58: $st="Странник";break;case 59: $st="Рыболов";break;case 60: $st="Лесоруб";break;case 61: $st="Ювелирное дело";break;case 62: $st="Самолечение";break;case 63: $st="Оружейник";break;case 64: $st="Доктор";break;case 65: $st="Самолечение";break;case 66: $st="Быстрое восстановление маны";break;case 67: $st="Лидерство";break;case 68: $st="Алхимия";break;case 69: $st="Развитие горного дела";break;case 70: $st="Травничество";break;case 'expbonus': $st="Бонус опыта";break;case 'massbonus': $st="Бонус Массы";break;}
+switch($st) {/*case 0: $st="Р“СЂР°РІРёСЂРѕРІРєР°"; break;*/
+    case 1:
+        $st = "РЈРґР°СЂ";
+        break;
+    case 2:
+        $st = "Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ";
+        break;
+    case 3:
+        $st = "РљР°СЂРјР°РЅРѕРІ";
+        break;
+    case 4:
+        $st = "РњР°С‚РµСЂРёР°Р»";
+        break;
+    case 5:
+        $st = "РЈР»РѕРІРєР°";
+        break;
+    case 6:
+        $st = "РўРѕС‡РЅРѕСЃС‚СЊ";
+        break;
+    case 7:
+        $st = "РЎРѕРєСЂСѓС€РµРЅРёРµ";
+        break;
+    case 8:
+        $st = "РЎС‚РѕР№РєРѕСЃС‚СЊ";
+        break;
+    case 9:
+        $st = "РљР»Р°СЃСЃ Р±СЂРѕРЅРё";
+        break;
+    case 10:
+        $st = "РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё";
+        break;
+    case 11:
+        $st = "РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј";
+        break;
+    case 12:
+        $st = "РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј";
+        break;
+    case 13:
+        $st = "РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј";
+        break;
+    case 14:
+        $st = "РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј";
+        break;
+    case 15:
+        $st = "РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј";
+        break;
+    case 16:
+        $st = "РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј";
+        break;
+    case 17:
+        $st = "РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј";
+        break;
+    case 18:
+        $st = "РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј";
+        break;
+    case 19:
+        $st = "Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ";
+        break;
+    case 20:
+        $st = "Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ";
+        break;
+    case 21:
+        $st = "Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ";
+        break;
+    case 22:
+        $st = "Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ";
+        break;
+    case 23:
+        $st = "Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ";
+        break;
+    case 24:
+        $st = "Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ";
+        break;
+    case 25:
+        $st = "Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ";
+        break;
+    case 26:
+        $st = "Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ";
+        break;
+    case 27:
+        $st = "РќР ";
+        break;
+    case 28:
+        $st = "РћС‡РєРё РґРµР№СЃС‚РІРёСЏ";
+        break;
+    case 29:
+        $st = "РњР°РЅР°";
+        break;
+    case 30:
+        $st = "РњРѕС‰СЊ";
+        break;
+    case 31:
+        $st = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ";
+        break;
+    case 32:
+        $st = "Р’РµР·РµРЅРёРµ";
+        break;
+    case 33:
+        $st = "Р—РґРѕСЂРѕРІСЊРµ";
+        break;
+    case 34:
+        $st = "Р Р°Р·СѓРј";
+        break;
+    case 35:
+        $st = "РЎРЅРѕСЂРѕРІРєР°";
+        break;
+    case 36:
+        $st = "Р’Р»Р°РґРµРЅРёРµ РјРµС‡Р°РјРё";
+        break;
+    case 37:
+        $st = "Р’Р»Р°РґРµРЅРёРµ С‚РѕРїРѕСЂР°РјРё";
+        break;
+    case 38:
+        $st = "Р’Р»Р°РґРµРЅРёРµ РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј";
+        break;
+    case 39:
+        $st = "Р’Р»Р°РґРµРЅРёРµ РЅРѕР¶Р°РјРё";
+        break;
+    case 40:
+        $st = "Р’Р»Р°РґРµРЅРёРµ РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј";
+        break;
+    case 41:
+        $st = "Р’Р»Р°РґРµРЅРёРµ Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё";
+        break;
+    case 42:
+        $st = "Р’Р»Р°РґРµРЅРёРµ РїРѕСЃРѕС…Р°РјРё";
+        break;
+    case 43:
+        $st = "Р’Р»Р°РґРµРЅРёРµ СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј";
+        break;
+    case 44:
+        $st = "Р’Р»Р°РґРµРЅРёРµ РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј";
+        break;
+    case 45:
+        $st = "РњР°РіРёСЏ РѕРіРЅСЏ";
+        break;
+    case 46:
+        $st = "РњР°РіРёСЏ РІРѕРґС‹";
+        break;
+    case 47:
+        $st = "РњР°РіРёСЏ РІРѕР·РґСѓС…Р°";
+        break;
+    case 48:
+        $st = "РњР°РіРёСЏ Р·РµРјР»Рё";
+        break;
+    case 49:
+        $st = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ";
+        break;
+    case 50:
+        $st = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹";
+        break;
+    case 51:
+        $st = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°";
+        break;
+    case 52:
+        $st = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё";
+        break;
+    case 53:
+        $st = "Р’РѕСЂРѕРІСЃС‚РІРѕ";
+        break;
+    case 54:
+        $st = "РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ";
+        break;
+    case 55:
+        $st = "РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ";
+        break;
+    case 56:
+        $st = "РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ";
+        break;
+    case 57:
+        $st = "РўРѕСЂРіРѕРІР»СЏ";
+        break;
+    case 58:
+        $st = "РЎС‚СЂР°РЅРЅРёРє";
+        break;
+    case 59:
+        $st = "Р С‹Р±РѕР»РѕРІ";
+        break;
+    case 60:
+        $st = "Р›РµСЃРѕСЂСѓР±";
+        break;
+    case 61:
+        $st = "Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ";
+        break;
+    case 62:
+        $st = "РЎР°РјРѕР»РµС‡РµРЅРёРµ";
+        break;
+    case 63:
+        $st = "РћСЂСѓР¶РµР№РЅРёРє";
+        break;
+    case 64:
+        $st = "Р”РѕРєС‚РѕСЂ";
+        break;
+    case 65:
+        $st = "РЎР°РјРѕР»РµС‡РµРЅРёРµ";
+        break;
+    case 66:
+        $st = "Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹";
+        break;
+    case 67:
+        $st = "Р›РёРґРµСЂСЃС‚РІРѕ";
+        break;
+    case 68:
+        $st = "РђР»С…РёРјРёСЏ";
+        break;
+    case 69:
+        $st = "Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°";
+        break;
+    case 70:
+        $st = "РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ";
+        break;
+    case 'expbonus':
+        $st = "Р‘РѕРЅСѓСЃ РѕРїС‹С‚Р°";
+        break;
+    case 'massbonus':
+        $st = "Р‘РѕРЅСѓСЃ РњР°СЃСЃС‹";
+        break;
+}
 return $st;
 }
 
@@ -2310,7 +2903,7 @@ function endbat($id,$t,$k4){
 				}else{
 					$win.=",[4,$p[side]],\" \"";
 				}
-				$k3=1;//коэфф опыта выигрыш
+                $k3 = 1;//РєРѕСЌС„С„ РѕРїС‹С‚Р° РІС‹РёРіСЂС‹С€
 		$wins[$p[bt]]+=1;
 		mysqli_query($GLOBALS['db_link'],"update instant set level=level+1 where uid='$usr[id]'");
 	}
@@ -2327,7 +2920,7 @@ function endbat($id,$t,$k4){
 						$death="".$death."".add_trw($p,$ftr)."";
 						savelog($death,$p['id_battle']);
 					}
-					$k3=0.1;//коэфф опыта проигрыш
+                    $k3 = 0.1;//РєРѕСЌС„С„ РѕРїС‹С‚Р° РїСЂРѕРёРіСЂС‹С€
 					$wins[$p['bt']+=1]+=1;
 					if($p['type']==1){
 						if($p['invisible']<time()){
@@ -2337,7 +2930,7 @@ function endbat($id,$t,$k4){
 						}
 					 }
 				}
-				$k3=0.1;//коэфф опыта проигрыш
+                $k3 = 0.1;//РєРѕСЌС„С„ РѕРїС‹С‚Р° РїСЂРѕРёРіСЂС‹С€
 				$wins[$p[bt]+=1]+=1;
 				if($p[type]==1){
 					if($p['invisible']<time()){
@@ -2347,7 +2940,7 @@ function endbat($id,$t,$k4){
 				 	}
 				}
 				if($p['type']==1 and $p['level']>4){
-						//поломка рун закомментирована
+                    //РїРѕР»РѕРјРєР° СЂСѓРЅ Р·Р°РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅР°
 				$i2 = 0; $i3 = rand(1,3);
 				while($i2<$i3){
 				$itm=mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,  `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='".$p['id']."' AND `invent`.`used`='1' AND `items`.`dd_price`='0' AND `items`.`type`!='w29' AND `items`.`type`!='w0' AND `items`.`type`!='w66' ORDER BY RAND()");
@@ -2356,59 +2949,60 @@ function endbat($id,$t,$k4){
 				//$numr_rune_dd = mysqli_num_rows($itm_rune_dd);
 				if($numr>0 /* or $numr_rune_dd>0 */){
 					$i=0;
-					## проверяем наличие и того и другого
+                    ## РїСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ Рё С‚РѕРіРѕ Рё РґСЂСѓРіРѕРіРѕ
 					/* if($numr>0 and $numr_rune_dd>0){
-						$rnd = rand(0,0);						
-						if($rnd==0){ ## если 1 = ломаем обычную вещь
+						$rnd = rand(0,0);
+						if($rnd==0){ ## РµСЃР»Рё 1 = Р»РѕРјР°РµРј РѕР±С‹С‡РЅСѓСЋ РІРµС‰СЊ
 							while($i==0){
 								$row=mysqli_fetch_assoc($itm);
 								$i++;
 							}
-						}else{ ## если 2 = ломаем руну из ДЦ
+						}else{ ## РµСЃР»Рё 2 = Р»РѕРјР°РµРј СЂСѓРЅСѓ РёР· Р”Р¦
 							while($i==0){
 								$row=mysqli_fetch_assoc($itm_rune_dd);
 								$i++;
-							}	
+							}
 						}
 					}elseif($numr_rune_dd>0){
 							while($i==0){
 								$row=mysqli_fetch_assoc($itm_rune_dd);
 								$i++;
 							}
-					} */if($numr>0){ //поменять на elseif чтоб включить поломку рун
+					} */
+                    if ($numr > 0) { //РїРѕРјРµРЅСЏС‚СЊ РЅР° elseif С‡С‚РѕР± РІРєР»СЋС‡РёС‚СЊ РїРѕР»РѕРјРєСѓ СЂСѓРЅ
 						while($i==0){
 							$row=mysqli_fetch_assoc($itm);
 							$i++;
 						}
 					}
-					
+
 					if($row['type']!='w71'){
 						if(($row['dolg']-$row['iznos'])>2){
 							mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `iznos`=`iznos`+'1' WHERE `id_item`='".$row['id_item']."' AND `pl_id`='".$p['id']."' LIMIT 1;");
 							if(($row['dolg']-$row['iznos'])<10000){
-								$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;<b>$row[name]</b> скоро сломается! Долговечность: ".($row['dolg']-$row['iznos']-1)."/".$row['dolg']."!</b></font><BR>'+'');";
+                                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;<b>$row[name]</b> СЃРєРѕСЂРѕ СЃР»РѕРјР°РµС‚СЃСЏ! Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ: " . ($row['dolg'] - $row['iznos'] - 1) . "/" . $row['dolg'] . "!</b></font><BR>'+'');";
 								chmsg($ms,$p['login']);
 							}
 						}
 						else if (($row['dolg']-$row['iznos'])==2){
 							mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `iznos`=`iznos`+'1',`used`='0' WHERE `id_item`='".$row['id_item']."' AND `pl_id`='".$p['id']."' LIMIT 1;");
-							$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;<b>$row[name]</b> сломана! Долговечность: ".($row['dolg']-$row['iznos']-1)."/".$row['dolg']."! Прежде чем снова использовать ее - необходима починка вещи.</b></font><BR>'+'');";
+                            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;<b>$row[name]</b> СЃР»РѕРјР°РЅР°! Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ: " . ($row['dolg'] - $row['iznos'] - 1) . "/" . $row['dolg'] . "! РџСЂРµР¶РґРµ С‡РµРј СЃРЅРѕРІР° РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РµРµ - РЅРµРѕР±С…РѕРґРёРјР° РїРѕС‡РёРЅРєР° РІРµС‰Рё.</b></font><BR>'+'');";
 							chmsg($ms,$p['login']);
 
 						}
 						else if (($row['dolg']-$row['iznos'])<2){
 							mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `used`='0' WHERE `id_item`='".$row['id_item']."' AND `pl_id`='".$p['id']."' LIMIT 1;");
-							$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;<b>$row[name]</b> сломана! Долговечность: ".($row['dolg']-$row['iznos']-1)."/".$row['dolg']."! Прежде чем снова использовать ее - необходима починка вещи.</b></font><BR>'+'');";
+                            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;<b>$row[name]</b> СЃР»РѕРјР°РЅР°! Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ: " . ($row['dolg'] - $row['iznos'] - 1) . "/" . $row['dolg'] . "! РџСЂРµР¶РґРµ С‡РµРј СЃРЅРѕРІР° РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РµРµ - РЅРµРѕР±С…РѕРґРёРјР° РїРѕС‡РёРЅРєР° РІРµС‰Рё.</b></font><BR>'+'');";
 							chmsg($ms,$p['login']);
 						}
 					}else{
 						if(($row['dolg']-$row['iznos'])<100){
-							$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;<b>$row[name]</b> скоро сломается! Долговечность: ".($row['dolg']-$row['iznos']-1)."/".$row['dolg']."!</b></font><BR>'+'');";
+                            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;<b>$row[name]</b> СЃРєРѕСЂРѕ СЃР»РѕРјР°РµС‚СЃСЏ! Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ: " . ($row['dolg'] - $row['iznos'] - 1) . "/" . $row['dolg'] . "!</b></font><BR>'+'');";
 							chmsg($ms,$p['login']);
 						}
 						it_break($row['id_item']);
 					}
-					
+
 					}
 				$i2++;
 				}
@@ -2416,22 +3010,22 @@ function endbat($id,$t,$k4){
 			}
 			else
 			{
-				$k3=0.5; //коэфф опыта ничья
+                $k3 = 0.5; //РєРѕСЌС„С„ РѕРїС‹С‚Р° РЅРёС‡СЊСЏ
 			}
-			$k=($t[$side[$p[side]]]+1)/($t[$p[side]]+5); // проверка уровня противника: уровень противника +1 / уровень игрока +5
-			$k2=$p[travma]/80+1; //травматичность боя, с ботами = 10: $k = 1.125
+            $k = ($t[$side[$p[side]]] + 1) / ($t[$p[side]] + 5); // РїСЂРѕРІРµСЂРєР° СѓСЂРѕРІРЅСЏ РїСЂРѕС‚РёРІРЅРёРєР°: СѓСЂРѕРІРµРЅСЊ РїСЂРѕС‚РёРІРЅРёРєР° +1 / СѓСЂРѕРІРµРЅСЊ РёРіСЂРѕРєР° +5
+            $k2 = $p[travma] / 80 + 1; //С‚СЂР°РІРјР°С‚РёС‡РЅРѕСЃС‚СЊ Р±РѕСЏ, СЃ Р±РѕС‚Р°РјРё = 10: $k = 1.125
 			if($k4<=0 or $k4==''){$k4=1;}
 			else{$k4=$k4/100+1;}
-			 $dmg=explode(",",$p[dmg]); //$dmg[1] - нанесенный урон, $dmg[6] - сколько народу убил
-			 //ФОРМУЛА ОПЫТА
-				$ex=exp_level($p[level]); //базовый опыт	 		
-				$exp1=($dmg[1]*($ex['ex']/15+1))/1.2; // умножаем урон на базовый опыт
-				$exp2=$dmg[6]*0.07+1; //первая цифра отвечающая за опыт - зависит от количества убитых противников максимум 1.4 при 8 противниках
-				$exp3=$k*$k2*$k3*$k4; //коэффициэнты 
+            $dmg = explode(",", $p[dmg]); //$dmg[1] - РЅР°РЅРµСЃРµРЅРЅС‹Р№ СѓСЂРѕРЅ, $dmg[6] - СЃРєРѕР»СЊРєРѕ РЅР°СЂРѕРґСѓ СѓР±РёР»
+            //Р¤РћР РњРЈР›Рђ РћРџР«РўРђ
+            $ex = exp_level($p[level]); //Р±Р°Р·РѕРІС‹Р№ РѕРїС‹С‚
+            $exp1 = ($dmg[1] * ($ex['ex'] / 15 + 1)) / 1.2; // СѓРјРЅРѕР¶Р°РµРј СѓСЂРѕРЅ РЅР° Р±Р°Р·РѕРІС‹Р№ РѕРїС‹С‚
+            $exp2 = $dmg[6] * 0.07 + 1; //РїРµСЂРІР°СЏ С†РёС„СЂР° РѕС‚РІРµС‡Р°СЋС‰Р°СЏ Р·Р° РѕРїС‹С‚ - Р·Р°РІРёСЃРёС‚ РѕС‚ РєРѕР»РёС‡РµСЃС‚РІР° СѓР±РёС‚С‹С… РїСЂРѕС‚РёРІРЅРёРєРѕРІ РјР°РєСЃРёРјСѓРј 1.4 РїСЂРё 8 РїСЂРѕС‚РёРІРЅРёРєР°С…
+            $exp3 = $k * $k2 * $k3 * $k4; //РєРѕСЌС„С„РёС†РёСЌРЅС‚С‹
 				if($dmg[6]==0){$dmg[6]=1;}
 				$exp=round(($exp1*$exp2*$exp3)*($prsql['exp'] + ($t['type'] == 1 ? ((($t['sklon']!=$p['sklon'] and $t['sklon']!=0) ? $prsql['exp_sklon']-1 : 0.1) + $prsql['exp_pvp']-1) : 0))/$dmg[6]);
 				//$exp=round(($exp1*$exp2*$exp3)/$dmg[6]); *($prsql['exp'] + ($t['type'] == 1 ? ((($t['sklon']!=$p['sklon'] and $t['sklon']!=0) ? $prsql['exp_sklon']-1 : 0.1) + $prsql['exp_pvp']-1) : 0))
-			 //КОНЕЦ ФОРМУЛЫ ОПЫТА
+            //РљРћРќР•Р¦ Р¤РћР РњРЈР›Р« РћРџР«РўРђ
 			 $otherbonus = explode("|",$p['otherbonus']);
 				$expbonus='';
 				foreach($otherbonus as $val){
@@ -2452,11 +3046,11 @@ function endbat($id,$t,$k4){
 			 if ($exp > $prsql['exp_max']){
 				$exp = 	$prsql['exp_max'];
 			 }
-			 
+
 			 if($usr['instructor'] > 0){
 				$exp = $exp * 1.5;
 			 }
-			 //Доблесть прописано здесь ,`DoblestFight`='".(($p['bt'] < 2) ? '1' : '0' )."'
+            //Р”РѕР±Р»РµСЃС‚СЊ РїСЂРѕРїРёСЃР°РЅРѕ Р·РґРµСЃСЊ ,`DoblestFight`='".(($p['bt'] < 2) ? '1' : '0' )."'
 		//	 mysqli_query($GLOBALS['db_link'],'UPDATE user SET wins='.AP.implode("|",$wins).AP.',dmg='.AP.$exp.AP.' WHERE id='.AP.$p['id'].AP.' and id>9999 LIMIT 1;');
 			if( mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `wins`='".implode("|",$wins)."',`victories`='".$wins[0]."',`losses`='".$wins[1]."',`bot_losses`='".$wins[3]."',`bot_victories`='".$wins[2]."',`dmg`='".$exp."',`DoblestFight`='".(($p['bt'] < 2) ? '1' : '0' )."' WHERE `id`='".$p['id']."' AND `id`>'9999' LIMIT 1;")){
 				//echo '<br>TEST';
@@ -2468,11 +3062,11 @@ function endbat($id,$t,$k4){
 				$li.=$zp.'[4,'.$p['side'].',"",0,0,"",'.$p['dmg'].','.$exp.']';
 			}
 			//if($p[type]=='3' and $p[id]>9999){mysqli_query($GLOBALS['db_link'],"DELETE FROM user WHERE id=".$p['id'].";"); }
-			//Рейтинги кланов
+            //Р РµР№С‚РёРЅРіРё РєР»Р°РЅРѕРІ
 			if(isset($p['clan_gif'])){
 				$ClanPoints[$p['clan_gif']] += $dmg[1];
 			}
-			//Квесты
+            //РљРІРµСЃС‚С‹
 			if($event > 0){
 				$EventCounts[(($p['clan_gif']) ? '1/'.$p['clan_gif'] : '2/'.$p['login'] )] += $dmg[1];
 			}
@@ -2483,7 +3077,7 @@ function endbat($id,$t,$k4){
 		arsort($EventCounts);
 		$i = 0;
 		$Winner = $WinnerID = $WinnerType = '';
-		$log = ',[[0,"'.date("H:i").'"],"<b>Бой закончен.</b><br />';
+        $log = ',[[0,"' . date("H:i") . '"],"<b>Р‘РѕР№ Р·Р°РєРѕРЅС‡РµРЅ.</b><br />';
 		foreach ($EventCounts as $key => $val){
 			$i++;
 			$ExpClan = explode("/",$key);
@@ -2494,22 +3088,22 @@ function endbat($id,$t,$k4){
 					$WinnerID = $GetClan['clan_id'];
 					$WinnerType = 'clan';
 				}
-				$log .= 'Клан <b>' . $GetClan['clan_name'] . '</b> набрал <b>' . $val . '</b> урона.<br />';
+                $log .= 'РљР»Р°РЅ <b>' . $GetClan['clan_name'] . '</b> РЅР°Р±СЂР°Р» <b>' . $val . '</b> СѓСЂРѕРЅР°.<br />';
 			}elseif($ExpClan[0] == '2'){
 				if($i == 1){
 					$Winner = $GetClan['clan_name'];
 					$WinnerID = $GetClan['clan_id'];
 					$WinnerType = 'user';
 				}
-				$log .= 'Персонаж <b>' . $ExpClan[1] . '</b> набрал <b>' . $val . '</b> урона.<br />';
+                $log .= 'РџРµСЂСЃРѕРЅР°Р¶ <b>' . $ExpClan[1] . '</b> РЅР°Р±СЂР°Р» <b>' . $val . '</b> СѓСЂРѕРЅР°.<br />';
 			}
 		}
-		$log .= 'Победа за <b>'.$Winner.'</b>"]';
+        $log .= 'РџРѕР±РµРґР° Р·Р° <b>' . $Winner . '</b>"]';
 		$GetFort = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `forts` WHERE `id`='1'"));
 		if($GetFort['clan'] == $WinnerID){
-			mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Events.Lifeiswar.Ru&nbsp;</font> <font color=#000000>Осада завершена! Форт остался у прежних владельцев. Время окончания осады: ".date('d.m.Y H:i',time())."</font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Events.Lifeiswar.Ru&nbsp;</font> <font color=#000000>РћСЃР°РґР° Р·Р°РІРµСЂС€РµРЅР°! Р¤РѕСЂС‚ РѕСЃС‚Р°Р»СЃСЏ Сѓ РїСЂРµР¶РЅРёС… РІР»Р°РґРµР»СЊС†РµРІ. Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ РѕСЃР°РґС‹: " . date('d.m.Y H:i', time()) . "</font><BR>'+'');") . "');");
 		}else{
-			mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Events.Lifeiswar.Ru&nbsp;</font> <font color=#000000>Осада завершена! Форт перешел к новым владельцам. Время окончания осады: ".date('d.m.Y H:i',time())."</font><BR>'+'');")."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Events.Lifeiswar.Ru&nbsp;</font> <font color=#000000>РћСЃР°РґР° Р·Р°РІРµСЂС€РµРЅР°! Р¤РѕСЂС‚ РїРµСЂРµС€РµР» Рє РЅРѕРІС‹Рј РІР»Р°РґРµР»СЊС†Р°Рј. Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ РѕСЃР°РґС‹: " . date('d.m.Y H:i', time()) . "</font><BR>'+'');") . "');");
 		}
 		mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `fort_storm`='0' WHERE `fort_storm`>'0'");
 		mysqli_query($GLOBALS['db_link'],"UPDATE `forts` SET `storm_stamp`=`storm_stamp_temp`,`storm_stamp_changed`='0',`owned_stamp`='".time()."',`clan`='".$Winner."' WHERE `id`='1'");
@@ -2521,9 +3115,15 @@ function endbat($id,$t,$k4){
 		}
 		switch($t[0]){
 			case 1:
-			case 2: $log = ",[[0,\"".date("H:i")."\"],\"<b>Бой закончен.</b> Победа за \"".$win.",\".\"]";break;
-			case 3: $log = ",[[0,\"".date("H:i")."\"],\"<b>Бой закончен.</b> Ничья.\"]";break;
-			case 4: $log = ",[[0,\"".date("H:i")."\"],\"<b>Бой закончен по таймауту.</b>  \"".$looser.",\" проиграл бой.\"]";break;
+            case 2:
+                $log = ",[[0,\"" . date("H:i") . "\"],\"<b>Р‘РѕР№ Р·Р°РєРѕРЅС‡РµРЅ.</b> РџРѕР±РµРґР° Р·Р° \"" . $win . ",\".\"]";
+                break;
+            case 3:
+                $log = ",[[0,\"" . date("H:i") . "\"],\"<b>Р‘РѕР№ Р·Р°РєРѕРЅС‡РµРЅ.</b> РќРёС‡СЊСЏ.\"]";
+                break;
+            case 4:
+                $log = ",[[0,\"" . date("H:i") . "\"],\"<b>Р‘РѕР№ Р·Р°РєРѕРЅС‡РµРЅ РїРѕ С‚Р°Р№РјР°СѓС‚Сѓ.</b>  \"" . $looser . ",\" РїСЂРѕРёРіСЂР°Р» Р±РѕР№.\"]";
+                break;
 		}
 	}
 	savelog($log,$id);
@@ -2536,7 +3136,7 @@ function bots_array($p,$kb){
 	if(md5($p['login'].$p['id'])=='af2e2ad337868f187cf333e103107cc0'){
 	return 12;
 	}else{return $kb;}
-	
+
 }
 
 function obnul_pl($pl){
@@ -2659,7 +3259,7 @@ function exp_level($level){
 		case 34: $arr=array("exp"=>$exp,"ma"=>180,"ex"=>$ex,"frs"=>30,"nv"=>10000,"nav"=>0,"mum"=>24,"bum"=>25);break;
 		case 35: $arr=array("exp"=>$exp,"ma"=>180,"ex"=>$ex,"frs"=>30,"nv"=>10000,"nav"=>1,"mum"=>24,"bum"=>25);break;
 		case 36: $arr=array("exp"=>$exp,"ma"=>180,"ex"=>$ex,"frs"=>30,"nv"=>10000,"nav"=>0,"mum"=>24,"bum"=>25);break;
-		case 37: $arr=array("exp"=>$exp,"ma"=>180,"ex"=>$ex,"frs"=>30,"nv"=>10000,"nav"=>1,"mum"=>24,"bum"=>25);break;	
+		case 37: $arr=array("exp"=>$exp,"ma"=>180,"ex"=>$ex,"frs"=>30,"nv"=>10000,"nav"=>1,"mum"=>24,"bum"=>25);break;
 	}
 return $arr;
 }
@@ -2677,7 +3277,7 @@ function ins_bot($botxy,$kb,$fid){
 	if(bots_array($player,1)==12){$player['sign']=$sk;}
 	$liders = 0;
 	$i=0;$b=0;
-	$bots=mysqli_query($GLOBALS['db_link'],"SELECT SQL_CACHE * FROM `user` WHERE `type`='3' AND `level`>='".$botxy['lvlmin']."' AND `level`<='".$botxy['lvlmax']."' AND `id`<'9999' AND `id`!='1597' AND `id`!='482' AND `id`!='4000' AND `id`!='1598' AND `id`!='1599'  AND `id`!='1598' AND `id`!='2698'  AND `id`!='1598' AND `id`!='2699' AND `id`!='2695';");				
+	$bots=mysqli_query($GLOBALS['db_link'],"SELECT SQL_CACHE * FROM `user` WHERE `type`='3' AND `level`>='".$botxy['lvlmin']."' AND `level`<='".$botxy['lvlmax']."' AND `id`<'9999' AND `id`!='1597' AND `id`!='482' AND `id`!='4000' AND `id`!='1598' AND `id`!='1599'  AND `id`!='1598' AND `id`!='2698'  AND `id`!='1598' AND `id`!='2699' AND `id`!='2695';");
 	while($row = mysqli_fetch_assoc($bots)){
 		$botarr[]=$row;
 		$b++;
@@ -2691,7 +3291,7 @@ function ins_bot($botxy,$kb,$fid){
 		$bot['mp']=$bot['mp_all'];
 		$bot['fight']=0;
 		if(rand(1,200)==1 and $player['sign']!=$sk and $liders==0 and $bot['level']>=12){
-			$bot['login'] = $bot['login'].' [Лидер]';
+            $bot['login'] = $bot['login'] . ' [Р›РёРґРµСЂ]';
 			$bot['hp_all']= round($bot['hp_all']*10);
 			$bot['mp_all']= round($bot['mp_all']*10);
 			$bot['sila']=($bot['sila']>0?($bot['sila']*2):0);
@@ -2700,7 +3300,7 @@ function ins_bot($botxy,$kb,$fid){
 			$bot['zdorov']=($bot['zdorov']>0?($bot['zdorov']*2):0);
 			$bot['hp']=$bot['hp_all'];
 			$bot['mp']=$bot['mp_all'];
-			//пишем статы чемпиона
+            //РїРёС€РµРј СЃС‚Р°С‚С‹ С‡РµРјРїРёРѕРЅР°
 			$stat = explode("|",$bot['st']);
 			$tmp = explode("-",$stat[1]);
 			$tmp[0] = $tmp[0]*2;
@@ -2715,7 +3315,7 @@ function ins_bot($botxy,$kb,$fid){
 			//
 		}
 		/*elseif($player['sign']==$sk and $liders==0  and $bot['level']>=12){
-			$bot['login'] = $bot['login'].' [Лидер]';
+			$bot['login'] = $bot['login'].' [Р›РёРґРµСЂ]';
 			$bot['hp_all']= round($bot['hp_all']*10);
 			$bot['mp_all']= round($bot['mp_all']*10);
 			$bot['sila']=($bot['sila']>0?($bot['sila']*2):0);
@@ -2724,7 +3324,7 @@ function ins_bot($botxy,$kb,$fid){
 			$bot['zdorov']=($bot['zdorov']>0?($bot['zdorov']*2):0);
 			$bot['hp']=$bot['hp_all'];
 			$bot['mp']=$bot['mp_all'];
-			//пишем статы чемпиона
+			//РїРёС€РµРј СЃС‚Р°С‚С‹ С‡РµРјРїРёРѕРЅР°
 			$stat = explode("|",$bot['st']);
 			$tmp = explode("-",$stat[1]);
 			$tmp[0] = $tmp[0]*2;
@@ -2740,17 +3340,17 @@ function ins_bot($botxy,$kb,$fid){
 		$ins="('".$bot['damage_mods']."','".$bot['access']."','".$bot['type']."','".$bot['login']."','".$bot['pass']."','".$bot['email']."','".$bot['useaction']."','".$bot['icq']."','".$bot['name']."','".$bot['country']."','".$bot['city']."','".$bot['bday']."','".$bot['url']."','".$bot['sex']."','".$bot['thotem']."','".$bot['bdaypers']."','".$bot['ip']."','".$bot['filt']."','".$bot['pcid']."','".$bot['last']."','".$bot['lastbattle']."','".$bot['wait']."','".$bot['chcolor']."','".$bot['loc']."','".$bot['pos']."','".$bot['level']."','".$bot['clan_id']."','".$bot['clan']."','".$bot['clan_d']."','".$bot['clan_gif']."','".$bot['clan_accesses']."','".$bot['clan_status']."','".$bot['clan_check']."','".$bot['sklon']."','".$bot['nv']."','".$bot['dd']."','".$bot['baks']."','".$bot['obraz']."','".$bot['f_obraz']."','".$bot['obr_col']."','".$bot['sila']."','".$bot['lovk']."','".$bot['uda4a']."','".$bot['zdorov']."','".$bot['znan']."','".$bot['mudr']."','".$bot['ustal']."','".$bot['od']."','".$bot['bl']."','".$bot['free_stat']."','".$bot['hp']."','".$bot['hp_all']."','".$bot['mp']."','".$bot['mp_all']."','".$bot['hps']."','".$bot['mps']."','".$bot['chp']."','".$bot['cmp']."','".$bot['st']."','".$bot['affect']."','".$bot['umen']."','".$bot['perk']."','".$bot['fr_bum']."','".$bot['fr_mum']."','".$bot['nav']."','".$bot['battle']."','".$bot['side']."','".$bot['fight']."','".$bot['sleep']."','".$bot['block']."','".$bot['prison']."','".$bot['finblock']."','".$bot['addon']."','".$bot['about']."','".$bot['dmg']."','".$bot['exp']."','".$bot['wins']."','".$bot['mov']."','".$bot['obnul']."','".$bot['licens']."','".$bot['options']."','".$bot['semija']."','".$bot['a_m']."','".$bot['sign']."','".$bot['minex']."','".$bot['miney']."','".$bot['waiter']."','".$bot['sp7']."','".$bot['forum_accesses']."','".$bot['forum_smiles']."','".$bot['forum_lastmsg']."','".$bot['firstlogin']."')";
 		$i++;
 		if($i<$kb){$insert.=$ins.",";}else{$insert.=$ins;}
-	}	
+	}
 	return $insert;
 }
 function ins_bot_logovo($bot_id,$bot_kolvo,$fid){
 	$i=0;$b=0;$k=0;$n=0;
 	while($bot_id[$n]){$n++;}
 	while($bot_id[$k]){
-	$bots=mysqli_query($GLOBALS['db_link'],"SELECT SQL_CACHE * FROM `user` WHERE `type`='3' AND `id`='$bot_id[$k]';");					
+	$bots=mysqli_query($GLOBALS['db_link'],"SELECT SQL_CACHE * FROM `user` WHERE `type`='3' AND `id`='$bot_id[$k]';");
 	$bot = mysqli_fetch_assoc($bots);
 	while($i<$bot_kolvo[$k]){
-	
+
 		$bot['battle']=$fid;
 		$bot['side']=2;
 		$bot['hp']=$bot['hp_all'];
@@ -2763,7 +3363,7 @@ function ins_bot_logovo($bot_id,$bot_kolvo,$fid){
 	}
 //	echo'test|';
 	$k++;$i=0;
-}	
+}
 	return $insert;
 }
 function logovo_nap($player,$bot_id,$bot_kolvo){
@@ -2775,42 +3375,42 @@ function logovo_nap($player,$bot_id,$bot_kolvo){
 			else if($trwrand<=30){$trw=30;}
 			else if($trwrand<=50){$trw=50;}
 			else if($trwrand<=80){$trw=80;}
-			$fid=newbattle(2,$player['loc'],1,time(),300,$trw,0,0,0,0,0,0,0,1);					
-			$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";	
+			$fid=newbattle(2,$player['loc'],1,time(),300,$trw,0,0,0,0,0,0,0,1);
+			$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";
 			mysqli_query($GLOBALS['db_link'],"INSERT INTO `user` (".$ins1.") VALUES ".ins_bot_logovo($bot_id,$bot_kolvo,$fid).";");
 			save_hp_roun($player);
 			$randtime=rand(240,300);
 			$lb=time()+$randtime;
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `battle`='".$fid."',`side`='1',`lastbattle`='".$lb."',`wait`='".time()."' WHERE `login`='".$player['login']."' LIMIT 1;");
 			startbat($fid,2);
-			// Пишем логи NEW
-			$log=',[[0,"'.date("H:i").'"],"Бой между "';
+        // РџРёС€РµРј Р»РѕРіРё NEW
+        $log = ',[[0,"' . date("H:i") . '"],"Р‘РѕР№ РјРµР¶РґСѓ "';
 			$LeftTeam=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `side` = '1' AND `battle`='".$fid."'");
 			while ($val = mysqli_fetch_assoc($LeftTeam)) {
 				if($val['side']=='1'){
 					if($val['invisible']<time()){
 						$log.=',[1,'.$val['side'].',"'.$val['login'].'",'.$val['level'].','.$val['sklon'].',"'.$val['clan_gif'].'"],","';
-					}else{				
+					}else{
 						$log.=',[4,'.$val['side'].'],","';
 					}
 				}
 			}
 			$log=substr_replace($log, '', -3);
-			$log .= '" и "';
+        $log .= '" Рё "';
 			$RightTeam=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `side` = '2' AND `battle`='".$fid."'");
 			while ($val = mysqli_fetch_assoc($RightTeam)) {
 				if($val['side']=='2'){
 					if($val['invisible']<time()){
 						$log.=',[1,'.$val['side'].',"'.$val['login'].'",'.$val['level'].','.$val['sklon'].',"'.$val['clan_gif'].'"],","';
-					}else{				
+					}else{
 						$log.=',[4,'.$val['side'].'],","';
 					}
 				}
 			}
 			$log=substr_replace($log, '', -3);
-			$log.='" начался (бой в погребе)."]';
+        $log .= '" РЅР°С‡Р°Р»СЃСЏ (Р±РѕР№ РІ РїРѕРіСЂРµР±Рµ)."]';
 			savelog($log,$fid);
-			//Конец Писанины логов!!!
+        //РљРѕРЅРµС† РџРёСЃР°РЅРёРЅС‹ Р»РѕРіРѕРІ!!!
 			echo"<script>top.frames['main_top'].location='/main.php'</script>";
 	}
 }
@@ -2826,11 +3426,11 @@ function BotAttack($player){
 			else if($trwrand<=30){$trw=30;}
 			else if($trwrand<=50){$trw=50;}
 			else if($trwrand<=80){$trw=80;}
-			$fid=newbattle(2,$player['loc'],1,time(),300,$trw,0,0,0,0,0,0,0,1);					
+			$fid=newbattle(2,$player['loc'],1,time(),300,$trw,0,0,0,0,0,0,0,1);
 			$maxbot=$player['level'];
 			if($maxbot>6){$maxbot=6;}elseif($maxbot<=1){$maxbot=2;}
 			$kb=rand(1,$maxbot);
-			$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";	
+			$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";
 			mysqli_query($GLOBALS['db_link'],"INSERT INTO `user` (".$ins1.") VALUES ".ins_bot($botxy,$kb,$fid).";");
 			save_hp_roun($player);
 			$randtime=rand(240,300);
@@ -2844,27 +3444,27 @@ function BotAttack($player){
 			$lb=time()+$randtime;
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `battle`='".$fid."',`side`='1',`lastbattle`='".$lb."',`wait`='".time()."' WHERE `login`='".$player['login']."' LIMIT 1;");
 			startbat($fid,2);
-			// Пишем логи NEW
-			$log=',[[0,"'.date("H:i").'"],"Бой между "';
+        // РџРёС€РµРј Р»РѕРіРё NEW
+        $log = ',[[0,"' . date("H:i") . '"],"Р‘РѕР№ РјРµР¶РґСѓ "';
 			$LeftTeam=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `side` = '1' AND `battle`='".$fid."'");
 			while ($val = mysqli_fetch_assoc($LeftTeam)) {
 				if($val['side']=='1'){
 					if($val['invisible']<time()){
 						$log.=',[1,'.$val['side'].',"'.$val['login'].'",'.$val['level'].','.$val['sklon'].',"'.$val['clan_gif'].'"],","';
-					}else{				
+					}else{
 						$log.=',[4,'.$val['side'].'],","';
 					}
 				}
 				$uId1 .= $val["id"]."|";
 			}
 			$log=substr_replace($log, '', -3);
-			$log .= '" и "';
+        $log .= '" Рё "';
 			$RightTeam=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `side` = '2' AND `battle`='".$fid."'");
 			while ($val = mysqli_fetch_assoc($RightTeam)) {
 				if($val['side']=='2'){
 					if($val['invisible']<time()){
 						$log.=',[1,'.$val['side'].',"'.$val['login'].'",'.$val['level'].','.$val['sklon'].',"'.$val['clan_gif'].'"],","';
-					}else{				
+					}else{
 						$log.=',[4,'.$val['side'].'],","';
 					}
 				}
@@ -2872,9 +3472,9 @@ function BotAttack($player){
 			}
 			SetMap(1,substr($uId1,0,strlen($uId1)-1),substr($uId2,0,strlen($uId2)-1));
 			$log=substr_replace($log, '', -3);
-			$log.='" начался (нападение бота)."]';
+        $log .= '" РЅР°С‡Р°Р»СЃСЏ (РЅР°РїР°РґРµРЅРёРµ Р±РѕС‚Р°)."]';
 			savelog($log,$fid);
-			//Конец Писанины логов!!!
+        //РљРѕРЅРµС† РџРёСЃР°РЅРёРЅС‹ Р»РѕРіРѕРІ!!!
 			echo"<script>parent.frames['main_top'].location='/main.php'</script>";
 	}
 }
@@ -2901,8 +3501,8 @@ function TraneAttack($player,$bots_ids){
 	else if($trwrand<=30){$trw=30;}
 	else if($trwrand<=50){$trw=50;}
 	else if($trwrand<=80){$trw=80;}
-	$fid=newbattle(2,$player['loc'],1,time(),300,$trw,0,0,0,0,0,0,0,1);					
-	$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";	
+	$fid=newbattle(2,$player['loc'],1,time(),300,$trw,0,0,0,0,0,0,0,1);
+	$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";
 	mysqli_query($GLOBALS['db_link'],"INSERT INTO `user` (".$ins1.") VALUES ".trane_bots($bots_ids,$fid).";");
 	save_hp_roun($player);
 	$randtime=rand(240,300);
@@ -2914,34 +3514,34 @@ function TraneAttack($player,$bots_ids){
 	$lb=time()+$randtime;
 	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `battle`='".$fid."',`side`='1',`lastbattle`='".$lb."',`wait`='".time()."' WHERE `login`='".$player['login']."' LIMIT 1;");
 	startbat($fid,2);
-	// Пишем логи NEW
-	$log=',[[0,"'.date("H:i").'"],"Бой между "';
+    // РџРёС€РµРј Р»РѕРіРё NEW
+    $log = ',[[0,"' . date("H:i") . '"],"Р‘РѕР№ РјРµР¶РґСѓ "';
 	$LeftTeam=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `side` = '1' AND `battle`='".$fid."'");
 	while ($val = mysqli_fetch_assoc($LeftTeam)) {
 		if($val['side']=='1'){
 			if($val['invisible']<time()){
 				$log.=',[1,'.$val['side'].',"'.$val['login'].'",'.$val['level'].','.$val['sklon'].',"'.$val['clan_gif'].'"],","';
-			}else{				
+			}else{
 				$log.=',[4,'.$val['side'].'],","';
 			}
 		}
 	}
 	$log=substr_replace($log, '', -3);
-	$log .= '" и "';
+    $log .= '" Рё "';
 	$RightTeam=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `side` = '2' AND `battle`='".$fid."'");
 	while ($val = mysqli_fetch_assoc($RightTeam)) {
 		if($val['side']=='2'){
 			if($val['invisible']<time()){
 				$log.=',[1,'.$val['side'].',"'.$val['login'].'",'.$val['level'].','.$val['sklon'].',"'.$val['clan_gif'].'"],","';
-			}else{				
+			}else{
 				$log.=',[4,'.$val['side'].'],","';
 			}
 		}
 	}
 	$log=substr_replace($log, '', -3);
-	$log.='" начался (нападение бота)."]';
+    $log .= '" РЅР°С‡Р°Р»СЃСЏ (РЅР°РїР°РґРµРЅРёРµ Р±РѕС‚Р°)."]';
 	savelog($log,$fid);
-	//Конец Писанины логов!!!
+    //РљРѕРЅРµС† РџРёСЃР°РЅРёРЅС‹ Р»РѕРіРѕРІ!!!
 	echo"<script>parent.frames['main_top'].location='/main.php'</script>";
 }
 
@@ -2952,13 +3552,13 @@ function BotAttackPod($player,$id){
 			else if($trwrand<=30){$trw=30;}
 			else if($trwrand<=50){$trw=50;}
 			else if($trwrand<=80){$trw=80;}
-			$fid=newbattle(2,$player['loc'],1,time(),30000,$trw,0,0,0,0,0,0,0,1);		
+			$fid=newbattle(2,$player['loc'],1,time(),30000,$trw,0,0,0,0,0,0,0,1);
 			switch($id){
 				case 1: $botxy['lvlmin']=3;$botxy['lvlmax']=5;$kb=$player['level']*2;$tme=time()+86400;break;
 				case 2: $botxy['lvlmin']=7;$botxy['lvlmax']=9;$kb=$player['level']*2;$tme=time()+86400;break;
 				case 3: $botxy['lvlmin']=10;$botxy['lvlmax']=11;$kb=$player['level']*1;$tme=time()+86400;break;
 			}
-			$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";	
+			$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";
 			mysqli_query($GLOBALS['db_link'],"INSERT INTO `user` (".$ins1.") VALUES ".ins_bot($botxy,$kb,$fid).";");
 			save_hp_roun($player);
 			$randtime=rand(240,300);
@@ -2971,7 +3571,7 @@ function BotAttackPod($player,$id){
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `battle`='".$fid."',`side`='1',`lastbattle`='".$lb."' WHERE `login`='".$player['login']."' LIMIT 1;");
 			mysqli_query($GLOBALS['db_link'],"UPDATE `podzem` SET `start_time`='".time()."',`end_time`='".$tme."' WHERE `pl_id`='".$player['id']."' and `pod_id`='".$id."' LIMIT 1;");
 			startbat($fid,2);
-			echo'<script>parent.frames[\'main_top\'].location=\'/main.php\'</script>';		
+			echo'<script>parent.frames[\'main_top\'].location=\'/main.php\'</script>';
 }
 
 function BotNapAttack($player,$ItemID){
@@ -2988,10 +3588,10 @@ function BotNapAttack($player,$ItemID){
 			else if($trwrand<=80){$trw=80;}
 			$fid=newbattle(2,$player['loc'],1,time(),300,$trw,0,0,0,0,0,0,0,1);
 			$kb=rand(4,12);
-			$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";	
+			$ins1="`damage_mods`,`access`,`type`,`login`,`pass`,`email`,`useaction`,`icq`,`name`,`country`,`city`,`bday`,`url`,`sex`,`thotem`,`bdaypers`,`ip`,`filt`,`pcid`,`last`,`lastbattle`,`wait`,`chcolor`,`loc`,`pos`,`level`,`clan_id`,`clan`,`clan_d`,`clan_gif`,`clan_accesses`,`clan_status`,`clan_check`,`sklon`,`nv`,`dd`,`baks`,`obraz`,`f_obraz`,`obr_col`,`sila`,`lovk`,`uda4a`,`zdorov`,`znan`,`mudr`,`ustal`,`od`,`bl`,`free_stat`,`hp`,`hp_all`,`mp`,`mp_all`,`hps`,`mps`,`chp`,`cmp`,`st`,`affect`,`umen`,`perk`,`fr_bum`,`fr_mum`,`nav`,`battle`,`side`,`fight`,`sleep`,`block`,`prison`,`finblock`,`addon`,`about`,`dmg`,`exp`,`wins`,`mov`,`obnul`,`licens`,`options`,`semija`,`a_m`,`sign`,`minex`,`miney`,`waiter`,`sp7`,`forum_accesses`,`forum_smiles`,`forum_lastmsg`,`firstlogin`";
 			mysqli_query($GLOBALS['db_link'],"INSERT INTO `user` (".$ins1.") VALUES ".ins_bot($botxy,$kb,$fid).";");
 			save_hp_roun($player);
-			$randtime=rand(240,300);			
+			$randtime=rand(240,300);
 			if($player['level']<=5){$randtime=rand(120,150);}
 			if(bots_array($player,1)==12){$player['sign']=$sk;}
 			if($player['sign']==$sk){$randtime=120;}
@@ -2999,51 +3599,64 @@ function BotNapAttack($player,$ItemID){
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `battle`='".$fid."',`side`='1',`lastbattle`='".$lb."' WHERE `login`='".$player['login']."' LIMIT 1;");
 			startbat($fid,2);
 			echo'<script>parent.frames[\'main_top\'].location=\'/main.php\'</script>';
-			it_break($ItemID);	
+			it_break($ItemID);
 	}else{
-		echo"<center><b><font class=nickname><font color=#cc0000>Не найдено существ!</font></font></b></center>";
+        echo "<center><b><font class=nickname><font color=#cc0000>РќРµ РЅР°Р№РґРµРЅРѕ СЃСѓС‰РµСЃС‚РІ!</font></font></b></center>";
 	}
-	
+
 }
 
 function PlayerAttack($login,$id,$trw,$type){
 	$user=player();
 	$pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login';"));
-	if($pl==''){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" несуществует!</font></font></b><br>";}
-	else if($pl[login]==$user[login]){$msg[msg]="<b><font class=nickname><font color=#cc0000>Нельзя напасть на себя!</font></font></b><br>";}
-	else if($pl[last]<(time()-300)){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в игре!</font></font></b><br>";}
-	else if($user[loc]!=$pl[loc] and $type!=3){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в этой локации!</font></font></b><br>";}
-	else if($user[loc]==28 and $pl[loc]==28 and $user[pos]!=$pl[pos] and $type!=3){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в этой локации!</font></font></b><br>";}
-	else if($pl[id]<9999){$msg[msg]="<b><font class=nickname><font color=#cc0000>Нельзя нападать на ботов!</font></font></b><br>";}
+    if ($pl == '') {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµСЃСѓС‰РµСЃС‚РІСѓРµС‚!</font></font></b><br>";
+    } else if ($pl[login] == $user[login]) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµР»СЊР·СЏ РЅР°РїР°СЃС‚СЊ РЅР° СЃРµР±СЏ!</font></font></b><br>";
+    } else if ($pl[last] < (time() - 300)) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ РёРіСЂРµ!</font></font></b><br>";
+    } else if ($user[loc] != $pl[loc] and $type != 3) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!</font></font></b><br>";
+    } else if ($user[loc] == 28 and $pl[loc] == 28 and $user[pos] != $pl[pos] and $type != 3) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!</font></font></b><br>";
+    } else if ($pl[id] < 9999) {
+        $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµР»СЊР·СЏ РЅР°РїР°РґР°С‚СЊ РЅР° Р±РѕС‚РѕРІ!</font></font></b><br>";
+    }
 	else{
 		if($pl[battle]>0 and $pl[fight]==1 and $pl[hp]>0){
 			if($pl[side]==1){
 				$side=2;
 			}
 			else{$side=1;}
-			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `battle`='".$pl[battle]."',`side`='".$side."',`fight`='".$pl['fight']."' WHERE `login`='".$user['login']."' LIMIT 1;");			
+			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `battle`='".$pl[battle]."',`side`='".$side."',`fight`='".$pl['fight']."' WHERE `login`='".$user['login']."' LIMIT 1;");
 			mysqli_query($GLOBALS['db_link'],"UPDATE `arena` SET kol$side=kol$side+1 WHERE `id_battle`='".$pl['battle']."' LIMIT 1;");
 			sumbat($pl[battle],"$redirect",0);
-			if($user[sex]==male){$sex='ся';}
-			else{$sex='ась';}
+            if ($user[sex] == male) {
+                $sex = 'СЃСЏ';
+            } else {
+                $sex = 'Р°СЃСЊ';
+            }
             if($user['invisible']<time()){
                 $logpl="[1,$side,\"$user[login]\",$user[level],$user[sklon],\"$user[clan_gif]\"]";
             }else{
                 $logpl="[4,$side]";
             }
-			$income=",[[0,\"".date("H:i")."\"],$logpl,\" <b> Вмешал$sex в бой.</b>".($type==3?"<b>Тёмное нападение.</b>":"")."\"]";
+            $income = ",[[0,\"" . date("H:i") . "\"],$logpl,\" <b> Р’РјРµС€Р°Р»$sex РІ Р±РѕР№.</b>" . ($type == 3 ? "<b>РўС‘РјРЅРѕРµ РЅР°РїР°РґРµРЅРёРµ.</b>" : "") . "\"]";
 			savelog($income,$pl[battle]);
             if($user['invisible']<time()){
-                $ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b> напал на вас!</b></font><BR>'+'');$redirect";
+                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b> РЅР°РїР°Р» РЅР° РІР°СЃ!</b></font><BR>'+'');$redirect";
 			}else{
-                $ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;На вас напали!</b></font><BR>'+'');$redirect";
+                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РќР° РІР°СЃ РЅР°РїР°Р»Рё!</b></font><BR>'+'');$redirect";
             }
             chmsg($ms,$login);
 			it_break($id);
-		}
-		else if($pl[hp]<=0){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонаж \"$login\" мертв!</font></font></b><br>";}
-		else if($pl[wait]>time()){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонаж \"$login\" передвигается, нападение невозможно!</font></font></b><br>";}
-		else if($pl[fight]==2){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонаж \"$login\" в бою с ботами, нападение невозможно!</font></font></b><br>";}
+		} else if ($pl[hp] <= 0) {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РјРµСЂС‚РІ!</font></font></b><br>";
+        } else if ($pl[wait] > time()) {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РїРµСЂРµРґРІРёРіР°РµС‚СЃСЏ, РЅР°РїР°РґРµРЅРёРµ РЅРµРІРѕР·РјРѕР¶РЅРѕ!</font></font></b><br>";
+        } else if ($pl[fight] == 2) {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РІ Р±РѕСЋ СЃ Р±РѕС‚Р°РјРё, РЅР°РїР°РґРµРЅРёРµ РЅРµРІРѕР·РјРѕР¶РЅРѕ!</font></font></b><br>";
+        }
 		else{
 			$dopmsg="";
 			if($type==34){
@@ -3054,11 +3667,11 @@ function PlayerAttack($login,$id,$trw,$type){
 				$pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `login`='".$login."';"));
 				calchp2($user,0,0);
 				calchp2($pl,0,0);
-				$dopmsg=" <b>(кулачное нападение)</b>";
+                $dopmsg = " <b>(РєСѓР»Р°С‡РЅРѕРµ РЅР°РїР°РґРµРЅРёРµ)</b>";
 
 			}
 			if($type==3){
-				$dopmsg=" <b>Тёмное нападение.</b>";
+                $dopmsg = " <b>РўС‘РјРЅРѕРµ РЅР°РїР°РґРµРЅРёРµ.</b>";
 			}
 			$fid=newbattle(2,$user['loc'],1,time(),300,$trw,0,0,0,0,0,0,0,0);
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `battle`='".$fid."',`side`='1' WHERE `login`='".$user['login']."' LIMIT 1;");
@@ -3066,9 +3679,9 @@ function PlayerAttack($login,$id,$trw,$type){
 			startbat($fid,1);
 			$redirect="parent.frames['main_top'].location='main.php';";
             if($user['invisible']<time()){
-                $ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b> напал на вас!$dopmsg</b></font><BR>'+'');$redirect";
+                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b> РЅР°РїР°Р» РЅР° РІР°СЃ!$dopmsg</b></font><BR>'+'');$redirect";
 			}else{
-                $ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;На вас напали!$dopmsg</b></font><BR>'+'');$redirect";
+                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РќР° РІР°СЃ РЅР°РїР°Р»Рё!$dopmsg</b></font><BR>'+'');$redirect";
             }
             chmsg($ms,$login);
             if($user['invisible']<time()){
@@ -3076,14 +3689,15 @@ function PlayerAttack($login,$id,$trw,$type){
             }else{
                 $logpl="[4,$side]";
             }
-			if($user[sex]==male){$sex='';}
-			else{$sex='а';}
-			$income=",[[0,\"".date("H:i")."\"],$logpl,\" <b> Напал$sex на вас.</b>".($type==3?" <b>Тёмное нападение.</b>":"")."\"]";
+			if($user[sex]==male){$sex='';} else {
+                $sex = 'Р°';
+            }
+            $income = ",[[0,\"" . date("H:i") . "\"],$logpl,\" <b> РќР°РїР°Р»$sex РЅР° РІР°СЃ.</b>" . ($type == 3 ? " <b>РўС‘РјРЅРѕРµ РЅР°РїР°РґРµРЅРёРµ.</b>" : "") . "\"]";
 			savelog($income,$fid);
-			it_break($id);			
+			it_break($id);
 		}
 	}
-return $msg;	
+return $msg;
 }
 
 function StartStorm($FortName,$Position){
@@ -3092,30 +3706,30 @@ function StartStorm($FortName,$Position){
 	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `battle`='".$fid."',`side`='2' WHERE `fort_storm`='2' and `loc`='1001' and `pos`='".$Position."' and `battle`='0' and `hp`>'0' and `last`>'".(time()-300)."'");
 	startbat($fid,1);
 	save_hp_all($fid);
-	// Пишем логи NEW
-	$log=',[[0,"'.date("H:i").'"],"Нападение на '.$FortName.', осаждают "';
+    // РџРёС€РµРј Р»РѕРіРё NEW
+    $log = ',[[0,"' . date("H:i") . '"],"РќР°РїР°РґРµРЅРёРµ РЅР° ' . $FortName . ', РѕСЃР°Р¶РґР°СЋС‚ "';
 	$LeftTeam=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `side` = '1' AND `battle`='".$fid."'");
 	while ($val = mysqli_fetch_assoc($LeftTeam)) {
 		if($val['invisible']<time()){
 			$log.=',[1,'.$val['side'].',"'.$val['login'].'",'.$val['level'].','.$val['sklon'].',"'.$val['clan_gif'].'"],","';
-		}else{				
+		}else{
 			$log.=',[4,'.$val['side'].'],","';
 		}
 		chmsg("parent.frames['main_top'].location='main.php';",$val['login']);
 	}
 	$log=substr_replace($log, '', -3);
-	$log .= '" и в обороне "';
+    $log .= '" Рё РІ РѕР±РѕСЂРѕРЅРµ "';
 	$RightTeam=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `side` = '2' AND `battle`='".$fid."'");
 	while ($val = mysqli_fetch_assoc($RightTeam)) {
 		if($val['invisible']<time()){
 			$log.=',[1,'.$val['side'].',"'.$val['login'].'",'.$val['level'].','.$val['sklon'].',"'.$val['clan_gif'].'"],","';
-		}else{				
+		}else{
 			$log.=',[4,'.$val['side'].'],","';
 		}
 		chmsg("parent.frames['main_top'].location='main.php';",$val['login']);
 	}
 	$log=substr_replace($log, '', -3);
-	$log.='" ну что, удачи!."]';
+    $log .= '" РЅСѓ С‡С‚Рѕ, СѓРґР°С‡Рё!."]';
 	savelog($log,$fid);
 }
 
@@ -3123,35 +3737,43 @@ function NaemAttack($login){
 	$user=player();
 	if($user['battle']==0 and $user['fight']==0){
 		$pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='".$login."';"));
-		if($pl==''){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" несуществует!</font></font></b><br>";}
-		else if($pl['login']==$user['login']){$msg['msg']="<b><font class=nickname><font color=#cc0000>Нельзя напасть на себя!</font></font></b><br>";}
-		else if($pl['last']<(time()-300)){$msg['msg']="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в игре!</font></font></b><br>";}
-		else if($pl['id']<9999){$msg[msg]="<b><font class=nickname><font color=#cc0000>Нельзя нападать на ботов!</font></font></b><br>";}
+        if ($pl == '') {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµСЃСѓС‰РµСЃС‚РІСѓРµС‚!</font></font></b><br>";
+        } else if ($pl['login'] == $user['login']) {
+            $msg['msg'] = "<b><font class=nickname><font color=#cc0000>РќРµР»СЊР·СЏ РЅР°РїР°СЃС‚СЊ РЅР° СЃРµР±СЏ!</font></font></b><br>";
+        } else if ($pl['last'] < (time() - 300)) {
+            $msg['msg'] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ РёРіСЂРµ!</font></font></b><br>";
+        } else if ($pl['id'] < 9999) {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµР»СЊР·СЏ РЅР°РїР°РґР°С‚СЊ РЅР° Р±РѕС‚РѕРІ!</font></font></b><br>";
+        }
 		else{
 			if($pl['naemnik']==0){$pl['naemnik']="||";}
 			$naemnik=explode("|",$pl['naemnik']);
 			$naemnik="1|".$naemnik[1];
 			if($pl['battle']>0 and $pl['fight']>0){
 				$side=$pl['side'];
-				mysqli_query($GLOBALS['db_link'],"UPDATE user SET battle='".$pl['battle']."',side=".$side.",fight=".$pl['fight']." WHERE login='".$user['login']."' LIMIT 1;");			
+				mysqli_query($GLOBALS['db_link'],"UPDATE user SET battle='".$pl['battle']."',side=".$side.",fight=".$pl['fight']." WHERE login='".$user['login']."' LIMIT 1;");
 				mysqli_query($GLOBALS['db_link'],"UPDATE arena SET kol$side=kol$side+1 WHERE id_battle='".$pl['battle']."' LIMIT 1;");
 				mysqli_query($GLOBALS['db_link'],"UPDATE user SET naemnik='".$naemnik."' WHERE login='".$pl['login']."';");
 				sumbat($pl['battle'],"$redirect",0);
-				if($user[sex]==male){$sex='ся';}
-				else{$sex='ась';}
+                if ($user[sex] == male) {
+                    $sex = 'СЃСЏ';
+                } else {
+                    $sex = 'Р°СЃСЊ';
+                }
 				$logpl="[1,$side,\"$user[login]\",$user[level],$user[sklon],\"$user[clan_gif]\"]";
-				$income=",[[0,\"".date("H:i")."\"],$logpl,\" <b> Вмешал$sex в бой.</b>\"]";
+                $income = ",[[0,\"" . date("H:i") . "\"],$logpl,\" <b> Р’РјРµС€Р°Р»$sex РІ Р±РѕР№.</b>\"]";
 				savelog($income,$pl['battle']);
-				$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b> пришел к вам на помощь!</b></font><BR>'+'');";
+                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b> РїСЂРёС€РµР» Рє РІР°Рј РЅР° РїРѕРјРѕС‰СЊ!</b></font><BR>'+'');";
 				chmsg($ms,$login);
 			}else{
 				mysqli_query($GLOBALS['db_link'],"UPDATE user SET naemnik='".$naemnik."' WHERE login='".$pl['login']."';");
-				$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Никто не смог помочь персонажу <b>$login</b>...</b></font></b><BR>'+'');";
+                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РќРёРєС‚Рѕ РЅРµ СЃРјРѕРі РїРѕРјРѕС‡СЊ РїРµСЂСЃРѕРЅР°Р¶Сѓ <b>$login</b>...</b></font></b><BR>'+'');";
 				chmsg($ms,'');
 			}
 		}
 	}
-return $msg;	
+return $msg;
 }
 
 function getIP(){
@@ -3166,7 +3788,7 @@ function getIP(){
 }
 
 function pvu_logs($uid,$see,$reason){
-	mysqli_query($GLOBALS['db_link'],"INSERT INTO `pvu_logs`.`logs_".$see."` (`uid`,`time_unix`,`time_norm`,`reason`) VALUES ('".$uid."','".time()."','".date("Y-m-d H:i:s",time())."','".$reason."');");	
+	mysqli_query($GLOBALS['db_link'],"INSERT INTO `pvu_logs`.`logs_".$see."` (`uid`,`time_unix`,`time_norm`,`reason`) VALUES ('".$uid."','".time()."','".date("Y-m-d H:i:s",time())."','".$reason."');");
 }
 
 function event_to_log($date,$type,$type2,$sign,$user,$old_lvl,$sklon,$level){
@@ -3193,45 +3815,45 @@ function allitemparam($it,$loc){
 
 function effects($UserID,$var){
 	/* DataBase */
-	$effects = array('','Боевая травма','Тяжелая травма','Средняя травма','Легкая травма','Излечение','','','Темное проклятие','Благословение ангела','Магическое зеркало','Берсеркер','Милосердие Создателя','Странник','Свиток Покровительства','Блок','Тюрьма','Молчанка','Форумная молчанка','Свиток Неизбежности','Зелье Колкости','Зелье Загрубелой Кожи','Зелье Просветления','Зелье Гения','Яд','Зелье Иммунитета','Зелье Силы','Зелье Защиты От Ожогов','Зелье Арктических Вьюг','Зелье Жизни','Зелье Сокрушительных Ударов','Зелье Стойкости','Зелье Недосягаемости','Зелье Точного Попадания','Зелье Ловкости','Зелье Удачи','Зелье Огненного Ореола','Зелье Метаболизма','Зелье Медитации','Зелье Громоотвода','Зелье Сильной Спины','Зелье Скорбь Лешего','Зелье Боевой Славы','Зелье Ловких Ударов','Зелье Спокойствия','Зелье Мужества','Зелье Человек-Гора','Зелье Секрет Волшебника','Зелье Инквизитора','Зелье Панциря','','Секретное Зелье','Зелье Скорости','Зелье Соколиный Взор','Зелье Подвижности','Фронтовые 100 грамм','','','','','','','','','','','','','','','Зелье Кровожадности','Зелье Быстроты','Свиток Величия','Свиток Каменной кожи','Слеза Создателя','Гнев Локара','Дар Иланы','Новогодний бонус','Эликсир из Подснежника','Молодильное яблочко','Благословение Иланы','День всех влюбленных','Галантный кавалер');
+    $effects = array('', 'Р‘РѕРµРІР°СЏ С‚СЂР°РІРјР°', 'РўСЏР¶РµР»Р°СЏ С‚СЂР°РІРјР°', 'РЎСЂРµРґРЅСЏСЏ С‚СЂР°РІРјР°', 'Р›РµРіРєР°СЏ С‚СЂР°РІРјР°', 'РР·Р»РµС‡РµРЅРёРµ', '', '', 'РўРµРјРЅРѕРµ РїСЂРѕРєР»СЏС‚РёРµ', 'Р‘Р»Р°РіРѕСЃР»РѕРІРµРЅРёРµ Р°РЅРіРµР»Р°', 'РњР°РіРёС‡РµСЃРєРѕРµ Р·РµСЂРєР°Р»Рѕ', 'Р‘РµСЂСЃРµСЂРєРµСЂ', 'РњРёР»РѕСЃРµСЂРґРёРµ РЎРѕР·РґР°С‚РµР»СЏ', 'РЎС‚СЂР°РЅРЅРёРє', 'РЎРІРёС‚РѕРє РџРѕРєСЂРѕРІРёС‚РµР»СЊСЃС‚РІР°', 'Р‘Р»РѕРє', 'РўСЋСЂСЊРјР°', 'РњРѕР»С‡Р°РЅРєР°', 'Р¤РѕСЂСѓРјРЅР°СЏ РјРѕР»С‡Р°РЅРєР°', 'РЎРІРёС‚РѕРє РќРµРёР·Р±РµР¶РЅРѕСЃС‚Рё', 'Р—РµР»СЊРµ РљРѕР»РєРѕСЃС‚Рё', 'Р—РµР»СЊРµ Р—Р°РіСЂСѓР±РµР»РѕР№ РљРѕР¶Рё', 'Р—РµР»СЊРµ РџСЂРѕСЃРІРµС‚Р»РµРЅРёСЏ', 'Р—РµР»СЊРµ Р“РµРЅРёСЏ', 'РЇРґ', 'Р—РµР»СЊРµ РРјРјСѓРЅРёС‚РµС‚Р°', 'Р—РµР»СЊРµ РЎРёР»С‹', 'Р—РµР»СЊРµ Р—Р°С‰РёС‚С‹ РћС‚ РћР¶РѕРіРѕРІ', 'Р—РµР»СЊРµ РђСЂРєС‚РёС‡РµСЃРєРёС… Р’СЊСЋРі', 'Р—РµР»СЊРµ Р–РёР·РЅРё', 'Р—РµР»СЊРµ РЎРѕРєСЂСѓС€РёС‚РµР»СЊРЅС‹С… РЈРґР°СЂРѕРІ', 'Р—РµР»СЊРµ РЎС‚РѕР№РєРѕСЃС‚Рё', 'Р—РµР»СЊРµ РќРµРґРѕСЃСЏРіР°РµРјРѕСЃС‚Рё', 'Р—РµР»СЊРµ РўРѕС‡РЅРѕРіРѕ РџРѕРїР°РґР°РЅРёСЏ', 'Р—РµР»СЊРµ Р›РѕРІРєРѕСЃС‚Рё', 'Р—РµР»СЊРµ РЈРґР°С‡Рё', 'Р—РµР»СЊРµ РћРіРЅРµРЅРЅРѕРіРѕ РћСЂРµРѕР»Р°', 'Р—РµР»СЊРµ РњРµС‚Р°Р±РѕР»РёР·РјР°', 'Р—РµР»СЊРµ РњРµРґРёС‚Р°С†РёРё', 'Р—РµР»СЊРµ Р“СЂРѕРјРѕРѕС‚РІРѕРґР°', 'Р—РµР»СЊРµ РЎРёР»СЊРЅРѕР№ РЎРїРёРЅС‹', 'Р—РµР»СЊРµ РЎРєРѕСЂР±СЊ Р›РµС€РµРіРѕ', 'Р—РµР»СЊРµ Р‘РѕРµРІРѕР№ РЎР»Р°РІС‹', 'Р—РµР»СЊРµ Р›РѕРІРєРёС… РЈРґР°СЂРѕРІ', 'Р—РµР»СЊРµ РЎРїРѕРєРѕР№СЃС‚РІРёСЏ', 'Р—РµР»СЊРµ РњСѓР¶РµСЃС‚РІР°', 'Р—РµР»СЊРµ Р§РµР»РѕРІРµРє-Р“РѕСЂР°', 'Р—РµР»СЊРµ РЎРµРєСЂРµС‚ Р’РѕР»С€РµР±РЅРёРєР°', 'Р—РµР»СЊРµ РРЅРєРІРёР·РёС‚РѕСЂР°', 'Р—РµР»СЊРµ РџР°РЅС†РёСЂСЏ', '', 'РЎРµРєСЂРµС‚РЅРѕРµ Р—РµР»СЊРµ', 'Р—РµР»СЊРµ РЎРєРѕСЂРѕСЃС‚Рё', 'Р—РµР»СЊРµ РЎРѕРєРѕР»РёРЅС‹Р№ Р’Р·РѕСЂ', 'Р—РµР»СЊРµ РџРѕРґРІРёР¶РЅРѕСЃС‚Рё', 'Р¤СЂРѕРЅС‚РѕРІС‹Рµ 100 РіСЂР°РјРј', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Р—РµР»СЊРµ РљСЂРѕРІРѕР¶Р°РґРЅРѕСЃС‚Рё', 'Р—РµР»СЊРµ Р‘С‹СЃС‚СЂРѕС‚С‹', 'РЎРІРёС‚РѕРє Р’РµР»РёС‡РёСЏ', 'РЎРІРёС‚РѕРє РљР°РјРµРЅРЅРѕР№ РєРѕР¶Рё', 'РЎР»РµР·Р° РЎРѕР·РґР°С‚РµР»СЏ', 'Р“РЅРµРІ Р›РѕРєР°СЂР°', 'Р”Р°СЂ РР»Р°РЅС‹', 'РќРѕРІРѕРіРѕРґРЅРёР№ Р±РѕРЅСѓСЃ', 'Р­Р»РёРєСЃРёСЂ РёР· РџРѕРґСЃРЅРµР¶РЅРёРєР°', 'РњРѕР»РѕРґРёР»СЊРЅРѕРµ СЏР±Р»РѕС‡РєРѕ', 'Р‘Р»Р°РіРѕСЃР»РѕРІРµРЅРёРµ РР»Р°РЅС‹', 'Р”РµРЅСЊ РІСЃРµС… РІР»СЋР±Р»РµРЅРЅС‹С…', 'Р“Р°Р»Р°РЅС‚РЅС‹Р№ РєР°РІР°Р»РµСЂ');
 	/* Effects Show */
 	$Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `effects` WHERE `uid`='".$UserID."' AND `time`>'".time()."' ORDER BY `time` DESC");
 	while($row = mysqli_fetch_assoc($Query)){
-		
-		/* Вычесляем время */
+
+        /* Р’С‹С‡РµСЃР»СЏРµРј РІСЂРµРјСЏ */
 		if($row['time']>time()){
 			$row['time']-=time();
 			$ch=floor($row['time']/3600);
 			$min=floor(($row['time']-($ch*3600))/60);
 			$sec=floor(($row['time']-($ch*3600))%60);
 			if($var==0){
-				$row['time']=$ch."ч ".$min."мин ";
+                $row['time'] = $ch . "С‡ " . $min . "РјРёРЅ ";
 			}elseif($var==1){
 				$row['time']=(($ch<10)?'0'.$ch:$ch).":".(($min<10)?'0'.$min:$min).":".(($sec<10)?'0'.$sec:$sec);
 			}
 		}
-		
-		/* Считаем статы */
+
+        /* РЎС‡РёС‚Р°РµРј СЃС‚Р°С‚С‹ */
 		$params=explode("|",$row['f_params']);
 		foreach ($params as $f_params){
 			$sts=explode("@",$f_params);
 			$stat[$sts[0]]+=$sts[1];
 		}
-		
-		/* Колество травм на вывод, допустим (x2) */
+
+        /* РљРѕР»РµСЃС‚РІРѕ С‚СЂР°РІРј РЅР° РІС‹РІРѕРґ, РґРѕРїСѓСЃС‚РёРј (x2) */
 		$Effect[$row['eff_id']] += 1;
-		
-		/* Подсчет и написание текстов */
+
+        /* РџРѕРґСЃС‡РµС‚ Рё РЅР°РїРёСЃР°РЅРёРµ С‚РµРєСЃС‚РѕРІ */
 		switch($var){
 			case'1':
 				if(!empty($effects[$row['eff_id']]) and $Effect[$row['eff_id']] == 1){
 					$CountEff = mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `effects` WHERE `uid`='".$UserID."' AND `time`>'".time()."' AND `eff_id`='".$row['eff_id']."' ORDER BY `time` DESC"));
-					$s.="[".$row['eff_id'].",'<b>".$effects[$row['eff_id']]."</b> (x".$CountEff.") (еще ".$row['time'].")'],";
+                    $s .= "[" . $row['eff_id'] . ",'<b>" . $effects[$row['eff_id']] . "</b> (x" . $CountEff . ") (РµС‰Рµ " . $row['time'] . ")'],";
 				}
 			break;
 		}
 	}
-	
+
 	switch($var){
 		case'1':
 			return substr($s,0,strlen($s)-1);
@@ -3252,30 +3874,30 @@ function send_mail($email,$header,$body){
 }
 
 function CountOD($pod,$inu,$inb,$ina){
-	// Стандартные Параметры из базы
+    // РЎС‚Р°РЅРґР°СЂС‚РЅС‹Рµ РџР°СЂР°РјРµС‚СЂС‹ РёР· Р±Р°Р·С‹
 	$pos_ochd = array(0,0,50,90,35,50,60,30,50,60,30,50,35,80,40,85,40,85,40,85,40,100,45,70,70,70,130,90,90,45,60,90,30,30,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,70,90,70,90,70,90,70,100,100,100,70,100,70,70,100,0,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,0,0,30,30,30);
 	$shtra_ud = array(0,0,25,75,150,250);
-	// Проверяем удары
+    // РџСЂРѕРІРµСЂСЏРµРј СѓРґР°СЂС‹
 	$tInu = explode("@",$inu);
 	for($i = 0; $i < count($tInu)-1; $i++){
 		$t2Inu = explode("_",$tInu[$i]);
 		$ochd[] = $t2Inu[1];
 	}
-	// Удары с учетом штрафов
+    // РЈРґР°СЂС‹ СЃ СѓС‡РµС‚РѕРј С€С‚СЂР°С„РѕРІ
 	$count_od = $shtra_ud[count($ochd)];
-	// Проверяем Блоки
+    // РџСЂРѕРІРµСЂСЏРµРј Р‘Р»РѕРєРё
 	$tInb = explode("@",$inb);
 	for($i = 0; $i < count($tInb)-1; $i++){
 		$t2Inb = explode("_",$tInb[$i]);
 		$ochd[] = $t2Inb[1];
 	}
-	// Проверяем Магию
+    // РџСЂРѕРІРµСЂСЏРµРј РњР°РіРёСЋ
 	$tIna = explode("@",$ina);
 	for($i = 0; $i < count($tIna)-1; $i++){
 		$t2Ina = explode("_",$tIna[$i]);
 		$ochd[] = $t2Ina[1];
 	}
-	//Считаем количество ОД
+    //РЎС‡РёС‚Р°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РћР”
 	for($i = 0; $i < count($ochd);$i++){
 		if($ochd[$i] > 2){
 			$count_od += $pos_ochd[$ochd[$i]];
@@ -3290,94 +3912,91 @@ function CountOD($pod,$inu,$inb,$ina){
 			}
 		}
 	}
-	// Выводим результат ОД
+    // Р’С‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚ РћР”
 	return $count_od;
-}	
-	
-	//мази: 
-	//param = все статы мази
+}
+
+    //РјР°Р·Рё:
+    //param = РІСЃРµ СЃС‚Р°С‚С‹ РјР°Р·Рё
 	//type = w70
-	//effect = время действия
-	//need = требования чтобы намазаться\намазать	
-	//вид массива в БД:
-	//id@time|id@time где id > ид вещи из итемс	
-	
-	function maseused($id,$login,$loc,$masetype){ 
-		//$id - ид мази,$login - на кого мажем,$loc - местонахождение намазывающего
-		//$masetype - тип мази (пока 2 типа: 0 или '' -  бафф | 1 - снятие определенныех эффектов)	
+    //effect = РІСЂРµРјСЏ РґРµР№СЃС‚РІРёСЏ
+    //need = С‚СЂРµР±РѕРІР°РЅРёСЏ С‡С‚РѕР±С‹ РЅР°РјР°Р·Р°С‚СЊСЃСЏ\РЅР°РјР°Р·Р°С‚СЊ
+    //РІРёРґ РјР°СЃСЃРёРІР° РІ Р‘Р”:
+    //id@time|id@time РіРґРµ id > РёРґ РІРµС‰Рё РёР· РёС‚РµРјСЃ
+
+	function maseused($id,$login,$loc,$masetype){
+        //$id - РёРґ РјР°Р·Рё,$login - РЅР° РєРѕРіРѕ РјР°Р¶РµРј,$loc - РјРµСЃС‚РѕРЅР°С…РѕР¶РґРµРЅРёРµ РЅР°РјР°Р·С‹РІР°СЋС‰РµРіРѕ
+        //$masetype - С‚РёРї РјР°Р·Рё (РїРѕРєР° 2 С‚РёРїР°: 0 РёР»Рё '' -  Р±Р°С„С„ | 1 - СЃРЅСЏС‚РёРµ РѕРїСЂРµРґРµР»РµРЅРЅС‹РµС… СЌС„С„РµРєС‚РѕРІ)
 		$player=player();
 		$user=$_SESSION['user'];
 		$pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login'"));
 		$pl_st=allparam($pl);
-		if($pl==''){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" несуществует!</font></font></b><br>";}
-		else if($pl[last]<(time()-300)){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в игре!</font></font></b><br>";}
-		else if($loc!=$pl[loc]){$msg[msg]="<b><font class=nickname><font color=#cc0000>Персонажа \"$login\" нет в этой локации!</font></font></b><br>";}
-		else if($pl[fight]>0){$msg[msg]="<b><font class=nickname><font color=#cc0000>Неудачно! Персонаж \"$login\" в бою!</font></font></b><br>";}
+        if ($pl == '') {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµСЃСѓС‰РµСЃС‚РІСѓРµС‚!</font></font></b><br>";
+        } else if ($pl[last] < (time() - 300)) {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ РёРіСЂРµ!</font></font></b><br>";
+        } else if ($loc != $pl[loc]) {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РџРµСЂСЃРѕРЅР°Р¶Р° \"$login\" РЅРµС‚ РІ СЌС‚РѕР№ Р»РѕРєР°С†РёРё!</font></font></b><br>";
+        } else if ($pl[fight] > 0) {
+            $msg[msg] = "<b><font class=nickname><font color=#cc0000>РќРµСѓРґР°С‡РЅРѕ! РџРµСЂСЃРѕРЅР°Р¶ \"$login\" РІ Р±РѕСЋ!</font></font></b><br>";
+        }
 		else{
 			$masscalc=0;
 			$it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT invent.*, items.* FROM items INNER JOIN invent ON items.id = invent.protype WHERE id_item='$id' AND type='w70' LIMIT 1;"));
-			if($it['id']){	
-				if($it['num_a']=='32'){ // снимаем эффекты других мазей
+			if($it['id']){
+                if ($it['num_a'] == '32') { // СЃРЅРёРјР°РµРј СЌС„С„РµРєС‚С‹ РґСЂСѓРіРёС… РјР°Р·РµР№
 					mysqli_query($GLOBALS['db_link'],"UPDATE user SET masebonus='' WHERE login='$login'");
 					if($user['login']!=$login){
-						$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к вам <b>\"$it[name]\" и снял все эффекты мазей.</b></font><BR>'+'');";
+                        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РІР°Рј <b>\"$it[name]\" Рё СЃРЅСЏР» РІСЃРµ СЌС„С„РµРєС‚С‹ РјР°Р·РµР№.</b></font><BR>'+'');";
 						chmsg($ms,$login);
 					}
 					it_break($id);
-				}
-				elseif($it['num_a']=='33'){//лечим все травмы
+				} elseif ($it['num_a'] == '33') {//Р»РµС‡РёРј РІСЃРµ С‚СЂР°РІРјС‹
 					mysqli_query($GLOBALS['db_link'],"UPDATE user SET affect='' WHERE login='$login'");
 					if($user['login']!=$login){
-						$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к вам <b>\"$it[name]\" и вылечил все травмы.</b></font><BR>'+'');";
+                        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РІР°Рј <b>\"$it[name]\" Рё РІС‹Р»РµС‡РёР» РІСЃРµ С‚СЂР°РІРјС‹.</b></font><BR>'+'');";
 						chmsg($ms,$login);
 					}
-					it_break($id);	
-				}
-				elseif($it['num_a']=='34'){//снимаем эффекты зелий
+					it_break($id);
+				} elseif ($it['num_a'] == '34') {//СЃРЅРёРјР°РµРј СЌС„С„РµРєС‚С‹ Р·РµР»РёР№
 					mysqli_query($GLOBALS['db_link'],"UPDATE user SET buffs='' WHERE login='$login'");
 					if($user['login']!=$login){
-						$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к вам <b>\"$it[name]\" и снял все эффекты зелий и абилок.</b></font><BR>'+'');";
+                        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РІР°Рј <b>\"$it[name]\" Рё СЃРЅСЏР» РІСЃРµ СЌС„С„РµРєС‚С‹ Р·РµР»РёР№ Рё Р°Р±РёР»РѕРє.</b></font><BR>'+'');";
 						chmsg($ms,$login);
 					}
-					it_break($id);	
-				}
-				elseif($it['num_a']=='1'){//снимаем ВСЕ эффекты
+					it_break($id);
+				} elseif ($it['num_a'] == '1') {//СЃРЅРёРјР°РµРј Р’РЎР• СЌС„С„РµРєС‚С‹
 					mysqli_query($GLOBALS['db_link'],"UPDATE user SET buffs='',affect='',masebonus='' WHERE login='$login'");
 					if($user['login']!=$login){
-						$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к вам <b>\"$it[name]\" и снял все эффекты зелий, мазей, абилок и вылечил все травмы.</b></font><BR>'+'');";
+                        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РІР°Рј <b>\"$it[name]\" Рё СЃРЅСЏР» РІСЃРµ СЌС„С„РµРєС‚С‹ Р·РµР»РёР№, РјР°Р·РµР№, Р°Р±РёР»РѕРє Рё РІС‹Р»РµС‡РёР» РІСЃРµ С‚СЂР°РІРјС‹.</b></font><BR>'+'');";
 						chmsg($ms,$login);
 					}
-					it_break($id);	
-				}
-				elseif($it['num_a']=='2'){//снимаем ВСЕ эффекты на клетке
+					it_break($id);
+				} elseif ($it['num_a'] == '2') {//СЃРЅРёРјР°РµРј Р’РЎР• СЌС„С„РµРєС‚С‹ РЅР° РєР»РµС‚РєРµ
 					$masscalc=1;
 					mysqli_query($GLOBALS['db_link'],"UPDATE user SET buffs='',affect='',masebonus='' WHERE loc='".$player['loc']."' AND pos='".$player['pos']."' AND type<>3;");
-					$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к игрокам рядом с собой <b>\"$it[name]\" и снял все эффекты зелий, мазей, абилок и вылечил все травмы.</b></font><BR>'+'');";
-					chmsg($ms,'');
-					it_break($id);	
-				}
-				elseif($it['num_a']=='3'){ // снимаем эффекты других мазей на клетке
-					$masscalc=1;
-					mysqli_query($GLOBALS['db_link'],"UPDATE user SET masebonus='' WHERE loc='".$player['loc']."' AND pos='".$player['pos']."' AND type<>3;");
-					$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к игрокам рядом с собой <b>\"$it[name]\" и снял все эффекты мазей.</b></font><BR>'+'');";
+                    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РёРіСЂРѕРєР°Рј СЂСЏРґРѕРј СЃ СЃРѕР±РѕР№ <b>\"$it[name]\" Рё СЃРЅСЏР» РІСЃРµ СЌС„С„РµРєС‚С‹ Р·РµР»РёР№, РјР°Р·РµР№, Р°Р±РёР»РѕРє Рё РІС‹Р»РµС‡РёР» РІСЃРµ С‚СЂР°РІРјС‹.</b></font><BR>'+'');";
 					chmsg($ms,'');
 					it_break($id);
-				}
-				elseif($it['num_a']=='4'){//лечим все травмы на клетке
+				} elseif ($it['num_a'] == '3') { // СЃРЅРёРјР°РµРј СЌС„С„РµРєС‚С‹ РґСЂСѓРіРёС… РјР°Р·РµР№ РЅР° РєР»РµС‚РєРµ
+					$masscalc=1;
+					mysqli_query($GLOBALS['db_link'],"UPDATE user SET masebonus='' WHERE loc='".$player['loc']."' AND pos='".$player['pos']."' AND type<>3;");
+                    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РёРіСЂРѕРєР°Рј СЂСЏРґРѕРј СЃ СЃРѕР±РѕР№ <b>\"$it[name]\" Рё СЃРЅСЏР» РІСЃРµ СЌС„С„РµРєС‚С‹ РјР°Р·РµР№.</b></font><BR>'+'');";
+					chmsg($ms,'');
+					it_break($id);
+				} elseif ($it['num_a'] == '4') {//Р»РµС‡РёРј РІСЃРµ С‚СЂР°РІРјС‹ РЅР° РєР»РµС‚РєРµ
 					$masscalc=1;
 					mysqli_query($GLOBALS['db_link'],"UPDATE user SET affect='' WHERE loc='".$player['loc']."' AND pos='".$player['pos']."' AND type<>3;");
-					$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к игрокам рядом с собой <b>\"$it[name]\"  и вылечил все травмы.</b></font><BR>'+'');";
+                    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РёРіСЂРѕРєР°Рј СЂСЏРґРѕРј СЃ СЃРѕР±РѕР№ <b>\"$it[name]\"  Рё РІС‹Р»РµС‡РёР» РІСЃРµ С‚СЂР°РІРјС‹.</b></font><BR>'+'');";
 					chmsg($ms,'');
-					it_break($id);	
-				}
-				elseif($it['num_a']=='5'){//снимаем эффекты зелий на клетке
+					it_break($id);
+				} elseif ($it['num_a'] == '5') {//СЃРЅРёРјР°РµРј СЌС„С„РµРєС‚С‹ Р·РµР»РёР№ РЅР° РєР»РµС‚РєРµ
 					$masscalc=1;
 					mysqli_query($GLOBALS['db_link'],"UPDATE user SET buffs='' WHERE loc='".$player['loc']."' AND pos='".$player['pos']."' AND type<>3;");
-					$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к игрокам рядом с собой <b>\"$it[name]\" и снял все эффекты зелий и абилок.</b></font><BR>'+'');";
+                    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РёРіСЂРѕРєР°Рј СЂСЏРґРѕРј СЃ СЃРѕР±РѕР№ <b>\"$it[name]\" Рё СЃРЅСЏР» РІСЃРµ СЌС„С„РµРєС‚С‹ Р·РµР»РёР№ Рё Р°Р±РёР»РѕРє.</b></font><BR>'+'');";
 					chmsg($ms,'');
-					it_break($id);	
-				}
-				else{ //обычные мази
+					it_break($id);
+				} else { //РѕР±С‹С‡РЅС‹Рµ РјР°Р·Рё
 					$stopbuff=0;
 					$immune = explode("|",$it['immunes']);
 					foreach($immune as $val){
@@ -3393,7 +4012,7 @@ function CountOD($pod,$inu,$inb,$ina){
 						}
 					}
 					if($pl['masebonus']==''){$pl['masebonus']="||||";}
-					$need=explode("|",$it['need']);					
+					$need=explode("|",$it['need']);
 					foreach ($need as $value) {
 						$treb=explode("@",$value);
 						if($pl_st[$treb[0]]<$treb[1]){
@@ -3406,65 +4025,63 @@ function CountOD($pod,$inu,$inb,$ina){
 						$newmase='';
 						$plmases = explode("|",$pl['masebonus']);
 						foreach ($plmases as $val){
-							$mase = explode("@",$val);	
+							$mase = explode("@",$val);
 							if($mase[1]>=time() and $mase[0]){
-								$newmase.=$mase[0].'@'.$mase[1].($mase[2]?'@'.$mase[2]:'').'|';		
+								$newmase.=$mase[0].'@'.$mase[1].($mase[2]?'@'.$mase[2]:'').'|';
 							}
 						}
 						$newmase=substr($newmase,0,strlen($newmase)-1);
 						$buffs=explode("|",$newmase);
-						$regularmase = 0;	
-						while($i<99){						
-							if($buffs[$i]!=''){	
-								$tstmase = explode("@",$buffs[$i]);	
-								if($tstmase[2] and $tstmase[1]>=time() and $tstmase[0]!=$it['id']){ //ага, дцшная мазь, время не кончилось и не совпадает ид. пишем и поехали дальше
+						$regularmase = 0;
+						while($i<99){
+							if($buffs[$i]!=''){
+								$tstmase = explode("@",$buffs[$i]);
+                                if ($tstmase[2] and $tstmase[1] >= time() and $tstmase[0] != $it['id']) { //Р°РіР°, РґС†С€РЅР°СЏ РјР°Р·СЊ, РІСЂРµРјСЏ РЅРµ РєРѕРЅС‡РёР»РѕСЃСЊ Рё РЅРµ СЃРѕРІРїР°РґР°РµС‚ РёРґ. РїРёС€РµРј Рё РїРѕРµС…Р°Р»Рё РґР°Р»СЊС€Рµ
 									$buff.="$buffs[$i]|";
 									$i++;
-								}
-								elseif($tstmase[1]>=time() and $tstmase[0]==$it['id']){ //время не кончилось, но совпадает с ид предмета - стопаем
+								} elseif ($tstmase[1] >= time() and $tstmase[0] == $it['id']) { //РІСЂРµРјСЏ РЅРµ РєРѕРЅС‡РёР»РѕСЃСЊ, РЅРѕ СЃРѕРІРїР°РґР°РµС‚ СЃ РёРґ РїСЂРµРґРјРµС‚Р° - СЃС‚РѕРїР°РµРј
 									$stopbuff=1;
 									$i=99;
-								}
-								elseif($tstmase[1]>=time()){ //время не кончилось, пишем бафф, увеличиваем счетчик
+								} elseif ($tstmase[1] >= time()) { //РІСЂРµРјСЏ РЅРµ РєРѕРЅС‡РёР»РѕСЃСЊ, РїРёС€РµРј Р±Р°С„С„, СѓРІРµР»РёС‡РёРІР°РµРј СЃС‡РµС‚С‡РёРє
 									$buff.="$buffs[$i]|";
 									$i++;
 									if(!$tstmase[2]){
-										$regularmase++; // увеличиваем счетчик обычных мазей
-									}									
+                                        $regularmase++; // СѓРІРµР»РёС‡РёРІР°РµРј СЃС‡РµС‚С‡РёРє РѕР±С‹С‡РЅС‹С… РјР°Р·РµР№
+									}
 								}
-							}
-							elseif($it['dd_price']){ // если бафф по порядку - пуст, но вещь из ДЦ, применяем
+							} elseif ($it['dd_price']) { // РµСЃР»Рё Р±Р°С„С„ РїРѕ РїРѕСЂСЏРґРєСѓ - РїСѓСЃС‚, РЅРѕ РІРµС‰СЊ РёР· Р”Р¦, РїСЂРёРјРµРЅСЏРµРј
 								$buff.="$it[id]@".(time()+($it['effect']*60)).($it['dd_price']?'@1':'')."|";$i=99;
 								//echo 'DD mase '.$it['dd_price'];
-							}
-							elseif($regularmase<=4){ // если счетчик баффов не перевалил за 5
+							} elseif ($regularmase <= 4) { // РµСЃР»Рё СЃС‡РµС‚С‡РёРє Р±Р°С„С„РѕРІ РЅРµ РїРµСЂРµРІР°Р»РёР» Р·Р° 5
 								$buff.="$it[id]@".(time()+($it['effect']*60))."|";$i=99;
-							}
-							else{// если уж ничего не подошло - значит обломинго, применено максимум обычных мазей
+							} else {// РµСЃР»Рё СѓР¶ РЅРёС‡РµРіРѕ РЅРµ РїРѕРґРѕС€Р»Рѕ - Р·РЅР°С‡РёС‚ РѕР±Р»РѕРјРёРЅРіРѕ, РїСЂРёРјРµРЅРµРЅРѕ РјР°РєСЃРёРјСѓРј РѕР±С‹С‡РЅС‹С… РјР°Р·РµР№
 								$stopbuff=2;
 								$i=99;
 							}
 						}
 						if($stopbuff==0){
-							$msg[msg]="<b><font class=nickname><font color=#cc0000>Вы удачно применили \"$msg[0]\"!</font></font></b><br>";
+                            $msg[msg] = "<b><font class=nickname><font color=#cc0000>Р’С‹ СѓРґР°С‡РЅРѕ РїСЂРёРјРµРЅРёР»Рё \"$msg[0]\"!</font></font></b><br>";
 							mysqli_query($GLOBALS['db_link'],"UPDATE user SET masebonus='$buff' WHERE login='$login'");
 							//mysqli_query($GLOBALS['db_link'],"INSERT INTO `effects` (`uid`,`eff_id`,`effects`,`side_effects`,`time`,`side_time`) VALUES ('".$pl['id']."','".$it['eff_id']."','".$it['effects']."','".$it['side_effects']."','".($it['eftime']+time())."','".(($it['efside_time']>0)?$it['efside_time']+time():'0')."');");
 							calcstat($pl[id]);
-							if($user['login']!=$login){$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к вам <b>\"$it[name]\".</b></font><BR>'+'');";chmsg($ms,$login);}
+                            if ($user['login'] != $login) {
+                                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b> &nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$user[login]</b>  РїСЂРёРјРµРЅРёР» Рє РІР°Рј <b>\"$it[name]\".</b></font><BR>'+'');";
+                                chmsg($ms, $login);
+                            }
 							it_break($id);
 						}
 						elseif($stopbuff==1){
-							$msg[msg]="Эффект такого типа может быть наложен только 1 раз.";
+                            $msg[msg] = "Р­С„С„РµРєС‚ С‚Р°РєРѕРіРѕ С‚РёРїР° РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅР°Р»РѕР¶РµРЅ С‚РѕР»СЊРєРѕ 1 СЂР°Р·.";
 						}
 						elseif($stopbuff==2){
-							$msg[msg]="Достигнут максимальный уровень использованных мазей.";
+                            $msg[msg] = "Р”РѕСЃС‚РёРіРЅСѓС‚ РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹С… РјР°Р·РµР№.";
 						}
 					}elseif($stopbuff==1){
-						$msg[msg]="Персонаж не подходит по требованиям мази.";
+                        $msg[msg] = "РџРµСЂСЃРѕРЅР°Р¶ РЅРµ РїРѕРґС…РѕРґРёС‚ РїРѕ С‚СЂРµР±РѕРІР°РЅРёСЏРј РјР°Р·Рё.";
 					}elseif($stopbuff==2){
-						$msg[msg]="Персонаж уже имеет иммунитет от чего-либо. Одновременно можно иметь только 1 иммунитет.";
-					}	
-					
+                        $msg[msg] = "РџРµСЂСЃРѕРЅР°Р¶ СѓР¶Рµ РёРјРµРµС‚ РёРјРјСѓРЅРёС‚РµС‚ РѕС‚ С‡РµРіРѕ-Р»РёР±Рѕ. РћРґРЅРѕРІСЂРµРјРµРЅРЅРѕ РјРѕР¶РЅРѕ РёРјРµС‚СЊ С‚РѕР»СЊРєРѕ 1 РёРјРјСѓРЅРёС‚РµС‚.";
+					}
+
 				}
 				if($masscalc==1){
 					$allusers = mysqli_query($GLOBALS['db_link'],"SELECT user.id,user.loc,user.pos FROM user WHERE loc='".$player['loc']."' AND pos='".$player['pos']."' AND type<>3;");
@@ -3473,18 +4090,19 @@ function CountOD($pod,$inu,$inb,$ina){
 					}
 				}
 			}
-		}			
+		}
 		return $msg;
 	}
-	//Раставление по карте: 
-	//Place = Id карты боя
-	//uId1 = ID-шники персонажей первой команды
-	//uId1 = ID-шники персонажей второй команды
-	
+
+    //Р Р°СЃС‚Р°РІР»РµРЅРёРµ РїРѕ РєР°СЂС‚Рµ:
+    //Place = Id РєР°СЂС‚С‹ Р±РѕСЏ
+    //uId1 = ID-С€РЅРёРєРё РїРµСЂСЃРѕРЅР°Р¶РµР№ РїРµСЂРІРѕР№ РєРѕРјР°РЅРґС‹
+    //uId1 = ID-С€РЅРёРєРё РїРµСЂСЃРѕРЅР°Р¶РµР№ РІС‚РѕСЂРѕР№ РєРѕРјР°РЅРґС‹
+
 	function SetMap($Place,$uId1,$uId2){
-		// Выбераем карту.
+        // Р’С‹Р±РµСЂР°РµРј РєР°СЂС‚Сѓ.
 		$bplace = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `battle_places` WHERE `id`='".$Place."'"));
-		// Расставляем первую команду
+        // Р Р°СЃСЃС‚Р°РІР»СЏРµРј РїРµСЂРІСѓСЋ РєРѕРјР°РЅРґСѓ
 		$tmp1 = explode("|",$uId1);
 		$T1_count = count($tmp1);
 		$xf=4-intval($T1_count/5);
@@ -3500,7 +4118,7 @@ function CountOD($pod,$inu,$inb,$ina){
 			$bplace["xy"] .= $xf."_".$yf."|";
 			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `pos_fight`='".$xf."_".$yf."' WHERE `id`='".$tmp."'");
 		}
-		// Расставляем вторую команду
+        // Р Р°СЃСЃС‚Р°РІР»СЏРµРј РІС‚РѕСЂСѓСЋ РєРѕРјР°РЅРґСѓ
 		$tmp2 = explode("|",$uId2);
 		$T2_count = count($tmp2);
 		$xf=15-(4-intval($T2_count/5));
@@ -3521,34 +4139,34 @@ function CountOD($pod,$inu,$inb,$ina){
 		$b = $lr % 100;
 		$s = intval(($lr % 10000) / 100);
 		$g = intval($lr / 10000);
-		return (($g)?$g.' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Золото>  ':'').(($s)?$s.' <img src=/img/image/silver.png width=14 height=14 valign=middle title=Серебро> ':'').(($b)?$b.' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Бронза> ':'');
+        return (($g) ? $g . ' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Р—РѕР»РѕС‚Рѕ>  ' : '') . (($s) ? $s . ' <img src=/img/image/silver.png width=14 height=14 valign=middle title=РЎРµСЂРµР±СЂРѕ> ' : '') . (($b) ? $b . ' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Р‘СЂРѕРЅР·Р°> ' : '');
 	}
 	function birthday($birthdayDate, $getYears = false, $text = false){
 		$birthday = explode(".", $birthdayDate);
 		$sec_birthday =  mktime(0, 0, 0, $birthday[1], $birthday[0], $birthday[2]);
-		// Сегодняшняя дата
+        // РЎРµРіРѕРґРЅСЏС€РЅСЏСЏ РґР°С‚Р°
 		$sec_now = time();
-		// Подсчитываем количество месяцев, лет
-		for($time = $sec_birthday, $month = 0; 
-			$time < $sec_now; 
+        // РџРѕРґСЃС‡РёС‚С‹РІР°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃСЏС†РµРІ, Р»РµС‚
+		for($time = $sec_birthday, $month = 0;
+			$time < $sec_now;
 			$time = $time + date('t', $time) * 86400, $month++){
 			$rtime = $time;
 			}
 		$month = $month - 1;
-		// Количество лет
+        // РљРѕР»РёС‡РµСЃС‚РІРѕ Р»РµС‚
 		$year = intval($month / 12);
-		// Количество месяцев
+        // РљРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃСЏС†РµРІ
 		$month = $month % 12;
-		// Количество дней
+        // РљРѕР»РёС‡РµСЃС‚РІРѕ РґРЅРµР№
 		$day = intval(($sec_now - $rtime) / 86400);
-		$result = declination($year, "год", "года", "лет");
+        $result = declination($year, "РіРѕРґ", "РіРѕРґР°", "Р»РµС‚");
 		if($getYears == true){
 			return $year;
-		}		
-		if($month == 0 and $day == 0){
-			return $text ? '<b><font color="red">День родженья</b></font> ('. declination($year, "год", "года", "лет") .")" : $year;
 		}
-		return $text ? $birthdayDate . " (" . declination($year, "год", "года", "лет") . ")" : false;
+		if($month == 0 and $day == 0){
+            return $text ? '<b><font color="red">Р”РµРЅСЊ СЂРѕРґР¶РµРЅСЊСЏ</b></font> (' . declination($year, "РіРѕРґ", "РіРѕРґР°", "Р»РµС‚") . ")" : $year;
+        }
+        return $text ? $birthdayDate . " (" . declination($year, "РіРѕРґ", "РіРѕРґР°", "Р»РµС‚") . ")" : false;
 	}
 	function declination($num, $one, $ed, $mn, $notnumber = false){  
 		if($num === "") print "";

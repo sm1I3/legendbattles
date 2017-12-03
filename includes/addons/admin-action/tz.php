@@ -11,10 +11,10 @@
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location='adm.php'" value="Вернуться">
-		<input type=button class=lbut onClick="location='tz.php'" value="обновить">
-		<input type=button class=lbut onClick="location='tz.php?fl=1'" value="скрыть выполенные Тз">
-		<input type=button class=lbut onClick="location='tz.php?fl=2'" value="Только срочные Тз">
+        <input type=button class=lbut onClick="location='adm.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        <input type=button class=lbut onClick="location='tz.php'" value="РѕР±РЅРѕРІРёС‚СЊ">
+        <input type=button class=lbut onClick="location='tz.php?fl=1'" value="СЃРєСЂС‹С‚СЊ РІС‹РїРѕР»РµРЅРЅС‹Рµ РўР·">
+        <input type=button class=lbut onClick="location='tz.php?fl=2'" value="РўРѕР»СЊРєРѕ СЃСЂРѕС‡РЅС‹Рµ РўР·">
 	</td>
    </tr>
 </table>
@@ -40,7 +40,7 @@ db_open();
 
 if($_GET['addtz']==1){
 	mysqli_query($GLOBALS['db_link'],"INSERT INTO `tzamin` (`text`,`date`,`srok`) VALUES ('".bbCodes($tztext)."','".time()."','".$srok."')");
-	echo 'Тз добавлено';
+    echo 'РўР· РґРѕР±Р°РІР»РµРЅРѕ';
 }
 
 if($_GET['addtz']==2){
@@ -71,40 +71,40 @@ echo  '<br>
 <tr><td>
 <table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 		<tr class=nickname bgcolor=#EAEAEA>
-			<td align=center width=60%><b>Текст задания</b></td>
-			<td align=center><b>Срочность</b></td>
-			<td align=center><b>Дата</b></td>
-			<td align=center><b>Выполнил</b></td>
-			<td align=center><b>Статус</b></td>
-			<td align=center><b>Изменить статус</b></td>
+			<td align=center width=60%><b>РўРµРєСЃС‚ Р·Р°РґР°РЅРёСЏ</b></td>
+			<td align=center><b>РЎСЂРѕС‡РЅРѕСЃС‚СЊ</b></td>
+			<td align=center><b>Р”Р°С‚Р°</b></td>
+			<td align=center><b>Р’С‹РїРѕР»РЅРёР»</b></td>
+			<td align=center><b>РЎС‚Р°С‚СѓСЃ</b></td>
+			<td align=center><b>РР·РјРµРЅРёС‚СЊ СЃС‚Р°С‚СѓСЃ</b></td>
 		</tr>';
 	while($row = mysqli_fetch_assoc($tzsql)){
 		echo'
 		<tr class=nickname bgcolor=white>
 			<td>'.$row['text'].'</td>
-			<td align=center>'.($row['srok']>0?'<font color=red><b>Очень срочно</b></font>':'В порядке очереди').'</td>
+			<td align=center>' . ($row['srok'] > 0 ? '<font color=red><b>РћС‡РµРЅСЊ СЃСЂРѕС‡РЅРѕ</b></font>' : 'Р’ РїРѕСЂСЏРґРєРµ РѕС‡РµСЂРµРґРё') . '</td>
 			<td align=center>'.date("d.m.Y H:i:s",$row['date']).'</td>
 			<td align=center><b>'.(($row['who'])?$row['who']:'---').'</b></td>
 			<td align=center><b>
-			'.($row['status']==1?'<font color=green>Выполнено</font>':(($row['status']==0)?'<font color=red>Не выполнено</font>':'<font color=silver>Забронированно<br />'.date('d.m.y H:i:s',$row['startdate']).'</font>')).'</b>
+			' . ($row['status'] == 1 ? '<font color=green>Р’С‹РїРѕР»РЅРµРЅРѕ</font>' : (($row['status'] == 0) ? '<font color=red>РќРµ РІС‹РїРѕР»РЅРµРЅРѕ</font>' : '<font color=silver>Р—Р°Р±СЂРѕРЅРёСЂРѕРІР°РЅРЅРѕ<br />' . date('d.m.y H:i:s', $row['startdate']) . '</font>')) . '</b>
 			<td align=center>
 			'.(	$row['status']==1?
 			'
 			<form method="post" action="tz.php?addtz=3">
-				<input type=submit class=lbut value=" не выполнено ">
+				<input type=submit class=lbut value=" РЅРµ РІС‹РїРѕР»РЅРµРЅРѕ ">
 				<input type=hidden name=tzid value="'.$row['id'].'">
 			</form>'
 			:(($row['status']==0)?
 			'<form method="post" action="tz.php?addtz=5">
-				<input type=submit class=lbut value=" взять ">
+				<input type=submit class=lbut value=" РІР·СЏС‚СЊ ">
 				<input type=hidden name=tzid value="'.$row['id'].'">
 			</form>':'<form method="post" action="tz.php?addtz=2">
-				<input type=submit class=lbut value=" выполнено ">
+				<input type=submit class=lbut value=" РІС‹РїРѕР»РЅРµРЅРѕ ">
 				<input type=hidden name=tzid value="'.$row['id'].'">
 			</form>')).'
 			'.($_SESSION['user']['login']=='SANTA'?				'
 			<form method="post" action="tz.php?addtz=4">
-				<input type=submit class=lbut value=" удалить ">
+				<input type=submit class=lbut value=" СѓРґР°Р»РёС‚СЊ ">
 				<input type=hidden name=tzid value="'.$row['id'].'">
 			</form>'
 			:'').'	
@@ -114,27 +114,27 @@ echo  '<br>
 echo'</table></td></tr></table><br>';	
 }
 else{
-echo 'не задано ни одного ТЗ';
+    echo 'РЅРµ Р·Р°РґР°РЅРѕ РЅРё РѕРґРЅРѕРіРѕ РўР—';
 }
 echo'<form action="tz.php?addtz=1" method=post>
 
 <table border=0 cellpadding=2 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=45%>
 		<tr class=nickname bgcolor=white>
 			<td align=center colspan=2>
-				<textarea cols=100 rows=15 title="Введите текст ТЗ" name="tztext">
+				<textarea cols=100 rows=15 title="Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РўР—" name="tztext">
 				</textarea>
 			</td>
 		</tr>
 		<tr class=nickname bgcolor=white>
 			<td align=center width=50%> 
-			Срочность: 
+			РЎСЂРѕС‡РЅРѕСЃС‚СЊ: 
 				<select name="srok">
-					<option value="0" selected>В порядке очереди</option>
-					<option value="1" >Очень срочно</option>
+					<option value="0" selected>Р’ РїРѕСЂСЏРґРєРµ РѕС‡РµСЂРµРґРё</option>
+					<option value="1" >РћС‡РµРЅСЊ СЃСЂРѕС‡РЅРѕ</option>
 				</select>
 			</td>
 			<td align=center width=50%>
-				<input type=submit class=lbut value=" Добавить ТЗ ">
+				<input type=submit class=lbut value=" Р”РѕР±Р°РІРёС‚СЊ РўР— ">
 			</td>	
 		</tr>		
 			

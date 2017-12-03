@@ -63,27 +63,28 @@ if ($service_id == '') {
 }
 
 ?>
-<h3><?=($service_id == ''?'Добавить сервис':'Изменить сервис')?></h3>
+    <h3><?= ($service_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ' : 'РР·РјРµРЅРёС‚СЊ СЃРµСЂРІРёСЃ') ?></h3>
 
 <form name="edit_service" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Сервис: &nbsp;  </td>
+    <td>РЎРµСЂРІРёСЃ: &nbsp;</td>
   <td><?=createSelectFromArray('service_type', $service_types_array, $service['service_type'])?></td>
 </tr>
 <tr>
-  <td>Кол-во дней: &nbsp;  </td>
+    <td>РљРѕР»-РІРѕ РґРЅРµР№: &nbsp;</td>
   <td><input name="service_days" type="text" class="cms_fieldstyle1" value="<?=$service['service_days']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Цена: &nbsp;  </td>
+    <td>Р¦РµРЅР°: &nbsp;</td>
   <td><input name="service_dnv" type="text" class="cms_fieldstyle1" value="<?=$service['service_dnv']?>" size="10" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='service_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='service_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

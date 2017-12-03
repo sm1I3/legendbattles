@@ -16,31 +16,31 @@ else
     $quest_id = (int)$_GET['quest_id'];
     
 $sexes = array(
-    2 => 'Любой',
-    0 => 'Мужской',
-    1 => 'Женский',
+    2 => 'Р›СЋР±РѕР№',
+    0 => 'РњСѓР¶СЃРєРѕР№',
+    1 => 'Р–РµРЅСЃРєРёР№',
 );
     
 $aligns = array(
-    1 => 'Дети Тьмы',
-    2 => 'Дети Света',
-    3 => 'Дети Сумерек',
-    4 => 'Дети Хаоса',
+    1 => 'Р”РµС‚Рё РўСЊРјС‹',
+    2 => 'Р”РµС‚Рё РЎРІРµС‚Р°',
+    3 => 'Р”РµС‚Рё РЎСѓРјРµСЂРµРє',
+    4 => 'Р”РµС‚Рё РҐР°РѕСЃР°',
 );
 
 $item_actions = array(
-    1 => 'Продать',
-    2 => 'Передавать',
-    4 => 'Дарить',
-    8 => 'Сдать в гос',
-    16 => 'Выставлять на аукцион',
-    32 => 'Выкидывать',
+    1 => 'РџСЂРѕРґР°С‚СЊ',
+    2 => 'РџРµСЂРµРґР°РІР°С‚СЊ',
+    4 => 'Р”Р°СЂРёС‚СЊ',
+    8 => 'РЎРґР°С‚СЊ РІ РіРѕСЃ',
+    16 => 'Р’С‹СЃС‚Р°РІР»СЏС‚СЊ РЅР° Р°СѓРєС†РёРѕРЅ',
+    32 => 'Р’С‹РєРёРґС‹РІР°С‚СЊ',
 );
 
 $pl_types = array(
-    0 => 'Любой',
-    1 => 'Воин',
-    2 => 'Маг',
+    0 => 'Р›СЋР±РѕР№',
+    1 => 'Р’РѕРёРЅ',
+    2 => 'РњР°Рі',
 );
     
 $quest_groups = array();
@@ -75,12 +75,12 @@ mysql_free_result($res);
 
 // list of sps abilities
 $sps_abilities = array(
-    'forcep' => 'Сила',
-    'adroitness' => 'Ловкость',
-    'goodluck' => 'Удача',
-    'health' => 'Здоровье',
-    'intellect' => 'Знания',
-    'um_11' => 'Доп. ОД',
+    'forcep' => 'РЎРёР»Р°',
+    'adroitness' => 'Р›РѕРІРєРѕСЃС‚СЊ',
+    'goodluck' => 'РЈРґР°С‡Р°',
+    'health' => 'Р—РґРѕСЂРѕРІСЊРµ',
+    'intellect' => 'Р—РЅР°РЅРёСЏ',
+    'um_11' => 'Р”РѕРї. РћР”',
 );
 
 // list of all resources
@@ -564,12 +564,12 @@ if ($quest_id == '' && !isset($_GET['clone_quest_id'])) {
 //dump($quest);
 
 ?>
-<h3><?=($quest_id == ''?'Добавить квест':'Редактировать квест')?></h3>
+    <h3><?= ($quest_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєРІРµСЃС‚' : 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРІРµСЃС‚') ?></h3>
 <link rel="stylesheet" href="files/modalwindow.css" type="text/css" />
-<script src="jscript/ajax.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/modal_window.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/controls/weapon_control.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/quest.js" language="javascript" charset="windows-1251"></script>
+    <script src="jscript/ajax.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/modal_window.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/controls/weapon_control.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/quest.js" language="javascript" charset="utf-8"></script>
 <script language="javascript">
 var last_id = <?=(int)$row_id?>;
 <?=createJsArray('res_array', $resource_array)?>
@@ -582,23 +582,25 @@ var last_id = <?=(int)$row_id?>;
 </script>
 <form name="edit_resource" action="" method="POST">
 
-<hr /><b>Основные параметры</b><hr />
+    <hr/>
+    <b>РћСЃРЅРѕРІРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹</b>
+    <hr/>
 
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID квеста: &nbsp;  </td>
+    <td>ID РєРІРµСЃС‚Р°: &nbsp;</td>
   <td><input name="quest_id" type="text" class="cms_fieldstyle1" value="<?=$quest_row['quest_id']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Группа: &nbsp;  </td>
-  <td><?=createSelectFromArray('quest_group_id', $quest_groups, $quest_row['quest_group_id'], '', '(Нет группы)')?></td>
+    <td>Р“СЂСѓРїРїР°: &nbsp;</td>
+    <td><?= createSelectFromArray('quest_group_id', $quest_groups, $quest_row['quest_group_id'], '', '(РќРµС‚ РіСЂСѓРїРїС‹)') ?></td>
 </tr>
 <tr>
-  <td>Название квеста: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ РєРІРµСЃС‚Р°: &nbsp;</td>
   <td><input name="quest_name" type="text" class="cms_fieldstyle1" value="<?=$quest[0][0]?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Картинка квеста: &nbsp;  </td>
+    <td>РљР°СЂС‚РёРЅРєР° РєРІРµСЃС‚Р°: &nbsp;</td>
   <td valign="top">
     <?=createSelectFromArray('quest_image', $image_array, $quest[0][1], 'onchange="el(\'quest_image\').src = \'http://image.neverlands.ru/gameplay/faces/\'+this.options[this.selectedIndex].value;"')?><br />
     <? if (isset($quest[0][1])) { ?>
@@ -609,248 +611,267 @@ var last_id = <?=(int)$row_id?>;
   </td>
 </tr>
 <tr>
-  <td>Время на выполнение: &nbsp;  </td>
+    <td>Р’СЂРµРјСЏ РЅР° РІС‹РїРѕР»РЅРµРЅРёРµ: &nbsp;</td>
   <td><input name="quest_time" type="text" class="cms_fieldstyle1" value="<?=$quest[0][2]?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Невозможно завершить: &nbsp;  </td>
+    <td>РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ: &nbsp;</td>
   <td><input name="quest_uncompletable" type="checkbox" <?=(isset($quest[0][3]) && $quest[0][3]==1?'checked="checked"':'')?> value="Y" /></td>
 </tr>
 <tr>
-  <td>Повторное прохождение через &nbsp;  </td>
-  <td><input name="quest_repeat" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[0][4])?$quest[0][4]:'0')?>" size="10" maxlength="255" /> часов</td>
+    <td>РџРѕРІС‚РѕСЂРЅРѕРµ РїСЂРѕС…РѕР¶РґРµРЅРёРµ С‡РµСЂРµР· &nbsp;</td>
+    <td><input name="quest_repeat" type="text" class="cms_fieldstyle1"
+               value="<?= (isset($quest[0][4]) ? $quest[0][4] : '0') ?>" size="10" maxlength="255"/> С‡Р°СЃРѕРІ
+    </td>
 </tr>
 <tr>
-  <td>Комментарий: &nbsp;  </td>
+    <td>РљРѕРјРјРµРЅС‚Р°СЂРёР№: &nbsp;</td>
   <td><input name="quest_comment" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[0][5])?$quest[0][5]:'')?>" size="25" maxlength="255" /></td>
 </tr>
 </table>
 
-<hr /><b>Отображение квеста</b><hr />
+    <hr/>
+    <b>РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РєРІРµСЃС‚Р°</b>
+    <hr/>
 
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Требуемый уровень: &nbsp;  </td>
+    <td>РўСЂРµР±СѓРµРјС‹Р№ СѓСЂРѕРІРµРЅСЊ: &nbsp;</td>
   <td><input name="req_level" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[1]['LV'])?$quest[1]['LV']:'')?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Склонность: &nbsp;  </td>
-  <td><?=createSelectFromArray('req_align', $aligns, (isset($quest[1]['ALIGN'])?$quest[1]['ALIGN']:''), '', 'Всё равно')?></td>
+    <td>РЎРєР»РѕРЅРЅРѕСЃС‚СЊ: &nbsp;</td>
+    <td><?= createSelectFromArray('req_align', $aligns, (isset($quest[1]['ALIGN']) ? $quest[1]['ALIGN'] : ''), '', 'Р’СЃС‘ СЂР°РІРЅРѕ') ?></td>
 </tr>
 <tr>
-  <td>Требуемый пол: &nbsp;  </td>
-  <td><?=createSelectFromArray('req_gender', array(0 => 'Мужской', 1 => 'Женский'), (isset($quest[1]['GENDER'])?$quest[1]['GENDER']:''), '', 'Всё равно')?></td>
+    <td>РўСЂРµР±СѓРµРјС‹Р№ РїРѕР»: &nbsp;</td>
+    <td><?= createSelectFromArray('req_gender', array(0 => 'РњСѓР¶СЃРєРѕР№', 1 => 'Р–РµРЅСЃРєРёР№'), (isset($quest[1]['GENDER']) ? $quest[1]['GENDER'] : ''), '', 'Р’СЃС‘ СЂР°РІРЅРѕ') ?></td>
 </tr>
 <tr>
-  <td>Требуемое умение: &nbsp;  </td>
+    <td>РўСЂРµР±СѓРµРјРѕРµ СѓРјРµРЅРёРµ: &nbsp;</td>
   <td><?=createSelectFromArray('req_um', $ability_array, (isset($quest[1]['UM'][0])?$quest[1]['UM'][0]:''))?></td>
 </tr>
 <tr>
-  <td>Требуемый уровень умения: &nbsp;  </td>
+    <td>РўСЂРµР±СѓРµРјС‹Р№ СѓСЂРѕРІРµРЅСЊ СѓРјРµРЅРёСЏ: &nbsp;</td>
   <td><input name="req_um_count" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[1]['UM'][1])?$quest[1]['UM'][1]:'')?>" size="10" maxlength="255" /></td>
 </tr>
 </table>
 <br />
 
-Требуемые квесты:
+    РўСЂРµР±СѓРµРјС‹Рµ РєРІРµСЃС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_qe" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название квеста</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РєРІРµСЃС‚Р°</td>
     </tr>
     <?=$req_quests?>
 </table>
-<a onclick="addItem_select('table_quest_qe', 'tr_qe', 'qe[]', quest_array, '', ''); return false;" href="#">Добавить квест</a><br />
+    <a onclick="addItem_select('table_quest_qe', 'tr_qe', 'qe[]', quest_array, '', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РєРІРµСЃС‚</a><br/>
 <br />
 
-Требуемые взятые квесты:
+    РўСЂРµР±СѓРµРјС‹Рµ РІР·СЏС‚С‹Рµ РєРІРµСЃС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_qa" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название квеста</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РєРІРµСЃС‚Р°</td>
     </tr>
     <?=$req_a_quests?>
 </table>
-<a onclick="addItem_select('table_quest_qa', 'tr_qa', 'qa[]', quest_array, '', ''); return false;" href="#">Добавить квест</a><br />
+    <a onclick="addItem_select('table_quest_qa', 'tr_qa', 'qa[]', quest_array, '', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РєРІРµСЃС‚</a><br/>
 <br />
 
-Квесты, которые не должны быть взяты:
+    РљРІРµСЃС‚С‹, РєРѕС‚РѕСЂС‹Рµ РЅРµ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІР·СЏС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_qna" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название квеста</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РєРІРµСЃС‚Р°</td>
     </tr>
     <?=$req_na_quests?>
 </table>
-<a onclick="addItem_select('table_quest_qna', 'tr_qna', 'qna[]', quest_array, '', ''); return false;" href="#">Добавить квест</a><br />
+    <a onclick="addItem_select('table_quest_qna', 'tr_qna', 'qna[]', quest_array, '', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РєРІРµСЃС‚</a><br/>
 <br />
 
-Квесты, которые не должны быть пройдены:
+    РљРІРµСЃС‚С‹, РєРѕС‚РѕСЂС‹Рµ РЅРµ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РїСЂРѕР№РґРµРЅС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_qu" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название квеста</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РєРІРµСЃС‚Р°</td>
     </tr>
     <?=$req_u_quests?>
 </table>
-<a onclick="addItem_select('table_quest_qu', 'tr_qu', 'qu[]', quest_array, '', ''); return false;" href="#">Добавить квест</a><br />
+    <a onclick="addItem_select('table_quest_qu', 'tr_qu', 'qu[]', quest_array, '', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РєРІРµСЃС‚</a><br/>
 <br />
 
-Раскачка:
+    Р Р°СЃРєР°С‡РєР°:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_sps" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Умение</td>
-        <td class="cms_cap3">Количество</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РЈРјРµРЅРёРµ</td>
+        <td class="cms_cap3">РљРѕР»РёС‡РµСЃС‚РІРѕ</td>
     </tr>
     <?=$req_sps?>
 </table>
-<a onclick="add_quest_sps('table_quest_sps', 'tr_sps', 'req_sps', sps_abilities_array); return false;" href="#">Добавить умение</a><br />
+    <a onclick="add_quest_sps('table_quest_sps', 'tr_sps', 'req_sps', sps_abilities_array); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        СѓРјРµРЅРёРµ</a><br/>
 <br />
 
-<hr /><b>Требования квеста</b><hr />
+    <hr/>
+    <b>РўСЂРµР±РѕРІР°РЅРёСЏ РєРІРµСЃС‚Р°</b>
+    <hr/>
 
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Требуемые средства (NV): &nbsp;  </td>
+    <td>РўСЂРµР±СѓРµРјС‹Рµ СЃСЂРµРґСЃС‚РІР° (NV): &nbsp;</td>
   <td><input name="quest_price" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[2]['MON'])?$quest[2]['MON']:'')?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Требуемые средства (Изумруд): &nbsp;  </td>
+    <td>РўСЂРµР±СѓРµРјС‹Рµ СЃСЂРµРґСЃС‚РІР° (РР·СѓРјСЂСѓРґ): &nbsp;</td>
   <td><input name="quest_price1" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[2]['BAKS'])?$quest[2]['BAKS']:'')?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Требуемые средства при завершении (NV): &nbsp;  </td>
+    <td>РўСЂРµР±СѓРµРјС‹Рµ СЃСЂРµРґСЃС‚РІР° РїСЂРё Р·Р°РІРµСЂС€РµРЅРёРё (NV): &nbsp;</td>
   <td><input name="req_nv" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[2]['NV'])?$quest[2]['NV']:'')?>" size="10" maxlength="20" /></td>
 </tr>
 <tr>
-  <td>Кол-во побед в PvE с момента взятия квеста: &nbsp;  </td>
+    <td>РљРѕР»-РІРѕ РїРѕР±РµРґ РІ PvE СЃ РјРѕРјРµРЅС‚Р° РІР·СЏС‚РёСЏ РєРІРµСЃС‚Р°: &nbsp;</td>
   <td><input name="req_npc" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[2]['NPC'])?$quest[2]['NPC']:'')?>" size="10" maxlength="20" /></td>
 </tr>
 <tr>
-  <td>Кол-во побед в PvP с момента взятия квеста: &nbsp;  </td>
+    <td>РљРѕР»-РІРѕ РїРѕР±РµРґ РІ PvP СЃ РјРѕРјРµРЅС‚Р° РІР·СЏС‚РёСЏ РєРІРµСЃС‚Р°: &nbsp;</td>
   <td><input name="req_pvp" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[2]['PVP'])?$quest[2]['PVP']:'')?>" size="10" maxlength="20" /></td>
 </tr>
 </table>
 <br />
 
-Требование скрытие квестов из журнала заданий:
+    РўСЂРµР±РѕРІР°РЅРёРµ СЃРєСЂС‹С‚РёРµ РєРІРµСЃС‚РѕРІ РёР· Р¶СѓСЂРЅР°Р»Р° Р·Р°РґР°РЅРёР№:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_qd" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название квеста</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РєРІРµСЃС‚Р°</td>
     </tr>
     <?=$req_d_quests?>
 </table>
-<a onclick="addItem_select('table_quest_qd', 'tr_qd', 'qd[]', quest_array, '', ''); return false;" href="#">Добавить квест</a><br />
+    <a onclick="addItem_select('table_quest_qd', 'tr_qd', 'qd[]', quest_array, '', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РєРІРµСЃС‚</a><br/>
 <br />
 
-Требуемые предметы:
+    РўСЂРµР±СѓРµРјС‹Рµ РїСЂРµРґРјРµС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_req_wea" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Группа</td>
-        <td class="cms_cap3">Предмет</td>
-        <td class="cms_cap3">Количество</td>
-        <td class="cms_cap3">Время</td>
-        <td class="cms_cap3">Не был передан</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">Р“СЂСѓРїРїР°</td>
+        <td class="cms_cap3">РџСЂРµРґРјРµС‚</td>
+        <td class="cms_cap3">РљРѕР»РёС‡РµСЃС‚РІРѕ</td>
+        <td class="cms_cap3">Р’СЂРµРјСЏ</td>
+        <td class="cms_cap3">РќРµ Р±С‹Р» РїРµСЂРµРґР°РЅ</td>
     </tr>
     <?=$req_weapon?>
 </table>
-<a onclick="addItem_quest_weapon('table_quest_req_wea', 'tr_req_wea', 'req_wea'); return false;" href="#">Добавить предмет</a><br />
+    <a onclick="addItem_quest_weapon('table_quest_req_wea', 'tr_req_wea', 'req_wea'); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РїСЂРµРґРјРµС‚</a><br/>
 <br />
 
-Требуемые ресурсы:
+    РўСЂРµР±СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_req_res" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Группа</td>
-        <td class="cms_cap3">Ресурс</td>
-        <td class="cms_cap3">Количество</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">Р“СЂСѓРїРїР°</td>
+        <td class="cms_cap3">Р РµСЃСѓСЂСЃ</td>
+        <td class="cms_cap3">РљРѕР»РёС‡РµСЃС‚РІРѕ</td>
     </tr>
     <?=$req_res?>
 </table>
-<a onclick="addItem_quest_res('table_quest_req_res', 'tr_req_res', 'req_res', res_array); return false;" href="#">Добавить ресурс</a><br />
+    <a onclick="addItem_quest_res('table_quest_req_res', 'tr_req_res', 'req_res', res_array); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        СЂРµСЃСѓСЂСЃ</a><br/>
 <br />
 
-Раскачка:
+    Р Р°СЃРєР°С‡РєР°:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_spf" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Умение</td>
-        <td class="cms_cap3">Количество</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РЈРјРµРЅРёРµ</td>
+        <td class="cms_cap3">РљРѕР»РёС‡РµСЃС‚РІРѕ</td>
     </tr>
     <?=$req_spf?>
 </table>
-<a onclick="add_quest_sps('table_quest_spf', 'tr_spf', 'req_spf', sps_abilities_array); return false;" href="#">Добавить умение</a><br />
+    <a onclick="add_quest_sps('table_quest_spf', 'tr_spf', 'req_spf', sps_abilities_array); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        СѓРјРµРЅРёРµ</a><br/>
 <br />
 
-<hr /><b>Награда за квест</b><hr />
+    <hr/>
+    <b>РќР°РіСЂР°РґР° Р·Р° РєРІРµСЃС‚</b>
+    <hr/>
 
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Мирный опыт: &nbsp;  </td>
+    <td>РњРёСЂРЅС‹Р№ РѕРїС‹С‚: &nbsp;</td>
   <td><input name="rcv_exp" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[12]['M_EXP'])?$quest[12]['M_EXP']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Доблесть опыт: &nbsp;  </td>
+    <td>Р”РѕР±Р»РµСЃС‚СЊ РѕРїС‹С‚: &nbsp;</td>
   <td><input name="rcv_exp1" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[12]['M_EXP1'])?$quest[12]['M_EXP1']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Боевой опыт: &nbsp;  </td>
+    <td>Р‘РѕРµРІРѕР№ РѕРїС‹С‚: &nbsp;</td>
   <td><input name="rcv_bexp" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[12]['EXP'])?$quest[12]['EXP']:'')?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Получаемые деньги золото: &nbsp;  </td>
+    <td>РџРѕР»СѓС‡Р°РµРјС‹Рµ РґРµРЅСЊРіРё Р·РѕР»РѕС‚Рѕ: &nbsp;</td>
   <td><input name="rcv_money" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[12]['MONEY'])?$quest[12]['MONEY']:'')?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Взломщик: &nbsp;  </td>
+    <td>Р’Р·Р»РѕРјС‰РёРє: &nbsp;</td>
   <td><input name="present" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[12]['PRE'])?$quest[12]['PRE']:'')?>" size="25" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Получаемые деньги Изумруд: &nbsp;  </td>
+    <td>РџРѕР»СѓС‡Р°РµРјС‹Рµ РґРµРЅСЊРіРё РР·СѓРјСЂСѓРґ: &nbsp;</td>
   <td><input name="present2" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[12]['PRE2'])?$quest[12]['PRE2']:'')?>" size="25" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Репутация Города: &nbsp;  </td>
+    <td>Р РµРїСѓС‚Р°С†РёСЏ Р“РѕСЂРѕРґР°: &nbsp;</td>
   <td><input name="present3" type="text" class="cms_fieldstyle1" value="<?=(isset($quest[12]['PRE3'])?$quest[12]['PRE3']:'')?>" size="25" maxlength="255" /></td>
 </tr>
 </table>
 <br />
-Получаемые предметы:
+    РџРѕР»СѓС‡Р°РµРјС‹Рµ РїСЂРµРґРјРµС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_rcv_weapons" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Предмет</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РџСЂРµРґРјРµС‚</td>
     </tr>
     <?=$rcv_weapon?>
 </table>
-<a onclick="addItem_receive_weapons('table_rcv_weapons', 'tr_rcv_wea', 'rcv_wea[]', '', '', ''); return false;" href="#">Добавить предмет</a><br />
+    <a onclick="addItem_receive_weapons('table_rcv_weapons', 'tr_rcv_wea', 'rcv_wea[]', '', '', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РїСЂРµРґРјРµС‚</a><br/>
 <br />
-Требование скрытие квестов из журнала заданий при завершении:
+    РўСЂРµР±РѕРІР°РЅРёРµ СЃРєСЂС‹С‚РёРµ РєРІРµСЃС‚РѕРІ РёР· Р¶СѓСЂРЅР°Р»Р° Р·Р°РґР°РЅРёР№ РїСЂРё Р·Р°РІРµСЂС€РµРЅРёРё:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_qha" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название квеста</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РєРІРµСЃС‚Р°</td>
     </tr>
     <?=$req_qha_quests?>
 </table>
-<a onclick="addItem_select('table_quest_qha', 'tr_qha', 'qha[]', quest_array, '', ''); return false;" href="#">Добавить квест</a><br />
-<br />  
+    <a onclick="addItem_select('table_quest_qha', 'tr_qha', 'qha[]', quest_array, '', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РєРІРµСЃС‚</a><br/>
+<br />
 
-Вещи:
+    Р’РµС‰Рё:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_quest_wuid" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Предмет</td>
-        <td class="cms_cap3">Для кого</td>
-        <td class="cms_cap3">Пол</td>
-        <td class="cms_cap3">Долговечность</td>
-        <td class="cms_cap3">Кол-во</td>
-        <td class="cms_cap3">Цена</td>
-        <td class="cms_cap3">Срок годности</td>
-        <td class="cms_cap3">Разрешенные действия</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РџСЂРµРґРјРµС‚</td>
+        <td class="cms_cap3">Р”Р»СЏ РєРѕРіРѕ</td>
+        <td class="cms_cap3">РџРѕР»</td>
+        <td class="cms_cap3">Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ</td>
+        <td class="cms_cap3">РљРѕР»-РІРѕ</td>
+        <td class="cms_cap3">Р¦РµРЅР°</td>
+        <td class="cms_cap3">РЎСЂРѕРє РіРѕРґРЅРѕСЃС‚Рё</td>
+        <td class="cms_cap3">Р Р°Р·СЂРµС€РµРЅРЅС‹Рµ РґРµР№СЃС‚РІРёСЏ</td>
     </tr>
     <? 
     if (isset($quest[12]['WUID']) && is_array($quest[12]['WUID']))
@@ -886,105 +907,120 @@ var last_id = <?=(int)$row_id?>;
     <? } ?>
     
 </table>
-<a onclick="addItem_present_weapon('table_quest_wuid', 'tr_wuid', 'quest_wuid'); return false;" href="#">Добавить предмет</a><br />
+    <a onclick="addItem_present_weapon('table_quest_wuid', 'tr_wuid', 'quest_wuid'); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РїСЂРµРґРјРµС‚</a><br/>
 
-<hr /><b>Диалоги</b><hr />
+    <hr/>
+    <b>Р”РёР°Р»РѕРіРё</b>
+    <hr/>
 
-Приветственный диалог:
+    РџСЂРёРІРµС‚СЃС‚РІРµРЅРЅС‹Р№ РґРёР°Р»РѕРі:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_hello_text" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Текст</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РўРµРєСЃС‚</td>
     </tr>
     <?=$hello_text?>
 </table>
-<a onclick="addItem_text('table_hello_text', 'tr_hello_text', 'hello_text[]', '', '', ''); return false;" href="#">Добавить диалог</a><br />
+    <a onclick="addItem_text('table_hello_text', 'tr_hello_text', 'hello_text[]', '', '', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РґРёР°Р»РѕРі</a><br/>
 <br />
 
-Диалог при успешном прохождении:<br />
+    Р”РёР°Р»РѕРі РїСЂРё СѓСЃРїРµС€РЅРѕРј РїСЂРѕС…РѕР¶РґРµРЅРёРё:<br/>
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_success_text" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Текст</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РўРµРєСЃС‚</td>
     </tr>
     <?=$success_text?>
 </table>
-<a onclick="addItem_text('table_success_text', 'tr_success_text', 'success_text[]', '', '', ''); return false;" href="#">Добавить диалог</a><br />
+    <a onclick="addItem_text('table_success_text', 'tr_success_text', 'success_text[]', '', '', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РґРёР°Р»РѕРі</a><br/>
 <br />
 
-Диалог при согласии взять квест:<br />
+    Р”РёР°Р»РѕРі РїСЂРё СЃРѕРіР»Р°СЃРёРё РІР·СЏС‚СЊ РєРІРµСЃС‚:<br/>
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_confirm_text" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Текст</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РўРµРєСЃС‚</td>
     </tr>
     <?=$confirm_text?>
 </table>
-<a onclick="addItem_text('table_confirm_text', 'tr_confirm_text', 'confirm_text[]', '', '', ''); return false;" href="#">Добавить диалог</a><br />
+    <a onclick="addItem_text('table_confirm_text', 'tr_confirm_text', 'confirm_text[]', '', '', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РґРёР°Р»РѕРі</a><br/>
 <br />
 
-Диалог при временном ограничении:<br />
+    Р”РёР°Р»РѕРі РїСЂРё РІСЂРµРјРµРЅРЅРѕРј РѕРіСЂР°РЅРёС‡РµРЅРёРё:<br/>
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_time_limit_text" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Текст</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РўРµРєСЃС‚</td>
     </tr>
     <?=$time_limit_text?>
 </table>
-<a onclick="addItem_text('table_time_limit_text', 'tr_time_limit_text', 'time_limit_text[]', '', '', ''); return false;" href="#">Добавить диалог</a><br />
+    <a onclick="addItem_text('table_time_limit_text', 'tr_time_limit_text', 'time_limit_text[]', '', '', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РґРёР°Р»РѕРі</a><br/>
 <br />
 
-Диалог при сдаче квеста:<br />
+    Р”РёР°Р»РѕРі РїСЂРё СЃРґР°С‡Рµ РєРІРµСЃС‚Р°:<br/>
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_completed_text" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Текст</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РўРµРєСЃС‚</td>
     </tr>
     <?=$completed_text?>
 </table>
-<a onclick="addItem_text('table_completed_text', 'tr_completed_text', 'completed_text[]', '', '', ''); return false;" href="#">Добавить диалог</a><br />
+    <a onclick="addItem_text('table_completed_text', 'tr_completed_text', 'completed_text[]', '', '', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РґРёР°Р»РѕРі</a><br/>
 <br />
 
-Диалог, если невозможно взять квест:<br />
+    Р”РёР°Р»РѕРі, РµСЃР»Рё РЅРµРІРѕР·РјРѕР¶РЅРѕ РІР·СЏС‚СЊ РєРІРµСЃС‚:<br/>
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_unable_to_confirm_text" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Текст</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РўРµРєСЃС‚</td>
     </tr>
     <?=$unable_to_confirm_text?>
 </table>
-<a onclick="addItem_text('table_unable_to_confirm_text', 'tr_unable_to_confirm_text', 'unable_to_confirm_text[]', '', '', ''); return false;" href="#">Добавить диалог</a><br />
+    <a onclick="addItem_text('table_unable_to_confirm_text', 'tr_unable_to_confirm_text', 'unable_to_confirm_text[]', '', '', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РґРёР°Р»РѕРі</a><br/>
 <br />
 
-Диалог, если невозможно завершить квест:<br />
+    Р”РёР°Р»РѕРі, РµСЃР»Рё РЅРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ РєРІРµСЃС‚:<br/>
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_unable_to_complete_text" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Текст</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РўРµРєСЃС‚</td>
     </tr>
     <?=$unable_to_complete_text?>
 </table>
-<a onclick="addItem_text('table_unable_to_complete_text', 'tr_unable_to_complete_text', 'unable_to_complete_text[]', '', '', ''); return false;" href="#">Добавить диалог</a><br />
+    <a onclick="addItem_text('table_unable_to_complete_text', 'tr_unable_to_complete_text', 'unable_to_complete_text[]', '', '', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РґРёР°Р»РѕРі</a><br/>
 <br />
 
-Диалог, если истекло время квеста:<br />
+    Р”РёР°Р»РѕРі, РµСЃР»Рё РёСЃС‚РµРєР»Рѕ РІСЂРµРјСЏ РєРІРµСЃС‚Р°:<br/>
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_time_text" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Текст</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РўРµРєСЃС‚</td>
     </tr>
     <?=$time_text?>
 </table>
-<a onclick="addItem_text('table_time_text', 'tr_time_text', 'time_text[]', '', '', ''); return false;" href="#">Добавить диалог</a><br />
+    <a onclick="addItem_text('table_time_text', 'tr_time_text', 'time_text[]', '', '', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РґРёР°Р»РѕРі</a><br/>
 <br />
 
-Текст записи в журнал квестов:<br />
+    РўРµРєСЃС‚ Р·Р°РїРёСЃРё РІ Р¶СѓСЂРЅР°Р» РєРІРµСЃС‚РѕРІ:<br/>
 <textarea cols="80" rows="4" name="quest_journal_text"><?=_htext(isset($quest[13])?_htext($quest[13]):'')?></textarea><br />
 <br />
   
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" <?=(!userHasPermission(32) && $is_confirmed=='Y'?'disabled="disabled"':'')?> style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='<?=$_SESSION['cp_pages']['quest_list']?>'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1"
+           value="РЎРѕС…СЂР°РЅРёС‚СЊ" <?= (!userHasPermission(32) && $is_confirmed == 'Y' ? 'disabled="disabled"' : '') ?>
+           style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.location='<?= $_SESSION['cp_pages']['quest_list'] ?>'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

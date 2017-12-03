@@ -5,7 +5,7 @@ require('kernel/before.php');
 <HEAD>
 <LINK href="../../../css/game.css" rel=STYLESHEET type=text/css>
 <SCRIPT src="../../../js/stooltip.js?v11"></SCRIPT>
-<META Http-Equiv=Content-Type Content="text/html; charset=windows-1251">
+    <META Http-Equiv=Content-Type Content="text/html; charset=utf-8">
 <META Http-Equiv=Cache-Control Content=No-Cache>
 <META Http-Equiv=Pragma Content=No-Cache>
 <META Http-Equiv=Expires Content=0>
@@ -15,9 +15,10 @@ require('kernel/before.php');
   <tr>
     <td align=center>
 		<div id="tooltip"></div>
-		<input type="button" class="lbut" onclick="location='alhim.php?create=1'" value="Создание Алхимического Рецепта" />
-		<input type="button" class="lbut" onclick="location='alhim.php?look=1'" value="Просмотр рецептов" />
-		<input type="button" class="lbut" onclick="location='alhim.php?look=2'" value="Просмотр игроков" />
+        <input type="button" class="lbut" onclick="location='alhim.php?create=1'"
+               value="РЎРѕР·РґР°РЅРёРµ РђР»С…РёРјРёС‡РµСЃРєРѕРіРѕ Р РµС†РµРїС‚Р°"/>
+        <input type="button" class="lbut" onclick="location='alhim.php?look=1'" value="РџСЂРѕСЃРјРѕС‚СЂ СЂРµС†РµРїС‚РѕРІ"/>
+        <input type="button" class="lbut" onclick="location='alhim.php?look=2'" value="РџСЂРѕСЃРјРѕС‚СЂ РёРіСЂРѕРєРѕРІ"/>
 	</td>
    </tr>
 </table>
@@ -49,8 +50,8 @@ if($create==1){
 	<table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
 	<tr><td>
 	<form action="alhim.php?create=1&items='.$itm.'" method="post">
-	<select name="idit" onmouseover="tooltip(this,\'<b>Выберите реагент и добавьте его в рецепт</b>\')" onmouseout="hide_info(this)">
-	<option value="0" selected=selected>Выберите</option>';
+	<select name="idit" onmouseover="tooltip(this,\'<b>Р’С‹Р±РµСЂРёС‚Рµ СЂРµР°РіРµРЅС‚ Рё РґРѕР±Р°РІСЊС‚Рµ РµРіРѕ РІ СЂРµС†РµРїС‚</b>\')" onmouseout="hide_info(this)">
+	<option value="0" selected=selected>Р’С‹Р±РµСЂРёС‚Рµ</option>';
 	$it=mysql_query("SELECT * FROM `items` WHERE (`type`='w66' OR `type`='w69') AND `master`='' ORDER BY type,name,level;");
 	 while ($row = mysql_fetch_assoc($it)) {
 		echo "<option value=\"$row[id]@$row[name]\">$row[name] [ $row[level] ]</option>";
@@ -60,8 +61,8 @@ if($create==1){
 	<input type=hidden name=colr value="'.$_POST['colr'].'">
 	<input type=hidden name=pricer value="'.$_POST['pricer'].'">
 	<input type=hidden name=navr value="'.$_POST['navr'].'">
-	<input type=text name=col onBlur="if (value == \'\') {value=\'Количество\'}" onFocus="if (value == \'Количество\') {value =\'\'}" value="Количество" onmouseover="tooltip(this,\'<b>Введите количество</b><br>по умолчанию: 1\')" onmouseout="hide_info(this)">
-	<input name="setitem" type="submit" class="lbut" value="Добавить в рецепт" /></form>
+	<input type=text name=col onBlur="if (value == \'\') {value=\'РљРѕР»РёС‡РµСЃС‚РІРѕ\'}" onFocus="if (value == \'РљРѕР»РёС‡РµСЃС‚РІРѕ\') {value =\'\'}" value="РљРѕР»РёС‡РµСЃС‚РІРѕ" onmouseover="tooltip(this,\'<b>Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ</b><br>РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ: 1\')" onmouseout="hide_info(this)">
+	<input name="setitem" type="submit" class="lbut" value="Р”РѕР±Р°РІРёС‚СЊ РІ СЂРµС†РµРїС‚" /></form>
 	';
 	if($itm!=""){		
 		$i=0;
@@ -73,31 +74,31 @@ if($create==1){
 		}
 		sort($fullrec);
 		$forbd="";
-		echo '<br><b>Рецепт:</b><br>';
+        echo '<br><b>Р РµС†РµРїС‚:</b><br>';
 		while (list($key,$val) = each($fullrec)) {
 			$forp=explode("@",$val);
 			$forbd.=$forp[0]."@".$forp[1]."|";
-			echo $forp[2]." (<b>".$forp[1]." шт</b>.)<br>"; 			
+            echo $forp[2] . " (<b>" . $forp[1] . " С€С‚</b>.)<br>";
 		}
 		$forbd=substr($forbd,0,strlen($forbd)-1);
 		//echo $forbd;	
 		echo '
 		<br>
-		<b>Что получается при помощи данных реагентов:</b>
+		<b>Р§С‚Рѕ РїРѕР»СѓС‡Р°РµС‚СЃСЏ РїСЂРё РїРѕРјРѕС‰Рё РґР°РЅРЅС‹С… СЂРµР°РіРµРЅС‚РѕРІ:</b>
 		<form action="alhim.php?recipe=1" method="post">
-		<select name="idit" onmouseover="tooltip(this,\'<b>Выберите зелье, которое будет создано по рецепту</b>\')" onmouseout="hide_info(this)">
-		<option value="0" '.($_POST['itemr']?'':'selected=selected').'>Выберите</option>';
+		<select name="idit" onmouseover="tooltip(this,\'<b>Р’С‹Р±РµСЂРёС‚Рµ Р·РµР»СЊРµ, РєРѕС‚РѕСЂРѕРµ Р±СѓРґРµС‚ СЃРѕР·РґР°РЅРѕ РїРѕ СЂРµС†РµРїС‚Сѓ</b>\')" onmouseout="hide_info(this)">
+		<option value="0" ' . ($_POST['itemr'] ? '' : 'selected=selected') . '>Р’С‹Р±РµСЂРёС‚Рµ</option>';
 		$it=mysql_query("SELECT * FROM `items` WHERE `type`='w0' AND `master`='' AND `dd_price`='0' ORDER BY type,name,level;");
 		while ($row = mysql_fetch_assoc($it)) {
 			echo "<option value=\"$row[id]@$row[name]\" ".(($_POST['itemr']==$row['id'])?'selected=selected':'').">$row[name] [ $row[level] ]</option>";
 		}
 		echo'
-		<input type=text name=col onBlur="if (value == \'\') {value=\'Количество\'}" onFocus="if (value == \'Количество\') {value =\'\'}" value="'.($_POST['colr']?$_POST['colr']:'Количество').'" onmouseover="tooltip(this,\'<b>Введите количество зелий которое получится при создании</b>\')" onmouseout="hide_info(this)"><font class=travma style="color: gray; font-size: 9px;"> (по умолчанию: 5)</font>
-		<br><input type=text name=price onBlur="if (value == \'\') {value=\'Цена рецепта\'}" onFocus="if (value == \'Цена рецепта\') {value =\'\'}" value="'.($_POST['pricer']?$_POST['pricer']:'Цена рецепта').'" onmouseover="tooltip(this,\'<b>Введите цену рецепта</b>\')" onmouseout="hide_info(this)"><font class=travma style="color: gray; font-size: 9px;"> (по умолчанию: 100 LR)</font>
-		<br><input type=text name=nav onBlur="if (value == \'\') {value=\'Навык алхимии\'}" onFocus="if (value == \'Навык алхимии\') {value =\'\'}" value="'.($_POST['navr']?$_POST['navr']:'Навык алхимии').'" onmouseover="tooltip(this,\'<b>Введите необходимый навык алхимии для использования и покупки данного рецепта</b>\')" onmouseout="hide_info(this)"><font class=travma style="color: gray; font-size: 9px;"> (по умолчанию: 1)</font>
+		<input type=text name=col onBlur="if (value == \'\') {value=\'РљРѕР»РёС‡РµСЃС‚РІРѕ\'}" onFocus="if (value == \'РљРѕР»РёС‡РµСЃС‚РІРѕ\') {value =\'\'}" value="' . ($_POST['colr'] ? $_POST['colr'] : 'РљРѕР»РёС‡РµСЃС‚РІРѕ') . '" onmouseover="tooltip(this,\'<b>Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РµР»РёР№ РєРѕС‚РѕСЂРѕРµ РїРѕР»СѓС‡РёС‚СЃСЏ РїСЂРё СЃРѕР·РґР°РЅРёРё</b>\')" onmouseout="hide_info(this)"><font class=travma style="color: gray; font-size: 9px;"> (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ: 5)</font>
+		<br><input type=text name=price onBlur="if (value == \'\') {value=\'Р¦РµРЅР° СЂРµС†РµРїС‚Р°\'}" onFocus="if (value == \'Р¦РµРЅР° СЂРµС†РµРїС‚Р°\') {value =\'\'}" value="' . ($_POST['pricer'] ? $_POST['pricer'] : 'Р¦РµРЅР° СЂРµС†РµРїС‚Р°') . '" onmouseover="tooltip(this,\'<b>Р’РІРµРґРёС‚Рµ С†РµРЅСѓ СЂРµС†РµРїС‚Р°</b>\')" onmouseout="hide_info(this)"><font class=travma style="color: gray; font-size: 9px;"> (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ: 100 LR)</font>
+		<br><input type=text name=nav onBlur="if (value == \'\') {value=\'РќР°РІС‹Рє Р°Р»С…РёРјРёРё\'}" onFocus="if (value == \'РќР°РІС‹Рє Р°Р»С…РёРјРёРё\') {value =\'\'}" value="' . ($_POST['navr'] ? $_POST['navr'] : 'РќР°РІС‹Рє Р°Р»С…РёРјРёРё') . '" onmouseover="tooltip(this,\'<b>Р’РІРµРґРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Р№ РЅР°РІС‹Рє Р°Р»С…РёРјРёРё РґР»СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Рё РїРѕРєСѓРїРєРё РґР°РЅРЅРѕРіРѕ СЂРµС†РµРїС‚Р°</b>\')" onmouseout="hide_info(this)"><font class=travma style="color: gray; font-size: 9px;"> (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ: 1)</font>
 		<input type=hidden name=recipe value="'.(($forbd=="")?"0":$forbd).'">	
-		<br><input name="setitem" type="submit" class="lbut" value="Добавить рецепт в базу" /></form>
-		<br><font class=travma style="color: red;"><b>&nbsp;Внимание: </font></b><font class=travma>Проверок на минусовые значения нет, не подставляйте значения типа "-200" в цену или количество. Если рецепт на эту вещь уже существует в базе - он будет заменен новым.
+		<br><input name="setitem" type="submit" class="lbut" value="Р”РѕР±Р°РІРёС‚СЊ СЂРµС†РµРїС‚ РІ Р±Р°Р·Сѓ" /></form>
+		<br><font class=travma style="color: red;"><b>&nbsp;Р’РЅРёРјР°РЅРёРµ: </font></b><font class=travma>РџСЂРѕРІРµСЂРѕРє РЅР° РјРёРЅСѓСЃРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РЅРµС‚, РЅРµ РїРѕРґСЃС‚Р°РІР»СЏР№С‚Рµ Р·РЅР°С‡РµРЅРёСЏ С‚РёРїР° "-200" РІ С†РµРЅСѓ РёР»Рё РєРѕР»РёС‡РµСЃС‚РІРѕ. Р•СЃР»Рё СЂРµС†РµРїС‚ РЅР° СЌС‚Сѓ РІРµС‰СЊ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РІ Р±Р°Р·Рµ - РѕРЅ Р±СѓРґРµС‚ Р·Р°РјРµРЅРµРЅ РЅРѕРІС‹Рј.
 		
 		';
 	}
@@ -110,10 +111,10 @@ if($create==1){
 }
 if($_GET['recipe']==1){
 	if($_POST['idit']=="0"){
-		echo 'Не выбрана вещь для создания';
+        echo 'РќРµ РІС‹Р±СЂР°РЅР° РІРµС‰СЊ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ';
 	}
 	else if($_POST['recipe']=="0"){
-		echo 'Не добавлено ни одного ингредиента';
+        echo 'РќРµ РґРѕР±Р°РІР»РµРЅРѕ РЅРё РѕРґРЅРѕРіРѕ РёРЅРіСЂРµРґРёРµРЅС‚Р°';
 	}
 	else{
 		$item=explode("@",$_POST['idit']);
@@ -135,14 +136,14 @@ echo'
 <tr><td>
 <table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 		<tr class=nickname bgcolor=#EAEAEA>
-			<td align=center width=10%><b>ID</b><br><font class=travma style="color: gray; font-size: 9px;">ид рецепта в базе</font></td>
-			<td align=center width=50%><b>Имя предмета</b><br><font class=travma style="color: gray; font-size: 9px;">предмет который создаем</font></td>
-			<td align=center width=10%><b>ID предмета</b><br><font class=travma style="color: gray; font-size: 9px;">ид предмета в базе</font></td>
-			<td align=center width=20%><b>Реагенты</b><br><font class=travma style="color: gray; font-size: 9px;">Название (количество)</font></td>
-			<td align=center width=10%><b>Количество</b><br><font class=travma style="color: gray; font-size: 9px;">сколько будет создано</font></td>
-			<td align=center width=10%><b>Навык</b><br><font class=travma style="color: gray; font-size: 9px;">необходимый для создания</font></td>
-			<td align=center width=10%><b>Цена</b><br><font class=travma style="color: gray; font-size: 9px;">цена рецепта</font></td>
-			<td align=center width=10%><b>Действия</b><br><font class=travma style="color: gray; font-size: 9px;">редактировать или удалить</font></td>
+			<td align=center width=10%><b>ID</b><br><font class=travma style="color: gray; font-size: 9px;">РёРґ СЂРµС†РµРїС‚Р° РІ Р±Р°Р·Рµ</font></td>
+			<td align=center width=50%><b>РРјСЏ РїСЂРµРґРјРµС‚Р°</b><br><font class=travma style="color: gray; font-size: 9px;">РїСЂРµРґРјРµС‚ РєРѕС‚РѕСЂС‹Р№ СЃРѕР·РґР°РµРј</font></td>
+			<td align=center width=10%><b>ID РїСЂРµРґРјРµС‚Р°</b><br><font class=travma style="color: gray; font-size: 9px;">РёРґ РїСЂРµРґРјРµС‚Р° РІ Р±Р°Р·Рµ</font></td>
+			<td align=center width=20%><b>Р РµР°РіРµРЅС‚С‹</b><br><font class=travma style="color: gray; font-size: 9px;">РќР°Р·РІР°РЅРёРµ (РєРѕР»РёС‡РµСЃС‚РІРѕ)</font></td>
+			<td align=center width=10%><b>РљРѕР»РёС‡РµСЃС‚РІРѕ</b><br><font class=travma style="color: gray; font-size: 9px;">СЃРєРѕР»СЊРєРѕ Р±СѓРґРµС‚ СЃРѕР·РґР°РЅРѕ</font></td>
+			<td align=center width=10%><b>РќР°РІС‹Рє</b><br><font class=travma style="color: gray; font-size: 9px;">РЅРµРѕР±С…РѕРґРёРјС‹Р№ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ</font></td>
+			<td align=center width=10%><b>Р¦РµРЅР°</b><br><font class=travma style="color: gray; font-size: 9px;">С†РµРЅР° СЂРµС†РµРїС‚Р°</font></td>
+			<td align=center width=10%><b>Р”РµР№СЃС‚РІРёСЏ</b><br><font class=travma style="color: gray; font-size: 9px;">СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РёР»Рё СѓРґР°Р»РёС‚СЊ</font></td>
 		</tr>
 		
 		';
@@ -172,11 +173,11 @@ echo'
 			<input type=hidden name=colr value="'.$row['col'].'">
 			<input type=hidden name=pricer value="'.$row['price'].'">
 			<input type=hidden name=navr value="'.$row['nav'].'">
-			<input type="submit" class="lbut" value="редактировать" />
+			<input type="submit" class="lbut" value="СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" />
 			</form>
 			<form action="alhim.php?look=1" method="post">
 			<input type=hidden name=delete value="'.$row['id'].'">
-			<input type="submit" class="lbut" value="удалить" />
+			<input type="submit" class="lbut" value="СѓРґР°Р»РёС‚СЊ" />
 			</form>
 			</td>				
 			';
@@ -191,9 +192,9 @@ echo'
 <tr><td>
 <table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 		<tr class=nickname bgcolor=#EAEAEA>
-			<td align=center width=10%><b>Игрок</b><br><font class=travma style="color: gray; font-size: 9px;">имя</font></td>
-			<td align=center width=50%><b>Навык алхимии</b><br><font class=travma style="color: gray; font-size: 9px;">у игрока</font></td>
-			<td align=center width=50%><b>Рецепты</b><br><font class=travma style="color: gray; font-size: 9px;">(ид рецептов)</font></td>
+			<td align=center width=10%><b>РРіСЂРѕРє</b><br><font class=travma style="color: gray; font-size: 9px;">РёРјСЏ</font></td>
+			<td align=center width=50%><b>РќР°РІС‹Рє Р°Р»С…РёРјРёРё</b><br><font class=travma style="color: gray; font-size: 9px;">Сѓ РёРіСЂРѕРєР°</font></td>
+			<td align=center width=50%><b>Р РµС†РµРїС‚С‹</b><br><font class=travma style="color: gray; font-size: 9px;">(РёРґ СЂРµС†РµРїС‚РѕРІ)</font></td>
 		</tr>
 		
 		';
@@ -202,7 +203,7 @@ echo'
 			$pt=allparam($row);
 			echo '<tr class=nickname bgcolor=white>
 			<td align=center>'.$row['login'].'</td>
-			<td align=center>Алхимия: '.$row['alhim'].' ('.$pt[68].' с вещами)<br>Травничество: '.$row['trav'].' ('.$pt[70].' с вещами)</td><td>';
+			<td align=center>РђР»С…РёРјРёСЏ: ' . $row['alhim'] . ' (' . $pt[68] . ' СЃ РІРµС‰Р°РјРё)<br>РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ: ' . $row['trav'] . ' (' . $pt[70] . ' СЃ РІРµС‰Р°РјРё)</td><td>';
 			$rec=explode("|",$row['alhim_rec']);
 			foreach ($rec as $val){
 				$recipe = mysql_fetch_assoc(mysql_query("SELECT `alhim`.`name` FROM `alhim` WHERE `id`='".$val."' LIMIT 1;"));

@@ -63,8 +63,8 @@ function view_build_top(){
 			</div>\
 		</div>\
 		<div class="TopBar_right">\
-			<a href="#" id="MovementMenu" class="MovementMenu mainTooltip" onmouseover="tooltip(this,\'<b>Войти</b>\');" onmouseout="hide_info(this);" style="display:none;"></a>\
-			<div class="hours" style="float: right;margin-top:1px;margin-right: 121px;"><img src="img/razdor/emerald.png" width="14" height="14" title="+1 Изумруд"></div>\
+			<a href="#" id="MovementMenu" class="MovementMenu mainTooltip" onmouseover="tooltip(this,\'<b>Р’РѕР№С‚Рё</b>\');" onmouseout="hide_info(this);" style="display:none;"></a>\
+			<div class="hours" style="float: right;margin-top:1px;margin-right: 121px;"><img src="img/razdor/emerald.png" width="14" height="14" title="+1 РР·СѓРјСЂСѓРґ"></div>\
 			<div class="lines" style="float: right;">\
 				<div class="dlr" style="margin-top: 8px;margin-right: 3px;">\
 					<div class="line" id="dlrline" style="width:0"></div>\
@@ -76,19 +76,19 @@ function view_build_top(){
 		<div class="TopBar_center">\
 			<ul class="MainMenu">\
 				<li class="CharacterMenu">\
-					<a href="#" id="CharacterMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Персонаж</b>\');" onmouseout="hide_info(this);"></a>\
+					<a href="#" id="CharacterMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РџРµСЂСЃРѕРЅР°Р¶</b>\');" onmouseout="hide_info(this);"></a>\
 				</li>\
 				<li class="InventoryMenu">\
-					<a href="#" id="InventoryMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Инвентарь</b>\');" onmouseout="hide_info(this);"></a>\
+					<a href="#" id="InventoryMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РРЅРІРµРЅС‚Р°СЂСЊ</b>\');" onmouseout="hide_info(this);"></a>\
 				</li>\
 				<li class="FightingMenu">\
-					<a href="#" id="FightingMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Поединки</b>\');" onmouseout="hide_info(this);"></a>\
+					<a href="#" id="FightingMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РџРѕРµРґРёРЅРєРё</b>\');" onmouseout="hide_info(this);"></a>\
 				</li>\
 				<li class="ClanMenu">\
-					<a href="#" id="ClanMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Клан</b>\');" onmouseout="hide_info(this);"></a>\
+					<a href="#" id="ClanMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РљР»Р°РЅ</b>\');" onmouseout="hide_info(this);"></a>\
 				</li>\
 				<li class="InfoMenu">\
-					<a href="#" id="InfoMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Квесты</b>\');" onmouseout="hide_info(this);"></a>\
+					<a href="#" id="InfoMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РљРІРµСЃС‚С‹</b>\');" onmouseout="hide_info(this);"></a>\
 				</li>\
 			</ul>\
 		</div>\
@@ -114,7 +114,7 @@ function view_build_top(){
 						<div class="hrs" id="hrs"></div>\
 					</div>\
 				</div>\
-				<div class="hours"><img src="img/razdor/emerald.png" width="14" height="14" title="+1 Изумруд"></div>\
+				<div class="hours"><img src="img/razdor/emerald.png" width="14" height="14" title="+1 РР·СѓРјСЂСѓРґ"></div>\
 				<div class="menu">' + menu['header'] + '</div>\
 			</div>\
 			<div style="height:40px;width:100%"></div>');
@@ -130,7 +130,7 @@ function view_build_bottom(){
 function view_map()
 {
 	view_build_top();
-    d.write('<table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td align=center><div id="transfer"></div></td></tr><tr><td  align=center><fieldset id=supfield><legend><b><font color=gray>Природа</b></font></legend><div style="position: absolute; border: 1px solid black; overflow: hidden;" id="world_cont"></div><div style="text-align: left;" id="world_cont2"></div></fieldset></td></tr></table>');
+    d.write('<table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td align=center><div id="transfer"></div></td></tr><tr><td  align=center><fieldset id=supfield><legend><b><font color=gray>РџСЂРёСЂРѕРґР°</b></font></legend><div style="position: absolute; border: 1px solid black; overflow: hidden;" id="world_cont"></div><div style="text-align: left;" id="world_cont2"></div></fieldset></td></tr></table>');
 	//d.write('<div class="map_Border_LeftTop"></div><div class="map_Border_Top" style="width: 594px;"></div><div class="map_Border_RightTop"></div><div class="map_Border_Bottom" style="width: 594px;"></div><div class="map_Border_RightBottom"></div><div class="map_Border_Right" style="height: 117px;"></div><div class="map_Border_Left" style="height: 117px;"></div></fieldset></td></tr></table>');
     for(var i=0; i<map[1].length; i++)
     {
@@ -157,7 +157,7 @@ function view_map()
     }
     else
     {
-        // Работа или защита от подбора
+        // Р Р°Р±РѕС‚Р° РёР»Рё Р·Р°С‰РёС‚Р° РѕС‚ РїРѕРґР±РѕСЂР°
         finStatus = 2;
         current_x = map[0][0];
         current_y = map[0][1];
@@ -187,14 +187,31 @@ function ButtonGen() {
     for(var i=0; i<mapbt.length; i++) {
         bavail[mapbt[i][0]] = [mapbt[i][2],mapbt[i][3]];
 		switch(mapbt[i][0]){
-			case 'disabled': returned += '<img src="img/image/weapon/primanka.png" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' '+(mapbt[i][0]=='disabled'?'disabled title="У вас нет приманок"':'')+'></a></div>'; break;
-			case 'dri': returned += '<div><img src="img/image/weapon/Vodopad.png" onmouseover="tooltip(this,\'<b>Пить воду</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' /></div>'; break;;
-			case 'editor': returned += '<div><img src="img/image/weapon/admin.png" onmouseover="tooltip(this,\'<b>Админка</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' /></div>'; break;
-			case 'priman': returned += '<div><img src="img/image/weapon/primanka.png" onmouseover="tooltip(this,\'<b>Приманка</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' /></div>'; break;
-			case 'tele': returned += '<div><img src="img/image/weapon/teleport.png" onmouseover="tooltip(this,\'<b>Телепорт</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' /></div>'; break;
-			case 'navi': returned += '<div><img src="img/image/weapon/kompas.png" onmouseover="tooltip(this,\'<b>Навигатор</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' /></div>'; break;
-			case 'ogl': returned += '<div><img src="img/image/weapon/travka.png" onmouseover="tooltip(this,\'<b>Поиск травы</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' /></div>'; break;
-			case 'les': returned += '<div><img src="img/image/weapon/drava.png" onmouseover="tooltip(this,\'<b>Поиск леса</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' /></div>'; break;
+            case 'disabled':
+                returned += '<img src="img/image/weapon/primanka.png" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' ' + (mapbt[i][0] == 'disabled' ? 'disabled title="РЈ РІР°СЃ РЅРµС‚ РїСЂРёРјР°РЅРѕРє"' : '') + '></a></div>';
+                break;
+            case 'dri':
+                returned += '<div><img src="img/image/weapon/Vodopad.png" onmouseover="tooltip(this,\'<b>РџРёС‚СЊ РІРѕРґСѓ</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' /></div>';
+                break;
+                ;
+            case 'editor':
+                returned += '<div><img src="img/image/weapon/admin.png" onmouseover="tooltip(this,\'<b>РђРґРјРёРЅРєР°</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' /></div>';
+                break;
+            case 'priman':
+                returned += '<div><img src="img/image/weapon/primanka.png" onmouseover="tooltip(this,\'<b>РџСЂРёРјР°РЅРєР°</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' /></div>';
+                break;
+            case 'tele':
+                returned += '<div><img src="img/image/weapon/teleport.png" onmouseover="tooltip(this,\'<b>РўРµР»РµРїРѕСЂС‚</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' /></div>';
+                break;
+            case 'navi':
+                returned += '<div><img src="img/image/weapon/kompas.png" onmouseover="tooltip(this,\'<b>РќР°РІРёРіР°С‚РѕСЂ</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' /></div>';
+                break;
+            case 'ogl':
+                returned += '<div><img src="img/image/weapon/travka.png" onmouseover="tooltip(this,\'<b>РџРѕРёСЃРє С‚СЂР°РІС‹</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' /></div>';
+                break;
+            case 'les':
+                returned += '<div><img src="img/image/weapon/drava.png" onmouseover="tooltip(this,\'<b>РџРѕРёСЃРє Р»РµСЃР°</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' /></div>';
+                break;
 			case 'que':
 				$('#InfoMenu')
 				.css("cursor","pointer")
@@ -222,9 +239,13 @@ function ButtonGen() {
 				.attr(
 					"href","javascript:ButClick('" +  mapbt[i][0] + "');"
 				);
-			break; 
-			case 'fis': returned += '<div><img src="img/image/weapon/riba.png" onmouseover="tooltip(this,\'<b>Ловить</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' /></div>'; break;
-			case 'bld': returned += '<div><a href="#" id="'+mapbt[i][0]+'" onclick=\'ButClick("'+(mapbt[i][0]=='disabled'?'':mapbt[i][0])+'")\' '+(mapbt[i][0]=='disabled'?'disabled':'')+'>Строения</a></div>'; break;			
+			break;
+            case 'fis':
+                returned += '<div><img src="img/image/weapon/riba.png" onmouseover="tooltip(this,\'<b>Р›РѕРІРёС‚СЊ</b>\');" onmouseout="hide_info(this);" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' /></div>';
+                break;
+            case 'bld':
+                returned += '<div><a href="#" id="' + mapbt[i][0] + '" onclick=\'ButClick("' + (mapbt[i][0] == 'disabled' ? '' : mapbt[i][0]) + '")\' ' + (mapbt[i][0] == 'disabled' ? 'disabled' : '') + '>РЎС‚СЂРѕРµРЅРёСЏ</a></div>';
+                break;
 			case 'dep_yes':
 				$('#MovementMenu')
 				.attr(
@@ -248,7 +269,7 @@ function closeform()
 function fightmagicform(wuid,wnickname,wnametxt,wmcode)
 {
        parent.frames['ch_buttons'].document.FBT.text.focus();
-       document.all("transfer").innerHTML = '<form method=POST action="main.php"><input type=hidden name=magicrestart value="1"><input type=hidden name=magicreuid value='+wuid+'><input type=hidden name=vcode value='+wmcode+'><input type=hidden name=post_id value=63><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#B9A05C><table cellpadding=3 cellspacing=1 border=0 width=100%><tr><td width=100% bgcolor=#FCFAF3><font class=nickname><b>Выполнить "'+wnametxt+'" сейчас?</b></div></td></tr><tr><td bgcolor=#FCFAF3><font class=nickname><b>На кого:</b> <INPUT TYPE="text" name=fornickname class=LogintextBox value="'+wnickname+'" maxlength=25> <input type=submit value="напасть" class=fr_but> <input type=button class=fr_but onclick="closeform()" value=" x "></td></tr></table></td></tr></table></FORM>';
+    document.all("transfer").innerHTML = '<form method=POST action="main.php"><input type=hidden name=magicrestart value="1"><input type=hidden name=magicreuid value=' + wuid + '><input type=hidden name=vcode value=' + wmcode + '><input type=hidden name=post_id value=63><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#B9A05C><table cellpadding=3 cellspacing=1 border=0 width=100%><tr><td width=100% bgcolor=#FCFAF3><font class=nickname><b>Р’С‹РїРѕР»РЅРёС‚СЊ "' + wnametxt + '" СЃРµР№С‡Р°СЃ?</b></div></td></tr><tr><td bgcolor=#FCFAF3><font class=nickname><b>РќР° РєРѕРіРѕ:</b> <INPUT TYPE="text" name=fornickname class=LogintextBox value="' + wnickname + '" maxlength=25> <input type=submit value="РЅР°РїР°СЃС‚СЊ" class=fr_but> <input type=button class=fr_but onclick="closeform()" value=" x "></td></tr></table></td></tr></table></FORM>';
        document.all("transfer").style.visibility = "visible";
        document.all("fornickname").focus();
        ActionFormUse = 'fornickname';
@@ -258,7 +279,9 @@ function ButClick(id){
 //	if(!ButtonSt('', true)){
 		var goloc = '';
 		switch(id) {
-			case 'nap': fightmagicform('','','тотемное нападение',bavail[id][0]); break;
+            case 'nap':
+                fightmagicform('', '', 'С‚РѕС‚РµРјРЅРѕРµ РЅР°РїР°РґРµРЅРёРµ', bavail[id][0]);
+                break;
 			case 'inf': goloc = '?get_id=56&act=10&go=inf&vcode='+bavail[id][0]; break;
 			case 'inv': goloc = '?get_id=56&act=10&go=inv&vcode='+bavail[id][0]; break;
 			case 'ogl': Ogl(bavail[id][0]); break;
@@ -618,8 +641,8 @@ function StateReady()
             
                 ND = d.createElement('div');
                 ND.className = 'png';
-            
-                // окно с данными
+
+                // РѕРєРЅРѕ СЃ РґР°РЅРЅС‹РјРё
                 var buttons = '';
                 var ingr = eval(arr_res[2]);
 				var priman = eval(arr_res[3]);
@@ -627,7 +650,7 @@ function StateReady()
                 ND.id = 'uni';
                     var tr = 0;
                     var alt;
-                    var messal = '<FORM id="FISHF"><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellpadding=3 cellspacing=1 border=0 width=100%>'+(ingr[1] != '00000' ? '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="https://www.legendbattles.ru/modules/code/kcaptcha.php?'+ingr[1]+'" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>Код: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><b>Кажется тут можно ловить рыбку!<br>С вашим уровнем навыка вы сможете поймать:</b></td></tr>');
+                var messal = '<FORM id="FISHF"><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellpadding=3 cellspacing=1 border=0 width=100%>' + (ingr[1] != '00000' ? '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="https://www.legendbattles.ru/modules/code/kcaptcha.php?' + ingr[1] + '" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>РљРѕРґ: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><b>РљР°Р¶РµС‚СЃСЏ С‚СѓС‚ РјРѕР¶РЅРѕ Р»РѕРІРёС‚СЊ СЂС‹Р±РєСѓ!<br>РЎ РІР°С€РёРј СѓСЂРѕРІРЅРµРј РЅР°РІС‹РєР° РІС‹ СЃРјРѕР¶РµС‚Рµ РїРѕР№РјР°С‚СЊ:</b></td></tr>');
                     for(var i=5; i<ingr.length; i++)
                     {
                         tr++;
@@ -644,31 +667,31 @@ function StateReady()
                     tr++;
                     if(tr != 1)
                     {
-                        for(var i=tr; i<5; i++) messal += '<td bgcolor=#FFFFFF width=25%><div valign=middle align=center><font class=proce style="color:#CCCCCC;">пусто</font></div></td>';
+                        for (var i = tr; i < 5; i++) messal += '<td bgcolor=#FFFFFF width=25%><div valign=middle align=center><font class=proce style="color:#CCCCCC;">РїСѓСЃС‚Рѕ</font></div></td>';
                         messal += '</tr>';
                     }
-					if(!ingr[2]){ 
-						messal += '<tr align=center><td align=center colspan=4 bgcolor=#FFFFFF width=100%><div align=center id=nofishrod><font class=proce><b>Оденьте удочку для рыбалки!</b></font></div></td></tr>';
+					if(!ingr[2]){
+                        messal += '<tr align=center><td align=center colspan=4 bgcolor=#FFFFFF width=100%><div align=center id=nofishrod><font class=proce><b>РћРґРµРЅСЊС‚Рµ СѓРґРѕС‡РєСѓ РґР»СЏ СЂС‹Р±Р°Р»РєРё!</b></font></div></td></tr>';
 					}
 					else if(priman.length>0){
-						messal += '<tr><td bgcolor=#FFFFFF width=100% colspan=4><div align=center><font class=proce><b>Выберите приманку из списка ниже:</b></font></div></td></tr>';
+                        messal += '<tr><td bgcolor=#FFFFFF width=100% colspan=4><div align=center><font class=proce><b>Р’С‹Р±РµСЂРёС‚Рµ РїСЂРёРјР°РЅРєСѓ РёР· СЃРїРёСЃРєР° РЅРёР¶Рµ:</b></font></div></td></tr>';
 						var tr2 = 0;
 						for(var b=0; b<priman.length; b++)
 							{
 								tr2++;
 								if(tr2 == 1){ messal += '<tr>'; }
-									messal += '<td bgcolor=#FFFFFF  width=25%><div align=center id=havepriman><font class=nickname><b>'+priman[b][1]+'</b><br> '+(priman[b][4]<25?'<font class=proce style="color:#006600">(<b>'+priman[b][4]+' шт.</b>)</font>':'<font class=proce>(<b>'+priman[b][4]+' шт.</b>)</font>')+'</font></div><div align=center><img src="img/image/weapon/'+priman[b][2]+'" onmouseover="tooltip(this,\'<b><font color=#336699>Щелкните по изображению для просмотра подробной информации о предмете.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'https://www.legendbattles.ru/iteminfo.php?'+priman[b][1]+'\');" style="cursor:pointer;"></div><div align=center><input type=radio name=selectprim value="'+priman[b][0]+'" onClick="javascript: writebut(this.value,\''+priman[b][3]+'\',\''+ingr[2]+'\');"></div></td>';
+                                messal += '<td bgcolor=#FFFFFF  width=25%><div align=center id=havepriman><font class=nickname><b>' + priman[b][1] + '</b><br> ' + (priman[b][4] < 25 ? '<font class=proce style="color:#006600">(<b>' + priman[b][4] + ' С€С‚.</b>)</font>' : '<font class=proce>(<b>' + priman[b][4] + ' С€С‚.</b>)</font>') + '</font></div><div align=center><img src="img/image/weapon/' + priman[b][2] + '" onmouseover="tooltip(this,\'<b><font color=#336699>Р©РµР»РєРЅРёС‚Рµ РїРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЋ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РїРѕРґСЂРѕР±РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїСЂРµРґРјРµС‚Рµ.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'https://www.legendbattles.ru/iteminfo.php?' + priman[b][1] + '\');" style="cursor:pointer;"></div><div align=center><input type=radio name=selectprim value="' + priman[b][0] + '" onClick="javascript: writebut(this.value,\'' + priman[b][3] + '\',\'' + ingr[2] + '\');"></div></td>';
 								if(tr2 == 4){messal += '</tr>';tr2 = 0;}  
  
 							}
 					}
 					else{
-						messal += '<tr align=center><td align=center colspan=4 bgcolor=#FFFFFF width=100%><div align=center id=nopriman><font class=proce><b>Приманок нет.</b></font></div></td></tr>';
+                        messal += '<tr align=center><td align=center colspan=4 bgcolor=#FFFFFF width=100%><div align=center id=nopriman><font class=proce><b>РџСЂРёРјР°РЅРѕРє РЅРµС‚.</b></font></div></td></tr>';
 					}
                     tr2++;
                     if(tr2 != 1)
                     {
-                        for(var i=tr2; i<5; i++) messal += '<td bgcolor=#FFFFFF width=25%><div valign=middle align=center><font class=proce style="color:#CCCCCC;">пусто</font></div></td>';
+                        for (var i = tr2; i < 5; i++) messal += '<td bgcolor=#FFFFFF width=25%><div valign=middle align=center><font class=proce style="color:#CCCCCC;">РїСѓСЃС‚Рѕ</font></div></td>';
                         messal += '</tr>';
                     }
 						 	
@@ -705,8 +728,8 @@ function StateReady()
             
                 ND = d.createElement('div');
                 ND.className = 'png';
-            
-                // окно с данными
+
+                // РѕРєРЅРѕ СЃ РґР°РЅРЅС‹РјРё
                 var buttons = '';
                 var ingr = eval(arr_res[2]);
                 var did = 'uni';
@@ -718,12 +741,12 @@ function StateReady()
                     
                     var tr = 0;
                     var alt;
-                    var messal = '<FORM id="ALHF"><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellpadding=3 cellspacing=1 border=0 width=100%>'+(ingr[1] != '00000' ? '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modules/code/kcaptcha.php?'+ingr[1]+'" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>Код: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><b>Вы осмотрелись вокруг в поисках травы.<br>Поздравляем, кажется вы что-то нашли!</b></td></tr>');
+                        var messal = '<FORM id="ALHF"><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellpadding=3 cellspacing=1 border=0 width=100%>' + (ingr[1] != '00000' ? '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modules/code/kcaptcha.php?' + ingr[1] + '" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>РљРѕРґ: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><b>Р’С‹ РѕСЃРјРѕС‚СЂРµР»РёСЃСЊ РІРѕРєСЂСѓРі РІ РїРѕРёСЃРєР°С… С‚СЂР°РІС‹.<br>РџРѕР·РґСЂР°РІР»СЏРµРј, РєР°Р¶РµС‚СЃСЏ РІС‹ С‡С‚Рѕ-С‚Рѕ РЅР°С€Р»Рё!</b></td></tr>');
                     for(var i=5; i<ingr.length; i++)
                     {
                         tr++;
-                        if(tr == 1) messal += '<tr>';                 
-                        messal += '<td bgcolor=#FFFFFF width=25%><div align=center><font class=nickname><b>'+ingr[i][1]+'</b></font><br><img src="img/image/weapon/'+ingr[i][2]+'" onmouseover="tooltip(this,\'<b><font color=#336699>Щелкните по изображению для просмотра подробной информации о предмете.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'img//iteminfo.php?'+ingr[i][1]+'\');" style="cursor:pointer;"><br>'+(!ingr[2] ? '<input type=button class=fr_but value="Срезать" onmouseover="tooltip(this,\'<b><font color=red>Недоступно!</font><br>Оденьте серп для сбора трав.</b>\')" onmouseout="hide_info(this)">' : '<input type=button class=fr_but value="Срезать" onclick="AlhStart(\''+ingr[i][0]+'\',\''+ingr[i][3]+'\',\''+ingr[2]+'\');RemoveDialogDiv();">')+'</div></td>';
+                        if(tr == 1) messal += '<tr>';
+                        messal += '<td bgcolor=#FFFFFF width=25%><div align=center><font class=nickname><b>' + ingr[i][1] + '</b></font><br><img src="img/image/weapon/' + ingr[i][2] + '" onmouseover="tooltip(this,\'<b><font color=#336699>Р©РµР»РєРЅРёС‚Рµ РїРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЋ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РїРѕРґСЂРѕР±РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїСЂРµРґРјРµС‚Рµ.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'img//iteminfo.php?' + ingr[i][1] + '\');" style="cursor:pointer;"><br>' + (!ingr[2] ? '<input type=button class=fr_but value="РЎСЂРµР·Р°С‚СЊ" onmouseover="tooltip(this,\'<b><font color=red>РќРµРґРѕСЃС‚СѓРїРЅРѕ!</font><br>РћРґРµРЅСЊС‚Рµ СЃРµСЂРї РґР»СЏ СЃР±РѕСЂР° С‚СЂР°РІ.</b>\')" onmouseout="hide_info(this)">' : '<input type=button class=fr_but value="РЎСЂРµР·Р°С‚СЊ" onclick="AlhStart(\'' + ingr[i][0] + '\',\'' + ingr[i][3] + '\',\'' + ingr[2] + '\');RemoveDialogDiv();">') + '</div></td>';
                         
                         if(tr == 4) 
                         {
@@ -746,11 +769,11 @@ function StateReady()
 					/*
                     case 1:
                     
-                    var messal = '<FORM id="FISHF"><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellspacing=1 cellpadding=5 border=0 width=100%><tr><td bgcolor=#FFFFFF colspan=5 class="centr" class=nickname><font class=inv><b>'+((ingr[4] - ingr[3]) > 10 ? '' : '<font color=#CC0000>Внимание! Возможен перегруз.</font> ')+'Масса Вашего инвентаря: '+ingr[3]+'/'+ingr[4]+'</b></font></td></tr><tr><td bgcolor=#FFFFFF colspan=2></td><td bgcolor=#FFFFFF class="centr" width=60%><b>Название приманки</b></td><td bgcolor=#FFFFFF class="centr" width=40%><b>В наличии</b></td></tr>';
+                    var messal = '<FORM id="FISHF"><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellspacing=1 cellpadding=5 border=0 width=100%><tr><td bgcolor=#FFFFFF colspan=5 class="centr" class=nickname><font class=inv><b>'+((ingr[4] - ingr[3]) > 10 ? '' : '<font color=#CC0000>Р’РЅРёРјР°РЅРёРµ! Р’РѕР·РјРѕР¶РµРЅ РїРµСЂРµРіСЂСѓР·.</font> ')+'РњР°СЃСЃР° Р’Р°С€РµРіРѕ РёРЅРІРµРЅС‚Р°СЂСЏ: '+ingr[3]+'/'+ingr[4]+'</b></font></td></tr><tr><td bgcolor=#FFFFFF colspan=2></td><td bgcolor=#FFFFFF class="centr" width=60%><b>РќР°Р·РІР°РЅРёРµ РїСЂРёРјР°РЅРєРё</b></td><td bgcolor=#FFFFFF class="centr" width=40%><b>Р’ РЅР°Р»РёС‡РёРё</b></td></tr>';
                     
                     for(var i=5; i<ingr.length; i++) messal += '<tr><td bgcolor=#FFFFFF class="centr"><input type=radio name=primid value='+ingr[i][0]+(ingr[i][2] > 4 ? '' : ' DISABLED')+'></td><td bgcolor=#FFFFFF><img src=img/image/tools/'+ingr[i][0]+'.gif width=60 height=60></td><td bgcolor=#FFFFFF class="centr"><b>'+ingr[i][1]+'</b></td><td bgcolor=#FFFFFF class="centr"><b>'+ingr[i][2]+'</b></td></tr>';
                     
-                    messal += (ingr[1] ? '<tr><td bgcolor=#FFFFFF colspan=5 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modules/code/code.php?'+ingr[1]+'" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>Код: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '')+'</table></td></tr></table></FORM>';
+                    messal += (ingr[1] ? '<tr><td bgcolor=#FFFFFF colspan=5 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modules/code/code.php?'+ingr[1]+'" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>РљРѕРґ: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '')+'</table></td></tr></table></FORM>';
                     
                     buttons = '<a class="but lov" href="javascript: FishStart(\''+ingr[2]+'\','+(ingr[1] ? 1 : 0)+');"></a>'; 
                     
@@ -786,8 +809,8 @@ function StateReady()
             
                 ND = d.createElement('div');
                 ND.className = 'png';
-            
-                // окно с данными
+
+                // РѕРєРЅРѕ СЃ РґР°РЅРЅС‹РјРё
                 var buttons = '';
                 var ingr = eval(arr_res[2]);
                 var did = 'uni';
@@ -799,12 +822,12 @@ function StateReady()
                     
                     var tr = 0;
                     var alt;
-                    var messal = '<FORM id="ALHF"><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellpadding=3 cellspacing=1 border=0 width=100%>'+(ingr[1] != '00000' ? '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modusha/code/kcaptcha.php?'+ingr[1]+'" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>Код: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><b>Вы осмотрелись вокруг.<br>Поздравляем, кажется вы что-то нашли!</b></td></tr>');
+                        var messal = '<FORM id="ALHF"><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellpadding=3 cellspacing=1 border=0 width=100%>' + (ingr[1] != '00000' ? '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modusha/code/kcaptcha.php?' + ingr[1] + '" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>РљРѕРґ: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><b>Р’С‹ РѕСЃРјРѕС‚СЂРµР»РёСЃСЊ РІРѕРєСЂСѓРі.<br>РџРѕР·РґСЂР°РІР»СЏРµРј, РєР°Р¶РµС‚СЃСЏ РІС‹ С‡С‚Рѕ-С‚Рѕ РЅР°С€Р»Рё!</b></td></tr>');
                     for(var i=5; i<ingr.length; i++)
                     {
                         tr++;
-                        if(tr == 1) messal += '<tr>';                 
-                        messal += '<td bgcolor=#FFFFFF width=25%><div align=center><font class=nickname><b>'+ingr[i][1]+'</b></font><br><img src="img/image/weapon/'+ingr[i][2]+'" onmouseover="tooltip(this,\'<b><font color=#336699>Щелкните по изображению для просмотра подробной информации о предмете.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'img//iteminfo.php?'+ingr[i][1]+'\');" style="cursor:pointer;"><br>'+(!ingr[2] ? '<input type=button class=fr_but value="Добыть" onmouseover="tooltip(this,\'<b><font color=red>Недоступно!</font><br>Оденьте кирку шахтера.</b>\')" onmouseout="hide_info(this)">' : '<input type=button class=fr_but value="Добыть" onclick="shaStart(\''+ingr[i][0]+'\',\''+ingr[i][3]+'\',\''+ingr[2]+'\');RemoveDialogDiv();">')+'</div></td>';
+                        if(tr == 1) messal += '<tr>';
+                        messal += '<td bgcolor=#FFFFFF width=25%><div align=center><font class=nickname><b>' + ingr[i][1] + '</b></font><br><img src="img/image/weapon/' + ingr[i][2] + '" onmouseover="tooltip(this,\'<b><font color=#336699>Р©РµР»РєРЅРёС‚Рµ РїРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЋ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РїРѕРґСЂРѕР±РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїСЂРµРґРјРµС‚Рµ.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'img//iteminfo.php?' + ingr[i][1] + '\');" style="cursor:pointer;"><br>' + (!ingr[2] ? '<input type=button class=fr_but value="Р”РѕР±С‹С‚СЊ" onmouseover="tooltip(this,\'<b><font color=red>РќРµРґРѕСЃС‚СѓРїРЅРѕ!</font><br>РћРґРµРЅСЊС‚Рµ РєРёСЂРєСѓ С€Р°С…С‚РµСЂР°.</b>\')" onmouseout="hide_info(this)">' : '<input type=button class=fr_but value="Р”РѕР±С‹С‚СЊ" onclick="shaStart(\'' + ingr[i][0] + '\',\'' + ingr[i][3] + '\',\'' + ingr[2] + '\');RemoveDialogDiv();">') + '</div></td>';
                         
                         if(tr == 4) 
                         {
@@ -855,8 +878,8 @@ function StateReady()
             
                 ND = d.createElement('div');
                 ND.className = 'png';
-            
-                // окно с данными
+
+                // РѕРєРЅРѕ СЃ РґР°РЅРЅС‹РјРё
                 var buttons = '';
                 var ingr = eval(arr_res[2]);
                 var did = 'uni';
@@ -868,12 +891,12 @@ function StateReady()
                     
                     var tr = 0;
                     var alt;
-                    var messal = '<FORM id="ALHF"><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellpadding=3 cellspacing=1 border=0 width=100%>'+(ingr[1] != '00000' ? '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modules/code/kcaptcha.php?'+ingr[1]+'" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>Код: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><b>Вы осмотрелись вокруг.<br>Поздравляем, кажется вы что-то нашли!</b></td></tr>');
+                        var messal = '<FORM id="ALHF"><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellpadding=3 cellspacing=1 border=0 width=100%>' + (ingr[1] != '00000' ? '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modules/code/kcaptcha.php?' + ingr[1] + '" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>РљРѕРґ: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '<tr><td bgcolor=#FFFFFF colspan=4 class="centr"><b>Р’С‹ РѕСЃРјРѕС‚СЂРµР»РёСЃСЊ РІРѕРєСЂСѓРі.<br>РџРѕР·РґСЂР°РІР»СЏРµРј, РєР°Р¶РµС‚СЃСЏ РІС‹ С‡С‚Рѕ-С‚Рѕ РЅР°С€Р»Рё!</b></td></tr>');
                     for(var i=5; i<ingr.length; i++)
                     {
                         tr++;
-                        if(tr == 1) messal += '<tr>';                 
-                        messal += '<td bgcolor=#FFFFFF width=25%><div align=center><font class=nickname><b>'+ingr[i][1]+'</b></font><br><img src="img/image/weapon/'+ingr[i][2]+'" onmouseover="tooltip(this,\'<b><font color=#336699>Щелкните по изображению для просмотра подробной информации о предмете.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'img//iteminfo.php?'+ingr[i][1]+'\');" style="cursor:pointer;"><br>'+(!ingr[2] ? '<input type=button class=fr_but value="Срубить" onmouseover="tooltip(this,\'<b><font color=red>Недоступно!</font><br>Оденьте топор лесоруба.</b>\')" onmouseout="hide_info(this)">' : '<input type=button class=fr_but value="Срубить" onclick="LesStart(\''+ingr[i][0]+'\',\''+ingr[i][3]+'\',\''+ingr[2]+'\');RemoveDialogDiv();">')+'</div></td>';
+                        if(tr == 1) messal += '<tr>';
+                        messal += '<td bgcolor=#FFFFFF width=25%><div align=center><font class=nickname><b>' + ingr[i][1] + '</b></font><br><img src="img/image/weapon/' + ingr[i][2] + '" onmouseover="tooltip(this,\'<b><font color=#336699>Р©РµР»РєРЅРёС‚Рµ РїРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЋ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РїРѕРґСЂРѕР±РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїСЂРµРґРјРµС‚Рµ.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'img//iteminfo.php?' + ingr[i][1] + '\');" style="cursor:pointer;"><br>' + (!ingr[2] ? '<input type=button class=fr_but value="РЎСЂСѓР±РёС‚СЊ" onmouseover="tooltip(this,\'<b><font color=red>РќРµРґРѕСЃС‚СѓРїРЅРѕ!</font><br>РћРґРµРЅСЊС‚Рµ С‚РѕРїРѕСЂ Р»РµСЃРѕСЂСѓР±Р°.</b>\')" onmouseout="hide_info(this)">' : '<input type=button class=fr_but value="РЎСЂСѓР±РёС‚СЊ" onclick="LesStart(\'' + ingr[i][0] + '\',\'' + ingr[i][3] + '\',\'' + ingr[2] + '\');RemoveDialogDiv();">') + '</div></td>';
                         
                         if(tr == 4) 
                         {
@@ -896,11 +919,11 @@ function StateReady()
 					/*
                     case 1:
                     
-                    var messal = '<FORM id="FISHF"><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellspacing=1 cellpadding=5 border=0 width=100%><tr><td bgcolor=#FFFFFF colspan=5 class="centr" class=nickname><font class=inv><b>'+((ingr[4] - ingr[3]) > 10 ? '' : '<font color=#CC0000>Внимание! Возможен перегруз.</font> ')+'Масса Вашего инвентаря: '+ingr[3]+'/'+ingr[4]+'</b></font></td></tr><tr><td bgcolor=#FFFFFF colspan=2></td><td bgcolor=#FFFFFF class="centr" width=60%><b>Название приманки</b></td><td bgcolor=#FFFFFF class="centr" width=40%><b>В наличии</b></td></tr>';
+                    var messal = '<FORM id="FISHF"><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellspacing=1 cellpadding=5 border=0 width=100%><tr><td bgcolor=#FFFFFF colspan=5 class="centr" class=nickname><font class=inv><b>'+((ingr[4] - ingr[3]) > 10 ? '' : '<font color=#CC0000>Р’РЅРёРјР°РЅРёРµ! Р’РѕР·РјРѕР¶РµРЅ РїРµСЂРµРіСЂСѓР·.</font> ')+'РњР°СЃСЃР° Р’Р°С€РµРіРѕ РёРЅРІРµРЅС‚Р°СЂСЏ: '+ingr[3]+'/'+ingr[4]+'</b></font></td></tr><tr><td bgcolor=#FFFFFF colspan=2></td><td bgcolor=#FFFFFF class="centr" width=60%><b>РќР°Р·РІР°РЅРёРµ РїСЂРёРјР°РЅРєРё</b></td><td bgcolor=#FFFFFF class="centr" width=40%><b>Р’ РЅР°Р»РёС‡РёРё</b></td></tr>';
                     
                     for(var i=5; i<ingr.length; i++) messal += '<tr><td bgcolor=#FFFFFF class="centr"><input type=radio name=primid value='+ingr[i][0]+(ingr[i][2] > 4 ? '' : ' DISABLED')+'></td><td bgcolor=#FFFFFF><img src=img/image/tools/'+ingr[i][0]+'.gif width=60 height=60></td><td bgcolor=#FFFFFF class="centr"><b>'+ingr[i][1]+'</b></td><td bgcolor=#FFFFFF class="centr"><b>'+ingr[i][2]+'</b></td></tr>';
                     
-                    messal += (ingr[1] ? '<tr><td bgcolor=#FFFFFF colspan=5 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modules/code/code.php?'+ingr[1]+'" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>Код: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '')+'</table></td></tr></table></FORM>';
+                    messal += (ingr[1] ? '<tr><td bgcolor=#FFFFFF colspan=5 class="centr"><img src=img/image/1x1.gif width=1 height=10><br><img src="img//modules/code/code.php?'+ingr[1]+'" width=134 height=60><br><img src=img/image/1x1.gif width=1 height=10><br>РљРѕРґ: <input type=text name=code size=4 class=gr_text id=CAPCODE><br><img src=img/image/1x1.gif width=1 height=10></td></tr>' : '')+'</table></td></tr></table></FORM>';
                     
                     buttons = '<a class="but lov" href="javascript: FishStart(\''+ingr[2]+'\','+(ingr[1] ? 1 : 0)+');"></a>'; 
                     
@@ -936,8 +959,8 @@ function StateReady()
             
                 ND = d.createElement('div');
                 ND.className = 'png';
-            
-                // окно с данными
+
+                // РѕРєРЅРѕ СЃ РґР°РЅРЅС‹РјРё
                 var buttons = '';
                 var ingr = eval(arr_res[2]);
                 var did = 'uni';
@@ -955,7 +978,7 @@ function StateReady()
 					var i=5;
 					messal += '<div id="TabbedPanels1" class="TabbedPanels">'+					
 					'<ul class="TabbedPanelsTabGroup">'+
-						'<li class="TabbedPanelsTab" tabindex="0">Остров</li>'+
+                        '<li class="TabbedPanelsTab" tabindex="0">РћСЃС‚СЂРѕРІ</li>' +
 					'</ul>'+
 					'<div class="TabbedPanelsContentGroup">';
 					messal += '<div class="TabbedPanelsContent"><table cellpadding=0 cellspacing=1 border=0 align=center width=700>';
@@ -964,10 +987,10 @@ function StateReady()
 						if(fx == 1){messal += '<tr>';}
 						if(in_array(ingr,fx,fy)){
 							i = in_array(ingr,fx,fy);
-							messal += '<td bgcolor=#FFFFFF width=25%><div align=center><img src="img/image/wmap/map/day/'+fy+'/'+fx+'_'+fy+'.gif" width=50 height=50 onclick="javascript: moveMapToNavi('+fx+', '+fy+',\''+ingr[i][2]+'\');RemoveDialogDiv();" style="cursor:pointer;" title="'+(ingr[i][3]?ingr[i][3]:'Идти сюда')+'"></div></td>';
+                            messal += '<td bgcolor=#FFFFFF width=25%><div align=center><img src="img/image/wmap/map/day/' + fy + '/' + fx + '_' + fy + '.gif" width=50 height=50 onclick="javascript: moveMapToNavi(' + fx + ', ' + fy + ',\'' + ingr[i][2] + '\');RemoveDialogDiv();" style="cursor:pointer;" title="' + (ingr[i][3] ? ingr[i][3] : 'РРґС‚Рё СЃСЋРґР°') + '"></div></td>';
 						}
 						else{
-							messal += '<td bgcolor=#FFFFFF width=25%><div align=center><img src="img/image/wmap/map/night/'+fy+'/'+fx+'_'+fy+'.gif" width=50 height=50 title="прохода нет" onclick="javascript: moveMapToNavi('+fx+', '+fy+',\'\');RemoveDialogDiv();"></div></td>';
+                            messal += '<td bgcolor=#FFFFFF width=25%><div align=center><img src="img/image/wmap/map/night/' + fy + '/' + fx + '_' + fy + '.gif" width=50 height=50 title="РїСЂРѕС…РѕРґР° РЅРµС‚" onclick="javascript: moveMapToNavi(' + fx + ', ' + fy + ',\'\');RemoveDialogDiv();"></div></td>';
 						}
 						fx++;
 						if(fx>22){fx=1;fy++;messal +='</tr>';}
@@ -1008,16 +1031,16 @@ function StateReady()
 				
 				ND = d.createElement('div');
                 ND.className = 'png';
-				
-				// окно с данными
+
+                // РѕРєРЅРѕ СЃ РґР°РЅРЅС‹РјРё
 				var buttons = '';
 				var ingr = eval(arr_res[2]);
 				var did = 'uni';
 				ND.id = 'uni';
 				switch(ingr[0]){
 					case 0:
-					
-					var messal = '<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellspacing=1 cellpadding=5 border=0 width=100%><tr><td bgcolor="#FFFFFF" class="centr"><b>Строение</b></td><td bgcolor="#FFFFFF" class="centr"><b>Владелец</b></td><td bgcolor="#FFFFFF" class="centr" title="Зарплата за последний час"><b>З/П</b></td><td bgcolor="#FFFFFF" class="centr"><font color="#CCCCCC" style="font-size:9px;">('+ingr[1].length+')</font></td></tr>';
+
+                        var messal = '<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=#CCCCCC><table cellspacing=1 cellpadding=5 border=0 width=100%><tr><td bgcolor="#FFFFFF" class="centr"><b>РЎС‚СЂРѕРµРЅРёРµ</b></td><td bgcolor="#FFFFFF" class="centr"><b>Р’Р»Р°РґРµР»РµС†</b></td><td bgcolor="#FFFFFF" class="centr" title="Р—Р°СЂРїР»Р°С‚Р° Р·Р° РїРѕСЃР»РµРґРЅРёР№ С‡Р°СЃ"><b>Р—/Рџ</b></td><td bgcolor="#FFFFFF" class="centr"><font color="#CCCCCC" style="font-size:9px;">(' + ingr[1].length + ')</font></td></tr>';
 					
 					for(var i=0; i<ingr[1].length; i++) messal += '<tr><td bgcolor=#FFFFFF>'+ingr[1][i][1]+'</td><td bgcolor=#FFFFFF>'+((ingr[1][i][2][0]=='clan')?sh_align(ingr[1][i][2][1],true)+' '+sh_sign(ingr[1][i][2][2],ingr[1][i][2][3])+'<font class=nick>'+ingr[1][i][2][3]+'</font>':ShowUser(ingr[1][i][2]))+'</td><td bgcolor=#FFFFFF class="centr"><b>'+ingr[1][i][3]+' LR</b></td><td bgcolor=#FFFFFF class="centr"><b onclick="Building(\''+ingr[2]+'\',2,'+ingr[1][i][0]+')" style="font-size:11px;cursor:pointer;">>>></b></td></tr>';
 					
@@ -1027,34 +1050,34 @@ function StateReady()
 					
 					break;
 					case 1:
-					
-					var messal = '<table cellspacing=1 cellpadding=5 border=0 width=100%><tr><td style="background:#FFFFFF;" width=33% class="centr" id="BuildShowMenu_1"><b><a href="javascript:BuildPage(1)">Информация</a></b></td><td style="background:#F0F0F0;" width=33% class="centr" id="BuildShowMenu_3"><b><a href="javascript:BuildPage(3)">Ресурсы</a></b></td><td style="background:#F0F0F0;" width=33% class="centr" id="BuildShowMenu_2"><b><a href="javascript:BuildPage(2)">Работа</a></b></td></tr><tr><td colspan="3">';
+
+                        var messal = '<table cellspacing=1 cellpadding=5 border=0 width=100%><tr><td style="background:#FFFFFF;" width=33% class="centr" id="BuildShowMenu_1"><b><a href="javascript:BuildPage(1)">РРЅС„РѕСЂРјР°С†РёСЏ</a></b></td><td style="background:#F0F0F0;" width=33% class="centr" id="BuildShowMenu_3"><b><a href="javascript:BuildPage(3)">Р РµСЃСѓСЂСЃС‹</a></b></td><td style="background:#F0F0F0;" width=33% class="centr" id="BuildShowMenu_2"><b><a href="javascript:BuildPage(2)">Р Р°Р±РѕС‚Р°</a></b></td></tr><tr><td colspan="3">';
 					
 					// Page 1
-					messal += '<div id="BuildShowPage_1" style="display:block;"><table width=100% align=center cellpadding=5 cellspacing=1><tr><td colspan=2 bgcolor="#FFFFFF"><b>'+ingr[1][1]+'<font color="#CCCCCC" style="font-size:9px;"> >> (Основная информация)</font></b></td></tr><tr><td bgcolor="#FFFFFF">Под контролем:</td><td bgcolor="#FFFFFF">'+((ingr[1][2][0]=='clan')?sh_align(ingr[1][2][1],true)+' '+sh_sign(ingr[1][2][2],ingr[1][2][3])+'<font class=nick>'+ingr[1][2][3]+'</font>':ShowUser(ingr[1][2]))+'</td></tr><tr><td bgcolor="#FFFFFF">Баланс:</td><td bgcolor="#FFFFFF"><b>'+ingr[1][4]+'</b> LR</td></tr><tr><td colspan=2 bgcolor="#FFFFFF"><b><font color="#CCCCCC" style="font-size:9px;"> >> Дополнительная информация</font></b></td></tr><tr><td bgcolor="#FFFFFF">Премия за работу:</td><td bgcolor="#FFFFFF"><b>'+ingr[1][3]+'</b> LR, '+ingr[1][5]+' рабочих мест.</td></tr><tr><td bgcolor="#FFFFFF">Список работников:</td><td bgcolor="#FFFFFF">';
+                        messal += '<div id="BuildShowPage_1" style="display:block;"><table width=100% align=center cellpadding=5 cellspacing=1><tr><td colspan=2 bgcolor="#FFFFFF"><b>' + ingr[1][1] + '<font color="#CCCCCC" style="font-size:9px;"> >> (РћСЃРЅРѕРІРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ)</font></b></td></tr><tr><td bgcolor="#FFFFFF">РџРѕРґ РєРѕРЅС‚СЂРѕР»РµРј:</td><td bgcolor="#FFFFFF">' + ((ingr[1][2][0] == 'clan') ? sh_align(ingr[1][2][1], true) + ' ' + sh_sign(ingr[1][2][2], ingr[1][2][3]) + '<font class=nick>' + ingr[1][2][3] + '</font>' : ShowUser(ingr[1][2])) + '</td></tr><tr><td bgcolor="#FFFFFF">Р‘Р°Р»Р°РЅСЃ:</td><td bgcolor="#FFFFFF"><b>' + ingr[1][4] + '</b> LR</td></tr><tr><td colspan=2 bgcolor="#FFFFFF"><b><font color="#CCCCCC" style="font-size:9px;"> >> Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</font></b></td></tr><tr><td bgcolor="#FFFFFF">РџСЂРµРјРёСЏ Р·Р° СЂР°Р±РѕС‚Сѓ:</td><td bgcolor="#FFFFFF"><b>' + ingr[1][3] + '</b> LR, ' + ingr[1][5] + ' СЂР°Р±РѕС‡РёС… РјРµСЃС‚.</td></tr><tr><td bgcolor="#FFFFFF">РЎРїРёСЃРѕРє СЂР°Р±РѕС‚РЅРёРєРѕРІ:</td><td bgcolor="#FFFFFF">';
 					if(ingr[1][6].length > 0){
 						for(var i=0; i<ingr[1][6].length; i++){
 							messal += ShowUser(ingr[1][6][i],true)+((i != (ingr[1][6].length-1))?', ':'.');
 						}
 						messal += '<font color="#CCCCCC" style="font-size:9px;">('+ingr[1][6].length+')</font>';
 					}else if(ingr[1][6].length == 0){
-						messal += 'Никого, будете первым.';
+                        messal += 'РќРёРєРѕРіРѕ, Р±СѓРґРµС‚Рµ РїРµСЂРІС‹Рј.';
 					}
 					messal += '</td></tr></table></div>';
 					
 					// Page 2
-					messal += '<div id="BuildShowPage_2" style="display:none;"><table width=100% align=center cellpadding=4 cellspacing=2><tr><td rowspan=2 valign="middle"><img src="/modules/code/code.php?'+Math.random()+'" border="0" width=196 height=126></td><td bgcolor=#FFFFFF><b>Здесь вы можете устроиться на работу</b></td></tr><tr><td valign=top><input type="hidden" id="BID" name="BID" value="'+ingr[1][0]+'"><br><table border=0 cellpadding=5 cellspacing=0><tr><td> Введите номер, нарисованный на картинке,<br>и нажмите на кнопку &quot;Работать&quot;.<br><br>Учтите, что если у объекта недостаточно ресурсов<br>для производства, то Вы не получите зарплату. </td></tr></table></td></tr><tr><td colspan="2" bgcolor="#FFFFFF" class="centr">Код: <input type=text name=code size=5 class=gr_text id=CAPCODE></td></tr></table></div>';
+                        messal += '<div id="BuildShowPage_2" style="display:none;"><table width=100% align=center cellpadding=4 cellspacing=2><tr><td rowspan=2 valign="middle"><img src="/modules/code/code.php?' + Math.random() + '" border="0" width=196 height=126></td><td bgcolor=#FFFFFF><b>Р—РґРµСЃСЊ РІС‹ РјРѕР¶РµС‚Рµ СѓСЃС‚СЂРѕРёС‚СЊСЃСЏ РЅР° СЂР°Р±РѕС‚Сѓ</b></td></tr><tr><td valign=top><input type="hidden" id="BID" name="BID" value="' + ingr[1][0] + '"><br><table border=0 cellpadding=5 cellspacing=0><tr><td> Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ, РЅР°СЂРёСЃРѕРІР°РЅРЅС‹Р№ РЅР° РєР°СЂС‚РёРЅРєРµ,<br>Рё РЅР°Р¶РјРёС‚Рµ РЅР° РєРЅРѕРїРєСѓ &quot;Р Р°Р±РѕС‚Р°С‚СЊ&quot;.<br><br>РЈС‡С‚РёС‚Рµ, С‡С‚Рѕ РµСЃР»Рё Сѓ РѕР±СЉРµРєС‚Р° РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЂРµСЃСѓСЂСЃРѕРІ<br>РґР»СЏ РїСЂРѕРёР·РІРѕРґСЃС‚РІР°, С‚Рѕ Р’С‹ РЅРµ РїРѕР»СѓС‡РёС‚Рµ Р·Р°СЂРїР»Р°С‚Сѓ. </td></tr></table></td></tr><tr><td colspan="2" bgcolor="#FFFFFF" class="centr">РљРѕРґ: <input type=text name=code size=5 class=gr_text id=CAPCODE></td></tr></table></div>';
 					
 					// Page 3
-					messal += '<div id="BuildShowPage_3" style="display:none;"><table width=100% align=center cellpadding=5 cellspacing=1><tr><td bgcolor="#FFFFFF"><b>Производимые ресурсы</b></td><td bgcolor="#FFFFFF" class="centr"><b>Ед/ч</b></td><td bgcolor="#FFFFFF" class="centr"><b>Наличие</b></td><td bgcolor="#FFFFFF" class="centr"><b>Вес</b></td><td bgcolor="#FFFFFF" class="centr"><b>Цена</b></td><td bgcolor="#FFFFFF" class="centr">Максимум <b>'+ingr[1][7][5]+'</b> шт</td></tr>';
-					
-					messal += '<tr><td bgcolor="#FFFFFF" style="vertical-align:middle;">'+ingr[1][7][0]+'</td><td bgcolor="#FFFFFF" class="centr">'+ingr[1][7][1]+'</td><td bgcolor="#FFFFFF" class="centr">'+ingr[1][7][2]+'</td><td bgcolor="#FFFFFF" class="centr">'+ingr[1][7][3]+'</td><td bgcolor="#FFFFFF" class="centr"><b>'+ingr[1][7][4]+'</b> LR</td><td bgcolor="#FFFFFF" class="centr"><input type="hidden" name="BuyResID" id="BuyResID" value="'+ingr[1][7][6]+'"><input class="lbut" style="FONT:12px Tahoma,Verdana,Helvetica;" type="text" name="BuyAmount" id="BuyAmount" value="0" size="5"> <input type=button class=lbut style="FONT:12px Tahoma,Verdana,Helvetica;" onClick="BuyResource();" value="Купить"></td></tr></table><table width=100% align=center cellpadding=5 cellspacing=1><tr><td bgcolor="#FFFFFF"><b>Используемые ресурсы</b></td><td bgcolor="#FFFFFF" class="centr"><b>Ед/ч</b></td><td bgcolor="#FFFFFF" class="centr"><b>Наличие</b></td><td bgcolor="#FFFFFF" class="centr"><b>Купит</b></td><td bgcolor="#FFFFFF" class="centr"><b>Цена/ед</b></td><td bgcolor="#FFFFFF" class="centr"><b>Продажа</b></td><td bgcolor="#FFFFFF" class="centr"><b>У вас, ед.</b></td></tr>';
+                        messal += '<div id="BuildShowPage_3" style="display:none;"><table width=100% align=center cellpadding=5 cellspacing=1><tr><td bgcolor="#FFFFFF"><b>РџСЂРѕРёР·РІРѕРґРёРјС‹Рµ СЂРµСЃСѓСЂСЃС‹</b></td><td bgcolor="#FFFFFF" class="centr"><b>Р•Рґ/С‡</b></td><td bgcolor="#FFFFFF" class="centr"><b>РќР°Р»РёС‡РёРµ</b></td><td bgcolor="#FFFFFF" class="centr"><b>Р’РµСЃ</b></td><td bgcolor="#FFFFFF" class="centr"><b>Р¦РµРЅР°</b></td><td bgcolor="#FFFFFF" class="centr">РњР°РєСЃРёРјСѓРј <b>' + ingr[1][7][5] + '</b> С€С‚</td></tr>';
+
+                        messal += '<tr><td bgcolor="#FFFFFF" style="vertical-align:middle;">' + ingr[1][7][0] + '</td><td bgcolor="#FFFFFF" class="centr">' + ingr[1][7][1] + '</td><td bgcolor="#FFFFFF" class="centr">' + ingr[1][7][2] + '</td><td bgcolor="#FFFFFF" class="centr">' + ingr[1][7][3] + '</td><td bgcolor="#FFFFFF" class="centr"><b>' + ingr[1][7][4] + '</b> LR</td><td bgcolor="#FFFFFF" class="centr"><input type="hidden" name="BuyResID" id="BuyResID" value="' + ingr[1][7][6] + '"><input class="lbut" style="FONT:12px Tahoma,Verdana,Helvetica;" type="text" name="BuyAmount" id="BuyAmount" value="0" size="5"> <input type=button class=lbut style="FONT:12px Tahoma,Verdana,Helvetica;" onClick="BuyResource();" value="РљСѓРїРёС‚СЊ"></td></tr></table><table width=100% align=center cellpadding=5 cellspacing=1><tr><td bgcolor="#FFFFFF"><b>РСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹</b></td><td bgcolor="#FFFFFF" class="centr"><b>Р•Рґ/С‡</b></td><td bgcolor="#FFFFFF" class="centr"><b>РќР°Р»РёС‡РёРµ</b></td><td bgcolor="#FFFFFF" class="centr"><b>РљСѓРїРёС‚</b></td><td bgcolor="#FFFFFF" class="centr"><b>Р¦РµРЅР°/РµРґ</b></td><td bgcolor="#FFFFFF" class="centr"><b>РџСЂРѕРґР°Р¶Р°</b></td><td bgcolor="#FFFFFF" class="centr"><b>РЈ РІР°СЃ, РµРґ.</b></td></tr>';
 					if(ingr[1][8].length > 0){
 						for(var i=0; i<ingr[1][8].length; i++){
 							messal += '<tr><td bgcolor="#FFFFFF" style="vertical-align:middle;">' + ingr[1][8][i][0] + '</td><td bgcolor="#FFFFFF" class="centr">' + ingr[1][8][i][1] + '</td><td bgcolor="#FFFFFF" class="centr">' + ingr[1][8][i][2] + '</td><td bgcolor="#FFFFFF" class="centr">' + ingr[1][8][i][3] + '</td><td bgcolor="#FFFFFF" class="centr">' + ingr[1][8][i][4] + '</td><td bgcolor="#FFFFFF" class="centr">-</td><td bgcolor="#FFFFFF" class="centr">0</td></tr>';
 						}
 					}else if(ingr[1][8].length == 0){
-						messal += '<tr><td colspan="7" bgcolor="#FFFFFF" class="centr">ресурсов не требуется</td></tr>';
+                        messal += '<tr><td colspan="7" bgcolor="#FFFFFF" class="centr">СЂРµСЃСѓСЂСЃРѕРІ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ</td></tr>';
 					}
 					messal += '</table></div>';
 
@@ -1176,7 +1199,7 @@ function StartWork(vcode){
 	var CAP;
 	var errm = '';
 	CAP = d.getElementById("CAPCODE").value;
-	if(CAP)AjaxGet('build_ajax.php?act=3&code='+CAP+'&bid='+d.getElementById("BID").value+'&vcode='+vcode+'&r='+Math.random()); else errm = 'Введите защитный код.';
+    if (CAP) AjaxGet('build_ajax.php?act=3&code=' + CAP + '&bid=' + d.getElementById("BID").value + '&vcode=' + vcode + '&r=' + Math.random()); else errm = 'Р’РІРµРґРёС‚Рµ Р·Р°С‰РёС‚РЅС‹Р№ РєРѕРґ.';
     if(errm) MessBoxDiv(errm);     
 }
 
@@ -1189,7 +1212,7 @@ function BuyResource(vcode){
 function fight_map(vcode)
 {
     parent.frames['ch_buttons'].document.FBT.text.focus();
-    MessBoxDiv('<form action= method=POST><input type=hidden name=post_id value="8"><input type=hidden name=vcode value='+vcode+'><table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><b>Нападение на природе</b></td></tr><tr><td>На кого: <input type="text" name=pnick class=gr_text maxlength=20></td></tr><tr><td align=center><input type=submit value="Напасть" class=gr_but></td></tr></table></FORM>');
+    MessBoxDiv('<form action= method=POST><input type=hidden name=post_id value="8"><input type=hidden name=vcode value=' + vcode + '><table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><b>РќР°РїР°РґРµРЅРёРµ РЅР° РїСЂРёСЂРѕРґРµ</b></td></tr><tr><td>РќР° РєРѕРіРѕ: <input type="text" name=pnick class=gr_text maxlength=20></td></tr><tr><td align=center><input type=submit value="РќР°РїР°СЃС‚СЊ" class=gr_but></td></tr></table></FORM>');
     d.all('pnick').focus();
     ActionFormUse = 'pnick';
 }

@@ -76,8 +76,8 @@ function showWorldMapDiallog(uid, id_type)
     window_id = 'window_'+uid+'_'+uniqId();
     
     var mWindow = new ModalWindow(window_id);
-    
-    mWindow.title = 'Выбор зоны';
+
+    mWindow.title = 'Р’С‹Р±РѕСЂ Р·РѕРЅС‹';
     mWindow.content = '';
     mWindow.width = 900;
     mWindow.height = 500;
@@ -119,7 +119,7 @@ function showWorldMapDiallog(uid, id_type)
                 mWindow.close(mWindow.windowId);
             }
         }
-    }
+    };
     
     // If some value has beed selected already
     /*
@@ -138,10 +138,10 @@ function showWorldMapDiallog(uid, id_type)
     // Cancel button
     var bcl = d.createElement('INPUT');
     bcl.type = 'button';
-    bcl.value = 'Отмена';
+    bcl.value = 'РћС‚РјРµРЅР°';
     bcl.onclick = function() { 
        mWindow.close(mWindow.windowId);
-    }
+    };
     
     td1_1.appendChild(d.createElement('BR'));
     td1_1.appendChild(bok);

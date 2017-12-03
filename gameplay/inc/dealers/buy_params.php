@@ -4,76 +4,182 @@
 			$fr="";	
 			$str="";			
 			switch($i){
-				case 1: $fr="Удар:";break;
-				case 5: $fr="Уловка:";break;
-				case 6: $fr="Точность:";break;
-				case 7: $fr="Сокрушение:";break;
-				case 8: $fr="Стойкость:";break;
-				case 9: $fr="Класс брони:";break;
-				case 10: $fr="Пробой брони:";break;
-					/*case 11: $fr="Пробой колющим ударом:";break;
-					case 12: $fr="Пробой режущим ударом:";break;
-					case 13: $fr="Пробой проникающим ударом:";break;
-					case 14: $fr="Пробой пробивающим ударом:";break;
-					case 15: $fr="Пробой рубящим ударом:";break;
-					case 16: $fr="Пробой карающим ударом:";break;
-					case 17: $fr="Пробой отсекающим ударом:";break;
-					case 18: $fr="Пробой дробящим ударом:";break;
-					case 19: $fr="Защита от колющих ударов:";break;
-					case 20: $fr="Защита от режущих ударов:";break;
-					case 21: $fr="Защита от проникающих ударов:";break;
-					case 22: $fr="Защита от пробивающих ударов:";break;
-					case 23: $fr="Защита от рубящих ударов:";break;
-					case 24: $fr="Защита от карающих ударов:";break;
-					case 25: $fr="Защита от отсекающих ударов:";break;
-					case 26: $fr="Защита от дробящих ударов:";break;*/
-				case 27: $fr="НР:";break;
-				case 28: $fr="Очки действия:";break;
-				case 29: $fr="Мана:";break;
-				case 30: $fr="Мощь:";break;
-				case 31: $fr="Проворность:";break;
-				case 32: $fr="Везение:";break;
-				case 33: $fr="Здоровье:";break;
-				case 34: $fr="Разум:";break;
-					//case 35: $fr="Сноровка:";break;
-				case 36: $fr="Влад. мечами:";break;
-				case 37: $fr="Влад. топорами:";break;
-				case 38: $fr="Влад. дробящим оружием:";break;
-				case 39: $fr="Влад. ножами:";break;
-				case 40: $fr="Влад. метательным оружием:";break;
-				case 41: $fr="Влад. алебардами и копьями:";break;
-				case 42: $fr="Влад. посохами:";break;
-				case 43: $fr="Влад. экзотическим оружием:";break;
-				case 44: $fr="Влад. двуручным оружием:";break;
-				case 45: $fr="Магия огня:";break;
-				case 46: $fr="Магия воды:";break;
-				case 47: $fr="Магия воздуха:";break;
-				case 48: $fr="Магия земли:";break;
-				case 49: $fr="Сопротивление магии огня:";break;
-				case 50: $fr="Сопротивление магии воды:";break;
-				case 51: $fr="Сопротивление магии воздуха:";break;
-				case 52: $fr="Сопротивление магии земли:";break;
-				case 53: $fr="Воровство:";break;
-				case 54: $fr="Осторожность";break;
-				case 55: $fr="Скрытность:";break;
-				case 56: $fr="Наблюдательность:";break;
-				case 57: $fr="Торговля:";break;
-				case 58: $fr="Странник:";break;
-				case 59: $fr="Рыболов:";break;
-				case 60: $fr="Лесоруб:";break;
-				case 61: $fr="Ювелирное дело:";break;
-				case 62: $fr="Самолечение:";break;
-				case 63: $fr="Оружейник:";break;
-				case 64: $fr="Доктор:";break;
-				case 65: $fr="Самолечение:";break;
-				case 66: $fr="Быстрое восстановление маны:";break;
-				case 67: $fr="Лидерство:";break;
-				case 68: $fr="Алхимия:";break;
-				case 69: $fr="Развитие горного дела:";break;
-				case 70: $fr="Травничество:";break;
-				case 71: $fr="Коэффициент(new):";break;
-				case 'expbonus': $fr="Бонус опыта (в %):";break;
-				case 'massbonus': $fr="Бонус массы:";break;
+                case 1:
+                    $fr = "РЈРґР°СЂ:";
+                    break;
+                case 5:
+                    $fr = "РЈР»РѕРІРєР°:";
+                    break;
+                case 6:
+                    $fr = "РўРѕС‡РЅРѕСЃС‚СЊ:";
+                    break;
+                case 7:
+                    $fr = "РЎРѕРєСЂСѓС€РµРЅРёРµ:";
+                    break;
+                case 8:
+                    $fr = "РЎС‚РѕР№РєРѕСЃС‚СЊ:";
+                    break;
+                case 9:
+                    $fr = "РљР»Р°СЃСЃ Р±СЂРѕРЅРё:";
+                    break;
+                case 10:
+                    $fr = "РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё:";
+                    break;
+                /*case 11: $fr="РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 12: $fr="РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 13: $fr="РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 14: $fr="РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 15: $fr="РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 16: $fr="РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 17: $fr="РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 18: $fr="РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј:";break;
+                case 19: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 20: $fr="Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 21: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 22: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 23: $fr="Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 24: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 25: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ:";break;
+                case 26: $fr="Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ:";break;*/
+                case 27:
+                    $fr = "РќР :";
+                    break;
+                case 28:
+                    $fr = "РћС‡РєРё РґРµР№СЃС‚РІРёСЏ:";
+                    break;
+                case 29:
+                    $fr = "РњР°РЅР°:";
+                    break;
+                case 30:
+                    $fr = "РњРѕС‰СЊ:";
+                    break;
+                case 31:
+                    $fr = "РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ:";
+                    break;
+                case 32:
+                    $fr = "Р’РµР·РµРЅРёРµ:";
+                    break;
+                case 33:
+                    $fr = "Р—РґРѕСЂРѕРІСЊРµ:";
+                    break;
+                case 34:
+                    $fr = "Р Р°Р·СѓРј:";
+                    break;
+                //case 35: $fr="РЎРЅРѕСЂРѕРІРєР°:";break;
+                case 36:
+                    $fr = "Р’Р»Р°Рґ. РјРµС‡Р°РјРё:";
+                    break;
+                case 37:
+                    $fr = "Р’Р»Р°Рґ. С‚РѕРїРѕСЂР°РјРё:";
+                    break;
+                case 38:
+                    $fr = "Р’Р»Р°Рґ. РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј:";
+                    break;
+                case 39:
+                    $fr = "Р’Р»Р°Рґ. РЅРѕР¶Р°РјРё:";
+                    break;
+                case 40:
+                    $fr = "Р’Р»Р°Рґ. РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                    break;
+                case 41:
+                    $fr = "Р’Р»Р°Рґ. Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё:";
+                    break;
+                case 42:
+                    $fr = "Р’Р»Р°Рґ. РїРѕСЃРѕС…Р°РјРё:";
+                    break;
+                case 43:
+                    $fr = "Р’Р»Р°Рґ. СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј:";
+                    break;
+                case 44:
+                    $fr = "Р’Р»Р°Рґ. РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј:";
+                    break;
+                case 45:
+                    $fr = "РњР°РіРёСЏ РѕРіРЅСЏ:";
+                    break;
+                case 46:
+                    $fr = "РњР°РіРёСЏ РІРѕРґС‹:";
+                    break;
+                case 47:
+                    $fr = "РњР°РіРёСЏ РІРѕР·РґСѓС…Р°:";
+                    break;
+                case 48:
+                    $fr = "РњР°РіРёСЏ Р·РµРјР»Рё:";
+                    break;
+                case 49:
+                    $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ:";
+                    break;
+                case 50:
+                    $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹:";
+                    break;
+                case 51:
+                    $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°:";
+                    break;
+                case 52:
+                    $fr = "РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё:";
+                    break;
+                case 53:
+                    $fr = "Р’РѕСЂРѕРІСЃС‚РІРѕ:";
+                    break;
+                case 54:
+                    $fr = "РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ";
+                    break;
+                case 55:
+                    $fr = "РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ:";
+                    break;
+                case 56:
+                    $fr = "РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ:";
+                    break;
+                case 57:
+                    $fr = "РўРѕСЂРіРѕРІР»СЏ:";
+                    break;
+                case 58:
+                    $fr = "РЎС‚СЂР°РЅРЅРёРє:";
+                    break;
+                case 59:
+                    $fr = "Р С‹Р±РѕР»РѕРІ:";
+                    break;
+                case 60:
+                    $fr = "Р›РµСЃРѕСЂСѓР±:";
+                    break;
+                case 61:
+                    $fr = "Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ:";
+                    break;
+                case 62:
+                    $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+                    break;
+                case 63:
+                    $fr = "РћСЂСѓР¶РµР№РЅРёРє:";
+                    break;
+                case 64:
+                    $fr = "Р”РѕРєС‚РѕСЂ:";
+                    break;
+                case 65:
+                    $fr = "РЎР°РјРѕР»РµС‡РµРЅРёРµ:";
+                    break;
+                case 66:
+                    $fr = "Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹:";
+                    break;
+                case 67:
+                    $fr = "Р›РёРґРµСЂСЃС‚РІРѕ:";
+                    break;
+                case 68:
+                    $fr = "РђР»С…РёРјРёСЏ:";
+                    break;
+                case 69:
+                    $fr = "Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°:";
+                    break;
+                case 70:
+                    $fr = "РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ:";
+                    break;
+                case 71:
+                    $fr = "РљРѕСЌС„С„РёС†РёРµРЅС‚(new):";
+                    break;
+                case 'expbonus':
+                    $fr = "Р‘РѕРЅСѓСЃ РѕРїС‹С‚Р° (РІ %):";
+                    break;
+                case 'massbonus':
+                    $fr = "Р‘РѕРЅСѓСЃ РјР°СЃСЃС‹:";
+                    break;
 			}
 			if($type==1 and $par and $i){
 				$str = '<font class=weaponch><b>'.$fr.'</b></font>&nbsp;<select  name=pr['.$i.']>'.getOptionsSt($i).'</select><br>';
@@ -219,7 +325,7 @@
 if($_POST['dswi_id']){
 	switch(intval($_POST['dswi_id'])){
 	 case 1:
-		//считаем параметры приехавшие постом
+         //СЃС‡РёС‚Р°РµРј РїР°СЂР°РјРµС‚СЂС‹ РїСЂРёРµС…Р°РІС€РёРµ РїРѕСЃС‚РѕРј
 		$pr = $_POST['pr'];
 		$dmg = getArraySt(1);
 		$other = getArraySt(2);
@@ -239,17 +345,17 @@ if($_POST['dswi_id']){
 			case 2: $tp=2; break;
 			default: $tp=2; break;
 		}
-		//проверяем параметры пользователя
+            //РїСЂРѕРІРµСЂСЏРµРј РїР°СЂР°РјРµС‚СЂС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 		/*$getstatsusr = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `real_dd_bonus` WHERE `pl_id`='".$player['id']."' LIMIT 1;"));
 		if($getstatsusr['id']){
 			if($tp==1){
 				calcNewParams($par,$getstatsusr['param']);
 			}
 		}*/
-		//считаем цену статов
+            //СЃС‡РёС‚Р°РµРј С†РµРЅСѓ СЃС‚Р°С‚РѕРІ
 		//	
 		//$fullprice = calcParamPrice($par,$tp);
-		//а теперь надо проверить не было ли у юзера уже что-то куплено
+            //Р° С‚РµРїРµСЂСЊ РЅР°РґРѕ РїСЂРѕРІРµСЂРёС‚СЊ РЅРµ Р±С‹Р»Рѕ Р»Рё Сѓ СЋР·РµСЂР° СѓР¶Рµ С‡С‚Рѕ-С‚Рѕ РєСѓРїР»РµРЅРѕ
 		$usrprice = 0; $fullprice = 0;
 		$getstatsusr = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `real_dd_bonus` WHERE `pl_id`='".$player['id']."' LIMIT 1;"));
 		if($getstatsusr['id']){
@@ -282,7 +388,7 @@ if($_POST['dswi_id']){
 			mysqli_query($GLOBALS['db_link'],"UPDATE `real_dd_bonus` SET ".$str." WHERE `pl_id`='".$player['id']."' LIMIT 1;");
 			echo'
 				<script>
-				parent.$(\'#basic-modal-content\').html(\'<div><input type=hidden name=type id=type value="'.$tp.'"><input type=hidden name=params id=params value="'.$par_new.'"><input type=hidden name=sum id=sum value="'.$price.'"><input type=hidden name=parstr id=parstr value="'.$par_str.'">Вы получите следующие параметры:<br>'.$par_str.'<br>Цена: '.$price.' $<br><input type=button class=lbut value="Оплатить" onClick="DDAdd();"></div>\');
+				parent.$(\'#basic-modal-content\').html(\'<div><input type=hidden name=type id=type value="' . $tp . '"><input type=hidden name=params id=params value="' . $par_new . '"><input type=hidden name=sum id=sum value="' . $price . '"><input type=hidden name=parstr id=parstr value="' . $par_str . '">Р’С‹ РїРѕР»СѓС‡РёС‚Рµ СЃР»РµРґСѓСЋС‰РёРµ РїР°СЂР°РјРµС‚СЂС‹:<br>' . $par_str . '<br>Р¦РµРЅР°: ' . $price . ' $<br><input type=button class=lbut value="РћРїР»Р°С‚РёС‚СЊ" onClick="DDAdd();"></div>\');
 				parent.ShowModal();
 				</script>
 			';
@@ -302,7 +408,7 @@ if($_POST['dswi_id']){
 			mysqli_query($GLOBALS['db_link'],"INSERT INTO `real_dd_bonus` ".$str.";");	
 			echo'
 				<script>
-				parent.$(\'#basic-modal-content\').html(\'<div><input type=hidden name=type id=type value="'.$tp.'"><input type=hidden name=params id=params value="'.$par_new.'"><input type=hidden name=sum id=sum value="'.$price.'"><input type=hidden name=parstr id=parstr value="'.$par_str.'">Вы получите следующие параметры:<br>'.$par_str.'<br>Цена: '.$price.' $<br><input type=button class=lbut value="Оплатить" onClick="DDAdd();"></div>\');
+				parent.$(\'#basic-modal-content\').html(\'<div><input type=hidden name=type id=type value="' . $tp . '"><input type=hidden name=params id=params value="' . $par_new . '"><input type=hidden name=sum id=sum value="' . $price . '"><input type=hidden name=parstr id=parstr value="' . $par_str . '">Р’С‹ РїРѕР»СѓС‡РёС‚Рµ СЃР»РµРґСѓСЋС‰РёРµ РїР°СЂР°РјРµС‚СЂС‹:<br>' . $par_str . '<br>Р¦РµРЅР°: ' . $price . ' $<br><input type=button class=lbut value="РћРїР»Р°С‚РёС‚СЊ" onClick="DDAdd();"></div>\');
 				parent.ShowModal();
 				</script>
 			';
@@ -334,15 +440,15 @@ foreach($stats as $val){
 		echo '
 		<font class=proce><font color=#222222>
 		<FIELDSET style="background: white;" name="field_dealers" id="field_dealers">
-		<LEGEND align=center style="background: white; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border: solid 1px gray;"><b> <font color=gray>У Вас с собой '.$player['baks'].' $</font> </b></LEGEND>
+		<LEGEND align=center style="background: white; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border: solid 1px gray;"><b> <font color=gray>РЈ Р’Р°СЃ СЃ СЃРѕР±РѕР№ ' . $player['baks'] . ' $</font> </b></LEGEND>
 		<table cellpadding=0 cellspacing=0 border=0 width=100% bgcolor=#e0e0e0 align=center>
 			<tr><td align=center>
 				<form method=post action="?d_swi=11">
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 					<tr class=nickname bgcolor=#EAEAEA>
-						<td align=center width=100%><b>Тут вы можете приобрести дополнительные параметры своему персонажу</b></td>
+						<td align=center width=100%><b>РўСѓС‚ РІС‹ РјРѕР¶РµС‚Рµ РїСЂРёРѕР±СЂРµСЃС‚Рё РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃРІРѕРµРјСѓ РїРµСЂСЃРѕРЅР°Р¶Сѓ</b></td>
 					</tr>
-					<tr class=nickname bgcolor=#EAEAEA><td>Приобретенные параметры:';
+					<tr class=nickname bgcolor=#EAEAEA><td>РџСЂРёРѕР±СЂРµС‚РµРЅРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹:';
 					$str = "";
 					for($i=1;$i<=73;$i++){
 						//echo '<br>test-i:'.$i.'<br>';
@@ -353,11 +459,15 @@ foreach($stats as $val){
 						if($i=='expbonus'){$i=72;}
 						if($i=='massbonus'){$i=73;}
 					}
-					if($str){echo '<br>'.$str;}else{echo ' <b>Нет</b>';}
+if ($str) {
+    echo '<br>' . $str;
+} else {
+    echo ' <b>РќРµС‚</b>';
+}
 					echo'
 					</td>
 					</tr>
-					<tr class=nickname bgcolor=#EAEAEA><td>Арендованые параметры'.($str?' (окончание аренды: <b>'.date("d.m.y",$getstatsusr['param_time']).'</b>)':'').':';
+					<tr class=nickname bgcolor=#EAEAEA><td>РђСЂРµРЅРґРѕРІР°РЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹' . ($str ? ' (РѕРєРѕРЅС‡Р°РЅРёРµ Р°СЂРµРЅРґС‹: <b>' . date("d.m.y", $getstatsusr['param_time']) . '</b>)' : '') . ':';
 					$str = "";
 					for($i=1;$i<=73;$i++){
 						//echo '<br>test-i:'.$i.'<br>';
@@ -368,7 +478,11 @@ foreach($stats as $val){
 						if($i=='expbonus'){$i=72;}
 						if($i=='massbonus'){$i=73;}
 					}
-					if($str){echo '<br>'.$str;}else{echo ' <b>Нет</b>';}
+if ($str) {
+    echo '<br>' . $str;
+} else {
+    echo ' <b>РќРµС‚</b>';
+}
 					echo'
 					</td>
 					</tr>
@@ -387,18 +501,18 @@ foreach($stats as $val){
 			<tr class=nickname bgcolor=#EAEAEA>
 				<td align=center width=100%>
 					<input type=hidden name=dswi_id value=1>
-					Тип покупки: <select name=partype>
-						<option value=1>Навсегда</option>
-						<option value=2>Аренда на 30 дней</option>	
+					РўРёРї РїРѕРєСѓРїРєРё: <select name=partype>
+						<option value=1>РќР°РІСЃРµРіРґР°</option>
+						<option value=2>РђСЂРµРЅРґР° РЅР° 30 РґРЅРµР№</option>	
 					</select>
-					<input class=lbut name=koeffpercent type=submit value="Посчитать">
+					<input class=lbut name=koeffpercent type=submit value="РџРѕСЃС‡РёС‚Р°С‚СЊ">
 				</td>
 			</tr>
 			<tr class=nickname bgcolor=#EAEAEA>
 				<td align=center width=100%>
-					<b>Типы покупок</b><br>
-					Навсегда: <font class=proce>Покупаемые параметры будут добавлены к уже купленным.</font><br>
-					Аренда 30 дней: <font class=proce>Арендуемые параметры будут добавлены к уже арендованым.<br>Если у вас уже есть арендованные параметры - время продлено не будет!</font><br>
+					<b>РўРёРїС‹ РїРѕРєСѓРїРѕРє</b><br>
+					РќР°РІСЃРµРіРґР°: <font class=proce>РџРѕРєСѓРїР°РµРјС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р±СѓРґСѓС‚ РґРѕР±Р°РІР»РµРЅС‹ Рє СѓР¶Рµ РєСѓРїР»РµРЅРЅС‹Рј.</font><br>
+					РђСЂРµРЅРґР° 30 РґРЅРµР№: <font class=proce>РђСЂРµРЅРґСѓРµРјС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р±СѓРґСѓС‚ РґРѕР±Р°РІР»РµРЅС‹ Рє СѓР¶Рµ Р°СЂРµРЅРґРѕРІР°РЅС‹Рј.<br>Р•СЃР»Рё Сѓ РІР°СЃ СѓР¶Рµ РµСЃС‚СЊ Р°СЂРµРЅРґРѕРІР°РЅРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ - РІСЂРµРјСЏ РїСЂРѕРґР»РµРЅРѕ РЅРµ Р±СѓРґРµС‚!</font><br>
 				</td>
 			</tr>
 		</table></form>	

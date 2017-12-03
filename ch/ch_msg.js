@@ -27,7 +27,7 @@ function t_nick (e)
     parent.is_alt = e.altKey;
 }
 
-var sm = new Array('001','002','003','004','005','007','008','009','006','010','011','012','013','014','015','016','000','018','021','022','019','023','024','025','026','027','028','031','032','034','033','037','038','036','040','039','043','049','052','056','059','057','062','066','068','073','082','080','079','083','086','085','114','118','119','123','161','158','164','167','166','170','174','177','175','179','178','186','189','188','190','202','205','203','206','221','237','239','238','243','246','254','253','255','277','276','275','278','284','289','288','294','293','295','310','313','324','336','347','346','345','348','349','351','352','361','362','366','367','382','393','411','415','413','419','422','434','442','447','453','467','471','472','475','551','554','559','564','568','573','029','030','077','126','127','131','155','156','267','297','319','350','353','354','357','358','368','376','385','386','414','417','457','459','469','473','474','477','552','558','560','570','574','575','576','579','600','601','602','603','604','605','606','607','608','609','610','611','612','613','614','615','616','617','618','619','620','621','622','623','624','625','626','627','628','629','630','631','632','633','634','635','636','637','638','639','640','641','642','643','644','645','646','647','648','650','651','652','653','654','655','656','657','950','951','952','953','954','955','956','957','958','959','960');
+var sm = ['001', '002', '003', '004', '005', '007', '008', '009', '006', '010', '011', '012', '013', '014', '015', '016', '000', '018', '021', '022', '019', '023', '024', '025', '026', '027', '028', '031', '032', '034', '033', '037', '038', '036', '040', '039', '043', '049', '052', '056', '059', '057', '062', '066', '068', '073', '082', '080', '079', '083', '086', '085', '114', '118', '119', '123', '161', '158', '164', '167', '166', '170', '174', '177', '175', '179', '178', '186', '189', '188', '190', '202', '205', '203', '206', '221', '237', '239', '238', '243', '246', '254', '253', '255', '277', '276', '275', '278', '284', '289', '288', '294', '293', '295', '310', '313', '324', '336', '347', '346', '345', '348', '349', '351', '352', '361', '362', '366', '367', '382', '393', '411', '415', '413', '419', '422', '434', '442', '447', '453', '467', '471', '472', '475', '551', '554', '559', '564', '568', '573', '029', '030', '077', '126', '127', '131', '155', '156', '267', '297', '319', '350', '353', '354', '357', '358', '368', '376', '385', '386', '414', '417', '457', '459', '469', '473', '474', '477', '552', '558', '560', '570', '574', '575', '576', '579', '600', '601', '602', '603', '604', '605', '606', '607', '608', '609', '610', '611', '612', '613', '614', '615', '616', '617', '618', '619', '620', '621', '622', '623', '624', '625', '626', '627', '628', '629', '630', '631', '632', '633', '634', '635', '636', '637', '638', '639', '640', '641', '642', '643', '644', '645', '646', '647', '648', '650', '651', '652', '653', '654', '655', '656', '657', '950', '951', '952', '953', '954', '955', '956', '957', '958', '959', '960'];
 
 
 var maxsmiles = 3;
@@ -92,10 +92,10 @@ function ch_open_menu(e)
     while (login2.indexOf('#') >=0) login2 = login2.replace ('#', '%23');
     while (login2.indexOf('?') >=0) login2 = login2.replace ('?', '%3F');
 
-    el.innerHTML = '<a class="usermenulink" href="javascript:parent.say_private(\''+login+'\');ch_hmenu()">Приват</a>'+
-    '<a class="usermenulink" href="/ipers/'+login2+'" target="_blank" onclick="ch_hmenu();return true;">Информация</a>'+
-    '<a class="usermenulink" href="javascript:ch_copy_nick(\''+login+'\');ch_hmenu()">Копировать ник</a>'+
-    '<a class="usermenulink" href="javascript:ch_set_ignor(\''+login+'\');ch_hmenu()">Игнорировать</a>';
+    el.innerHTML = '<a class="usermenulink" href="javascript:parent.say_private(\'' + login + '\');ch_hmenu()">РџСЂРёРІР°С‚</a>' +
+        '<a class="usermenulink" href="/ipers/' + login2 + '" target="_blank" onclick="ch_hmenu();return true;">РРЅС„РѕСЂРјР°С†РёСЏ</a>' +
+        '<a class="usermenulink" href="javascript:ch_copy_nick(\'' + login + '\');ch_hmenu()">РљРѕРїРёСЂРѕРІР°С‚СЊ РЅРёРє</a>' +
+        '<a class="usermenulink" href="javascript:ch_set_ignor(\'' + login + '\');ch_hmenu()">РРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ</a>';
 
     el.style.left = x + "px";
     el.style.top  = y + "px";
@@ -159,10 +159,10 @@ function ch_open_menu2(e)
     while (login2.indexOf('?') >=0) login2 = login2.replace ('?', '%3F');
 
     el.innerHTML = '<a class="usermenulink" href="javascript:parent.lvl_array(\''+login+'\');ch_hmenu2()">[]</a>'+
-	'<a class="usermenulink" href="javascript:parent.say_private(\''+login+'\');ch_hmenu2()">Приват</a>'+
-    '<a class="usermenulink" href="/ipers/'+login2+'" target="_blank" onclick="ch_hmenu2();return true;">Информация</a>'+
-    '<a class="usermenulink" href="javascript:ch_copy_nick(\''+login+'\');ch_hmenu2()">Копировать ник</a>'+
-    '<a class="usermenulink" href="javascript:ch_set_ignor(\''+login+'\');ch_hmenu2()">Игнорировать</a>';
+        '<a class="usermenulink" href="javascript:parent.say_private(\'' + login + '\');ch_hmenu2()">РџСЂРёРІР°С‚</a>' +
+        '<a class="usermenulink" href="/ipers/' + login2 + '" target="_blank" onclick="ch_hmenu2();return true;">РРЅС„РѕСЂРјР°С†РёСЏ</a>' +
+        '<a class="usermenulink" href="javascript:ch_copy_nick(\'' + login + '\');ch_hmenu2()">РљРѕРїРёСЂРѕРІР°С‚СЊ РЅРёРє</a>' +
+        '<a class="usermenulink" href="javascript:ch_set_ignor(\'' + login + '\');ch_hmenu2()">РРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ</a>';
 
     el.style.left = x + "px";
     el.style.top  = y + "px";
@@ -223,7 +223,7 @@ function add_msg_system(text)
     var myRe = /script/ig;       
     var pr = /^\s(\%\<[^\>]{2,20}\>\s?)+$/;
     var s = "";
-    text = text.replace(myRe,'скрипт');
+    text = text.replace(myRe, 'СЃРєСЂРёРїС‚');
 
     var spl = text.split("<BR>");
     for(var k=0; k<spl.length; k++)
@@ -280,7 +280,7 @@ function add_msg_system(text)
                             msgp[0] = msgp[0].replace('<font class=chattime>','<font class=yochattime>');
                         }
 
-                        msgp[2] = '&nbsp;для'+msgp[2];
+                        msgp[2] = '&nbsp;РґР»СЏ' + msgp[2];
                     }
                 }
                 txt = msgp.join('');
@@ -298,7 +298,7 @@ function add_msg(text)
     var myRe = /script/ig;       
     var pr = /^\s(\%\<[^\>]{2,20}\>\s?)+$/;
     var s = "";
-    text = text.replace(myRe,'скрипт');
+    text = text.replace(myRe, 'СЃРєСЂРёРїС‚');
 
     var spl = text.split("<BR>");
     for(var k=0; k<spl.length; k++)
@@ -355,7 +355,7 @@ function add_msg(text)
                             msgp[0] = msgp[0].replace('<font class=chattime>','<font class=yochattime>');
                         }
 
-                        msgp[2] = '&nbsp;для'+msgp[2];
+                        msgp[2] = '&nbsp;РґР»СЏ' + msgp[2];
                     }
                 }
                 txt = msgp.join('');
@@ -373,7 +373,7 @@ function add_msg_trade(text)
     var myRe = /script/ig;       
     var pr = /^\s(\%\<[^\>]{2,20}\>\s?)+$/;
     var s = "";
-    text = text.replace(myRe,'скрипт');
+    text = text.replace(myRe, 'СЃРєСЂРёРїС‚');
 
     var spl = text.split("<BR>");
     for(var k=0; k<spl.length; k++)
@@ -430,7 +430,7 @@ function add_msg_trade(text)
                             msgp[0] = msgp[0].replace('<font class=chattime>','<font class=yochattime>');
                         }
 
-                        msgp[2] = '&nbsp;для'+msgp[2];
+                        msgp[2] = '&nbsp;РґР»СЏ' + msgp[2];
                     }
                 }
                 txt = msgp.join('');
@@ -448,7 +448,7 @@ function add_msg_clan(text)
     var myRe = /script/ig;       
     var pr = /^\s(\%\<[^\>]{2,20}\>\s?)+$/;
     var s = "";
-    text = text.replace(myRe,'скрипт');
+    text = text.replace(myRe, 'СЃРєСЂРёРїС‚');
 
     var spl = text.split("<BR>");
     for(var k=0; k<spl.length; k++)
@@ -505,7 +505,7 @@ function add_msg_clan(text)
                             msgp[0] = msgp[0].replace('<font class=chattime>','<font class=yochattime>');
                         }
 
-                        msgp[2] = '&nbsp;для'+msgp[2];
+                        msgp[2] = '&nbsp;РґР»СЏ' + msgp[2];
                     }
                 }
                 txt = msgp.join('');

@@ -1,5 +1,5 @@
 <?php
-if($_GET['get_id'] == '5' and in_array($_GET['vcode'],$_SESSION['vcodes'])){// Лаберинт
+if ($_GET['get_id'] == '5' and in_array($_GET['vcode'], $_SESSION['vcodes'])) {// Р›Р°Р±РµСЂРёРЅС‚
 	if($pers['loc'] == 500 or $pers['loc'] == 501){
 		list($pers['x'],$pers['y']) = explode('_', $pers['pos']);
 		switch($_GET['act']){
@@ -19,18 +19,18 @@ if($_GET['get_id'] == '5' and in_array($_GET['vcode'],$_SESSION['vcodes'])){// Л
                             if($GetMove['L_img'] == '3'){
                                 list($d_to['x'],$d_to['y']) = explode('_', $GetMove['d_to']);
                                 $GetDoor = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `labyrinth` WHERE `x`='".($d_to['x'])."' and `y`='".($d_to['y'])."'"));
-                                $DialogMSG = 'Механизм успешно задействован.<br />Решетка '.(($GetDoor['doors'] == 0)?'поднята':'опущена').'.';
+                                $DialogMSG = 'РњРµС…Р°РЅРёР·Рј СѓСЃРїРµС€РЅРѕ Р·Р°РґРµР№СЃС‚РІРѕРІР°РЅ.<br />Р РµС€РµС‚РєР° ' . (($GetDoor['doors'] == 0) ? 'РїРѕРґРЅСЏС‚Р°' : 'РѕРїСѓС‰РµРЅР°') . '.';
                                 mysqli_query($GLOBALS['db_link'],"UPDATE `labyrinth` SET `doors`='".(($GetDoor['doors'] == 0)?1:0)."' WHERE `x`='".($d_to['x'])."' and `y`='".($d_to['y'])."'");
                                 $UsedTime = 30;
                                 $UsedMove = false;
                             }
                             if($GetMove['L_img'] == '8'){
-                                $DialogMSG = 'Ваша плоть расщепилась на молекулы.<br />Вы успешно телепортировались.';
+                                $DialogMSG = 'Р’Р°С€Р° РїР»РѕС‚СЊ СЂР°СЃС‰РµРїРёР»Р°СЃСЊ РЅР° РјРѕР»РµРєСѓР»С‹.<br />Р’С‹ СѓСЃРїРµС€РЅРѕ С‚РµР»РµРїРѕСЂС‚РёСЂРѕРІР°Р»РёСЃСЊ.';
                                 $UsedTime = 30;
                                 $UsedMove = true;
                             }
                             if($GetMove['L_img'] == '9'){
-                                $DialogMSG = 'Тут очень тесно, темно и мокро.<br />Но вы успешно попали на ту сторону лаза.';
+                                $DialogMSG = 'РўСѓС‚ РѕС‡РµРЅСЊ С‚РµСЃРЅРѕ, С‚РµРјРЅРѕ Рё РјРѕРєСЂРѕ.<br />РќРѕ РІС‹ СѓСЃРїРµС€РЅРѕ РїРѕРїР°Р»Рё РЅР° С‚Сѓ СЃС‚РѕСЂРѕРЅСѓ Р»Р°Р·Р°.';
                                 $UsedTime = 30;
                                 $UsedMove = true;
                             }
@@ -39,13 +39,13 @@ if($_GET['get_id'] == '5' and in_array($_GET['vcode'],$_SESSION['vcodes'])){// Л
                             $pers['wait'] = time()+$UsedTime;
                         }else{
                             if($GetMove['L_img'] == '3'){
-                                $DialogMSG = 'Похоже что механизм поломан.<br />Вам защемило руку.';
+                                $DialogMSG = 'РџРѕС…РѕР¶Рµ С‡С‚Рѕ РјРµС…Р°РЅРёР·Рј РїРѕР»РѕРјР°РЅ.<br />Р’Р°Рј Р·Р°С‰РµРјРёР»Рѕ СЂСѓРєСѓ.';
                             }
                             if($GetMove['L_img'] == '8'){
-                                $DialogMSG = 'Похоже что телепорт не работает.<br />Ваша нога застряла.';
+                                $DialogMSG = 'РџРѕС…РѕР¶Рµ С‡С‚Рѕ С‚РµР»РµРїРѕСЂС‚ РЅРµ СЂР°Р±РѕС‚Р°РµС‚.<br />Р’Р°С€Р° РЅРѕРіР° Р·Р°СЃС‚СЂСЏР»Р°.';
                             }
                             if($GetMove['L_img'] == '9'){
-                                $DialogMSG = 'Вы застряли и пытаетесь выбраться.<br />Наверное, кому-то надо меньше есть...';
+                                $DialogMSG = 'Р’С‹ Р·Р°СЃС‚СЂСЏР»Рё Рё РїС‹С‚Р°РµС‚РµСЃСЊ РІС‹Р±СЂР°С‚СЊСЃСЏ.<br />РќР°РІРµСЂРЅРѕРµ, РєРѕРјСѓ-С‚Рѕ РЅР°РґРѕ РјРµРЅСЊС€Рµ РµСЃС‚СЊ...';
                             }
                             mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `wait`='".(time()+50)."' WHERE `id`='".$pers['id']."'");
                             $pers['wait'] = time()+50;
@@ -54,7 +54,7 @@ if($_GET['get_id'] == '5' and in_array($_GET['vcode'],$_SESSION['vcodes'])){// Л
                 }
                 
             break;
-			// Соберите 4 куска старинной карты и принесите мне.
+            // РЎРѕР±РµСЂРёС‚Рµ 4 РєСѓСЃРєР° СЃС‚Р°СЂРёРЅРЅРѕР№ РєР°СЂС‚С‹ Рё РїСЂРёРЅРµСЃРёС‚Рµ РјРЅРµ.
 			case'80':
 				switch($_GET['di']){
 					case'0':
@@ -132,7 +132,7 @@ if($_GET['get_id'] == '29' and in_array($_GET['vcode'],$_SESSION['vcodes'])){
 				mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `clan`='0',`clan_id`='none',`clan_gif`='',`sklon`='0',`clan_d`='',`clan_accesses`='0' WHERE `id`='".$cuser['id']."'");
 				event_to_log(date("H:i:s"),4,0,$pers['clan_gif'].':'.$pers['clan'].':'.$pers['clan_d'],$cuser["login"],$cuser["level"],$pers['sklon'],0);
 			}elseif($clan['vote'] > time()){
-				echo "<script>alert('Невозможно изменить состав клана во время перевыборов!');</script>";
+                echo "<script>alert('РќРµРІРѕР·РјРѕР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ СЃРѕСЃС‚Р°РІ РєР»Р°РЅР° РІРѕ РІСЂРµРјСЏ РїРµСЂРµРІС‹Р±РѕСЂРѕРІ!');</script>";
 			}
 		}
 	}elseif($_GET['clan_act'] == '3' and $pers['clan_status'] == '9'){
@@ -156,7 +156,7 @@ if($_GET['get_id'] == '56' and in_array($_GET['vcode'],$_SESSION['vcodes'])){
 								mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `loc`='".$LocID."' WHERE `id`='".$pers['id']."'");
 								header("Location: /main.php");
 							}else{
-								echo'<script>alert(\'Вход воспрещён, ожидайте утра.\');</script>';
+                                echo '<script>alert(\'Р’С…РѕРґ РІРѕСЃРїСЂРµС‰С‘РЅ, РѕР¶РёРґР°Р№С‚Рµ СѓС‚СЂР°.\');</script>';
 							}
 						}
 					}

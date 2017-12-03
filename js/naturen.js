@@ -27,7 +27,7 @@ function ready_nature(a1,a2,a3,a4,a5,a6)
 	//var column = ''+'<div style="position: absolute; width:39; height:337; top:67px; left:80px; z-index:2;"></div>'+'<div style="position: absolute; width:39; height:337; top:67px; left:640px; z-index:2;"></div>';
 	var column = '';
 	column = '';
-	// Размер мапы
+        // Р Р°Р·РјРµСЂ РјР°РїС‹
 	//document.getElementById("map").innerHTML = column+"<div id=mapl style='width: 560px;height: 350px;display: block;overflow: hidden;'></div>";
 	document.getElementById("map").innerHTML = "<div id=mapl style='width: 560px;height: 350px;display: block;overflow: hidden;'></div>";
 	map_load = 0;
@@ -39,7 +39,7 @@ function ready_nature(a1,a2,a3,a4,a5,a6)
 	{
 		waiterMode = 0;
 		$("#info").css({left:'21%',top:'70px',width:'60%',height:'0px'});
-		document.getElementById("info").innerHTML = sbox3('<center class=but_view style="overflow-y:auto;z-index:10;"><a href="javascript:hide_info()" class=blocked>Убрать</a><hr>'+document.getElementById("outer").innerHTML+'</center>');
+        document.getElementById("info").innerHTML = sbox3('<center class=but_view style="overflow-y:auto;z-index:10;"><a href="javascript:hide_info()" class=blocked>РЈР±СЂР°С‚СЊ</a><hr>' + document.getElementById("outer").innerHTML + '</center>');
 		$("#info").fadeIn(500);
 		$("#center3").css("visibility","visible");
 	}
@@ -155,9 +155,9 @@ if (h > 18 && h < 24) var dir = 'map/night';
 		if ((tmpTd&4)==4) colorTd = '#00FFFF';
 
 		if (btmpTd!=-1)                                                                                                               // solid #d60000
-			building = '<div title="Ваше местоположение['+name+']" style="position:absolute;z-index:3;width:78px;height:78px;border:1px;'+f+'>&nbsp;</div><img src=http://img.legendbattles.ru/images/buildings/'+btmpTd+'.gif title="Ваше местоположение['+name+']">';
+            building = '<div title="Р’Р°С€Рµ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ[' + name + ']" style="position:absolute;z-index:3;width:78px;height:78px;border:1px;' + f + '>&nbsp;</div><img src=http://img.legendbattles.ru/images/buildings/' + btmpTd + '.gif title="Р’Р°С€Рµ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ[' + name + ']">';
 		else
-			building = '<div title="Ваше местоположение['+name+']" style="width:78px;height:78px;border:1px solid #d60000;'+f+'>&nbsp;</div>';
+            building = '<div title="Р’Р°С€Рµ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ[' + name + ']" style="width:78px;height:78px;border:1px solid #d60000;' + f + '>&nbsp;</div>';
 		    text+='<td style=\'width:80px;height:80px;cursor:pointer;background-image: url("http://img.legendbattles.ru/images/'+dir+'/'+cx+'_'+cy+'.jpg");\' valign=top>'+building+'</td>';
 	}
 	else
@@ -165,10 +165,22 @@ if (h > 18 && h < 24) var dir = 'map/night';
 	{
 		colorTd = '#FFFFFF';
 		tipTd = "";
-		if ((tmpTd&3)==1) {colorTd = '#FFFFFF';tipTd = ',&nbsp;Дикая местность';}
-		if ((tmpTd&3)==2) {colorTd = '#0000FF';tipTd = ',&nbsp;Пригодна для строительства';}
-		if ((tmpTd&3)==3) {colorTd = '#FFFFFF';tipTd = ',&nbsp;Дикая местность[Пригодна для строительства]';}
-		if ((tmpTd&4)==4) {colorTd = '#00FFFF';tipTd = ',&nbsp;Ваша местность';}
+        if ((tmpTd & 3) == 1) {
+            colorTd = '#FFFFFF';
+            tipTd = ',&nbsp;Р”РёРєР°СЏ РјРµСЃС‚РЅРѕСЃС‚СЊ';
+        }
+        if ((tmpTd & 3) == 2) {
+            colorTd = '#0000FF';
+            tipTd = ',&nbsp;РџСЂРёРіРѕРґРЅР° РґР»СЏ СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІР°';
+        }
+        if ((tmpTd & 3) == 3) {
+            colorTd = '#FFFFFF';
+            tipTd = ',&nbsp;Р”РёРєР°СЏ РјРµСЃС‚РЅРѕСЃС‚СЊ[РџСЂРёРіРѕРґРЅР° РґР»СЏ СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІР°]';
+        }
+        if ((tmpTd & 4) == 4) {
+            colorTd = '#00FFFF';
+            tipTd = ',&nbsp;Р’Р°С€Р° РјРµСЃС‚РЅРѕСЃС‚СЊ';
+        }
 
 		if (btmpTd!=-1)
 			building = '<div style="position:absolute;z-index:3;width:78px;height:78px;border:1px;">&nbsp;</div><img src=http://img.legendbattles.ru/images/buildings/'+btmpTd+'.gif>';
@@ -182,14 +194,14 @@ if (h > 18 && h < 24) var dir = 'map/night';
 
 
 		if (((cx-x)*(cx-x)+(cy-y)*(cy-y))<=2)
-		text+='<td '+onclicktxt+' style=\'width:80px;height:80px;cursor:pointer;background-image:url("http://img.legendbattles.ru/images/'+dir+'/'+cx+'_'+cy+'.jpg");\' valign=top title="['+name+']Перейти'+tipTd+'">'+building+'</td>';
+            text += '<td ' + onclicktxt + ' style=\'width:80px;height:80px;cursor:pointer;background-image:url("http://img.legendbattles.ru/images/' + dir + '/' + cx + '_' + cy + '.jpg");\' valign=top title="[' + name + ']РџРµСЂРµР№С‚Рё' + tipTd + '">' + building + '</td>';
 		else if(colorTd!='#FFFFFF')
 		{
 			if (btmpTd!=-1)
 				building = '<div style="width:78px;height:78px;border:2px solid #0A8900;border-style:none;position:absolute;z-index:3;">&nbsp;</div><img src=http://img.legendbattles.ru/images/buildings/'+btmpTd+'.gif>';
 			else
 				building = '<div style="width:78px;height:78px;border:2px solid #0A8900;border-style:none;" title="'+tipTd+'">&nbsp;</div>';
-			text+='<td title="['+name+']Недоступно" style=\'width:78px;height:78px;background-image:url("http://img.legendbattles.ru/images/'+dir+'/'+cx+'_'+cy+'.jpg");\'>'+building+'</td>';
+            text += '<td title="[' + name + ']РќРµРґРѕСЃС‚СѓРїРЅРѕ" style=\'width:78px;height:78px;background-image:url("http://img.legendbattles.ru/images/' + dir + '/' + cx + '_' + cy + '.jpg");\'>' + building + '</td>';
 		}else
 		{
 			if (btmpTd!=-1)
@@ -197,7 +209,7 @@ if (h > 18 && h < 24) var dir = 'map/night';
 			else
 				building = '&nbsp;';
 				// close
-			text+='<td title="['+name+']Недоступно" style=\'width:78px;height:78px;background-image:url("http://img.legendbattles.ru/images/'+dir+'/'+cx+'_'+cy+'.jpg");\'>'+building+'</td>';
+            text += '<td title="[' + name + ']РќРµРґРѕСЃС‚СѓРїРЅРѕ" style=\'width:78px;height:78px;background-image:url("http://img.legendbattles.ru/images/' + dir + '/' + cx + '_' + cy + '.jpg");\'>' + building + '</td>';
 		}
 	}
 	else
@@ -206,7 +218,7 @@ if (h > 18 && h < 24) var dir = 'map/night';
 			building = '<img src=http://img.legendbattles.ru/images/buildings/'+btmpTd+'.gif>';
 		else
 			building = '<div style="width:80px;height:80px;border-style:none;">&nbsp;</div>';
-		text+='<td title="['+name+']Недоступно" style=\'width:80px;height:80px;background-image:url("http://img.legendbattles.ru/images/'+dir+'/'+cx+'_'+cy+'.jpg");\'>'+building+'</td>';
+        text += '<td title="[' + name + ']РќРµРґРѕСЃС‚СѓРїРЅРѕ" style=\'width:80px;height:80px;background-image:url("http://img.legendbattles.ru/images/' + dir + '/' + cx + '_' + cy + '.jpg");\'>' + building + '</td>';
 	}
  }
  text+='</tr>';
@@ -239,7 +251,7 @@ function signum(a)
 	else return -1;
 }
 
-function scrollmap() // Hide при действии (die)
+function scrollmap() // Hide РїСЂРё РґРµР№СЃС‚РІРёРё (die)
 {
 			zx = signum(aX-wX)*80;
 			zy = signum(aY-wY)*80;
@@ -260,17 +272,17 @@ function scroll_def()
 	//alert(1);
 }
 function place_son_on(){
-	if (confirm("Вы действительно хотите прилеч отдохнуть?")) location='main.php?son=on';
+    if (confirm("Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїСЂРёР»РµС‡ РѕС‚РґРѕС…РЅСѓС‚СЊ?")) location = 'main.php?son=on';
 }
 function place_son_off(){
-	if (confirm("Вы действительно хотите проснутся?")) location='main.php?son=off';
+    if (confirm("Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїСЂРѕСЃРЅСѓС‚СЃСЏ?")) location = 'main.php?son=off';
 }
 function place_ogon_on(){
-	if (confirm("Вы действительно хотите разжеч костёр?")) location='main.php?ogon=on';
+    if (confirm("Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СЂР°Р·Р¶РµС‡ РєРѕСЃС‚С‘СЂ?")) location = 'main.php?ogon=on';
 }
 function place_ogon_off(){
-	if (confirm("Вы действительно хотите потушить костёр?")) location='main.php?ogon=off';
+    if (confirm("Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїРѕС‚СѓС€РёС‚СЊ РєРѕСЃС‚С‘СЂ?")) location = 'main.php?ogon=off';
 }
 function place_voda(){
-	if (confirm("Вы действительно испить воды из озера?")) location='main.php?voda=on';
+    if (confirm("Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ РёСЃРїРёС‚СЊ РІРѕРґС‹ РёР· РѕР·РµСЂР°?")) location = 'main.php?voda=on';
 }

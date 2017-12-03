@@ -19,7 +19,7 @@ $WatchUser = GetUser();
 //if(in_array($_GET['hash'],$_SESSION['PVUcode'])){
 //	unset($_SESSION['PVUcode']);
 	switch($_GET['see']){
-		case'1'://Îò÷åò áåçîïàñíîñòè
+        case'1'://ÐžÑ‚Ñ‡ÐµÑ‚ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑ‚Ð¸
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_1` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -27,7 +27,7 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'2'://Ïåðåäà÷à RB
+        case'2'://ÐŸÐµÑ€ÐµÐ´Ð°Ñ‡Ð° RB
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_2` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -35,7 +35,7 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'4'://Ïåðåäà÷à/Ïîäàðîê âåùåé
+        case'4'://ÐŸÐµÑ€ÐµÐ´Ð°Ñ‡Ð°/ÐŸÐ¾Ð´Ð°Ñ€Ð¾Ðº Ð²ÐµÑ‰ÐµÐ¹
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_4` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -43,7 +43,7 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'8'://Ñäà÷à â ãîñ
+        case'8'://Ð¡Ð´Ð°Ñ‡Ð° Ð² Ð³Ð¾Ñ
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_8` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -51,7 +51,7 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'16'://Âûêèäûâàíèå âåùåé
+        case'16'://Ð’Ñ‹ÐºÐ¸Ð´Ñ‹Ð²Ð°Ð½Ð¸Ðµ Ð²ÐµÑ‰ÐµÐ¹
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_16` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -59,7 +59,7 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'32'://Ïðîäàæà/Ïîêóïêà âåøåé
+        case'32'://ÐŸÑ€Ð¾Ð´Ð°Ð¶Ð°/ÐŸÐ¾ÐºÑƒÐ¿ÐºÐ° Ð²ÐµÑˆÐµÐ¹
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_32` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -67,7 +67,7 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'64'://Ñäà÷à â êàçíó
+        case'64'://Ð¡Ð´Ð°Ñ‡Ð° Ð² ÐºÐ°Ð·Ð½Ñƒ
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_64` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -76,16 +76,16 @@ $WatchUser = GetUser();
 			echo $result;
 //			echo'OK::1::'.pinfo_PVU().'::Date|IP|ItemLevel|Price|ProchMin|ProchMax|1|c1.gif|ClanName|ItemName::';
 		break;
-		case'128'://Ïåðåâîäû RB (ñ÷åòà)
-			// Î÷åíü ñêîðî
+        case'128'://ÐŸÐµÑ€ÐµÐ²Ð¾Ð´Ñ‹ RB (ÑÑ‡ÐµÑ‚Ð°)
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'256'://Ñ÷åòà/Ñåéô (Îïåðàöèè)
-			// Î÷åíü ñêîðî
+        case'256'://Ð¡Ñ‡ÐµÑ‚Ð°/Ð¡ÐµÐ¹Ñ„ (ÐžÐ¿ÐµÑ€Ð°Ñ†Ð¸Ð¸)
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'512'://Äåïîçèòû/Ññóäû/Êðåäèòû
-			// Î÷åíü ñêîðî
+        case'512'://Ð”ÐµÐ¿Ð¾Ð·Ð¸Ñ‚Ñ‹/Ð¡ÑÑƒÐ´Ñ‹/ÐšÑ€ÐµÐ´Ð¸Ñ‚Ñ‹
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'1024'://Ïîäàðêè
+        case'1024'://ÐŸÐ¾Ð´Ð°Ñ€ÐºÐ¸
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_1024` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -93,10 +93,10 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'2048'://Ëèöåíçèè
-			// Î÷åíü ñêîðî
+        case'2048'://Ð›Ð¸Ñ†ÐµÐ½Ð·Ð¸Ð¸
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'4096'://Âõîäû ñ îäíîãî êîìïüþòåðà
+        case'4096'://Ð’Ñ…Ð¾Ð´Ñ‹ Ñ Ð¾Ð´Ð½Ð¾Ð³Ð¾ ÐºÐ¾Ð¼Ð¿ÑŒÑŽÑ‚ÐµÑ€Ð°
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_1` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			$ip='';	
@@ -118,7 +118,7 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'8192'://Ìîë÷àíêè/Òþðüìà/Áëîê
+        case'8192'://ÐœÐ¾Ð»Ñ‡Ð°Ð½ÐºÐ¸/Ð¢ÑŽÑ€ÑŒÐ¼Ð°/Ð‘Ð»Ð¾Ðº
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_8192` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -126,7 +126,7 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'16384'://Ïðîâåðêè íà ÷èñòîòó
+        case'16384'://ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ð½Ð° Ñ‡Ð¸ÑÑ‚Ð¾Ñ‚Ñƒ
 			$query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_16384` WHERE `uid`='".$_GET['puid']."' and `time_norm`>='".$_GET['date_f']."' and `time_norm`<='".$_GET['date_t']."' ORDER BY `id` DESC");
 			$result = 'OK::1::'.pinfo_PVU().'::';
 			while($row = mysqli_fetch_assoc($query)){
@@ -134,29 +134,29 @@ $WatchUser = GetUser();
 			}
 			echo $result;
 		break;
-		case'32768'://Ñåìüè/êëàíû (Äâèæåíèå)
-			// Î÷åíü ñêîðî
+        case'32768'://Ð¡ÐµÐ¼ÑŒÐ¸/ÐºÐ»Ð°Ð½Ñ‹ (Ð”Ð²Ð¸Ð¶ÐµÐ½Ð¸Ðµ)
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'65536'://Ñåìüè/êëàíû (Ñïèñàíèÿ)
-			// Î÷åíü ñêîðî
+        case'65536'://Ð¡ÐµÐ¼ÑŒÐ¸/ÐºÐ»Ð°Ð½Ñ‹ (Ð¡Ð¿Ð¸ÑÐ°Ð½Ð¸Ñ)
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'131072'://Ïàðîëü/Flash/E-mail (Ñìåíà)
-			// Î÷åíü ñêîðî
+        case'131072'://ÐŸÐ°Ñ€Ð¾Ð»ÑŒ/Flash/E-mail (Ð¡Ð¼ÐµÐ½Ð°)
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'262144'://Ïîäîçðèòåëüíûå áîè
-			// Î÷åíü ñêîðî
+        case'262144'://ÐŸÐ¾Ð´Ð¾Ð·Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ð±Ð¾Ð¸
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'1048576'://Ëå÷åíèå/íàïàäåíèÿ/àáèëèòè
-			// Î÷åíü ñêîðî
+        case'1048576'://Ð›ÐµÑ‡ÐµÐ½Ð¸Ðµ/Ð½Ð°Ð¿Ð°Ð´ÐµÐ½Ð¸Ñ/Ð°Ð±Ð¸Ð»Ð¸Ñ‚Ð¸
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'2097152'://Ìîäèôèêàöèÿ âåùåé
-			// Î÷åíü ñêîðî
+        case'2097152'://ÐœÐ¾Ð´Ð¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ñ Ð²ÐµÑ‰ÐµÐ¹
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'4194304'://Ïîëó÷åíèå óðîâíåé
-			// Î÷åíü ñêîðî
+        case'4194304'://ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ ÑƒÑ€Ð¾Ð²Ð½ÐµÐ¹
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
-		case'8388608'://RB/Âåùè (Áîòû)
-			// Î÷åíü ñêîðî
+        case'8388608'://RB/Ð’ÐµÑ‰Ð¸ (Ð‘Ð¾Ñ‚Ñ‹)
+            // ÐžÑ‡ÐµÐ½ÑŒ ÑÐºÐ¾Ñ€Ð¾
 		break;
 	}
 //}

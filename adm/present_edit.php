@@ -12,47 +12,47 @@ else
     $present_id = (int)$_GET['present_id'];
     
 $modificators = array(
-    4 => 'сила',
-    5 => 'ловкость',
-    6 => 'удача',
-    7 => 'знания',
-    8 => 'мудрость',
-    9 => '% к силе',
-    10 => '% к ловкости',
-    11 => '% к удаче',
-    12 => '% к знаниям',
-    13 => '% к мудрости',
-    14 => 'сокрушение',
-    15 => 'стойкость',
-    16 => 'уловка',
-    17 => 'точность',
-    18 => '% к сокрушению',
-    19 => '% к стойкости',
-    20 => '% к уловке',
-    21 => '% к точности',
-    22 => 'КБ',
-    23 => '% к КБ',
-    24 => 'ОД',
-    25 => '% к опыту в боях против людей',
-    26 => '% к урону',
-    27 => 'сопротивление к магии огня',
-    28 => 'сопротивление к магии воздуха',
-    29 => 'сопротивление к магии земли',
-    30 => 'сопротивление к магии воды',
-    31 => 'сопротивление к ядам',
-    32 => 'сопротивление к физическому урону',
-    33 => 'вес',
-    34 => '% к весу',
-    35 => 'увеличение максимального HP',
-    36 => 'увеличение максимального MP',
-    37 => 'скорость восстановления HP',
-    38 => 'скорость восстановления MP',
-    39 => 'урон атаки min',
-    40 => 'урон атаки max',
-    41 => 'наблюдательность',
-    42 => '% к опыту в боях против ботов',
-    43 => 'Странник +к умению',
-    44 => ' сек к +/-перемещению',
+    4 => 'СЃРёР»Р°',
+    5 => 'Р»РѕРІРєРѕСЃС‚СЊ',
+    6 => 'СѓРґР°С‡Р°',
+    7 => 'Р·РЅР°РЅРёСЏ',
+    8 => 'РјСѓРґСЂРѕСЃС‚СЊ',
+    9 => '% Рє СЃРёР»Рµ',
+    10 => '% Рє Р»РѕРІРєРѕСЃС‚Рё',
+    11 => '% Рє СѓРґР°С‡Рµ',
+    12 => '% Рє Р·РЅР°РЅРёСЏРј',
+    13 => '% Рє РјСѓРґСЂРѕСЃС‚Рё',
+    14 => 'СЃРѕРєСЂСѓС€РµРЅРёРµ',
+    15 => 'СЃС‚РѕР№РєРѕСЃС‚СЊ',
+    16 => 'СѓР»РѕРІРєР°',
+    17 => 'С‚РѕС‡РЅРѕСЃС‚СЊ',
+    18 => '% Рє СЃРѕРєСЂСѓС€РµРЅРёСЋ',
+    19 => '% Рє СЃС‚РѕР№РєРѕСЃС‚Рё',
+    20 => '% Рє СѓР»РѕРІРєРµ',
+    21 => '% Рє С‚РѕС‡РЅРѕСЃС‚Рё',
+    22 => 'РљР‘',
+    23 => '% Рє РљР‘',
+    24 => 'РћР”',
+    25 => '% Рє РѕРїС‹С‚Сѓ РІ Р±РѕСЏС… РїСЂРѕС‚РёРІ Р»СЋРґРµР№',
+    26 => '% Рє СѓСЂРѕРЅСѓ',
+    27 => 'СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ Рє РјР°РіРёРё РѕРіРЅСЏ',
+    28 => 'СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ Рє РјР°РіРёРё РІРѕР·РґСѓС…Р°',
+    29 => 'СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ Рє РјР°РіРёРё Р·РµРјР»Рё',
+    30 => 'СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ Рє РјР°РіРёРё РІРѕРґС‹',
+    31 => 'СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ Рє СЏРґР°Рј',
+    32 => 'СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ Рє С„РёР·РёС‡РµСЃРєРѕРјСѓ СѓСЂРѕРЅСѓ',
+    33 => 'РІРµСЃ',
+    34 => '% Рє РІРµСЃСѓ',
+    35 => 'СѓРІРµР»РёС‡РµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ HP',
+    36 => 'СѓРІРµР»РёС‡РµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ MP',
+    37 => 'СЃРєРѕСЂРѕСЃС‚СЊ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ HP',
+    38 => 'СЃРєРѕСЂРѕСЃС‚СЊ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ MP',
+    39 => 'СѓСЂРѕРЅ Р°С‚Р°РєРё min',
+    40 => 'СѓСЂРѕРЅ Р°С‚Р°РєРё max',
+    41 => 'РЅР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ',
+    42 => '% Рє РѕРїС‹С‚Сѓ РІ Р±РѕСЏС… РїСЂРѕС‚РёРІ Р±РѕС‚РѕРІ',
+    43 => 'РЎС‚СЂР°РЅРЅРёРє +Рє СѓРјРµРЅРёСЋ',
+    44 => ' СЃРµРє Рє +/-РїРµСЂРµРјРµС‰РµРЅРёСЋ',
 );
     
 if (isset($_POST['present_id'])) 
@@ -251,30 +251,30 @@ while($row = mysql_fetch_assoc($res))
 mysql_free_result($res);
 
 $sexes = array(
-    2 => 'Любой',
-    0 => 'Мужской',
-    1 => 'Женский',
+    2 => 'Р›СЋР±РѕР№',
+    0 => 'РњСѓР¶СЃРєРѕР№',
+    1 => 'Р–РµРЅСЃРєРёР№',
 );
 
 $pl_types = array(
-    0 => 'Любой',
-    1 => 'Воин',
-    2 => 'Маг',
+    0 => 'Р›СЋР±РѕР№',
+    1 => 'Р’РѕРёРЅ',
+    2 => 'РњР°Рі',
 );
 
 $open_types = array(
-    1 => 'Индивидуальное',
-    2 => 'Массовое',
-    3 => 'Подаренная вещь',
+    1 => 'РРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРµ',
+    2 => 'РњР°СЃСЃРѕРІРѕРµ',
+    3 => 'РџРѕРґР°СЂРµРЅРЅР°СЏ РІРµС‰СЊ',
 );
 
 $item_actions = array(
-    1 => 'Продать',
-    2 => 'Передавать',
-    4 => 'Дарить',
-    8 => 'Сдать в гос',
-    16 => 'Выставлять на аукцион',
-    32 => 'Выкидывать',
+    1 => 'РџСЂРѕРґР°С‚СЊ',
+    2 => 'РџРµСЂРµРґР°РІР°С‚СЊ',
+    4 => 'Р”Р°СЂРёС‚СЊ',
+    8 => 'РЎРґР°С‚СЊ РІ РіРѕСЃ',
+    16 => 'Р’С‹СЃС‚Р°РІР»СЏС‚СЊ РЅР° Р°СѓРєС†РёРѕРЅ',
+    32 => 'Р’С‹РєРёРґС‹РІР°С‚СЊ',
 );
 
 // list of all weapon categories
@@ -287,15 +287,15 @@ mysql_free_result($res);
 $row_id = 1;
 
 ?>
-<h3><?=($present_id == ''?'Добавить подарок':'Изменить подарок')?></h3>
+    <h3><?= ($present_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РїРѕРґР°СЂРѕРє' : 'РР·РјРµРЅРёС‚СЊ РїРѕРґР°СЂРѕРє') ?></h3>
 
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
-<script src="jscript/ajax.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/modal_window.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/controls/weapon_control.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/present.js" language="javascript" charset="windows-1251"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
+    <script src="jscript/ajax.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/modal_window.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/controls/weapon_control.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/present.js" language="javascript" charset="utf-8"></script>
 <script language="javascript">
     var last_id = <?=(int)$row_id?>; 
     <?=createJsArray('weapon_categories', $weapon_categories_array)?>
@@ -309,50 +309,50 @@ $row_id = 1;
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>ID Подарка: &nbsp;  </td>
+    <td><span class="cms_star">*</span>ID РџРѕРґР°СЂРєР°: &nbsp;</td>
   <td><input name="present_id" type="text" class="cms_fieldstyle1" value="<?=$present['present_id']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Категория Подарка: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РљР°С‚РµРіРѕСЂРёСЏ РџРѕРґР°СЂРєР°: &nbsp;</td>
   <td><?=createSelectFromArray('category_id', $categories, $present['category_id'])?></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Время жизни: &nbsp;  </td>
+    <td><span class="cms_star">*</span>Р’СЂРµРјСЏ Р¶РёР·РЅРё: &nbsp;</td>
   <td><input name="pr_life" type="text" class="cms_fieldstyle1" value="<?=$present['pr_life']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Стоимость NV: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РЎС‚РѕРёРјРѕСЃС‚СЊ NV: &nbsp;</td>
   <td><input name="pr_nv" type="text" class="cms_fieldstyle1" value="<?=$present['pr_nv']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Стоимость DNV: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РЎС‚РѕРёРјРѕСЃС‚СЊ DNV: &nbsp;</td>
   <td><input name="pr_dnv" type="text" class="cms_fieldstyle1" value="<?=$present['pr_dnv']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Пол: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РџРѕР»: &nbsp;</td>
   <td><?=createSelectFromArray('pr_sex', $sexes, $present['pr_sex'])?></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Лимит: &nbsp;  </td>
+    <td><span class="cms_star">*</span>Р›РёРјРёС‚: &nbsp;</td>
   <td><input name="pr_limit" type="text" class="cms_fieldstyle1" value="<?=$present['pr_limit']?>" size="30" maxlength="255" /></td>
 </tr>
 </table><br />
-Дополнительные параметры:<br />
+    Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹:<br/>
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Индивидуальный подарок: &nbsp;  </td>
+    <td>РРЅРґРёРІРёРґСѓР°Р»СЊРЅС‹Р№ РїРѕРґР°СЂРѕРє: &nbsp;</td>
   <td><input name="PLID" type="text" class="cms_fieldstyle1" value="<?=(isset($present_add['PLID'])?$present_add['PLID']:'')?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Тип открытия: &nbsp;  </td>
+    <td>РўРёРї РѕС‚РєСЂС‹С‚РёСЏ: &nbsp;</td>
   <td><?=createSelectFromArray('OPEN', $open_types, (isset($present_add['OPEN'])?$present_add['OPEN']:''))?></td>
 </tr>
 <tr>
-  <td>Родитель: &nbsp;  </td>
+    <td>Р РѕРґРёС‚РµР»СЊ: &nbsp;</td>
   <td><input name="PARENT" type="text" class="cms_fieldstyle1" value="<?=(isset($present_add['PARENT'])?$present_add['PARENT']:'')?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Время открытия: &nbsp;  </td>
+    <td>Р’СЂРµРјСЏ РѕС‚РєСЂС‹С‚РёСЏ: &nbsp;</td>
   <td>
     <input name="TIME" id="TIME" type="text" class="cms_fieldstyle1" value="<?=(isset($present_add['TIME']) && $present_add['TIME']!=''?date('Y-m-d H:i:s', $present_add['TIME']):'')?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kl1jhjhdj12d1jk2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -386,29 +386,33 @@ $row_id = 1;
 </table>
 <br />
 
-<!-- ДЕНЬГИ -->
-<input type="checkbox" <?=(isset($present_add['XX']['MONEY'])?'checked="checked"':'')?> name="ins_money" id="ins_money" value="Y" onclick="el('div_money').style.display = (this.checked ? 'block' : 'none');" /><label for="ins_money"><b>Деньги</b></label><br />
+    <!-- Р”Р•РќР¬Р“Р -->
+    <input type="checkbox" <?= (isset($present_add['XX']['MONEY']) ? 'checked="checked"' : '') ?> name="ins_money"
+           id="ins_money" value="Y" onclick="el('div_money').style.display = (this.checked ? 'block' : 'none');"/><label
+            for="ins_money"><b>Р”РµРЅСЊРіРё</b></label><br/>
 <div id="div_money" style="display: <?=(isset($present_add['XX']['MONEY'])?'block':'none')?>;">
 $: <input type="text" name="money_d" value="<?=(isset($present_add['XX']['MONEY']['money_d'])?$present_add['XX']['MONEY']['money_d']:'')?>" />&nbsp;&nbsp;DNV: <input type="text" name="money_dnv" value="<?=(isset($present_add['XX']['MONEY']['money_dnv'])?$present_add['XX']['MONEY']['money_dnv']:'')?>" />
 </div>
 <br />
 
-<!-- ВЕЩЬ -->
-<input type="checkbox" <?=(isset($present_add['XX']['ITEM'])?'checked="checked"':'')?> name="ins_item" id="ins_item" value="Y" onclick="el('div_item').style.display = (this.checked ? 'block' : 'none');" /><label for="ins_item"><b>Вещь</b></label><br />
+    <!-- Р’Р•Р©Р¬ -->
+    <input type="checkbox" <?= (isset($present_add['XX']['ITEM']) ? 'checked="checked"' : '') ?> name="ins_item"
+           id="ins_item" value="Y" onclick="el('div_item').style.display = (this.checked ? 'block' : 'none');"/><label
+            for="ins_item"><b>Р’РµС‰СЊ</b></label><br/>
 <div id="div_item" style="display: <?=(isset($present_add['XX']['ITEM'])?'block':'none')?>;">
-    Набор вещей:
+    РќР°Р±РѕСЂ РІРµС‰РµР№:
     <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_present_wea" >
         <tr >
-            <td class="cms_cap3 normal">Удалить</td>
-            <td class="cms_cap3">Тип</td>
-            <td class="cms_cap3">Предмет</td>
-            <td class="cms_cap3">Для кого</td>
-            <td class="cms_cap3">Пол</td>
-            <td class="cms_cap3">Долговечность</td>
-            <td class="cms_cap3">Кол-во</td>
-            <td class="cms_cap3">Цена</td>
-            <td class="cms_cap3">Срок годности</td>
-            <td class="cms_cap3">Разрешенные действия</td>
+            <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+            <td class="cms_cap3">РўРёРї</td>
+            <td class="cms_cap3">РџСЂРµРґРјРµС‚</td>
+            <td class="cms_cap3">Р”Р»СЏ РєРѕРіРѕ</td>
+            <td class="cms_cap3">РџРѕР»</td>
+            <td class="cms_cap3">Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ</td>
+            <td class="cms_cap3">РљРѕР»-РІРѕ</td>
+            <td class="cms_cap3">Р¦РµРЅР°</td>
+            <td class="cms_cap3">РЎСЂРѕРє РіРѕРґРЅРѕСЃС‚Рё</td>
+            <td class="cms_cap3">Р Р°Р·СЂРµС€РµРЅРЅС‹Рµ РґРµР№СЃС‚РІРёСЏ</td>
         </tr>
         <? 
         if (isset($present_add['XX']['ITEM']) && is_array($present_add['XX']['ITEM']))
@@ -429,20 +433,20 @@ $: <input type="text" name="money_d" value="<?=(isset($present_add['XX']['MONEY'
         ?>
         <tr id="tr_wea<?=$id?>">
             <td class="cms_middle" align="center"><a href="#" onclick="removeItem('tr_wea<?=$id?>');"><img src="images/cms_icons/cms_delete.gif" /></a></td>
-            <td class="cms_middle"><?=($item['type']=='N'?'Обычный <input type="hidden" name="pr_item_type['.$id.']" value="N" />':'Дилерский <input type="hidden" name="pr_item_type['.$id.']" value="D" />')?></td>
+            <td class="cms_middle"><?= ($item['type'] == 'N' ? 'РћР±С‹С‡РЅС‹Р№ <input type="hidden" name="pr_item_type[' . $id . ']" value="N" />' : 'Р”РёР»РµСЂСЃРєРёР№ <input type="hidden" name="pr_item_type[' . $id . ']" value="D" />') ?></td>
             <td class="cms_middle"><?=createWeaponControl('pr_item['.$id.']', 'uid', $item['item'], $item_name, ($item['type']=='P'?'normal':'dealers'))?></td>
             <td class="cms_middle"><?=createSelectFromArray('pr_item_pltype['.$id.']', $pl_types, $item['char_type'])?></td>
             <td class="cms_middle"><?=createSelectFromArray('pr_item_sex['.$id.']', $sexes, $item['sex'])?></td>
             <td class="cms_middle">
                 <input type="text" name="pr_item_dolg[<?=$id?>]" id="pr_item_dolg_<?=$id?>" value="<?=$item['long']?>" size="3" />
-                <!--<input type="checkbox" name="pr_item_dolg_1[<?=$id?>]" id="pr_item_dolg_1_<?=$id?>_" value="Y" <?=($item['long_q']==1?'checked="checked"':'')?> /><label for="pr_item_dolg_1_<?=$id?>_">Зависит от кол-ва</label>-->
+                <!--<input type="checkbox" name="pr_item_dolg_1[<?= $id ?>]" id="pr_item_dolg_1_<?= $id ?>_" value="Y" <?= ($item['long_q'] == 1 ? 'checked="checked"' : '') ?> /><label for="pr_item_dolg_1_<?= $id ?>_">Р—Р°РІРёСЃРёС‚ РѕС‚ РєРѕР»-РІР°</label>-->
             </td>
             <td class="cms_middle">
                 <input type="text" name="pr_item_count[<?=$id?>]" id="pr_item_count_<?=$id?>" value="<?=(isset($item['count'])?$item['count']:'')?>" size="3" />
             </td>
             <td class="cms_middle">
                 <input type="text" name="pr_item_price[<?=$id?>]" id="pr_item_price_<?=$id?>" value="<?=$item['price']?>" size="3" />
-                <!--<input type="checkbox" name="pr_item_price_1[<?=$id?>]" id="pr_item_price_1_<?=$id?>_" value="Y" <?=($item['price_q']==1?'checked="checked"':'')?> /><label for="pr_item_price_1_<?=$id?>_">Зависит от кол-ва</label>-->
+                <!--<input type="checkbox" name="pr_item_price_1[<?= $id ?>]" id="pr_item_price_1_<?= $id ?>_" value="Y" <?= ($item['price_q'] == 1 ? 'checked="checked"' : '') ?> /><label for="pr_item_price_1_<?= $id ?>_">Р—Р°РІРёСЃРёС‚ РѕС‚ РєРѕР»-РІР°</label>-->
             </td>
             <td class="cms_middle">
                 <input type="text" name="pr_item_expire[<?=$id?>]" id="pr_item_expire_<?=$id?>" value="<?=$item['expire']?>" size="3" />
@@ -456,16 +460,24 @@ $: <input type="text" name="money_d" value="<?=(isset($present_add['XX']['MONEY'
         <? } ?>
         
     </table>
-    <a onclick="addItem_present_weapon('table_present_wea', 'tr_wea', 'pr_item', 'normal'); return false;" href="#">Добавить предмет</a>&nbsp;&nbsp;<a onclick="addItem_present_weapon('table_present_wea', 'tr_wea', 'pr_item', 'dealers'); return false;" href="#">Добавить дилерский предмет</a><br />
+    <a onclick="addItem_present_weapon('table_present_wea', 'tr_wea', 'pr_item', 'normal'); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РїСЂРµРґРјРµС‚</a>&nbsp;&nbsp;<a
+            onclick="addItem_present_weapon('table_present_wea', 'tr_wea', 'pr_item', 'dealers'); return false;"
+            href="#">Р”РѕР±Р°РІРёС‚СЊ РґРёР»РµСЂСЃРєРёР№ РїСЂРµРґРјРµС‚</a><br/>
 </div>
 <br />
 
-<!-- ЭФФЕКТ -->
-<input type="checkbox" <?=(isset($present_add['XX']['EFFECT'])?'checked="checked"':'')?> name="ins_effect" id="ins_effect" value="Y" onclick="el('div_effect').style.display = (this.checked ? 'block' : 'none');" /><label for="ins_effect"><b>Эффект</b></label><br />
+    <!-- Р­Р¤Р¤Р•РљРў -->
+    <input type="checkbox" <?= (isset($present_add['XX']['EFFECT']) ? 'checked="checked"' : '') ?> name="ins_effect"
+           id="ins_effect" value="Y"
+           onclick="el('div_effect').style.display = (this.checked ? 'block' : 'none');"/><label for="ins_effect"><b>Р­С„С„РµРєС‚</b></label><br/>
 <div id="div_effect" style="display: <?=(isset($present_add['XX']['EFFECT'])?'block':'none')?>;">
-ID эффекта: <input type="text" name="effect_id" value="<?=(isset($present_add['XX']['EFFECT']['effect_id'])?$present_add['XX']['EFFECT']['effect_id']:'')?>" /><br />
-Время эффекта: <input type="text" name="effect_time" value="<?=(isset($present_add['XX']['EFFECT']['effect_time'])?$present_add['XX']['EFFECT']['effect_time']:'')?>" /><br />
-Лимит до: <input type="text" name="effect_to" value="<?=(isset($present_add['XX']['EFFECT']['effect_to'])?$present_add['XX']['EFFECT']['effect_to']:'')?>" /><br />
+    ID СЌС„С„РµРєС‚Р°: <input type="text" name="effect_id"
+                       value="<?= (isset($present_add['XX']['EFFECT']['effect_id']) ? $present_add['XX']['EFFECT']['effect_id'] : '') ?>"/><br/>
+    Р’СЂРµРјСЏ СЌС„С„РµРєС‚Р°: <input type="text" name="effect_time"
+                          value="<?= (isset($present_add['XX']['EFFECT']['effect_time']) ? $present_add['XX']['EFFECT']['effect_time'] : '') ?>"/><br/>
+    Р›РёРјРёС‚ РґРѕ: <input type="text" name="effect_to"
+                     value="<?= (isset($present_add['XX']['EFFECT']['effect_to']) ? $present_add['XX']['EFFECT']['effect_to'] : '') ?>"/><br/>
 <? foreach($modificators as $id=>$name) { 
     $mdf = array();
     if (isset($present_add['XX']['EFFECT']['modificators']))
@@ -477,16 +489,21 @@ ID эффекта: <input type="text" name="effect_id" value="<?=(isset($present_add['X
 </div>
 <br />
 
-<!-- ТОТЕМ -->
-<input type="checkbox" <?=(isset($present_add['XX']['TOTEM'])?'checked="checked"':'')?> name="ins_totem" id="ins_totem" value="Y" onclick="el('div_totem').style.display = (this.checked ? 'block' : 'none');" /><label for="ins_totem"><b>Тотем</b></label><br />
+    <!-- РўРћРўР•Рњ -->
+    <input type="checkbox" <?= (isset($present_add['XX']['TOTEM']) ? 'checked="checked"' : '') ?> name="ins_totem"
+           id="ins_totem" value="Y" onclick="el('div_totem').style.display = (this.checked ? 'block' : 'none');"/><label
+            for="ins_totem"><b>РўРѕС‚РµРј</b></label><br/>
 <div id="div_totem" style="display: <?=(isset($present_add['XX']['TOTEM'])?'block':'none')?>;">
-ID тотема: <input type="text" name="totem_id" value="<?=(isset($present_add['XX']['TOTEM']['totem_id'])?$present_add['XX']['TOTEM']['totem_id']:'')?>" />
+    ID С‚РѕС‚РµРјР°: <input type="text" name="totem_id"
+                      value="<?= (isset($present_add['XX']['TOTEM']['totem_id']) ? $present_add['XX']['TOTEM']['totem_id'] : '') ?>"/>
 </div>
 <br />
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='<?=$_SESSION['pages']['present_list']?>'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.location='<?= $_SESSION['pages']['present_list'] ?>'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

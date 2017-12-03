@@ -71,21 +71,21 @@ if ($collection_id == '') {
 }
 
 ?>
-<h3><?=($collection_id == ''?'Добавить коллекцию смайлов':'Изменить коллекцию смайлов')?></h3>
+    <h3><?= ($collection_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ СЃРјР°Р№Р»РѕРІ' : 'РР·РјРµРЅРёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ СЃРјР°Р№Р»РѕРІ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID Коллекции: &nbsp;  </td>
+    <td>ID РљРѕР»Р»РµРєС†РёРё: &nbsp;</td>
   <td><input name="collection_id" type="text" class="cms_fieldstyle1" value="<?=$collection['collection_id']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Название коллекции: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ РєРѕР»Р»РµРєС†РёРё: &nbsp;</td>
   <td><input name="collection_name" type="text" class="cms_fieldstyle1" value="<?=$collection['collection_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 <br />
-Смайлы:
+    РЎРјР°Р№Р»С‹:
 <script language="javascript">
 function selectSmile(smile)
 {
@@ -126,8 +126,9 @@ while ($row = mysql_fetch_assoc($res))
 </tr>
 </table>
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='smile_collection_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='smile_collection_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

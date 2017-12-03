@@ -210,7 +210,7 @@ if ($rec_id == '' && !isset($_GET['clone_rec_id'])) {
 }
 
 ?>
-<h3><?=($rec_id==''?'Добавить рецепт':'Изменить рецепт')?></h3>
+<h3><?= ($rec_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СЂРµС†РµРїС‚' : 'РР·РјРµРЅРёС‚СЊ СЂРµС†РµРїС‚') ?></h3>
 <script language="javascript">
 var last_id = <?=(int)$row_id?>;
 <?=createJsArray('res_array', $resource_array)?>
@@ -220,7 +220,7 @@ var last_id = <?=(int)$row_id?>;
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
     <tr>
-        <td><span class="cms_star">*</span>Название рецепта: &nbsp;  </td>
+        <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ СЂРµС†РµРїС‚Р°: &nbsp;</td>
         <td><input name="rec_name" type="text" class="cms_fieldstyle1" value="<?=$recipe['rec_name']?>" size="30" maxlength="255" /></td>
     </tr>
     <? //TODO: Translate rec_final ?>
@@ -231,33 +231,33 @@ var last_id = <?=(int)$row_id?>;
 </table><br />
 
 
-Дополнительные параметры:
+    Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹:
 <table border="0" cellpadding="0" cellspacing="1">
     <tr>
-        <td>Умение, которое прокачивается при использовании: &nbsp;</td>
+        <td>РЈРјРµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РїСЂРѕРєР°С‡РёРІР°РµС‚СЃСЏ РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё: &nbsp;</td>
         <td><?=createSelectFromArray('add[UU]', $ability_array, (isset($rcp_add['UU'])?$rcp_add['UU']:''))?></td>
     </tr>
     <tr>
-        <td>Получаемая из рецепта вещь: &nbsp;</td>
+        <td>РџРѕР»СѓС‡Р°РµРјР°СЏ РёР· СЂРµС†РµРїС‚Р° РІРµС‰СЊ: &nbsp;</td>
         <td><input name="add[WE]" type="text" class="cms_fieldstyle1" value="<?=(isset($rcp_add['WE'])?$rcp_add['WE']:'')?>" size="8" maxlength="255" /></td>
     </tr>
     <tr>
-        <td>ID Игрока (если персональный рецепт): &nbsp;</td>
+        <td>ID РРіСЂРѕРєР° (РµСЃР»Рё РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ СЂРµС†РµРїС‚): &nbsp;</td>
         <td><input name="add[ID]" type="text" class="cms_fieldstyle1" value="<?=(isset($rcp_add['ID'])?$rcp_add['ID']:'')?>" size="8" maxlength="255" /></td>
     </tr>
     <tr>
-        <td>ID Клана (если клановый рецепт): &nbsp;</td>
+        <td>ID РљР»Р°РЅР° (РµСЃР»Рё РєР»Р°РЅРѕРІС‹Р№ СЂРµС†РµРїС‚): &nbsp;</td>
         <td><input name="add[CL]" type="text" class="cms_fieldstyle1" value="<?=(isset($rcp_add['CL'])?$rcp_add['CL']:'')?>" size="8" maxlength="255" /></td>
     </tr>
     <tr>
-        <td>Время на 1 единицу (мин): &nbsp;</td>
+        <td>Р’СЂРµРјСЏ РЅР° 1 РµРґРёРЅРёС†Сѓ (РјРёРЅ): &nbsp;</td>
         <td><input name="add[TM]" type="text" class="cms_fieldstyle1" value="<?=(isset($rcp_add['TM'])?$rcp_add['TM']:'')?>" size="8" maxlength="255" /></td>
     </tr>
     <tr>
         <td colspan="2">
-            Необходимое умение: &nbsp;
+            РќРµРѕР±С…РѕРґРёРјРѕРµ СѓРјРµРЅРёРµ: &nbsp;
             <?=createSelectFromArray('add[UM]', $ability_array, (isset($rcp_add['UM'][0])?$rcp_add['UM'][0]:''))?>
-            Количество: &nbsp;
+            РљРѕР»РёС‡РµСЃС‚РІРѕ: &nbsp;
             <input name="add[UM_count]" type="text" class="cms_fieldstyle1" value="<?=(isset($rcp_add['UM'][1])?$rcp_add['UM'][1]:'')?>" size="8" maxlength="255" />
         </td>
     </tr>
@@ -276,54 +276,60 @@ UM:
 <a onclick="addItem_edit('table_recipe_um', 'tr_um', 'um[]', '', 'um_amount[]', '1'); return false;" href="#">Add um</a><br />
 <br />
  -->
-Необходимые квесты:
+    РќРµРѕР±С…РѕРґРёРјС‹Рµ РєРІРµСЃС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_recipe_qe" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название квеста</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РєРІРµСЃС‚Р°</td>
     </tr>
     <?=$recipe_qe?>
 </table>
-<a onclick="addItem_select('table_recipe_qe', 'tr_qe', 'qe[]', quest_array, '', ''); return false;" href="#">Добавить квест</a><br />
+    <a onclick="addItem_select('table_recipe_qe', 'tr_qe', 'qe[]', quest_array, '', ''); return false;" href="#">Р”РѕР±Р°РІРёС‚СЊ
+        РєРІРµСЃС‚</a><br/>
 <br />
 
-Требуемые ингредиенты:
+    РўСЂРµР±СѓРµРјС‹Рµ РёРЅРіСЂРµРґРёРµРЅС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_initialres" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название ресурса</td>
-        <td class="cms_cap3">Доля ресурса</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ СЂРµСЃСѓСЂСЃР°</td>
+        <td class="cms_cap3">Р”РѕР»СЏ СЂРµСЃСѓСЂСЃР°</td>
     </tr>
     <?=$resouce_initial?>
 </table>
-<a onclick="addItem_select('table_initialres', 'tr_initialres', 'initial_resources[]', res_array, 'initial_resources_share[]', '1'); return false;" href="#">Добавить ресурс</a><br />
+    <a onclick="addItem_select('table_initialres', 'tr_initialres', 'initial_resources[]', res_array, 'initial_resources_share[]', '1'); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ СЂРµСЃСѓСЂСЃ</a><br/>
 <br />
 
-Получаемые ресурсы:
+    РџРѕР»СѓС‡Р°РµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_receiveres" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название ресурса</td>
-        <td class="cms_cap3">Доля ресурса</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ СЂРµСЃСѓСЂСЃР°</td>
+        <td class="cms_cap3">Р”РѕР»СЏ СЂРµСЃСѓСЂСЃР°</td>
     </tr>
     <?=$resouce_receive?>
 </table>
-<a onclick="addItem_select('table_receiveres', 'tr_receiveres', 'receive_resources[]', res_array, 'receive_resources_share[]', '1'); return false;" href="#">Добавить ресурс</a><br />
+    <a onclick="addItem_select('table_receiveres', 'tr_receiveres', 'receive_resources[]', res_array, 'receive_resources_share[]', '1'); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ СЂРµСЃСѓСЂСЃ</a><br/>
 <br />
 
-Необходимые инструменты:
+    РќРµРѕР±С…РѕРґРёРјС‹Рµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹:
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_toolkit" >
     <tr >
-        <td class="cms_cap3 normal">Удалить</td>
-        <td class="cms_cap3">Название инструмента</td>
+        <td class="cms_cap3 normal">РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap3">РќР°Р·РІР°РЅРёРµ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°</td>
     </tr>
     <?=$recipe_toolkit?>
 </table>
-<a onclick="addItem_select('table_toolkit', 'tr_toolkitres', 'recipe_toolkit[]', item_array, '', ''); return false;" href="#">Добавить инструмент</a><br />  
+    <a onclick="addItem_select('table_toolkit', 'tr_toolkitres', 'recipe_toolkit[]', item_array, '', ''); return false;"
+       href="#">Р”РѕР±Р°РІРёС‚СЊ РёРЅСЃС‚СЂСѓРјРµРЅС‚</a><br/>
 
-<p></p>
-<input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-<input name="cancel" type="submit" onclick="document.location='<?=$_SESSION['pages']['recipe_list']?>'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <p></p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.location='<?= $_SESSION['pages']['recipe_list'] ?>'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

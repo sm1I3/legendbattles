@@ -3,7 +3,7 @@
 <HTML>
 <HEAD>
 <LINK href="/css/game.css" rel=STYLESHEET type=text/css>
-<META Http-Equiv=Content-Type Content="text/html; charset=windows-1251">
+    <META Http-Equiv=Content-Type Content="text/html; charset=utf-8">
 <META Http-Equiv=Cache-Control Content=No-Cache>
 <META Http-Equiv=Pragma Content=No-Cache>
 <META Http-Equiv=Expires Content=0>
@@ -38,7 +38,7 @@ document.write('<div id="darker" style="display:none;"><table cellspacing="0" ce
 				if(is_file(DROOT."/includes/addons/admin-action/".preg_replace('/[^a-zA-Z0-9]/','',$_GET['addid']).".php"))
 					include(DROOT."/includes/addons/admin-action/".preg_replace('/[^a-zA-Z0-9]/','',$_GET['addid']).".php");
 				else
-					echo"<font class=freetxt><div align=center><font color=#cc0000><b>Выберите раздел</b></font></div></font>";
+                    echo "<font class=freetxt><div align=center><font color=#cc0000><b>Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</b></font></div></font>";
 				?></td>
               </tr>
             </table>

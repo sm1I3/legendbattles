@@ -21,24 +21,24 @@ function view_build_top()
 			</div>\
 		</div>\
 		<div class="TopBar_right">\
-			<a '+(vcode[2][0] ? ' <input id="MovementMenu" class="MovementMenu mainTooltip" onmouseover="tooltip(this,\'<b>Войти</b>\');" onmouseout="hide_info(this);" style="display:none;" value=" " '+(vcode[2][1]!='' ? 'onclick="location=\'?get_id=56&act=10&go=up&vcode='+vcode[2][1]+'\'"' : 'DISABLED')+'> ' : '')+'</a>\
+			<a ' + (vcode[2][0] ? ' <input id="MovementMenu" class="MovementMenu mainTooltip" onmouseover="tooltip(this,\'<b>Р’РѕР№С‚Рё</b>\');" onmouseout="hide_info(this);" style="display:none;" value=" " ' + (vcode[2][1] != '' ? 'onclick="location=\'?get_id=56&act=10&go=up&vcode=' + vcode[2][1] + '\'"' : 'DISABLED') + '> ' : '') + '</a>\
 		</div>\
 		<div class="TopBar_center">\
 			<ul class="MainMenu">\
 				<li class="CharacterMenu">\
-					<a '+(vcode[0][0] ? ' <input id="CharacterMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Персонаж</b>\');" onmouseout="hide_info(this);" value=" " '+(vcode[0][1]!='' ? 'onclick="location=\'?get_id=56&act=10&go=inf&vcode='+vcode[0][1]+'\'"' : 'DISABLED')+'> ' : '')+'</a>\
+					<a ' + (vcode[0][0] ? ' <input id="CharacterMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РџРµСЂСЃРѕРЅР°Р¶</b>\');" onmouseout="hide_info(this);" value=" " ' + (vcode[0][1] != '' ? 'onclick="location=\'?get_id=56&act=10&go=inf&vcode=' + vcode[0][1] + '\'"' : 'DISABLED') + '> ' : '') + '</a>\
 				</li>\
 				<li class="InventoryMenu">\
-					<a '+(vcode[1][0] ? ' <input id="InventoryMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Инвентарь</b>\');" onmouseout="hide_info(this);" value=" " '+(vcode[1][1]!='' ? 'onclick="location=\'?get_id=56&act=10&go=inv&vcode='+vcode[1][1]+'\'"' : 'DISABLED')+'> ' : '')+'</a>\
+					<a ' + (vcode[1][0] ? ' <input id="InventoryMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РРЅРІРµРЅС‚Р°СЂСЊ</b>\');" onmouseout="hide_info(this);" value=" " ' + (vcode[1][1] != '' ? 'onclick="location=\'?get_id=56&act=10&go=inv&vcode=' + vcode[1][1] + '\'"' : 'DISABLED') + '> ' : '') + '</a>\
 				</li>\
 				<li class="FightingMenu">\
-					<a '+(vcode[2][0] ? ' <input id="FightingMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Поединки</b>\');" onmouseout="hide_info(this);" value=" " '+(vcode[2][1]!='' ? 'onclick="location=\'?get_id=56&act=10&go=up&vcode='+vcode[2][1]+'\'"' : 'DISABLED')+'> ' : '')+'</a>\
+					<a ' + (vcode[2][0] ? ' <input id="FightingMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РџРѕРµРґРёРЅРєРё</b>\');" onmouseout="hide_info(this);" value=" " ' + (vcode[2][1] != '' ? 'onclick="location=\'?get_id=56&act=10&go=up&vcode=' + vcode[2][1] + '\'"' : 'DISABLED') + '> ' : '') + '</a>\
 				</li>\
 				<li class="ClanMenu">\
-					<a href="#" id="ClanMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Клан</b>\');" onmouseout="hide_info(this);"></a>\
+					<a href="#" id="ClanMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РљР»Р°РЅ</b>\');" onmouseout="hide_info(this);"></a>\
 				</li>\
 				<li class="InfoMenu">\
-					<a '+(!build[12] ? '' : '<input id="InfoMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>Квесты</b>\');" onmouseout="hide_info(this);" value=" " onclick=\'QActive("'+build[12]+'");\'>')+ '</a>\
+					<a ' + (!build[12] ? '' : '<input id="InfoMenu" class="mainTooltip" onmouseover="tooltip(this,\'<b>РљРІРµСЃС‚С‹</b>\');" onmouseout="hide_info(this);" value=" " onclick=\'QActive("' + build[12] + '");\'>') + '</a>\
 				</li>\
 			</ul>\
 		</div>\

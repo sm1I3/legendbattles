@@ -159,25 +159,26 @@ if ($bot_class_id != '')
 }
 
 $fill_types = Array(
-    0 => 'Природа',
-    1 => 'Лабиринт',
-    4 => 'Нападение на город',
-    5 => 'Нападение по свитку',
+    0 => 'РџСЂРёСЂРѕРґР°',
+    1 => 'Р›Р°Р±РёСЂРёРЅС‚',
+    4 => 'РќР°РїР°РґРµРЅРёРµ РЅР° РіРѕСЂРѕРґ',
+    5 => 'РќР°РїР°РґРµРЅРёРµ РїРѕ СЃРІРёС‚РєСѓ',
 );
 
 ?>
-<h3>Добавление ботов в игру</h3>
+    <h3>Р”РѕР±Р°РІР»РµРЅРёРµ Р±РѕС‚РѕРІ РІ РёРіСЂСѓ</h3>
 
 <form name="add_bot_step_1" action="" method="GET">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>Бот: &nbsp;  </td>
+    <td>Р‘РѕС‚: &nbsp;</td>
   <td><?=createSelectFromArray('bot_class_id', $bot_classes, $bot_class_id)?></td>
 </tr>
 </table>
 <p></p>
-<input name="show"  type="submit" class="cms_button1" value="Показать" style="width: 150px"/>
-<input name="cancel" type="submit" onclick="document.location='bot_list.php'; return false;" class="cms_button1" value="Отмена" />
+    <input name="show" type="submit" class="cms_button1" value="РџРѕРєР°Р·Р°С‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='bot_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
 </form>
 <? if ($bot_class_id != '') { ?> 
 <br />
@@ -185,9 +186,9 @@ $fill_types = Array(
 <input type="hidden" name="bot_class_id" value="<?=$bot_class_id?>" />
 <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-        <td class="cms_cap2">ID Бота</td>
-        <td class="cms_cap2">Название бота</td>
-        <td class="cms_cap2">Количество</td>
+        <td class="cms_cap2">ID Р‘РѕС‚Р°</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ Р±РѕС‚Р°</td>
+        <td class="cms_cap2">РљРѕР»РёС‡РµСЃС‚РІРѕ</td>
     </tr>
     <? foreach($bots_array as $bot_uid => $row) { ?>
     <tr>
@@ -198,14 +199,15 @@ $fill_types = Array(
     <? } ?>
 </table>
 <br />
-Тип наполнения: <?=createSelectFromArray('fill_type', $fill_types, '')?>
+    РўРёРї РЅР°РїРѕР»РЅРµРЅРёСЏ: <?= createSelectFromArray('fill_type', $fill_types, '') ?>
 <p></p>
 <input type="hidden" name="generate" value="generate" />
-<input name="generate" type="submit" class="cms_button1" value="Сгенерировать" style="width: 150px"/>
-<input name="cancel" type="submit" onclick="document.location='bot_game_add.php'; return false;" class="cms_button1" value="Отмена" />
+    <input name="generate" type="submit" class="cms_button1" value="РЎРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='bot_game_add.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
 </form>
 <? } ?>
 
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 
 <? require('kernel/after.php'); ?>

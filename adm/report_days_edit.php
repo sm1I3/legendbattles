@@ -60,17 +60,17 @@ else
     mysql_free_result($res);
 }
 
-$types = array(1 => 'Выходной', 2 => 'Рабочий');
+$types = array(1 => 'Р’С‹С…РѕРґРЅРѕР№', 2 => 'Р Р°Р±РѕС‡РёР№');
 ?>
-<h3><?=($date == ''?'Добавить день':'Изменить день')?></h3>
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+    <h3><?= ($date == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РґРµРЅСЊ' : 'РР·РјРµРЅРёС‚СЊ РґРµРЅСЊ') ?></h3>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>День: &nbsp;  </td>
+    <td><span class="cms_star">*</span>Р”РµРЅСЊ: &nbsp;</td>
   <td><input name="date" id="date" type="text" class="cms_fieldstyle1" value="<?=$rep_date['date']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kl1jhjhdj12d1jk2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
     <script type="text/javascript">
@@ -100,14 +100,15 @@ $types = array(1 => 'Выходной', 2 => 'Рабочий');
     <img src="images/cms_icons/cms_calendar_clear.gif" align="absmiddle" onclick='document.getElementById("date").value=""; ' title="Clear Date" style="cursor: pointer;" ></td>
 </tr>
 <tr>
-  <td>Тип: &nbsp;  </td>
+    <td>РўРёРї: &nbsp;</td>
   <td><?=createSelectFromArray('type', $types, $rep_date['type'], '', false)?></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='report_days.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='report_days.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

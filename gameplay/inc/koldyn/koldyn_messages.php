@@ -4,34 +4,34 @@ echo '
 <tr class=nickname align=center>
 <td align=center width=100%>';
 switch($message){
- case 1: 
-	echo "Вы научились создавать ".$chrecipe['name'].".";
+ case 1:
+     echo "Р’С‹ РЅР°СѓС‡РёР»РёСЃСЊ СЃРѕР·РґР°РІР°С‚СЊ " . $chrecipe['name'] . ".";
  break;
  case 2:
-	echo 'Недостаточно навыка для покупки рецепта.';
+     echo 'РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РЅР°РІС‹РєР° РґР»СЏ РїРѕРєСѓРїРєРё СЂРµС†РµРїС‚Р°.';
  break;
   case 3:
-	echo 'Нехватает денег для покупки рецепта.';
+      echo 'РќРµС…РІР°С‚Р°РµС‚ РґРµРЅРµРі РґР»СЏ РїРѕРєСѓРїРєРё СЂРµС†РµРїС‚Р°.';
  break;
  case 4:
-	echo 'Этот рецепт уже приобретен.';
+     echo 'Р­С‚РѕС‚ СЂРµС†РµРїС‚ СѓР¶Рµ РїСЂРёРѕР±СЂРµС‚РµРЅ.';
  break;
  case 5:
-	echo 'Вы успешно создали <b>'.$IT['name'].'</b> '.$chrecipe['col'].'шт.</font>';
+     echo 'Р’С‹ СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°Р»Рё <b>' . $IT['name'] . '</b> ' . $chrecipe['col'] . 'С€С‚.</font>';
 	$calcup=($pt[75]-$chrecipe['nav'])+3;
 	if(rand(1,$calcup)==$calcup){
 		mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `koldyn`=`koldyn`+'1' WHERE `id`='".$player['id']."'");
-		echo '<br><b>Ваш навык колдуна повысился на <font color=red>+1</font>.</b>';
+        echo '<br><b>Р’Р°С€ РЅР°РІС‹Рє РєРѕР»РґСѓРЅР° РїРѕРІС‹СЃРёР»СЃСЏ РЅР° <font color=red>+1</font>.</b>';
 	}
  break;
  case 6:
-	echo' <font color=red><b>Недостаточно реагентов</b></font><br>'.$regmiss;
+     echo ' <font color=red><b>РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЂРµР°РіРµРЅС‚РѕРІ</b></font><br>' . $regmiss;
  break;
  case 7:
-	echo 'Предмет не найден в базе';
+     echo 'РџСЂРµРґРјРµС‚ РЅРµ РЅР°Р№РґРµРЅ РІ Р±Р°Р·Рµ';
  break;
  case 8:
-	echo 'Сначала нужно приобрести рецепт.';
+     echo 'РЎРЅР°С‡Р°Р»Р° РЅСѓР¶РЅРѕ РїСЂРёРѕР±СЂРµСЃС‚Рё СЂРµС†РµРїС‚.';
  break;
 }
 echo'</td></tr></table>';

@@ -13,10 +13,10 @@ else
     $weapon_property_code = $_GET['property_code'];
     
 $property_types = array(
-    1 => 'Основные требования',
-    2 => 'Требования умений',
-    3 => 'Основные хар-ки',
-    4 => 'Дополнительные умения'
+    1 => 'РћСЃРЅРѕРІРЅС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ',
+    2 => 'РўСЂРµР±РѕРІР°РЅРёСЏ СѓРјРµРЅРёР№',
+    3 => 'РћСЃРЅРѕРІРЅС‹Рµ С…Р°СЂ-РєРё',
+    4 => 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓРјРµРЅРёСЏ'
 );
     
 if (isset($_POST['property_name'])) {
@@ -63,27 +63,28 @@ if ($weapon_property_code == '') {
 }
 
 ?>
-<h3><?=($weapon_property_code == ''?'Добавить параметр оружия':'Изменить параметр оружия')?></h3>
+    <h3><?= ($weapon_property_code == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РїР°СЂР°РјРµС‚СЂ РѕСЂСѓР¶РёСЏ' : 'РР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂ РѕСЂСѓР¶РёСЏ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Код параметра оружия: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РљРѕРґ РїР°СЂР°РјРµС‚СЂР° РѕСЂСѓР¶РёСЏ: &nbsp;</td>
   <td><input name="property_code" type="text" class="cms_fieldstyle1" value="<?=$weapon_property['property_code']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Тип параметра оружия: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РўРёРї РїР°СЂР°РјРµС‚СЂР° РѕСЂСѓР¶РёСЏ: &nbsp;</td>
   <td><?=createSelectFromArray('property_type', $property_types, $weapon_property['property_type'])?></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Название параметра оружия: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ РїР°СЂР°РјРµС‚СЂР° РѕСЂСѓР¶РёСЏ: &nbsp;</td>
   <td><input name="property_name" type="text" class="cms_fieldstyle1" value="<?=$weapon_property['property_name']?>" size="30" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='weapon_property_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='weapon_property_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

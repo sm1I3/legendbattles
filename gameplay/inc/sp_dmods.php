@@ -1,9 +1,17 @@
 <?php
-$dmodarr = array(1=>'Óðîí îãíåì',2=>'Óðîí ëüäîì',3=>'Âàìïèðèçì',4=>'Ëå÷åíèå');
-switch($dmod[0]){
-	case 1: echo $dmodarr[$dmod[0]].': <b><font color="#B00000">'.$dmod[1].'</b></font><br>'; break;
-	case 2: echo $dmodarr[$dmod[0]].': <b><font color="#000099">'.$dmod[1].'</b></font><br>'; break;
-	case 3: echo $dmodarr[$dmod[0]].': <b><font color="#6633CC">'.$dmod[1].'</b></font><br>'; break;
-	case 4: echo $dmodarr[$dmod[0]].': <b><font color="#FFBB88">'.$dmod[1].'</b></font><br>'; break;
+$dmodarr = array(1 => 'Ð£Ñ€Ð¾Ð½ Ð¾Ð³Ð½ÐµÐ¼', 2 => 'Ð£Ñ€Ð¾Ð½ Ð»ÑŒÐ´Ð¾Ð¼', 3 => 'Ð’Ð°Ð¼Ð¿Ð¸Ñ€Ð¸Ð·Ð¼', 4 => 'Ð›ÐµÑ‡ÐµÐ½Ð¸Ðµ');
+switch ($dmod[0]) {
+    case 1:
+        echo $dmodarr[$dmod[0]] . ': <b><font color="#B00000">' . $dmod[1] . '</b></font><br>';
+        break;
+    case 2:
+        echo $dmodarr[$dmod[0]] . ': <b><font color="#000099">' . $dmod[1] . '</b></font><br>';
+        break;
+    case 3:
+        echo $dmodarr[$dmod[0]] . ': <b><font color="#6633CC">' . $dmod[1] . '</b></font><br>';
+        break;
+    case 4:
+        echo $dmodarr[$dmod[0]] . ': <b><font color="#FFBB88">' . $dmod[1] . '</b></font><br>';
+        break;
 }
 ?>

@@ -1,11 +1,11 @@
-/* Вкладки в сайдбаре */
+/* Р’РєР»Р°РґРєРё РІ СЃР°Р№РґР±Р°СЂРµ */
 .box {
-display: none; /* по умолчанию прячем все блоки */
+    display: none; /* РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїСЂСЏС‡РµРј РІСЃРµ Р±Р»РѕРєРё */
 border: 0px solid #777;
 padding: 1px;
 }
 .box.visible {
-display: block; /* по умолчанию показываем нужный блок */
+    display: block; /* РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїРѕРєР°Р·С‹РІР°РµРј РЅСѓР¶РЅС‹Р№ Р±Р»РѕРє */
 border: 0px solid #777;
 padding: 1px;
 }
@@ -18,9 +18,9 @@ float: right;
 }
 .tabs li.current {
 background: rgb(190, 190, 190);
-border-radius: 10px;  /* свойство для тех кто его поддерживает */
--moz-border-radius: 10px;  /* для firefox */
--webkit-border-radius: 10px;  /* для Safari и Chrome */
+    border-radius: 10px; /* СЃРІРѕР№СЃС‚РІРѕ РґР»СЏ С‚РµС… РєС‚Рѕ РµРіРѕ РїРѕРґРґРµСЂР¶РёРІР°РµС‚ */
+    -moz-border-radius: 10px; /* РґР»СЏ firefox */
+    -webkit-border-radius: 10px; /* РґР»СЏ Safari Рё Chrome */
 }
 .tabs li {
 float: right;
@@ -33,9 +33,9 @@ width: 120px;
 text-align:center;
 opacity: 0.3;
 color:rgb(83, 83, 83);
-border-radius: 10px;  /* свойство для тех кто его поддерживает */
--moz-border-radius: 10px;  /* для firefox */
--webkit-border-radius: 10px;  /* для Safari и Chrome */
+    border-radius: 10px; /* СЃРІРѕР№СЃС‚РІРѕ РґР»СЏ С‚РµС… РєС‚Рѕ РµРіРѕ РїРѕРґРґРµСЂР¶РёРІР°РµС‚ */
+    -moz-border-radius: 10px; /* РґР»СЏ firefox */
+    -webkit-border-radius: 10px; /* РґР»СЏ Safari Рё Chrome */
 }
 .tabs li:hover {
     opacity: 0.9;

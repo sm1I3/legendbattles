@@ -23,12 +23,12 @@ StateReady = function()
     if(arr_res[0] == 'OK')
     {
         close_obj('reg_form', false);
-        show_warn('Поздравляем! Регистрация прошла успешно!','ok',true,false);
+        show_warn('РџРѕР·РґСЂР°РІР»СЏРµРј! Р РµРіРёСЃС‚СЂР°С†РёСЏ РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ!', 'ok', true, false);
     }
     else if(arr_res[0] == 'RECOVERY')
     {
         d.getElementById('recovery_info').className = 'ok';
-        d.getElementById('recovery_msg').innerHTML = '<br>На указанный E-mail выслана информация для сброса пароля.';
+        d.getElementById('recovery_msg').innerHTML = '<br>РќР° СѓРєР°Р·Р°РЅРЅС‹Р№ E-mail РІС‹СЃР»Р°РЅР° РёРЅС„РѕСЂРјР°С†РёСЏ РґР»СЏ СЃР±СЂРѕСЃР° РїР°СЂРѕР»СЏ.';
         d.getElementById('recovery_next').href = 'javascript:close_obj("pass_recovery", true);';        
     }
     else
@@ -42,55 +42,55 @@ StateReady = function()
             switch(arr_res[i])
             {
                 case '1':
-                
-                if(!msg) msg = 'Пароли не совпадают!';
+
+                    if (!msg) msg = 'РџР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚!';
                 err = 3; 
                 
                 break;
                 case '2':
-                
-                if(!msg) msg = 'Пароль должен содержать не менее 8 символов!';
+
+                    if (!msg) msg = 'РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРµ РјРµРЅРµРµ 8 СЃРёРјРІРѕР»РѕРІ!';
                 err = 2; 
                 
                 break;
                 case '3':
-                
-                if(!msg) msg = 'Недопустимый формат E-mail!';
+
+                    if (!msg) msg = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ E-mail!';
                 err = 1; 
                 
                 break;
                 case '4':
-                
-                if(!msg) msg = 'Недопустимый формат никнейма!';
+
+                    if (!msg) msg = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ РЅРёРєРЅРµР№РјР°!';
                 err = 0; 
                 
                 break;
                 case '6':
-                
-                if(!msg) msg = 'Указанный никнейм уже занят!';
+
+                    if (!msg) msg = 'РЈРєР°Р·Р°РЅРЅС‹Р№ РЅРёРєРЅРµР№Рј СѓР¶Рµ Р·Р°РЅСЏС‚!';
                 err = 0; 
                 
                 break;
                 case '5':
-                
-                if(!msg) msg = 'Примите условия пользовательского соглашения!'; 
+
+                    if (!msg) msg = 'РџСЂРёРјРёС‚Рµ СѓСЃР»РѕРІРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ СЃРѕРіР»Р°С€РµРЅРёСЏ!';
                 
                 break;
                 case '7':
-                
-                if(!msg) msg = 'Указанный E-mail уже занят!'; 
+
+                    if (!msg) msg = 'РЈРєР°Р·Р°РЅРЅС‹Р№ E-mail СѓР¶Рµ Р·Р°РЅСЏС‚!';
                 
                 break;
                 case '8':
 				
                 check_refrech_auto.location='check.php';
-                if(!msg) msg = 'Введите верный код с картинки.';
+                    if (!msg) msg = 'Р’РІРµРґРёС‚Рµ РІРµСЂРЅС‹Р№ РєРѕРґ СЃ РєР°СЂС‚РёРЅРєРё.';
                 err = 4;  
                 
                 break;
                 case '9':
-                
-                if(!msg) msg = 'Данный IP был недавно использован при регистрации.';
+
+                    if (!msg) msg = 'Р”Р°РЅРЅС‹Р№ IP Р±С‹Р» РЅРµРґР°РІРЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅ РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё.';
                 
                 break;
             }
@@ -156,14 +156,14 @@ RegSubmit = function(vcode)
      var verify = d.getElementById("verify").value;
      var code = d.getElementById("code").value;
      var condition = d.getElementById("condition");
-     
-     if(!login) err_mess = 'Введите Ваш никнейм!';
-     else if(login.length < 3 || login.length > 20) err_mess = 'Никнейм должен содержать от 3 до 20 символов!';
-     else if(!email.match(re_e)) err_mess = 'Введите Ваш E-mail!';
-     else if(pass.length < 8) err_mess = 'Пароль должен содержать не менее 8 символов!';
-     else if(pass != verify) err_mess = 'Пароли не совпадают!';
-     else if(!code.match(re)) err_mess = 'Введите код с картинки!';
-     else if(!condition.checked) err_mess = 'Примите условия пользовательского соглашения!';
+
+    if (!login) err_mess = 'Р’РІРµРґРёС‚Рµ Р’Р°С€ РЅРёРєРЅРµР№Рј!';
+    else if (login.length < 3 || login.length > 20) err_mess = 'РќРёРєРЅРµР№Рј РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РѕС‚ 3 РґРѕ 20 СЃРёРјРІРѕР»РѕРІ!';
+    else if (!email.match(re_e)) err_mess = 'Р’РІРµРґРёС‚Рµ Р’Р°С€ E-mail!';
+    else if (pass.length < 8) err_mess = 'РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРµ РјРµРЅРµРµ 8 СЃРёРјРІРѕР»РѕРІ!';
+    else if (pass != verify) err_mess = 'РџР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚!';
+    else if (!code.match(re)) err_mess = 'Р’РІРµРґРёС‚Рµ РєРѕРґ СЃ РєР°СЂС‚РёРЅРєРё!';
+    else if (!condition.checked) err_mess = 'РџСЂРёРјРёС‚Рµ СѓСЃР»РѕРІРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ СЃРѕРіР»Р°С€РµРЅРёСЏ!';
      
      if(err_mess == '') 
      {
@@ -201,9 +201,9 @@ pass_recovery = function(vcode)
     var err_mess = '';
     var login = d.getElementById('f_login').value;
     var email = d.getElementById('f_email').value;
-    if(!login) err_mess = 'Введите Ваш никнейм!';
-    else if(login.length < 3 || login.length > 20) err_mess = 'Никнейм должен содержать от 3 до 20 символов!';
-    else if(!email.match(re_e)) err_mess = 'Введите Ваш E-mail!';
+    if (!login) err_mess = 'Р’РІРµРґРёС‚Рµ Р’Р°С€ РЅРёРєРЅРµР№Рј!';
+    else if (login.length < 3 || login.length > 20) err_mess = 'РќРёРєРЅРµР№Рј РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РѕС‚ 3 РґРѕ 20 СЃРёРјРІРѕР»РѕРІ!';
+    else if (!email.match(re_e)) err_mess = 'Р’РІРµРґРёС‚Рµ Р’Р°С€ E-mail!';
     if(!err_mess) AjaxGetScript('./modules/reg/ajax_recovery_nl.php?login='+encodeURIComponent(login)+'&email='+encodeURIComponent(email)+'&vcode='+vcode+'&r='+Math.random());
     else 
     {

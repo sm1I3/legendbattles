@@ -15,7 +15,7 @@ if  ($pers['pair_id']!='none'){
 <SCRIPT src="/js/signs.js"></SCRIPT>
 <font class=nickname><font color=#222222>
 <FIELDSET>
-  <LEGEND align=center><B>Альянс</B></LEGEND>
+    <LEGEND align=center><B>РђР»СЊСЏРЅСЃ</B></LEGEND>
   <table cellpadding=5 cellspacing=0 border=0 width=100%>
     <tr>
       <td><?php
@@ -42,7 +42,7 @@ echo'    <tr>
 echo'  </tbody>
 </table>';
 }else{
-	echo"<center>У вас нет Альянса</center>";
+              echo "<center>РЈ РІР°СЃ РЅРµС‚ РђР»СЊСЏРЅСЃР°</center>";
  }	
 	  ?></td>
     </tr>

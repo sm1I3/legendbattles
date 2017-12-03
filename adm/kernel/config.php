@@ -9,4 +9,4 @@ if (!$db = mysql_connect('localhost', '34', '34'))
     die('Cannot connect to MySQL server.');
 
 mysql_select_db('34', $db);
-mysql_set_charset('cp1251');
+mysql_set_charset('utf8');

@@ -19,7 +19,7 @@
 				$reagent=explode("@",$val);
 				$regit = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `items`.`name` FROM `items` WHERE `items`.`id`='".$reagent[0]."' LIMIT 1;"));
 				if($plcol[$reagent[0]]<$reagent[1]){
-					$regmiss.='<b>'.$regit['name'].'</b> в количестве '.($reagent[1]-$plcol[$reagent[0]]).' шт.<br>';
+                    $regmiss .= '<b>' . $regit['name'] . '</b> РІ РєРѕР»РёС‡РµСЃС‚РІРµ ' . ($reagent[1] - $plcol[$reagent[0]]) . ' С€С‚.<br>';
 					$err="1";
 				}				
 			}

@@ -24,10 +24,10 @@ function nextStep(page){
 				nextStep(data.thispage + 1);
 			}else if( data.status == 'success'){
 				$('#pocess').html('<font color="green">100%</font>');
-				$('#status').html('<font color="green"><b>Все сообщения отправлены</b></font>');
+                $('#status').html('<font color="green"><b>Р’СЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚РїСЂР°РІР»РµРЅС‹</b></font>');
 			}else{
 				$('#pocess').html('<font color="red">Error</font>');
-				$('#status').html('<font color="red">Неизветсная ошибка</font>');
+                $('#status').html('<font color="red">РќРµРёР·РІРµС‚СЃРЅР°СЏ РѕС€РёР±РєР°</font>');
 			}
 		}
 	});

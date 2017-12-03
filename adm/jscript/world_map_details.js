@@ -169,7 +169,7 @@ function showDetails(x, y)
         el('cell_det_3').checked = false;
         el('cell_det_4').checked = false;
         el('cell_det_5').checked = false;
-        el('cell_enter').innerHTML = 'Пусто';
+        el('cell_enter').innerHTML = 'РџСѓСЃС‚Рѕ';
     }
     
     if (changed_cells[id])
@@ -322,12 +322,12 @@ function setClibboardStatus(status)
 {
     if (status == 'empty')
     {
-        el('clipboard_status').innerHTML = 'Буфер обмена пуст.';
+        el('clipboard_status').innerHTML = 'Р‘СѓС„РµСЂ РѕР±РјРµРЅР° РїСѓСЃС‚.';
         el('clipboard_status').className = 'status_none';
     }
     else
     {
-        el('clipboard_status').innerHTML = 'Буфер обмена: '+cells[current_cell]['name'];
+        el('clipboard_status').innerHTML = 'Р‘СѓС„РµСЂ РѕР±РјРµРЅР°: ' + cells[current_cell]['name'];
         el('clipboard_status').className = 'status_good';
     }
 }
@@ -337,13 +337,13 @@ function setSavedStatus(status)
     if (status == 'saved')
     {
         el('save_all_status').className = 'status_ok';
-        el('save_all_status').innerHTML = 'Все изменения сохранены.';
+        el('save_all_status').innerHTML = 'Р’СЃРµ РёР·РјРµРЅРµРЅРёСЏ СЃРѕС…СЂР°РЅРµРЅС‹.';
         el('save_all_button').disabled = true;
     }
     else
     {
         el('save_all_status').className = 'status_notice';
-        el('save_all_status').innerHTML = 'Есть несохранённые данные.';
+        el('save_all_status').innerHTML = 'Р•СЃС‚СЊ РЅРµСЃРѕС…СЂР°РЅС‘РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ.';
         el('save_all_button').disabled = false;
     }
 }

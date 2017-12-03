@@ -11,8 +11,8 @@
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location='adm.php'" value="Вернуться">
-		<input type=button class=lbut onClick="location='accounts.php'" value="обновить">
+        <input type=button class=lbut onClick="location='adm.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        <input type=button class=lbut onClick="location='accounts.php'" value="РѕР±РЅРѕРІРёС‚СЊ">
 	</td>
    </tr>
 </table>
@@ -41,11 +41,13 @@ echo '
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 <tr align=center><td>
 <select name=acc>
-<option value="none" '.(($_POST['acc']!='none' and $_POST['acc']!='')?'':'selected=selected').'>Выберите аккаунт</option>
+<option value="none" ' . (($_POST['acc'] != 'none' and $_POST['acc'] != '') ? '' : 'selected=selected') . '>Р’С‹Р±РµСЂРёС‚Рµ Р°РєРєР°СѓРЅС‚</option>
 ';
 while($acc = mysqli_fetch_assoc($accsql)){
 	switch($acc['id']){
-		 case 1: $name="Базовый";break;
+        case 1:
+            $name = "Р‘Р°Р·РѕРІС‹Р№";
+            break;
 		 case 2: $name="Premium";break;
 		 case 3: $name="Gold";break;
 		 case 4: $name="VIP";break;
@@ -55,7 +57,7 @@ while($acc = mysqli_fetch_assoc($accsql)){
 }
 echo '
 </select>
-<input class=lbut type=submit value="Выбрать">
+<input class=lbut type=submit value="Р’С‹Р±СЂР°С‚СЊ">
 </td></tr>
 </table>
 </form>
@@ -72,17 +74,19 @@ if($_GET['save']==1 and $_POST['acc']!='none'){
 	}
 	$what=substr($what,0,strlen($what)-1);
 	if(mysqli_query($GLOBALS['db_link'],"UPDATE `premium_info` SET ".$what." WHERE ".$where."  LIMIT 1;")){
-		$msg='<b><font class=nickname style="color:green">Аккаунт успешно сохранен.</font></b>';
+        $msg = '<b><font class=nickname style="color:green">РђРєРєР°СѓРЅС‚ СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅ.</font></b>';
 	}
 	else{
-		$msg='<b><font class=nickname style="color:red">Ошибка при сохранении аккаунта!</font></b>';
+        $msg = '<b><font class=nickname style="color:red">РћС€РёР±РєР° РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё Р°РєРєР°СѓРЅС‚Р°!</font></b>';
 	}
 }
 if($_POST['acc']!='none' and $_GET['add']==1){
 $val_acc=varcheck($_POST['acc']);
 	$account=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `premium_info`  WHERE `id`='".$val_acc."' LIMIT 1;"));
 	switch($_POST['acc']){
-		 case 1: $name="Базовый";break;
+        case 1:
+            $name = "Р‘Р°Р·РѕРІС‹Р№";
+            break;
 		 case 2: $name="Premium";break;
 		 case 3: $name="Gold";break;
 		 case 4: $name="VIP";break;
@@ -111,10 +115,10 @@ $val_acc=varcheck($_POST['acc']);
 			<tr><td>
 			<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 				<tr class=nickname bgcolor=#EAEAEA>
-					<td align=center width=30%><b>Аккаунт</b></td>
-					<td align=center><b>Масса рюкзака<br>Выход из города<br>Сейф в банке</b></td>
-					<td align=center><b>Опыт</b><br><font class=freetxt> обычный, пвп, склонности </font></td>
-					<td align=center><b>Цена (dlr)</b><br><font class=freetxt> 10,30,60,90 дней </font></td>
+					<td align=center width=30%><b>РђРєРєР°СѓРЅС‚</b></td>
+					<td align=center><b>РњР°СЃСЃР° СЂСЋРєР·Р°РєР°<br>Р’С‹С…РѕРґ РёР· РіРѕСЂРѕРґР°<br>РЎРµР№С„ РІ Р±Р°РЅРєРµ</b></td>
+					<td align=center><b>РћРїС‹С‚</b><br><font class=freetxt> РѕР±С‹С‡РЅС‹Р№, РїРІРї, СЃРєР»РѕРЅРЅРѕСЃС‚Рё </font></td>
+					<td align=center><b>Р¦РµРЅР° (dlr)</b><br><font class=freetxt> 10,30,60,90 РґРЅРµР№ </font></td>
 		
 				</tr>';
 
@@ -122,33 +126,33 @@ $val_acc=varcheck($_POST['acc']);
 		<tr class=freetxt bgcolor=white>
 			<td align=center width=30%>
 				<font class=weaponchart><b>'.$name.'</b></font><br><br>
-				<b>Автобой:</b><br><select name="auto"><option value="0" '.$a[0].'>Нет</option><option value="1" '.$a[1].'>Да</option></select><br>
-				<b>Смайлы:</b><br><select name="smiles"><option value="0" '.$b[0].'>Нет</option><option value="1" '.$b[1].'>Да</option></select>
+				<b>РђРІС‚РѕР±РѕР№:</b><br><select name="auto"><option value="0" ' . $a[0] . '>РќРµС‚</option><option value="1" ' . $a[1] . '>Р”Р°</option></select><br>
+				<b>РЎРјР°Р№Р»С‹:</b><br><select name="smiles"><option value="0" ' . $b[0] . '>РќРµС‚</option><option value="1" ' . $b[1] . '>Р”Р°</option></select>
 				'.($msg?'<br>'.$msg:'').'
 			</td>
 			<td align=center>
-				<b>Расширенный дроп (+\- уровень):</b><br><input type=text class=logintextbox6 name="drop" value="'.$account['drop'].'" /><br>
-				<b>Масса:</b><br><input type=text class=logintextbox6 name="mass" value="'.$account['mass'].'" /><br>
-				<b>Выход из города:</b><br><select name="exit"><option value="0" '.$w[0].'>Нет</option><option value="1" '.$w[1].'>Выход</option><option value="2" '.$w[2].'>Вход/Выход</option></select><br>
-				<b>Сейф в банке:</b><br><select name="seif"><option value="0" '.$s[0].'>Нет</option><option value="1" '.$s[1].'>Да</option></select>
+				<b>Р Р°СЃС€РёСЂРµРЅРЅС‹Р№ РґСЂРѕРї (+\- СѓСЂРѕРІРµРЅСЊ):</b><br><input type=text class=logintextbox6 name="drop" value="' . $account['drop'] . '" /><br>
+				<b>РњР°СЃСЃР°:</b><br><input type=text class=logintextbox6 name="mass" value="' . $account['mass'] . '" /><br>
+				<b>Р’С‹С…РѕРґ РёР· РіРѕСЂРѕРґР°:</b><br><select name="exit"><option value="0" ' . $w[0] . '>РќРµС‚</option><option value="1" ' . $w[1] . '>Р’С‹С…РѕРґ</option><option value="2" ' . $w[2] . '>Р’С…РѕРґ/Р’С‹С…РѕРґ</option></select><br>
+				<b>РЎРµР№С„ РІ Р±Р°РЅРєРµ:</b><br><select name="seif"><option value="0" ' . $s[0] . '>РќРµС‚</option><option value="1" ' . $s[1] . '>Р”Р°</option></select>
 				
 			</td>
 			<td align=center>
-				<b>Опыт:</b><br><input type=text class=logintextbox6 name="exp" value="'.$account['exp'].'" /><br>
-				<b>Опыт(пвп):</b><br><input type=text class=logintextbox6 name="exp_pvp" value="'.$account['exp_pvp'].'" /><br>
-				<b>Опыт(склонности):</b><br><input type=text class=logintextbox6 name="exp_sklon" value="'.$account['exp_sklon'].'" /><br>
-				<b>Ограничение:</b><br><input type=text class=logintextbox6 name="exp_max" value="'.$account['exp_max'].'" />
+				<b>РћРїС‹С‚:</b><br><input type=text class=logintextbox6 name="exp" value="' . $account['exp'] . '" /><br>
+				<b>РћРїС‹С‚(РїРІРї):</b><br><input type=text class=logintextbox6 name="exp_pvp" value="' . $account['exp_pvp'] . '" /><br>
+				<b>РћРїС‹С‚(СЃРєР»РѕРЅРЅРѕСЃС‚Рё):</b><br><input type=text class=logintextbox6 name="exp_sklon" value="' . $account['exp_sklon'] . '" /><br>
+				<b>РћРіСЂР°РЅРёС‡РµРЅРёРµ:</b><br><input type=text class=logintextbox6 name="exp_max" value="' . $account['exp_max'] . '" />
 			</td>
 			<td align=center>
-				<b>10 дней:</b><br><input type=text class=logintextbox6 name="price_10" value="'.$account['price_10'].'" /><br>
-				<b>30 дней:</b><br><input type=text class=logintextbox6 name="price_30" value="'.$account['price_30'].'" /><br>
-				<b>60 дней:</b><br><input type=text class=logintextbox6 name="price_60" value="'.$account['price_60'].'" /><br>
-				<b>90 дней:</b><br><input type=text class=logintextbox6 name="price_90" value="'.$account['price_90'].'" />
+				<b>10 РґРЅРµР№:</b><br><input type=text class=logintextbox6 name="price_10" value="' . $account['price_10'] . '" /><br>
+				<b>30 РґРЅРµР№:</b><br><input type=text class=logintextbox6 name="price_30" value="' . $account['price_30'] . '" /><br>
+				<b>60 РґРЅРµР№:</b><br><input type=text class=logintextbox6 name="price_60" value="' . $account['price_60'] . '" /><br>
+				<b>90 РґРЅРµР№:</b><br><input type=text class=logintextbox6 name="price_90" value="' . $account['price_90'] . '" />
 			</td>
 		</tr>
 		<tr class=freetxt bgcolor=white>
 			<td align=center width=100% colspan=8>
-			<input class=lbut type=submit value="Сохранить">
+			<input class=lbut type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 			<input type=hidden name=acc value="'.$_POST['acc'].'">
 			</td>
 		</tr>	

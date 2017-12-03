@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
 <head>
-	<title>404 - Ошибка: 404</title>
-    <meta name="keywords" content="404 page, Страница не найдена, Ошибка 404" />
-    <meta name="description" content="404 - Страница не найдена" />
+    <title>404 - РћС€РёР±РєР°: 404</title>
+    <meta name="keywords" content="404 page, РЎС‚СЂР°РЅРёС†Р° РЅРµ РЅР°Р№РґРµРЅР°, РћС€РёР±РєР° 404"/>
+    <meta name="description" content="404 - РЎС‚СЂР°РЅРёС†Р° РЅРµ РЅР°Р№РґРµРЅР°"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!-- Libs CSS -->
     <link type="text/css" media="all" href="http://aff1.ru/templates/spectrum/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -34,14 +34,15 @@
                 <input id="sw" type="checkbox" class="switcher-value">
                 <label for="sw" class="sw_btn"></label>
                 <div class="bg"></div>
-                <div class="text"><span class="text-l">Погаси</span><span class="text-d">Включи</span><br />свет</div>
+                <div class="text"><span class="text-l">РџРѕРіР°СЃРё</span><span class="text-d">Р’РєР»СЋС‡Рё</span><br/>СЃРІРµС‚</div>
             </div>
             <!-- End Switcher -->
 
             <!-- Dark version -->
             <div id="dark" class="row text-center">
                 <div class="info">
-                    <img src="http://aff1.ru/templates/spectrum/assets/img/404-dark.png" alt="404 - страница не найдена" />
+                    <img src="http://aff1.ru/templates/spectrum/assets/img/404-dark.png"
+                         alt="404 - СЃС‚СЂР°РЅРёС†Р° РЅРµ РЅР°Р№РґРµРЅР°"/>
                 </div>
             </div>
             <!-- End Dark version -->
@@ -50,11 +51,12 @@
             <div id="light" class="row text-center">
                 <!-- Info -->
                 <div class="info">
-                    <img src="http://aff1.ru/templates/spectrum/assets/img/404-light.gif" alt="404 - страница не найдена" />
+                    <img src="http://aff1.ru/templates/spectrum/assets/img/404-light.gif"
+                         alt="404 - СЃС‚СЂР°РЅРёС†Р° РЅРµ РЅР°Р№РґРµРЅР°"/>
                     <!-- end Rabbit -->
-                    <p>Страница, которую вы ищете, не существует...<br />
-                       Она была изменена или удалена, а может ее никогда и не было.</p>
-                    <a href="http://legendbattles.ru" class="btn">Главная</a>
+                    <p>РЎС‚СЂР°РЅРёС†Р°, РєРѕС‚РѕСЂСѓСЋ РІС‹ РёС‰РµС‚Рµ, РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚...<br/>
+                        РћРЅР° Р±С‹Р»Р° РёР·РјРµРЅРµРЅР° РёР»Рё СѓРґР°Р»РµРЅР°, Р° РјРѕР¶РµС‚ РµРµ РЅРёРєРѕРіРґР° Рё РЅРµ Р±С‹Р»Рѕ.</p>
+                    <a href="http://legendbattles.ru" class="btn">Р“Р»Р°РІРЅР°СЏ</a>
                 </div>
                 <!-- end Info -->
             </div>

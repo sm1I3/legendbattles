@@ -1,45 +1,93 @@
+<
+style >
+body {
+    font: normal 11px Tahoma;
+}
 
-<style>
-body { font: normal 11px Tahoma; }
-table, input { font: 11px Tahoma; }
-table th { padding: 1px; }
-table td { padding: 1px; }
-	/*TABLES*/
-.tbl0 { border-spacing: 0px; }
-.tbl0 td { padding: 0px !important; }
-.tbl0 input[type=text] { font: 11px Tahoma; }
+table, input {
+    font: 11px Tahoma;
+}
+
+table th {
+    padding: 1px;
+}
+
+table td {
+    padding: 1px;
+}
+
+/*TABLES*/
+.tbl0 {
+    border-spacing: 0px;
+}
+
+.tbl0 td {
+    padding: 0px !important;
+}
+
+.tbl0 input[type=text] {
+    font: 11px Tahoma;
+}
 
 .h_button div {
-	padding: 3px 8px;
-	background: #3f3e3e;
-	border: 1px solid #3a3a3a;
-	border-radius: 4px;
-	margin: 0 3px 0 0;
-	float: left;
+    padding: 3px 8px;
+    background: #3f3e3e;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    margin: 0 3px 0 0;
+    float: left;
 }
-.h_button a { font: bold 11px Tahoma; color: white; text-align: center; text-decoration: none; }
-.h_button a:hover, .h_buttons a:active { text-decoration: underline; }
+
+.h_button a {
+    font: bold 11px Tahoma;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.h_button a:hover, .h_buttons a:active {
+    text-decoration: underline;
+}
 
 .tbl1 {
-	margin: 0px;
-	font: 11px Tahoma;
-	padding: 3px;
-	border: 1px solid #3a3a3a;
-	text-align: left;
-	box-shadow: 1px 1px 1px 0px #46270d;
-	background: #eeeeee;
-	border-radius: 6px;
-	border-spacing: 1px;	
+    margin: 0px;
+    font: 11px Tahoma;
+    padding: 3px;
+    border: 1px solid #3a3a3a;
+    text-align: left;
+    box-shadow: 1px 1px 1px 0px #46270d;
+    background: #eeeeee;
+    border-radius: 6px;
+    border-spacing: 1px;
 }
+
 .tbl1 th {
-	background: #3a3a3a;
-	font-weight: bold;
-	box-shadow: 1px 1px 2px 0px #7d5015;
-	color: #fcf0e1;
+    background: #3a3a3a;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px 0px #7d5015;
+    color: #fcf0e1;
 }
-.tbl1 td { padding: 0px; }
 
-.main_menu .inside {font: 11px Tahoma;margin: 8px 6px 6px 6px;border: 1px solid #3a3a3a;border-radius: 5px;background: #eeeeee;position: relative;}
+.tbl1 td {
+    padding: 0px;
+}
 
-.zaks { position: absolute; right: 0px; top: 250px; width: 194px;}
-	</style>
+.main_menu .inside {
+    font: 11px Tahoma;
+    margin: 8px 6px 6px 6px;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    background: #eeeeee;
+    position: relative;
+}
+
+.zaks {
+    position: absolute;
+    right: 0px;
+    top: 250px;
+    width: 194px;
+}
+
+<
+/
+style >

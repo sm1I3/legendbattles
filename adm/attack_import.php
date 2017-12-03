@@ -40,13 +40,14 @@ if (isset($_FILES['config_file']))
 }
 
 ?>
-<h3>Импорт конфига</h3>
+    <h3>РРјРїРѕСЂС‚ РєРѕРЅС„РёРіР°</h3>
 <br />
 <form name="config_import" action="" method="post" enctype="multipart/form-data">
 <input type="file" name="config_file" /><br /><br />
-<input type="submit" name="import" value="Импортировать" onclick="return confirm('Все текущие удары будут удалены. Вы уверены?');" />
+    <input type="submit" name="import" value="РРјРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ"
+           onclick="return confirm('Р’СЃРµ С‚РµРєСѓС‰РёРµ СѓРґР°СЂС‹ Р±СѓРґСѓС‚ СѓРґР°Р»РµРЅС‹. Р’С‹ СѓРІРµСЂРµРЅС‹?');"/>
 </form>
 <br />
-<a href="attack_list.php">Назад</a>
+    <a href="attack_list.php">РќР°Р·Р°Рґ</a>
 
 <? require('kernel/after.php'); ?>

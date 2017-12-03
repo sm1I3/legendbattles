@@ -3,7 +3,7 @@
 <div style="padding-left:39px; text-align:left; padding-top:0px;" id="draw_pers_info"></div>
 <div style="position: absolute; left: 0; top: 0; width: 100%; z-index: 50;" id="popup"></div>
 <html>
-<META content="text/html; charset=windows-1251" Http-Equiv=Content-type>
+<META content="text/html; charset=utf-8" Http-Equiv=Content-type>
 <META Http-Equiv=Cache-Control Content=no-cache>
 <META Http-Equiv=PRAGMA content=NO-CACHE>
 <META Http-Equiv=Expires Content=0>
@@ -20,38 +20,37 @@ function getRandomArbitary(min, max)
 	}
 
 
-
-
-// скорость прокрутки
+// СЃРєРѕСЂРѕСЃС‚СЊ РїСЂРѕРєСЂСѓС‚РєРё
 var speed = 180
-// останавливаем на 1 сек.
+// РѕСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅР° 1 СЃРµРє.
 var pause = 1000
 var timerID = null
 var wireRunning = false
 var cc = new Array()
 
 
-
-cc[0] = "Боец вот и начался твой путь";
-cc[1] = "В беспощадном мире,ты пока что никто";
-cc[2] = "И добиться уважения очень тяжело";
-cc[3] = "Я научу тебя пользоватся первыми твоими ножами.";
-cc[4] = "Но и , их не хватит тебе, что бы стать сильнейшем";
-cc[5] = "Для этого ,ты должен проходить поручения моих друзей,зарабатывать репутацию!";
-cc[6] = "И менять её на доспехи.";
-cc[7] = "А теперь одевай,мои кленки и сразись со стажей,но не забудь о том что тебе надо 5 побед.";
-cc[8] = "После чего отправляйся к Олафу.";
+cc[0] = "Р‘РѕРµС† РІРѕС‚ Рё РЅР°С‡Р°Р»СЃСЏ С‚РІРѕР№ РїСѓС‚СЊ";
+cc[1] = "Р’ Р±РµСЃРїРѕС‰Р°РґРЅРѕРј РјРёСЂРµ,С‚С‹ РїРѕРєР° С‡С‚Рѕ РЅРёРєС‚Рѕ";
+cc[2] = "Р РґРѕР±РёС‚СЊСЃСЏ СѓРІР°Р¶РµРЅРёСЏ РѕС‡РµРЅСЊ С‚СЏР¶РµР»Рѕ";
+cc[3] = "РЇ РЅР°СѓС‡Сѓ С‚РµР±СЏ РїРѕР»СЊР·РѕРІР°С‚СЃСЏ РїРµСЂРІС‹РјРё С‚РІРѕРёРјРё РЅРѕР¶Р°РјРё.";
+cc[4] = "РќРѕ Рё , РёС… РЅРµ С…РІР°С‚РёС‚ С‚РµР±Рµ, С‡С‚Рѕ Р±С‹ СЃС‚Р°С‚СЊ СЃРёР»СЊРЅРµР№С€РµРј";
+cc[5] = "Р”Р»СЏ СЌС‚РѕРіРѕ ,С‚С‹ РґРѕР»Р¶РµРЅ РїСЂРѕС…РѕРґРёС‚СЊ РїРѕСЂСѓС‡РµРЅРёСЏ РјРѕРёС… РґСЂСѓР·РµР№,Р·Р°СЂР°Р±Р°С‚С‹РІР°С‚СЊ СЂРµРїСѓС‚Р°С†РёСЋ!";
+cc[6] = "Р РјРµРЅСЏС‚СЊ РµС‘ РЅР° РґРѕСЃРїРµС…Рё.";
+cc[7] = "Рђ С‚РµРїРµСЂСЊ РѕРґРµРІР°Р№,РјРѕРё РєР»РµРЅРєРё Рё СЃСЂР°Р·РёСЃСЊ СЃРѕ СЃС‚Р°Р¶РµР№,РЅРѕ РЅРµ Р·Р°Р±СѓРґСЊ Рѕ С‚РѕРј С‡С‚Рѕ С‚РµР±Рµ РЅР°РґРѕ 5 РїРѕР±РµРґ.";
+cc[8] = "РџРѕСЃР»Рµ С‡РµРіРѕ РѕС‚РїСЂР°РІР»СЏР№СЃСЏ Рє РћР»Р°С„Сѓ.";
 
 var currentMessage = 0
 var offset = 0
-// останавливаем вывод сообщений
+
+// РѕСЃС‚Р°РЅР°РІР»РёРІР°РµРј РІС‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёР№
 function stopWire() {
                 if (wireRunning)
                 clearTimeout(timerID)
                 wireRunning = false
 
 }
-// стартуем
+
+// СЃС‚Р°СЂС‚СѓРµРј
 function startWire() {
                 stopWire()
                 showWire()
@@ -75,12 +74,12 @@ function showWire() {
                 timerID = setTimeout("showWire()", pause)
 
            if (currentMessage == 0 && offset == 0){
-                // останавливаем функцию =)
+               // РѕСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„СѓРЅРєС†РёСЋ =)
                 stopWire();
-                // закрываем окно.
+               // Р·Р°РєСЂС‹РІР°РµРј РѕРєРЅРѕ.
                 close_window();
-                // открываем окно
-                message_window ('success','','<a href=?starik=senk>Спасибо</a>','cancel','');
+               // РѕС‚РєСЂС‹РІР°РµРј РѕРєРЅРѕ
+               message_window('success', '', '<a href=?starik=senk>РЎРїР°СЃРёР±Рѕ</a>', 'cancel', '');
 
         wireRunning = true
         }
@@ -105,26 +104,26 @@ function showWire() {
 <?
 
 if ($player["level"]<1)
-echo "Всему свое время. Ждите";
+    echo "Р’СЃРµРјСѓ СЃРІРѕРµ РІСЂРµРјСЏ. Р–РґРёС‚Рµ";
 else if($player["time_prz"]<time())
-echo "Вождь Торгор. <font color=#cc0000> Прежде чем слушать отключите обновления фрейма. Который находться в настройках ПЕРСОНАЖА. <a href=?starik=1> Послушать </a>";
+    echo "Р’РѕР¶РґСЊ РўРѕСЂРіРѕСЂ. <font color=#cc0000> РџСЂРµР¶РґРµ С‡РµРј СЃР»СѓС€Р°С‚СЊ РѕС‚РєР»СЋС‡РёС‚Рµ РѕР±РЅРѕРІР»РµРЅРёСЏ С„СЂРµР№РјР°. РљРѕС‚РѕСЂС‹Р№ РЅР°С…РѕРґС‚СЊСЃСЏ РІ РЅР°СЃС‚СЂРѕР№РєР°С… РџР•Р РЎРћРќРђР–Рђ. <a href=?starik=1> РџРѕСЃР»СѓС€Р°С‚СЊ </a>";
 else {
-echo "*Всему свое время. Ждите. приходите через <b>".tp($player["time_prz"] - time())."</b>";
+    echo "*Р’СЃРµРјСѓ СЃРІРѕРµ РІСЂРµРјСЏ. Р–РґРёС‚Рµ. РїСЂРёС…РѕРґРёС‚Рµ С‡РµСЂРµР· <b>" . tp($player["time_prz"] - time()) . "</b>";
 }
 
-## …сли персонаж согласилсЯ присесть к старику =)
+## вЂ¦СЃР»Рё РїРµСЂСЃРѕРЅР°Р¶ СЃРѕРіР»Р°СЃРёР»СЃРЇ РїСЂРёСЃРµСЃС‚СЊ Рє СЃС‚Р°СЂРёРєСѓ =)
 if ($_GET["starik"] == 1 and $pers["time_prz"]<time() and $player["level"]>=1){
-$secrets = 'Начало пути  <br><FORM NAME="wireForm"><input type="text" style="height:45px;" class="but_view" name="wireField" value=" Выслушать" size=100 onFocus="if (!wireRunning) { startWire() }"></FORM>';
+    $secrets = 'РќР°С‡Р°Р»Рѕ РїСѓС‚Рё  <br><FORM NAME="wireForm"><input type="text" style="height:45px;" class="but_view" name="wireField" value=" Р’С‹СЃР»СѓС€Р°С‚СЊ" size=100 onFocus="if (!wireRunning) { startWire() }"></FORM>';
 }
 
 
-## Џолучение подарка.
+## РЏРѕР»СѓС‡РµРЅРёРµ РїРѕРґР°СЂРєР°.
 if ($_GET["starik"] == 'senk' and $player["time_prz"]<time() and $player["level"]>=1){
 $prz_time = (time()+86400);
 mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price` ,`curslot` ,`clan` ,`gift` ,`gift_from`) VALUES ('116',  '".$player['id']."',  '0',  '0',  '10',  '10',  '0',  '0',  '0',  '0',  '".$gfrom."');");
 mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price` ,`curslot` ,`clan` ,`gift` ,`gift_from`) VALUES ('116',  '".$player['id']."',  '0',  '0',  '10',  '10',  '0',  '0',  '0',  '0',  '".$gfrom."');");
-$res = "Вы получили <b>Заточка Начинающего (2 шт)</b> !";
-chmsg("top.frames['chmain'].add_msg('<font class=massm>&nbsp;&nbsp;<b>Вождь Торгор</b>&nbsp;&nbsp;</font>   <font color=000000><b><font color=#cc0000>Внимание! </font></b>".$res.".<BR>'+'');",$player['login']);
+    $res = "Р’С‹ РїРѕР»СѓС‡РёР»Рё <b>Р—Р°С‚РѕС‡РєР° РќР°С‡РёРЅР°СЋС‰РµРіРѕ (2 С€С‚)</b> !";
+    chmsg("top.frames['chmain'].add_msg('<font class=massm>&nbsp;&nbsp;<b>Р’РѕР¶РґСЊ РўРѕСЂРіРѕСЂ</b>&nbsp;&nbsp;</font>   <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ! </font></b>" . $res . ".<BR>'+'');", $player['login']);
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `time_prz`='".$prz_time."' WHERE `id`='".$player["id"]."' LIMIT 1");
 echo "<script>location='main.php';</script>";
 }

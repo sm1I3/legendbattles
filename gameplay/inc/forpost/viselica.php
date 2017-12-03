@@ -9,7 +9,7 @@ echo'
 <tr><td>
 <font class=proce>
 <FIELDSET>
-<LEGEND align=center><B><font color=gray>&nbsp;Виселица&nbsp;</font></B></LEGEND>
+<LEGEND align=center><B><font color=gray>&nbsp;Р’РёСЃРµР»РёС†Р°&nbsp;</font></B></LEGEND>
 <table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><table cellpadding=0 cellspacing=2 border=0 width=100%>
 <tr><td><div align=center><font class=nickname>';
 if($_GET['viselica']==1 and !empty($_POST['login'])){
@@ -28,55 +28,55 @@ if($_GET['viselica']==1 and !empty($_POST['login'])){
 				calcstat($usr['id']);				
 				$ret=substr($ret,0,strlen($ret)-2);
 				$ret=substr($ret,2);
-				$msg[1]="Персонажа <b>".$usr['login']."</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?".$usr['login']."\" target=\"_blank\"><img src=/img/image/chat/info.gif width=11 height=12 border=0 onClick=\"window.open(\'http://legendbattles.ru/ipers.php?".$usr['login']."\');\" ></a>&nbsp;пытались повесить по заказу <b>".$player['login']."</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?".$player['login']."\" target=\"_blank\"><img src=/img/image/chat/info.gif width=11 height=12 border=0 onClick=\"window.open(\'http://legendbattles.ru/ipers.php?".$player['login']."\');\" ></a>! К сожалению он сорвался с виселицы и сломал себе пару костей...";
-				$msg[2]="<b>".$usr['login']."&nbsp;<font color=#CC0000>Получил тяжелые увечья и был отправлен в больницу на неизвестный срок!</font></b>";
-				echo "<b>".$usr['login']."</b>&nbsp;<b><font color=#CC0000>Повешен!</font></b>";
-				$ms[1]="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b>&nbsp;".$msg[1]."<BR>'+'');";
-				$ms[2]="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b>&nbsp;".$msg[2]."<BR>'+'');";
+                $msg[1] = "РџРµСЂСЃРѕРЅР°Р¶Р° <b>" . $usr['login'] . "</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?" . $usr['login'] . "\" target=\"_blank\"><img src=/img/image/chat/info.gif width=11 height=12 border=0 onClick=\"window.open(\'http://legendbattles.ru/ipers.php?" . $usr['login'] . "\');\" ></a>&nbsp;РїС‹С‚Р°Р»РёСЃСЊ РїРѕРІРµСЃРёС‚СЊ РїРѕ Р·Р°РєР°Р·Сѓ <b>" . $player['login'] . "</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?" . $player['login'] . "\" target=\"_blank\"><img src=/img/image/chat/info.gif width=11 height=12 border=0 onClick=\"window.open(\'http://legendbattles.ru/ipers.php?" . $player['login'] . "\');\" ></a>! Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ РѕРЅ СЃРѕСЂРІР°Р»СЃСЏ СЃ РІРёСЃРµР»РёС†С‹ Рё СЃР»РѕРјР°Р» СЃРµР±Рµ РїР°СЂСѓ РєРѕСЃС‚РµР№...";
+                $msg[2] = "<b>" . $usr['login'] . "&nbsp;<font color=#CC0000>РџРѕР»СѓС‡РёР» С‚СЏР¶РµР»С‹Рµ СѓРІРµС‡СЊСЏ Рё Р±С‹Р» РѕС‚РїСЂР°РІР»РµРЅ РІ Р±РѕР»СЊРЅРёС†Сѓ РЅР° РЅРµРёР·РІРµСЃС‚РЅС‹Р№ СЃСЂРѕРє!</font></b>";
+                echo "<b>" . $usr['login'] . "</b>&nbsp;<b><font color=#CC0000>РџРѕРІРµС€РµРЅ!</font></b>";
+                $ms[1] = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b>&nbsp;" . $msg[1] . "<BR>'+'');";
+                $ms[2] = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b>&nbsp;" . $msg[2] . "<BR>'+'');";
 				chmsg($ms[1],'');
 				chmsg($ms[2],'');
 				chmsg($redirect,$usr['login']);
 			}
 			else{
-				echo 'Казни доступны только с 25 уровня!<br>';
-				$msg="Вы кто?! Малы ещё гражданин, права не имеете, достигните 25 уровня и приходите заказывайте!";
-				$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b>&nbsp;".$msg."<BR>'+'');";
+                echo 'РљР°Р·РЅРё РґРѕСЃС‚СѓРїРЅС‹ С‚РѕР»СЊРєРѕ СЃ 25 СѓСЂРѕРІРЅСЏ!<br>';
+                $msg = "Р’С‹ РєС‚Рѕ?! РњР°Р»С‹ РµС‰С‘ РіСЂР°Р¶РґР°РЅРёРЅ, РїСЂР°РІР° РЅРµ РёРјРµРµС‚Рµ, РґРѕСЃС‚РёРіРЅРёС‚Рµ 25 СѓСЂРѕРІРЅСЏ Рё РїСЂРёС…РѕРґРёС‚Рµ Р·Р°РєР°Р·С‹РІР°Р№С‚Рµ!";
+                $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Р’РЅРёРјР°РЅРёРµ!</font></b>&nbsp;" . $msg . "<BR>'+'');";
 				chmsg($ms,$player['login']);
 			}
 		}
 		else{
-			echo 'Недостаточно средств!<br>';
+            echo 'РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ!<br>';
 		}
 	}
 	else{
-		echo 'Персонажа <b>'.$_POST['login']."</b> не существует!<br>";
+        echo 'РџРµСЂСЃРѕРЅР°Р¶Р° <b>' . $_POST['login'] . "</b> РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!<br>";
 	}
 }
 echo'
 <br>
 <b>
 <i>
-Добрый день, путник.<br>  Что, понравилась виселица?<br>
-Эээ, куда лезешь! Высунь голову из петли, это не игрушки! Так-то лучше. Пойди сюда. <br>
-Ведь не зря ты сюда пришел, так? Обидели тебя или просто жаждешь чужой смерти? Хотя это не важно.<br> <br> 
-Заплати  и ты будешь наблюдать, как твоего врага будет раскачивать ветерок…<br>...туда-сюда…туда-сюда…</font><br> <br>
+Р”РѕР±СЂС‹Р№ РґРµРЅСЊ, РїСѓС‚РЅРёРє.<br>  Р§С‚Рѕ, РїРѕРЅСЂР°РІРёР»Р°СЃСЊ РІРёСЃРµР»РёС†Р°?<br>
+Р­СЌСЌ, РєСѓРґР° Р»РµР·РµС€СЊ! Р’С‹СЃСѓРЅСЊ РіРѕР»РѕРІСѓ РёР· РїРµС‚Р»Рё, СЌС‚Рѕ РЅРµ РёРіСЂСѓС€РєРё! РўР°Рє-С‚Рѕ Р»СѓС‡С€Рµ. РџРѕР№РґРё СЃСЋРґР°. <br>
+Р’РµРґСЊ РЅРµ Р·СЂСЏ С‚С‹ СЃСЋРґР° РїСЂРёС€РµР», С‚Р°Рє? РћР±РёРґРµР»Рё С‚РµР±СЏ РёР»Рё РїСЂРѕСЃС‚Рѕ Р¶Р°Р¶РґРµС€СЊ С‡СѓР¶РѕР№ СЃРјРµСЂС‚Рё? РҐРѕС‚СЏ СЌС‚Рѕ РЅРµ РІР°Р¶РЅРѕ.<br> <br> 
+Р—Р°РїР»Р°С‚Рё  Рё С‚С‹ Р±СѓРґРµС€СЊ РЅР°Р±Р»СЋРґР°С‚СЊ, РєР°Рє С‚РІРѕРµРіРѕ РІСЂР°РіР° Р±СѓРґРµС‚ СЂР°СЃРєР°С‡РёРІР°С‚СЊ РІРµС‚РµСЂРѕРєвЂ¦<br>...С‚СѓРґР°-СЃСЋРґР°вЂ¦С‚СѓРґР°-СЃСЋРґР°вЂ¦</font><br> <br>
 ';
 if($player['level']<25){
-echo "Вы кто?! Малы ещё гражданин, права не имеете, достигните 25 уровня и приходите заказывайте!</i>";
+    echo "Р’С‹ РєС‚Рѕ?! РњР°Р»С‹ РµС‰С‘ РіСЂР°Р¶РґР°РЅРёРЅ, РїСЂР°РІР° РЅРµ РёРјРµРµС‚Рµ, РґРѕСЃС‚РёРіРЅРёС‚Рµ 25 СѓСЂРѕРІРЅСЏ Рё РїСЂРёС…РѕРґРёС‚Рµ Р·Р°РєР°Р·С‹РІР°Р№С‚Рµ!</i>";
 }
 else{
 echo'
 </i>
 <form method=post action="?viselica=1">
 <input type=hidden name=vcode value='.scode().'>
-<font class=nickname>Имя: <input type=text name=login class=logintextbox6>
-<input type=submit class=lbut value="Повесить [50 Серебра ]"></font>
+<font class=nickname>РРјСЏ: <input type=text name=login class=logintextbox6>
+<input type=submit class=lbut value="РџРѕРІРµСЃРёС‚СЊ [50 РЎРµСЂРµР±СЂР° ]"></font>
 </form>';
 }
 echo'
 <br>
-<font class=freetxt style="color:#dd0000">Примечание: после виселицы персонаж получает осложненную травму, а так же не может совершать никаких действий в течении 1 часов.<br>
-<font class=nickname><i>Вы обращались в Мэрию с жалобой ?! как? Вам не помогли, вы по адресу...</i></font>
+<font class=freetxt style="color:#dd0000">РџСЂРёРјРµС‡Р°РЅРёРµ: РїРѕСЃР»Рµ РІРёСЃРµР»РёС†С‹ РїРµСЂСЃРѕРЅР°Р¶ РїРѕР»СѓС‡Р°РµС‚ РѕСЃР»РѕР¶РЅРµРЅРЅСѓСЋ С‚СЂР°РІРјСѓ, Р° С‚Р°Рє Р¶Рµ РЅРµ РјРѕР¶РµС‚ СЃРѕРІРµСЂС€Р°С‚СЊ РЅРёРєР°РєРёС… РґРµР№СЃС‚РІРёР№ РІ С‚РµС‡РµРЅРёРё 1 С‡Р°СЃРѕРІ.<br>
+<font class=nickname><i>Р’С‹ РѕР±СЂР°С‰Р°Р»РёСЃСЊ РІ РњСЌСЂРёСЋ СЃ Р¶Р°Р»РѕР±РѕР№ ?! РєР°Рє? Р’Р°Рј РЅРµ РїРѕРјРѕРіР»Рё, РІС‹ РїРѕ Р°РґСЂРµСЃСѓ...</i></font>
 </div></td></tr>
 </table></td></tr></table></FIELDSET></td></tr>
 <tr><td><img src=/img/image/1x1.gif width=1 height=3></td></tr>

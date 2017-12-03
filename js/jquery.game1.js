@@ -20,308 +20,260 @@ var ChatClearSize = 12228;
 var constHeight = 72;
 var stepHeight = 50;
 
-change_chatsize = function(side) {
-	var height = $(window).height();
-    if (side == 1)
-	{
-		fr_size += stepHeight;
-		if(fr_size > height - constHeight - 100) fr_size -= stepHeight;
-	}
+change_chatsize = function (side) {
+    var height = $(window).height();
+    if (side == 1) {
+        fr_size += stepHeight;
+        if (fr_size > height - constHeight - 100) fr_size -= stepHeight;
+    }
     else if (side == 0) {
         fr_size -= stepHeight;
         if (fr_size < 0) fr_size = 0;
     }
 
-	var mheight = height-fr_size-constHeight;
-	if(mheight < 0) mheight = 0;
+    var mheight = height - fr_size - constHeight;
+    if (mheight < 0) mheight = 0;
 
-	$('#chmain').height(fr_size);
-	$('#ch_list').height(fr_size);
+    $('#chmain').height(fr_size);
+    $('#ch_list').height(fr_size);
 }
 
-function say_to(login)
-{
-       var actionlog = window.frames['main_top'].ActionFormUse;
-       if((actionlog != null) && (actionlog != ""))
-       {
-              var login2 = login.replace('%','');
-	      window.frames['main_top'].document.all(actionlog).value = login2;
-	      window.frames['main_top'].document.all(actionlog).focus();
-       }
-       else
-       {
-              if(is_ctrl)
-  	      {
-    	             while(login.indexOf(' ') >=0) login = login.replace (' ', '%20');
-    		     while(login.indexOf('+') >=0) login = login.replace ('+', '%2B');
-    		     while(login.indexOf('#') >=0) login = login.replace ('#', '%23');
-    		     while(login.indexOf('=') >=0) login = login.replace ('=', '%3D');
-    		     window.open('./ipers.php?'+login, '_blank');
-              }
-  	      else if(is_alt && (login.indexOf ('%') < 0))
-  	      {
-    	             window.frames['ch_buttons'].document.FBT.text.focus ();
-    		     if(window.frames['ch_buttons'].document.FBT.text.value.length < 255)
-    		     window.frames['ch_buttons'].document.FBT.text.value = '%<'+login+'> ' + window.frames['ch_buttons'].document.FBT.text.value;
-              }
-  	      else
-  	      {
-    	             window.frames['ch_buttons'].document.FBT.text.focus ();
-    		     if(window.frames['ch_buttons'].document.FBT.text.value.length < 255)
-    		     window.frames['ch_buttons'].document.FBT.text.value = '<'+login+'> '+window.frames['ch_buttons'].document.FBT.text.value;
-              }
-       }
+function say_to(login) {
+    var actionlog = window.frames['main_top'].ActionFormUse;
+    if ((actionlog != null) && (actionlog != "")) {
+        var login2 = login.replace('%', '');
+        window.frames['main_top'].document.all(actionlog).value = login2;
+        window.frames['main_top'].document.all(actionlog).focus();
+    }
+    else {
+        if (is_ctrl) {
+            while (login.indexOf(' ') >= 0) login = login.replace(' ', '%20');
+            while (login.indexOf('+') >= 0) login = login.replace('+', '%2B');
+            while (login.indexOf('#') >= 0) login = login.replace('#', '%23');
+            while (login.indexOf('=') >= 0) login = login.replace('=', '%3D');
+            window.open('./ipers.php?' + login, '_blank');
+        }
+        else if (is_alt && (login.indexOf('%') < 0)) {
+            window.frames['ch_buttons'].document.FBT.text.focus();
+            if (window.frames['ch_buttons'].document.FBT.text.value.length < 255)
+                window.frames['ch_buttons'].document.FBT.text.value = '%<' + login + '> ' + window.frames['ch_buttons'].document.FBT.text.value;
+        }
+        else {
+            window.frames['ch_buttons'].document.FBT.text.focus();
+            if (window.frames['ch_buttons'].document.FBT.text.value.length < 255)
+                window.frames['ch_buttons'].document.FBT.text.value = '<' + login + '> ' + window.frames['ch_buttons'].document.FBT.text.value;
+        }
+    }
 }
 
-function say_private(login)
-{
-       var actionlog = window.frames['main_top'].ActionFormUse;
-       if((actionlog != null) && (actionlog != ""))
-       {
-              var login2 = login.replace('%','');
-	      window.frames['main_top'].document.all(actionlog).value=login2;
-	      window.frames['main_top'].document.all(actionlog).focus();
-       }
-       else
-       {
-              if(is_ctrl)
-  	      {
-    	             while(login.indexOf(' ') >=0) login = login.replace (' ', '%20');
-    		     while(login.indexOf('+') >=0) login = login.replace ('+', '%2B');
-    		     while(login.indexOf('#') >=0) login = login.replace ('#', '%23');
-    		     while(login.indexOf('=') >=0) login = login.replace ('=', '%3D');
-    		     window.open('./ipers.php?'+login, '_blank');
-              }
-  	      else
-  	      {
-    	             window.frames['ch_buttons'].document.FBT.text.focus();
-    		     if(window.frames['ch_buttons'].document.FBT.text.value.length < 255)
-    		     window.frames['ch_buttons'].document.FBT.text.value = '%<'+login+'> ' + window.frames['ch_buttons'].document.FBT.text.value;
-              }
-       }
+function say_private(login) {
+    var actionlog = window.frames['main_top'].ActionFormUse;
+    if ((actionlog != null) && (actionlog != "")) {
+        var login2 = login.replace('%', '');
+        window.frames['main_top'].document.all(actionlog).value = login2;
+        window.frames['main_top'].document.all(actionlog).focus();
+    }
+    else {
+        if (is_ctrl) {
+            while (login.indexOf(' ') >= 0) login = login.replace(' ', '%20');
+            while (login.indexOf('+') >= 0) login = login.replace('+', '%2B');
+            while (login.indexOf('#') >= 0) login = login.replace('#', '%23');
+            while (login.indexOf('=') >= 0) login = login.replace('=', '%3D');
+            window.open('./ipers.php?' + login, '_blank');
+        }
+        else {
+            window.frames['ch_buttons'].document.FBT.text.focus();
+            if (window.frames['ch_buttons'].document.FBT.text.value.length < 255)
+                window.frames['ch_buttons'].document.FBT.text.value = '%<' + login + '> ' + window.frames['ch_buttons'].document.FBT.text.value;
+        }
+    }
 }
 
-function ch_refresh_a()
-{
-       if(ChatFyo == 2) window.frames['ch_refr'].location='./ch.php?show=1&fyo=2';
+function ch_refresh_a() {
+    if (ChatFyo == 2) window.frames['ch_refr'].location = './ch.php?show=1&fyo=2';
 }
 
-function ch_refresh()
-{
-       if(ChatTimerID >= 0) clearTimeout(ChatTimerID);
-       ChatTimerID = setTimeout('ch_refresh()', ChatDelay*1000);
-       window.frames['ch_refr'].location='./ch.php?'+Math.random()+'&show=1&fyo='+ChatFyo;
+function ch_refresh() {
+    if (ChatTimerID >= 0) clearTimeout(ChatTimerID);
+    ChatTimerID = setTimeout('ch_refresh()', ChatDelay * 1000);
+    window.frames['ch_refr'].location = './ch.php?' + Math.random() + '&show=1&fyo=' + ChatFyo;
 }
 
-function ch_stop_refresh()
-{
-       if(ChatTimerID >= 0) clearTimeout (ChatTimerID);
-       ChatTimerID = -1;
+function ch_stop_refresh() {
+    if (ChatTimerID >= 0) clearTimeout(ChatTimerID);
+    ChatTimerID = -1;
 }
 
-function ch_refresh_n()
-{
-       if(ChatTimerID >= 0) clearTimeout (ChatTimerID);
-       ChatTimerID = setTimeout('ch_refresh()', ChatDelay*1000);
+function ch_refresh_n() {
+    if (ChatTimerID >= 0) clearTimeout(ChatTimerID);
+    ChatTimerID = setTimeout('ch_refresh()', ChatDelay * 1000);
 }
 
-function set_lmid(nlmid)
-{
-       if(nlmid == '')
-       nlmid = -1;
-       var fb = window.frames['ch_buttons'].document.FBT;
-       if(fb)
-       {
-              lmid = nlmid;
-    	      fb.lmid.value = nlmid;
-       }
+function set_lmid(nlmid) {
+    if (nlmid == '')
+        nlmid = -1;
+    var fb = window.frames['ch_buttons'].document.FBT;
+    if (fb) {
+        lmid = nlmid;
+        fb.lmid.value = nlmid;
+    }
 }
 
-function save_scroll_p()
-{
-       OnlineScrollPosition = window.frames['ch_list'].document.body.scrollTop;
-}
-  
-function reload(now)
-{
-       if(!OnlineStop && (OnlineTimerOn < 0 || now))
-       {
-              var tm = now ? 2000 : OnlineDelay*1000;
-    	      OnlineTimerOn = setTimeout('online_reload('+now+')', tm);
-       }
+function save_scroll_p() {
+    OnlineScrollPosition = window.frames['ch_list'].document.body.scrollTop;
 }
 
-function online_reload(now)
-{
-       if(OnlineTimerOn >= 0)
-       {
-              clearTimeout(OnlineTimerOn);
-    	      if(!OnlineStop) OnlineTimerOn = setTimeout ('online_reload(0)', OnlineDelay * 1000);
-    	      else OnlineTimerOn = -1;
-       }
-       if(!OnlineStop || now) window.frames['ch_list'].location = './ch.php?lo=1';
+function reload(now) {
+    if (!OnlineStop && (OnlineTimerOn < 0 || now)) {
+        var tm = now ? 2000 : OnlineDelay * 1000;
+        OnlineTimerOn = setTimeout('online_reload(' + now + ')', tm);
+    }
 }
 
-function ch_refresh_clr()
-{
-       if(ChatClearTimerID >= 0) clearTimeout(ChatClearTimerID);
-       ChatClearTimerID = setTimeout ('ch_refresh_clr()', ChatClearDelay*1000);
-       var s = window.frames['chmain'].document.all('msg').innerHTML;
-       if(s.length > ChatClearSize)
-       {
-              var j = s.lastIndexOf('<BR>', s.length - ChatClearSize);
-    	      window.frames['chmain'].document.all('msg').innerHTML = s.substring(j, s.length);
-       }
+function online_reload(now) {
+    if (OnlineTimerOn >= 0) {
+        clearTimeout(OnlineTimerOn);
+        if (!OnlineStop) OnlineTimerOn = setTimeout('online_reload(0)', OnlineDelay * 1000);
+        else OnlineTimerOn = -1;
+    }
+    if (!OnlineStop || now) window.frames['ch_list'].location = './ch.php?lo=1';
 }
 
-function clr_input()
-{
-       if(window.frames["ch_buttons"].document.FBT.pactiondo.checked == true) window.frames["ch_buttons"].document.FBT.pactiondo.checked = false;
-       if(window.frames["ch_buttons"].document.FBT.text)
-       {
-              window.frames["ch_buttons"].document.FBT.text.value = '';
-   	      window.frames["ch_buttons"].document.FBT.text.focus();
-       }
+function ch_refresh_clr() {
+    if (ChatClearTimerID >= 0) clearTimeout(ChatClearTimerID);
+    ChatClearTimerID = setTimeout('ch_refresh_clr()', ChatClearDelay * 1000);
+    var s = window.frames['chmain'].document.all('msg').innerHTML;
+    if (s.length > ChatClearSize) {
+        var j = s.lastIndexOf('<BR>', s.length - ChatClearSize);
+        window.frames['chmain'].document.all('msg').innerHTML = s.substring(j, s.length);
+    }
 }
 
-function clr_chat()
-{
-       if(window.frames['chmain'].document.all('msg'))
-       {
-          window.frames['chmain'].document.all('msg').innerHTML = '';
-   	      window.frames["ch_buttons"].document.FBT.text.focus();
-       }
-	   if(window.frames['chmain'].document.all('msg_trade'))
-       {
-          window.frames['chmain'].document.all('msg_trade').innerHTML = '';
-   	      window.frames["ch_buttons"].document.FBT.text.focus();
-       }
+function clr_input() {
+    if (window.frames["ch_buttons"].document.FBT.pactiondo.checked == true) window.frames["ch_buttons"].document.FBT.pactiondo.checked = false;
+    if (window.frames["ch_buttons"].document.FBT.text) {
+        window.frames["ch_buttons"].document.FBT.text.value = '';
+        window.frames["ch_buttons"].document.FBT.text.focus();
+    }
 }
 
-function change_chatsetup()
-{
-       if(ChatFyo == 0)
-       {
-          ChatFyo = 1;
-   	      window.frames['ch_buttons'].document.FBT.fyo.value = 1;
-   	      window.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_me.gif';
-   	      window.frames['ch_buttons'].document.FBT.schat.alt = 'Режим чата (Показывать только личные сообщения)';
-		  window.frames['ch_buttons'].document.FBT.schat.title = 'Режим чата (Показывать только личные сообщения)';
-       }
-       else if(ChatFyo == 1)
-       {
-              ChatFyo = 2;
-   	      window.frames['ch_buttons'].document.FBT.fyo.value = 2;
-    	      ch_stop_refresh();
-    	      window.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_none.gif';
-    	      window.frames['ch_buttons'].document.FBT.schat.alt = 'Режим чата (Не показывать сообщения)';
-			  window.frames['ch_buttons'].document.FBT.schat.title = 'Режим чата (Не показывать сообщения)';
-       }
-       else
-       {
-              ChatFyo = 0;
-    	      window.frames['ch_buttons'].document.FBT.fyo.value = 0;
-    	      ch_refresh();
-    	      window.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_all.gif';
-    	      window.frames['ch_buttons'].document.FBT.schat.alt = 'Режим чата (Показывать все сообщения)';
-			  window.frames['ch_buttons'].document.FBT.schat.title = 'Режим чата (Показывать все сообщения)';
-       }
+function clr_chat() {
+    if (window.frames['chmain'].document.all('msg')) {
+        window.frames['chmain'].document.all('msg').innerHTML = '';
+        window.frames["ch_buttons"].document.FBT.text.focus();
+    }
+    if (window.frames['chmain'].document.all('msg_trade')) {
+        window.frames['chmain'].document.all('msg_trade').innerHTML = '';
+        window.frames["ch_buttons"].document.FBT.text.focus();
+    }
 }
 
-function change_chatspeed()
-{
-       if(ChatTimerID >= 0) clearTimeout (ChatTimerID);
-       if(ChatDelay == 10) ChatDelay = 30;
-       else if(ChatDelay == 30) ChatDelay = 60;
-       else ChatDelay = 10;
-       ChatTimerID = setTimeout('ch_refresh()', ChatDelay*1000);
-       window.frames['ch_buttons'].document.FBT.spchat.src = 'http://img.legendbattles.ru/image/chat/bb_'+ChatDelay+'.gif';
-       window.frames['ch_buttons'].document.FBT.spchat.alt = 'Скорость обновления (раз в '+ChatDelay+' секунд)';
+function change_chatsetup() {
+    if (ChatFyo == 0) {
+        ChatFyo = 1;
+        window.frames['ch_buttons'].document.FBT.fyo.value = 1;
+        window.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_me.gif';
+        window.frames['ch_buttons'].document.FBT.schat.alt = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+        window.frames['ch_buttons'].document.FBT.schat.title = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+    }
+    else if (ChatFyo == 1) {
+        ChatFyo = 2;
+        window.frames['ch_buttons'].document.FBT.fyo.value = 2;
+        ch_stop_refresh();
+        window.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_none.gif';
+        window.frames['ch_buttons'].document.FBT.schat.alt = 'Р РµР¶РёРј С‡Р°С‚Р° (РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+        window.frames['ch_buttons'].document.FBT.schat.title = 'Р РµР¶РёРј С‡Р°С‚Р° (РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+    }
+    else {
+        ChatFyo = 0;
+        window.frames['ch_buttons'].document.FBT.fyo.value = 0;
+        ch_refresh();
+        window.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_all.gif';
+        window.frames['ch_buttons'].document.FBT.schat.alt = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ РІСЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+        window.frames['ch_buttons'].document.FBT.schat.title = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ РІСЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+    }
 }
 
-function change_latrus()
-{
-       if(latrus == 0)
-       {
-              latrus = 1;
-    	      window.frames['ch_buttons'].document.FBT.lrchat.src = 'http://img.legendbattles.ru/image/chat/bb4_ac.gif';
-    	      window.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (Транслит включён)';
-       }
-       else
-       {
-              latrus = 0;
-       	      window.frames['ch_buttons'].document.FBT.lrchat.src = 'http://img.legendbattles.ru/image/chat/bb4_nc.gif';
-       	      window.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (Транслит выключен)';
-       }
+function change_chatspeed() {
+    if (ChatTimerID >= 0) clearTimeout(ChatTimerID);
+    if (ChatDelay == 10) ChatDelay = 30;
+    else if (ChatDelay == 30) ChatDelay = 60;
+    else ChatDelay = 10;
+    ChatTimerID = setTimeout('ch_refresh()', ChatDelay * 1000);
+    window.frames['ch_buttons'].document.FBT.spchat.src = 'http://img.legendbattles.ru/image/chat/bb_' + ChatDelay + '.gif';
+    window.frames['ch_buttons'].document.FBT.spchat.alt = 'РЎРєРѕСЂРѕСЃС‚СЊ РѕР±РЅРѕРІР»РµРЅРёСЏ (СЂР°Р· РІ ' + ChatDelay + ' СЃРµРєСѓРЅРґ)';
 }
 
-function start()
-{
-       ChatTimerID = setTimeout('ch_refresh()', 1000);
-       OnlineTimerOn = setTimeout('online_reload(true)', 0);
-       ChatClearTimerID = setTimeout('ch_refresh_clr()', ChatClearDelay*1000);
+function change_latrus() {
+    if (latrus == 0) {
+        latrus = 1;
+        window.frames['ch_buttons'].document.FBT.lrchat.src = 'http://img.legendbattles.ru/image/chat/bb4_ac.gif';
+        window.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (РўСЂР°РЅСЃР»РёС‚ РІРєР»СЋС‡С‘РЅ)';
+    }
+    else {
+        latrus = 0;
+        window.frames['ch_buttons'].document.FBT.lrchat.src = 'http://img.legendbattles.ru/image/chat/bb4_nc.gif';
+        window.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (РўСЂР°РЅСЃР»РёС‚ РІС‹РєР»СЋС‡РµРЅ)';
+    }
 }
 
-function exit_confirm()
-{
-       return confirm('Вы действительно хотите покинуть игру?');
+function start() {
+    ChatTimerID = setTimeout('ch_refresh()', 1000);
+    OnlineTimerOn = setTimeout('online_reload(true)', 0);
+    ChatClearTimerID = setTimeout('ch_refresh_clr()', ChatClearDelay * 1000);
 }
 
-function delete_confirm(wnametxt)
-{
-       return confirm('Вы действительно хотите выбросить "'+wnametxt+'"?');
+function exit_confirm() {
+    return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїРѕРєРёРЅСѓС‚СЊ РёРіСЂСѓ?');
 }
 
-function exit_redir()
-{
-       if(exit_confirm()) location = 'index.php';
+function delete_confirm(wnametxt) {
+    return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РІС‹Р±СЂРѕСЃРёС‚СЊ "' + wnametxt + '"?');
 }
 
-function DeleteTrue(wname)
-{
-       if(delete_confirm(wname)) return true;
+function exit_redir() {
+    if (exit_confirm()) location = 'index.php';
 }
 
-function delete_confirm_NG(wnametxt)
-{
-       return confirm('Открыть и удалить "'+wnametxt+'"? Подарок может сожержать полезные предметы, бонусы, или не содержать ничего.');
+function DeleteTrue(wname) {
+    if (delete_confirm(wname)) return true;
 }
 
-function DeleteTrueNG(wname)
-{
-       if(delete_confirm_NG(wname)) return true;
+function delete_confirm_NG(wnametxt) {
+    return confirm('РћС‚РєСЂС‹С‚СЊ Рё СѓРґР°Р»РёС‚СЊ "' + wnametxt + '"? РџРѕРґР°СЂРѕРє РјРѕР¶РµС‚ СЃРѕР¶РµСЂР¶Р°С‚СЊ РїРѕР»РµР·РЅС‹Рµ РїСЂРµРґРјРµС‚С‹, Р±РѕРЅСѓСЃС‹, РёР»Рё РЅРµ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРёС‡РµРіРѕ.');
 }
 
-function ClanConfirm(wnametxt)
-{
-       return confirm('Положить в казну "'+wnametxt+'"?');
+function DeleteTrueNG(wname) {
+    if (delete_confirm_NG(wname)) return true;
 }
 
-function ClanKaznaTrue(wname)
-{
-       if(ClanConfirm(wname)) return true;
+function ClanConfirm(wnametxt) {
+    return confirm('РџРѕР»РѕР¶РёС‚СЊ РІ РєР°Р·РЅСѓ "' + wnametxt + '"?');
 }
 
-function helpwin(open_page)
-{
-       url_open = 'http://www.'+open_page;
-       viewwin = open(url_open,"helpWindow","width=1024, height=768, status=no, toolbar=no, menubar=no, resizable=yes, scrollbars=yes");
+function ClanKaznaTrue(wname) {
+    if (ClanConfirm(wname)) return true;
 }
 
-function seeroom(open_room){
-       var url_open = '/ch.php?lo=1&r='+open_room;
-       seeroomwin = open(url_open,"SeeRoomWindow","width=300, height=500, status=no, toolbar=no, menubar=no, resizable=no, scrollbars=yes");
+function helpwin(open_page) {
+    url_open = 'http://www.' + open_page;
+    viewwin = open(url_open, "helpWindow", "width=1024, height=768, status=no, toolbar=no, menubar=no, resizable=yes, scrollbars=yes");
 }
 
-clan_private = function(clanid){
+function seeroom(open_room) {
+    var url_open = '/ch.php?lo=1&r=' + open_room;
+    seeroomwin = open(url_open, "SeeRoomWindow", "width=300, height=500, status=no, toolbar=no, menubar=no, resizable=no, scrollbars=yes");
+}
+
+clan_private = function (clanid) {
     window.frames['ch_buttons'].document.FBT.text.focus();
-    window.frames['ch_buttons'].document.FBT.text.value = '%<'+clanid+'> ' + window.frames['ch_buttons'].document.FBT.text.value;
+    window.frames['ch_buttons'].document.FBT.text.value = '%<' + clanid + '> ' + window.frames['ch_buttons'].document.FBT.text.value;
 }
 
-ShowModal = function(){   
+ShowModal = function () {
     $("#basic-modal-content").modal({
-        autoResize:true,
-        overlayClose:true,
+        autoResize: true,
+        overlayClose: true,
         onOpen: function (dialog) {
             dialog.overlay.fadeIn('fast', function () {
                 dialog.data.show();
@@ -340,32 +292,32 @@ ShowModal = function(){
     });
 }
 
-LoadingBar = function(){
-    if(TimeSet > 0){
+LoadingBar = function () {
+    if (TimeSet > 0) {
         TimeSet = TimeSet - TimeTik;
         PxSize += 1;
         document.getElementById("BARTD").width = PxSize;
         document.getElementById("BAR").width = PxSize;
-    }else{
+    } else {
         clearInterval(TimeInt);
         $('#Loading').fadeOut(600);
-        
+
     }
 }
 
-view_loading = function(){  
-    
-    $('#Loading').html('<div id="barBgPlace" style="left: '+($(window).width()/2-105)+'px; top: '+($(window).height()/2-35)+'px;"><div id="textPlace">Подождите пожалуйста...</div><div id="barPlace"><table cellpadding="0" cellspacing="0" width="160" border="0"><tr><td width="7"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/ll1.gif" width="7" height="13" border="0"></td><td class="bbg" id="BARTD"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/spacer.gif" width="1" height="13" border="0" id="BAR"></td><td width="7"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/rr1.gif" width="7" height="13" border="0"></td><td><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/spacer.gif" width="40" height="13" border="0"></td></tr></table></div>'+PNGImage('gameplay/labyrinth/barbg.gif','gameplay/labyrinth/barbg.png',210,70)+'</div>');
-    
+view_loading = function () {
+
+    $('#Loading').html('<div id="barBgPlace" style="left: ' + ($(window).width() / 2 - 105) + 'px; top: ' + ($(window).height() / 2 - 35) + 'px;"><div id="textPlace">РџРѕРґРѕР¶РґРёС‚Рµ РїРѕР¶Р°Р»СѓР№СЃС‚Р°...</div><div id="barPlace"><table cellpadding="0" cellspacing="0" width="160" border="0"><tr><td width="7"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/ll1.gif" width="7" height="13" border="0"></td><td class="bbg" id="BARTD"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/spacer.gif" width="1" height="13" border="0" id="BAR"></td><td width="7"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/rr1.gif" width="7" height="13" border="0"></td><td><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/spacer.gif" width="40" height="13" border="0"></td></tr></table></div>' + PNGImage('gameplay/labyrinth/barbg.gif', 'gameplay/labyrinth/barbg.png', 210, 70) + '</div>');
+
     PxSize = 0;
     TimeSet = 1;
-    TimeTik = TimeSet/144.5;
-    TimeInt = setInterval("LoadingBar()",(1000*TimeTik));
-    
+    TimeTik = TimeSet / 144.5;
+    TimeInt = setInterval("LoadingBar()", (1000 * TimeTik));
+
     view_frames();
 }
 
-view_frames = function(){
+view_frames = function () {
 
     var ViewFrames = '<iframe src="/main.php" id="main_top" name="main_top" vspase="0" scrolling="auto" style="width:100%;height:0px;" frameborder="0"></iframe>';
     ViewFrames += '<iframe src="/ch/resize.html" id="resize" name="resize" vspase="0" scrolling="no" style="width:100%;height:20px;" frameborder="0"></iframe>';
@@ -375,8 +327,8 @@ view_frames = function(){
     ViewFrames += '</tr></table>';
     ViewFrames += '<iframe src="/ch/but.php" id="ch_buttons" name="ch_buttons" vspase="0" scrolling="no" style="width:100%;height:52px;" frameborder="0"></iframe>';
     ViewFrames += '<iframe src="" id="ch_refr" name="ch_refr" scrolling="no" style="width:100%;height:0px;" frameborder="0"></iframe>';
-    
+
     $('#ViewFrames').html(ViewFrames);
-    
+
     change_chatsize(-1);
 }

@@ -21,17 +21,28 @@ function message_window (type,header,message,buttons,address) {
 
 		if (buttons[a]=='accept') {
 			addr = address.split('|');
-			if (addr[0]=='click') {buts += '<td><div id="use_it"><a href="javascript:void(0);" id="use_it" onclick="'+addr[1]+'">Îê</a></div></td>'}
-			else if (addr[0]=='href') {	buts += '<td><div id="use_it"><a href="javascript:void(0);" id="use_it" onclick="d.location=\''+addr[1]+'\'">Îê</a></div></td>' }
-		}
-		else if (buttons[a]=='cancel') { buts += '<td><div id="use_cancel"><a href="javascript:void(0);" id="use_cancel" onclick="close_window();">Íåò</a></div></td>' }
-		else if (buttons[a]=='ereage') {buts += '<td><div id="ereage"><a href="?" id="ereage">Îê</a></div></td>'}
+            if (addr[0] == 'click') {
+                buts += '<td><div id="use_it"><a href="javascript:void(0);" id="use_it" onclick="' + addr[1] + '">ĞĞº</a></div></td>'
+            }
+            else if (addr[0] == 'href') {
+                buts += '<td><div id="use_it"><a href="javascript:void(0);" id="use_it" onclick="d.location=\'' + addr[1] + '\'">ĞĞº</a></div></td>'
+            }
+        }
+        else if (buttons[a] == 'cancel') {
+            buts += '<td><div id="use_cancel"><a href="javascript:void(0);" id="use_cancel" onclick="close_window();">ĞĞµÑ‚</a></div></td>'
+        }
+        else if (buttons[a] == 'ereage') {
+            buts += '<td><div id="ereage"><a href="?" id="ereage">ĞĞº</a></div></td>'
+        }
 		else if (buttons[a]=='ok') {
 
 			addr = address.split('|');
-			if (addr.length>1 && addr[0]=='click') { buts += '<td><div id="use_ok"><a href="javascript:void(0);" id="use_ok" onclick="'+addr[0]+'">Îê</a></div></td>' }
+            if (addr.length > 1 && addr[0] == 'click') {
+                buts += '<td><div id="use_ok"><a href="javascript:void(0);" id="use_ok" onclick="' + addr[0] + '">ĞĞº</a></div></td>'
+            }
 			else {
-			  buts += '<td><div id="use_ok"><a href="javascript:void(0);" id="use_ok" onclick="close_window();">Îê</a></div></td>' }
+                buts += '<td><div id="use_ok"><a href="javascript:void(0);" id="use_ok" onclick="close_window();">ĞĞº</a></div></td>'
+            }
 
 	    }
 	}

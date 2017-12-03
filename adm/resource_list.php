@@ -53,11 +53,11 @@ while ($row = mysql_fetch_assoc($res))
 {
     $resources.='
     <tr>
-      <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этот ресурс?\');" href="resource_list.php?delete_resource_id='.$row['resource_id'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="resource_edit.php?resource_id='.$row['resource_id'].'" title="Изменить"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ СЂРµСЃСѓСЂСЃ?\');" href="resource_list.php?delete_resource_id=' . $row['resource_id'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="resource_edit.php?resource_id=' . $row['resource_id'] . '" title="РР·РјРµРЅРёС‚СЊ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['resource_id'].'</td>
       <td align="left" class="cms_middle">'.$resource_types[$row['resource_type']].'</td>
-      <td align="left" class="cms_middle"><a href="resource_edit.php?resource_id='.$row['resource_id'].'" title="Изменить">'._htext($row['resource_name']).'</a></td>
+      <td align="left" class="cms_middle"><a href="resource_edit.php?resource_id=' . $row['resource_id'] . '" title="РР·РјРµРЅРёС‚СЊ">' . _htext($row['resource_name']) . '</a></td>
       <td align="left" class="cms_middle">'.$row['resource_cost'].'</td>
       <td align="left" class="cms_middle">'.$row['resource_store'].'</td>
       <td align="left" class="cms_middle">'.$row['resource_requirement'].'</td>
@@ -68,16 +68,16 @@ while ($row = mysql_fetch_assoc($res))
 $_SESSION['pages']['resource_list'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Список ресурсов</h3>
+    <h3>РЎРїРёСЃРѕРє СЂРµСЃСѓСЂСЃРѕРІ</h3>
 
 <form name="filter" id="filter" action="" method="get">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-    <td>Тип ресурса:</td>
+      <td>РўРёРї СЂРµСЃСѓСЂСЃР°:</td>
     <td>
         <?=createSelectFromArray('resource_type', $resource_types, (isset($_GET['resource_type'])?$_GET['resource_type']:''))?>
     </td>
@@ -98,20 +98,20 @@ function clearFilter()
 </form>
 
 <div id="results">
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Ресурсы')?></div>
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р РµСЃСѓСЂСЃС‹') ?></div>
 
     <div class="cms_ind">
         <br />
-        Ресурсы: <br />
+        Р РµСЃСѓСЂСЃС‹: <br/>
          <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr >
-              <td class="cms_cap2 normal"> Удалить </td>
-              <td class="cms_cap2 normal"> Изменить </td>
+                <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+                <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-              <td class="cms_cap2"><a href="<?=sortby('resource_id')?>">ID Ресурса</a></td>
-              <td class="cms_cap2">Тип ресурса</td>
-              <td class="cms_cap2"><a href="<?=sortby('resource_name')?>">Название ресурса</a></td>
-              <td class="cms_cap2"><a href="<?=sortby('resource_cost')?>">Стоймость</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('resource_id') ?>">ID Р РµСЃСѓСЂСЃР°</a></td>
+                <td class="cms_cap2">РўРёРї СЂРµСЃСѓСЂСЃР°</td>
+                <td class="cms_cap2"><a href="<?= sortby('resource_name') ?>">РќР°Р·РІР°РЅРёРµ СЂРµСЃСѓСЂСЃР°</a></td>
+                <td class="cms_cap2"><a href="<?= sortby('resource_cost') ?>">РЎС‚РѕР№РјРѕСЃС‚СЊ</a></td>
               <? //TODO: Translate Store ?>
               <td class="cms_cap2">Store</td>
               <td class="cms_cap2">Requirement</td>
@@ -120,11 +120,12 @@ function clearFilter()
          </table>
          <br />
     </div>
-    <div id="cms_navigator"><?=createPageNavigator($records_count, $cur_page, 'Ресурсы')?></div> 
+    <div id="cms_navigator"><?= createPageNavigator($records_count, $cur_page, 'Р РµСЃСѓСЂСЃС‹') ?></div>
 </div>
  
  <br />
- <img src="images/cms_icons/cms_add.gif" alt="Добавить ресурс" /><a href="resource_edit.php" title="Добавить ресурс">Добавить ресурс</a> &nbsp;
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СЂРµСЃСѓСЂСЃ"/><a href="resource_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ СЂРµСЃСѓСЂСЃ">Р”РѕР±Р°РІРёС‚СЊ
+    СЂРµСЃСѓСЂСЃ</a> &nbsp;
  <br />
 
 <? require('kernel/after.php'); ?>

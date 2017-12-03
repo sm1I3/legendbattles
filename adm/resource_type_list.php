@@ -28,17 +28,17 @@ while ($row = mysql_fetch_assoc($res))
 }
 
 ?>
-<h3>Список типов ресурсов</h3>
+    <h3>РЎРїРёСЃРѕРє С‚РёРїРѕРІ СЂРµСЃСѓСЂСЃРѕРІ</h3>
 <div class="cms_ind">
 <br />
-Типы ресурсов: <br />
+    РўРёРїС‹ СЂРµСЃСѓСЂСЃРѕРІ: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-      <td class="cms_cap2">ID Типа ресурса</td>
-      <td class="cms_cap2">Название типа ресурса</td>
+        <td class="cms_cap2">ID РўРёРїР° СЂРµСЃСѓСЂСЃР°</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ С‚РёРїР° СЂРµСЃСѓСЂСЃР°</td>
     </tr>
     
     <?=$resource_types?>
@@ -46,7 +46,9 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить тип ресурса" /><a href="resource_type_edit.php" title="Добавить тип ресурса">Добавить тип ресурса</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ С‚РёРї СЂРµСЃСѓСЂСЃР°"/><a href="resource_type_edit.php"
+                                                                           title="Р”РѕР±Р°РІРёС‚СЊ С‚РёРї СЂРµСЃСѓСЂСЃР°">Р”РѕР±Р°РІРёС‚СЊ С‚РёРї
+    СЂРµСЃСѓСЂСЃР°</a> &nbsp;<br/>
  <br />
 
 <? require('kernel/after.php'); ?>

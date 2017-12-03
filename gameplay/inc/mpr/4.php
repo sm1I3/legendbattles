@@ -3,7 +3,7 @@
 <FIELDSET>
 	<LEGEND align=center>
 		<B>
-			<font color=gray>&nbsp;Безопасность&nbsp;</font>
+            <font color=gray>&nbsp;Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ&nbsp;</font>
 		</B>
 	</LEGEND>
 	<table cellpadding=0 cellspacing=0 border=0 width=100%>
@@ -11,7 +11,7 @@
 			<td>
 				<font class=freemain>
 					<b>
-						<font color=#777777>Текущий E-mail: <?=$player[email]?></font>
+                        <font color=#777777>РўРµРєСѓС‰РёР№ E-mail: <?= $player[email] ?></font>
 					</b
 				</font>
 			</td>
@@ -31,13 +31,15 @@ if($player[finblock]<time()){
 					<font class=freemain>
 						<b>
 							<font color=#336699>
-								Новый E-mail: <input type=text name=newmail size=30 class=LogintextBox4 maxlength=50>
+                                РќРѕРІС‹Р№ E-mail: <input type=text name=newmail size=30 class=LogintextBox4 maxlength=50>
 								<input type=image src=http://img.legendbattles.ru/image/change.gif width=72 height=15 border=0>
 							</font>
 						</b>
 					</font>
 					<font class=freetxt>
-						<br />После смены e-mail персонаж не может проводить операции с финансами, передавать, дарить и выкидывать предметы в течение 24 часов. Также пароль можно сменить только через 48 часов после смены e-mail.<br /><br />
+                        <br/>РџРѕСЃР»Рµ СЃРјРµРЅС‹ e-mail РїРµСЂСЃРѕРЅР°Р¶ РЅРµ РјРѕР¶РµС‚ РїСЂРѕРІРѕРґРёС‚СЊ РѕРїРµСЂР°С†РёРё СЃ С„РёРЅР°РЅСЃР°РјРё, РїРµСЂРµРґР°РІР°С‚СЊ, РґР°СЂРёС‚СЊ Рё
+                        РІС‹РєРёРґС‹РІР°С‚СЊ РїСЂРµРґРјРµС‚С‹ РІ С‚РµС‡РµРЅРёРµ 24 С‡Р°СЃРѕРІ. РўР°РєР¶Рµ РїР°СЂРѕР»СЊ РјРѕР¶РЅРѕ СЃРјРµРЅРёС‚СЊ С‚РѕР»СЊРєРѕ С‡РµСЂРµР· 48 С‡Р°СЃРѕРІ РїРѕСЃР»Рµ
+                        СЃРјРµРЅС‹ e-mail.<br/><br/>
 					</font>
 				</form>
 			</td>
@@ -51,9 +53,9 @@ if($player[finblock]<time()){
 					<font class=freemain>
 						<b>
 							<font color=#336699>
-								Старый пароль: <input type=password name=opass size=15 class=LogintextBox5 maxlength=50>
-								Новый: <input type=password name=npass size=15 class=LogintextBox5 maxlength=50>
-								Повтор: <input type=password name=vpass size=15 class=LogintextBox5 maxlength=50>
+                                РЎС‚Р°СЂС‹Р№ РїР°СЂРѕР»СЊ: <input type=password name=opass size=15 class=LogintextBox5 maxlength=50>
+                                РќРѕРІС‹Р№: <input type=password name=npass size=15 class=LogintextBox5 maxlength=50>
+                                РџРѕРІС‚РѕСЂ: <input type=password name=vpass size=15 class=LogintextBox5 maxlength=50>
 								<input type=image src=http://img.legendbattles.ru/image/change.gif width=72 height=15 border=0 ><?=$msg?>
 							</font>
 						</b>
@@ -61,10 +63,12 @@ if($player[finblock]<time()){
 					<font class=freetxt>
 						<br />
 						<b>
-							Минимальная длина пароля 4 символа.
+                            РњРёРЅРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РїР°СЂРѕР»СЏ 4 СЃРёРјРІРѕР»Р°.
 						</b>
 						<br />
-						После смены пароля персонаж не может проводить операции с финансами, передавать, дарить и выкидывать предметы в течение 24 часов. Также e-mail можно сменить только через 48 часов после смены пароля.<br /><br />
+                        РџРѕСЃР»Рµ СЃРјРµРЅС‹ РїР°СЂРѕР»СЏ РїРµСЂСЃРѕРЅР°Р¶ РЅРµ РјРѕР¶РµС‚ РїСЂРѕРІРѕРґРёС‚СЊ РѕРїРµСЂР°С†РёРё СЃ С„РёРЅР°РЅСЃР°РјРё, РїРµСЂРµРґР°РІР°С‚СЊ, РґР°СЂРёС‚СЊ Рё
+                        РІС‹РєРёРґС‹РІР°С‚СЊ РїСЂРµРґРјРµС‚С‹ РІ С‚РµС‡РµРЅРёРµ 24 С‡Р°СЃРѕРІ. РўР°РєР¶Рµ e-mail РјРѕР¶РЅРѕ СЃРјРµРЅРёС‚СЊ С‚РѕР»СЊРєРѕ С‡РµСЂРµР· 48 С‡Р°СЃРѕРІ РїРѕСЃР»Рµ
+                        СЃРјРµРЅС‹ РїР°СЂРѕР»СЏ.<br/><br/>
 					</font>
 				</form>
 			</td>
@@ -78,17 +82,18 @@ if($player[finblock]<time()){
 					<input type=hidden name=act value=3>
 					<font class=freemain>
 						<b>
-							<font color=#336699>Второй пароль</font>
+                            <font color=#336699>Р’С‚РѕСЂРѕР№ РїР°СЂРѕР»СЊ</font>
 						</b>
 					</font>
 					<font class=freetxt>
-						<br />Устанавливается цифровой пароль для ввода с помощью мыши. Восстановить пароль невозможно. <br />
-						<b>ПРИ УСТАНОВКЕ ОБЯЗАТЕЛЬНО ЗАПИШИТЕ ПАРОЛЬ, КОТОРЫЙ ПОЯВИТСЯ НА ЭКРАНЕ.</b>
+                        <br/>РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ С†РёС„СЂРѕРІРѕР№ РїР°СЂРѕР»СЊ РґР»СЏ РІРІРѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ РјС‹С€Рё. Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ РЅРµРІРѕР·РјРѕР¶РЅРѕ.
+                        <br/>
+                        <b>РџР Р РЈРЎРўРђРќРћР’РљР• РћР‘РЇР—РђРўР•Р›Р¬РќРћ Р—РђРџРРЁРРўР• РџРђР РћР›Р¬, РљРћРўРћР Р«Р™ РџРћРЇР’РРўРЎРЇ РќРђ Р­РљР РђРќР•.</b>
 						<br />
-						<input type=checkbox name=emailc value=1 CHECKED> Копия пароля на Ваш E-mail.<br />
-						<input type=radio name=pa_long value=5 CHECKED> <b>простой уровень</b> (5 цифр) 
-						<input type=radio name=pa_long value=10> <b>сложный уровень</b> (10 цифр) 
-						<input type=submit value="установить" class=lbut>
+                        <input type=checkbox name=emailc value=1 CHECKED> РљРѕРїРёСЏ РїР°СЂРѕР»СЏ РЅР° Р’Р°С€ E-mail.<br/>
+                        <input type=radio name=pa_long value=5 CHECKED> <b>РїСЂРѕСЃС‚РѕР№ СѓСЂРѕРІРµРЅСЊ</b> (5 С†РёС„СЂ)
+                        <input type=radio name=pa_long value=10> <b>СЃР»РѕР¶РЅС‹Р№ СѓСЂРѕРІРµРЅСЊ</b> (10 С†РёС„СЂ)
+                        <input type=submit value="СѓСЃС‚Р°РЅРѕРІРёС‚СЊ" class=lbut>
 				</form>
 			</td>
 		</tr><?php
@@ -98,7 +103,7 @@ if($player[finblock]<time()){
 			<td>
 				<font class=nickname>
 					<font color=#cc0000>
-						<b>Вы не можете менять пароль и email!</b>
+                        <b>Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РјРµРЅСЏС‚СЊ РїР°СЂРѕР»СЊ Рё email!</b>
 					</font>
 				</font>
 			</td>
@@ -107,11 +112,13 @@ if($player[finblock]<time()){
 ?></table>
 
 <table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><table cellpadding=3 cellspacing=1 border=0 align=center>
-<tr><td colspan=4 align=center class=ftit>Отчет по 30 последним заходам игрока в игру.</td></tr>
+                <tr>
+                    <td colspan=4 align=center class=ftit>РћС‚С‡РµС‚ РїРѕ 30 РїРѕСЃР»РµРґРЅРёРј Р·Р°С…РѕРґР°Рј РёРіСЂРѕРєР° РІ РёРіСЂСѓ.</td>
+                </tr>
 <?  $sql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM mlog WHERE typ='1' and login='".$player[login]."' ORDER BY time DESC LIMIT 0,30;");
 $col=array(0=>"FCFAF3","FCFAF3");$i=0;
 while ($row = mysqli_fetch_assoc($sql)) {
-if($row[action]=="err: пароль")$row[action]="<font color=#FF0000><b>err: пароль</b></font>";
+    if ($row[action] == "err: РїР°СЂРѕР»СЊ") $row[action] = "<font color=#FF0000><b>err: РїР°СЂРѕР»СЊ</b></font>";
 ?>
 <tr><td class=freetxt nowrap bgcolor=#<?=$col[$i]?>><?=$row['time']?></td><td class=freetxt nowrap align=center bgcolor=#<?=$col[$i]?>><B><?=$row[action]?></B></td><td class=freetxt align=center bgcolor=#<?=$col[$i]?>><?=$row[ip]?></td><td class=freetxt bgcolor=#<?=$col[$i]?> align=center><?=$row[brouser]?></td></tr>
 <? if($i==0){$i++;}else{$i=0;}}?></table>

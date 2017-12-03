@@ -14,7 +14,8 @@ function GetUserIDtoAutch($user){
 	$user = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `id` FROM `user` WHERE `login` = '".mysqli_real_escape_string($GLOBALS['db_link'],$user)."'"));
 	return $user['id'];
 }
-if(empty($_POST) or ($_POST['login']=='Логин' and $_POST['password']=='Пароль')) {
+
+if (empty($_POST) or ($_POST['login'] == 'Р›РѕРіРёРЅ' and $_POST['password'] == 'РџР°СЂРѕР»СЊ')) {
 	header("Location: /?msg=noinf");
 	exit;
 }
@@ -22,7 +23,7 @@ if(!isset($PLAY['id'])) {
 	if(GetUserIDtoAutch($_POST['login'])!=''){
 		pvu_logs(GetUserIDtoAutch($_POST['login']),"1","|1|".getIP());
 	}
-	log_write("err: пароль",'','','',1);
+    log_write("err: РїР°СЂРѕР»СЊ", '', '', '', 1);
 	header("Location: /help.php?login=1");
 	exit;
 }
@@ -31,7 +32,7 @@ if(!empty($PLAY['block'])) {
 	exit;
 }
 $lch=mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT MAX(id) FROM chat LIMIT 1;"),0);
-//--------заполняем сессии переменными----
+//--------Р·Р°РїРѕР»РЅСЏРµРј СЃРµСЃСЃРёРё РїРµСЂРµРјРµРЅРЅС‹РјРё----
 $uin = md5(uniqid(rand(0,1000000000)));
 setcookie("Hash", $PLAY['pass'],time()+86400, "", ".leg");
 setcookie('UID',$uin,time()+86400);
@@ -52,18 +53,18 @@ $_SESSION['user'] = array(
     "inv"=>'',
 	"pchange"=> $PLAY['pass']
 );
-//--------пишем куки-----------
+//--------РїРёС€РµРј РєСѓРєРё-----------
 if(birthday($PLAY['bday'], true) > $PLAY['bprise']){
 	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `bprise`='".birthday($PLAY['bday'], true)."' WHERE `id`='".$PLAY['id']."' LIMIT 1;");
 }
 if(birthday($PLAY['bday'])){
 	if(birthday($PLAY['bday']) > $PLAY['bprise']){
 		mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `bprise`='".birthday($PLAY['bday'])."',`baks`=`baks`+'10',`nv`=`nv`+'".date("Y")."' WHERE `id`='".$PLAY['id']."' LIMIT 1;");
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;День Рождения.&nbsp;</font> <font color=000000>Администрация Legendbattles поздравляет <b>".$PLAY["login"]."</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?".$PLAY["login"]."\" target=\"_blank\"><img src=http://img.legendbattles.ru/image/chat/info.gif onClick=\"window.open(\'http://legendbattles.ru/ipers.php?".$PLAY["login"]."\');\" width=11 height=12 border=0 align=absmiddle></a> с днем рождения, и в этот праздник приймите от нас скромный подарок: <b>" .lr(date("Y")) . "</b> и <b> 10 </b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b>.</font><BR>'+'');")."');");
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Р”РµРЅСЊ Р РѕР¶РґРµРЅРёСЏ.&nbsp;</font> <font color=000000>РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ Legendbattles РїРѕР·РґСЂР°РІР»СЏРµС‚ <b>" . $PLAY["login"] . "</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?" . $PLAY["login"] . "\" target=\"_blank\"><img src=http://img.legendbattles.ru/image/chat/info.gif onClick=\"window.open(\'http://legendbattles.ru/ipers.php?" . $PLAY["login"] . "\');\" width=11 height=12 border=0 align=absmiddle></a> СЃ РґРЅРµРј СЂРѕР¶РґРµРЅРёСЏ, Рё РІ СЌС‚РѕС‚ РїСЂР°Р·РґРЅРёРє РїСЂРёР№РјРёС‚Рµ РѕС‚ РЅР°СЃ СЃРєСЂРѕРјРЅС‹Р№ РїРѕРґР°СЂРѕРє: <b>" . lr(date("Y")) . "</b> Рё <b> 10 </b><img src=http://img.legendbattles.ru/razdor/emerald.png width=14 height=14 </b>.</font><BR>'+'');") . "');");
 	}
 }
 if($PLAY['last'] == '0'){
-    mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;News.legendbattles.ru&nbsp;</font> <font color=000000>В свет наших земель вышел будущий герой, <a href=\"#\"><img src=//img.legendbattles.ru/image/chat/private.gif width=11 height=12 border=0 align=absmiddle onClick=\"parent.say_private(\'".$PLAY["login"]."\')\"></a><b>".$PLAY["login"]."</b>[0]<a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?".$PLAY["login"]."\" target=\"_blank\"><img src=http//img.legendbattles.ru/image/chat/info.gif onClick=\"window.open(\'http://legendbattles.ru/ipers.php?".$PLAY["login"]."\');\" width=11 height=12 border=0 align=absmiddle></a>. Желаем увлекательного прибывания в нашем мире.</font><BR>'+'');")."');");
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;News.legendbattles.ru&nbsp;</font> <font color=000000>Р’ СЃРІРµС‚ РЅР°С€РёС… Р·РµРјРµР»СЊ РІС‹С€РµР» Р±СѓРґСѓС‰РёР№ РіРµСЂРѕР№, <a href=\"#\"><img src=//img.legendbattles.ru/image/chat/private.gif width=11 height=12 border=0 align=absmiddle onClick=\"parent.say_private(\'" . $PLAY["login"] . "\')\"></a><b>" . $PLAY["login"] . "</b>[0]<a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?" . $PLAY["login"] . "\" target=\"_blank\"><img src=http//img.legendbattles.ru/image/chat/info.gif onClick=\"window.open(\'http://legendbattles.ru/ipers.php?" . $PLAY["login"] . "\');\" width=11 height=12 border=0 align=absmiddle></a>. Р–РµР»Р°РµРј СѓРІР»РµРєР°С‚РµР»СЊРЅРѕРіРѕ РїСЂРёР±С‹РІР°РЅРёСЏ РІ РЅР°С€РµРј РјРёСЂРµ.</font><BR>'+'');") . "');");
 }
 if($PLAY['autoobnul'] == 0){
     obnul_pl($PLAY);
@@ -71,9 +72,9 @@ if($PLAY['autoobnul'] == 0){
 }
 pvu_logs($PLAY['id'],"1","|0|".getIP());
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `lastip` = ip,`ip`='".getIP()."',`sig`='',`pcid`='".$uin."', `onlineBouns`='".(3600+time())."',`last`='".time()."' WHERE `id` = '".$PLAY['id']."'");
-log_write("вход в игру",'','','',1);
+log_write("РІС…РѕРґ РІ РёРіСЂСѓ", '', '', '', 1);
 if($PLAY['lastip'] != getIP()){
-	$jAlert = 'jAlert(\'<font color="red"><b>Внимание!</b></font><hr />'.date("d.m.Y H.i.s", $PLAY['last']).' был зафиксирован вход с IP-адреса '.$PLAY['lastip'].'<br /><br />Ваш текущий IP-адрес: '.getIP().'\');';
+    $jAlert = 'jAlert(\'<font color="red"><b>Р’РЅРёРјР°РЅРёРµ!</b></font><hr />' . date("d.m.Y H.i.s", $PLAY['last']) . ' Р±С‹Р» Р·Р°С„РёРєСЃРёСЂРѕРІР°РЅ РІС…РѕРґ СЃ IP-Р°РґСЂРµСЃР° ' . $PLAY['lastip'] . '<br /><br />Р’Р°С€ С‚РµРєСѓС‰РёР№ IP-Р°РґСЂРµСЃ: ' . getIP() . '\');';
 }
 ?>
 <!DOCTYPE html>

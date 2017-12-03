@@ -128,8 +128,8 @@ function MessBoxDiv(mess,timer,protype,code,maxcol)
         
         MESSD = d.createElement('div');
         MESSD.className = 'png menu';
-        MESSD.id = 'static_window'; 
-        MESSD.innerHTML = '<div class="ws_top png"></div><div class="ws_right png"></div><div class="ws_bottom png"></div><div class="ws_middle" id="ws_middle"><div class="text" align="center" valign="absmiddle"><font class=proce>Идет переработка:<br>'+mess+''+(protype && vcode && timer == 180 && col>0?' <font color=green>('+col+' шт.)</font>':'')+'</div><br><br><br><br><div style="text-align: left;z-index:999;" id="world_cont2" align="center" valign="absmiddle"></div></div>';
+        MESSD.id = 'static_window';
+        MESSD.innerHTML = '<div class="ws_top png"></div><div class="ws_right png"></div><div class="ws_bottom png"></div><div class="ws_middle" id="ws_middle"><div class="text" align="center" valign="absmiddle"><font class=proce>РРґРµС‚ РїРµСЂРµСЂР°Р±РѕС‚РєР°:<br>' + mess + '' + (protype && vcode && timer == 180 && col > 0 ? ' <font color=green>(' + col + ' С€С‚.)</font>' : '') + '</div><br><br><br><br><div style="text-align: left;z-index:999;" id="world_cont2" align="center" valign="absmiddle"></div></div>';
         d.body.appendChild(MESSD); 
 		if(timer>0){TimerStart(mess,timer,protype);}
 		else{writebutmess(mess,protype,timer);}		
@@ -137,24 +137,24 @@ function MessBoxDiv(mess,timer,protype,code,maxcol)
 }
 
 function buyItems(id,code,name,price){
-	var mess = '<font class=proceb>'+name+' ('+price+' LR)<br>Количество: <input type=text class=logintextbox7 name=col value=1 onkeyup="writeBuy(this.value,'+id+',\''+code+'\');"><br><b id=buybutton><input type=button class=invbut onclick="location=\'main.php?post_id=110&act=1&col=1&uid='+id+'&vcode='+code+'\'" value="Купить"></b> ';
+    var mess = '<font class=proceb>' + name + ' (' + price + ' LR)<br>РљРѕР»РёС‡РµСЃС‚РІРѕ: <input type=text class=logintextbox7 name=col value=1 onkeyup="writeBuy(this.value,' + id + ',\'' + code + '\');"><br><b id=buybutton><input type=button class=invbut onclick="location=\'main.php?post_id=110&act=1&col=1&uid=' + id + '&vcode=' + code + '\'" value="РљСѓРїРёС‚СЊ"></b> ';
 	MessBoxDiv(mess,0,0,0,0);
 }
 
 function writeBuy(val,id,code){
-	d.getElementById('buybutton_'+id).innerHTML = '<input type=button class=invbut onclick="location=\'main.php?post_id=110&act=1&col='+val+'&uid='+id+'&vcode='+code+'\'" value="Купить">';	
+    d.getElementById('buybutton_' + id).innerHTML = '<input type=button class=invbut onclick="location=\'main.php?post_id=110&act=1&col=' + val + '&uid=' + id + '&vcode=' + code + '\'" value="РљСѓРїРёС‚СЊ">';
 }
 
 function writeBuyShops(val,id,code){
-	d.getElementById('buybutton_'+id).innerHTML = '<input type=button class=invbut onclick="location=\'main.php?post_id=110&act=3&col='+val+'&uid='+id+'&vcode='+code+'\'" value="Купить">';	
+    d.getElementById('buybutton_' + id).innerHTML = '<input type=button class=invbut onclick="location=\'main.php?post_id=110&act=3&col=' + val + '&uid=' + id + '&vcode=' + code + '\'" value="РљСѓРїРёС‚СЊ">';
 }
 
 function editPrice(val,id,code){
-	d.getElementById('edbutton_'+id).innerHTML = '<input type=button class=invbut onclick="location=\'main.php?post_id=110&act=4&pr='+val+'&uid='+id+'&vcode='+code+'\'" value="Изменить цену">';	
+    d.getElementById('edbutton_' + id).innerHTML = '<input type=button class=invbut onclick="location=\'main.php?post_id=110&act=4&pr=' + val + '&uid=' + id + '&vcode=' + code + '\'" value="РР·РјРµРЅРёС‚СЊ С†РµРЅСѓ">';
 }
 
 function editPriceShops(val,id,code){
-	d.getElementById('edbutton_'+id).innerHTML = '<input type=button class=invbut onclick="location=\'main.php?post_id=110&act=5&pr='+val+'&uid='+id+'&vcode='+code+'\'" value="Изменить цену">';	
+    d.getElementById('edbutton_' + id).innerHTML = '<input type=button class=invbut onclick="location=\'main.php?post_id=110&act=5&pr=' + val + '&uid=' + id + '&vcode=' + code + '\'" value="РР·РјРµРЅРёС‚СЊ С†РµРЅСѓ">';
 }
 
 
@@ -163,7 +163,7 @@ function editPriceShops(val,id,code){
 function writebutmess(mess,protype,timer){	
 	nddt = new Date().getTime();
 	parent.frames['ch_buttons'].document.FBT.text.focus();
-	d.getElementById('ws_middle').innerHTML = '<div class="text" align="center" valign="absmiddle">'+(protype && vcode && timer == 180 && col>0?'<font class=proce>Переработано:<br>':'')+''+mess+''+(protype && vcode && timer == 180 && col>0?' <font color=green>('+col+' шт.)</font><br><br>Чтобы получить результат нажмите "Закрыть".':'')+'</div><a class="cl_but" href="javascript: MessBoxDivClose(); '+(protype && vcode && timer == 180 && col>0?'location=\'main.php?post_id=108&uid='+protype+'&t='+ddt+'&t2='+nddt+'&act=1&col='+col+'&vcode='+vcode+'\';':'')+'"></a>';
+    d.getElementById('ws_middle').innerHTML = '<div class="text" align="center" valign="absmiddle">' + (protype && vcode && timer == 180 && col > 0 ? '<font class=proce>РџРµСЂРµСЂР°Р±РѕС‚Р°РЅРѕ:<br>' : '') + '' + mess + '' + (protype && vcode && timer == 180 && col > 0 ? ' <font color=green>(' + col + ' С€С‚.)</font><br><br>Р§С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ РЅР°Р¶РјРёС‚Рµ "Р—Р°РєСЂС‹С‚СЊ".' : '') + '</div><a class="cl_but" href="javascript: MessBoxDivClose(); ' + (protype && vcode && timer == 180 && col > 0 ? 'location=\'main.php?post_id=108&uid=' + protype + '&t=' + ddt + '&t2=' + nddt + '&act=1&col=' + col + '&vcode=' + vcode + '\';' : '') + '"></a>';
 	d.all('col').focus();
 	world = false;
 	transport_img = false;

@@ -17,7 +17,7 @@ function add_msg(text)
     var myRe = /script/ig;       
     var pr = /^\s(\%\<[^\>]{2,20}\>\s?)+$/;
     var s = "";
-    text = text.replace(myRe,'скрипт');
+    text = text.replace(myRe, 'СЃРєСЂРёРїС‚');
 
     var spl = text.split("<BR>");
     for(var k=0; k<spl.length; k++)
@@ -74,7 +74,7 @@ function add_msg(text)
                             msgp[0] = msgp[0].replace('<font class=chattime>','<font class=yochattime>');
                         }
 
-                        msgp[2] = '&nbsp;для'+msgp[2];
+                        msgp[2] = '&nbsp;РґР»СЏ' + msgp[2];
                     }
                 }
                 txt = msgp.join('');
@@ -125,26 +125,26 @@ foreach($_GET as $keyget=>$valg){
 }
 ?>
 <link href="../../../css/game.css" rel="stylesheet" type="text/css" />
-<input type="button" class="lbut" onClick="javascript: location='player.php'" value="   Обновить  " />
-<input type=button class=lbut onClick="location='adm.php'" value="Вернуться">
+<input type="button" class="lbut" onClick="javascript: location='player.php'" value="   РћР±РЅРѕРІРёС‚СЊ  "/>
+<input type=button class=lbut onClick="location='adm.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
 <script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
 
 <link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
 <div id="TabbedPanels1" class="TabbedPanels">
   <ul class="TabbedPanelsTabGroup">
-    <li class="TabbedPanelsTab" tabindex="0">Прямое редактирование</li>
-    <li class="TabbedPanelsTab" tabindex="0">Молчанки</li>
-    <li class="TabbedPanelsTab" tabindex="0">Перевод NV</li>
-    <li class="TabbedPanelsTab" tabindex="0">Исцеление</li>
-    <li class="TabbedPanelsTab" tabindex="0">Установка образа</li>
-    <li class="TabbedPanelsTab" tabindex="0">Обнуление</li>
-    <li class="TabbedPanelsTab" tabindex="0">В тюрьму</li>
-    <li class="TabbedPanelsTab" tabindex="0">БЛОК</li>
-	<li class="TabbedPanelsTab" tabindex="0">Сообщение всем</li>
-	<li class="TabbedPanelsTab" tabindex="0">Пересчет статов</li>
-	<li class="TabbedPanelsTab" tabindex="0">казна</li>
-	<li class="TabbedPanelsTab" tabindex="0">Пересчет статов для перса</li>
-	<li class="TabbedPanelsTab" tabindex="0">Пересчет коэффа на артах</li>
+      <li class="TabbedPanelsTab" tabindex="0">РџСЂСЏРјРѕРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ</li>
+      <li class="TabbedPanelsTab" tabindex="0">РњРѕР»С‡Р°РЅРєРё</li>
+      <li class="TabbedPanelsTab" tabindex="0">РџРµСЂРµРІРѕРґ NV</li>
+      <li class="TabbedPanelsTab" tabindex="0">РСЃС†РµР»РµРЅРёРµ</li>
+      <li class="TabbedPanelsTab" tabindex="0">РЈСЃС‚Р°РЅРѕРІРєР° РѕР±СЂР°Р·Р°</li>
+      <li class="TabbedPanelsTab" tabindex="0">РћР±РЅСѓР»РµРЅРёРµ</li>
+      <li class="TabbedPanelsTab" tabindex="0">Р’ С‚СЋСЂСЊРјСѓ</li>
+      <li class="TabbedPanelsTab" tabindex="0">Р‘Р›РћРљ</li>
+      <li class="TabbedPanelsTab" tabindex="0">РЎРѕРѕР±С‰РµРЅРёРµ РІСЃРµРј</li>
+      <li class="TabbedPanelsTab" tabindex="0">РџРµСЂРµСЃС‡РµС‚ СЃС‚Р°С‚РѕРІ</li>
+      <li class="TabbedPanelsTab" tabindex="0">РєР°Р·РЅР°</li>
+      <li class="TabbedPanelsTab" tabindex="0">РџРµСЂРµСЃС‡РµС‚ СЃС‚Р°С‚РѕРІ РґР»СЏ РїРµСЂСЃР°</li>
+      <li class="TabbedPanelsTab" tabindex="0">РџРµСЂРµСЃС‡РµС‚ РєРѕСЌС„С„Р° РЅР° Р°СЂС‚Р°С…</li>
     
   </ul>
   <div class="TabbedPanelsContentGroup">
@@ -160,11 +160,11 @@ if($load){$i=0;
 			{echo "</tr>";$i=0;}
 		}
 		echo'</tr>';
-		/*echo'<tr><td colspan=3 align=center>ЧАТ игрока</td></tr>';
-		if($pl['clan']!='Life'){
-			echo'<tr><td colspan=3 align=left><div id=msg></div></td></tr>';
-			echo'<tr><td colspan=3 align=center>'.msg_add($pl).'</td></tr>';
-		}else{echo'<tr><td colspan=3 align=center>просмотр чата игроков клана LIFE - недоступен</td></tr>';}*/
+        /*echo'<tr><td colspan=3 align=center>Р§РђРў РёРіСЂРѕРєР°</td></tr>';
+        if($pl['clan']!='Life'){
+            echo'<tr><td colspan=3 align=left><div id=msg></div></td></tr>';
+            echo'<tr><td colspan=3 align=center>'.msg_add($pl).'</td></tr>';
+        }else{echo'<tr><td colspan=3 align=center>РїСЂРѕСЃРјРѕС‚СЂ С‡Р°С‚Р° РёРіСЂРѕРєРѕРІ РєР»Р°РЅР° LIFE - РЅРµРґРѕСЃС‚СѓРїРµРЅ</td></tr>';}*/
 	}
 }
 
@@ -175,62 +175,80 @@ foreach($pr as $key=>$val){if($pr[$key]!=$pl[$key]){$str[]=" $key='$val'";}}
 if(isset($str)){$str=implode(",",$str);
 mysqli_query($GLOBALS['db_link'],"UPDATE user SET $str WHERE id='$idp' LIMIT 1;");}
 }$pl='';}
-?>        
-<? if($pl==''){?><br><span class="logintext"> Введите логин: </span><input name="loginp" type="text" class="LogintextBox" /> <input name="load" type="submit" value="Загрузить" class="lbut"/><? }else{echo "<input name=idp type=hidden value=\"$pl[id]\" /> <input name=save type=submit value=Записать /> <input name=close type=submit value=\" x \" />";}?></form>
+?>
+                <? if ($pl == '') { ?><br><span class="logintext"> Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ: </span><input name="loginp"
+                                                                                                type="text"
+                                                                                                class="LogintextBox"/>
+                    <input name="load" type="submit" value="Р—Р°РіСЂСѓР·РёС‚СЊ" class="lbut"/><? } else {
+                    echo "<input name=idp type=hidden value=\"$pl[id]\" /> <input name=save type=submit value=Р—Р°РїРёСЃР°С‚СЊ /> <input name=close type=submit value=\" x \" />";
+                } ?></form>
 </table></div>
     <div class="TabbedPanelsContent">
 <form action="player.php" method="post">
-<span class="logintext">Логин:</span> 
-<input name="login" type="text" class="LogintextBox" /> 
+    <span class="logintext">Р›РѕРіРёРЅ:</span>
+    <input name="login" type="text" class="LogintextBox" />
 
-<span class="logintext">Время:</span> 
-<select name="time" class="LogintextBox6">
-  <option value="300|5 мин" selected>5 мин</option>
-  <option value="600|10 мин">10 мин</option>
-  <option value="900|15 мин">15 мин</option>
-  <option value="1800|30 мин">30 мин</option>
-  <option value="3600|1 час">1 час</option>
-  <option value="10800|3 часа">3 часа</option>
-  <option value="86400|24 часа">24 часа</option>
+    <span class="logintext">Р’СЂРµРјСЏ:</span>
+    <select name="time" class="LogintextBox6">
+        <option value="300|5 РјРёРЅ" selected>5 РјРёРЅ</option>
+        <option value="600|10 РјРёРЅ">10 РјРёРЅ</option>
+        <option value="900|15 РјРёРЅ">15 РјРёРЅ</option>
+        <option value="1800|30 РјРёРЅ">30 РјРёРЅ</option>
+        <option value="3600|1 С‡Р°СЃ">1 С‡Р°СЃ</option>
+        <option value="10800|3 С‡Р°СЃР°">3 С‡Р°СЃР°</option>
+        <option value="86400|24 С‡Р°СЃР°">24 С‡Р°СЃР°</option>
 </select>
-<input name="molch" type="submit" class="lbut" value="   Заткнуть  " /> 
-<input name="nomolch" type="submit" class="lbut" value="   Снять молчанку  " />
+    <input name="molch" type="submit" class="lbut" value="   Р—Р°С‚РєРЅСѓС‚СЊ  "/>
+    <input name="nomolch" type="submit" class="lbut" value="   РЎРЅСЏС‚СЊ РјРѕР»С‡Р°РЅРєСѓ  "/>
 <? if($molch){
 $pl= mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login' LIMIT 1;"));
 if($pl[login]!=''){
 $time=explode("|",$time);
 mysqli_query($GLOBALS['db_link'],"UPDATE user SET sleep=".(time()+$time[0])." WHERE login='$login' LIMIT 1;");
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>$pl[login]</b> заклятие молчания сроком на <b>$time[1]</b> (Хранитель Игры).</font><BR>'+'');";chmsg($ms,'');}}
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РќР° РїРµСЂСЃРѕРЅР°Р¶Р° <b>$pl[login]</b> Р·Р°РєР»СЏС‚РёРµ РјРѕР»С‡Р°РЅРёСЏ СЃСЂРѕРєРѕРј РЅР° <b>$time[1]</b> (РҐСЂР°РЅРёС‚РµР»СЊ РРіСЂС‹).</font><BR>'+'');";
+    chmsg($ms, '');
+}
+}
 if($nomolch){
 $pl= mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login' LIMIT 1;"));
 if($pl[login]!=''){
 mysqli_query($GLOBALS['db_link'],"UPDATE user SET sleep='0' WHERE login='$login' LIMIT 1;");
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>Хранитель Игры</b> снял заклятие молчания с персонажа <b>$pl[login]</b>.</font><BR>'+'');";chmsg($ms,'');}}
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;<b>РҐСЂР°РЅРёС‚РµР»СЊ РРіСЂС‹</b> СЃРЅСЏР» Р·Р°РєР»СЏС‚РёРµ РјРѕР»С‡Р°РЅРёСЏ СЃ РїРµСЂСЃРѕРЅР°Р¶Р° <b>$pl[login]</b>.</font><BR>'+'');";
+    chmsg($ms, '');
+}
+}
 ?>        
 </form>
     </div>
 <div class="TabbedPanelsContent"><form action="player.php" method="post">
-<span class="logintext">Логин:</span>  <input name="login" type="text" class="LogintextBox"/> <span class="logintext">Сумма:</span>  <input name="NV" type="text" value="0" class="LogintextBox2"/>
-<input name="gmoney" type="submit" value="   Дать NV  " class="lbut"/>
+        <span class="logintext">Р›РѕРіРёРЅ:</span> <input name="login" type="text" class="LogintextBox"/> <span
+                class="logintext">РЎСѓРјРјР°:</span> <input name="NV" type="text" value="0" class="LogintextBox2"/>
+        <input name="gmoney" type="submit" value="   Р”Р°С‚СЊ NV  " class="lbut"/>
 <? if($gmoney){
 if($NV!=0 and $login!=''){mysqli_query($GLOBALS['db_link'],"UPDATE user SET nv=nv+$NV WHERE login='$login' LIMIT 1;");
 if($NV>0){
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Получены <b>$NV NV</b> от <b>Хранителя Игры!</b></font><BR>'+'');";chmsg($ms,$login);}}}
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РџРѕР»СѓС‡РµРЅС‹ <b>$NV NV</b> РѕС‚ <b>РҐСЂР°РЅРёС‚РµР»СЏ РРіСЂС‹!</b></font><BR>'+'');";
+    chmsg($ms, $login);
+}
+}
+}
 echo $login['id'];
 ?>        
 </form></div>
 <div class="TabbedPanelsContent"><form action="player.php" method="post">
-<span class="logintext">Логин:</span>  <input name="login" type="text" class="LogintextBox"/>
-<input name="free" type="submit" value="   Снять все аффекты  "  class="lbut"/>
+        <span class="logintext">Р›РѕРіРёРЅ:</span> <input name="login" type="text" class="LogintextBox"/>
+        <input name="free" type="submit" value="   РЎРЅСЏС‚СЊ РІСЃРµ Р°С„С„РµРєС‚С‹  " class="lbut"/>
 <? if($free and $login!=''){
 mysqli_query($GLOBALS['db_link'],"UPDATE user SET affect='',viselica='' WHERE login='$login' LIMIT 1;");
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>Хранитель Игры</b> исцелил Вас от травм и развеял все чары.</font><BR>'+'');";chmsg($ms,$login);}
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;<b>РҐСЂР°РЅРёС‚РµР»СЊ РРіСЂС‹</b> РёСЃС†РµР»РёР» Р’Р°СЃ РѕС‚ С‚СЂР°РІРј Рё СЂР°Р·РІРµСЏР» РІСЃРµ С‡Р°СЂС‹.</font><BR>'+'');";
+    chmsg($ms, $login);
+}
 ?>        
 </form>        </div>
 <div class="TabbedPanelsContent"><form action="player.php" method="post" name="obraz">
-<span class="logintext">Логин:</span>  <input name="login" type="text" class="LogintextBox" />
+        <span class="logintext">Р›РѕРіРёРЅ:</span> <input name="login" type="text" class="LogintextBox"/>
 <select name="gif" onChange="img();" class="LogintextBox2">
-        <option selected="selected">Выберите</option>
+    <option selected="selected">Р’С‹Р±РµСЂРёС‚Рµ</option>
           <?php 
 if ($handle = opendir('http://img.legendbattles.ru/image/obrazy')) {
     echo "Directory handle: $handle\n";
@@ -245,16 +263,18 @@ if ($handle = opendir('http://img.legendbattles.ru/image/obrazy')) {
 }
 ?>
     </select>
-<input name="obr" type="submit" value="   Установить образ  " class="lbut"/>
+        <input name="obr" type="submit" value="   РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РѕР±СЂР°Р·  " class="lbut"/>
 <? if($obr and $login!=''){
-mysqli_query($GLOBALS['db_link'],"UPDATE user SET obraz='$gif' WHERE login='$login' LIMIT 1;"); 
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>Хранитель Игры</b> установил Вам новый образ.</font><BR>'+'');";chmsg($ms,$login);
+mysqli_query($GLOBALS['db_link'],"UPDATE user SET obraz='$gif' WHERE login='$login' LIMIT 1;");
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;<b>РҐСЂР°РЅРёС‚РµР»СЊ РРіСЂС‹</b> СѓСЃС‚Р°РЅРѕРІРёР» Р’Р°Рј РЅРѕРІС‹Р№ РѕР±СЂР°Р·.</font><BR>'+'');";
+    chmsg($ms, $login);
 }?>
 <div id="img"></div>
 </form></div>
 <div class="TabbedPanelsContent"><form action="player.php" method="post">
-<span class="logintext">Логин:</span>  <input name="login" type="text" class="LogintextBox"/>
-<input name="obn" type="submit" value="   обнулить  "  class="lbut"/></form><br><br />
+        <span class="logintext">Р›РѕРіРёРЅ:</span> <input name="login" type="text" class="LogintextBox"/>
+        <input name="obn" type="submit" value="   РѕР±РЅСѓР»РёС‚СЊ  " class="lbut"/></form>
+    <br><br/>
 
 <? if($obn){
 	if($login!=''){
@@ -268,52 +288,68 @@ $ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")
 	}
 }
 
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>Хранитель Игры</b> обнулил вашего персонажа.</font><BR>'+'');";chmsg($ms,$login);}?></div>
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;<b>РҐСЂР°РЅРёС‚РµР»СЊ РРіСЂС‹</b> РѕР±РЅСѓР»РёР» РІР°С€РµРіРѕ РїРµСЂСЃРѕРЅР°Р¶Р°.</font><BR>'+'');";
+    chmsg($ms, $login);
+} ?></div>
 
 <div class="TabbedPanelsContent"><form action="player.php" method="post"><br>
-<span class="logintext">Логин:</span>  <input name="login" type="text" class="LogintextBox"/> <span class="logintext">Время в днях: </span> <input name="time" type="text" value="0" class="LogintextBox2" /> <span class="logintext">Причина: </span> <input name="prich" type="text" maxlength="50" class="LogintextBox"/>
-<input name="prison" type="submit" value="   В тюрьму  "  class="lbut"/>
-<input name="noprison" type="submit" value="   Выпустить  "  class="lbut"/></form><br><br>
+        <span class="logintext">Р›РѕРіРёРЅ:</span> <input name="login" type="text" class="LogintextBox"/> <span
+                class="logintext">Р’СЂРµРјСЏ РІ РґРЅСЏС…: </span> <input name="time" type="text" value="0" class="LogintextBox2"/>
+        <span class="logintext">РџСЂРёС‡РёРЅР°: </span> <input name="prich" type="text" maxlength="50" class="LogintextBox"/>
+        <input name="prison" type="submit" value="   Р’ С‚СЋСЂСЊРјСѓ  " class="lbut"/>
+        <input name="noprison" type="submit" value="   Р’С‹РїСѓСЃС‚РёС‚СЊ  " class="lbut"/></form>
+    <br><br>
 <? if($prison){
 $pl= mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login' LIMIT 1;"));
 if($time!=0 and $pl[login]!=''){
 $tim=time()+($time*86400)."|$prich";
 mysqli_query($GLOBALS['db_link'],"UPDATE user SET prison='$tim', mov='1',loc='33', pos='8_4' WHERE login='$login' LIMIT 1;");
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Персонаж <b>$pl[login]</b> отправлен в тюрьму (Хранитель Игры).</font><BR>'+'');$redirect";chmsg($ms,'');}}
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РџРµСЂСЃРѕРЅР°Р¶ <b>$pl[login]</b> РѕС‚РїСЂР°РІР»РµРЅ РІ С‚СЋСЂСЊРјСѓ (РҐСЂР°РЅРёС‚РµР»СЊ РРіСЂС‹).</font><BR>'+'');$redirect";
+    chmsg($ms, '');
+}
+}
 if($noprison and $login!=''){mysqli_query($GLOBALS['db_link'],"UPDATE user SET prison='0' WHERE login='$login' LIMIT 1;");}
 ?></div>
 
 
 <div class="TabbedPanelsContent"><form action="player.php" method="post"><br>
-<span class="logintext">Логин:</span>  <input name="login" type="text" class="LogintextBox"/>  <span class="logintext">Причина: </span> <input name="prich" type="text" maxlength="50" class="LogintextBox"/>
-<input name="block" type="submit" value="   Блокировать  "  class="lbut"/>
-<input name="unblock" type="submit" value="   Разблокировать  "  class="lbut"/></form><br><br>
+        <span class="logintext">Р›РѕРіРёРЅ:</span> <input name="login" type="text" class="LogintextBox"/> <span
+                class="logintext">РџСЂРёС‡РёРЅР°: </span> <input name="prich" type="text" maxlength="50" class="LogintextBox"/>
+        <input name="block" type="submit" value="   Р‘Р»РѕРєРёСЂРѕРІР°С‚СЊ  " class="lbut"/>
+        <input name="unblock" type="submit" value="   Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ  " class="lbut"/></form>
+    <br><br>
 <? if($block){
 $pl= mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$login' LIMIT 1;"));
 if($pl[login]!=''){
-if($prich==''){$prich="Так надо";}
+    if ($prich == '') {
+        $prich = "РўР°Рє РЅР°РґРѕ";
+    }
 mysqli_query($GLOBALS['db_link'],"UPDATE user SET block='$prich' WHERE login='$login' LIMIT 1;");
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;НА персонажа <b>$pl[login]</b> наложено заклятие смерти. Пусть земля тебе будет пухом. (Хранитель Игры).</font><BR>'+'');$quit";chmsg($ms,$login);
-$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;НА персонажа <b>$pl[login]</b> наложено заклятие смерти. Пусть земля тебе будет пухом. (Хранитель Игры).</font><BR>'+'');"; chmsg($ms,'');
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РќРђ РїРµСЂСЃРѕРЅР°Р¶Р° <b>$pl[login]</b> РЅР°Р»РѕР¶РµРЅРѕ Р·Р°РєР»СЏС‚РёРµ СЃРјРµСЂС‚Рё. РџСѓСЃС‚СЊ Р·РµРјР»СЏ С‚РµР±Рµ Р±СѓРґРµС‚ РїСѓС…РѕРј. (РҐСЂР°РЅРёС‚РµР»СЊ РРіСЂС‹).</font><BR>'+'');$quit";
+    chmsg($ms, $login);
+    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РќРђ РїРµСЂСЃРѕРЅР°Р¶Р° <b>$pl[login]</b> РЅР°Р»РѕР¶РµРЅРѕ Р·Р°РєР»СЏС‚РёРµ СЃРјРµСЂС‚Рё. РџСѓСЃС‚СЊ Р·РµРјР»СЏ С‚РµР±Рµ Р±СѓРґРµС‚ РїСѓС…РѕРј. (РҐСЂР°РЅРёС‚РµР»СЊ РРіСЂС‹).</font><BR>'+'');";
+    chmsg($ms, '');
 }}
 if($unblock and $login!=''){mysqli_query($GLOBALS['db_link'],"UPDATE user SET block='' WHERE login='$login' LIMIT 1;");}
 ?>
 </div>
 
 <div class="TabbedPanelsContent"><form action="player.php" method="post"><br>
-<span class="logintext">Сообщение:</span>  <input name="message" type="text" length=1000 class="LogintextBox"/>
-<input name="textmessage" type="submit" value="   Отправить  "  class="lbut"/></form><br><br>
+        <span class="logintext">РЎРѕРѕР±С‰РµРЅРёРµ:</span> <input name="message" type="text" length=1000 class="LogintextBox"/>
+        <input name="textmessage" type="submit" value="   РћС‚РїСЂР°РІРёС‚СЊ  " class="lbut"/></form>
+    <br><br>
 <?php
 if($_POST['textmessage']){
-    mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=#000000><b><font color=#FF0000>Внимание!</font></b> ".$_POST['message']."</font><BR>'+'');")."');");
-//    $ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp; $message </font><BR>'+'');";
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=#000000><b><font color=#FF0000>Р’РЅРёРјР°РЅРёРµ!</font></b> " . $_POST['message'] . "</font><BR>'+'');") . "');");
+//    $ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp; $message </font><BR>'+'');";
 //    chmsg($ms,'');
 }
 ?>
 </div>
-<!-- статы -->
+      <!-- СЃС‚Р°С‚С‹ -->
 <div class="TabbedPanelsContent"><form action="player.php" method="post"><br>
-<input name="stats" type="submit" value=" статы "  class="lbut"/></form><br><br>
+        <input name="stats" type="submit" value=" СЃС‚Р°С‚С‹ " class="lbut"/></form>
+    <br><br>
 <? if($stats){
 $users=mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE type=1");
 while ($row = mysqli_fetch_assoc($users)){
@@ -324,7 +360,8 @@ while ($row = mysqli_fetch_assoc($users)){
 
 </div>
 <div class="TabbedPanelsContent"><form action="player.php" method="post"><br>
-<input name="clans" type="submit" value=" чистка казны "  class="lbut"/></form><br><br>
+        <input name="clans" type="submit" value=" С‡РёСЃС‚РєР° РєР°Р·РЅС‹ " class="lbut"/></form>
+    <br><br>
 <?
  if($clans){
 	$sql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM clan_kazna WHERE clan_id='biohazard';");
@@ -348,10 +385,10 @@ while ($row = mysqli_fetch_assoc($users)){
 
 
   </div>
-  <!-- статы перса -->
+      <!-- СЃС‚Р°С‚С‹ РїРµСЂСЃР° -->
 <div class="TabbedPanelsContent"><form action="player.php" method="post"><br>
-<span class="logintext">Логин:</span><input name="login" type="text" class="LogintextBox"/>
-<input name="statsp" type="submit" value=" статы "  class="lbut"/>
+        <span class="logintext">Р›РѕРіРёРЅ:</span><input name="login" type="text" class="LogintextBox"/>
+        <input name="statsp" type="submit" value=" СЃС‚Р°С‚С‹ " class="lbut"/>
 </form><br><br>
 <? if($statsp){
 $user=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='".$login."';"));
@@ -359,9 +396,9 @@ calcstat($user[id]);
 }
 ?>
 </div>
-  <!-- коэфф артов -->
+      <!-- РєРѕСЌС„С„ Р°СЂС‚РѕРІ -->
 <div class="TabbedPanelsContent"><form action="player.php" method="post"><br>
-<input name="koeffart" type="submit" value=" пересчитать "  class="lbut"/>
+        <input name="koeffart" type="submit" value=" РїРµСЂРµСЃС‡РёС‚Р°С‚СЊ " class="lbut"/>
 </form><br><br>
 <?
 if($koeffart){/*
@@ -401,7 +438,7 @@ function calc_koeff($item){
 		}
 	}
 	if($koeff==0){$newpar.="|71@$newkoeff";}
-	//$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>$newpar</b> $item[name].</font><BR>'+'');";chmsg($ms,'');
+    //$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;<b>$newpar</b> $item[name].</font><BR>'+'');";chmsg($ms,'');
 	mysqli_query($GLOBALS['db_link'],"UPDATE items SET param='".$newpar."',master='' WHERE id=".$item['id'].";");
 }
 function obnul($login){

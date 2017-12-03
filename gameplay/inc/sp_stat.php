@@ -1,95 +1,241 @@
 <?php
-if($stat[1]>0){
-	$plus = "+";		
-}else{
-	$plus ="";
+if ($stat[1] > 0) {
+    $plus = "+";
+} else {
+    $plus = "";
 }
-if ($stat[0]>4 and $stat[0]<11 and $stat[0]!=9){
-	$percent="%";
-}else{
-	$percent="";
+if ($stat[0] > 4 and $stat[0] < 11 and $stat[0] != 9) {
+    $percent = "%";
+} else {
+    $percent = "";
 }
-if($stat[0]==1){
-	$pr=explode("-",$modstat[1]);		
-	$pri=explode("-",$stat[1]);
-	$modstroke="".($modstat[1]!='' ?  ($pr[0]+$pri[0])."-".($pr[1]+$pri[1])."$percent  </b>[".($modstat[1]>0 ? "<font color=green> <b>".$modstat[1]."</b>$percent" : "<font color=red><b>".$modstat[1]."</b>$percent")."</font></b> ]<b> " : "$stat[1]$percent")."";
-}else{
-	$modstroke="".($modstat[$stat[0]]!='' ?  $stat[1]+$modstat[$stat[0]]."$percent  </b>[".($modstat[$stat[0]]>0 ? "<font color=green>+<b>".$modstat[$stat[0]]."</b>$percent" : "<font color=red><b>".$modstat[$stat[0]]."</b>$percent")."</font></b> ]<b> " : "$stat[1]$percent")."";
+if ($stat[0] == 1) {
+    $pr = explode("-", $modstat[1]);
+    $pri = explode("-", $stat[1]);
+    $modstroke = "" . ($modstat[1] != '' ? ($pr[0] + $pri[0]) . "-" . ($pr[1] + $pri[1]) . "$percent  </b>[" . ($modstat[1] > 0 ? "<font color=green> <b>" . $modstat[1] . "</b>$percent" : "<font color=red><b>" . $modstat[1] . "</b>$percent") . "</font></b> ]<b> " : "$stat[1]$percent") . "";
+} else {
+    $modstroke = "" . ($modstat[$stat[0]] != '' ? $stat[1] + $modstat[$stat[0]] . "$percent  </b>[" . ($modstat[$stat[0]] > 0 ? "<font color=green>+<b>" . $modstat[$stat[0]] . "</b>$percent" : "<font color=red><b>" . $modstat[$stat[0]] . "</b>$percent") . "</font></b> ]<b> " : "$stat[1]$percent") . "";
 }
-switch($stat[0]){
-	//case 0: echo "&nbsp;Гравировка: <b>".$modstroke."</b><br>"; break;
-	case 1: echo "&nbsp;Удар: <b>".$modstroke."</b><br>";break;
-	case 2: echo "&nbsp;Долговечность: <b>".(($iz==1 and $ITEM[slot]!=5) ? "<font color=red>".$iz."</font>" : $iz)."/$ITEM[dolg]</b><br>";break;
-	case 3: echo "&nbsp;Карманов: <b>".$modstroke."</b><br>";break;
-	case 4: echo "&nbsp;Описания: <b>".$modstroke."</b><br>";break;
-	case 5: echo "&nbsp;Уловка: $plus<b>".$modstroke."</b><br>";break;
-	case 6: echo "&nbsp;Точность: $plus<b>".$modstroke."</b><br>";break;
-	case 7: echo "&nbsp;Сокрушение: $plus<b>".$modstroke."</b><br>";break;
-	case 8: echo "&nbsp;Стойкость: $plus<b>".$modstroke."</b><br>";break;
-	case 9: echo "&nbsp;Класс брони: <b>".$modstroke."</b><br>";break;
-	case 10: echo "&nbsp;Пробой брони: $plus<b>".$modstroke."</b><br>";break;
-	case 11: echo "&nbsp;Пробой колющим ударом: $plus<b>".$modstroke."%</b><br>";break;
-	case 12: echo "&nbsp;Пробой режущим ударом: $plus<b>".$modstroke."%</b><br>";break;
-	case 13: echo "&nbsp;Пробой проникающим ударом: $plus<b>".$modstroke."%</b><br>";break;
-	case 14: echo "&nbsp;Пробой пробивающим ударом: $plus<b>".$modstroke."%</b><br>";break;
-	case 15: echo "&nbsp;Пробой рубящим ударом: $plus<b>".$modstroke."%</b><br>";break;
-	case 16: echo "&nbsp;Пробой карающим ударом: $plus<b>".$modstroke."%</b><br>";break;
-	case 17: echo "&nbsp;Пробой отсекающим ударом: $plus<b>".$modstroke."%</b><br>";break;
-	case 18: echo "&nbsp;Пробой дробящим ударом: $plus<b>".$modstroke."%</b><br>";break;
-	case 19: echo "&nbsp;Защита от колющих ударов: $plus<b>".$modstroke."</b><br>";break;
-	case 20: echo "&nbsp;Защита от режущих ударов: $plus<b>".$modstroke."</b><br>";break;
-	case 21: echo "&nbsp;Защита от проникающих ударов: $plus<b>".$modstroke."</b><br>";break;
-	case 22: echo "&nbsp;Защита от пробивающих ударов: $plus<b>".$modstroke."</b><br>";break;
-	case 23: echo "&nbsp;Защита от рубящих ударов: $plus<b>".$modstroke."</b><br>";break;
-	case 24: echo "&nbsp;Защита от карающих ударов: $plus<b>".$modstroke."</b><br>";break;
-	case 25: echo "&nbsp;Защита от отсекающих ударов: $plus<b>".$modstroke."</b><br>";break;
-	case 26: echo "&nbsp;Защита от дробящих ударов: $plus<b>".$modstroke."</b><br>";break;
-	case 27: echo "&nbsp;НР: $plus<b>".$modstroke."</b><br>";break;
-	case 28: echo "&nbsp;Очки действия: $plus<b>".$modstroke."</b><br>";break;
-	case 29: echo "&nbsp;Мана: $plus<b>".$modstroke."</b><br>";break;
-	case 30: echo "&nbsp;Мощь: $plus<b>".$modstroke."</b><br>";break;
-	case 31: echo "&nbsp;Проворность: $plus<b>".$modstroke."</b><br>";break;
-	case 32: echo "&nbsp;Везение: $plus<b>".$modstroke."</b><br>";break;
-	case 33: echo "&nbsp;Здоровье: $plus<b>".$modstroke."</b><br>";break;
-	case 34: echo "&nbsp;Разум: $plus<b>".$modstroke."</b><br>";break;
-	case 35: echo "&nbsp;Сноровка: $plus<b>".$modstroke."</b><br>";break;
-	case 36: echo "&nbsp;Владение мечами: $plus<b>".$modstroke."%</b><br>";break;
-	case 37: echo "&nbsp;Владение топорами: $plus<b>".$modstroke."%</b><br>";break;
-	case 38: echo "&nbsp;Владение дробящим оружием: $plus<b>".$modstroke."%</b><br>";break;
-	case 39: echo "&nbsp;Владение ножами: $plus<b>".$modstroke."%</b><br>";break;
-	case 40: echo "&nbsp;Владение метательным оружием: $plus<b>".$modstroke."%</b><br>";break;
-	case 41: echo "&nbsp;Владение алебардами и копьями: $plus<b>".$modstroke."%</b><br>";break;
-	case 42: echo "&nbsp;Владение посохами: $plus<b>".$modstroke."%</b><br>";break;
-	case 43: echo "&nbsp;Владение экзотическим оружием: $plus<b>".$modstroke."%</b><br>";break;
-	case 44: echo "&nbsp;Владение двуручным оружием: $plus<b>".$modstroke."%</b><br>";break;
-	case 45: echo "&nbsp;Магия огня: $plus<b>".$modstroke."%</b><br>";break;
-	case 46: echo "&nbsp;Магия воды: $plus<b>".$modstroke."%</b><br>";break;
-	case 47: echo "&nbsp;Магия воздуха: $plus<b>".$modstroke."%</b><br>";break;
-	case 48: echo "&nbsp;Магия земли: $plus<b>".$modstroke."%</b><br>";break;
-	case 49: echo "&nbsp;Сопротивление магии огня: $plus<b>".$modstroke."%</b><br>";break;
-	case 50: echo "&nbsp;Сопротивление магии воды: $plus<b>".$modstroke."%</b><br>";break;
-	case 51: echo "&nbsp;Сопротивление магии воздуха: $plus<b>".$modstroke."%</b><br>";break;
-	case 52: echo "&nbsp;Сопротивление магии земли: $plus<b>".$modstroke."%</b><br>";break;
-	case 53: echo "&nbsp;Воровство: $plus<b>".$modstroke."%</b><br>";break;
-	case 54: echo "&nbsp;Осторожность: $plus<b>".$modstroke."%</b><br>";break;
-	case 55: echo "&nbsp;Скрытность: $plus<b>".$modstroke."%</b><br>";break;
-	case 56: echo "&nbsp;Наблюдательность: $plus<b>".$modstroke."%</b><br>";break;
-	case 57: echo "&nbsp;Торговля: $plus<b>".$modstroke."%</b><br>";break;
-	case 58: echo "&nbsp;Странник: $plus<b>".$modstroke."%</b><br>";break;
-	case 59: echo "&nbsp;Рыболов: $plus<b>".$modstroke."%</b><br>";break;
-	case 60: echo "&nbsp;Лесоруб: $plus<b>".$modstroke."%</b><br>";break;
-	case 61: echo "&nbsp;Ювелирное дело: $plus<b>".$modstroke."%</b><br>";break;
-	case 62: echo "&nbsp;Самолечение: $plus<b>".$modstroke."%</b><br>";break;
-	case 63: echo "&nbsp;Оружейник: $plus<b>".$modstroke."%</b><br>";break;
-	case 64: echo "&nbsp;Доктор: $plus<b>".$modstroke."%</b><br>";break;
-	case 65: echo "&nbsp;Самолечение: $plus<b>".$modstroke."%</b><br>";break;
-	case 66: echo "&nbsp;Быстрое восстановление маны: $plus<b>".$modstroke."%</b><br>";break;
-	case 67: echo "&nbsp;Лидерство: $plus<b>".$modstroke."%</b><br>";break;
-	case 68: echo "&nbsp;Алхимия: $plus<b>".$modstroke."%</b><br>";break;
-	case 69: echo "&nbsp;Развитие горного дела: $plus<b>".$modstroke."%</b><br>";break;
-	case 70: echo "&nbsp;Травничество: $plus<b>".$modstroke."%</b><br>";break;
-	case 71: echo "&nbsp;<font color=#BB0000>Коэффициент: $plus<b>".$modstroke."%</b></font><br>";break;
-	case 'expbonus': echo "&nbsp;Бонус опыта: <font color=#BB0000>$plus<b>".$modstroke."%</b></font><br>";break;
-	case 'massbonus': echo "&nbsp;Масса: <font color=#BB0000>$plus<b>".$modstroke."</b></font><br>";break;
+switch ($stat[0]) {
+    //case 0: echo "&nbsp;Р“СЂР°РІРёСЂРѕРІРєР°: <b>".$modstroke."</b><br>"; break;
+    case 1:
+        echo "&nbsp;РЈРґР°СЂ: <b>" . $modstroke . "</b><br>";
+        break;
+    case 2:
+        echo "&nbsp;Р”РѕР»РіРѕРІРµС‡РЅРѕСЃС‚СЊ: <b>" . (($iz == 1 and $ITEM[slot] != 5) ? "<font color=red>" . $iz . "</font>" : $iz) . "/$ITEM[dolg]</b><br>";
+        break;
+    case 3:
+        echo "&nbsp;РљР°СЂРјР°РЅРѕРІ: <b>" . $modstroke . "</b><br>";
+        break;
+    case 4:
+        echo "&nbsp;РћРїРёСЃР°РЅРёСЏ: <b>" . $modstroke . "</b><br>";
+        break;
+    case 5:
+        echo "&nbsp;РЈР»РѕРІРєР°: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 6:
+        echo "&nbsp;РўРѕС‡РЅРѕСЃС‚СЊ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 7:
+        echo "&nbsp;РЎРѕРєСЂСѓС€РµРЅРёРµ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 8:
+        echo "&nbsp;РЎС‚РѕР№РєРѕСЃС‚СЊ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 9:
+        echo "&nbsp;РљР»Р°СЃСЃ Р±СЂРѕРЅРё: <b>" . $modstroke . "</b><br>";
+        break;
+    case 10:
+        echo "&nbsp;РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 11:
+        echo "&nbsp;РџСЂРѕР±РѕР№ РєРѕР»СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 12:
+        echo "&nbsp;РџСЂРѕР±РѕР№ СЂРµР¶СѓС‰РёРј СѓРґР°СЂРѕРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 13:
+        echo "&nbsp;РџСЂРѕР±РѕР№ РїСЂРѕРЅРёРєР°СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 14:
+        echo "&nbsp;РџСЂРѕР±РѕР№ РїСЂРѕР±РёРІР°СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 15:
+        echo "&nbsp;РџСЂРѕР±РѕР№ СЂСѓР±СЏС‰РёРј СѓРґР°СЂРѕРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 16:
+        echo "&nbsp;РџСЂРѕР±РѕР№ РєР°СЂР°СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 17:
+        echo "&nbsp;РџСЂРѕР±РѕР№ РѕС‚СЃРµРєР°СЋС‰РёРј СѓРґР°СЂРѕРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 18:
+        echo "&nbsp;РџСЂРѕР±РѕР№ РґСЂРѕР±СЏС‰РёРј СѓРґР°СЂРѕРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 19:
+        echo "&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РєРѕР»СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 20:
+        echo "&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ СЂРµР¶СѓС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 21:
+        echo "&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕРЅРёРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 22:
+        echo "&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РїСЂРѕР±РёРІР°СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 23:
+        echo "&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ СЂСѓР±СЏС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 24:
+        echo "&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РєР°СЂР°СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 25:
+        echo "&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РѕС‚СЃРµРєР°СЋС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 26:
+        echo "&nbsp;Р—Р°С‰РёС‚Р° РѕС‚ РґСЂРѕР±СЏС‰РёС… СѓРґР°СЂРѕРІ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 27:
+        echo "&nbsp;РќР : $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 28:
+        echo "&nbsp;РћС‡РєРё РґРµР№СЃС‚РІРёСЏ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 29:
+        echo "&nbsp;РњР°РЅР°: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 30:
+        echo "&nbsp;РњРѕС‰СЊ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 31:
+        echo "&nbsp;РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 32:
+        echo "&nbsp;Р’РµР·РµРЅРёРµ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 33:
+        echo "&nbsp;Р—РґРѕСЂРѕРІСЊРµ: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 34:
+        echo "&nbsp;Р Р°Р·СѓРј: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 35:
+        echo "&nbsp;РЎРЅРѕСЂРѕРІРєР°: $plus<b>" . $modstroke . "</b><br>";
+        break;
+    case 36:
+        echo "&nbsp;Р’Р»Р°РґРµРЅРёРµ РјРµС‡Р°РјРё: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 37:
+        echo "&nbsp;Р’Р»Р°РґРµРЅРёРµ С‚РѕРїРѕСЂР°РјРё: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 38:
+        echo "&nbsp;Р’Р»Р°РґРµРЅРёРµ РґСЂРѕР±СЏС‰РёРј РѕСЂСѓР¶РёРµРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 39:
+        echo "&nbsp;Р’Р»Р°РґРµРЅРёРµ РЅРѕР¶Р°РјРё: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 40:
+        echo "&nbsp;Р’Р»Р°РґРµРЅРёРµ РјРµС‚Р°С‚РµР»СЊРЅС‹Рј РѕСЂСѓР¶РёРµРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 41:
+        echo "&nbsp;Р’Р»Р°РґРµРЅРёРµ Р°Р»РµР±Р°СЂРґР°РјРё Рё РєРѕРїСЊСЏРјРё: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 42:
+        echo "&nbsp;Р’Р»Р°РґРµРЅРёРµ РїРѕСЃРѕС…Р°РјРё: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 43:
+        echo "&nbsp;Р’Р»Р°РґРµРЅРёРµ СЌРєР·РѕС‚РёС‡РµСЃРєРёРј РѕСЂСѓР¶РёРµРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 44:
+        echo "&nbsp;Р’Р»Р°РґРµРЅРёРµ РґРІСѓСЂСѓС‡РЅС‹Рј РѕСЂСѓР¶РёРµРј: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 45:
+        echo "&nbsp;РњР°РіРёСЏ РѕРіРЅСЏ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 46:
+        echo "&nbsp;РњР°РіРёСЏ РІРѕРґС‹: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 47:
+        echo "&nbsp;РњР°РіРёСЏ РІРѕР·РґСѓС…Р°: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 48:
+        echo "&nbsp;РњР°РіРёСЏ Р·РµРјР»Рё: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 49:
+        echo "&nbsp;РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РѕРіРЅСЏ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 50:
+        echo "&nbsp;РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕРґС‹: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 51:
+        echo "&nbsp;РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё РІРѕР·РґСѓС…Р°: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 52:
+        echo "&nbsp;РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РјР°РіРёРё Р·РµРјР»Рё: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 53:
+        echo "&nbsp;Р’РѕСЂРѕРІСЃС‚РІРѕ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 54:
+        echo "&nbsp;РћСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 55:
+        echo "&nbsp;РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 56:
+        echo "&nbsp;РќР°Р±Р»СЋРґР°С‚РµР»СЊРЅРѕСЃС‚СЊ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 57:
+        echo "&nbsp;РўРѕСЂРіРѕРІР»СЏ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 58:
+        echo "&nbsp;РЎС‚СЂР°РЅРЅРёРє: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 59:
+        echo "&nbsp;Р С‹Р±РѕР»РѕРІ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 60:
+        echo "&nbsp;Р›РµСЃРѕСЂСѓР±: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 61:
+        echo "&nbsp;Р®РІРµР»РёСЂРЅРѕРµ РґРµР»Рѕ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 62:
+        echo "&nbsp;РЎР°РјРѕР»РµС‡РµРЅРёРµ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 63:
+        echo "&nbsp;РћСЂСѓР¶РµР№РЅРёРє: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 64:
+        echo "&nbsp;Р”РѕРєС‚РѕСЂ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 65:
+        echo "&nbsp;РЎР°РјРѕР»РµС‡РµРЅРёРµ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 66:
+        echo "&nbsp;Р‘С‹СЃС‚СЂРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РјР°РЅС‹: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 67:
+        echo "&nbsp;Р›РёРґРµСЂСЃС‚РІРѕ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 68:
+        echo "&nbsp;РђР»С…РёРјРёСЏ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 69:
+        echo "&nbsp;Р Р°Р·РІРёС‚РёРµ РіРѕСЂРЅРѕРіРѕ РґРµР»Р°: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 70:
+        echo "&nbsp;РўСЂР°РІРЅРёС‡РµСЃС‚РІРѕ: $plus<b>" . $modstroke . "%</b><br>";
+        break;
+    case 71:
+        echo "&nbsp;<font color=#BB0000>РљРѕСЌС„С„РёС†РёРµРЅС‚: $plus<b>" . $modstroke . "%</b></font><br>";
+        break;
+    case 'expbonus':
+        echo "&nbsp;Р‘РѕРЅСѓСЃ РѕРїС‹С‚Р°: <font color=#BB0000>$plus<b>" . $modstroke . "%</b></font><br>";
+        break;
+    case 'massbonus':
+        echo "&nbsp;РњР°СЃСЃР°: <font color=#BB0000>$plus<b>" . $modstroke . "</b></font><br>";
+        break;
 }
 ?>

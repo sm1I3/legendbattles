@@ -71,20 +71,20 @@ else
 }
 
 ?>
-<h3><?=($fort_class_id == ''?'Добавить класс замков':'Изменить класс замков')?></h3>
+    <h3><?= ($fort_class_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєР»Р°СЃСЃ Р·Р°РјРєРѕРІ' : 'РР·РјРµРЅРёС‚СЊ РєР»Р°СЃСЃ Р·Р°РјРєРѕРІ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID Класса: &nbsp;  </td>
+    <td>ID РљР»Р°СЃСЃР°: &nbsp;</td>
   <td><input name="fort_class" type="text" class="cms_fieldstyle1" value="<?=$fort_class['fort_class']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Название класса: &nbsp;  </td>
+    <td>РќР°Р·РІР°РЅРёРµ РєР»Р°СЃСЃР°: &nbsp;</td>
   <td><input name="class_name" type="text" class="cms_fieldstyle1" value="<?=$fort_class['class_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Телепорт: &nbsp;  </td>
+    <td>РўРµР»РµРїРѕСЂС‚: &nbsp;</td>
   <td><input name="teleport" type="text" class="cms_fieldstyle1" value="<?=$fort_class['teleport']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
@@ -96,14 +96,15 @@ else
   <td><input name="mp" type="text" class="cms_fieldstyle1" value="<?=$fort_class['mp']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Масса: &nbsp;  </td>
+    <td>РњР°СЃСЃР°: &nbsp;</td>
   <td><input name="massa" type="text" class="cms_fieldstyle1" value="<?=$fort_class['massa']?>" size="10" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='fort_class_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='fort_class_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

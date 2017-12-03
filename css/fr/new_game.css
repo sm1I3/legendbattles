@@ -1,1 +1,1686 @@
-.clear{clear:both;height:0;overflow:hidden}html,body{height:100%}body{font-family:Tahoma,Verdana,Arial,Helvetica,sans-serif;font-size:13px;color:#000;background:url("http://legendworld.ru/images/gray_bg.jpg") 0 0 repeat}ul{list-style-type:none}hr{margin:10px 0;border:0;border-top:1px solid #eee;border-bottom:1px solid #ddd}#main_page{padding:0;text-align:left;min-height:100%}#mainDiv{text-align:left}#main_page.stone_bg{background:url("http://legendworld.ru/images/bg_1.jpg") 50% 38px no-repeat}.content{width:815px;margin:0 auto}.content.map{width:752px}#main_page .mm_bg{margin-bottom:10px}.mm_bg,.mm_wrap .mm_left,.mm_wrap .mm_right,.mm_wrap .mm_center{background:url("http://legendworld.ru/images/menu_w_bg.png") 0 0 no-repeat}.mm_bg{background-position:0 -114px;background-repeat:repeat-x}.mm_bg .mm_wrap{width:1255px;margin:0 auto}.mm_wrap .mm_left{padding-left:52px}.mm_wrap .mm_right{padding-right:52px;background-position:100% -38px}.mm_wrap .mm_center{background-position:0 -76px;background-repeat:repeat-x;height:38px;overflow:hidden}.mm_wrap .login{float:left;margin-top:7px;position:relative;z-index:2}.mm_wrap .login .lg_left,.mm_wrap .login .lg_right,.mm_wrap .login .icon_bg,.mm_wrap .login .inner_login,.mm_wrap .login .login_bg{background:url("http://legendworld.ru/images/menu_login.png") 0 0 no-repeat}.mm_wrap .login .lg_left{padding-left:28px}.mm_wrap .login .lg_right{padding-right:103px;background-position:100% -50px}.mm_wrap .login .lg_center{height:25px}.mm_wrap .login .icon_bg{background-position:0 -100px;float:left;padding:6px 0 7px;text-align:center;line-height:12px}.mm_wrap .login .icon_bg img{display:inline-block;height:12px;margin-right:2px}.mm_wrap .login .inner_login{background-position:0 -75px;background-repeat:repeat-x;float:left;height:25px}.mm_wrap .login .login_bg{background-position:0 -25px;height:25px;min-width:124px}.mm_wrap .login.to_profile .login_bg{min-width:154px}.mm_wrap .login.to_profile .icon_bg{min-width:51px;min-height:12px}.mm_wrap .login .login_wrap{font-family:Tahoma,Verdana,Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:0;line-height:20px;text-shadow:1px 1px 0 #d0d8da;position:relative;left:40px;text-align:center}.mm_wrap ul{float:right;list-style:none;padding:2px 0}.mm_wrap ul li{color:#cea559;float:left;font-size:13px;font-weight:bold;text-align:center;padding:7px 10px;text-shadow:1px 1px 3px #000;line-height:16px}.mm_wrap ul li a{color:#cea559;text-decoration:none;line-height:16px}.mm_wrap ul li a:hover,.mm_wrap ul li a.hover{color:#e52f2f}.mm_wrap ul li.disabled,.mm_wrap ul li.disabled a{color:#c2c2c2}.mm_wrap ul li a,.mm_wrap ul li span{cursor:pointer}.frame_style_1{padding:16px 18px 14px}.frame_style_1 .fs1_top{background:url("/images/fr/hor_brd.png") 0 0 repeat-x;padding:2px 0 0;border-bottom:1px solid #fff}.frame_style_1 .fs1_left{background:url("/images/fr/vert_brd.png") 0 0 repeat-y;padding:0 0 0 1px}.frame_style_1 .fs1_right{background:url("/images/fr/vert_brd.png") 100% 0 repeat-y;padding:0 1px 0 0}.frame_style_1 .fs1_center{background:url("/images/fr/bg.png") 0 0 repeat;position:relative;padding:5px}.frame_style_1 .border_cont{border:1px solid #d1cfcf}.frame_style_1 .fs1_center .fs1_lt{background:url("/images/fr/corners.png") 0 0 no-repeat;width:34px;height:40px;position:absolute;top:-13px;left:-20px}.frame_style_1 .fs1_center .fs1_lb{background:url("/images/fr/corners.png") 0 -40px no-repeat;width:34px;height:41px;position:absolute;bottom:-12px;left:-20px}.frame_style_1 .fs1_center .fs1_rt{background:url("/images/fr/corners.png") -34px 0 no-repeat;width:34px;height:40px;position:absolute;top:-13px;right:-19px}.frame_style_1 .fs1_center .fs1_rb{background:url("/images/fr/corners.png") -34px -40px no-repeat;width:34px;height:41px;position:absolute;bottom:-12px;right:-19px}.frame_style_1 .fs1_center .fs1_r{background:url("/images/fr/lr_side.png") 100% 50% no-repeat;width:10px;position:absolute;top:0;bottom:0;right:-10px}.frame_style_1 .fs1_center .fs1_l{background:url("/images/fr/lr_side.png") 0 50% no-repeat;width:10px;position:absolute;top:0;bottom:0;left:-9px}.frame_style_1 .fs1_center .fs1_t{background:url("/images/fr/t.png") 50% 0 no-repeat;height:23px;position:absolute;left:0;right:0;top:-18px}.frame_style_1 .fs1_center .fs1_b{background:url("/images/fr/b.png") 50% 0 no-repeat;height:18px;position:absolute;left:0;right:0;bottom:-15px}.frame_style_1 .fs1_center .left_tape{background:url("/images/fr/tape_l.png") 0 0 no-repeat;height:264px;width:47px;position:absolute;left:-34px;top:-7px}.frame_style_1 .fs1_center .right_tape{background:url("/images/fr/tape_r.png") 0 0 no-repeat;height:264px;width:47px;position:absolute;right:-32px;top:-7px}.frame_style_1 .fs1_center .first{position:relative;text-align:center;min-height:235px}.world_info{width:752px;text-align:center;font-size:12px;margin:20px auto 0}.world_info .wi_top{color:#f6d391;background:url("http://legendworld.ru/images/wi_top.png") 0 0 no-repeat;height:33px;line-height:33px;overflow:hidden;font-weight:bold}.world_info .wi_inner{background:url("http://legendworld.ru/images/wi_bg.png") 0 0 repeat;border-bottom:solid 1px #fff;position:relative;min-height:70px;padding:1px 12px}.world_info .wi_left{background:url("http://legendworld.ru/images/wi_sides.png") -9px 50% no-repeat;width:9px;position:absolute;left:0;top:-25px;bottom:0}.world_info .wi_right{background:url("http://legendworld.ru/images/wi_sides.png") 0 50% no-repeat;width:9px;position:absolute;right:0;top:-25px;bottom:0}.world_info .title{font-weight:bold;padding:5px 0}.world_info .empty{line-height:20px;margin:15px 0}.world_info img{height:35px}a.plus,a.minus{background:url("http://legendworld.ru/images/plus_minus.png") 0 0 no-repeat;display:inline-block;width:17px;height:17px;overflow:hidden}a.plus:hover{background-position:0 -17px}a.minus{background-position:0 -34px}a.minus:hover{background-position:0 -51px}a.plus.gray{background-position:-17px 0}a.plus.gray:hover{background-position:-17px -17px}a.minus.gray{background-position:-17px -34px}a.minus.gray:hover{background-position:-17px -51px}.l_pillar{background:url("http://legendworld.ru/images/border/l_pillar.png") 0 0 repeat-y;padding-left:14px}.r_pillar{background:url("http://legendworld.ru/images/border/r_pillar.png") 100% 0 repeat-y;padding-right:14px}.border_style{position:relative}.border_style .b_top{background:url("http://legendworld.ru/images/border/t.png") 0 0 repeat-x}.border_style .b_bot{background:url("http://legendworld.ru/images/border/b.png") 0 100% repeat-x;padding-bottom:2px}.border_style .b_left{background:url("http://legendworld.ru/images/border/l.png") 0 0 repeat-y}.border_style .b_right{background:url("http://legendworld.ru/images/border/r.png") 100% 0 repeat-y}.border_style .b_lt,.border_style .b_rt,.border_style .b_rb,.border_style .b_lb{background:url("http://legendworld.ru/images/border/corn_wa_shadow.png") 0 0 no-repeat;position:absolute}.border_style .b_lt{background-position:-31px -84px;width:38px;height:80px;left:-6px;top:-4px}.border_style .b_rt{background-position:0 -84px;width:28px;height:80px;right:-6px;top:-4px}.border_style .b_rb{background-position:0 0;width:31px;height:82px;right:-9px;bottom:0}.border_style .b_lb{background-position:-31px 0;width:38px;height:82px;left:-6px;bottom:0}.border_style .b_lt_opt,.border_style .b_rt_opt,.border_style .b_rb_opt,.border_style .b_lb_opt{background:url("http://legendworld.ru/images/border/corn_opt.png") 0 0 no-repeat;position:absolute}.border_style .b_lt_opt{background-position:-23px -62px;width:21px;height:80px;left:-20px;top:-11px}.border_style .b_rt_opt{background-position:0 -62px;width:22px;height:58px;right:-20px;top:-11px}.border_style .b_rb_opt{background-position:0 0;width:22px;height:59px;right:-20px;bottom:-9px}.border_style .b_lb_opt{background-position:-23px 0;width:21px;height:59px;left:-21px;bottom:-9px}.border_style .b_inner{min-height:86px;padding:13px;position:relative;z-index:2}.btn_1 .b1_left,.btn_1 .b1_right,.btn_1 .b1_center{background:url("http://legendworld.ru/images/btn_1.png") 0 0 no-repeat}.btn_1 .b1_left,.btn_1.wa_hover:hover .b1_left{background-position:0 -24px;padding-left:5px}.btn_1 .b1_right,.btn_1.wa_hover:hover .b1_right{background-position:100% -48px;padding-right:5px}.btn_1 .b1_center,.btn_1.wa_hover:hover .b1_center{background-position:0 0;background-repeat:repeat-x;height:20px;line-height:19px;display:block;text-align:center;color:#eee;font-weight:bold;text-decoration:none;text-shadow:0 0 2px #000;font-size:11px}.btn_1 .b1_center{padding:0 5px}.btn_1:hover .b1_left{background-position:0 -96px}.btn_1:hover .b1_right{background-position:100% -120px}.btn_1:hover .b1_center{background-position:0 -72px}.btn_1 button{color:#fff;cursor:pointer;border:0 transparent;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;background:transparent;display:block;width:100%;line-height:19px}.btn_2 .b2_left,.btn_2 .b2_right,.btn_2 .b2_center{background:url("http://legendworld.ru/images/btn_2.png") 0 0 no-repeat}.btn_2 .b2_left,.btn_2.wa_hover:hover .b2_left{background-position:0 -100px;padding-left:67px}.btn_2 .b2_right,.btn_2.wa_hover:hover .b2_right{background-position:100% -200px;padding-right:67px}.btn_2 .b2_center,.btn_2.wa_hover:hover .b2_center{background-position:0 0;background-repeat:repeat-x;height:46px;line-height:39px;display:block;text-align:center;color:#000;font-weight:bold;text-decoration:none;text-shadow:1px 1px 2px white;font-size:13px}.btn_2:hover .b2_left{background-position:0 -150px}.btn_2:hover .b2_right{background-position:100% -250px}.btn_2:hover .b2_center{background-position:0 -50px}.btn_2.disabled .b2_left,.btn_2.disabled:hover .b2_left{background-position:0 -400px;padding-left:67px}.btn_2.disabled .b2_right,.btn_2.disabled:hover .b2_right{background-position:100% -500px;padding-right:67px}.btn_2.disabled .b2_center,.btn_2.disabled:hover .b2_center{background-position:0 -300px;background-repeat:repeat-x;color:#444}.btn_4 .b4_left,.btn_4 .b4_right,.btn_4 .b4_center{background:url("http://legendworld.ru/images/btn_4.png") 0 0 no-repeat}.btn_4 .b4_left{padding-left:27px}.btn_4 .b4_right{background-position:100% -120px;padding-right:24px}.btn_4 .b4_center{background-position:0 -60px;background-repeat:repeat-x;height:27px}.btn_4:hover .b4_left{background-position:0 -30px}.btn_4:hover .b4_right{background-position:100% -150px}.btn_4:hover .b4_center{background-position:0 -90px}.btn_4 a{color:#000;text-shadow:1px 1px 2px #fff;font-weight:bold;text-decoration:none;line-height:22px;margin:0 -6px 0 -13px;text-align:center;display:block}.btn_1 button:focus,.btn_1 a:focus,.btn_2 button:focus,.btn_2 a:focus,.btn_4 button:focus,.btn_4 a:focus{outline:0 none}.display_block{display:block}.timer_active .btn_2{margin:0 -33px;padding-top:20px;position:relative}.row-fluid{width:100%;*zoom:1}.row-fluid:before,.row-fluid:after{display:table;line-height:0;content:""}.row-fluid:after{clear:both}.row-fluid [class*="span"]{display:block;float:left;width:100%;min-height:20px;margin-left:2.127659574468085%;*margin-left:2.074468085106383%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.row-fluid [class*="span"]:first-child{margin-left:0}.row-fluid .controls-row [class*="span"]+[class*="span"]{margin-left:2.127659574468085%}.row-fluid .span12{width:100%;*width:99.94680851063829%}.row-fluid .span11{width:91.48936170212765%;*width:91.43617021276594%}.row-fluid .span10{width:82.97872340425532%;*width:82.92553191489361%}.row-fluid .span9{width:74.46808510638297%;*width:74.41489361702126%}.row-fluid .span8{width:65.95744680851064%;*width:65.90425531914893%}.row-fluid .span7{width:57.44680851063829%;*width:57.39361702127659%}.row-fluid .span6{width:48.93617021276595%;*width:48.88297872340425%}.row-fluid .span5{width:40.42553191489362%;*width:40.37234042553192%}.row-fluid .span4{width:31.914893617021278%;*width:31.861702127659576%}.row-fluid .span3{width:23.404255319148934%;*width:23.351063829787233%}.row-fluid .span2{width:14.893617021276595%;*width:14.840425531914894%}.row-fluid .span1{width:6.382978723404255%;*width:6.329787234042553%}.row-fluid .offset12{margin-left:104.25531914893617%;*margin-left:104.14893617021275%}.row-fluid .offset12:first-child{margin-left:102.12765957446808%;*margin-left:102.02127659574467%}.row-fluid .offset11{margin-left:95.74468085106382%;*margin-left:95.6382978723404%}.row-fluid .offset11:first-child{margin-left:93.61702127659574%;*margin-left:93.51063829787232%}.row-fluid .offset10{margin-left:87.23404255319149%;*margin-left:87.12765957446807%}.row-fluid .offset10:first-child{margin-left:85.1063829787234%;*margin-left:84.99999999999999%}.row-fluid .offset9{margin-left:78.72340425531914%;*margin-left:78.61702127659572%}.row-fluid .offset9:first-child{margin-left:76.59574468085106%;*margin-left:76.48936170212764%}.row-fluid .offset8{margin-left:70.2127659574468%;*margin-left:70.10638297872339%}.row-fluid .offset8:first-child{margin-left:68.08510638297872%;*margin-left:67.9787234042553%}.row-fluid .offset7{margin-left:61.70212765957446%;*margin-left:61.59574468085106%}.row-fluid .offset7:first-child{margin-left:59.574468085106375%;*margin-left:59.46808510638297%}.row-fluid .offset6{margin-left:53.191489361702125%;*margin-left:53.085106382978715%}.row-fluid .offset6:first-child{margin-left:51.063829787234035%;*margin-left:50.95744680851063%}.row-fluid .offset5{margin-left:44.68085106382979%;*margin-left:44.57446808510638%}.row-fluid .offset5:first-child{margin-left:42.5531914893617%;*margin-left:42.4468085106383%}.row-fluid .offset4{margin-left:36.170212765957444%;*margin-left:36.06382978723405%}.row-fluid .offset4:first-child{margin-left:34.04255319148936%;*margin-left:33.93617021276596%}.row-fluid .offset3{margin-left:27.659574468085104%;*margin-left:27.5531914893617%}.row-fluid .offset3:first-child{margin-left:25.53191489361702%;*margin-left:25.425531914893618%}.row-fluid .offset2{margin-left:19.148936170212764%;*margin-left:19.04255319148936%}.row-fluid .offset2:first-child{margin-left:17.02127659574468%;*margin-left:16.914893617021278%}.row-fluid .offset1{margin-left:10.638297872340425%;*margin-left:10.53191489361702%}.row-fluid .offset1:first-child{margin-left:8.51063829787234%;*margin-left:8.404255319148938%}.input-block-level{display:block;width:100%;min-height:20px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.iradio{background:url("http://legendworld.ru/images/radio.png") 0 0 no-repeat;display:inline-block;width:19px;height:17px;cursor:pointer}.iradio:hover{background-position:0 -20px}.iradio.active{background-position:0 -40px}.iradio.active:hover{background-position:0 -60px}.iradio input{display:none}label{cursor:pointer;line-height:19px}label .iradio{float:left;margin-right:5px}.border_radius_content{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background-color:#fff;border:1px solid #ccc;padding:5px}.error_msg{color:#ce0202;font-weight:bold;margin:10px 0;text-align:center}div.item{font-size:11px;line-height:13px;margin-top:10px}div.item:first-child{margin-top:0}div.item table{width:100%;border-collapse:collapse}div.item tbody.element{border-top:3px solid #fff}div.item tbody.element:first-child{border-top:0 none}div.item table td{padding:5px;background:#e4e4e4}div.item table td.img{width:60px;text-align:center;padding-top:0;padding-bottom:0;background:#fff;vertical-align:middle}div.item table .title{border-top:1px solid #0887b7;border-bottom:1px solid #0887b7;text-decoration:none;color:inherit;text-shadow:1px 1px 0 #d0d8da}div.item td.need_column{border-left:1px solid #0887b7;width:45%}div.item table .title td{padding:1px;text-align:center;background:url("http://legendworld.ru/images/f009.gif")}.white_bg{background-color:#fff}div.border_style_3{width:767px;margin:0 -5px 0 -3px;padding-bottom:10px}.border_style .b_inner div.border_style_3{margin-bottom:-7px}div.border_style_3>.outer_content{position:relative;padding:35px 6px 0;background:url("http://legendworld.ru/images/f008-1.png") repeat-y 0 0}div.border_style_3>.outer_content>.bg_n{position:absolute;width:100%;height:56px;top:-20px;left:0;background:url("http://legendworld.ru/images/f008.png") no-repeat 0 0}div.border_style_3>.outer_content>.bg_n .menu{padding-top:4px;line-height:25px;text-align:center}div.border_style_3>.outer_content>.bg_n .menu a{font-size:12px;text-decoration:none;color:#f6d391}div.border_style_3>.outer_content>.bg_n .menu a:hover{color:#e52f2f;text-shadow:0 1px 2px #404040}div.border_style_3>.outer_content>.bg_n .menu .sep{margin:0 5px;color:#f6d391}div.border_style_3>.outer_content>.bg_n .lw{text-align:center;line-height:19px;color:#fff}div.border_style_3>.outer_content>.bg_s{position:absolute;width:100%;height:61px;left:0;bottom:-10px;background:url("http://legendworld.ru/images/f008-2.png") no-repeat 0 0}div.border_style_3>.outer_content>.inner_content{position:relative;min-height:50px}.pull-left{float:left}.pull-right{float:right}.grey_descript{color:#4d4d4d;font-size:11px}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.muted{color:#999}a.muted:hover,a.muted:focus{color:gray}.text-warning{color:#c09853}a.text-warning:hover,a.text-warning:focus{color:#a47e3c}.text-error{color:#b94a48}a.text-error:hover,a.text-error:focus{color:#953b39}.text-info{color:#3a87ad}a.text-info:hover,a.text-info:focus{color:#2d6987}.text-success{color:#468847}a.text-success:hover,a.text-success:focus{color:#356635}input[type="radio"],input[type="checkbox"]{margin:4px 0 0;margin-top:1px \9;*margin-top:0;line-height:normal;cursor:pointer}label.radio,label.checkbox{display:block;cursor:pointer}.radio,.checkbox{min-height:20px;padding-left:20px}.radio input[type="radio"],.checkbox input[type="checkbox"]{float:left;margin-left:-20px}.radio.inline,.checkbox.inline{display:inline-block;padding-top:5px;margin-bottom:0;vertical-align:middle}fieldset{padding:0;margin:0;border:0}legend{display:block;width:100%;padding:0;margin-bottom:10px;font-size:15px;line-height:30px;color:#333;border:0;border-bottom:1px solid #e5e5e5}legend small{font-size:12px;color:#999}.input .bl_left,.input .bl_right,.input .bl_center{background:url("http://legendworld.ru/images/input_round.png") 0 0 no-repeat}.input .bl_left{padding-left:11px}.input .bl_right{background-position:100% -100px;padding-right:11px}.input .bl_center{background-position:0 -50px;background-repeat:repeat-x;padding:4px 0 3px}.input input{border:0 none;outline:0 none;display:block;color:#707070;font-weight:bold;font-size:13px;line-height:13px;width:100%;background:0}.input.error .bl_left{background-position:0 -25px}.input.error .bl_right{background-position:100% -125px}.input.error .bl_center{background-position:0 -75px}.close_bt{width:22px;height:22px;display:block;background:url("http://legendworld.ru/images/close.png") 0 0 no-repeat}.close_bt:hover{background-position:0 -22px}.style_head_1 .sh1_left,.style_head_1 .sh1_right,.style_head_1 .sh1_center{background:url("http://legendworld.ru/images/style_head_1.png") 0 0 no-repeat}.style_head_1 .sh1_left{background-position:0 0;padding-left:16px}.style_head_1 .sh1_right{background-position:100% -50px;padding-right:16px}.style_head_1 .sh1_center{background-position:0 -100px;background-repeat:repeat-x;height:48px;line-height:32px}.pay_service{margin-top:10px}.pay_service:first-child{margin-top:0}.pay_service ul{font-size:13px;color:#585858}.pay_service ul ul li{padding-left:25px}.pay_service label,.pay_service input[type=radio]{cursor:pointer}.popup_wrap{padding:3px}.popup_wrap .popup_border{background:url("http://legendworld.ru/images/gray_bg.jpg") 0 0 repeat;border:4px solid #a2a2a2}.popup_wrap .popup_content{min-height:60px}.popup_wrap .popup_content .error,.popup_wrap .popup_content .success{text-align:center;font-size:14px;font-weight:bold;padding:20px 5px}.popup_wrap .popup_content .error{color:#b94a48}.popup_wrap .popup_content .success{color:#468847}.popup_wrap .popup_border.border_radius{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.popup_wrap .popup_border_1{border:1px solid #767676;border-left:0 none}.popup_head_1{padding:0 15px;margin:-23px -5px 0 -4px}.popup_head_1 .ph1_bg,.popup_head_1 .ph1_left,.popup_head_1 .ph1_right{background:url("http://legendworld.ru/images/style_head_popup.png") 0 -70px repeat-x}.popup_head_1 .ph1_left{background-position:0 0;background-repeat:no-repeat;margin-left:-15px}.popup_head_1 .ph1_right{background-position:100% -35px;background-repeat:no-repeat;margin-right:-15px}.popup_head_1 .ph1_content{line-height:35px;color:#fff;font-weight:bold;font-size:12px;text-align:center;min-width:200px;min-height:27px;max-height:35px}.popup_wrap .info_msg{position:relative;padding:10px 20px 10px 310px}.popup_wrap .info_msg .flag{background:url("http://legendworld.ru/images/msg_flag.png") 0 0 no-repeat;position:absolute;top:-50px;left:0;height:260px;width:274px}.popup_wrap .info_msg .pc_msg{width:250px;min-height:115px}.popup_wrap.trader_offer .info_msg .flag{background:url("http://legendworld.ru/images/trader_image.jpg") 0 0 no-repeat;position:absolute;top:4px;left:5px;height:171px;width:190px}.popup_wrap.trader_offer .info_msg{padding-left:215px}.popup_wrap.trader_offer .info_msg .pc_msg{width:400px}.popup_wrap.trader_offer .trader_table{width:100%}.popup_wrap.trader_offer .trader_table td{padding:10px;vertical-align:top}.popup_wrap.trader_offer .trader_table .img-wrapper{width:70px;text-align:right}.popup_wrap.trader_offer .trader_table .img-wrapper img{max-width:50px}.wide_popup{width:700px}.wide_popup #baits_list td,.wide_popup #herbs_list td{vertical-align:middle}.popup_wrap hr{margin:5px 0}#tooltip{background:#fff;border:1px solid #999;color:#333;font:12px Tahoma;margin:0;padding:3px 5px;position:absolute;z-index:10}.style_title{line-height:24px}.style_title .t_l{display:inline-block;background:url("http://legendworld.ru/images/pers/title_side_beauty.png") 0 0 no-repeat;height:24px;padding-left:30px;margin-top:7px}.style_title .t_r{display:inline-block;background:url("http://legendworld.ru/images/pers/title_side_beauty.png") 100% -25px no-repeat;height:24px;padding-right:30px}.popup_wrap.info_block .popup_border{background-image:none;background-color:#fff;border:4px solid #a2a2a2}.popup_wrap .popup_border_1{border:0 none}.dotten_bg{background:url("http://legendworld.ru/images/wi_bg.png") 0 0 repeat}.dotten_bg.rounded{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.info_row{margin:3px 0;color:#000}.info_row .ir_left,.info_row .ir_right,.info_row .ir_center{height:18px;line-height:18px;background:url("http://legendworld.ru/images/info_row_bg.png") 0 0 no-repeat}.info_row .ir_left{padding-left:9px}.info_row .ir_right{padding-right:9px;background-position:100% -114px}.info_row .ir_center{background-position:0 -57px;background-repeat:repeat-x;overflow:hidden}.info_row.red,.info_row.blue{color:#fff}.info_row.blue .ir_left{background-position:0 -19px}.info_row.blue .ir_right{background-position:100% -133px}.info_row.blue .ir_center{background-position:0 -76px}.info_row.red .ir_left{background-position:0 -38px}.info_row.red .ir_right{background-position:100% -152px}.info_row.red .ir_center{background-position:0 -95px}.info_row.trans .ir_left,.info_row.trans .ir_right,.info_row.trans .ir_center{background-image:none}div.item .element .img{position:relative}div.item .element .img.w_inner_wrap{position:relative;padding:0}div.item .element .img.w_inner_wrap .inner_wrap{position:relative;padding:0 5px}div.item .add_form{display:none;background:#e4e4e4;border-right:1px solid #fff}div.item .element:hover .add_form{display:block;position:absolute;top:0;right:0;bottom:0;left:0}div.item .add_form .set_max:hover{text-decoration:underline}div.item .add_form .input{margin:6px}div.item .add_form .input input{text-align:center}div.item .add_form .btn_1{margin-top:8px}div.item .subtext{margin-top:6px;color:#585858}div.item .dolg{width:62px;height:2px;background:#eee;margin:1px auto 0;overflow:hidden}div.item .dolg div{height:2px;background:#15af00;overflow:hidden;float:left}div.item .name_block .pos_rel{position:relative}div.item .name_block .close_bt{position:absolute;right:-5px;top:-3px}.arrow_1{display:inline-block;height:15px;width:16px;background:url("http://legendworld.ru/images/arrow_1.png") 0 0 no-repeat;cursor:pointer;vertical-align:text-bottom}.arrow_1:hover{background-position:-20px}div.item .actions_wrap .actions{display:none;padding-top:3px}div.item .actions_wrap.actions_show .actions{display:block}div.item .actions_wrap .actions .btn_1{margin:1px 3px 1px 0}.show_close_on_hover .close_bt{display:none}.show_close_on_hover:hover .close_bt{display:block}.ftbold{font-weight:bold}.progress_bar{background:url("http://legendworld.ru/images/pers/hm_mp_bg.png") 0 -24px repeat-x;height:10px;overflow:hidden;display:block;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.progress_bar .pb_inner{background:url("http://legendworld.ru/images/pers/hm_mp_bg.png") 0 0 repeat-x;height:10px;float:left;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.progress_bar .pb_inner.blue{background-position:0 -12px}
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden
+}
+
+html, body {
+    height: 100%
+}
+
+body {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #000;
+    background: url("http://legendworld.ru/images/gray_bg.jpg") 0 0 repeat
+}
+
+ul {
+    list-style-type: none
+}
+
+hr {
+    margin: 10px 0;
+    border: 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #ddd
+}
+
+#main_page {
+    padding: 0;
+    text-align: left;
+    min-height: 100%
+}
+
+#mainDiv {
+    text-align: left
+}
+
+#main_page.stone_bg {
+    background: url("http://legendworld.ru/images/bg_1.jpg") 50% 38px no-repeat
+}
+
+.content {
+    width: 815px;
+    margin: 0 auto
+}
+
+.content.map {
+    width: 752px
+}
+
+#main_page .mm_bg {
+    margin-bottom: 10px
+}
+
+.mm_bg, .mm_wrap .mm_left, .mm_wrap .mm_right, .mm_wrap .mm_center {
+    background: url("http://legendworld.ru/images/menu_w_bg.png") 0 0 no-repeat
+}
+
+.mm_bg {
+    background-position: 0 -114px;
+    background-repeat: repeat-x
+}
+
+.mm_bg .mm_wrap {
+    width: 1255px;
+    margin: 0 auto
+}
+
+.mm_wrap .mm_left {
+    padding-left: 52px
+}
+
+.mm_wrap .mm_right {
+    padding-right: 52px;
+    background-position: 100% -38px
+}
+
+.mm_wrap .mm_center {
+    background-position: 0 -76px;
+    background-repeat: repeat-x;
+    height: 38px;
+    overflow: hidden
+}
+
+.mm_wrap .login {
+    float: left;
+    margin-top: 7px;
+    position: relative;
+    z-index: 2
+}
+
+.mm_wrap .login .lg_left, .mm_wrap .login .lg_right, .mm_wrap .login .icon_bg, .mm_wrap .login .inner_login, .mm_wrap .login .login_bg {
+    background: url("http://legendworld.ru/images/menu_login.png") 0 0 no-repeat
+}
+
+.mm_wrap .login .lg_left {
+    padding-left: 28px
+}
+
+.mm_wrap .login .lg_right {
+    padding-right: 103px;
+    background-position: 100% -50px
+}
+
+.mm_wrap .login .lg_center {
+    height: 25px
+}
+
+.mm_wrap .login .icon_bg {
+    background-position: 0 -100px;
+    float: left;
+    padding: 6px 0 7px;
+    text-align: center;
+    line-height: 12px
+}
+
+.mm_wrap .login .icon_bg img {
+    display: inline-block;
+    height: 12px;
+    margin-right: 2px
+}
+
+.mm_wrap .login .inner_login {
+    background-position: 0 -75px;
+    background-repeat: repeat-x;
+    float: left;
+    height: 25px
+}
+
+.mm_wrap .login .login_bg {
+    background-position: 0 -25px;
+    height: 25px;
+    min-width: 124px
+}
+
+.mm_wrap .login.to_profile .login_bg {
+    min-width: 154px
+}
+
+.mm_wrap .login.to_profile .icon_bg {
+    min-width: 51px;
+    min-height: 12px
+}
+
+.mm_wrap .login .login_wrap {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 20px;
+    text-shadow: 1px 1px 0 #d0d8da;
+    position: relative;
+    left: 40px;
+    text-align: center
+}
+
+.mm_wrap ul {
+    float: right;
+    list-style: none;
+    padding: 2px 0
+}
+
+.mm_wrap ul li {
+    color: #cea559;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    padding: 7px 10px;
+    text-shadow: 1px 1px 3px #000;
+    line-height: 16px
+}
+
+.mm_wrap ul li a {
+    color: #cea559;
+    text-decoration: none;
+    line-height: 16px
+}
+
+.mm_wrap ul li a:hover, .mm_wrap ul li a.hover {
+    color: #e52f2f
+}
+
+.mm_wrap ul li.disabled, .mm_wrap ul li.disabled a {
+    color: #c2c2c2
+}
+
+.mm_wrap ul li a, .mm_wrap ul li span {
+    cursor: pointer
+}
+
+.frame_style_1 {
+    padding: 16px 18px 14px
+}
+
+.frame_style_1 .fs1_top {
+    background: url("/images/fr/hor_brd.png") 0 0 repeat-x;
+    padding: 2px 0 0;
+    border-bottom: 1px solid #fff
+}
+
+.frame_style_1 .fs1_left {
+    background: url("/images/fr/vert_brd.png") 0 0 repeat-y;
+    padding: 0 0 0 1px
+}
+
+.frame_style_1 .fs1_right {
+    background: url("/images/fr/vert_brd.png") 100% 0 repeat-y;
+    padding: 0 1px 0 0
+}
+
+.frame_style_1 .fs1_center {
+    background: url("/images/fr/bg.png") 0 0 repeat;
+    position: relative;
+    padding: 5px
+}
+
+.frame_style_1 .border_cont {
+    border: 1px solid #d1cfcf
+}
+
+.frame_style_1 .fs1_center .fs1_lt {
+    background: url("/images/fr/corners.png") 0 0 no-repeat;
+    width: 34px;
+    height: 40px;
+    position: absolute;
+    top: -13px;
+    left: -20px
+}
+
+.frame_style_1 .fs1_center .fs1_lb {
+    background: url("/images/fr/corners.png") 0 -40px no-repeat;
+    width: 34px;
+    height: 41px;
+    position: absolute;
+    bottom: -12px;
+    left: -20px
+}
+
+.frame_style_1 .fs1_center .fs1_rt {
+    background: url("/images/fr/corners.png") -34px 0 no-repeat;
+    width: 34px;
+    height: 40px;
+    position: absolute;
+    top: -13px;
+    right: -19px
+}
+
+.frame_style_1 .fs1_center .fs1_rb {
+    background: url("/images/fr/corners.png") -34px -40px no-repeat;
+    width: 34px;
+    height: 41px;
+    position: absolute;
+    bottom: -12px;
+    right: -19px
+}
+
+.frame_style_1 .fs1_center .fs1_r {
+    background: url("/images/fr/lr_side.png") 100% 50% no-repeat;
+    width: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -10px
+}
+
+.frame_style_1 .fs1_center .fs1_l {
+    background: url("/images/fr/lr_side.png") 0 50% no-repeat;
+    width: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -9px
+}
+
+.frame_style_1 .fs1_center .fs1_t {
+    background: url("/images/fr/t.png") 50% 0 no-repeat;
+    height: 23px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -18px
+}
+
+.frame_style_1 .fs1_center .fs1_b {
+    background: url("/images/fr/b.png") 50% 0 no-repeat;
+    height: 18px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -15px
+}
+
+.frame_style_1 .fs1_center .left_tape {
+    background: url("/images/fr/tape_l.png") 0 0 no-repeat;
+    height: 264px;
+    width: 47px;
+    position: absolute;
+    left: -34px;
+    top: -7px
+}
+
+.frame_style_1 .fs1_center .right_tape {
+    background: url("/images/fr/tape_r.png") 0 0 no-repeat;
+    height: 264px;
+    width: 47px;
+    position: absolute;
+    right: -32px;
+    top: -7px
+}
+
+.frame_style_1 .fs1_center .first {
+    position: relative;
+    text-align: center;
+    min-height: 235px
+}
+
+.world_info {
+    width: 752px;
+    text-align: center;
+    font-size: 12px;
+    margin: 20px auto 0
+}
+
+.world_info .wi_top {
+    color: #f6d391;
+    background: url("http://legendworld.ru/images/wi_top.png") 0 0 no-repeat;
+    height: 33px;
+    line-height: 33px;
+    overflow: hidden;
+    font-weight: bold
+}
+
+.world_info .wi_inner {
+    background: url("http://legendworld.ru/images/wi_bg.png") 0 0 repeat;
+    border-bottom: solid 1px #fff;
+    position: relative;
+    min-height: 70px;
+    padding: 1px 12px
+}
+
+.world_info .wi_left {
+    background: url("http://legendworld.ru/images/wi_sides.png") -9px 50% no-repeat;
+    width: 9px;
+    position: absolute;
+    left: 0;
+    top: -25px;
+    bottom: 0
+}
+
+.world_info .wi_right {
+    background: url("http://legendworld.ru/images/wi_sides.png") 0 50% no-repeat;
+    width: 9px;
+    position: absolute;
+    right: 0;
+    top: -25px;
+    bottom: 0
+}
+
+.world_info .title {
+    font-weight: bold;
+    padding: 5px 0
+}
+
+.world_info .empty {
+    line-height: 20px;
+    margin: 15px 0
+}
+
+.world_info img {
+    height: 35px
+}
+
+a.plus, a.minus {
+    background: url("http://legendworld.ru/images/plus_minus.png") 0 0 no-repeat;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    overflow: hidden
+}
+
+a.plus:hover {
+    background-position: 0 -17px
+}
+
+a.minus {
+    background-position: 0 -34px
+}
+
+a.minus:hover {
+    background-position: 0 -51px
+}
+
+a.plus.gray {
+    background-position: -17px 0
+}
+
+a.plus.gray:hover {
+    background-position: -17px -17px
+}
+
+a.minus.gray {
+    background-position: -17px -34px
+}
+
+a.minus.gray:hover {
+    background-position: -17px -51px
+}
+
+.l_pillar {
+    background: url("http://legendworld.ru/images/border/l_pillar.png") 0 0 repeat-y;
+    padding-left: 14px
+}
+
+.r_pillar {
+    background: url("http://legendworld.ru/images/border/r_pillar.png") 100% 0 repeat-y;
+    padding-right: 14px
+}
+
+.border_style {
+    position: relative
+}
+
+.border_style .b_top {
+    background: url("http://legendworld.ru/images/border/t.png") 0 0 repeat-x
+}
+
+.border_style .b_bot {
+    background: url("http://legendworld.ru/images/border/b.png") 0 100% repeat-x;
+    padding-bottom: 2px
+}
+
+.border_style .b_left {
+    background: url("http://legendworld.ru/images/border/l.png") 0 0 repeat-y
+}
+
+.border_style .b_right {
+    background: url("http://legendworld.ru/images/border/r.png") 100% 0 repeat-y
+}
+
+.border_style .b_lt, .border_style .b_rt, .border_style .b_rb, .border_style .b_lb {
+    background: url("http://legendworld.ru/images/border/corn_wa_shadow.png") 0 0 no-repeat;
+    position: absolute
+}
+
+.border_style .b_lt {
+    background-position: -31px -84px;
+    width: 38px;
+    height: 80px;
+    left: -6px;
+    top: -4px
+}
+
+.border_style .b_rt {
+    background-position: 0 -84px;
+    width: 28px;
+    height: 80px;
+    right: -6px;
+    top: -4px
+}
+
+.border_style .b_rb {
+    background-position: 0 0;
+    width: 31px;
+    height: 82px;
+    right: -9px;
+    bottom: 0
+}
+
+.border_style .b_lb {
+    background-position: -31px 0;
+    width: 38px;
+    height: 82px;
+    left: -6px;
+    bottom: 0
+}
+
+.border_style .b_lt_opt, .border_style .b_rt_opt, .border_style .b_rb_opt, .border_style .b_lb_opt {
+    background: url("http://legendworld.ru/images/border/corn_opt.png") 0 0 no-repeat;
+    position: absolute
+}
+
+.border_style .b_lt_opt {
+    background-position: -23px -62px;
+    width: 21px;
+    height: 80px;
+    left: -20px;
+    top: -11px
+}
+
+.border_style .b_rt_opt {
+    background-position: 0 -62px;
+    width: 22px;
+    height: 58px;
+    right: -20px;
+    top: -11px
+}
+
+.border_style .b_rb_opt {
+    background-position: 0 0;
+    width: 22px;
+    height: 59px;
+    right: -20px;
+    bottom: -9px
+}
+
+.border_style .b_lb_opt {
+    background-position: -23px 0;
+    width: 21px;
+    height: 59px;
+    left: -21px;
+    bottom: -9px
+}
+
+.border_style .b_inner {
+    min-height: 86px;
+    padding: 13px;
+    position: relative;
+    z-index: 2
+}
+
+.btn_1 .b1_left, .btn_1 .b1_right, .btn_1 .b1_center {
+    background: url("http://legendworld.ru/images/btn_1.png") 0 0 no-repeat
+}
+
+.btn_1 .b1_left, .btn_1.wa_hover:hover .b1_left {
+    background-position: 0 -24px;
+    padding-left: 5px
+}
+
+.btn_1 .b1_right, .btn_1.wa_hover:hover .b1_right {
+    background-position: 100% -48px;
+    padding-right: 5px
+}
+
+.btn_1 .b1_center, .btn_1.wa_hover:hover .b1_center {
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    height: 20px;
+    line-height: 19px;
+    display: block;
+    text-align: center;
+    color: #eee;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 0 2px #000;
+    font-size: 11px
+}
+
+.btn_1 .b1_center {
+    padding: 0 5px
+}
+
+.btn_1:hover .b1_left {
+    background-position: 0 -96px
+}
+
+.btn_1:hover .b1_right {
+    background-position: 100% -120px
+}
+
+.btn_1:hover .b1_center {
+    background-position: 0 -72px
+}
+
+.btn_1 button {
+    color: #fff;
+    cursor: pointer;
+    border: 0 transparent;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    background: transparent;
+    display: block;
+    width: 100%;
+    line-height: 19px
+}
+
+.btn_2 .b2_left, .btn_2 .b2_right, .btn_2 .b2_center {
+    background: url("http://legendworld.ru/images/btn_2.png") 0 0 no-repeat
+}
+
+.btn_2 .b2_left, .btn_2.wa_hover:hover .b2_left {
+    background-position: 0 -100px;
+    padding-left: 67px
+}
+
+.btn_2 .b2_right, .btn_2.wa_hover:hover .b2_right {
+    background-position: 100% -200px;
+    padding-right: 67px
+}
+
+.btn_2 .b2_center, .btn_2.wa_hover:hover .b2_center {
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    height: 46px;
+    line-height: 39px;
+    display: block;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px white;
+    font-size: 13px
+}
+
+.btn_2:hover .b2_left {
+    background-position: 0 -150px
+}
+
+.btn_2:hover .b2_right {
+    background-position: 100% -250px
+}
+
+.btn_2:hover .b2_center {
+    background-position: 0 -50px
+}
+
+.btn_2.disabled .b2_left, .btn_2.disabled:hover .b2_left {
+    background-position: 0 -400px;
+    padding-left: 67px
+}
+
+.btn_2.disabled .b2_right, .btn_2.disabled:hover .b2_right {
+    background-position: 100% -500px;
+    padding-right: 67px
+}
+
+.btn_2.disabled .b2_center, .btn_2.disabled:hover .b2_center {
+    background-position: 0 -300px;
+    background-repeat: repeat-x;
+    color: #444
+}
+
+.btn_4 .b4_left, .btn_4 .b4_right, .btn_4 .b4_center {
+    background: url("http://legendworld.ru/images/btn_4.png") 0 0 no-repeat
+}
+
+.btn_4 .b4_left {
+    padding-left: 27px
+}
+
+.btn_4 .b4_right {
+    background-position: 100% -120px;
+    padding-right: 24px
+}
+
+.btn_4 .b4_center {
+    background-position: 0 -60px;
+    background-repeat: repeat-x;
+    height: 27px
+}
+
+.btn_4:hover .b4_left {
+    background-position: 0 -30px
+}
+
+.btn_4:hover .b4_right {
+    background-position: 100% -150px
+}
+
+.btn_4:hover .b4_center {
+    background-position: 0 -90px
+}
+
+.btn_4 a {
+    color: #000;
+    text-shadow: 1px 1px 2px #fff;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 22px;
+    margin: 0 -6px 0 -13px;
+    text-align: center;
+    display: block
+}
+
+.btn_1 button:focus, .btn_1 a:focus, .btn_2 button:focus, .btn_2 a:focus, .btn_4 button:focus, .btn_4 a:focus {
+    outline: 0 none
+}
+
+.display_block {
+    display: block
+}
+
+.timer_active .btn_2 {
+    margin: 0 -33px;
+    padding-top: 20px;
+    position: relative
+}
+
+.row-fluid {
+    width: 100%;
+    *zoom: 1
+}
+
+.row-fluid:before, .row-fluid:after {
+    display: table;
+    line-height: 0;
+    content: ""
+}
+
+.row-fluid:after {
+    clear: both
+}
+
+.row-fluid [class*="span"] {
+    display: block;
+    float: left;
+    width: 100%;
+    min-height: 20px;
+    margin-left: 2.127659574468085%;
+    *margin-left: 2.074468085106383%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.row-fluid [class*="span"]:first-child {
+    margin-left: 0
+}
+
+.row-fluid .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 2.127659574468085%
+}
+
+.row-fluid .span12 {
+    width: 100%;
+    *width: 99.94680851063829%
+}
+
+.row-fluid .span11 {
+    width: 91.48936170212765%;
+    *width: 91.43617021276594%
+}
+
+.row-fluid .span10 {
+    width: 82.97872340425532%;
+    *width: 82.92553191489361%
+}
+
+.row-fluid .span9 {
+    width: 74.46808510638297%;
+    *width: 74.41489361702126%
+}
+
+.row-fluid .span8 {
+    width: 65.95744680851064%;
+    *width: 65.90425531914893%
+}
+
+.row-fluid .span7 {
+    width: 57.44680851063829%;
+    *width: 57.39361702127659%
+}
+
+.row-fluid .span6 {
+    width: 48.93617021276595%;
+    *width: 48.88297872340425%
+}
+
+.row-fluid .span5 {
+    width: 40.42553191489362%;
+    *width: 40.37234042553192%
+}
+
+.row-fluid .span4 {
+    width: 31.914893617021278%;
+    *width: 31.861702127659576%
+}
+
+.row-fluid .span3 {
+    width: 23.404255319148934%;
+    *width: 23.351063829787233%
+}
+
+.row-fluid .span2 {
+    width: 14.893617021276595%;
+    *width: 14.840425531914894%
+}
+
+.row-fluid .span1 {
+    width: 6.382978723404255%;
+    *width: 6.329787234042553%
+}
+
+.row-fluid .offset12 {
+    margin-left: 104.25531914893617%;
+    *margin-left: 104.14893617021275%
+}
+
+.row-fluid .offset12:first-child {
+    margin-left: 102.12765957446808%;
+    *margin-left: 102.02127659574467%
+}
+
+.row-fluid .offset11 {
+    margin-left: 95.74468085106382%;
+    *margin-left: 95.6382978723404%
+}
+
+.row-fluid .offset11:first-child {
+    margin-left: 93.61702127659574%;
+    *margin-left: 93.51063829787232%
+}
+
+.row-fluid .offset10 {
+    margin-left: 87.23404255319149%;
+    *margin-left: 87.12765957446807%
+}
+
+.row-fluid .offset10:first-child {
+    margin-left: 85.1063829787234%;
+    *margin-left: 84.99999999999999%
+}
+
+.row-fluid .offset9 {
+    margin-left: 78.72340425531914%;
+    *margin-left: 78.61702127659572%
+}
+
+.row-fluid .offset9:first-child {
+    margin-left: 76.59574468085106%;
+    *margin-left: 76.48936170212764%
+}
+
+.row-fluid .offset8 {
+    margin-left: 70.2127659574468%;
+    *margin-left: 70.10638297872339%
+}
+
+.row-fluid .offset8:first-child {
+    margin-left: 68.08510638297872%;
+    *margin-left: 67.9787234042553%
+}
+
+.row-fluid .offset7 {
+    margin-left: 61.70212765957446%;
+    *margin-left: 61.59574468085106%
+}
+
+.row-fluid .offset7:first-child {
+    margin-left: 59.574468085106375%;
+    *margin-left: 59.46808510638297%
+}
+
+.row-fluid .offset6 {
+    margin-left: 53.191489361702125%;
+    *margin-left: 53.085106382978715%
+}
+
+.row-fluid .offset6:first-child {
+    margin-left: 51.063829787234035%;
+    *margin-left: 50.95744680851063%
+}
+
+.row-fluid .offset5 {
+    margin-left: 44.68085106382979%;
+    *margin-left: 44.57446808510638%
+}
+
+.row-fluid .offset5:first-child {
+    margin-left: 42.5531914893617%;
+    *margin-left: 42.4468085106383%
+}
+
+.row-fluid .offset4 {
+    margin-left: 36.170212765957444%;
+    *margin-left: 36.06382978723405%
+}
+
+.row-fluid .offset4:first-child {
+    margin-left: 34.04255319148936%;
+    *margin-left: 33.93617021276596%
+}
+
+.row-fluid .offset3 {
+    margin-left: 27.659574468085104%;
+    *margin-left: 27.5531914893617%
+}
+
+.row-fluid .offset3:first-child {
+    margin-left: 25.53191489361702%;
+    *margin-left: 25.425531914893618%
+}
+
+.row-fluid .offset2 {
+    margin-left: 19.148936170212764%;
+    *margin-left: 19.04255319148936%
+}
+
+.row-fluid .offset2:first-child {
+    margin-left: 17.02127659574468%;
+    *margin-left: 16.914893617021278%
+}
+
+.row-fluid .offset1 {
+    margin-left: 10.638297872340425%;
+    *margin-left: 10.53191489361702%
+}
+
+.row-fluid .offset1:first-child {
+    margin-left: 8.51063829787234%;
+    *margin-left: 8.404255319148938%
+}
+
+.input-block-level {
+    display: block;
+    width: 100%;
+    min-height: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.iradio {
+    background: url("http://legendworld.ru/images/radio.png") 0 0 no-repeat;
+    display: inline-block;
+    width: 19px;
+    height: 17px;
+    cursor: pointer
+}
+
+.iradio:hover {
+    background-position: 0 -20px
+}
+
+.iradio.active {
+    background-position: 0 -40px
+}
+
+.iradio.active:hover {
+    background-position: 0 -60px
+}
+
+.iradio input {
+    display: none
+}
+
+label {
+    cursor: pointer;
+    line-height: 19px
+}
+
+label .iradio {
+    float: left;
+    margin-right: 5px
+}
+
+.border_radius_content {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px
+}
+
+.error_msg {
+    color: #ce0202;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center
+}
+
+div.item {
+    font-size: 11px;
+    line-height: 13px;
+    margin-top: 10px
+}
+
+div.item:first-child {
+    margin-top: 0
+}
+
+div.item table {
+    width: 100%;
+    border-collapse: collapse
+}
+
+div.item tbody.element {
+    border-top: 3px solid #fff
+}
+
+div.item tbody.element:first-child {
+    border-top: 0 none
+}
+
+div.item table td {
+    padding: 5px;
+    background: #e4e4e4
+}
+
+div.item table td.img {
+    width: 60px;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    background: #fff;
+    vertical-align: middle
+}
+
+div.item table .title {
+    border-top: 1px solid #0887b7;
+    border-bottom: 1px solid #0887b7;
+    text-decoration: none;
+    color: inherit;
+    text-shadow: 1px 1px 0 #d0d8da
+}
+
+div.item td.need_column {
+    border-left: 1px solid #0887b7;
+    width: 45%
+}
+
+div.item table .title td {
+    padding: 1px;
+    text-align: center;
+    background: url("http://legendworld.ru/images/f009.gif")
+}
+
+.white_bg {
+    background-color: #fff
+}
+
+div.border_style_3 {
+    width: 767px;
+    margin: 0 -5px 0 -3px;
+    padding-bottom: 10px
+}
+
+.border_style .b_inner div.border_style_3 {
+    margin-bottom: -7px
+}
+
+div.border_style_3 > .outer_content {
+    position: relative;
+    padding: 35px 6px 0;
+    background: url("http://legendworld.ru/images/f008-1.png") repeat-y 0 0
+}
+
+div.border_style_3 > .outer_content > .bg_n {
+    position: absolute;
+    width: 100%;
+    height: 56px;
+    top: -20px;
+    left: 0;
+    background: url("http://legendworld.ru/images/f008.png") no-repeat 0 0
+}
+
+div.border_style_3 > .outer_content > .bg_n .menu {
+    padding-top: 4px;
+    line-height: 25px;
+    text-align: center
+}
+
+div.border_style_3 > .outer_content > .bg_n .menu a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #f6d391
+}
+
+div.border_style_3 > .outer_content > .bg_n .menu a:hover {
+    color: #e52f2f;
+    text-shadow: 0 1px 2px #404040
+}
+
+div.border_style_3 > .outer_content > .bg_n .menu .sep {
+    margin: 0 5px;
+    color: #f6d391
+}
+
+div.border_style_3 > .outer_content > .bg_n .lw {
+    text-align: center;
+    line-height: 19px;
+    color: #fff
+}
+
+div.border_style_3 > .outer_content > .bg_s {
+    position: absolute;
+    width: 100%;
+    height: 61px;
+    left: 0;
+    bottom: -10px;
+    background: url("http://legendworld.ru/images/f008-2.png") no-repeat 0 0
+}
+
+div.border_style_3 > .outer_content > .inner_content {
+    position: relative;
+    min-height: 50px
+}
+
+.pull-left {
+    float: left
+}
+
+.pull-right {
+    float: right
+}
+
+.grey_descript {
+    color: #4d4d4d;
+    font-size: 11px
+}
+
+.text-left {
+    text-align: left
+}
+
+.text-center {
+    text-align: center
+}
+
+.text-right {
+    text-align: right
+}
+
+.muted {
+    color: #999
+}
+
+a.muted:hover, a.muted:focus {
+    color: gray
+}
+
+.text-warning {
+    color: #c09853
+}
+
+a.text-warning:hover, a.text-warning:focus {
+    color: #a47e3c
+}
+
+.text-error {
+    color: #b94a48
+}
+
+a.text-error:hover, a.text-error:focus {
+    color: #953b39
+}
+
+.text-info {
+    color: #3a87ad
+}
+
+a.text-info:hover, a.text-info:focus {
+    color: #2d6987
+}
+
+.text-success {
+    color: #468847
+}
+
+a.text-success:hover, a.text-success:focus {
+    color: #356635
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin: 4px 0 0;
+    margin-top: 1px \9;
+    *margin-top: 0;
+    line-height: normal;
+    cursor: pointer
+}
+
+label.radio, label.checkbox {
+    display: block;
+    cursor: pointer
+}
+
+.radio, .checkbox {
+    min-height: 20px;
+    padding-left: 20px
+}
+
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
+    float: left;
+    margin-left: -20px
+}
+
+.radio.inline, .checkbox.inline {
+    display: inline-block;
+    padding-top: 5px;
+    margin-bottom: 0;
+    vertical-align: middle
+}
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 30px;
+    color: #333;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5
+}
+
+legend small {
+    font-size: 12px;
+    color: #999
+}
+
+.input .bl_left, .input .bl_right, .input .bl_center {
+    background: url("http://legendworld.ru/images/input_round.png") 0 0 no-repeat
+}
+
+.input .bl_left {
+    padding-left: 11px
+}
+
+.input .bl_right {
+    background-position: 100% -100px;
+    padding-right: 11px
+}
+
+.input .bl_center {
+    background-position: 0 -50px;
+    background-repeat: repeat-x;
+    padding: 4px 0 3px
+}
+
+.input input {
+    border: 0 none;
+    outline: 0 none;
+    display: block;
+    color: #707070;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 13px;
+    width: 100%;
+    background: 0
+}
+
+.input.error .bl_left {
+    background-position: 0 -25px
+}
+
+.input.error .bl_right {
+    background-position: 100% -125px
+}
+
+.input.error .bl_center {
+    background-position: 0 -75px
+}
+
+.close_bt {
+    width: 22px;
+    height: 22px;
+    display: block;
+    background: url("http://legendworld.ru/images/close.png") 0 0 no-repeat
+}
+
+.close_bt:hover {
+    background-position: 0 -22px
+}
+
+.style_head_1 .sh1_left, .style_head_1 .sh1_right, .style_head_1 .sh1_center {
+    background: url("http://legendworld.ru/images/style_head_1.png") 0 0 no-repeat
+}
+
+.style_head_1 .sh1_left {
+    background-position: 0 0;
+    padding-left: 16px
+}
+
+.style_head_1 .sh1_right {
+    background-position: 100% -50px;
+    padding-right: 16px
+}
+
+.style_head_1 .sh1_center {
+    background-position: 0 -100px;
+    background-repeat: repeat-x;
+    height: 48px;
+    line-height: 32px
+}
+
+.pay_service {
+    margin-top: 10px
+}
+
+.pay_service:first-child {
+    margin-top: 0
+}
+
+.pay_service ul {
+    font-size: 13px;
+    color: #585858
+}
+
+.pay_service ul ul li {
+    padding-left: 25px
+}
+
+.pay_service label, .pay_service input[type=radio] {
+    cursor: pointer
+}
+
+.popup_wrap {
+    padding: 3px
+}
+
+.popup_wrap .popup_border {
+    background: url("http://legendworld.ru/images/gray_bg.jpg") 0 0 repeat;
+    border: 4px solid #a2a2a2
+}
+
+.popup_wrap .popup_content {
+    min-height: 60px
+}
+
+.popup_wrap .popup_content .error, .popup_wrap .popup_content .success {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 20px 5px
+}
+
+.popup_wrap .popup_content .error {
+    color: #b94a48
+}
+
+.popup_wrap .popup_content .success {
+    color: #468847
+}
+
+.popup_wrap .popup_border.border_radius {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px
+}
+
+.popup_wrap .popup_border_1 {
+    border: 1px solid #767676;
+    border-left: 0 none
+}
+
+.popup_head_1 {
+    padding: 0 15px;
+    margin: -23px -5px 0 -4px
+}
+
+.popup_head_1 .ph1_bg, .popup_head_1 .ph1_left, .popup_head_1 .ph1_right {
+    background: url("http://legendworld.ru/images/style_head_popup.png") 0 -70px repeat-x
+}
+
+.popup_head_1 .ph1_left {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    margin-left: -15px
+}
+
+.popup_head_1 .ph1_right {
+    background-position: 100% -35px;
+    background-repeat: no-repeat;
+    margin-right: -15px
+}
+
+.popup_head_1 .ph1_content {
+    line-height: 35px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    min-width: 200px;
+    min-height: 27px;
+    max-height: 35px
+}
+
+.popup_wrap .info_msg {
+    position: relative;
+    padding: 10px 20px 10px 310px
+}
+
+.popup_wrap .info_msg .flag {
+    background: url("http://legendworld.ru/images/msg_flag.png") 0 0 no-repeat;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    height: 260px;
+    width: 274px
+}
+
+.popup_wrap .info_msg .pc_msg {
+    width: 250px;
+    min-height: 115px
+}
+
+.popup_wrap.trader_offer .info_msg .flag {
+    background: url("http://legendworld.ru/images/trader_image.jpg") 0 0 no-repeat;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+    height: 171px;
+    width: 190px
+}
+
+.popup_wrap.trader_offer .info_msg {
+    padding-left: 215px
+}
+
+.popup_wrap.trader_offer .info_msg .pc_msg {
+    width: 400px
+}
+
+.popup_wrap.trader_offer .trader_table {
+    width: 100%
+}
+
+.popup_wrap.trader_offer .trader_table td {
+    padding: 10px;
+    vertical-align: top
+}
+
+.popup_wrap.trader_offer .trader_table .img-wrapper {
+    width: 70px;
+    text-align: right
+}
+
+.popup_wrap.trader_offer .trader_table .img-wrapper img {
+    max-width: 50px
+}
+
+.wide_popup {
+    width: 700px
+}
+
+.wide_popup #baits_list td, .wide_popup #herbs_list td {
+    vertical-align: middle
+}
+
+.popup_wrap hr {
+    margin: 5px 0
+}
+
+#tooltip {
+    background: #fff;
+    border: 1px solid #999;
+    color: #333;
+    font: 12px Tahoma;
+    margin: 0;
+    padding: 3px 5px;
+    position: absolute;
+    z-index: 10
+}
+
+.style_title {
+    line-height: 24px
+}
+
+.style_title .t_l {
+    display: inline-block;
+    background: url("http://legendworld.ru/images/pers/title_side_beauty.png") 0 0 no-repeat;
+    height: 24px;
+    padding-left: 30px;
+    margin-top: 7px
+}
+
+.style_title .t_r {
+    display: inline-block;
+    background: url("http://legendworld.ru/images/pers/title_side_beauty.png") 100% -25px no-repeat;
+    height: 24px;
+    padding-right: 30px
+}
+
+.popup_wrap.info_block .popup_border {
+    background-image: none;
+    background-color: #fff;
+    border: 4px solid #a2a2a2
+}
+
+.popup_wrap .popup_border_1 {
+    border: 0 none
+}
+
+.dotten_bg {
+    background: url("http://legendworld.ru/images/wi_bg.png") 0 0 repeat
+}
+
+.dotten_bg.rounded {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px
+}
+
+.info_row {
+    margin: 3px 0;
+    color: #000
+}
+
+.info_row .ir_left, .info_row .ir_right, .info_row .ir_center {
+    height: 18px;
+    line-height: 18px;
+    background: url("http://legendworld.ru/images/info_row_bg.png") 0 0 no-repeat
+}
+
+.info_row .ir_left {
+    padding-left: 9px
+}
+
+.info_row .ir_right {
+    padding-right: 9px;
+    background-position: 100% -114px
+}
+
+.info_row .ir_center {
+    background-position: 0 -57px;
+    background-repeat: repeat-x;
+    overflow: hidden
+}
+
+.info_row.red, .info_row.blue {
+    color: #fff
+}
+
+.info_row.blue .ir_left {
+    background-position: 0 -19px
+}
+
+.info_row.blue .ir_right {
+    background-position: 100% -133px
+}
+
+.info_row.blue .ir_center {
+    background-position: 0 -76px
+}
+
+.info_row.red .ir_left {
+    background-position: 0 -38px
+}
+
+.info_row.red .ir_right {
+    background-position: 100% -152px
+}
+
+.info_row.red .ir_center {
+    background-position: 0 -95px
+}
+
+.info_row.trans .ir_left, .info_row.trans .ir_right, .info_row.trans .ir_center {
+    background-image: none
+}
+
+div.item .element .img {
+    position: relative
+}
+
+div.item .element .img.w_inner_wrap {
+    position: relative;
+    padding: 0
+}
+
+div.item .element .img.w_inner_wrap .inner_wrap {
+    position: relative;
+    padding: 0 5px
+}
+
+div.item .add_form {
+    display: none;
+    background: #e4e4e4;
+    border-right: 1px solid #fff
+}
+
+div.item .element:hover .add_form {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0
+}
+
+div.item .add_form .set_max:hover {
+    text-decoration: underline
+}
+
+div.item .add_form .input {
+    margin: 6px
+}
+
+div.item .add_form .input input {
+    text-align: center
+}
+
+div.item .add_form .btn_1 {
+    margin-top: 8px
+}
+
+div.item .subtext {
+    margin-top: 6px;
+    color: #585858
+}
+
+div.item .dolg {
+    width: 62px;
+    height: 2px;
+    background: #eee;
+    margin: 1px auto 0;
+    overflow: hidden
+}
+
+div.item .dolg div {
+    height: 2px;
+    background: #15af00;
+    overflow: hidden;
+    float: left
+}
+
+div.item .name_block .pos_rel {
+    position: relative
+}
+
+div.item .name_block .close_bt {
+    position: absolute;
+    right: -5px;
+    top: -3px
+}
+
+.arrow_1 {
+    display: inline-block;
+    height: 15px;
+    width: 16px;
+    background: url("http://legendworld.ru/images/arrow_1.png") 0 0 no-repeat;
+    cursor: pointer;
+    vertical-align: text-bottom
+}
+
+.arrow_1:hover {
+    background-position: -20px
+}
+
+div.item .actions_wrap .actions {
+    display: none;
+    padding-top: 3px
+}
+
+div.item .actions_wrap.actions_show .actions {
+    display: block
+}
+
+div.item .actions_wrap .actions .btn_1 {
+    margin: 1px 3px 1px 0
+}
+
+.show_close_on_hover .close_bt {
+    display: none
+}
+
+.show_close_on_hover:hover .close_bt {
+    display: block
+}
+
+.ftbold {
+    font-weight: bold
+}
+
+.progress_bar {
+    background: url("http://legendworld.ru/images/pers/hm_mp_bg.png") 0 -24px repeat-x;
+    height: 10px;
+    overflow: hidden;
+    display: block;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+
+.progress_bar .pb_inner {
+    background: url("http://legendworld.ru/images/pers/hm_mp_bg.png") 0 0 repeat-x;
+    height: 10px;
+    float: left;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+
+.progress_bar .pb_inner.blue {
+    background-position: 0 -12px
+}

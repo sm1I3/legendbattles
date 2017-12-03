@@ -206,8 +206,8 @@ function change_chatsetup()
           ChatFyo = 1;
    	      window.frames['ch_buttons'].document.FBT.fyo.value = 1;
    	      window.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_me.gif';
-   	      window.frames['ch_buttons'].document.FBT.schat.alt = 'Режим чата (Показывать только личные сообщения)';
-		  window.frames['ch_buttons'].document.FBT.schat.title = 'Режим чата (Показывать только личные сообщения)';
+           window.frames['ch_buttons'].document.FBT.schat.alt = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+           window.frames['ch_buttons'].document.FBT.schat.title = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
        }
        else if(ChatFyo == 1)
        {
@@ -215,8 +215,8 @@ function change_chatsetup()
    	      window.frames['ch_buttons'].document.FBT.fyo.value = 2;
     	      ch_stop_refresh();
     	      window.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_none.gif';
-    	      window.frames['ch_buttons'].document.FBT.schat.alt = 'Режим чата (Не показывать сообщения)';
-			  window.frames['ch_buttons'].document.FBT.schat.title = 'Режим чата (Не показывать сообщения)';
+           window.frames['ch_buttons'].document.FBT.schat.alt = 'Р РµР¶РёРј С‡Р°С‚Р° (РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+           window.frames['ch_buttons'].document.FBT.schat.title = 'Р РµР¶РёРј С‡Р°С‚Р° (РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ)';
        }
        else
        {
@@ -224,8 +224,8 @@ function change_chatsetup()
     	      window.frames['ch_buttons'].document.FBT.fyo.value = 0;
     	      ch_refresh();
     	      window.frames['ch_buttons'].document.FBT.schat.src = 'http://img.legendbattles.ru/image/chat/bb3_all.gif';
-    	      window.frames['ch_buttons'].document.FBT.schat.alt = 'Режим чата (Показывать все сообщения)';
-			  window.frames['ch_buttons'].document.FBT.schat.title = 'Режим чата (Показывать все сообщения)';
+           window.frames['ch_buttons'].document.FBT.schat.alt = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ РІСЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
+           window.frames['ch_buttons'].document.FBT.schat.title = 'Р РµР¶РёРј С‡Р°С‚Р° (РџРѕРєР°Р·С‹РІР°С‚СЊ РІСЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ)';
        }
 }
 
@@ -237,7 +237,7 @@ function change_chatspeed()
        else ChatDelay = 10;
        ChatTimerID = setTimeout('ch_refresh()', ChatDelay*1000);
        window.frames['ch_buttons'].document.FBT.spchat.src = 'http://img.legendbattles.ru/image/chat/bb_'+ChatDelay+'.gif';
-       window.frames['ch_buttons'].document.FBT.spchat.alt = 'Скорость обновления (раз в '+ChatDelay+' секунд)';
+    window.frames['ch_buttons'].document.FBT.spchat.alt = 'РЎРєРѕСЂРѕСЃС‚СЊ РѕР±РЅРѕРІР»РµРЅРёСЏ (СЂР°Р· РІ ' + ChatDelay + ' СЃРµРєСѓРЅРґ)';
 }
 
 function change_latrus()
@@ -246,13 +246,13 @@ function change_latrus()
        {
               latrus = 1;
     	      window.frames['ch_buttons'].document.FBT.lrchat.src = 'http://img.legendbattles.ru/image/chat/bb4_ac.gif';
-    	      window.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (Транслит включён)';
+           window.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (РўСЂР°РЅСЃР»РёС‚ РІРєР»СЋС‡С‘РЅ)';
        }
        else
        {
               latrus = 0;
        	      window.frames['ch_buttons'].document.FBT.lrchat.src = 'http://img.legendbattles.ru/image/chat/bb4_nc.gif';
-       	      window.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (Транслит выключен)';
+           window.frames['ch_buttons'].document.FBT.lrchat.alt = 'LAT <-> RUS (РўСЂР°РЅСЃР»РёС‚ РІС‹РєР»СЋС‡РµРЅ)';
        }
 }
 
@@ -265,12 +265,12 @@ function start()
 
 function exit_confirm()
 {
-       return confirm('Вы действительно хотите покинуть игру?');
+    return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїРѕРєРёРЅСѓС‚СЊ РёРіСЂСѓ?');
 }
 
 function delete_confirm(wnametxt)
 {
-       return confirm('Вы действительно хотите выбросить "'+wnametxt+'"?');
+    return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РІС‹Р±СЂРѕСЃРёС‚СЊ "' + wnametxt + '"?');
 }
 
 function exit_redir()
@@ -285,7 +285,7 @@ function DeleteTrue(wname)
 
 function delete_confirm_NG(wnametxt)
 {
-       return confirm('Открыть и удалить "'+wnametxt+'"? Подарок может сожержать полезные предметы, бонусы, или не содержать ничего.');
+    return confirm('РћС‚РєСЂС‹С‚СЊ Рё СѓРґР°Р»РёС‚СЊ "' + wnametxt + '"? РџРѕРґР°СЂРѕРє РјРѕР¶РµС‚ СЃРѕР¶РµСЂР¶Р°С‚СЊ РїРѕР»РµР·РЅС‹Рµ РїСЂРµРґРјРµС‚С‹, Р±РѕРЅСѓСЃС‹, РёР»Рё РЅРµ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРёС‡РµРіРѕ.');
 }
 
 function DeleteTrueNG(wname)
@@ -295,7 +295,7 @@ function DeleteTrueNG(wname)
 
 function ClanConfirm(wnametxt)
 {
-       return confirm('Положить в казну "'+wnametxt+'"?');
+    return confirm('РџРѕР»РѕР¶РёС‚СЊ РІ РєР°Р·РЅСѓ "' + wnametxt + '"?');
 }
 
 function ClanKaznaTrue(wname)
@@ -353,9 +353,9 @@ LoadingBar = function(){
     }
 }
 
-view_loading = function(){  
-    
-    $('#Loading').html('<div id="barBgPlace" style="left: '+($(window).width()/2-105)+'px; top: '+($(window).height()/2-35)+'px;"><div id="textPlace">Подождите пожалуйста...</div><div id="barPlace"><table cellpadding="0" cellspacing="0" width="160" border="0"><tr><td width="7"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/ll1.gif" width="7" height="13" border="0"></td><td class="bbg" id="BARTD"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/spacer.gif" width="1" height="13" border="0" id="BAR"></td><td width="7"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/rr1.gif" width="7" height="13" border="0"></td><td><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/spacer.gif" width="40" height="13" border="0"></td></tr></table></div>'+PNGImage('gameplay/labyrinth/barbg.gif','gameplay/labyrinth/barbg.png',210,70)+'</div>');
+view_loading = function(){
+
+    $('#Loading').html('<div id="barBgPlace" style="left: ' + ($(window).width() / 2 - 105) + 'px; top: ' + ($(window).height() / 2 - 35) + 'px;"><div id="textPlace">РџРѕРґРѕР¶РґРёС‚Рµ РїРѕР¶Р°Р»СѓР№СЃС‚Р°...</div><div id="barPlace"><table cellpadding="0" cellspacing="0" width="160" border="0"><tr><td width="7"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/ll1.gif" width="7" height="13" border="0"></td><td class="bbg" id="BARTD"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/spacer.gif" width="1" height="13" border="0" id="BAR"></td><td width="7"><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/rr1.gif" width="7" height="13" border="0"></td><td><img src="http://img.legendbattles.ru/image/gameplay/labyrinth/spacer.gif" width="40" height="13" border="0"></td></tr></table></div>' + PNGImage('gameplay/labyrinth/barbg.gif', 'gameplay/labyrinth/barbg.png', 210, 70) + '</div>');
     
     PxSize = 0;
     TimeSet = 1;

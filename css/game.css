@@ -1,713 +1,1151 @@
-#stooltipmsg {left:-400px; max-width: 400px;}
+#stooltipmsg {
+    left: -400px;
+    max-width: 400px;
+}
+
 .stooltip {
-  position: absolute; width: auto; z-index: 10000; background: transparent !important;
-  min-width: 30px; min-height: 0px;
+    position: absolute;
+    width: auto;
+    z-index: 10000;
+    background: transparent !important;
+    min-width: 30px;
+    min-height: 0px;
 }
+
 #stooltiptext {
-  padding: 0px 10px;
-  font: 11px tahoma; text-align: left;
+    padding: 0px 10px;
+    font: 11px tahoma;
+    text-align: left;
 }
-html, body { height:100%; width: 100%; margin: 0px; padding: 0px; }
-iframe{ border: 0 none; padding: 0; margin: 0; display:block; }
 
-.bbg { background: url('/img/image/gameplay/labyrinth/bbg.gif') repeat-x; }
-
-#Loading { z-index: 1; position: absolute; left: 0px; top: 0px; background: url(/ch/chbg.gif) repeat-x; background-color: #FFFFFF; height:100%; width: 100%; }
-#barBgPlace { z-index: 2; position: relative; width: 210px; height: 70px;  }
-#textPlace { position: absolute; z-index: 3; width: 165px; height: 30px; text-align: center; left: 22px; top: 20px; font-family: Georgia, "Times New Roman", Times, serif; font-size: 11px; color: #4d4d4d; }
-#barPlace { position: absolute; z-index: 4; width: 160px; bottom: 10px; left: 25px; }
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
-.bg-fixed,.bg-abs,.bg-dragons{width:100%;height:100%;min-height:100%;top:0px;left:0;background-attachment:fixed;background-repeat: no-repeat;}
-.bg-fixed{position:fixed;z-index:-1;}
-.bg-dragons{background: black url("http://img.legendbattles.ru/image/bg-dragons.jpg");background-position:center 0px;}
-#stooltip_e1 {position: absolute;display: block; width: 43px; height: 43px; background: url(/css/system/hint_cul.png) no-repeat center center;top: -8px;left: -8px;}
-#stooltip_e2 {position: absolute;display: block; width: 43px; height: 43px; background: url(/css/system/hint_cur.png) no-repeat center center;top: -8px;right: -8px;}
-#stooltip_e3 {position: absolute;display: block; width: 43px; height: 43px; background: url(/css/system/hint_cdl.png) no-repeat center center;bottom: -8px;left: -8px;}
-#stooltip_e4 {position: absolute;display: block; width: 43px; height: 43px; background: url(/css/system/hint_cdr.png) no-repeat center center;bottom: -8px;right: -8px;}
-#stooltip_e5 {border: 1px #f5e7ad solid;}
-#stooltip_e6 {margin: 0px; padding: 5px 7px; background: url(/css/system/hintbg.png) repeat;border: 1px #946e25 solid;}
+
+iframe {
+    border: 0 none;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.bbg {
+    background: url('/img/image/gameplay/labyrinth/bbg.gif') repeat-x;
+}
+
+#Loading {
+    z-index: 1;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: url(/ch/chbg.gif) repeat-x;
+    background-color: #FFFFFF;
+    height: 100%;
+    width: 100%;
+}
+
+#barBgPlace {
+    z-index: 2;
+    position: relative;
+    width: 210px;
+    height: 70px;
+}
+
+#textPlace {
+    position: absolute;
+    z-index: 3;
+    width: 165px;
+    height: 30px;
+    text-align: center;
+    left: 22px;
+    top: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 11px;
+    color: #4d4d4d;
+}
+
+#barPlace {
+    position: absolute;
+    z-index: 4;
+    width: 160px;
+    bottom: 10px;
+    left: 25px;
+}
+
+}
+.bg-fixed, .bg-abs, .bg-dragons {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    top: 0px;
+    left: 0;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.bg-fixed {
+    position: fixed;
+    z-index: -1;
+}
+
+.bg-dragons {
+    background: black url("http://img.legendbattles.ru/image/bg-dragons.jpg");
+    background-position: center 0px;
+}
+
+#stooltip_e1 {
+    position: absolute;
+    display: block;
+    width: 43px;
+    height: 43px;
+    background: url(/css/system/hint_cul.png) no-repeat center center;
+    top: -8px;
+    left: -8px;
+}
+
+#stooltip_e2 {
+    position: absolute;
+    display: block;
+    width: 43px;
+    height: 43px;
+    background: url(/css/system/hint_cur.png) no-repeat center center;
+    top: -8px;
+    right: -8px;
+}
+
+#stooltip_e3 {
+    position: absolute;
+    display: block;
+    width: 43px;
+    height: 43px;
+    background: url(/css/system/hint_cdl.png) no-repeat center center;
+    bottom: -8px;
+    left: -8px;
+}
+
+#stooltip_e4 {
+    position: absolute;
+    display: block;
+    width: 43px;
+    height: 43px;
+    background: url(/css/system/hint_cdr.png) no-repeat center center;
+    bottom: -8px;
+    right: -8px;
+}
+
+#stooltip_e5 {
+    border: 1px #f5e7ad solid;
+}
+
+#stooltip_e6 {
+    margin: 0px;
+    padding: 5px 7px;
+    background: url(/css/system/hintbg.png) repeat;
+    border: 1px #946e25 solid;
+}
 
 .img_progress {
     opacity: 0.3;
 }
+
 .img_progress2 {
     opacity: 1;
 }
 
-.invis{
-display:none;
+.invis {
+    display: none;
 }
-.cc0000{
- color: #cc0000;
+
+.cc0000 {
+    color: #cc0000;
 }
-A
-{
- 	COLOR: #336699;
-	text-decoration : none;
-	cursor: pointer;
+
+A {
+    COLOR: #336699;
+    text-decoration: none;
+    cursor: pointer;
 }
-FORM { margin: 0; padding: 0; }
+
+FORM {
+    margin: 0;
+    padding: 0;
+}
+
 FIELDSET {
-	/*behavior: url(/js/PIE/PIE.htc);*/
-	border: solid 1px #gray;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
-	padding: 6px 6px;
-	margin: 1px 0px;
+    /*behavior: url(/js/PIE/PIE.htc);*/
+    border: solid 1px #gray;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 6px 6px;
+    margin: 1px 0px;
 }
-FIELDSET#base{
-	/*behavior: url(/js/PIE/PIE.htc);*/
-	border: solid 1px #gray;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
+
+FIELDSET#base {
+    /*behavior: url(/js/PIE/PIE.htc);*/
+    border: solid 1px #gray;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
 }
-.fieldstat{
-	border: solid 1px #ccc; -moz-border-radius: 5px; width: 57px;  vertical-align: middle; -webkit-border-radius: 5px;	border-radius: 5px; padding: 0px 3px; margin: 5px 5px;
+
+.fieldstat {
+    border: solid 1px #ccc;
+    -moz-border-radius: 5px;
+    width: 57px;
+    vertical-align: middle;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0px 3px;
+    margin: 5px 5px;
 }
-LEGEND#base{
-	color: #BABABA;
-	font-size: 12px;
+
+LEGEND#base {
+    color: #BABABA;
+    font-size: 12px;
 }
+
 LEGEND {
-	color: #BABABA;
-	font-size: 12px;
-	padding: .5em;
-	border: solid 1px gray;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
-}
-a.reglink{
-font-family :  Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #41341E;
-}
-a.reglink:hover{
-font-family :  Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : underline;
-	color : #41341E;
-}
-.weaponch{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #333333;
-	font-size : 11px;
-}
-.weaponchart{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #336699;
-	font-size : 11px;
-}
-.weaponchdis{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #999999;
-	font-size : 11px;
-}
-.weaponchuse{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #b50606;
-	font-size : 11px;
-}
-.fighttxt{
-font-family : Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #222222;
-	font-size : 12px;
-}
-.fighttime{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #888888;
-	font-size : 12px;
-}
-.chattxt{
-font-family : Verdana, Tahoma, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #000000;
-	font-size : 10pt;
-}
-.forumt{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : underline;
-	color : #333333;
-	font-size : 13px;
-	FONT-WEIGHT: bold
-}
-.ftit{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #696969;
-	font-size : 15px;
-	FONT-WEIGHT: bold
-}
-.ftxt{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #333333;
-	font-size : 11px
-}
-.forumwe{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #333333;
-	font-size : 13px;
-	FONT-WEIGHT: bold
-}
-.forumne{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #333333;
-	font-size : 12px
-}
-.fsm{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #222222;
-	font-size : 11px;
-}
-.suppo{
-font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #888888;
-	font-size : 11px;
-}
-.anonstxt{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #333333;
-	font-size : 11px;
-}
-.proce{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #FF3300;
-	font-size : 10px;
-}
-.proceg{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #009900;
-	font-size : 10px;
-}
-.proceb{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #00000;
-	font-size : 10px;
-}
-.copy{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #F8F3D7;
-	font-size : 11px;
-}
-.anonstitle{
-font-family : Arial,Verdana,Tahoma,Arial,Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : underline;
-	color : #333366;
-	font-size : 16px;
-	FONT-WEIGHT: bold
-}
-.guestb{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #222222;
-}
-.placename{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : none;
-	color : #222222;
-}
-.travma{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 14px;
-	text-decoration : none;
-	color : #222222;
-}
-.inv{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : none;
-	color : #716E44;
-}
-.invtitle{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #f5f5f5;
-	FONT-WEIGHT: bold
-}
-.nickname{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 14px;
-	text-decoration : none;
-	color : #222222;
-}
-.nickname2{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #222222;
-}
-.zaya{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : none;
-	color : #336699;
-}
-.freemain{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 14px;
-	text-decoration : none;
-	color : #222222;
-}
-.gr_f{
-	color : #0052A6;
-}
-.gr_s{
-	color : #087C20;
-}
-.logintext{
-font-family : Verdana, Tahoma,  Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #336699;
-	FONT-WEIGHT: bold
-}
-.freetxt{
-font-family : Verdana, Tahoma,  Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 10px;
-	text-decoration : none;
-	color : #222222;
+    color: #BABABA;
+    font-size: 12px;
+    padding: .5em;
+    border: solid 1px gray;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
 }
 
-.hpfont{
-font-family :  Verdana,Arial,Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #003366;
+a.reglink {
+    font-family: Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #41341E;
 }
 
-.chattext{
-font-family : Verdana, Helvetica, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 13px;
-	text-decoration : none;
-	color : #222222;
-}
-.chattime{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #003366;
+a.reglink:hover {
+    font-family: Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: underline;
+    color: #41341E;
 }
 
-.yochattime{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #ffffff;
-	background-color:#6699bb;
+.weaponch {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #333333;
+    font-size: 11px;
 }
 
-.prchattime{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #ffffff;
-	background-color:#D16F67;
-}
-.clchattime{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #ffffff;
-	background-color:#4d59a1;
+.weaponchart {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #336699;
+    font-size: 11px;
 }
 
-.massm{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #ffffff;
-	background-color:#EF6B00;
+.weaponchdis {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #999999;
+    font-size: 11px;
+}
+
+.weaponchuse {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #b50606;
+    font-size: 11px;
+}
+
+.fighttxt {
+    font-family: Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #222222;
+    font-size: 12px;
+}
+
+.fighttime {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #888888;
+    font-size: 12px;
+}
+
+.chattxt {
+    font-family: Verdana, Tahoma, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #000000;
+    font-size: 10pt;
+}
+
+.forumt {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: underline;
+    color: #333333;
+    font-size: 13px;
+    FONT-WEIGHT: bold
+}
+
+.ftit {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #696969;
+    font-size: 15px;
+    FONT-WEIGHT: bold
+}
+
+.ftxt {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #333333;
+    font-size: 11px
+}
+
+.forumwe {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #333333;
+    font-size: 13px;
+    FONT-WEIGHT: bold
+}
+
+.forumne {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #333333;
+    font-size: 12px
+}
+
+.fsm {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #222222;
+    font-size: 11px;
+}
+
+.suppo {
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #888888;
+    font-size: 11px;
+}
+
+.anonstxt {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #333333;
+    font-size: 11px;
+}
+
+.proce {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #FF3300;
+    font-size: 10px;
+}
+
+.proceg {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #009900;
+    font-size: 10px;
+}
+
+.proceb {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #00000;
+    font-size: 10px;
+}
+
+.copy {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #F8F3D7;
+    font-size: 11px;
+}
+
+.anonstitle {
+    font-family: Arial, Verdana, Tahoma, Arial, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: underline;
+    color: #333366;
+    font-size: 16px;
+    FONT-WEIGHT: bold
+}
+
+.guestb {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #222222;
+}
+
+.placename {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #222222;
+}
+
+.travma {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    color: #222222;
+}
+
+.inv {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #716E44;
+}
+
+.invtitle {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #f5f5f5;
+    FONT-WEIGHT: bold
+}
+
+.nickname {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    color: #222222;
+}
+
+.nickname2 {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #222222;
+}
+
+.zaya {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #336699;
+}
+
+.freemain {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    color: #222222;
+}
+
+.gr_f {
+    color: #0052A6;
+}
+
+.gr_s {
+    color: #087C20;
+}
+
+.logintext {
+    font-family: Verdana, Tahoma, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #336699;
+    FONT-WEIGHT: bold
+}
+
+.freetxt {
+    font-family: Verdana, Tahoma, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 10px;
+    text-decoration: none;
+    color: #222222;
+}
+
+.hpfont {
+    font-family: Verdana, Arial, Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #003366;
+}
+
+.chattext {
+    font-family: Verdana, Helvetica, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 13px;
+    text-decoration: none;
+    color: #222222;
+}
+
+.chattime {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #003366;
+}
+
+.yochattime {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #6699bb;
+}
+
+.prchattime {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #D16F67;
+}
+
+.clchattime {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #4d59a1;
+}
+
+.massm {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #EF6B00;
 }
 
 .guest {
-	BACKGROUND: #F8F3D7; BORDER-BOTTOM: #665B48 1px solid; BORDER-LEFT: #665B48 1px solid; BORDER-RIGHT: #665B48 1px solid; BORDER-TOP: #665B48 1px solid; COLOR: #41341E; FONT: 11px Verdana,Tahoma,Verdana,Arial,Tahoma,Verdana,Helvetica; FONT-WEIGHT: bold; WIDTH: 200px
+    BACKGROUND: #F8F3D7;
+    BORDER-BOTTOM: #665B48 1px solid;
+    BORDER-LEFT: #665B48 1px solid;
+    BORDER-RIGHT: #665B48 1px solid;
+    BORDER-TOP: #665B48 1px solid;
+    COLOR: #41341E;
+    FONT: 11px Verdana, Tahoma, Verdana, Arial, Tahoma, Verdana, Helvetica;
+    FONT-WEIGHT: bold;
+    WIDTH: 200px
 }
 
 .submit {
-	BACKGROUND: #A29275; BORDER-BOTTOM: #7A6848 1px solid; BORDER-LEFT: #7A6848 1px solid; BORDER-RIGHT: #7A6848 1px solid; BORDER-TOP: #7A6848 1px solid; COLOR: #fff; CURSOR: hand; FONT: 11px Verdana,Helvetica; FONT-WEIGHT: bold
+    BACKGROUND: #A29275;
+    BORDER-BOTTOM: #7A6848 1px solid;
+    BORDER-LEFT: #7A6848 1px solid;
+    BORDER-RIGHT: #7A6848 1px solid;
+    BORDER-TOP: #7A6848 1px solid;
+    COLOR: #fff;
+    CURSOR: hand;
+    FONT: 11px Verdana, Helvetica;
+    FONT-WEIGHT: bold
 }
+
 .invbut {
-	BACKGROUND: #ffffff; BORDER-BOTTOM: #CE0202 1px solid; BORDER-LEFT: #CE0202 1px solid; BORDER-RIGHT: #CE0202 1px solid; BORDER-TOP: #CE0202 1px solid; COLOR: #333; CURSOR: hand; FONT: 10px Verdana,Tahoma,Verdana,Helvetica
+    BACKGROUND: #ffffff;
+    BORDER-BOTTOM: #CE0202 1px solid;
+    BORDER-LEFT: #CE0202 1px solid;
+    BORDER-RIGHT: #CE0202 1px solid;
+    BORDER-TOP: #CE0202 1px solid;
+    COLOR: #333;
+    CURSOR: hand;
+    FONT: 10px Verdana, Tahoma, Verdana, Helvetica
 }
+
 .lbut {
-	BACKGROUND: #ffffff; BORDER-BOTTOM: #DECFA6 1px solid; BORDER-LEFT: #DECFA6 1px solid; BORDER-RIGHT: #DECFA6 1px solid; BORDER-TOP: #DECFA6 1px solid; COLOR: #333; CURSOR: hand; FONT: 11px Tahoma,Verdana,Helvetica; FONT-WEIGHT: bold
+    BACKGROUND: #ffffff;
+    BORDER-BOTTOM: #DECFA6 1px solid;
+    BORDER-LEFT: #DECFA6 1px solid;
+    BORDER-RIGHT: #DECFA6 1px solid;
+    BORDER-TOP: #DECFA6 1px solid;
+    COLOR: #333;
+    CURSOR: hand;
+    FONT: 11px Tahoma, Verdana, Helvetica;
+    FONT-WEIGHT: bold
 }
+
 .klbut {
-	BORDER:0px;
-	COLOR: #333;
-	CURSOR: hand;
-	font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #006600;
-	font-size : 11px;
-	FONT-WEIGHT: bold;
-	padding: 0px 0px 0px 0px;
+    BORDER: 0px;
+    COLOR: #333;
+    CURSOR: hand;
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #006600;
+    font-size: 11px;
+    FONT-WEIGHT: bold;
+    padding: 0px 0px 0px 0px;
 }
+
 .klbutdis {
-	BORDER:0px;
-	COLOR: #333;
-	CURSOR: hand;
-	font-family : Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	text-decoration : none;
-	color : #006600;
-	font-size : 11px;
-	FONT-WEIGHT: bold;
-	padding: 0px 0px 0px 0px;
+    BORDER: 0px;
+    COLOR: #333;
+    CURSOR: hand;
+    font-family: Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    text-decoration: none;
+    color: #006600;
+    font-size: 11px;
+    FONT-WEIGHT: bold;
+    padding: 0px 0px 0px 0px;
 }
 
 .lbutbig {
-	BACKGROUND: #f0f0f0; BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; COLOR: #333; CURSOR: hand; FONT: 10px Verdana,Tahoma,Verdana,Helvetica; FONT-WEIGHT: bold; WIDTH: 150px
+    BACKGROUND: #f0f0f0;
+    BORDER-BOTTOM: #cccccc 1px solid;
+    BORDER-LEFT: #cccccc 1px solid;
+    BORDER-RIGHT: #cccccc 1px solid;
+    BORDER-TOP: #cccccc 1px solid;
+    COLOR: #333;
+    CURSOR: hand;
+    FONT: 10px Verdana, Tahoma, Verdana, Helvetica;
+    FONT-WEIGHT: bold;
+    WIDTH: 150px
 }
+
 .lbutdis {
-	BACKGROUND: #F3ECD7; BORDER-BOTTOM: #DECFA6 1px solid; BORDER-LEFT: #DECFA6 1px solid; BORDER-RIGHT: #DECFA6 1px solid; BORDER-TOP: #DECFA6 1px solid; COLOR: #ffffff; CURSOR: hand; FONT: 11px Tahoma,Verdana,Helvetica; FONT-WEIGHT: bold
+    BACKGROUND: #F3ECD7;
+    BORDER-BOTTOM: #DECFA6 1px solid;
+    BORDER-LEFT: #DECFA6 1px solid;
+    BORDER-RIGHT: #DECFA6 1px solid;
+    BORDER-TOP: #DECFA6 1px solid;
+    COLOR: #ffffff;
+    CURSOR: hand;
+    FONT: 11px Tahoma, Verdana, Helvetica;
+    FONT-WEIGHT: bold
 }
+
 .addza {
-	BACKGROUND: #e0e0e0; BORDER-BOTTOM: #CCCCCC 1px solid; BORDER-LEFT: #CCCCCC 1px solid; BORDER-RIGHT: #CCCCCC 1px solid; BORDER-TOP: #CCCCCC 1px solid; COLOR: #333; CURSOR: hand; FONT: 10px Verdana,Tahoma,Helvetica; FONT-WEIGHT: bold
+    BACKGROUND: #e0e0e0;
+    BORDER-BOTTOM: #CCCCCC 1px solid;
+    BORDER-LEFT: #CCCCCC 1px solid;
+    BORDER-RIGHT: #CCCCCC 1px solid;
+    BORDER-TOP: #CCCCCC 1px solid;
+    COLOR: #333;
+    CURSOR: hand;
+    FONT: 10px Verdana, Tahoma, Helvetica;
+    FONT-WEIGHT: bold
 }
+
 .dd {
-	BACKGROUND: #F5F5F5; BORDER-BOTTOM: #999999 1px solid; BORDER-LEFT: #DDDDDD 1px solid; BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #DDDDDD 1px solid; COLOR: #222222; CURSOR: hand; FONT: 10px Verdana,Tahoma;  WIDTH: 120px; MARGIN-BOTTOM: 3px
+    BACKGROUND: #F5F5F5;
+    BORDER-BOTTOM: #999999 1px solid;
+    BORDER-LEFT: #DDDDDD 1px solid;
+    BORDER-RIGHT: #999999 1px solid;
+    BORDER-TOP: #DDDDDD 1px solid;
+    COLOR: #222222;
+    CURSOR: hand;
+    FONT: 10px Verdana, Tahoma;
+    WIDTH: 120px;
+    MARGIN-BOTTOM: 3px
 }
+
 .ddbuy {
-	BACKGROUND: #ffd6d6; BORDER-BOTTOM: #ee6b6b 1px solid; BORDER-LEFT: #fcb6b6 1px solid; BORDER-RIGHT: #ee6b6b 1px solid; BORDER-TOP: #fcb6b6 1px solid; COLOR: #222222; CURSOR: hand; FONT: 10px Verdana,Tahoma;  WIDTH: 120px; MARGIN-BOTTOM: 3px
+    BACKGROUND: #ffd6d6;
+    BORDER-BOTTOM: #ee6b6b 1px solid;
+    BORDER-LEFT: #fcb6b6 1px solid;
+    BORDER-RIGHT: #ee6b6b 1px solid;
+    BORDER-TOP: #fcb6b6 1px solid;
+    COLOR: #222222;
+    CURSOR: hand;
+    FONT: 10px Verdana, Tahoma;
+    WIDTH: 120px;
+    MARGIN-BOTTOM: 3px
 }
 
 .submitclass {
-	WIDTH: 20px;
+    WIDTH: 20px;
 }
 
-.nbut1
-{
-       BACKGROUND: #D16F67;
-       BORDER-BOTTOM: 0px solid;
-       BORDER-LEFT: 0px solid;
-       BORDER-RIGHT: 0px solid;
-       BORDER-TOP: 0px solid;
-       COLOR: #FFFFFF;
-       FONT: 11px Verdana,Tahoma;
-       FONT-WEIGHT: bold;
-       WIDTH: 80px;
-       CURSOR: hand;
+.nbut1 {
+    BACKGROUND: #D16F67;
+    BORDER-BOTTOM: 0px solid;
+    BORDER-LEFT: 0px solid;
+    BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    COLOR: #FFFFFF;
+    FONT: 11px Verdana, Tahoma;
+    FONT-WEIGHT: bold;
+    WIDTH: 80px;
+    CURSOR: hand;
 }
 
-.cath
-{
-       CURSOR: hand;
+.cath {
+    CURSOR: hand;
 }
 
 #offspace {
-	PADDING-LEFT: 18px
+    PADDING-LEFT: 18px
 }
+
 #shortblock {
-	PADDING-LEFT: 5px;
-	PADDING-RIGHT: 5px
+    PADDING-LEFT: 5px;
+    PADDING-RIGHT: 5px
 }
-.loginupform{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #41341E;
+
+.loginupform {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #41341E;
 }
-.loginupformsec{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #ffffff;
+
+.loginupformsec {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #ffffff;
 }
-.poll{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #003366;
+
+.poll {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #003366;
 }
-.kalendar{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : none;
-	color : #333333;
+
+.kalendar {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #333333;
 }
-.anonssmall{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : underline;
-	color : #336699;
+
+.anonssmall {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: underline;
+    color: #336699;
 }
-.dateclass{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #666666;
+
+.dateclass {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #666666;
 }
-.subclass{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 10px;
-	text-decoration : none;
-	color : #444444;
+
+.subclass {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 10px;
+    text-decoration: none;
+    color: #444444;
 }
-.title{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : none;
-	color : #003366;
-	text-decoration: underline;
+
+.title {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #003366;
+    text-decoration: underline;
 }
-.redtitle{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 10px;
-	text-decoration : none;
-	color : #990000;
+
+.redtitle {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 10px;
+    text-decoration: none;
+    color: #990000;
 }
-.uptxt{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 10px;
-	text-decoration : none;
-	color : #ffffff;
+
+.uptxt {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 10px;
+    text-decoration: none;
+    color: #ffffff;
 }
-.redtitle_big{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : none;
-	color : #003366;
+
+.redtitle_big {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #003366;
 }
-.daystitle_big{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : none;
-	color : #003366;
-	background-color:#fafafa;
+
+.daystitle_big {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #003366;
+    background-color: #fafafa;
 }
-.redtitle_st{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : none;
-	color : #d60000;
+
+.redtitle_st {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #d60000;
 }
-.pathbar{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 10px;
-	text-decoration : none;
-	color : #333333;
+
+.pathbar {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 10px;
+    text-decoration: none;
+    color: #333333;
 }
-.text{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 11px;
-	text-decoration : none;
-	color : #333333;
+
+.text {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    color: #333333;
 }
-.menutxt{
-font-family : Arial, Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : underline;
-	color : #000000;
+
+.menutxt {
+    font-family: Arial, Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: underline;
+    color: #000000;
 }
-.menutxttit{
-font-family : Arial, Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 12px;
-	text-decoration : none;
-	color : #000000;
+
+.menutxttit {
+    font-family: Arial, Tahoma, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #000000;
 }
-.pathbarmain{
-font-family : Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 10px;
-	text-decoration : none;
-	color : #003366;
+
+.pathbarmain {
+    font-family: Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 10px;
+    text-decoration: none;
+    color: #003366;
 }
-.submenu{
-font-family : Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	font-size : 10px;
-	text-decoration : none;
-	color : #003366;
+
+.submenu {
+    font-family: Tahoma, Verdana, Arial, Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-size: 10px;
+    text-decoration: none;
+    color: #003366;
 }
 
 .usermenu {
-  background-color: #FCFAF3; border-color: #B9A05C #A9904C #A9904C #B9A05C; border-style: solid; border-width: 1px; position: absolute; left: 0px; top: 0px; visibility: hidden;
+    background-color: #FCFAF3;
+    border-color: #B9A05C #A9904C #A9904C #B9A05C;
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    visibility: hidden;
 }
 
 a.usermenulink {
-  font-family: Tahoma, Arial, Verdana; font-size: 11px; font-weight: bold; color: #222222; border: 0px solid #000000; padding: 2px 12px 2px 12px; display: block; text-decoration: none;
+    font-family: Tahoma, Arial, Verdana;
+    font-size: 11px;
+    font-weight: bold;
+    color: #222222;
+    border: 0px solid #000000;
+    padding: 2px 12px 2px 12px;
+    display: block;
+    text-decoration: none;
 }
 
 a.usermenulink:hover {
-  background-color: #F3ECD7; color: #336699;
+    background-color: #F3ECD7;
+    color: #336699;
 }
+
 .hbutton {
-	font-size: 11px;
-	background-image: url(http://img.legendbattles.ru/image/tab/but.gif);
-	border-style: solid;
-	border-width: 1px;
-	border-color: #000000;
-	cursor: hand;
-	background-color: #CCCCCC;
-	font-family: Arial;
-	font-weight: bold;
-	color: #000000;
+    font-size: 11px;
+    background-image: url(http://img.legendbattles.ru/image/tab/but.gif);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    cursor: hand;
+    background-color: #CCCCCC;
+    font-family: Arial;
+    font-weight: bold;
+    color: #000000;
 }
+
 #darker {
-	width:100%;
-	height:100%;
-	position:absolute;
-	background:url('http://img.legendbattles.ru/image/index/dark.png') repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url('http://img.legendbattles.ru/image/index/dark.png') repeat;
 }
+
 #zakon {
-	width:100%;
-	height:100%;
-	position:absolute;
-	background:url('http://img.legendbattles.ru/image/index/dark.png') repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url('http://img.legendbattles.ru/image/index/dark.png') repeat;
 }
+
 #lavka {
-	width:100%;
-	height:100%;
-	position:absolute;
-	background:url('http://img.legendbattles.ru/image/index/dark.png') repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url('http://img.legendbattles.ru/image/index/dark.png') repeat;
 }
+
 #master {
-	width:100%;
-	height:100%;
-	position:absolute;
-	background:url('http://img.legendbattles.ru/image/index/dark.png') repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url('http://img.legendbattles.ru/image/index/dark.png') repeat;
 }
+
 #arena {
-	width:100%;
-	height:100%;
-	position:absolute;
-	background:url('http://img.legendbattles.ru/image/index/dark.png') repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url('http://img.legendbattles.ru/image/index/dark.png') repeat;
 }
+
 #CityOut {
-	width:100%;
-	height:100%;
-	position:absolute;
-	background:url('http://img.legendbattles.ru/image/index/dark.png') repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url('http://img.legendbattles.ru/image/index/dark.png') repeat;
 }
-#tooltip{background:#fff;border:1px solid #999;color:#333;font: 12px Tahoma;margin:0px;padding:3px 5px;position:absolute;visibility:hidden;z-index:9999999;}
-#leftCounter { position: absolute; left: 3px; bottom: 3px; z-index: 8; }
-#rightCounter { position: absolute; right: 3px; bottom: 3px; z-index: 8; }
 
-
-
-
-#liw_table{position:relative;width:310px;}
-#liw_table_top{width:310px;height:54px;overflow:hidden;background:url(http://img.legendbattles.ru/image/NewDesign/LiW_Info-header.png);}
-#liw_table_title{color:#CCC;font-weight:bold;position:absolute;text-align:center;width:100%;left:0px;top:19px;}
-#liw_table_content{color:#666;width:240px;overflow:hidden;background:url(http://img.legendbattles.ru/image/NewDesign/LiW_Info-bg.png) repeat-y;padding:0 35px 0 35px;}
-#liw_table_bottom{width:310px;height:30px;overflow:hidden;background:url(http://img.legendbattles.ru/image/NewDesign/LiW_Info-bottom.png);}
-.underline{height:1px; background: url(http://img.legendbattles.ru/image/pinfo/underline.png) no-repeat center;}
-
-.left_counter{width:31px; height:31px;position:absolute; left:5px;bottom:5px;}
-.right_counter{width:31px; height:31px;position:absolute; right:5px;bottom:5px;}
-body{
-	behavior: url("/css/csshover3.htc");
-	background-image: url(/ch/chbg.gif);
-	background-repeat: repeat-x;
-	scrollbar-3d-light-color: blue;
-	scrollbar-arrow-color: blue;
-	scrollbar-base-color: #999999;
-	scrollbar-dark-shadow-color: white;
-	scrollbar-face-color: #f5f5f5;
-	scrollbar-highlight-color: #999999;
-	scrollbar-shadow-color: #999999;
-	scrollbar-track-color: white;
-	background-attachment: fixed;
-	margin:0; height:auto!important; min-height:100%; height: 100%; position:absolute; width:auto!important; min-width:100%; width:100%;
+#tooltip {
+    background: #fff;
+    border: 1px solid #999;
+    color: #333;
+    font: 12px Tahoma;
+    margin: 0px;
+    padding: 3px 5px;
+    position: absolute;
+    visibility: hidden;
+    z-index: 9999999;
 }
-.ContentPopup{
-position: absolute;
+
+#leftCounter {
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    z-index: 8;
 }
-#footer{
-	min-width:1004px;
-	width:100%;
-	height:60px;
-	position:absolute;
-	margin:0;left:0; bottom:0;
-	background:
-	url(http://img.legendbattles.ru/image/forum/design/b1.png) no-repeat left bottom,
-	url(http://img.legendbattles.ru/image/forum/design/b1.gif) no-repeat left bottom;
+
+#rightCounter {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    z-index: 8;
 }
-*html #footer{width:expression(document.body.clientWidth < 1005 ? "1004px" : "100%" ); }
-#footer div{color:#9e9e9e; padding-top:18px; height:42px;
-background: 
-	url(http://img.legendbattles.ru/image/forum/design/b2.png) no-repeat right bottom,
-	url(http://img.legendbattles.ru/image/forum/design/b2.gif) no-repeat right bottom;
-;
- text-align:center; font:11px Verdana; line-height:20px;}
-#footer div a{color:#9e9e9e;}
+
+#liw_table {
+    position: relative;
+    width: 310px;
+}
+
+#liw_table_top {
+    width: 310px;
+    height: 54px;
+    overflow: hidden;
+    background: url(http://img.legendbattles.ru/image/NewDesign/LiW_Info-header.png);
+}
+
+#liw_table_title {
+    color: #CCC;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    left: 0px;
+    top: 19px;
+}
+
+#liw_table_content {
+    color: #666;
+    width: 240px;
+    overflow: hidden;
+    background: url(http://img.legendbattles.ru/image/NewDesign/LiW_Info-bg.png) repeat-y;
+    padding: 0 35px 0 35px;
+}
+
+#liw_table_bottom {
+    width: 310px;
+    height: 30px;
+    overflow: hidden;
+    background: url(http://img.legendbattles.ru/image/NewDesign/LiW_Info-bottom.png);
+}
+
+.underline {
+    height: 1px;
+    background: url(http://img.legendbattles.ru/image/pinfo/underline.png) no-repeat center;
+}
+
+.left_counter {
+    width: 31px;
+    height: 31px;
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}
+
+.right_counter {
+    width: 31px;
+    height: 31px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+body {
+    behavior: url("/css/csshover3.htc");
+    background-image: url(/ch/chbg.gif);
+    background-repeat: repeat-x;
+    scrollbar-3d-light-color: blue;
+    scrollbar-arrow-color: blue;
+    scrollbar-base-color: #999999;
+    scrollbar-dark-shadow-color: white;
+    scrollbar-face-color: #f5f5f5;
+    scrollbar-highlight-color: #999999;
+    scrollbar-shadow-color: #999999;
+    scrollbar-track-color: white;
+    background-attachment: fixed;
+    margin: 0;
+    height: auto !important;
+    min-height: 100%;
+    height: 100%;
+    position: absolute;
+    width: auto !important;
+    min-width: 100%;
+    width: 100%;
+}
+
+.ContentPopup {
+    position: absolute;
+}
+
+#footer {
+    min-width: 1004px;
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    margin: 0;
+    left: 0;
+    bottom: 0;
+    background: url(http://img.legendbattles.ru/image/forum/design/b1.png) no-repeat left bottom,
+    url(http://img.legendbattles.ru/image/forum/design/b1.gif) no-repeat left bottom;
+}
+
+* html #footer {
+    width: expression(document.body.clientWidth < 1005 ? "1004px" : "100%" );
+}
+
+#footer div {
+    color: #9e9e9e;
+    padding-top: 18px;
+    height: 42px;
+    background: url(http://img.legendbattles.ru/image/forum/design/b2.png) no-repeat right bottom,
+    url(http://img.legendbattles.ru/image/forum/design/b2.gif) no-repeat right bottom;;
+    text-align: center;
+    font: 11px Verdana;
+    line-height: 20px;
+}
+
+#footer div a {
+    color: #9e9e9e;
+}
 
 input[type=text], input[type=password], textarea, select {
-	color: #000;
-	border-radius: 3px;
-	border:0;
-	background: #ccc;
-	padding: 5px 10px;
-	margin:1px;
-	border:1px solid transparent;
+    color: #000;
+    border-radius: 3px;
+    border: 0;
+    background: #ccc;
+    padding: 5px 10px;
+    margin: 1px;
+    border: 1px solid transparent;
 }
+
 select {
-	font: normal 11px Tahoma !important;
-	text-align: left !important;
+    font: normal 11px Tahoma !important;
+    text-align: left !important;
 }
 
 input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus {
-	background:#eee;
-	border-color:#ccc;
-	outline:none;
+    background: #eee;
+    border-color: #ccc;
+    outline: none;
 }
-
-
 
 input[type=button], input[type=submit], button {
-	background: #3a3a3a;
-	margin:1px;
-	color: white;
-	border:1px solid transparent;
-	border-radius: 3px;
-	font-weight:normal;
-	padding: 5px 10px;
-	font-size:12px;
-	border:0;
-	cursor: pointer;	
+    background: #3a3a3a;
+    margin: 1px;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-weight: normal;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: 0;
+    cursor: pointer;
 }
 
-button {padding:5px 10px 4px 10px}
+button {
+    padding: 5px 10px 4px 10px
+}
 
 input[type=button]:hover, input[type=submit]:hover, button:hover {
-	background:#444;
+    background: #444;
 }
 
 input[type=button]:disabled, input[type=submit]:disabled {
-	background: #555;
+    background: #555;
 }
 
-.nav {width:100%;text-align:center}
-.nav a {display:inline-block;color:#fff;background:rgba(0,0,0,0.2);padding:5px 10px;font-size:15px;margin:5px 3px;border-radius:3px}
-.nav a:hover {background:rgba(0,0,0,0.4)}
+.nav {
+    width: 100%;
+    text-align: center
+}
 
-.abil {clear:both;height:140px;margin-bottom:5px;}
-.abil>div {width:25%;box-sizing:border-box;padding:5px;float:left;text-align:center}
-.abil a {width:100%;height:45px;padding:5px;box-sizing:border-box;border-radius:3px;display:block;font-size:12px;background:rgba(0,0,0,0.4);color:#fff;line-height:35px;}
-.abil span {text-overflow:ellipsis;white-space:nowrap;overflow: hidden;display:block}
-.abil a:hover {background:rgba(0,0,0,0.6)}
-.abil img {float:left;margin-right:5px}
+.nav a {
+    display: inline-block;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    font-size: 15px;
+    margin: 5px 3px;
+    border-radius: 3px
+}
 
+.nav a:hover {
+    background: rgba(0, 0, 0, 0.4)
+}
+
+.abil {
+    clear: both;
+    height: 140px;
+    margin-bottom: 5px;
+}
+
+.abil > div {
+    width: 25%;
+    box-sizing: border-box;
+    padding: 5px;
+    float: left;
+    text-align: center
+}
+
+.abil a {
+    width: 100%;
+    height: 45px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    display: block;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    line-height: 35px;
+}
+
+.abil span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block
+}
+
+.abil a:hover {
+    background: rgba(0, 0, 0, 0.6)
+}
+
+.abil img {
+    float: left;
+    margin-right: 5px
+}
 
 .TopBar {
     width: 100%;
@@ -716,18 +1154,21 @@ input[type=button]:disabled, input[type=submit]:disabled {
     float: left;
     background: #c7c7c7 url(/cdn/design/TopBar_bg.png) repeat-x;
 }
+
 .TopBar_left {
     width: 32%;
     height: 50px;
     background: url(/cdn/design/TopBar-left_bg.png) no-repeat top left;
     float: left;
 }
+
 .TopBar_right {
     width: 32%;
     height: 50px;
     background: url(/cdn/design/TopBar-right_bg.png) no-repeat top right;
     float: right;
 }
+
 .TopBar_center {
     width: 440px;
     height: 60px;
@@ -746,6 +1187,7 @@ input[type=button]:disabled, input[type=submit]:disabled {
     width: 71px;
     height: 33px;
 }
+
 .TopBar .TopBar_right a:hover.MovementMenu {
     background-position: 0 -33px;
 }
@@ -756,78 +1198,95 @@ ul.MainMenu {
     z-index: 2;
     padding: 0;
 }
+
 ul.MainMenu li {
     list-style-type: none;
     display: inline;
 }
+
 ul.MainMenu li a {
     display: block;
     float: left;
     height: 60px;
     background: url(/cdn/design/MainMenu2.png?1) no-repeat;
 }
+
 ul.MainMenu li.CharacterMenu a {
     background-position: 0px -120px;
     width: 58px;
 }
+
 ul.MainMenu li.CharacterMenu a:hover {
     background-position: 0px 0px;
     width: 58px;
 }
+
 ul.MainMenu li.CharacterMenu a:active {
     background-position: 0px -60px;
     width: 58px;
 }
+
 ul.MainMenu li.InventoryMenu a {
     background-position: -58px -120px;
     width: 53px;
 }
+
 ul.MainMenu li.InventoryMenu a:hover {
     background-position: -58px 0px;
     width: 53px;
 }
+
 ul.MainMenu li.InventoryMenu a:active {
     background-position: -58px -60px;
     width: 53px;
 }
+
 ul.MainMenu li.FightingMenu a {
     background-position: -111px -120px;
     width: 53px;
 }
+
 ul.MainMenu li.FightingMenu a:hover {
     background-position: -111px 0px;
     width: 53px;
 }
+
 ul.MainMenu li.FightingMenu a:active {
     background-position: -111px -60px;
     width: 53px;
 }
+
 ul.MainMenu li.ClanMenu a {
     background-position: -164px -120px;
     width: 53px;
 }
+
 ul.MainMenu li.ClanMenu a:hover {
     background-position: -164px 0px;
     width: 53px;
 }
+
 ul.MainMenu li.ClanMenu a:active {
     background-position: -164px -60px;
     width: 53px;
 }
+
 ul.MainMenu li.InfoMenu a {
     background-position: -217px -120px;
     width: 53px;
 }
+
 ul.MainMenu li.InfoMenu a:hover {
     background-position: -217px 0px;
     width: 53px;
 }
+
 ul.MainMenu li.InfoMenu a:active {
     background-position: -217px -60px;
     width: 53px;
 }
 
-/* � ‘� ѕ� є� ѕ� ІС‹� µ � ј� µ� ЅСЋС€� є� ё */
+/* � ‘� ѕ� є� ѕ� ІС‹� µ � ј� µ� ЅСЋС€� є� ё */
 .SGW {
     position: relative;
     padding: 10px 0 0;
@@ -836,6 +1295,7 @@ ul.MainMenu li.InfoMenu a:active {
     height: 27px;
     z-index: 3;
 }
+
 .LEM {
     width: 350px;
     height: 37px;
@@ -843,6 +1303,7 @@ ul.MainMenu li.InfoMenu a:active {
     margin: 0 auto;
     z-index: 3;
 }
+
 .LEM_bg {
     width: 350px;
     height: 22px;
@@ -850,26 +1311,32 @@ ul.MainMenu li.InfoMenu a:active {
     margin: 0 auto;
     position: relative;
 }
+
 .color_111 {
     color: #111;
 }
+
 .color_fff {
     color: #fff;
 }
+
 .bold {
     font-weight: 700;
 }
+
 .fontSize_11px {
     font-size: 11px;
 }
+
 .fontSize_10px {
     font-size: 10px;
 }
+
 .Tahoma {
-    font-family: Tahoma,Geneva,sans-serif;
+    font-family: Tahoma, Geneva, sans-serif;
 }
 
-/* � §� °СЃС‚СЊ СЃ � ї� µСЂСЃ� ѕ� Ѕ� °� ¶� µ� ј */
+/* � §� °СЃС‚СЊ СЃ � ї� µСЂСЃ� ѕ� Ѕ� °� ¶� µ� ј */
 .MyName {
     display: block;
     width: 320px;
@@ -880,6 +1347,7 @@ ul.MainMenu li.InfoMenu a:active {
     background: url(/cdn/design/LEM.png) 0 0 no-repeat;
     margin-left: 51px;
 }
+
 .Mana {
     background: url(/cdn/design/LEM.png) 0 -13px no-repeat;
     margin-left: 4px;
@@ -893,22 +1361,25 @@ ul.MainMenu li.InfoMenu a:active {
     text-align: center;
     padding: 1px 0 0;
     line-height: 11px;
-    text-shadow: 0 0 5px rgba(0,0,0,.5);
-    color: rgba(255,255,255,.95);
+    text-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    color: rgba(255, 255, 255, .95);
 }
 
-/* � §� °СЃС‚СЊ СЃ � ґ� µ� ЅСЊ� і� °� ј� ё */
+/* � §� °СЃС‚СЊ СЃ � ґ� µ� ЅСЊ� і� °� ј� ё */
 .Silver {
     background: url(/cdn/design/SilverIcon.png) no-repeat;
     margin-right: 10px;
 }
+
 .Gold {
     background: url(/cdn/design/GoldIcon.png) no-repeat;
     margin-right: 10px;
 }
+
 .Rubies {
     background: url(/cdn/design/RubiesIcon.png) no-repeat;
 }
+
 .Gold, .Silver, .Rubies {
     display: inline-block;
     padding-left: 22px;
@@ -916,10 +1387,11 @@ ul.MainMenu li.InfoMenu a:active {
     height: 22px;
 }
 
-/* � Ѕ� µ� є� ѕС‚� ѕСЂС‹� µ С„� ё� єСЃС‹ */
+/* � Ѕ� µ� є� ѕС‚� ѕСЂС‹� µ С„� ё� єСЃС‹ */
 div.Energy, div.Health, div.Mana, span.Silver, span.Rubies {
     cursor: default;
 }
+
 span.Gold {
     cursor: pointer;
 }

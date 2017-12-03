@@ -3,7 +3,7 @@ function lr($lr) {
 	$b = $lr % 100;
 	$s = intval(($lr % 10000) / 100);
 	$g = intval($lr / 10000);
-	return (($g)?$g.' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Золото>  ':'').(($s)?$s.' <img src=/img/image/silver.png width=14 height=14 valign=middle title=Серебро> ':'').(($b)?$b.' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Бронза> ':'');
+    return (($g) ? $g . ' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Р—РѕР»РѕС‚Рѕ>  ' : '') . (($s) ? $s . ' <img src=/img/image/silver.png width=14 height=14 valign=middle title=РЎРµСЂРµР±СЂРѕ> ' : '') . (($b) ? $b . ' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Р‘СЂРѕРЅР·Р°> ' : '');
 }	
 
 if($_POST['p_id'] == 1){
@@ -30,94 +30,94 @@ $Query = mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,  `items`.* FROM `i
 ?>
 	<tr><td>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w4'>
-	<img src=/img/image/gameplay/shop/knife.gif title="Ножи" width=40 height=50>
+    <img src=/img/image/gameplay/shop/knife.gif title="РќРѕР¶Рё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w1'>
-	<img src=/img/image/gameplay/shop/sword.gif title="Мечи" width=40 height=50>
+    <img src=/img/image/gameplay/shop/sword.gif title="РњРµС‡Рё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w2'>
-	<img src=/img/image/gameplay/shop/axe.gif title="Топоры" width=40 height=50>
+    <img src=/img/image/gameplay/shop/axe.gif title="РўРѕРїРѕСЂС‹" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w3'>
-	<img src=/img/image/gameplay/shop/crushing.gif title="Дробящие" width=40 height=50>
+    <img src=/img/image/gameplay/shop/crushing.gif title="Р”СЂРѕР±СЏС‰РёРµ" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w6'>
-	<img src=/img/image/gameplay/shop/spears_helbeards.gif title="Алебарды и двуручное" width=40 height=50>
+    <img src=/img/image/gameplay/shop/spears_helbeards.gif title="РђР»РµР±Р°СЂРґС‹ Рё РґРІСѓСЂСѓС‡РЅРѕРµ" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w5'>
-	<img src=/img/image/gameplay/shop/missle.gif title="Копья и метательное" width=40 height=50>
+    <img src=/img/image/gameplay/shop/missle.gif title="РљРѕРїСЊСЏ Рё РјРµС‚Р°С‚РµР»СЊРЅРѕРµ" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w7'>
-	<img type=image src=/img/image/gameplay/shop/wand.gif title="Посохи" width=40 height=50>
+    <img type=image src=/img/image/gameplay/shop/wand.gif title="РџРѕСЃРѕС…Рё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w20'>
-	<img src=/img/image/gameplay/shop/shield.gif title="Щиты" width=40 height=50>
+    <img src=/img/image/gameplay/shop/shield.gif title="Р©РёС‚С‹" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w23'>
-	<img src=/img/image/gameplay/shop/helm.gif title="Шлемы" width=40 height=50>
+    <img src=/img/image/gameplay/shop/helm.gif title="РЁР»РµРјС‹" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w26'>
-	<img src=/img/image/gameplay/shop/belt.gif title="Пояса" width=40 height=50>
+    <img src=/img/image/gameplay/shop/belt.gif title="РџРѕСЏСЃР°" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w18'>
-	<img src=/img/image/gameplay/shop/armor_light.gif title="Кольчуги" width=40 height=50>
+    <img src=/img/image/gameplay/shop/armor_light.gif title="РљРѕР»СЊС‡СѓРіРё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w19'>
-	<img src=/img/image/gameplay/shop/armor_hard.gif title="Доспехи" width=40 height=50>
+    <img src=/img/image/gameplay/shop/armor_hard.gif title="Р”РѕСЃРїРµС…Рё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w24'>
-	<img src=/img/image/gameplay/shop/gloves.gif title="Перчатки" width=40 height=50>
+    <img src=/img/image/gameplay/shop/gloves.gif title="РџРµСЂС‡Р°С‚РєРё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w80'>
-	<img src=/img/image/gameplay/shop/armlet.gif title="Наручи" width=40 height=50>
+    <img src=/img/image/gameplay/shop/armlet.gif title="РќР°СЂСѓС‡Рё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w21'>
-	<img src=/img/image/gameplay/shop/boots.gif title="Сапоги" width=40 height=50>
+    <img src=/img/image/gameplay/shop/boots.gif title="РЎР°РїРѕРіРё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w25'>
-	<img src=/img/image/gameplay/shop/amulet.gif title="Кулоны" width=40 height=50>
+    <img src=/img/image/gameplay/shop/amulet.gif title="РљСѓР»РѕРЅС‹" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w22'>
-	<img src=/img/image/gameplay/shop/ring.gif title="Кольца" width=40 height=50>
+    <img src=/img/image/gameplay/shop/ring.gif title="РљРѕР»СЊС†Р°" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w28'>
-	<img src=/img/image/gameplay/shop/spaudler.gif title="Наплечники" width=40 height=50>
+    <img src=/img/image/gameplay/shop/spaudler.gif title="РќР°РїР»РµС‡РЅРёРєРё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w90'>
-	<img src=/img/image/gameplay/shop/knee_guard.gif title="Поножи" width=40 height=50>
+    <img src=/img/image/gameplay/shop/knee_guard.gif title="РџРѕРЅРѕР¶Рё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w66'>
-    <img src=/img/image/gameplay/invent/1.gif title="Алхимия" width=40 height=50>
+    <img src=/img/image/gameplay/invent/1.gif title="РђР»С…РёРјРёСЏ" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w70'>
-    <img src=/img/image/gameplay/invent/6.gif title="Мази" width=40 height=50>
+    <img src=/img/image/gameplay/invent/6.gif title="РњР°Р·Рё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w69'>
-    <img src=/img/image/gameplay/invent/2.gif title="Рыба" width=40 height=50>
+    <img src=/img/image/gameplay/invent/2.gif title="Р С‹Р±Р°" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w71'>
-    <img src=/img/image/gameplay/invent/3.gif title="Руны" width=40 height=50>
+    <img src=/img/image/gameplay/invent/3.gif title="Р СѓРЅС‹" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w68'>
-    <img src=/img/image/gameplay/invent/4.gif title="Лес" width=40 height=50>
+    <img src=/img/image/gameplay/invent/4.gif title="Р›РµСЃ" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w60'>
-    <img src=/img/image/gameplay/invent/23.gif title="Квестовые предметы" width=40 height=50>
+    <img src=/img/image/gameplay/invent/23.gif title="РљРІРµСЃС‚РѕРІС‹Рµ РїСЂРµРґРјРµС‚С‹" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w61'>
-    <img src=/img/image/gameplay/invent/8.gif title="Приманка" width=40 height=50>
+    <img src=/img/image/gameplay/invent/8.gif title="РџСЂРёРјР°РЅРєР°" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w29'>
-    <img src=/img/image/gameplay/shops/svit.gif title="Свитки" width=40 height=50>
+    <img src=/img/image/gameplay/shops/svit.gif title="РЎРІРёС‚РєРё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w30'>
-    <img src=/img/image/gameplay/invent/10.gif title="Лицензии" width=40 height=50>
+    <img src=/img/image/gameplay/invent/10.gif title="Р›РёС†РµРЅР·РёРё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w62'>
-    <img src=/img/image/gameplay/invent/db.gif title="Сундуки" width=40 height=50>
+    <img src=/img/image/gameplay/invent/db.gif title="РЎСѓРЅРґСѓРєРё" width=40 height=50>
 </a>
 <a href='?useaction=auction-action&addid=newlots&weapon_category=w0'>
-    <img src=/img/image/gameplay/invent/cat/21.gif title="Зелья" width=40 height=50>
+    <img src=/img/image/gameplay/invent/cat/21.gif title="Р—РµР»СЊСЏ" width=40 height=50>
 </a>
 </td></tr>
 		<td bgcolor="#FFFFFF"><img src="/img/image/1x1.gif" width="1" height="3"></td>
@@ -129,13 +129,14 @@ $Query = mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,  `items`.* FROM `i
 			<tr>
 				<td align="center" width="50%" bgcolor="#D8D8D8">
 					<font class="nickname">
-						Ваши деньги: <b><?php echo lr($pers['nv']); ?></b> 
-					</font>
+                        Р’Р°С€Рё РґРµРЅСЊРіРё: <b><?php echo lr($pers['nv']); ?></b>
+                    </font>
 				</td>
 				<td align="center" width="50%" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<strong><em><a href="http://forum.legendbattles.ru/index.php?act=show_topic&amp;id=164" target="_blank">Закон о торговле (Аукцион)</a></em></strong> <b><?=lr(0)?></b> 
-					</font>
+                        <strong><em><a href="http://forum.legendbattles.ru/index.php?act=show_topic&amp;id=164"
+                                       target="_blank">Р—Р°РєРѕРЅ Рѕ С‚РѕСЂРіРѕРІР»Рµ (РђСѓРєС†РёРѕРЅ)</a></em></strong> <b><?= lr(0) ?></b>
+                    </font>
 				</td>
 			</tr>
 		</table></td>
@@ -155,69 +156,69 @@ if(mysqli_num_rows($Query) > 0){
 				</td>
 				<td align="center" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<b>Название</b>
+						<b>РќР°Р·РІР°РЅРёРµ</b>
 					</font>
 				</td>
 				<td align="center" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<b>Длительность торгов:</b>
+						<b>Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ С‚РѕСЂРіРѕРІ:</b>
 					</font>
 				</td>
 				<td align="center" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<b>Количество</b>
+						<b>РљРѕР»РёС‡РµСЃС‚РІРѕ</b>
 					</font>
 				</td>
 				<td align="center" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<b>Цена за шт.</b>
+						<b>Р¦РµРЅР° Р·Р° С€С‚.</b>
 					</font>
 				</td>
 				<td align="center" bgcolor="#D8D8D8">
 					<font class="nickname">
-						<b>Действие</b>
+						<b>Р”РµР№СЃС‚РІРёРµ</b>
 					</font>
 				</td>
 			</tr>';
 $i = 0;
 while( $row = mysqli_fetch_assoc($Query) ){
 	$i++;
-	if($row['mod_color']!='0' or $row['modified'] == '1') $row['name'] .= '[ап]';
-	// Отсчитваем время до конца
+    if ($row['mod_color'] != '0' or $row['modified'] == '1') $row['name'] .= '[Р°Рї]';
+    // РћС‚СЃС‡РёС‚РІР°РµРј РІСЂРµРјСЏ РґРѕ РєРѕРЅС†Р°
 //	$row['time']-=time();
 	$ch=floor($row['time']/3600);
 	$min=floor(($row['time']-($ch*3600))/60);
 	$sec=floor(($row['time']-($ch*3600))%60);
-	// Далее
+    // Р”Р°Р»РµРµ
 	$bgcolor = (($i%2)?'f0f0f0':'ffffff'); 
 	
 	echo'<form method="POST" action="">
 			<tr>
 				<td align="center" width="66" bgcolor="#'.$bgcolor.'">
 					<font class="nickname">
-						<img src="/img/image/weapon/'.$row['gif'].'" onmouseovаer="tooltip(this,\'<b>'.$row['name'].'</b><br><b><font color=#336699>Щелкните по изображению для просмотра подробной информации о предмете.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'http://www.legendbattles.ru/iteminfo.php?i='.$row['id_item'].'&auc=1\');" style="cursor:pointer;" align=absmiddle>
+						<img src="/img/image/weapon/' . $row['gif'] . '" onmouseovР°er="tooltip(this,\'<b>' . $row['name'] . '</b><br><b><font color=#336699>Р©РµР»РєРЅРёС‚Рµ РїРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЋ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РїРѕРґСЂРѕР±РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїСЂРµРґРјРµС‚Рµ.</font></b>\')" onmouseout="hide_info(this)" onclick="window.open(\'http://www.legendbattles.ru/iteminfo.php?i=' . $row['id_item'] . '&auc=1\');" style="cursor:pointer;" align=absmiddle>
 					</font>
 				</td>
 				<td bgcolor="#'.$bgcolor.'">
 					<font class="nickname">
 					<b>' . $row['name'] . '' . $itemsql['name'].'</b> <br />
 					</b><br />
-					Стоимость :<b>'.lr($row['price']).'</b><br />
-					Уровень: <b>'.$row['level'].'</b><br />
-					Масса: <b>'.$row['massa'].'</b><br />
+					РЎС‚РѕРёРјРѕСЃС‚СЊ :<b>' . lr($row['price']) . '</b><br />
+					РЈСЂРѕРІРµРЅСЊ: <b>' . $row['level'] . '</b><br />
+					РњР°СЃСЃР°: <b>' . $row['massa'] . '</b><br />
 				</td>
 				<td align="center" bgcolor="#'.$bgcolor.'">
 					<font class="nickname">
 						<select name="time">
-							<option value="2" selected="select">2 часа</option>
-							<option value="8">8 часов</option>
-							<option value="24">24 часа</option>
+							<option value="2" selected="select">2 С‡Р°СЃР°</option>
+							<option value="8">8 С‡Р°СЃРѕРІ</option>
+							<option value="24">24 С‡Р°СЃР°</option>
 						</select>
 					</font>
 				</td>
 				<td align="center" bgcolor="#'.$bgcolor.'">
 					<font class="nickname">
-					<input type="text" title="Количество" name="kolvo" size = "2" value="1"/>
+					<input type="text" title="РљРѕР»РёС‡РµСЃС‚РІРѕ" name="kolvo" size = "2" value="1"/>
 						</select>
 					</font>
 				</td>
@@ -225,14 +226,14 @@ while( $row = mysqli_fetch_assoc($Query) ){
 					<font class="nickname">
 					';
 $b = $row['price'] % 100; $s = intval(($row['price'] % 10000) / 100); $g = intval($row['price'] / 10000);
-						echo'<img src="/img/image/gold.png" width="14" height="14" valign="middle" title="Золото"><input type=text name=gold style="width: 40;" value='.$g.'><img src="/img/image/silver.png" width="14" height="14" valign="middle" title="Серебро"><input type=text name=silver style="width: 40;" value='.$s.'><img src="/img/image/bronze.png" width="14" height="14" valign="middle" title="Бронза"><input type=text name=bronze style="width: 40;" value='.$b.'>
+    echo '<img src="/img/image/gold.png" width="14" height="14" valign="middle" title="Р—РѕР»РѕС‚Рѕ"><input type=text name=gold style="width: 40;" value=' . $g . '><img src="/img/image/silver.png" width="14" height="14" valign="middle" title="РЎРµСЂРµР±СЂРѕ"><input type=text name=silver style="width: 40;" value=' . $s . '><img src="/img/image/bronze.png" width="14" height="14" valign="middle" title="Р‘СЂРѕРЅР·Р°"><input type=text name=bronze style="width: 40;" value=' . $b . '>
 					</font>
 				</td>
 				<td align="center" bgcolor="#'.$bgcolor.'">
 					<font class="nickname">
 						<input type="hidden" name="p_id" value="1" />
 						<input type="hidden" name="itemId" value="'.$row['id_item'].'" />
-						<input type="submit" class="lbut" value="Выставить лот" />
+						<input type="submit" class="lbut" value="Р’С‹СЃС‚Р°РІРёС‚СЊ Р»РѕС‚" />
 					</font>
 				</td>
 			</tr>
@@ -242,7 +243,7 @@ $b = $row['price'] % 100; $s = intval(($row['price'] % 10000) / 100); $g = intva
 	echo'<table width="100%" border="0" cellpadding="1" cellspacing="1">
 			<tr>
 				<td align="center" width="100%" bgcolor="#D8D8D8">
-					<b>Не найдено ни одного лота!</b>
+					<b>РќРµ РЅР°Р№РґРµРЅРѕ РЅРё РѕРґРЅРѕРіРѕ Р»РѕС‚Р°!</b>
 				</td>
 			</tr>
 		</table>';

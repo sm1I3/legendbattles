@@ -63,7 +63,7 @@ if (typeof ol_closeclick=='undefined') var ol_closeclick=0;
 if (typeof ol_wrap=='undefined') var ol_wrap=0;
 if (typeof ol_followmouse=='undefined') var ol_followmouse=1;
 if (typeof ol_mouseoff=='undefined') var ol_mouseoff=0;
-if (typeof ol_closetitle=='undefined') var ol_closetitle='¦ðú¨vª¹';
+if (typeof ol_closetitle == 'undefined') var ol_closetitle = 'Â¦Ñ€ÑŠÐvÐ„â„–';
 if (typeof ol_compatmode=='undefined') var ol_compatmode=0;
 if (typeof ol_css=='undefined') var ol_css=CSSOFF;
 if (typeof ol_fgclass=='undefined') var ol_fgclass="";
@@ -517,7 +517,7 @@ function createPopup(lyrContent){
 		layerWrite(lyrContent);
 		wd = (olNs4 ? over.clip.width : over.offsetWidth);
 		if (wd > (ww=windowWidth())) {
-			lyrContent=lyrContent.replace(/\à/g, ' ');
+            lyrContent = lyrContent.replace(/\Ð°/g, ' ');
 			o3_width=ww;
 			o3_wrap=0;
 		} 
@@ -727,8 +727,8 @@ function parseTokens(pf, ar) {
 		o3_width = 0;
 		
 		var tReg=/<.*\n*>/ig;
-		if (!tReg.test(o3_text)) o3_text = o3_text.replace(/[ ]+/g, 'à');
-		if (!tReg.test(o3_cap))o3_cap = o3_cap.replace(/[ ]+/g, 'à');
+        if (!tReg.test(o3_text)) o3_text = o3_text.replace(/[ ]+/g, 'Ð°');
+        if (!tReg.test(o3_cap)) o3_cap = o3_cap.replace(/[ ]+/g, 'Ð°');
 	}
 	if ((pf == 'o3_') && o3_sticky) {
 		if (!o3_close && (o3_frame != ol_frame)) o3_close = ol_close;
@@ -861,11 +861,11 @@ function opt_MULTIPLEARGS(i, args, parameter) {
 	return k;
 }
 
-// Remove à in texts when done.
+// Remove Ð° in texts when done.
 function nbspCleanup() {
 	if (o3_wrap) {
-		o3_text = o3_text.replace(/\à/g, ' ');
-		o3_cap = o3_cap.replace(/\à/g, ' ');
+        o3_text = o3_text.replace(/\Ð°/g, ' ');
+        o3_cap = o3_cap.replace(/\Ð°/g, ' ');
 	}
 }
 

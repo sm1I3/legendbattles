@@ -20,15 +20,15 @@ function pv_sostav(pr,sign,nick,lev,signst,sstatus,plnx,plid)
        var all_si = '';
        var slink = '';
 
-       if(weacode && pr==0) slink += '<a href=?useaction=clan-action&addid=1&get_id=29&clan_act=1&vcode='+weacode+'&plid='+plid+'>Снять вещи</a>&nbsp;&nbsp;';
-       if(edicode) slink += '<a href=?useaction=clan-action&addid=1&get_id=29&clan_act=5&vcode='+edicode+'&plid='+plid+'>Редактировать</a>&nbsp;&nbsp;';
-       if(outcode) slink += '<a href="javascript: if(confirm(\'Выгнать представителя власти?\')) { location=\'main.php?useaction=clan-action&addid=1&get_id=29&clan_act=4&vcode='+outcode+'&plid='+plid+'\' }">Выгнать</a>';
+    if (weacode && pr == 0) slink += '<a href=?useaction=clan-action&addid=1&get_id=29&clan_act=1&vcode=' + weacode + '&plid=' + plid + '>РЎРЅСЏС‚СЊ РІРµС‰Рё</a>&nbsp;&nbsp;';
+    if (edicode) slink += '<a href=?useaction=clan-action&addid=1&get_id=29&clan_act=5&vcode=' + edicode + '&plid=' + plid + '>Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>&nbsp;&nbsp;';
+    if (outcode) slink += '<a href="javascript: if(confirm(\'Р’С‹РіРЅР°С‚СЊ РїСЂРµРґСЃС‚Р°РІРёС‚РµР»СЏ РІР»Р°СЃС‚Рё?\')) { location=\'main.php?useaction=clan-action&addid=1&get_id=29&clan_act=4&vcode=' + outcode + '&plid=' + plid + '\' }">Р’С‹РіРЅР°С‚СЊ</a>';
 
        switch(signst)
        {
        	      case 9:
        	      slink = '';
- 	      var ssta = '<font color=#CC0000>Глава Института Власти</font>';
+                  var ssta = '<font color=#CC0000>Р“Р»Р°РІР° РРЅСЃС‚РёС‚СѓС‚Р° Р’Р»Р°СЃС‚Рё</font>';
 	      break;
        	      default:
        	      if(ownid == plid) slink = '';

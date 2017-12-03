@@ -9,10 +9,10 @@ function AddPerk(pe_class)
 	{
 	    fr--;
 	    var pe_class_div = 'p'+pe_class;
-	    document.all(pe_class_div).innerHTML = '<b>да</b>';
+        document.all(pe_class_div).innerHTML = '<b>РґР°</b>';
 	    document.saveperk[pe_class_fin].value = 1;
 	    document.saveperk.currnav.value = fr;
-	    document.all("frpediv").innerHTML = 'Возможные новые навыки: '+fr;
+        document.all("frpediv").innerHTML = 'Р’РѕР·РјРѕР¶РЅС‹Рµ РЅРѕРІС‹Рµ РЅР°РІС‹РєРё: ' + fr;
         }
     }
 }
@@ -25,9 +25,9 @@ function RemovePerk(pe_class)
     {
         var fr = parseInt(document.saveperk.currnav.value) + 1;
 	var pe_class_div = 'p'+pe_class;
-	document.all(pe_class_div).innerHTML = 'нет';
+        document.all(pe_class_div).innerHTML = 'РЅРµС‚';
 	document.saveperk[pe_class_fin].value = 0;
 	document.saveperk.currnav.value = fr;
-	document.all("frpediv").innerHTML = 'Возможные новые навыки: '+fr;
+        document.all("frpediv").innerHTML = 'Р’РѕР·РјРѕР¶РЅС‹Рµ РЅРѕРІС‹Рµ РЅР°РІС‹РєРё: ' + fr;
     }
 }

@@ -57,36 +57,37 @@ if ($id == '') {
 }
 
 ?>
-<h3><?=($id == ''?'Добавить банк':'Изменить банк')?></h3>
+    <h3><?= ($id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ Р±Р°РЅРє' : 'РР·РјРµРЅРёС‚СЊ Р±Р°РЅРє') ?></h3>
 
 <form name="edit_bank" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 
 <tr>
-  <td>ID Банка: &nbsp;  </td>
+    <td>ID Р‘Р°РЅРєР°: &nbsp;</td>
   <td><input name="id" type="text" class="cms_fieldstyle1" value="<?=$bank['id']?>" size="5" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Имя банка: &nbsp;  </td>
+    <td>РРјСЏ Р±Р°РЅРєР°: &nbsp;</td>
   <td><input name="num" type="text" class="cms_fieldstyle1" value="<?=$bank['num']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Валюта: &nbsp;  </td>
+    <td>Р’Р°Р»СЋС‚Р°: &nbsp;</td>
   <td><input name="lr" type="text" class="cms_fieldstyle1" value="<?=$bank['lr']?>" size="12" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Изумруды: &nbsp;  </td>
+    <td>РР·СѓРјСЂСѓРґС‹: &nbsp;</td>
   <td><input name="dlr" type="text" class="cms_fieldstyle1" value="<?=$bank['dlr']?>" size="12" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Пороль: &nbsp;  </td>
+    <td>РџРѕСЂРѕР»СЊ: &nbsp;</td>
   <td><input name="pass" type="text" class="cms_fieldstyle1" value="<?=$bank['pass']?>" size="40" maxlength="255" /></td>
 </tr>
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='bank_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='bank_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

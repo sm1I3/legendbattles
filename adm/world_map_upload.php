@@ -11,7 +11,7 @@ if (!userHasPermission(1)) {
     die();
 }
 ?>
-<h3>Загрузка и обновление</h3>
+    <h3>Р—Р°РіСЂСѓР·РєР° Рё РѕР±РЅРѕРІР»РµРЅРёРµ</h3>
 <br />
 <?
 $dir = dirname(__FILE__).'/map';
@@ -207,12 +207,12 @@ function unselectAll()
 <br /><br /><br />
 
 
-<h3>Загрузка файлов карты</h3>
+    <h3>Р—Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ РєР°СЂС‚С‹</h3>
 <form name="upload" method="post" action="" enctype="multipart/form-data">
-День: <input type="file" name="day_file" /><br />
-Ночь: <input type="file" name="night_file" /><br />
+    Р”РµРЅСЊ: <input type="file" name="day_file"/><br/>
+    РќРѕС‡СЊ: <input type="file" name="night_file"/><br/>
 <br />
-Номер файла: <input type="text" name="number" value=""><br />
+    РќРѕРјРµСЂ С„Р°Р№Р»Р°: <input type="text" name="number" value=""><br/>
 <br />
 <input type="hidden" name="action" value="upload" />
 <input type="submit" name="upload" value="Upload" />

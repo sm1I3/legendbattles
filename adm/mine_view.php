@@ -121,7 +121,7 @@ if (isset($_POST['add']))
 }
 
 ?>
-<a href="mine_list.php">Назад к списку шахт</a>
+    <a href="mine_list.php">РќР°Р·Р°Рґ Рє СЃРїРёСЃРєСѓ С€Р°С…С‚</a>
 <script language="javascript">
     var selected_row = '';
     var selected_cell = '';
@@ -169,7 +169,7 @@ if ($mine)
     
     foreach($mine_array['m'] as $lvl => $arr)
     {
-        echo '<br />Уровень '.$lvl.':<br /><br />
+        echo '<br />РЈСЂРѕРІРµРЅСЊ ' . $lvl . ':<br /><br />
         <table><tr><td valign="top">
         <table border="0" cellpadding="0" cellspacing="0">';
         foreach($arr as $i => $arr2)
@@ -189,15 +189,15 @@ if ($mine)
             echo '</tr>';
         }
         echo '</table></td><td valign="top">
-        Добываемые ресурсы:
+        Р”РѕР±С‹РІР°РµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹:
         <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" id="table_res" >
             <tr >
-                <td class="cms_cap3">Клетка</td>
-                <td class="cms_cap3">Ресурс</td>
-                <td class="cms_cap3">Умение</td>
-                <td class="cms_cap3">Всего</td>
-                <td class="cms_cap3">Осталось</td>
-                <td class="cms_cap3">Шанс</td>
+                <td class="cms_cap3">РљР»РµС‚РєР°</td>
+                <td class="cms_cap3">Р РµСЃСѓСЂСЃ</td>
+                <td class="cms_cap3">РЈРјРµРЅРёРµ</td>
+                <td class="cms_cap3">Р’СЃРµРіРѕ</td>
+                <td class="cms_cap3">РћСЃС‚Р°Р»РѕСЃСЊ</td>
+                <td class="cms_cap3">РЁР°РЅСЃ</td>
             </tr>';
         if (isset($resources[$lvl]) && is_array($resources[$lvl]))
         foreach($resources[$lvl] as $cell => $arr)
@@ -221,43 +221,43 @@ if ($mine)
         ';
         
     }
-} else echo '<br /><br />Шахта не найдена';
+} else echo '<br /><br />РЁР°С…С‚Р° РЅРµ РЅР°Р№РґРµРЅР°';
 
 $levels = array();
 for($i=1; $i<=$mine['levels_count']; $i++)
     $levels[$i] = $i;
     
 $rand_array = array(
-    1 => '1 - Большое кол-во маленьких жил',
+    1 => '1 - Р‘РѕР»СЊС€РѕРµ РєРѕР»-РІРѕ РјР°Р»РµРЅСЊРєРёС… Р¶РёР»',
     2 => '2',
     3 => '3',
     4 => '4',
-    5 => '5 - Малое кол-во больших жил',
+    5 => '5 - РњР°Р»РѕРµ РєРѕР»-РІРѕ Р±РѕР»СЊС€РёС… Р¶РёР»',
 );
 
 ?>
-Добавить ресурсы:
+    Р”РѕР±Р°РІРёС‚СЊ СЂРµСЃСѓСЂСЃС‹:
 <form name="add_remove_resources" method="post" action="">
-Уровень: <?=createSelectFromArray('level', $levels)?><br />
-Добавить ресурс: <?=createSelectFromArray('resource', $resource_array)?><br />
-Количество на уровень: <input type="text" name="count" /><br />
-Требуемое умение: <input type="text" name="ability" value="0" /><br />
-Шанс: <input type="text" name="chance" value="100" />%<br />
-Разброс: <?=createSelectFromArray('rand', $rand_array, '')?><br />
-<input type="submit" name="add" value="Добавить" />
+    РЈСЂРѕРІРµРЅСЊ: <?= createSelectFromArray('level', $levels) ?><br/>
+    Р”РѕР±Р°РІРёС‚СЊ СЂРµСЃСѓСЂСЃ: <?= createSelectFromArray('resource', $resource_array) ?><br/>
+    РљРѕР»РёС‡РµСЃС‚РІРѕ РЅР° СѓСЂРѕРІРµРЅСЊ: <input type="text" name="count"/><br/>
+    РўСЂРµР±СѓРµРјРѕРµ СѓРјРµРЅРёРµ: <input type="text" name="ability" value="0"/><br/>
+    РЁР°РЅСЃ: <input type="text" name="chance" value="100"/>%<br/>
+    Р Р°Р·Р±СЂРѕСЃ: <?= createSelectFromArray('rand', $rand_array, '') ?><br/>
+    <input type="submit" name="add" value="Р”РѕР±Р°РІРёС‚СЊ"/>
 </form>
 <br />
-Очистить уровень:
+    РћС‡РёСЃС‚РёС‚СЊ СѓСЂРѕРІРµРЅСЊ:
 <form name="add_remove_resources" method="post" action="">
-Уровень: <?=createSelectFromArray('level', $levels)?><br />
-Ресурс: <?=createSelectFromArray('resource', $resource_array)?><br />
-<input type="submit" name="remove" value="Очистить" />
+    РЈСЂРѕРІРµРЅСЊ: <?= createSelectFromArray('level', $levels) ?><br/>
+    Р РµСЃСѓСЂСЃ: <?= createSelectFromArray('resource', $resource_array) ?><br/>
+    <input type="submit" name="remove" value="РћС‡РёСЃС‚РёС‚СЊ"/>
 </form>
 <br />
-Восстановить уровень:
+    Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ СѓСЂРѕРІРµРЅСЊ:
 <form name="add_remove_resources" method="post" action="">
-Уровень: <?=createSelectFromArray('level', $levels)?><br />
-Ресурс: <?=createSelectFromArray('resource', $resource_array)?><br />
-<input type="submit" name="restore" value="Восстановить" />
+    РЈСЂРѕРІРµРЅСЊ: <?= createSelectFromArray('level', $levels) ?><br/>
+    Р РµСЃСѓСЂСЃ: <?= createSelectFromArray('resource', $resource_array) ?><br/>
+    <input type="submit" name="restore" value="Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ"/>
 </form>
 <? require('kernel/after.php'); ?>

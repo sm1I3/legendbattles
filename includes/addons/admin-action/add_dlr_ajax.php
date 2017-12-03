@@ -3,7 +3,7 @@ session_start();
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/connect.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
 $player=player();
-if($player['login']=='mozg' or $player['login']=='Администрация'){
+if ($player['login'] == 'mozg' or $player['login'] == 'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ') {
 	$login = varcheck(iconv("UTF-8","Windows-1251",urldecode($_GET['login'])));
 	$usr = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `login`='".$login."' LIMIT 1;"));
 	if($usr['id']){
@@ -11,8 +11,8 @@ if($player['login']=='mozg' or $player['login']=='Администрация'){
 		if($add>0){
 			$str='';
 			if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `dd`=`dd`+'".$add."' WHERE `id`='".$usr['id']."';")){
-			mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('".time()."','sys','<".mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT `login` FROM `user` WHERE `id`='".$usr['id']."'"),0).">','".addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Life is War&nbsp;</font> <font color=000000>Вам удачно начислена игровая валюта в размере <b>".$add."</b> DLR</font><BR>'+'');")."');");
-				//начисление бабла тому кто пригласил
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('" . time() . "','sys','<" . mysqli_result(mysqli_query($GLOBALS['db_link'], "SELECT `login` FROM `user` WHERE `id`='" . $usr['id'] . "'"), 0) . ">','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Life is War&nbsp;</font> <font color=000000>Р’Р°Рј СѓРґР°С‡РЅРѕ РЅР°С‡РёСЃР»РµРЅР° РёРіСЂРѕРІР°СЏ РІР°Р»СЋС‚Р° РІ СЂР°Р·РјРµСЂРµ <b>" . $add . "</b> DLR</font><BR>'+'');") . "');");
+                //РЅР°С‡РёСЃР»РµРЅРёРµ Р±Р°Р±Р»Р° С‚РѕРјСѓ РєС‚Рѕ РїСЂРёРіР»Р°СЃРёР»
 					$referal=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `ref_system` WHERE `ref_id`='".$usr['id']."' LIMIT 1;"));
 					if($referal['who_id']){
 						$usrb = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `id`='".$referal['who_id']."' LIMIT 1;"));
@@ -21,8 +21,8 @@ if($player['login']=='mozg' or $player['login']=='Администрация'){
 							if($refparams['money_dlr_bonus']>0){			
 								$givebonus = round(($add*($refparams['money_dlr_bonus']/100)),2);																
 								if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `dd`=`dd`+'".$givebonus."' WHERE `id`='".$usrb['id']."' LIMIT 1;")){
-									$str = '<br>Рефералу этого пользователя (ник: '.$usrb['login'].') зачислено '.$refparams['money_dlr_bonus'].'% от суммы ('.$givebonus.' DLR).';
-									$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><font color=#000000><b>Системная информация.</b></font> Вы получили бонус за пополнение счета рефералом: <b>".$givebonus."</b> DLR.</font><BR>'+'');";
+                                    $str = '<br>Р РµС„РµСЂР°Р»Сѓ СЌС‚РѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РЅРёРє: ' . $usrb['login'] . ') Р·Р°С‡РёСЃР»РµРЅРѕ ' . $refparams['money_dlr_bonus'] . '% РѕС‚ СЃСѓРјРјС‹ (' . $givebonus . ' DLR).';
+                                    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><font color=#000000><b>РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ.</b></font> Р’С‹ РїРѕР»СѓС‡РёР»Рё Р±РѕРЅСѓСЃ Р·Р° РїРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° СЂРµС„РµСЂР°Р»РѕРј: <b>" . $givebonus . "</b> DLR.</font><BR>'+'');";
 									chmsg($ms,$usrb['login']);
 									mysqli_query($GLOBALS['db_link'],"UPDATE `ref_system` SET `bonus_dlr`=`bonus_dlr`+'".$givebonus."' WHERE `ref_id`='".$usr['id']."' AND `who_id`='".$usrb['id']."' LIMIT 1;");
 								}								
@@ -32,9 +32,13 @@ if($player['login']=='mozg' or $player['login']=='Администрация'){
 					//end 
 				log_write("DLR-add",$player['login'],$add,$usr['login']);
 				if($str){log_write("DLR-add-ref",$player['login'],$givebonus,$usrb['login']);}
-				echo 'Пользователю '.$usr['login'].' зачислено '.$add.' DLR.'.$str;
+                echo 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЋ ' . $usr['login'] . ' Р·Р°С‡РёСЃР»РµРЅРѕ ' . $add . ' DLR.' . $str;
 			}
-		}else{echo 'DLR должно быть выше 0';}
-	}else{echo 'Пользователь не найден: '.$login;}
+        } else {
+            echo 'DLR РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІС‹С€Рµ 0';
+        }
+    } else {
+        echo 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ: ' . $login;
+    }
 }
 ?>

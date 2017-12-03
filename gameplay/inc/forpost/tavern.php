@@ -1,1 +1,1 @@
-<script>window.location='/core2.php';</script>
+<script>window.location = '/core2.php';</script>

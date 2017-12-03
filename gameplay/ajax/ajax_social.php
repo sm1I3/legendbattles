@@ -20,7 +20,7 @@ $SocialIcons = array("vkontakte"=>"35","odnoklassniki"=>"70","mailru"=>"105","fa
 
 if($pers){
 	switch($_GET['action']){
-		case'SocialAdd':// Добавляем социальный профиль
+        case'SocialAdd':// Р”РѕР±Р°РІР»СЏРµРј СЃРѕС†РёР°Р»СЊРЅС‹Р№ РїСЂРѕС„РёР»СЊ
 			$s = file_get_contents('http://ulogin.ru/token.php?token=' . $_GET['token'] . '&host=' . $_SERVER['HTTP_HOST']);
 			$uLoginGet = json_decode($s, true);
 			if(empty($uLoginGet['error'])){
@@ -35,14 +35,14 @@ if($pers){
 						echo'<tr>
 						  <td class="freetxt" width="32" height="32" bgcolor="#'.$bgcolor.'" style="background:url(https://ulogin.ru/img/panel7.png) no-repeat 0 -'.$SocialIcons[$row['network']].'px;"><img src="http://img.legendbattles.ru/image/1x1.gif" width="32" height="32" /></td>
 						  <td class="freetxt" align="center" valign="middle" bgcolor="#'.$bgcolor.'"><a href="'.$row['profile'].'" target="_blank">'.$row['profile_names'].'</a></td>
-						  <td class="freetxt" align="center" valign="middle" bgcolor="#'.$bgcolor.'"><a href="javascript:SocialDelete('.$row['id'].');"><font color="red">удалить</font></a></td>
+						  <td class="freetxt" align="center" valign="middle" bgcolor="#' . $bgcolor . '"><a href="javascript:SocialDelete(' . $row['id'] . ');"><font color="red">СѓРґР°Р»РёС‚СЊ</font></a></td>
 						</tr>';
 					}
 					echo'</table></td></tr></table>';
 				}
 			}
 		break;
-		case'SocialDelete':// Удаляем социальный профиль
+        case'SocialDelete':// РЈРґР°Р»СЏРµРј СЃРѕС†РёР°Р»СЊРЅС‹Р№ РїСЂРѕС„РёР»СЊ
 			$uLoginGet = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `ulogin` WHERE `userid`='".$pers['id']."' and `id`='".intval($_GET['SocID'])."'"));
 			if($uLoginGet){
 				mysqli_query($GLOBALS['db_link'],"DELETE FROM `ulogin` WHERE `id` = '".$uLoginGet['id']."'");
@@ -56,16 +56,16 @@ if($pers){
 						echo'<tr>
 						  <td class="freetxt" width="32" height="32" bgcolor="#'.$bgcolor.'" style="background:url(https://ulogin.ru/img/panel7.png) no-repeat 0 -'.$SocialIcons[$row['network']].'px;"><img src="http://img.legendbattles.ru/image/1x1.gif" width="32" height="32" /></td>
 						  <td class="freetxt" align="center" valign="middle" bgcolor="#'.$bgcolor.'"><a href="'.$row['profile'].'" target="_blank">'.$row['profile_names'].'</a></td>
-						  <td class="freetxt" align="center" valign="middle" bgcolor="#'.$bgcolor.'"><a href="javascript:SocialDelete('.$row['id'].');"><font color="red">удалить</font></a></td>
+						  <td class="freetxt" align="center" valign="middle" bgcolor="#' . $bgcolor . '"><a href="javascript:SocialDelete(' . $row['id'] . ');"><font color="red">СѓРґР°Р»РёС‚СЊ</font></a></td>
 						</tr>';
 					}
 					echo'</table></td></tr></table>';
 				}else{
-					echo'нет привязанных аккаунтов';
+                    echo 'РЅРµС‚ РїСЂРёРІСЏР·Р°РЅРЅС‹С… Р°РєРєР°СѓРЅС‚РѕРІ';
 				}
 			}
 		break;
-		case'SocialUpdateList':// AJAX обновление списка профилей
+        case'SocialUpdateList':// AJAX РѕР±РЅРѕРІР»РµРЅРёРµ СЃРїРёСЃРєР° РїСЂРѕС„РёР»РµР№
 			foreach($SyncArray as $Socials){
 				if(!mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT `network` FROM `ulogin` WHERE `userid`='".$pers['id']."' and `network`='".$Socials."'"),0)){
 					$ShowSocial[] = $Socials;

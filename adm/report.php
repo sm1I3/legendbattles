@@ -128,11 +128,11 @@ if (isset($_POST['date_from']) && $_POST['date_from'] != '' && $_POST['date_to']
             <b>'.$workers[$user_id].'</b>
             <table border="1" cellpadding="0" cellspacing="0" bordercolor="#000000" class="cms_table1" >
                     <tr >
-                      <td class="cms_cap2">Дата</td>
-                      <td class="cms_cap2">Приход</a></td>
-                      <td class="cms_cap2">Уход</a></td>
-                      <td class="cms_cap2">Общее время</a></td>
-                      <td class="cms_cap2">Засчитанное время</a></td>
+                      <td class="cms_cap2">Р”Р°С‚Р°</td>
+                      <td class="cms_cap2">РџСЂРёС…РѕРґ</a></td>
+                      <td class="cms_cap2">РЈС…РѕРґ</a></td>
+                      <td class="cms_cap2">РћР±С‰РµРµ РІСЂРµРјСЏ</a></td>
+                      <td class="cms_cap2">Р—Р°СЃС‡РёС‚Р°РЅРЅРѕРµ РІСЂРµРјСЏ</a></td>
                     </tr>';
         
         //foreach($tarr as $date => $arr)
@@ -303,31 +303,31 @@ if (isset($_POST['date_from']) && $_POST['date_from'] != '' && $_POST['date_to']
         if (isset($_POST['export']))
             $resources.='
                 <tr>
-                    <td align="left" colspan="2" class="cms_middle">Время для отработки</td>
-                    <td align="left" class="cms_middle">'.($days*8).' часов</td>
+                    <td align="left" colspan="2" class="cms_middle">Р’СЂРµРјСЏ РґР»СЏ РѕС‚СЂР°Р±РѕС‚РєРё</td>
+                    <td align="left" class="cms_middle">' . ($days * 8) . ' С‡Р°СЃРѕРІ</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" class="cms_middle">Засчитанное время:</td>
+                    <td align="left" colspan="2" class="cms_middle">Р—Р°СЃС‡РёС‚Р°РЅРЅРѕРµ РІСЂРµРјСЏ:</td>
                     <td align="left" class="cms_middle">'.$str_time_work.'</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" class="cms_middle">Баланс</td>
+                    <td align="left" colspan="2" class="cms_middle">Р‘Р°Р»Р°РЅСЃ</td>
                     <td align="left" class="cms_middle">'.($pos?'':'-').$str_sub_time_work.'</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" class="cms_middle">Опоздания и ранний выход</td>
+                    <td align="left" colspan="2" class="cms_middle">РћРїРѕР·РґР°РЅРёСЏ Рё СЂР°РЅРЅРёР№ РІС‹С…РѕРґ</td>
                     <td align="left" class="cms_middle">'.($pos?'':'-').$str_time_def.'</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" class="cms_middle">Пропущенных дней</td>
+                    <td align="left" colspan="2" class="cms_middle">РџСЂРѕРїСѓС‰РµРЅРЅС‹С… РґРЅРµР№</td>
                     <td align="left" class="cms_middle">'.$total_days_missed.'</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" class="cms_middle">Дней с опозданием</td>
+                    <td align="left" colspan="2" class="cms_middle">Р”РЅРµР№ СЃ РѕРїРѕР·РґР°РЅРёРµРј</td>
                     <td align="left" class="cms_middle">'.$total_days_late.'</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" class="cms_middle">Дней с ранним уходом</td>
+                    <td align="left" colspan="2" class="cms_middle">Р”РЅРµР№ СЃ СЂР°РЅРЅРёРј СѓС…РѕРґРѕРј</td>
                     <td align="left" class="cms_middle">'.$total_days_early.'</td>
                 </tr>
             </table></td>'.($i%4 == 0?'</tr><tr>':'');
@@ -336,22 +336,22 @@ if (isset($_POST['date_from']) && $_POST['date_from'] != '' && $_POST['date_to']
             $resources.='
                 <tr>
                     '.($short ? '<td class="cms_middle" rowspan="3">'.$workers[$user_id].'</td>' : '').'
-                  <td align="left" class="cms_middle">'.($days*8).' часов</td>
+                  <td align="left" class="cms_middle">' . ($days * 8) . ' С‡Р°СЃРѕРІ</td>
                   <td align="left" class="cms_middle">&nbsp;</td>
                   <td align="left" class="cms_middle">&nbsp;</td>
                   <td align="left" class="cms_middle">'.$str_time_all.'</td>
                   <td align="left" class="cms_middle">'.$str_time_work.'</td>
                 </tr>
                 <tr>
-                  <td align="right" class="cms_middle">Штраф:</td>
+                  <td align="right" class="cms_middle">РЁС‚СЂР°С„:</td>
                   <td align="left" class="cms_middle">'.($pos?'':'-').$str_time_def.'</td>
-                  <td align="right" colspan="2" class="cms_middle">Баланс:</td>
+                  <td align="right" colspan="2" class="cms_middle">Р‘Р°Р»Р°РЅСЃ:</td>
                   <td align="left" class="cms_middle" style="color: '.($pos ? 'green' : 'red').';">'.($pos?'':'-').$str_sub_time_work.'</td>
                 </tr>
                 <tr>
-                  <td align="right" class="cms_middle">Пропущенных:</td>
+                  <td align="right" class="cms_middle">РџСЂРѕРїСѓС‰РµРЅРЅС‹С…:</td>
                   <td align="left" class="cms_middle">'.$total_days_missed.'</td>
-                  <td align="right" colspan="2" class="cms_middle">Опозданий + ранних уходов:</td>
+                  <td align="right" colspan="2" class="cms_middle">РћРїРѕР·РґР°РЅРёР№ + СЂР°РЅРЅРёС… СѓС…РѕРґРѕРІ:</td>
                   <td align="left" class="cms_middle">'.$total_days_late.' + '.$total_days_early.'</td>
                 </tr>
                 ';
@@ -364,13 +364,13 @@ if (isset($_POST['export'])) {
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="files/print.css" type="text/css" />
-    <title>Система управления Neverlands.ru</title>
+    <title>РЎРёСЃС‚РµРјР° СѓРїСЂР°РІР»РµРЅРёСЏ Neverlands.ru</title>
     </head>
 
     <body class="cms_BODY" style="padding: 10px;">
-    Отчёт: <br />
+    РћС‚С‡С‘С‚: <br />
     
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -385,26 +385,27 @@ if (isset($_POST['export'])) {
 }
 
 ?>
-<h3>Отчёт</h3>
-<a href="report_days.php">Рабочие/Выходные дни</a>&nbsp;&nbsp;&nbsp;<a href="report_vacation.php">Отпуска</a>
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+    <h3>РћС‚С‡С‘С‚</h3>
+    <a href="report_days.php">Р Р°Р±РѕС‡РёРµ/Р’С‹С…РѕРґРЅС‹Рµ РґРЅРё</a>&nbsp;&nbsp;&nbsp;<a href="report_vacation.php">РћС‚РїСѓСЃРєР°</a>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 <form name="filter" id="filter" action="" method="post" enctype="multipart/form-data">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-    <td>Для печати:</td>
+      <td>Р”Р»СЏ РїРµС‡Р°С‚Рё:</td>
     <td><input type="checkbox" name="export" value="Y" />&nbsp;&nbsp;
-    Сокращенный отчет: <input type="checkbox" name="short" <?=(isset($_POST['short']) ? 'checked' : '')?> value="Y" />
+        РЎРѕРєСЂР°С‰РµРЅРЅС‹Р№ РѕС‚С‡РµС‚: <input type="checkbox" name="short" <?= (isset($_POST['short']) ? 'checked' : '') ?>
+                                  value="Y"/>
     </td>
   </tr>
   <tr>
-  <td>С: &nbsp;  </td>
+      <td>РЎ: &nbsp;</td>
   <td>
     <input name="date_from" id="date_from" type="text" class="cms_fieldstyle1" value="<?=(isset($_POST['date_from'])?$_POST['date_from']:'')?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kl1jhjhdj12d1jk2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -436,7 +437,7 @@ if (isset($_POST['export'])) {
   </td>
 </tr>
 <tr>
-  <td>по: &nbsp;  </td>
+    <td>РїРѕ: &nbsp;</td>
   <td>
     <input name="date_to" id="date_to" type="text" class="cms_fieldstyle1" value="<?=(isset($_POST['date_to'])?$_POST['date_to']:'')?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kjkjdnakjdnakwnjkd2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -468,7 +469,7 @@ if (isset($_POST['export'])) {
   </td>
 </tr>
 <tr>
-  <td>Работник:</td>
+    <td>Р Р°Р±РѕС‚РЅРёРє:</td>
   <td><?=createSelectFromArray('worker_id', $workers, (isset($_POST['worker_id'])?$_POST['worker_id']:''))?></td>
 </tr>
   <tr>
@@ -490,15 +491,15 @@ function clearFilter()
 
     <div class="cms_ind">
         <br />
-        Отчёт: <br />
+        РћС‚С‡С‘С‚: <br/>
          <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
             <tr >
-              <td class="cms_cap2">Пользователь</td>
-              <td class="cms_cap2">Дата</td>
-              <td class="cms_cap2">Приход</td>
-              <td class="cms_cap2">Уход</td>
-              <td class="cms_cap2">Общее время</td>
-              <td class="cms_cap2">Засчитанное время</td>
+                <td class="cms_cap2">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ</td>
+                <td class="cms_cap2">Р”Р°С‚Р°</td>
+                <td class="cms_cap2">РџСЂРёС…РѕРґ</td>
+                <td class="cms_cap2">РЈС…РѕРґ</td>
+                <td class="cms_cap2">РћР±С‰РµРµ РІСЂРµРјСЏ</td>
+                <td class="cms_cap2">Р—Р°СЃС‡РёС‚Р°РЅРЅРѕРµ РІСЂРµРјСЏ</td>
             </tr>
             <?=(isset($resources) ? $resources : '')?>   
          </table>
@@ -512,7 +513,7 @@ function clearFilter()
 <form action="" method="post" enctype="multipart/form-data">
 <table>
 <tr>
-    <td>Файл:</td>
+    <td>Р¤Р°Р№Р»:</td>
     <td>
         <input type="file" name="input_file" />
     </td>

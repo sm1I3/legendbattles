@@ -1,28 +1,28 @@
 <?php 
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
-db_open(); 
+db_open();
 
-// если была нажата кнопка "Отправить" 
+// РµСЃР»Рё Р±С‹Р»Р° РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° "РћС‚РїСЂР°РІРёС‚СЊ" 
 if($_POST['submit']) { 
 $SQL = mysqli_query($GLOBALS['db_link'],"SELECT `email` FROM `user` WHERE `id`>'9999'");
 while($row = mysqli_fetch_assoc($SQL)){
-	// $_POST['title'] содержит данные из поля "Тема", trim() - убираем все лишние пробелы и переносы строк, htmlspecialchars() - преобразует специальные символы в HTML сущности, будем считать для того, чтобы простейшие попытки взломать наш сайт обломались, ну и  substr($_POST['title'], 0, 1000) - урезаем текст до 1000 символов. Для переменной $_POST['mess'] все аналогично 
+    // $_POST['title'] СЃРѕРґРµСЂР¶РёС‚ РґР°РЅРЅС‹Рµ РёР· РїРѕР»СЏ "РўРµРјР°", trim() - СѓР±РёСЂР°РµРј РІСЃРµ Р»РёС€РЅРёРµ РїСЂРѕР±РµР»С‹ Рё РїРµСЂРµРЅРѕСЃС‹ СЃС‚СЂРѕРє, htmlspecialchars() - РїСЂРµРѕР±СЂР°Р·СѓРµС‚ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹ РІ HTML СЃСѓС‰РЅРѕСЃС‚Рё, Р±СѓРґРµРј СЃС‡РёС‚Р°С‚СЊ РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РїСЂРѕСЃС‚РµР№С€РёРµ РїРѕРїС‹С‚РєРё РІР·Р»РѕРјР°С‚СЊ РЅР°С€ СЃР°Р№С‚ РѕР±Р»РѕРјР°Р»РёСЃСЊ, РЅСѓ Рё  substr($_POST['title'], 0, 1000) - СѓСЂРµР·Р°РµРј С‚РµРєСЃС‚ РґРѕ 1000 СЃРёРјРІРѕР»РѕРІ. Р”Р»СЏ РїРµСЂРµРјРµРЅРЅРѕР№ $_POST['mess'] РІСЃРµ Р°РЅР°Р»РѕРіРёС‡РЅРѕ
 	$title = substr(htmlspecialchars(trim($_POST['title'])), 0, 1000); 
-	$mess =  substr(htmlspecialchars(trim($_POST['mess'])), 0, 1000000); 
-	// функция, которая отправляет наше письмо. 
-	send_mail($row['email'], $title, $mess, 'From:noreply@legendbattles.ru'); 
-	echo 'Спасибо! Ваше письмо отправлено.'; 
+	$mess =  substr(htmlspecialchars(trim($_POST['mess'])), 0, 1000000);
+    // С„СѓРЅРєС†РёСЏ, РєРѕС‚РѕСЂР°СЏ РѕС‚РїСЂР°РІР»СЏРµС‚ РЅР°С€Рµ РїРёСЃСЊРјРѕ.
+	send_mail($row['email'], $title, $mess, 'From:noreply@legendbattles.ru');
+    echo 'РЎРїР°СЃРёР±Рѕ! Р’Р°С€Рµ РїРёСЃСЊРјРѕ РѕС‚РїСЂР°РІР»РµРЅРѕ.';
 }
 } 
 ?> 
 <form action="" method=post> 
  
-              <div align="center"> 
-              Teма<br /> 
-              <input type="text" name="title" size="40"><br /> 
-              Сообщение<br /> 
-              <textarea name="mess" rows="10" cols="40"></textarea> 
-              <br /> 
-              <input type="submit" value="Отправить" name="submit"></div> 
+              <div align="center">
+                  TeРјР°<br/>
+                  <input type="text" name="title" size="40"><br />
+                  РЎРѕРѕР±С‰РµРЅРёРµ<br/>
+                  <textarea name="mess" rows="10" cols="40"></textarea>
+              <br />
+                  <input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" name="submit"></div>
 </form>

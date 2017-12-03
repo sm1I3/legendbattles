@@ -27,9 +27,9 @@ if(!isset($_GET['p']) or $_GET['p']==1){$p1=0;$_GET['p']=1;}else{$p1=$_GET['p']*
 echo'<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <HEAD>
-<TITLE>Лог боя - Жизнь сильнейших.. ИинформациЯ браузерной онлайн игры legendbattles </TITLE>
+<TITLE>Р›РѕРі Р±РѕСЏ - Р–РёР·РЅСЊ СЃРёР»СЊРЅРµР№С€РёС….. РРёРЅС„РѕСЂРјР°С†РёРЇ Р±СЂР°СѓР·РµСЂРЅРѕР№ РѕРЅР»Р°Р№РЅ РёРіСЂС‹ legendbattles </TITLE>
 <LINK href="/css/logs.css" rel="STYLESHEET" type="text/css">
-<META Http-Equiv="Content-Type" Content="text/html; charset=windows-1251">
+<META Http-Equiv="Content-Type" Content="text/html; charset=utf-8">
 <META Http-Equiv="Cache-Control" Content="No-Cache">
 <META Http-Equiv="Pragma" Content="No-Cache">
 <META Http-Equiv="Expires" Content="0">

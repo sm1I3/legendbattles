@@ -13,11 +13,11 @@ require('kernel/before.php');
 		$b = $lr % 100;
 		$s = intval(($lr % 10000) / 100);
 		$g = intval($lr / 10000);
-		return (($g)?$g.' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Золото>  ':'').(($s)?$s.' <img src=/img/image/silver.png width=14 height=14 valign=middle title=Серебро> ':'').(($b)?$b.' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Бронза> ':'');
+        return (($g) ? $g . ' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Р—РѕР»РѕС‚Рѕ>  ' : '') . (($s) ? $s . ' <img src=/img/image/silver.png width=14 height=14 valign=middle title=РЎРµСЂРµР±СЂРѕ> ' : '') . (($b) ? $b . ' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Р‘СЂРѕРЅР·Р°> ' : '');
 	}
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
 $all = mysql_query("SELECT * FROM `user` WHERE `last`>'".(time()-300)."'");
-echo"<tr><td>логин</td><td>уровень</td><td>клан</td><td>молчанка</td><td>травма</td><td>Деньги</td><td>DLR</td><td>Валюта</td><td>склонность</td><td>клиент</td></tr>";
+echo "<tr><td>Р»РѕРіРёРЅ</td><td>СѓСЂРѕРІРµРЅСЊ</td><td>РєР»Р°РЅ</td><td>РјРѕР»С‡Р°РЅРєР°</td><td>С‚СЂР°РІРјР°</td><td>Р”РµРЅСЊРіРё</td><td>DLR</td><td>Р’Р°Р»СЋС‚Р°</td><td>СЃРєР»РѕРЅРЅРѕСЃС‚СЊ</td><td>РєР»РёРµРЅС‚</td></tr>";
 $s = '';
 
 while ($row = mysql_fetch_assoc($all)) {
@@ -36,8 +36,8 @@ while ($row = mysql_fetch_assoc($all)) {
 	}
 	$min = floor(($row['sleep']-time())/60);
 	$sec = ($row['sleep']-time())-$min*60;
-	$s .= '<td>'.(($row['sleep']>time())?'<img src="/img/image/signs/molch.gif" title="Персонаж будет молчать еще '.$min.' мин. и '.$sec.' сек.e"></td>':'0</td>');
-	$s .= '<td>'.($traw?'<img src="/img/image/chat/tr4.gif" title="'.$traw.'"></td>':'0</td>'); // Травмы - надо придумать доков
+    $s .= '<td>' . (($row['sleep'] > time()) ? '<img src="/img/image/signs/molch.gif" title="РџРµСЂСЃРѕРЅР°Р¶ Р±СѓРґРµС‚ РјРѕР»С‡Р°С‚СЊ РµС‰Рµ ' . $min . ' РјРёРЅ. Рё ' . $sec . ' СЃРµРє.e"></td>' : '0</td>');
+    $s .= '<td>' . ($traw ? '<img src="/img/image/chat/tr4.gif" title="' . $traw . '"></td>' : '0</td>'); // РўСЂР°РІРјС‹ - РЅР°РґРѕ РїСЂРёРґСѓРјР°С‚СЊ РґРѕРєРѕРІ
 	$s .= '<td>'.lr($row['nv']?$row['nv'].'</td>':'0</td>');
 	$s .= '<td>'.($row['dd']?$row['dd'].'</td>':'0</td>');
 	$s .= '<td>'.($row['baks']?$row['baks'].'</td>':'0</td>');

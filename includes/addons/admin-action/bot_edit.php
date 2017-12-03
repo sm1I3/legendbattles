@@ -5,14 +5,26 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
 //=================== FUNC
 function botslot($id,$s)
 {
-$sl_free = array(1 => 'sl_l_0.gif:Слот для шлема', 'sl_l_1.gif:Слот для ожерелья', 'sl_l_2.gif:Слот для оружия', 'sl_l_3.gif:Слот для пояса', 'sl_l_4.gif:Слот для содержимого пояса', 'sl_l_4.gif:Слот для содержимого пояса', 'sl_l_4.gif:Слот для содержимого пояса', 'sl_l_6.gif:Слот для сапог', 'sl_l_7.gif:Слот для поножей', 'sl_r_4.gif:Слот для наплечников', 'sl_r_2.gif:Слот для наручей', 'sl_r_3.gif:Слот для перчаток', 'sl_l_2.gif:Слот для оружия/щита', 'sl_r_5.gif:Слот для кольца', 'sl_r_5.gif:Слот для кольца', 'sl_r_6.gif:Слот для брони', 'sl_r_6.gif:Слот для брони');
+    $sl_free = array(1 => 'sl_l_0.gif:РЎР»РѕС‚ РґР»СЏ С€Р»РµРјР°', 'sl_l_1.gif:РЎР»РѕС‚ РґР»СЏ РѕР¶РµСЂРµР»СЊСЏ', 'sl_l_2.gif:РЎР»РѕС‚ РґР»СЏ РѕСЂСѓР¶РёСЏ', 'sl_l_3.gif:РЎР»РѕС‚ РґР»СЏ РїРѕСЏСЃР°', 'sl_l_4.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РїРѕСЏСЃР°', 'sl_l_4.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РїРѕСЏСЃР°', 'sl_l_4.gif:РЎР»РѕС‚ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РїРѕСЏСЃР°', 'sl_l_6.gif:РЎР»РѕС‚ РґР»СЏ СЃР°РїРѕРі', 'sl_l_7.gif:РЎР»РѕС‚ РґР»СЏ РїРѕРЅРѕР¶РµР№', 'sl_r_4.gif:РЎР»РѕС‚ РґР»СЏ РЅР°РїР»РµС‡РЅРёРєРѕРІ', 'sl_r_2.gif:РЎР»РѕС‚ РґР»СЏ РЅР°СЂСѓС‡РµР№', 'sl_r_3.gif:РЎР»РѕС‚ РґР»СЏ РїРµСЂС‡Р°С‚РѕРє', 'sl_l_2.gif:РЎР»РѕС‚ РґР»СЏ РѕСЂСѓР¶РёСЏ/С‰РёС‚Р°', 'sl_r_5.gif:РЎР»РѕС‚ РґР»СЏ РєРѕР»СЊС†Р°', 'sl_r_5.gif:РЎР»РѕС‚ РґР»СЏ РєРѕР»СЊС†Р°', 'sl_r_6.gif:РЎР»РѕС‚ РґР»СЏ Р±СЂРѕРЅРё', 'sl_r_6.gif:РЎР»РѕС‚ РґР»СЏ Р±СЂРѕРЅРё');
 for($i=1; $i<=15; $i++){
 $idd.=$sl_id[$i].'@';
 $pr .= $sl_pr[$i].'@';
 $item .= $sl_free[$i].'@';
 $vcod.=$v_c[$i].'@';}
 
-if($sl_free[16]!='sl_r_6.gif:Слот для брони'){$pr .= $sl_pr[16]; $item .= $sl_free[16]; $idd .= $sl_id[16];$vcod.=scode();}elseif($sl_free[17]!='sl_r_6.gif:Слот для брони'){$pr .= $sl_pr[17]; $item .= $sl_free[17]; $idd .= $sl_id[17];$vcod.=scode();}else{$item .= $sl_free[17];}
+    if ($sl_free[16] != 'sl_r_6.gif:РЎР»РѕС‚ РґР»СЏ Р±СЂРѕРЅРё') {
+        $pr .= $sl_pr[16];
+        $item .= $sl_free[16];
+        $idd .= $sl_id[16];
+        $vcod .= scode();
+    } elseif ($sl_free[17] != 'sl_r_6.gif:РЎР»РѕС‚ РґР»СЏ Р±СЂРѕРЅРё') {
+        $pr .= $sl_pr[17];
+        $item .= $sl_free[17];
+        $idd .= $sl_id[17];
+        $vcod .= scode();
+    } else {
+        $item .= $sl_free[17];
+    }
 
 if($s==1){$invs=",\"$idd\",\"$vcod\"";}
 return "$item\"$invs,\"$pr";
@@ -27,7 +39,7 @@ echo'
 <HEAD>
 <LINK href="../../../css/game.css?v2" rel=STYLESHEET type=text/css>
 <SCRIPT src="../../../js/slots.js"></SCRIPT>
-<META Http-Equiv=Content-Type Content="text/html; charset=windows-1251">
+<META Http-Equiv=Content-Type Content="text/html; charset=utf-8">
 <META Http-Equiv=Cache-Control Content=No-Cache>
 <META Http-Equiv=Pragma Content=No-Cache>
 <META Http-Equiv=Expires Content=0>
@@ -36,8 +48,8 @@ echo'
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location=\'adm.php\'" value="Вернуться">
-		<input type=button class=lbut onClick="location=\'bot_edit.php\'" value="обновить">
+		<input type=button class=lbut onClick="location=\'adm.php\'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+		<input type=button class=lbut onClick="location=\'bot_edit.php\'" value="РѕР±РЅРѕРІРёС‚СЊ">
 	</td>
    </tr>
 </table>
@@ -47,24 +59,24 @@ echo '
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 <tr align=center><td>
 <select name=bot>
-<option value="none" '.(($_POST['bot']!='none' and $_POST['bot']!='')?'':'selected=selected').'>Выберите бота</option>
+<option value="none" ' . (($_POST['bot'] != 'none' and $_POST['bot'] != '') ? '' : 'selected=selected') . '>Р’С‹Р±РµСЂРёС‚Рµ Р±РѕС‚Р°</option>
 ';
 while($bot = mysqli_fetch_array($bots)){
 	echo '<option name="" value="'.$bot['id'].'" '.(($_POST['bot']==$bot['id'])?'selected=selected':'').'>'.$bot['login'].'</option>';
 }
 echo '
 </select>
-<input class=lbut type=submit value="Выбрать">
+<input class=lbut type=submit value="Р’С‹Р±СЂР°С‚СЊ">
 </td></tr>
 </table>
 </form>
 ';
-//бот выбран
+//Р±РѕС‚ РІС‹Р±СЂР°РЅ
 if($_GET['add'] and $_POST['bot']!='none'){
 $_POST['bot'] = intval($_POST['bot']);
 switch(intval($_POST['post_id'])){
-	case 1: 
-		$keyarr = array("sila","lovk","uda4a","znan","zdorov","mudr","hp","mp","kb","uvorot","tochn","sokr","stoik","kb_ignore","koeff"); //параметры которые добавляем			
+	case 1:
+        $keyarr = array("sila", "lovk", "uda4a", "znan", "zdorov", "mudr", "hp", "mp", "kb", "uvorot", "tochn", "sokr", "stoik", "kb_ignore", "koeff"); //РїР°СЂР°РјРµС‚СЂС‹ РєРѕС‚РѕСЂС‹Рµ РґРѕР±Р°РІР»СЏРµРј
 		$query='';
 		foreach($_POST as $key=>$val){
 			if(in_array($key,$keyarr)){
@@ -80,31 +92,31 @@ $bot=mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"
 $immunes = explode("|",$bot['immunes']);
 foreach($immunes as $key=>$val){
 	switch($key){
-		case 0: //огонь
+        case 0: //РѕРіРѕРЅСЊ
 			switch($val){
 				case 0: $fire[$val]=" selected=selected";break;
 				case 1: $fire[$val]=" selected=selected";break;
 			}
-		break; 
-		case 1: //лед
+		break;
+        case 1: //Р»РµРґ
 			switch($val){
 				case 0: $ice[$val]=" selected=selected";break;
 				case 1: $ice[$val]=" selected=selected";break;
 			}
-		break; 
-		case 2://вампир
+		break;
+        case 2://РІР°РјРїРёСЂ
 			switch($val){
 				case 0: $vamp[$val]=" selected=selected";break;
 				case 1: $vamp[$val]=" selected=selected";break;
 			}		
-		break; 
-		case 3: //яд
+		break;
+        case 3: //СЏРґ
 			switch($val){
 				case 0: $poison[$val]=" selected=selected";break;
 				case 1: $poison[$val]=" selected=selected";break;
 			}	
-		break; 
-		case 4: //физ. урон
+		break;
+        case 4: //С„РёР·. СѓСЂРѕРЅ
 			switch($val){
 				case 0: $phys[$val]=" selected=selected";break;
 				case 1: $phys[$val]=" selected=selected";break;
@@ -125,39 +137,39 @@ foreach($immunes as $key=>$val){
 	<font class=proce>
 	<form method="post" action="bot_edit.php?add=1">
 			<table cellpadding=0 cellspacing=1 border=0 width=100% align=center>
-			<tr><td class=nickname colspan=2 align=center><b>Статы<br /><font class=proceb style="font-size: 8;">(минус нельзя)</font></b></td>
+			<tr><td class=nickname colspan=2 align=center><b>РЎС‚Р°С‚С‹<br /><font class=proceb style="font-size: 8;">(РјРёРЅСѓСЃ РЅРµР»СЊР·СЏ)</font></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Мощь:</td><td><b><input type=text name="sila" value="'.$bot['sila'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РњРѕС‰СЊ:</td><td><b><input type=text name="sila" value="' . $bot['sila'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Проворность:</td><td><b><input type=text name="lovk" value="'.$bot['lovk'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РџСЂРѕРІРѕСЂРЅРѕСЃС‚СЊ:</td><td><b><input type=text name="lovk" value="' . $bot['lovk'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Везение:</td><td><b><input type=text name="uda4a" value="'.$bot['uda4a'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;Р’РµР·РµРЅРёРµ:</td><td><b><input type=text name="uda4a" value="' . $bot['uda4a'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Разум:</td><td><b><input type=text name="znan" value="'.$bot['znan'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;Р Р°Р·СѓРј:</td><td><b><input type=text name="znan" value="' . $bot['znan'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Здоровье:</td><td><b><input type=text name="zdorov" value="'.$bot['zdorov'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;Р—РґРѕСЂРѕРІСЊРµ:</td><td><b><input type=text name="zdorov" value="' . $bot['zdorov'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Сноровка:</td><td><b><input type=text name="mudr" value="'.$bot['mudr'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РЎРЅРѕСЂРѕРІРєР°:</td><td><b><input type=text name="mudr" value="' . $bot['mudr'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Жизнь:</td><td><b><input type=text name="hp" value="'.$bot['hp'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;Р–РёР·РЅСЊ:</td><td><b><input type=text name="hp" value="' . $bot['hp'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Мана:</td><td><b><input type=text name="mp" value="'.$bot['mp'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РњР°РЅР°:</td><td><b><input type=text name="mp" value="' . $bot['mp'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Броня:</td><td><b><input type=text name="kb" value="'.$bot['kb'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;Р‘СЂРѕРЅСЏ:</td><td><b><input type=text name="kb" value="' . $bot['kb'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Уворот:</td><td><b><input type=text name="uvorot" value="'.$bot['uvorot'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РЈРІРѕСЂРѕС‚:</td><td><b><input type=text name="uvorot" value="' . $bot['uvorot'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Точность:</td><td><b><input type=text name="tochn" value="'.$bot['tochn'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РўРѕС‡РЅРѕСЃС‚СЊ:</td><td><b><input type=text name="tochn" value="' . $bot['tochn'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Сокрушение:</td><td><b><input type=text name="sokr" value="'.$bot['sokr'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РЎРѕРєСЂСѓС€РµРЅРёРµ:</td><td><b><input type=text name="sokr" value="' . $bot['sokr'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Стойкость:</td><td><b><input type=text name="stoik" value="'.$bot['stoik'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РЎС‚РѕР№РєРѕСЃС‚СЊ:</td><td><b><input type=text name="stoik" value="' . $bot['stoik'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Пробой брони:</td><td><b><input type=text name="kb_ignore" value="'.$bot['kb_ignore'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РџСЂРѕР±РѕР№ Р±СЂРѕРЅРё:</td><td><b><input type=text name="kb_ignore" value="' . $bot['kb_ignore'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Коэффициент:</td><td><b><input type=text name="koeff" value="'.$bot['koeff'].'" class="logintextbox7"></b></td>
+			<tr><td class=nickname>&nbsp;РљРѕСЌС„С„РёС†РёРµРЅС‚:</td><td><b><input type=text name="koeff" value="' . $bot['koeff'] . '" class="logintextbox7"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td colspan=5 align=center><input type=submit value="Сохранить" class="lbut"></td></tr>
+			<tr><td colspan=5 align=center><input type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ" class="lbut"></td></tr>
 			</table>
 		<input type=hidden name="bot" value="'.$bot['id'].'" class="logintextbox7">
 		<input type=hidden name="post_id" value="1" class="logintextbox7">
@@ -171,56 +183,56 @@ foreach($immunes as $key=>$val){
 	<font class=proce>
 	<form method="post" action="bot_edit.php?add=1">
 			<table cellpadding=0 cellspacing=1 border=0 width=100% align=center>
-			<tr><td class=nickname colspan=2 align=center><b>Урон<br /><font class=proceb style="font-size: 8;">(пример: 1-5)</font></b></td>
+			<tr><td class=nickname colspan=2 align=center><b>РЈСЂРѕРЅ<br /><font class=proceb style="font-size: 8;">(РїСЂРёРјРµСЂ: 1-5)</font></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Обычный:</td><td><b><input type=text name="zdorov" value="'.$bot['damage'].'" class="logintextbox8"></b></td>
+			<tr><td class=nickname>&nbsp;РћР±С‹С‡РЅС‹Р№:</td><td><b><input type=text name="zdorov" value="' . $bot['damage'] . '" class="logintextbox8"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Огнем:</td><td><b><input type=text name="sila" value="'.$bot['fire_dmg'].'" class="logintextbox8"></b></td>
+			<tr><td class=nickname>&nbsp;РћРіРЅРµРј:</td><td><b><input type=text name="sila" value="' . $bot['fire_dmg'] . '" class="logintextbox8"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Льдом:</td><td><b><input type=text name="lovk" value="'.$bot['ice_dmg'].'" class="logintextbox8"></b></td>
+			<tr><td class=nickname>&nbsp;Р›СЊРґРѕРј:</td><td><b><input type=text name="lovk" value="' . $bot['ice_dmg'] . '" class="logintextbox8"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Ядом:</td><td><b><input type=text name="uda4a" value="'.$bot['poison_dmg'].'" class="logintextbox8"></b></td>
+			<tr><td class=nickname>&nbsp;РЇРґРѕРј:</td><td><b><input type=text name="uda4a" value="' . $bot['poison_dmg'] . '" class="logintextbox8"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Вампиризм:</td><td><b><input type=text name="znan" value="'.$bot['vamp_dmg'].'" class="logintextbox8"></b></td>
+			<tr><td class=nickname>&nbsp;Р’Р°РјРїРёСЂРёР·Рј:</td><td><b><input type=text name="znan" value="' . $bot['vamp_dmg'] . '" class="logintextbox8"></b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname colspan=2 align=center><b>Иммунки</b></td>
+			<tr><td class=nickname colspan=2 align=center><b>РРјРјСѓРЅРєРё</b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Огонь</td><td><b>
+			<tr><td class=nickname>&nbsp;РћРіРѕРЅСЊ</td><td><b>
 				<select name="fire_immune">
-					<option value="0"'.$fire[0].'>Нет</option>
-					<option value="1"'.$fire[1].'>Да</option>
+					<option value="0"' . $fire[0] . '>РќРµС‚</option>
+					<option value="1"' . $fire[1] . '>Р”Р°</option>
 				</select>
 			</b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Лед:</td><td><b>
+			<tr><td class=nickname>&nbsp;Р›РµРґ:</td><td><b>
 			  <select name="ice_immune">
-				  <option value="0"'.$ice[0].'>Нет</option>
-				  <option value="1"'.$ice[1].'>Да</option>
+				  <option value="0"' . $ice[0] . '>РќРµС‚</option>
+				  <option value="1"' . $ice[1] . '>Р”Р°</option>
 			  </select>
 			</b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Вампиризм:</td><td><b>
+			<tr><td class=nickname>&nbsp;Р’Р°РјРїРёСЂРёР·Рј:</td><td><b>
 			  <select name="vamp_immune">
-				  <option value="0"'.$vamp[0].'>Нет</option>
-				  <option value="1"'.$vamp[1].'>Да</option>
+				  <option value="0"' . $vamp[0] . '>РќРµС‚</option>
+				  <option value="1"' . $vamp[1] . '>Р”Р°</option>
 			  </select>
 			</b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Яд:</td><td><b>
+			<tr><td class=nickname>&nbsp;РЇРґ:</td><td><b>
 			  <select name="poison_immune">
-				  <option value="0"'.$poison[0].'>Нет</option>
-				  <option value="1"'.$poison[1].'>Да</option>
+				  <option value="0"' . $poison[0] . '>РќРµС‚</option>
+				  <option value="1"' . $poison[1] . '>Р”Р°</option>
 			  </select>
 			</b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td class=nickname>&nbsp;Физ.урон:</td><td><b>
+			<tr><td class=nickname>&nbsp;Р¤РёР·.СѓСЂРѕРЅ:</td><td><b>
 			  <select name="phys_immune">
-				  <option value="0"'.$phys[0].'>Нет</option>
-				  <option value="1"'.$phys[1].'>Да</option>
+				  <option value="0"' . $phys[0] . '>РќРµС‚</option>
+				  <option value="1"' . $phys[1] . '>Р”Р°</option>
 			  </select>
 			</b></td>
 			<tr><td colspan=5><div class="underline"></div></td></tr>
-			<tr><td colspan=5 align=center><input type=submit value="Сохранить" class="lbut"></td></tr>
+			<tr><td colspan=5 align=center><input type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ" class="lbut"></td></tr>
 			</table>
 		<input type=hidden name="bot" value="'.$bot['id'].'" class="logintextbox7">
 		<input type=hidden name="post_id" value="1" class="logintextbox7">

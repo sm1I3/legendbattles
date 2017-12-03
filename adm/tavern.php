@@ -7,8 +7,12 @@ include($_SERVER["DOCUMENT_ROOT"] . "/includes/functions/TavernStats.php");
 			<tr>
 				<td bgcolor="#cccccc"><table cellpadding="0" cellspacing="1" width="100%" border="0">
 					<tr>
-						<td bgcolor="#<?php echo (($_GET['type']=='1')?'FFFFFF':'F0F0F0'); ?>" width="50%"><div align="center"><a href="tavern.php?type=1"><font class=nickname><b>Алкоголь</a></div></td>
-						<td bgcolor="#<?php echo (($_GET['type']=='2')?'FFFFFF':'F0F0F0'); ?>" width="50%"><div align="center"><a href="tavern.php?type=2"><font class=nickname><b>Закуска</a></div></td>
+                        <td bgcolor="#<?php echo(($_GET['type'] == '1') ? 'FFFFFF' : 'F0F0F0'); ?>" width="50%">
+                            <div align="center"><a href="tavern.php?type=1"><font class=nickname><b>РђР»РєРѕРіРѕР»СЊ</a></div>
+                        </td>
+                        <td bgcolor="#<?php echo(($_GET['type'] == '2') ? 'FFFFFF' : 'F0F0F0'); ?>" width="50%">
+                            <div align="center"><a href="tavern.php?type=2"><font class=nickname><b>Р—Р°РєСѓСЃРєР°</a></div>
+                        </td>
 					</tr>
 					<tr>
 						<td colspan="2"><table cellpadding="1" cellspacing="1" border="0" width="100%">
@@ -17,7 +21,7 @@ include($_SERVER["DOCUMENT_ROOT"] . "/includes/functions/TavernStats.php");
 		$b = $lr % 100;
 		$s = intval(($lr % 10000) / 100);
 		$g = intval($lr / 10000);
-		return (($g)?$g.' <img src=http://img.legendbattles.ru/image/gold.png width=14 height=14 valign=middle title=Золото>  ':'').(($s)?$s.' <img src=http://img.legendbattles.ru/image/silver.png width=14 height=14 valign=middle title=Серебро> ':'').(($b)?$b.' <img src=http://img.legendbattles.ru/image/bronze.png width=14 height=14 valign=middle title=Бронза> ':'');
+        return (($g) ? $g . ' <img src=http://img.legendbattles.ru/image/gold.png width=14 height=14 valign=middle title=Р—РѕР»РѕС‚Рѕ>  ' : '') . (($s) ? $s . ' <img src=http://img.legendbattles.ru/image/silver.png width=14 height=14 valign=middle title=РЎРµСЂРµР±СЂРѕ> ' : '') . (($b) ? $b . ' <img src=http://img.legendbattles.ru/image/bronze.png width=14 height=14 valign=middle title=Р‘СЂРѕРЅР·Р°> ' : '');
 	}
 $Query = mysql_query("SELECT * FROM `tavern` WHERE `type`='".intval($_GET['type'])."'");
 while($row = mysql_fetch_assoc($Query)){
@@ -41,22 +45,22 @@ echo'							<tr>
 									<img src="//img.legendbattles.ru/image/1x1.gif" width="150" height="1" /></td>
 										<td width="100%" bgcolor="#ffffff" valign="top"><table cellpadding="0" cellspacing="0" border="0" width="100%">
 											<tr>
-												<td bgcolor="#ffffff" width="100%"><font class=nickname><input type="button" class="lbut" onclick="showEditor(' . $row['id'] . ');" value="редактор" /><b> '.$row['name'].' </b></font><br />
+												<td bgcolor="#ffffff" width="100%"><font class=nickname><input type="button" class="lbut" onclick="showEditor(' . $row['id'] . ');" value="СЂРµРґР°РєС‚РѕСЂ" /><b> ' . $row['name'] . ' </b></font><br />
 												<img src="//img.legendbattles.ru/image/1x1.gif" width="1" height="3" /></td>
 												<td><img src="//img.legendbattles.ru/image/1x1.gif" width="1" height="3&lt;/td" /></td>
 											</tr>
 											<tr>
 												<td colspan="2" width="100%"><table cellpadding="0" cellspacing="0" border="0" width="100%">
 											<tr>
-												<td bgcolor="#D8CDAF" width="50%"><div align="center"><font class=invtitle>основные</font></div></td>
+												<td bgcolor="#D8CDAF" width="50%"><div align="center"><font class=invtitle>РѕСЃРЅРѕРІРЅС‹Рµ</font></div></td>
 												<td bgcolor="#B9A05C"><img src="//img.legendbattles.ru/image/1x1.gif" width="1" height="1" /></td>
-												<td bgcolor="#D8CDAF" width="50%"><div align="center"><font class=invtitle>побочные</font></div></td>
+												<td bgcolor="#D8CDAF" width="50%"><div align="center"><font class=invtitle>РїРѕР±РѕС‡РЅС‹Рµ</font></div></td>
 											</tr>
 											<tr>
-												<td bgcolor="#FCFAF3"><font class=weaponch>&nbsp;Цена: <b>'.lr($row['price']).'</b><br />
-												&nbsp;Остаток: <b>'.$row['count'].' шт.</b><br />';
+												<td bgcolor="#FCFAF3"><font class=weaponch>&nbsp;Р¦РµРЅР°: <b>' . lr($row['price']) . '</b><br />
+												&nbsp;РћСЃС‚Р°С‚РѕРє: <b>' . $row['count'] . ' С€С‚.</b><br />';
 												if($row['LI'] > 0){
-													echo'&nbsp;Лимит: <b>'.$row['LI'].' шт.</b><br />';
+                                                    echo '&nbsp;Р›РёРјРёС‚: <b>' . $row['LI'] . ' С€С‚.</b><br />';
 												}
 												$Params = explode("@", substr($ParamFirst,0,strlen($ParamFirst)-1));
 												foreach ($Params as $value) {

@@ -61,19 +61,19 @@ while ($row = mysql_fetch_assoc($res))
         $confirm_str = '';
     else {
         if ($row['is_confirmed']!='Y')
-            $confirm_str = ' (<a href="quest_list.php?accept_confirm='.$row['quest_id'].'">Подтвердить</a>)';
+            $confirm_str = ' (<a href="quest_list.php?accept_confirm=' . $row['quest_id'] . '">РџРѕРґС‚РІРµСЂРґРёС‚СЊ</a>)';
         else
-            $confirm_str = ' (<a href="quest_list.php?decline_confirm='.$row['quest_id'].'">Отменить подтверждение</a>)';
+            $confirm_str = ' (<a href="quest_list.php?decline_confirm=' . $row['quest_id'] . '">РћС‚РјРµРЅРёС‚СЊ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ</a>)';
     }
     
     $quests.='
     <tr>
-      <td class="cms_middle" align="center">'.($row['is_confirmed']!='Y'?'<a onclick="return confirm(\'Вы уверены что хотите удалить этот квест?\');" href="quest_list.php?delete_quest_id='.$row['quest_id'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a>':'&nbsp;').'</td>
-      <td class="cms_middle" align="center"><a href="quest_edit.php?quest_id='.$row['quest_id'].'" title="Изменить"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="quest_edit.php?clone_quest_id='.$row['quest_id'].'" title="Изменить"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center">' . ($row['is_confirmed'] != 'Y' ? '<a onclick="return confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ РєРІРµСЃС‚?\');" href="quest_list.php?delete_quest_id=' . $row['quest_id'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a>' : '&nbsp;') . '</td>
+      <td class="cms_middle" align="center"><a href="quest_edit.php?quest_id=' . $row['quest_id'] . '" title="РР·РјРµРЅРёС‚СЊ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="quest_edit.php?clone_quest_id=' . $row['quest_id'] . '" title="РР·РјРµРЅРёС‚СЊ"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['quest_id'].'</td>
       <td align="center" class="cms_middle"><img src="images/cms_icons/'.($row['is_confirmed']=='Y'?'cms_checked.gif':'cms_checkbox.gif').'" />'.$confirm_str.'</td>
-      <td align="left" class="cms_middle"><a href="quest_edit.php?quest_id='.$row['quest_id'].'" title="Изменить">'._htext($arr[0][0]).'</a></td>
+      <td align="left" class="cms_middle"><a href="quest_edit.php?quest_id=' . $row['quest_id'] . '" title="РР·РјРµРЅРёС‚СЊ">' . _htext($arr[0][0]) . '</a></td>
       <td align="left" class="cms_middle">'._htext($arr[0][5]).'</td>
     </tr>
     ';
@@ -82,24 +82,24 @@ while ($row = mysql_fetch_assoc($res))
 $_SESSION['cp_pages']['quest_list'] = $_SERVER['REQUEST_URI'];
 
 ?>
-<h3>Список квестов</h3>
+    <h3>РЎРїРёСЃРѕРє РєРІРµСЃС‚РѕРІ</h3>
 
 <form name="filter" id="filter" action="" method="get">
 <input type="hidden" name="sort_by" value="<?=(isset($_GET['sort_by'])?$_GET['sort_by']:'')?>" />
 <input type="hidden" name="sort_order" value="<?=(isset($_GET['sort_order'])?$_GET['sort_order']:'')?>" />
-<div id="filter"><h4>Фильтр: </h4>
+    <div id="filter"><h4>Р¤РёР»СЊС‚СЂ: </h4>
 <div id="cms_filter"> 
 <table border="0" cellspacing="3" cellpadding="0">
   <tr>
-    <td>Подтверждение:</td>
+      <td>РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ:</td>
     <td>
-        <?=createSelectFromArray('is_confirmed', array(''=>'Все', 'Y'=>'Только подтверждённые', 'N'=>'Только неподтверждённые'), (isset($_GET['is_confirmed'])?$_GET['is_confirmed']:''), '', false)?>
+        <?= createSelectFromArray('is_confirmed', array('' => 'Р’СЃРµ', 'Y' => 'РўРѕР»СЊРєРѕ РїРѕРґС‚РІРµСЂР¶РґС‘РЅРЅС‹Рµ', 'N' => 'РўРѕР»СЊРєРѕ РЅРµРїРѕРґС‚РІРµСЂР¶РґС‘РЅРЅС‹Рµ'), (isset($_GET['is_confirmed']) ? $_GET['is_confirmed'] : ''), '', false) ?>
     </td>
   </tr>
   <tr>
-    <td>Группа:</td>
+      <td>Р“СЂСѓРїРїР°:</td>
     <td>
-        <?=createSelectFromArray('quest_group_id', $quest_groups, (isset($_GET['quest_group_id'])?$_GET['quest_group_id']:''), '', 'Все')?>
+        <?= createSelectFromArray('quest_group_id', $quest_groups, (isset($_GET['quest_group_id']) ? $_GET['quest_group_id'] : ''), '', 'Р’СЃРµ') ?>
     </td>
   </tr>
   <tr>
@@ -120,17 +120,17 @@ function clearFilter()
 <div id="results">
     <div class="cms_ind">
     <br />
-    Квесты: <br />
+        РљРІРµСЃС‚С‹: <br/>
      <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
         <tr >
-          <td class="cms_cap2 normal"> Удалить </td>
-          <td class="cms_cap2 normal"> Изменить </td>
-          <td class="cms_cap2 normal"> Клонировать </td>
+            <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+            <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
+            <td class="cms_cap2 normal"> РљР»РѕРЅРёСЂРѕРІР°С‚СЊ</td>
 
-          <td class="cms_cap2">ID Квеста</td>
-          <td class="cms_cap2">Подтвержден</td>
-          <td class="cms_cap2">Название квеста</td>
-          <td class="cms_cap2">Комментарий</td>
+            <td class="cms_cap2">ID РљРІРµСЃС‚Р°</td>
+            <td class="cms_cap2">РџРѕРґС‚РІРµСЂР¶РґРµРЅ</td>
+            <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ РєРІРµСЃС‚Р°</td>
+            <td class="cms_cap2">РљРѕРјРјРµРЅС‚Р°СЂРёР№</td>
         </tr>
         
         <?=$quests?>
@@ -139,7 +139,8 @@ function clearFilter()
         <br />
      </div>
 </div>
-<img src="images/cms_icons/cms_add.gif" alt="Добавить квест" /><a href="quest_edit.php" title="Добавить квест">Добавить квест</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ РєРІРµСЃС‚"/><a href="quest_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ РєРІРµСЃС‚">Р”РѕР±Р°РІРёС‚СЊ
+    РєРІРµСЃС‚</a> &nbsp;<br/>
 <br />
 
 <? require('kernel/after.php'); ?>

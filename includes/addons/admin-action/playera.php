@@ -14,7 +14,7 @@ function add_msg(text)
     var myRe = /script/ig;       
     var pr = /^\s(\%\<[^\>]{2,20}\>\s?)+$/;
     var s = "";
-    text = text.replace(myRe,'скрипт');
+    text = text.replace(myRe, 'СЃРєСЂРёРїС‚');
 
     var spl = text.split("<BR>");
     for(var k=0; k<spl.length; k++)
@@ -71,7 +71,7 @@ function add_msg(text)
                             msgp[0] = msgp[0].replace('<font class=chattime>','<font class=yochattime>');
                         }
 
-                        msgp[2] = '&nbsp;для'+msgp[2];
+                        msgp[2] = '&nbsp;РґР»СЏ' + msgp[2];
                     }
                 }
                 txt = msgp.join('');
@@ -127,7 +127,7 @@ echo'
    <tr>
     <td align=center>
 		<form method=post>
-			Введите ник: <input type=text class=logintextbox6 name=perslogin> <input type=submit class=lbut value="Ok">
+			Р’РІРµРґРёС‚Рµ РЅРёРє: <input type=text class=logintextbox6 name=perslogin> <input type=submit class=lbut value="Ok">
 		</form>
 	</td>
    </tr>
@@ -158,55 +158,98 @@ if($_POST['perslogin']){
 
 ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr><td align=center><input type="button" class="lbut" onClick="location='../../../main.php'" value="Вернуться"></td></tr>
+    <tr>
+        <td align=center><input type="button" class="lbut" onClick="location='../../../main.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        </td>
+    </tr>
   <tr>
     <td align=center>
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?=$_POST['perslogin']?>&id_adm=1'" value="получил уровень" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?=$_POST['perslogin']?>&id_adm=2'" value="получил опыт" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?=$_POST['perslogin']?>&id_adm=3'" value="изменения в балансе DLR" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=4'" value="изменения в балансе BAKS" />
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?= $_POST['perslogin'] ?>&id_adm=1'"
+               value="РїРѕР»СѓС‡РёР» СѓСЂРѕРІРµРЅСЊ"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?= $_POST['perslogin'] ?>&id_adm=2'"
+               value="РїРѕР»СѓС‡РёР» РѕРїС‹С‚"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?= $_POST['perslogin'] ?>&id_adm=3'"
+               value="РёР·РјРµРЅРµРЅРёСЏ РІ Р±Р°Р»Р°РЅСЃРµ DLR"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=4'"
+               value="РёР·РјРµРЅРµРЅРёСЏ РІ Р±Р°Р»Р°РЅСЃРµ BAKS"/>
 	</td>
 	</tr>
 	  <tr>
     <td align=center>
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=10'" value="покупка в ДЦ" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=11'" value="продажа в ДЦ" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=12'" value="покупка в магазине" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=13'" value="продажа в магазин" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=14'" value="аренда в ДЦ" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=15'" value="рассрочка в ДЦ" />
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=10'"
+               value="РїРѕРєСѓРїРєР° РІ Р”Р¦"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=11'"
+               value="РїСЂРѕРґР°Р¶Р° РІ Р”Р¦"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=12'"
+               value="РїРѕРєСѓРїРєР° РІ РјР°РіР°Р·РёРЅРµ"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=13'"
+               value="РїСЂРѕРґР°Р¶Р° РІ РјР°РіР°Р·РёРЅ"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=14'"
+               value="Р°СЂРµРЅРґР° РІ Р”Р¦"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=15'"
+               value="СЂР°СЃСЃСЂРѕС‡РєР° РІ Р”Р¦"/>
 	</td>
 	</tr>
 	  <tr>
-    <td align=center>		
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=16'" value="перевод другим персонажам (LR)" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=17'" value="перевод другим персонажам (DLR)" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=20'" value="покупка у игрока" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=21'" value="продажа игроку" />
+    <td align=center>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=16'"
+               value="РїРµСЂРµРІРѕРґ РґСЂСѓРіРёРј РїРµСЂСЃРѕРЅР°Р¶Р°Рј (LR)"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=17'"
+               value="РїРµСЂРµРІРѕРґ РґСЂСѓРіРёРј РїРµСЂСЃРѕРЅР°Р¶Р°Рј (DLR)"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=20'"
+               value="РїРѕРєСѓРїРєР° Сѓ РёРіСЂРѕРєР°"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=21'"
+               value="РїСЂРѕРґР°Р¶Р° РёРіСЂРѕРєСѓ"/>
 	</td>	
 	</tr>
 	 <tr>
     <td align=center>
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=22'" value="бонус по рефералке (LR)" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=23'" value="лицензии" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=24'" value="рынок" />
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=22'"
+               value="Р±РѕРЅСѓСЃ РїРѕ СЂРµС„РµСЂР°Р»РєРµ (LR)"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=23'"
+               value="Р»РёС†РµРЅР·РёРё"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=24'"
+               value="СЂС‹РЅРѕРє"/>
 	</td>	
 	</tr>
 	<tr>
     <td align=center>
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&bank=1'" value="БАНК И ДЦ" />
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&bank=1'"
+               value="Р‘РђРќРљ Р Р”Р¦"/>
 	</td>	
 	</tr>
 	 <tr>
     <td align=center>
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&id_adm=0'" value="ВСЕ СРАЗУ" />
-		<input type="button" class="lbut" onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin'];?>&chat=1'" value="ЧАТ" />
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&id_adm=0'"
+               value="Р’РЎР• РЎР РђР—РЈ"/>
+        <input type="button" class="lbut"
+               onclick="location='?useaction=admin-action&addid=playera&perslogin=<?php echo $_POST['perslogin']; ?>&chat=1'"
+               value="Р§РђРў"/>
 	</td>	
 	</tr>
 <tr>
 </table>	
 <?php
-	echo '<div align=center>Персонаж <b>'.$_POST['perslogin'].'</b></div>';
+    echo '<div align=center>РџРµСЂСЃРѕРЅР°Р¶ <b>' . $_POST['perslogin'] . '</b></div>';
 	$filter = '';
 	if($_GET['id_adm']!='' and $_GET['id_adm']!='0'){
 		$filter = 'AND `type` LIKE \'%@'.$_GET['id_adm'].'\' ';
@@ -222,29 +265,29 @@ if($_POST['perslogin']){
 			echo'<tr><td colspan=3>'; 
 			for ($i=1;$i<=floor($msg_count['count']/$msg_on_page);$i++) echo '<a href="?useaction=admin-action&addid=playera&perslogin='.$_GET['perslogin'].'&chat=1&page='.$i.'">['.$i.']</a> ';
 			echo'</td></table>';
-		//}else{echo'<tr><td colspan=3 align=center>просмотр чата игроков клана LIFE - недоступен</td></tr></table>';}
+        //}else{echo'<tr><td colspan=3 align=center>РїСЂРѕСЃРјРѕС‚СЂ С‡Р°С‚Р° РёРіСЂРѕРєРѕРІ РєР»Р°РЅР° LIFE - РЅРµРґРѕСЃС‚СѓРїРµРЅ</td></tr></table>';}
 	}elseif($_GET['bank']==1 and $pl['id']){
 			$bankid= mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `bank` WHERE `pl_id`='".$pl['id']."' LIMIT 1;"));
 			$vklad = $player['vklad']!=0 ? explode("|",$pl['vklad']) : $vklad[0]="";
-			$vklad[0]!=""  ? 
-			$message="Вложеные деньги: ".$vklad[1]." LR.<br>Деньги к получению: ".$vklad[2]." LR.<br>Дата получения: ".date("d.m.yг.",$vklad[0])
-			: $message="Игрок не имеет вкладов в банке";
+			$vklad[0]!=""  ?
+                $message = "Р’Р»РѕР¶РµРЅС‹Рµ РґРµРЅСЊРіРё: " . $vklad[1] . " LR.<br>Р”РµРЅСЊРіРё Рє РїРѕР»СѓС‡РµРЅРёСЋ: " . $vklad[2] . " LR.<br>Р”Р°С‚Р° РїРѕР»СѓС‡РµРЅРёСЏ: " . date("d.m.yРі.", $vklad[0])
+                : $message = "РРіСЂРѕРє РЅРµ РёРјРµРµС‚ РІРєР»Р°РґРѕРІ РІ Р±Р°РЅРєРµ";
 			
 			$vklad_dd = $player['vklad_bank']!=0 ? explode("|",$pl['vklad_bank']) : $vklad_dd[0]="";
-			$vklad_dd[0]!=""  ? 
-			$message2="Вложеные деньги: ".$vklad_dd[1]." DLR.<br>Деньги к получению: ".$vklad_dd[2]." DLR.<br>Дата получения: ".date("d.m.yг.",$vklad_dd[0])
-			: $message2="Игрок не имеет вкладов в ДЦ";
+			$vklad_dd[0]!=""  ?
+                $message2 = "Р’Р»РѕР¶РµРЅС‹Рµ РґРµРЅСЊРіРё: " . $vklad_dd[1] . " DLR.<br>Р”РµРЅСЊРіРё Рє РїРѕР»СѓС‡РµРЅРёСЋ: " . $vklad_dd[2] . " DLR.<br>Р”Р°С‚Р° РїРѕР»СѓС‡РµРЅРёСЏ: " . date("d.m.yРі.", $vklad_dd[0])
+                : $message2 = "РРіСЂРѕРє РЅРµ РёРјРµРµС‚ РІРєР»Р°РґРѕРІ РІ Р”Р¦";
 			
 			  echo'<table width="60%" border="1" cellspacing="1" cellpadding="0" align=center>
 			  <tr>
-				<td align=center>Счет в банке: <b>'.($bankid['num']?$bankid['num']:'нет').'</b></td>
-				<td align=center>Баланс ЛР (на счету): <b>'.($bankid['lr']>=0?$bankid['lr']:'0').'</b></td>
-				<td align=center>Баланс ДЛР (на счету): <b>'.($bankid['dlr']>=0?$bankid['dlr']:'0').'</b></td>
+				<td align=center>РЎС‡РµС‚ РІ Р±Р°РЅРєРµ: <b>' . ($bankid['num'] ? $bankid['num'] : 'РЅРµС‚') . '</b></td>
+				<td align=center>Р‘Р°Р»Р°РЅСЃ Р›Р  (РЅР° СЃС‡РµС‚Сѓ): <b>' . ($bankid['lr'] >= 0 ? $bankid['lr'] : '0') . '</b></td>
+				<td align=center>Р‘Р°Р»Р°РЅСЃ Р”Р›Р  (РЅР° СЃС‡РµС‚Сѓ): <b>' . ($bankid['dlr'] >= 0 ? $bankid['dlr'] : '0') . '</b></td>
 				<td align=center><b>'.$message.'</b></td>
-				<td align=center>Сейф в банке: <b>'.($pl['seif']>time()?' до '. date("d.m.yг.",$pl['seif']) :' сейф не арендован').'</b></td>
+				<td align=center>РЎРµР№С„ РІ Р±Р°РЅРєРµ: <b>' . ($pl['seif'] > time() ? ' РґРѕ ' . date("d.m.yРі.", $pl['seif']) : ' СЃРµР№С„ РЅРµ Р°СЂРµРЅРґРѕРІР°РЅ') . '</b></td>
 			   </tr>
-				<tr><td align=center colspan=5>Вклад в ДЦ:<br><b>'.$message2.'</b></td></tr>			   
-			   <tr><td align=center colspan=5>Вещи в банке:</td></tr>
+				<tr><td align=center colspan=5>Р’РєР»Р°Рґ РІ Р”Р¦:<br><b>' . $message2 . '</b></td></tr>			   
+			   <tr><td align=center colspan=5>Р’РµС‰Рё РІ Р±Р°РЅРєРµ:</td></tr>
 			   ';
 			  $ITEMS = mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,`items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='".$pl['id']."' AND `invent`.`used`='0' AND `invent`.`clan`='0' AND `invent`.`bank`='1';");
 			  if(mysqli_num_rows($ITEMS)>0){
@@ -263,7 +306,7 @@ if($_POST['perslogin']){
 							echo'
 							<tr align=center>
 							<td bgcolor=#f9f9f9 align=left width=50%>
-							<font class='.$art.'  style="margin: 0px 0px 0px 20px;"><b>'.$ITEM['name'].'</b>&nbsp;[&nbsp;'.$ITEM['level'].'&nbsp;]<a href="http://www.roadofchaos.ru/iteminfo.php?'.$ITEM['name'].'" target=_blank><img src=http://roadofchaos.ru/image/chat/info.gif width=11 height=12 border=0></a></font><font class=weaponch>'.(($count>1)?' <font color="gray">(<b>'.$count.' шт.</b>)</font>':'').'
+							<font class=' . $art . '  style="margin: 0px 0px 0px 20px;"><b>' . $ITEM['name'] . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="http://www.roadofchaos.ru/iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=http://roadofchaos.ru/image/chat/info.gif width=11 height=12 border=0></a></font><font class=weaponch>' . (($count > 1) ? ' <font color="gray">(<b>' . $count . ' С€С‚.</b>)</font>' : '') . '
 							</td>
 							</tr>
 							';
@@ -271,7 +314,7 @@ if($_POST['perslogin']){
 					}
 				
 				}else{
-					echo '<tr align=center><td class=nickname align=center><b>В банке игрока вещей нет</b></td></tr>';
+                    echo '<tr align=center><td class=nickname align=center><b>Р’ Р±Р°РЅРєРµ РёРіСЂРѕРєР° РІРµС‰РµР№ РЅРµС‚</b></td></tr>';
 				}
 				echo '</table></table>';
 			  }
@@ -286,11 +329,11 @@ if($_POST['perslogin']){
 		$zapros = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user_actions` WHERE `pl_login`='".$_POST['perslogin']."' ".$filter." ORDER by `id` DESC;");
 			  echo'<table width="60%" border="1" cellspacing="1" cellpadding="0" align=center>
 			  <tr>
-				<td align=center><b>дата</b></td>
-				<td align=center><b>ид игрока</b></td>
-				<td align=center><b>логин игрока</b></td>
-				<td align=center><b>ип игрока</b></td>
-				<td align=center><b>лог</b></td>
+				<td align=center><b>РґР°С‚Р°</b></td>
+				<td align=center><b>РёРґ РёРіСЂРѕРєР°</b></td>
+				<td align=center><b>Р»РѕРіРёРЅ РёРіСЂРѕРєР°</b></td>
+				<td align=center><b>РёРї РёРіСЂРѕРєР°</b></td>
+				<td align=center><b>Р»РѕРі</b></td>
 			   </tr>';
 		while($row = mysqli_fetch_assoc($zapros)){
 			echo'

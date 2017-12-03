@@ -66,25 +66,25 @@ if ((string)$category_id == '') {
 }
 
 ?>
-<h3><?=($category_id == ''?'Добавить категорию':'Изменить категорию')?></h3>
+    <h3><?= ($category_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ' : 'РР·РјРµРЅРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ') ?></h3>
 
-<script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="windows-1251"></script> 
-<script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="windows-1251"></script>     
-<script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="windows-1251"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar_stripped.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/lang/calendar-ru_win_.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jscript/calendar/calendar-setup_stripped.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" media="all" href="jscript/calendar/calendar-system.css" title="system" />
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>ID Категории: &nbsp;  </td>
+    <td><span class="cms_star">*</span>ID РљР°С‚РµРіРѕСЂРёРё: &nbsp;</td>
   <td><input name="category_id" type="text" class="cms_fieldstyle1" value="<?=$category['category_id']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td><span class="cms_star">*</span>Название категории: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё: &nbsp;</td>
   <td><input name="category_name" type="text" class="cms_fieldstyle1" value="<?=$category['category_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Начало действия: &nbsp;  </td>
+    <td>РќР°С‡Р°Р»Рѕ РґРµР№СЃС‚РІРёСЏ: &nbsp;</td>
   <td>
     <input name="category_start" id="date_from" type="text" class="cms_fieldstyle1" value="<?=$category['category_start']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kl1jhjhdj12d1jk2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -116,7 +116,7 @@ if ((string)$category_id == '') {
   </td>
 </tr>
 <tr>
-  <td>Окончание действия: &nbsp;  </td>
+    <td>РћРєРѕРЅС‡Р°РЅРёРµ РґРµР№СЃС‚РІРёСЏ: &nbsp;</td>
   <td>
     <input name="category_end" id="date_to" type="text" class="cms_fieldstyle1" value="<?=$category['category_end']?>" size="22" maxlength="255" />
     <img src="images/cms_icons/cms_calendar.gif" align="absmiddle" id="kjkjdnakjdnakwnjkd2" title="Set Date" alt="Set Date" style="cursor: pointer;" border="0">
@@ -150,8 +150,9 @@ if ((string)$category_id == '') {
 </table>
 
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='present_category_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='present_category_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

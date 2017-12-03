@@ -12,7 +12,7 @@ function AddStat(st_class)
 		document.savestat[st_class_fin].value = ns;
 		fr--;
 		document.savestat.freestats.value = fr;
-		document.all("frdiv").innerHTML = 'Повышения: '+fr;
+        document.all("frdiv").innerHTML = 'РџРѕРІС‹С€РµРЅРёСЏ: ' + fr;
 	}
 }
 
@@ -33,7 +33,7 @@ function RemoveStat(st_class)
 			document.savestat[st_class_fin].value = ns;
 			fr++;
 			document.savestat.freestats.value = fr;
-			document.all("frdiv").innerHTML = 'Повышения: '+fr;
+            document.all("frdiv").innerHTML = 'РџРѕРІС‹С€РµРЅРёСЏ: ' + fr;
 		}
 	}
 }
@@ -53,7 +53,7 @@ function AddStats(StatsID)
 		d.getElementById("st"+StatsID).innerHTML = (curValue + curAdd)+"<sup>(<font color=#009D29>+"+curAdd+"</font>)</sup>";
 		FrObj.value = fr;
 		CAObj.value = curAdd;
-		d.getElementById("frdiv").innerHTML = 'Повышения: '+fr;
+        d.getElementById("frdiv").innerHTML = 'РџРѕРІС‹С€РµРЅРёСЏ: ' + fr;
 	}
 }
 
@@ -70,7 +70,7 @@ function RemStats(StatsID)
 		d.getElementById("st"+StatsID).innerHTML = (curValue + curAdd)+(curAdd > 0 ? "<sup>(<font color=#009D29>+"+curAdd+"</font>)</sup>" : "");	
 		FrObj.value = fr;
 		CAObj.value = curAdd;
-		d.getElementById("frdiv").innerHTML = 'Повышения: '+fr;
+        d.getElementById("frdiv").innerHTML = 'РџРѕРІС‹С€РµРЅРёСЏ: ' + fr;
 	}
 }
 

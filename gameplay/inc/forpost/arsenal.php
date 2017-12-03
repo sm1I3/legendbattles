@@ -1,6 +1,6 @@
 
 <?php
-/* СОРТИРОВКА */
+/* РЎРћР РўРР РћР’РљРђ */
 if(!empty($_POST['min_lev']) or !empty($_POST['max_lev']) or !empty($_POST['max_nv']) or !empty($_POST['sorttype'])){
 	$_SESSION['min_lev'] = intval($_POST['min_lev']);
 	$_SESSION['max_lev'] = intval($_POST['max_lev']);
@@ -22,7 +22,7 @@ if(empty($_SESSION['max_lev'])){
 if(empty($_SESSION['sorttype'])){
 	$_SESSION['sorttype'] = 'level';
 }
-/* КАТЕГОРИИ */
+/* РљРђРўР•Р“РћР РР */
 if(isset($_GET['weapon_category'])){
 	$_SESSION['mark']=$_GET['weapon_category'];
 }
@@ -45,47 +45,69 @@ echo "<SCRIPT>MessBoxDiv('".$msg."',0,0,0,0);</SCRIPT>";
 		<img src=/img/image/gameplay/sh_stran/5.jpg width=760 height=255 border=0 align=center>
 		<div>
 			<form method=post>
-				<b>Фильтр: </b>уровень от 
+                <b>Р¤РёР»СЊС‚СЂ: </b>СѓСЂРѕРІРµРЅСЊ РѕС‚
 				<select name=min_lev class=zayavki>
 <?for($i=0;$i<=33;$i++){?>
 					<option value=<?=$i.(($_SESSION['min_lev']==$i)?' SELECTED':'')?>><?=$i?></option>
 <?}?>
-				</select> до 
+                </select> РґРѕ
 				<select name=max_lev class=zayavki>
 <?for($i=0;$i<=33;$i++){?>
 					<option value=<?=$i.(($_SESSION['max_lev']==$i)?' SELECTED':'')?>><?=$i?></option>
 <?}?>
-				</select> не дороже 
-				<input type=text size=2 name=max_nv value="<?=(($_SESSION['max_nv']=='0')?'':$_SESSION['max_nv'])?>"><b></b> сортировка по 
+                </select> РЅРµ РґРѕСЂРѕР¶Рµ
+                <input type=text size=2 name=max_nv
+                       value="<?= (($_SESSION['max_nv'] == '0') ? '' : $_SESSION['max_nv']) ?>"><b></b> СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ
 				<select name=sorttype class=zayavki>
-					<option value=1<?=(($_SESSION['sorttype']=='level')?' SELECTED':'')?>>уровню</option>
-					<option value=0<?=(($_SESSION['sorttype']=='price')?' SELECTED':'')?>>стоимости</option>
-				</select> 
-				<input type=submit value="Ок">
+                    <option value=1<?= (($_SESSION['sorttype'] == 'level') ? ' SELECTED' : '') ?>>СѓСЂРѕРІРЅСЋ</option>
+                    <option value=0<?= (($_SESSION['sorttype'] == 'price') ? ' SELECTED' : '') ?>>СЃС‚РѕРёРјРѕСЃС‚Рё</option>
+				</select>
+                <input type=submit value="РћРє">
 			</form>
 		</div>
 		<div>
-			<input type=image src=/img/image/gameplay/shop/knife.gif onClick="location='?weapon_category=w4'" title="Ножи" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/sword.gif onClick="location='?weapon_category=w1'" title="Мечи" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/axe.gif onClick="location='?weapon_category=w2'" title="Топоры" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/crushing.gif onClick="location='?weapon_category=w3'" title="Дробящие" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/spears_helbeards.gif onClick="location='?weapon_category=w6'" title="Алебарды и двуручное" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/missle.gif onClick="location='?weapon_category=w5'" title="Копья и метательное" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/wand.gif onClick="location='?weapon_category=w7'" title="Посохи" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/shield.gif onClick="location='?weapon_category=w20'" title="Щиты" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/helm.gif onClick="location='?weapon_category=w23'" title="Шлемы" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/belt.gif onClick="location='?weapon_category=w26'" title="Пояса" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/armor_light.gif onClick="location='?weapon_category=w18'" title="Кольчуги" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/armor_hard.gif onClick="location='?weapon_category=w19'" title="Доспехи" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/gloves.gif onClick="location='?weapon_category=w24'" title="Перчатки" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/armlet.gif onClick="location='?weapon_category=w80'" title="Наручи" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/boots.gif onClick="location='?weapon_category=w21'" title="Сапоги" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/amulet.gif onClick="location='?weapon_category=w25'" title="Кулоны" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/ring.gif onClick="location='?weapon_category=w22'" title="Кольца" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/spaudler.gif onClick="location='?weapon_category=w28'" title="Наплечники" width=40 height=50>
-			<input type=image src=/img/image/gameplay/shop/knee_guard.gif onClick="location='?weapon_category=w90'" title="Поножи" width=40 height=50>
-			<input type=image src=/img/image/gameplay/invent/cat/21.gif onClick="location='?weapon_category=w999'" title="Эликсиры" width=40 height=50>
-            <input type=image src=/img/image/gameplay/invent/6.gif onClick="location='?weapon_category=w0'" title="Зелья" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/knife.gif onClick="location='?weapon_category=w4'"
+                   title="РќРѕР¶Рё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/sword.gif onClick="location='?weapon_category=w1'"
+                   title="РњРµС‡Рё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/axe.gif onClick="location='?weapon_category=w2'"
+                   title="РўРѕРїРѕСЂС‹" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/crushing.gif onClick="location='?weapon_category=w3'"
+                   title="Р”СЂРѕР±СЏС‰РёРµ" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/spears_helbeards.gif onClick="location='?weapon_category=w6'"
+                   title="РђР»РµР±Р°СЂРґС‹ Рё РґРІСѓСЂСѓС‡РЅРѕРµ" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/missle.gif onClick="location='?weapon_category=w5'"
+                   title="РљРѕРїСЊСЏ Рё РјРµС‚Р°С‚РµР»СЊРЅРѕРµ" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/wand.gif onClick="location='?weapon_category=w7'"
+                   title="РџРѕСЃРѕС…Рё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/shield.gif onClick="location='?weapon_category=w20'"
+                   title="Р©РёС‚С‹" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/helm.gif onClick="location='?weapon_category=w23'"
+                   title="РЁР»РµРјС‹" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/belt.gif onClick="location='?weapon_category=w26'"
+                   title="РџРѕСЏСЃР°" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/armor_light.gif onClick="location='?weapon_category=w18'"
+                   title="РљРѕР»СЊС‡СѓРіРё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/armor_hard.gif onClick="location='?weapon_category=w19'"
+                   title="Р”РѕСЃРїРµС…Рё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/gloves.gif onClick="location='?weapon_category=w24'"
+                   title="РџРµСЂС‡Р°С‚РєРё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/armlet.gif onClick="location='?weapon_category=w80'"
+                   title="РќР°СЂСѓС‡Рё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/boots.gif onClick="location='?weapon_category=w21'"
+                   title="РЎР°РїРѕРіРё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/amulet.gif onClick="location='?weapon_category=w25'"
+                   title="РљСѓР»РѕРЅС‹" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/ring.gif onClick="location='?weapon_category=w22'"
+                   title="РљРѕР»СЊС†Р°" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/spaudler.gif onClick="location='?weapon_category=w28'"
+                   title="РќР°РїР»РµС‡РЅРёРєРё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/shop/knee_guard.gif onClick="location='?weapon_category=w90'"
+                   title="РџРѕРЅРѕР¶Рё" width=40 height=50>
+            <input type=image src=/img/image/gameplay/invent/cat/21.gif onClick="location='?weapon_category=w999'"
+                   title="Р­Р»РёРєСЃРёСЂС‹" width=40 height=50>
+            <input type=image src=/img/image/gameplay/invent/6.gif onClick="location='?weapon_category=w0'"
+                   title="Р—РµР»СЊСЏ" width=40 height=50>
 		</div>
 	</div>
 </div>
@@ -98,7 +120,11 @@ if($num>0){
 	echo '</table></td></tr></table>'; echo show_shop(0,$ITEMS,$mass);
 }
 else{?>
-<table cellpadding=5 cellspacing=1 border=0 width=100%><tr><tr><td bgcolor=#F5F5F5 align=center colspan=2><font class=inv><b>Нет товаров в данной категории.</b></font></td></tr>
+    <table cellpadding=5 cellspacing=1 border=0 width=100%>
+    <tr>
+    <tr>
+        <td bgcolor=#F5F5F5 align=center colspan=2><font class=inv><b>РќРµС‚ С‚РѕРІР°СЂРѕРІ РІ РґР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёРё.</b></font></td>
+    </tr>
 <? }?>
 </table>
 
@@ -107,9 +133,15 @@ function blocks($bl){
 	if($bl!="") {
 	switch($bl)
        	{
-            case 40: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 1-ой точки</font></b><br>"; break;
-            case 70: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 2-х точек</font></b><br>"; break;
-	    	case 90: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 3-х точек</font></b><br>"; break;
+        case 40:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 1-РѕР№ С‚РѕС‡РєРё</font></b><br>";
+            break;
+        case 70:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 2-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
+        case 90:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 3-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
     	}}}
 ?>
 </td></tr>

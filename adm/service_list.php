@@ -58,42 +58,44 @@ while ($row = mysql_fetch_assoc($res))
 mysql_free_result($res);
 
 ?>
-<h3>Список платных сервисов</h3>
+    <h3>РЎРїРёСЃРѕРє РїР»Р°С‚РЅС‹С… СЃРµСЂРІРёСЃРѕРІ</h3>
 <div class="cms_ind">
     <br />
-    Сервисы: <br />
+    РЎРµСЂРІРёСЃС‹: <br/>
     <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-        <td class="cms_cap2 normal"> Удалить </td>
-        <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
-        <td class="cms_cap2">ID Сервиса</td>
+        <td class="cms_cap2">ID РЎРµСЂРІРёСЃР°</td>
         <td class="cms_cap2">&nbsp;</td>
-        <td class="cms_cap2">Класс сервиса</td>
-        <td class="cms_cap2">Название сервиса</td>
+        <td class="cms_cap2">РљР»Р°СЃСЃ СЃРµСЂРІРёСЃР°</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ СЃРµСЂРІРёСЃР°</td>
     </tr>
 
     <?=$service_types?>
 
     </table>
-    <img src="images/cms_icons/cms_add.gif" alt="Добавить сервис" /><a href="service_type_edit.php" title="Добавить сервис">Добавить сервис</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ"/><a href="service_type_edit.php"
+                                                                      title="Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ">Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ</a> &nbsp;<br/>
     <br />
-    Продолжительность и цены: <br />
+    РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ Рё С†РµРЅС‹: <br/>
     <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-        <td class="cms_cap2 normal"> Удалить </td>
-        <td class="cms_cap2 normal"> Изменить </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РР·РјРµРЅРёС‚СЊ</td>
 
         <td class="cms_cap2">ID</td>
-        <td class="cms_cap2">Сервис</td>
-        <td class="cms_cap2">Количество дней</td>
-        <td class="cms_cap2">Цена DNV</td>
+        <td class="cms_cap2">РЎРµСЂРІРёСЃ</td>
+        <td class="cms_cap2">РљРѕР»РёС‡РµСЃС‚РІРѕ РґРЅРµР№</td>
+        <td class="cms_cap2">Р¦РµРЅР° DNV</td>
     </tr>
 
     <?=$services?>
 
     </table>
-    <img src="images/cms_icons/cms_add.gif" alt="Добавить сервис" /><a href="service_edit.php" title="Добавить сервис">Добавить сервис</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ"/><a href="service_edit.php" title="Р”РѕР±Р°РІРёС‚СЊ СЃРµСЂРІРёСЃ">Р”РѕР±Р°РІРёС‚СЊ
+        СЃРµСЂРІРёСЃ</a> &nbsp;<br/>
     <br />
 </div>
 <br />

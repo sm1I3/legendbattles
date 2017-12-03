@@ -11,11 +11,11 @@
 				<script>
 					showELE = function(e){
 						parent.$("#main_top").contents().find(".options").show(1);
-						parent.$("#main_top").contents().find("#optionsdiv").html('<input type=button class=lbut onClick="hideELE(\'options\');" value="Скрыть Доп.Настройки">');
+                        parent.$("#main_top").contents().find("#optionsdiv").html('<input type=button class=lbut onClick="hideELE(\'options\');" value="РЎРєСЂС‹С‚СЊ Р”РѕРї.РќР°СЃС‚СЂРѕР№РєРё">');
 					}
 					hideELE = function(e){
 						parent.$("#main_top").contents().find(".options").hide(1);
-						parent.$("#main_top").contents().find("#optionsdiv").html('<input type=button class=lbut onClick="showELE(\'options\');" value="Доп.Настройки">');
+                        parent.$("#main_top").contents().find("#optionsdiv").html('<input type=button class=lbut onClick="showELE(\'options\');" value="Р”РѕРї.РќР°СЃС‚СЂРѕР№РєРё">');
 					}
 				</script>
 </HEAD>
@@ -23,8 +23,8 @@
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location='adm.php'" value="Вернуться">
-		<input type=button class=lbut onClick="location='clan_items.php'" value="обновить">
+        <input type=button class=lbut onClick="location='adm.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        <input type=button class=lbut onClick="location='clan_items.php'" value="РѕР±РЅРѕРІРёС‚СЊ">
 	</td>
    </tr>
 </table>
@@ -51,7 +51,7 @@ $player=player();
 if($_GET['clan']){
 	$_POST['clan']=$_GET['clan'];
 }
-## выгоняем из клана
+## РІС‹РіРѕРЅСЏРµРј РёР· РєР»Р°РЅР°
 if($_GET['get_id'] == '29' and in_array($_GET['vcode'],$_SESSION['secur'])){
 	$_GET['plid'] = intval($_GET['plid']);
 	$cuser = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `id`,`clan_id`,`login`,`level` FROM `user` WHERE `id`='".$_GET['plid']."'"));
@@ -62,7 +62,7 @@ if($_GET['get_id'] == '29' and in_array($_GET['vcode'],$_SESSION['secur'])){
 }
 ##
 
-## принимаем в клан
+## РїСЂРёРЅРёРјР°РµРј РІ РєР»Р°РЅ
 if($_POST['post_id']=='47' and in_array($_POST['vcode'],$_SESSION['secur'])){
 	$cuser = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `id`,`clan_id`,`clan_check`,`login`,`level` FROM `user` WHERE `login`='".mysqli_real_escape_string($GLOBALS['db_link'],$_POST['fnick'])."'"));
 	$clan = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `clans` WHERE `clan_id` = '".$_POST['clan']."'"));
@@ -74,7 +74,7 @@ if($_POST['post_id']=='47' and in_array($_POST['vcode'],$_SESSION['secur'])){
 }
 ##
 
-## создаем клан перед запросом на кланы
+## СЃРѕР·РґР°РµРј РєР»Р°РЅ РїРµСЂРµРґ Р·Р°РїСЂРѕСЃРѕРј РЅР° РєР»Р°РЅС‹
 if($_GET['addclan']==1){
 	if($_POST['clan_name']){
 		if($_POST['clan_image']){
@@ -83,25 +83,47 @@ if($_GET['addclan']==1){
 			echo'
 			<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 			<tr align=center><td>
-			<font class=proceg><b>Клан создан!</b>
-			<br><b>Имя:</b> '.$_POST['clan_name'].'
-			<br><b>Склонность:</b>';
+			<font class=proceg><b>РљР»Р°РЅ СЃРѕР·РґР°РЅ!</b>
+			<br><b>РРјСЏ:</b> ' . $_POST['clan_name'] . '
+			<br><b>РЎРєР»РѕРЅРЅРѕСЃС‚СЊ:</b>';
 			switch($_POST['clan_sklon']){
 				case 0: echo "<img src='http://img.legendbattles.ru/image/signs/1x1.gif' width=15 height=12 align=absmiddle border=0>";break;
-				case 1: echo "<img src='http://img.legendbattles.ru/image/signs/darks.gif' width='15' height='12' title='Дети Тьмы' align='absmiddle'/>";break;
-				case 2: echo "<img src='http://img.legendbattles.ru/image/signs/lights.gif' width='15' height='12' title='Дети Света' align='absmiddle'/>";break;
-				case 3: echo "<img src='http://img.legendbattles.ru/image/signs/sumers.gif' width='15' height='12' title='Дети Сумерек' align='absmiddle'/>";break;
-				case 4: echo "<img src='http://img.legendbattles.ru/image/signs/chaoss.gif' width='15' height='12' title='Дети Хаоса' align='absmiddle'/>";break;
-				case 5: echo "<img src='http://img.legendbattles.ru/image/signs/light.gif' width='15' height='12' title='Истинный Свет' align='absmiddle'/>";break;
-				case 6: echo "<img src='http://img.legendbattles.ru/image/signs/dark.gif' width='15' height='12' title='Истинная Тьма' align='absmiddle'/>";break;
-				case 7: echo "<img src='http://img.legendbattles.ru/image/signs/sumer.gif' width='15' height='12' title='Нейтральные Сумерки' align='absmiddle'/>";break;
-				case 8: echo "<img src='http://img.legendbattles.ru/image/signs/chaos.gif' width='15' height='12' title='Абсолютный Хаос' align='absmiddle'/>";break;
-				case 9: echo "<img src='http://img.legendbattles.ru/image/signs/angel.gif' width='15' height='12' title='Ангел' align='absmiddle'/>";break;
+                case 1:
+                    echo "<img src='http://img.legendbattles.ru/image/signs/darks.gif' width='15' height='12' title='Р”РµС‚Рё РўСЊРјС‹' align='absmiddle'/>";
+                    break;
+                case 2:
+                    echo "<img src='http://img.legendbattles.ru/image/signs/lights.gif' width='15' height='12' title='Р”РµС‚Рё РЎРІРµС‚Р°' align='absmiddle'/>";
+                    break;
+                case 3:
+                    echo "<img src='http://img.legendbattles.ru/image/signs/sumers.gif' width='15' height='12' title='Р”РµС‚Рё РЎСѓРјРµСЂРµРє' align='absmiddle'/>";
+                    break;
+                case 4:
+                    echo "<img src='http://img.legendbattles.ru/image/signs/chaoss.gif' width='15' height='12' title='Р”РµС‚Рё РҐР°РѕСЃР°' align='absmiddle'/>";
+                    break;
+                case 5:
+                    echo "<img src='http://img.legendbattles.ru/image/signs/light.gif' width='15' height='12' title='РСЃС‚РёРЅРЅС‹Р№ РЎРІРµС‚' align='absmiddle'/>";
+                    break;
+                case 6:
+                    echo "<img src='http://img.legendbattles.ru/image/signs/dark.gif' width='15' height='12' title='РСЃС‚РёРЅРЅР°СЏ РўСЊРјР°' align='absmiddle'/>";
+                    break;
+                case 7:
+                    echo "<img src='http://img.legendbattles.ru/image/signs/sumer.gif' width='15' height='12' title='РќРµР№С‚СЂР°Р»СЊРЅС‹Рµ РЎСѓРјРµСЂРєРё' align='absmiddle'/>";
+                    break;
+                case 8:
+                    echo "<img src='http://img.legendbattles.ru/image/signs/chaos.gif' width='15' height='12' title='РђР±СЃРѕР»СЋС‚РЅС‹Р№ РҐР°РѕСЃ' align='absmiddle'/>";
+                    break;
+                case 9:
+                    echo "<img src='http://img.legendbattles.ru/image/signs/angel.gif' width='15' height='12' title='РђРЅРіРµР»' align='absmiddle'/>";
+                    break;
 			}
-			echo "<br><b>Иконка:</b> <img src='http://img.legendbattles.ru/image/signs/".$_POST['clan_image']."' width='15' height='12' title='".$_POST['clan_image']."' align='absmiddle'/>
+            echo "<br><b>РРєРѕРЅРєР°:</b> <img src='http://img.legendbattles.ru/image/signs/" . $_POST['clan_image'] . "' width='15' height='12' title='" . $_POST['clan_image'] . "' align='absmiddle'/>
 			</font></td></tr></table>";
-		}else{echo '<font class=proce><b>Клан не создан - не задана иконка клана!</b></font>';}
-	}else{echo '<font class=proce><b>Клан не создан - не задано имя!</b></font>';}
+        } else {
+            echo '<font class=proce><b>РљР»Р°РЅ РЅРµ СЃРѕР·РґР°РЅ - РЅРµ Р·Р°РґР°РЅР° РёРєРѕРЅРєР° РєР»Р°РЅР°!</b></font>';
+        }
+    } else {
+        echo '<font class=proce><b>РљР»Р°РЅ РЅРµ СЃРѕР·РґР°РЅ - РЅРµ Р·Р°РґР°РЅРѕ РёРјСЏ!</b></font>';
+    }
 }elseif($_GET['addclan']==2){
 		if($_POST['clan']!='' and $_POST['clan']!='none'){
 			$str = "UPDATE `clans` SET `clan_id`='".$_POST['clan_name']."',`clan_name`='".$_POST['clan_name']."',`clan_gif`='".$_POST['clan_image']."',`clan_sclon`='".($_POST['clan_sklon']?$_POST['clan_sklon']:'0')."' WHERE `clan_id`='".$_POST['clan']."';";
@@ -119,25 +141,25 @@ echo '
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 <tr align=center><td>
 <select name=clan>
-<option value="0" '.(($_POST['clan']!='0' and $_POST['clan']!='')?'':'selected=selected').'>Выберите клан</option>
+<option value="0" ' . (($_POST['clan'] != '0' and $_POST['clan'] != '') ? '' : 'selected=selected') . '>Р’С‹Р±РµСЂРёС‚Рµ РєР»Р°РЅ</option>
 ';
 while($clan = mysqli_fetch_assoc($clans)){
 	echo '<option value="'.$clan['clan_id'].'" '.(($_POST['clan']==$clan['clan_id'])?'selected=selected':'').'>'.$clan['clan_name'].'</option>';
 }
 echo '
 </select>
-<input class=lbut type=submit value="Выбрать">
+<input class=lbut type=submit value="Р’С‹Р±СЂР°С‚СЊ">
 </td></tr>
 </table>
 </form>
 ';
-## создаем клан
+## СЃРѕР·РґР°РµРј РєР»Р°РЅ
 
 echo '
 <form method="post" action="clan_items.php?createclan=1">
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 <tr align=center><td>
-<input class=lbut type=submit value="Создать">
+<input class=lbut type=submit value="РЎРѕР·РґР°С‚СЊ">
 </td></tr>
 </table>
 </form>
@@ -151,13 +173,13 @@ if($_GET['createclan']==1){
 			<tr><td>
 			<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 				<tr class=nickname bgcolor=#EAEAEA>
-					<td align=center width=30%><b>Название клана</b></td>
-					<td align=center><b>Склонность клана</b></td>
-					<td align=center><b>Иконка клана</b></td>
+					<td align=center width=30%><b>РќР°Р·РІР°РЅРёРµ РєР»Р°РЅР°</b></td>
+					<td align=center><b>РЎРєР»РѕРЅРЅРѕСЃС‚СЊ РєР»Р°РЅР°</b></td>
+					<td align=center><b>РРєРѕРЅРєР° РєР»Р°РЅР°</b></td>
 				</tr>
 				<tr class=freetxt bgcolor=white>
 					<td align=center width=30%>
-						Имя: <input type=text class=logintextbox name="clan_name" value="" />
+						РРјСЏ: <input type=text class=logintextbox name="clan_name" value="" />
 					</td>
 					<td align=left>
 						<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
@@ -167,28 +189,48 @@ if($_GET['createclan']==1){
 							if($tr==0){echo '<tr>';}
 							$tr++;
 								switch($i){
-									case 0: echo "<td><input type=radio name=clan_sklon value=".$i." checked />нет</td>"; break;
-									case 1: echo "<td><input type=radio name=clan_sklon value=".$i." />Дети Тьмы <img src='http://img.legendbattles.ru/image/signs/darks.gif' width='15' height='12' title='Дети Тьмы' align='absmiddle'/></td>"; break;
-									case 2: echo "<td><input type=radio name=clan_sklon value=".$i." />Дети Света <img src='http://img.legendbattles.ru/image/signs/lights.gif' width='15' height='12' title='Дети Света' align='absmiddle'/></td>"; break;
-									case 3: echo "<td><input type=radio name=clan_sklon value=".$i." />Дети Сумерек <img src='http://img.legendbattles.ru/image/signs/sumers.gif' width='15' height='12' title='Дети Сумерек' align='absmiddle'/></td>"; break;
-									case 4: echo "<td><input type=radio name=clan_sklon value=".$i." />Дети Хаоса <img src='http://img.legendbattles.ru/image/signs/chaoss.gif' width='15' height='12' title='Дети Хаоса' align='absmiddle'/></td>"; break;
-									case 5: echo "<td><input type=radio name=clan_sklon value=".$i." />Истинный Свет <img src='http://img.legendbattles.ru/image/signs/light.gif' width='15' height='12' title='Истинный Свет' align='absmiddle'/></td>"; break;
-									case 6: echo "<td><input type=radio name=clan_sklon value=".$i." />Истинная Тьма <img src='http://img.legendbattles.ru/image/signs/dark.gif' width='15' height='12' title='Истинная Тьма' align='absmiddle'/></td>"; break;
-									case 7: echo "<td><input type=radio name=clan_sklon value=".$i." />Нейтральные Сумерки <img src='http://img.legendbattles.ru/image/signs/sumer.gif' width='15' height='12' title='Нейтральные Сумерки' align='absmiddle'/></td>"; break;
-									case 8: echo "<td><input type=radio name=clan_sklon value=".$i." />Абсолютный Хаос <img src='http://img.legendbattles.ru/image/signs/chaos.gif' width='15' height='12' title='Абсолютный Хаос' align='absmiddle'/></td>"; break;
-									case 9: echo "<td><input type=radio name=clan_sklon value=".$i." />Ангел <img src='http://img.legendbattles.ru/image/signs/angel.gif' width='15' height='12' title='Ангел' align='absmiddle'/></td>"; break;
+                                    case 0:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " checked />РЅРµС‚</td>";
+                                        break;
+                                    case 1:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " />Р”РµС‚Рё РўСЊРјС‹ <img src='http://img.legendbattles.ru/image/signs/darks.gif' width='15' height='12' title='Р”РµС‚Рё РўСЊРјС‹' align='absmiddle'/></td>";
+                                        break;
+                                    case 2:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " />Р”РµС‚Рё РЎРІРµС‚Р° <img src='http://img.legendbattles.ru/image/signs/lights.gif' width='15' height='12' title='Р”РµС‚Рё РЎРІРµС‚Р°' align='absmiddle'/></td>";
+                                        break;
+                                    case 3:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " />Р”РµС‚Рё РЎСѓРјРµСЂРµРє <img src='http://img.legendbattles.ru/image/signs/sumers.gif' width='15' height='12' title='Р”РµС‚Рё РЎСѓРјРµСЂРµРє' align='absmiddle'/></td>";
+                                        break;
+                                    case 4:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " />Р”РµС‚Рё РҐР°РѕСЃР° <img src='http://img.legendbattles.ru/image/signs/chaoss.gif' width='15' height='12' title='Р”РµС‚Рё РҐР°РѕСЃР°' align='absmiddle'/></td>";
+                                        break;
+                                    case 5:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " />РСЃС‚РёРЅРЅС‹Р№ РЎРІРµС‚ <img src='http://img.legendbattles.ru/image/signs/light.gif' width='15' height='12' title='РСЃС‚РёРЅРЅС‹Р№ РЎРІРµС‚' align='absmiddle'/></td>";
+                                        break;
+                                    case 6:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " />РСЃС‚РёРЅРЅР°СЏ РўСЊРјР° <img src='http://img.legendbattles.ru/image/signs/dark.gif' width='15' height='12' title='РСЃС‚РёРЅРЅР°СЏ РўСЊРјР°' align='absmiddle'/></td>";
+                                        break;
+                                    case 7:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " />РќРµР№С‚СЂР°Р»СЊРЅС‹Рµ РЎСѓРјРµСЂРєРё <img src='http://img.legendbattles.ru/image/signs/sumer.gif' width='15' height='12' title='РќРµР№С‚СЂР°Р»СЊРЅС‹Рµ РЎСѓРјРµСЂРєРё' align='absmiddle'/></td>";
+                                        break;
+                                    case 8:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " />РђР±СЃРѕР»СЋС‚РЅС‹Р№ РҐР°РѕСЃ <img src='http://img.legendbattles.ru/image/signs/chaos.gif' width='15' height='12' title='РђР±СЃРѕР»СЋС‚РЅС‹Р№ РҐР°РѕСЃ' align='absmiddle'/></td>";
+                                        break;
+                                    case 9:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " />РђРЅРіРµР» <img src='http://img.legendbattles.ru/image/signs/angel.gif' width='15' height='12' title='РђРЅРіРµР»' align='absmiddle'/></td>";
+                                        break;
 								}
 							if($tr==2){echo '</tr>';$tr=0;}	
 						}
 					echo'</table>	
 					</td>
 					<td align=center>
-						<b>Иконка:</b><input type=text class=logintextbox6 name="clan_image" value="" />
-						<br>Сначала заливаем сюда:<br> <b>http://img.legendbattles.ru/image/signs/</b><br> а в поле пишем название.
+						<b>РРєРѕРЅРєР°:</b><input type=text class=logintextbox6 name="clan_image" value="" />
+						<br>РЎРЅР°С‡Р°Р»Р° Р·Р°Р»РёРІР°РµРј СЃСЋРґР°:<br> <b>http://img.legendbattles.ru/image/signs/</b><br> Р° РІ РїРѕР»Рµ РїРёС€РµРј РЅР°Р·РІР°РЅРёРµ.
 					</td>
 				</tr>
 				<tr align=center><td colspan=3>
-					<input class=lbut type=submit value="Создать">
+					<input class=lbut type=submit value="РЎРѕР·РґР°С‚СЊ">
 				</td></tr>
 				</table</form></td></tr></table>
 				';
@@ -199,19 +241,19 @@ if($_GET['createclan']==1){
 if($_POST['clan']){
 $sign = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `clans` WHERE `clan_id` = '".$_POST['clan']."'"));
 echo'
-		<br><div align=center name="optionsdiv" id="optionsdiv"><input type=button class=lbut onClick="showELE(\'options\');" value="Доп.Настройки"></div>
+		<br><div align=center name="optionsdiv" id="optionsdiv"><input type=button class=lbut onClick="showELE(\'options\');" value="Р”РѕРї.РќР°СЃС‚СЂРѕР№РєРё"></div>
 		<form method="post" action="clan_items.php?addclan=2&clan='.$_POST['clan'].'" >
 		<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center class="options">
 			<tr><td>
 			<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 				<tr class=nickname bgcolor=#EAEAEA>
-					<td align=center width=30%><b>Название клана</b></td>
-					<td align=center><b>Склонность клана</b></td>
-					<td align=center><b>Иконка клана</b></td>
+					<td align=center width=30%><b>РќР°Р·РІР°РЅРёРµ РєР»Р°РЅР°</b></td>
+					<td align=center><b>РЎРєР»РѕРЅРЅРѕСЃС‚СЊ РєР»Р°РЅР°</b></td>
+					<td align=center><b>РРєРѕРЅРєР° РєР»Р°РЅР°</b></td>
 				</tr>
 				<tr class=freetxt bgcolor=white>
 					<td align=center width=30%>
-						Имя: <input type=text class=logintextbox name="clan_name" value="'.$sign['clan_id'].'" />
+						РРјСЏ: <input type=text class=logintextbox name="clan_name" value="' . $sign['clan_id'] . '" />
 					</td>
 					<td align=left>
 						<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
@@ -221,28 +263,48 @@ echo'
 							if($tr==0){echo '<tr>';}
 							$tr++;
 								switch($i){
-									case 0: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />нет</td>"; break;
-									case 1: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />Дети Тьмы <img src='http://img.legendbattles.ru/image/signs/darks.gif' width='15' height='12' title='Дети Тьмы' align='absmiddle'/></td>"; break;
-									case 2: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />Дети Света <img src='http://img.legendbattles.ru/image/signs/lights.gif' width='15' height='12' title='Дети Света' align='absmiddle'/></td>"; break;
-									case 3: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />Дети Сумерек <img src='http://img.legendbattles.ru/image/signs/sumers.gif' width='15' height='12' title='Дети Сумерек' align='absmiddle'/></td>"; break;
-									case 4: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />Дети Хаоса <img src='http://img.legendbattles.ru/image/signs/chaoss.gif' width='15' height='12' title='Дети Хаоса' align='absmiddle'/></td>"; break;
-									case 5: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />Истинный Свет <img src='http://img.legendbattles.ru/image/signs/light.gif' width='15' height='12' title='Истинный Свет' align='absmiddle'/></td>"; break;
-									case 6: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />Истинная Тьма <img src='http://img.legendbattles.ru/image/signs/dark.gif' width='15' height='12' title='Истинная Тьма' align='absmiddle'/></td>"; break;
-									case 7: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />Нейтральные Сумерки <img src='http://img.legendbattles.ru/image/signs/sumer.gif' width='15' height='12' title='Нейтральные Сумерки' align='absmiddle'/></td>"; break;
-									case 8: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />Абсолютный Хаос <img src='http://img.legendbattles.ru/image/signs/chaos.gif' width='15' height='12' title='Абсолютный Хаос' align='absmiddle'/></td>"; break;
-									case 9: echo "<td><input type=radio name=clan_sklon value=".$i." ".($sign['clan_sclon']==$i?'checked':'')." />Ангел <img src='http://img.legendbattles.ru/image/signs/angel.gif' width='15' height='12' title='Ангел' align='absmiddle'/></td>"; break;
+                                    case 0:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />РЅРµС‚</td>";
+                                        break;
+                                    case 1:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />Р”РµС‚Рё РўСЊРјС‹ <img src='http://img.legendbattles.ru/image/signs/darks.gif' width='15' height='12' title='Р”РµС‚Рё РўСЊРјС‹' align='absmiddle'/></td>";
+                                        break;
+                                    case 2:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />Р”РµС‚Рё РЎРІРµС‚Р° <img src='http://img.legendbattles.ru/image/signs/lights.gif' width='15' height='12' title='Р”РµС‚Рё РЎРІРµС‚Р°' align='absmiddle'/></td>";
+                                        break;
+                                    case 3:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />Р”РµС‚Рё РЎСѓРјРµСЂРµРє <img src='http://img.legendbattles.ru/image/signs/sumers.gif' width='15' height='12' title='Р”РµС‚Рё РЎСѓРјРµСЂРµРє' align='absmiddle'/></td>";
+                                        break;
+                                    case 4:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />Р”РµС‚Рё РҐР°РѕСЃР° <img src='http://img.legendbattles.ru/image/signs/chaoss.gif' width='15' height='12' title='Р”РµС‚Рё РҐР°РѕСЃР°' align='absmiddle'/></td>";
+                                        break;
+                                    case 5:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />РСЃС‚РёРЅРЅС‹Р№ РЎРІРµС‚ <img src='http://img.legendbattles.ru/image/signs/light.gif' width='15' height='12' title='РСЃС‚РёРЅРЅС‹Р№ РЎРІРµС‚' align='absmiddle'/></td>";
+                                        break;
+                                    case 6:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />РСЃС‚РёРЅРЅР°СЏ РўСЊРјР° <img src='http://img.legendbattles.ru/image/signs/dark.gif' width='15' height='12' title='РСЃС‚РёРЅРЅР°СЏ РўСЊРјР°' align='absmiddle'/></td>";
+                                        break;
+                                    case 7:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />РќРµР№С‚СЂР°Р»СЊРЅС‹Рµ РЎСѓРјРµСЂРєРё <img src='http://img.legendbattles.ru/image/signs/sumer.gif' width='15' height='12' title='РќРµР№С‚СЂР°Р»СЊРЅС‹Рµ РЎСѓРјРµСЂРєРё' align='absmiddle'/></td>";
+                                        break;
+                                    case 8:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />РђР±СЃРѕР»СЋС‚РЅС‹Р№ РҐР°РѕСЃ <img src='http://img.legendbattles.ru/image/signs/chaos.gif' width='15' height='12' title='РђР±СЃРѕР»СЋС‚РЅС‹Р№ РҐР°РѕСЃ' align='absmiddle'/></td>";
+                                        break;
+                                    case 9:
+                                        echo "<td><input type=radio name=clan_sklon value=" . $i . " " . ($sign['clan_sclon'] == $i ? 'checked' : '') . " />РђРЅРіРµР» <img src='http://img.legendbattles.ru/image/signs/angel.gif' width='15' height='12' title='РђРЅРіРµР»' align='absmiddle'/></td>";
+                                        break;
 								}
 							if($tr==2){echo '</tr>';$tr=0;}	
 						}
 					echo'</table>	
 					</td>
 					<td align=center>
-						<b>Иконка:</b><input type=text class=logintextbox6 name="clan_image" value="'.$sign['clan_gif'].'" />
-						<br>Сначала заливаем сюда:<br> <b>http://img.legendbattles.ru/image/signs/</b><br> а в поле пишем название.
+						<b>РРєРѕРЅРєР°:</b><input type=text class=logintextbox6 name="clan_image" value="' . $sign['clan_gif'] . '" />
+						<br>РЎРЅР°С‡Р°Р»Р° Р·Р°Р»РёРІР°РµРј СЃСЋРґР°:<br> <b>http://img.legendbattles.ru/image/signs/</b><br> Р° РІ РїРѕР»Рµ РїРёС€РµРј РЅР°Р·РІР°РЅРёРµ.
 					</td>
 				</tr>
 				<tr align=center><td colspan=3>
-					<input class=lbut type=submit value="Сохранить">
+					<input class=lbut type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</td></tr>
 				</table</form></td></tr></table></td></tr></table>
 				';
@@ -257,15 +319,23 @@ function locations_clan($loc,$pos){
 	else{
 		list($x, $y) = explode('_', $pos);
 		$location = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x`='".$x."' and `y`='".$y."' LIMIT 1;"));
-		return $location['city']." [".(($location['name'])?$location['name']:'неизвестно')."]";
+        return $location['city'] . " [" . (($location['name']) ? $location['name'] : 'РЅРµРёР·РІРµСЃС‚РЅРѕ') . "]";
 	}	
 }
 $clanid = $_POST['clan'];
 ?>
 <table table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=65% bgcolor=#e0e0e0>
     <tr>
-		<td style="background: #<?php echo (($_GET['vision']==1)?'464451':'F0F0F0'); ?>" width="25%"><div align="center"><a href="?clan=<?=$_POST['clan']?>&vision=1" class="nickname"><font class="nickname" style="color: #<?php echo (($_GET['vision']==1)?'EEEEEE':'000000'); ?>"><b>Состав <?=$_POST['clan']?></b></font></a></div></td>
-		<td style="background: #<?php echo (($_GET['vision']==2)?'464451':'F0F0F0'); ?>" width="25%"><div align="center"><a href="?clan=<?=$_POST['clan']?>&vision=2" class="nickname"><font class=nickname style="color: #<?php echo (($_GET['vision']==2)?'EEEEEE':'000000'); ?>"><b>Казна</b></font></a></div></td>
+        <td style="background: #<?php echo(($_GET['vision'] == 1) ? '464451' : 'F0F0F0'); ?>" width="25%">
+            <div align="center"><a href="?clan=<?= $_POST['clan'] ?>&vision=1" class="nickname"><font class="nickname"
+                                                                                                      style="color: #<?php echo(($_GET['vision'] == 1) ? 'EEEEEE' : '000000'); ?>"><b>РЎРѕСЃС‚Р°РІ <?= $_POST['clan'] ?></b></font></a>
+            </div>
+        </td>
+        <td style="background: #<?php echo(($_GET['vision'] == 2) ? '464451' : 'F0F0F0'); ?>" width="25%">
+            <div align="center"><a href="?clan=<?= $_POST['clan'] ?>&vision=2" class="nickname"><font class=nickname
+                                                                                                      style="color: #<?php echo(($_GET['vision'] == 2) ? 'EEEEEE' : '000000'); ?>"><b>РљР°Р·РЅР°</b></font></a>
+            </div>
+        </td>
     </tr>
 </table>
 
@@ -276,7 +346,7 @@ echo'
 <SCRIPT src="../../../js/clan_adm.js"></SCRIPT>
 <table table border=0 cellpadding=0 cellspacing=0 bordercolor=#e0e0e0 align=center class="smallhead" width=65% bgcolor=#e0e0e0>
 <tr><td colspan=9 class=nickname bgcolor=white>
-<font class=nickname><b><a href="javascript:clan_private(\''.$clanid.'\')"><img src=http://img.legendbattles.ru/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a></font>&nbsp;<font color=#336699>Всему составу</font></b><br>
+<font class=nickname><b><a href="javascript:clan_private(\'' . $clanid . '\')"><img src=http://img.legendbattles.ru/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a></font>&nbsp;<font color=#336699>Р’СЃРµРјСѓ СЃРѕСЃС‚Р°РІСѓ</font></b><br>
 </td></tr>
 <tr><td colspan=10 class=nickname bgcolor=white><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=2></td></tr>
 <tr><td colspan=10 bgcolor=#E0D6BB><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></td></tr>
@@ -284,19 +354,19 @@ echo'
 <table border=0 cellpadding=2 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 <tr align=center bgcolor=#EAEAEA>
 	<td align=left class=nickname>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font class=nickname align=center color=gray>ник
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font class=nickname align=center color=gray>РЅРёРє
 	</font></td>
 	<td align=left class=nickname>
-		&nbsp;&nbsp;<font class=nickname align=center color=gray>должность
+		&nbsp;&nbsp;<font class=nickname align=center color=gray>РґРѕР»Р¶РЅРѕСЃС‚СЊ
 	</font></td>
 	<td align=center class=nickname>
-		<font class=nickname align=center color=gray>статус
+		<font class=nickname align=center color=gray>СЃС‚Р°С‚СѓСЃ
 	</td>
 	<td align=left class=nickname>
-		&nbsp;&nbsp;<font class=nickname align=center color=gray>местоположение
+		&nbsp;&nbsp;<font class=nickname align=center color=gray>РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ
 	</td>
 	<td align=center class=nickname>
-	<font class=nickname align=center color=gray>опции
+	<font class=nickname align=center color=gray>РѕРїС†РёРё
 	</td>
 </tr>
 <SCRIPT>
@@ -304,7 +374,7 @@ echo'
 
 function sclonch($id){
 	$sclon=array("0","darks.gif","lights.gif","sumers.gif","chaoss.gif","light.gif","dark.gif","sumer.gif","chaos.gif","angel.gif");
-	$desc=array("0","Дети Тьмы","Дети Света","Дети Сумерек","Дети Хаоса","Истинный Свет","Истинная Тьма","Нейтральные Сумерки","Абсолютный Хаос","Ангел");
+    $desc = array("0", "Р”РµС‚Рё РўСЊРјС‹", "Р”РµС‚Рё РЎРІРµС‚Р°", "Р”РµС‚Рё РЎСѓРјРµСЂРµРє", "Р”РµС‚Рё РҐР°РѕСЃР°", "РСЃС‚РёРЅРЅС‹Р№ РЎРІРµС‚", "РСЃС‚РёРЅРЅР°СЏ РўСЊРјР°", "РќРµР№С‚СЂР°Р»СЊРЅС‹Рµ РЎСѓРјРµСЂРєРё", "РђР±СЃРѕР»СЋС‚РЅС‹Р№ РҐР°РѕСЃ", "РђРЅРіРµР»");
 	if($id!='0'){
 		return "<img src=http://img.legendbattles.ru/image/signs/".$sclon[$id]." width=15 height=12 border=0 align=absmiddle title='".$desc[$id]."'>";
 	}
@@ -329,8 +399,8 @@ if(in_array('8',$access)){
 echo'<form method="post">
   <font class="nickname">
   <hr size="1" color="#CCCCCC" />
-  <b>Принять<br />
-  <font color="#aa0000">Имя персонажа:</font></b></font>
+  <b>РџСЂРёРЅСЏС‚СЊ<br />
+  <font color="#aa0000">РРјСЏ РїРµСЂСЃРѕРЅР°Р¶Р°:</font></b></font>
   <input type="hidden" name="useaction" value="clan-action" />
   <input type="hidden" name="addid" value="1" />
   <input type="hidden" name="post_id" value="47" />
@@ -338,7 +408,7 @@ echo'<form method="post">
   <input type="hidden" name="clan" value="'.$_POST['clan'].'" />
   <input type="hidden" name="vcode" value="'.scode().'" />
   <input type="text" name="fnick" class="LogintextBox" />
-  <input type="submit" class="lbut" value="Принять" />
+  <input type="submit" class="lbut" value="РџСЂРёРЅСЏС‚СЊ" />
 </form>';
 }
 echo'</td></tr>
@@ -363,9 +433,15 @@ function blocks($bl){
 	if($bl!="") {
 	switch($bl)
        	{
-            case 40: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 1-ой точки</font></b><br>"; break;
-            case 70: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 2-х точек</font></b><br>"; break;
-	    	case 90: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 3-х точек</font></b><br>"; break;
+        case 40:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 1-РѕР№ С‚РѕС‡РєРё</font></b><br>";
+            break;
+        case 70:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 2-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
+        case 90:
+            echo "<font class=weaponch><b><font color=#cc0000>Р‘Р»РѕРєРёСЂРѕРІРєР° 3-С… С‚РѕС‡РµРє</font></b><br>";
+            break;
     	}
 		}
 }
@@ -383,41 +459,41 @@ if($_GET['vision']==2){
 	echo'<br>
 	<table table border=0 cellpadding=0 cellspacing=0 bordercolor=#e0e0e0 align=center class="smallhead" width=65% bgcolor=#e0e0e0 width=100%>
 	<tr bgcolor=white><td align="center">
-		<a href="?clan='.$_POST['clan'].'&vision=2&all=1"><img src="http://img.legendbattles.ru/image/gameplay/invent/0.gif" width="44" height="53" title="Все вещи" class="cath" border="0" /></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w70"><img src="http://img.legendbattles.ru/image/gameplay/invent/6.gif" width="41" height="53" title="Мази" class="cath" border="0" /></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w66"><img src="http://img.legendbattles.ru/image/gameplay/invent/1.gif" width="41" height="53" title="Алхимия" class="cath" border="0" /></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w69"><img src="http://img.legendbattles.ru/image/gameplay/invent/2.gif" width="41" height="53" title="Рыбалка" class="cath" border="0" /></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&im=3"><img src="http://img.legendbattles.ru/image/gameplay/invent/3.gif" width="41" height="53" title="Ресурсы" class="cath" border="0" /></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w71"><img src="http://img.legendbattles.ru/image/gameplay/invent/4.gif" width="41" height="53" title="Руны" class="cath" border="0" /></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&im=5"><img src="http://img.legendbattles.ru/image/gameplay/invent/5.gif" width="41" height="53" title="Магия" class="cath" border="0" /></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&im=7"><img src="http://img.legendbattles.ru/image/gameplay/invent/7.gif" width="41" height="53" title="Журнал заданий" border="0" /></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w60"><img src=http://img.legendbattles.ru/image/gameplay/invent/23.gif width=41 height=53 title="Квестовые предметы" border="0"></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w61"><img src=http://img.legendbattles.ru/image/gameplay/invent/8.gif width=41 height=53 title="Приманки"  border="0"></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w29"><img src=http://img.legendbattles.ru/image/gameplay/invent/svit.gif width=41 height=53 title="Свитки" border="0"></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w30"><img src=http://img.legendbattles.ru/image/gameplay/invent/10.gif width=41 height=53 title="Лицензии" border="0"></a>
-		<a href="javascript:alert(\'У вас нет трофейных вещей\');"><img src=http://img.legendbattles.ru/image/gameplay/invent/db.gif width=41 height=53 title="Трофейные вещи" border="0"></a>
-		</td></tr></td></tr><tr bgcolor=white><td><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=4></td></tr><tr bgcolor=white><td align="center"><a href="?clan='.$_POST['clan'].'&vision=2&invf=w4"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/0.gif width=44 height=53 title="Ножи" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w1"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/1.gif width=41 height=53 title="Мечи" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w2"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/2.gif width=41 height=53 title="Топоры" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w3"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/3.gif width=41 height=53 title="Дробящие" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w6"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/4.gif width=41 height=53 title="Алебарды и двуручное" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w5"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/18.gif width=41 height=53 title="Копья" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w7"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/6.gif width=41 height=53 title="Посохи" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w20"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/7.gif width=41 height=53 title="Щиты" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w18"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/10.gif width=41 height=53 title="Кольчуги" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w19"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/11.gif width=41 height=53 title="Доспехи" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w23"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/8.gif width=41 height=53 title="Шлемы" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w21"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/14.gif width=41 height=53 title="Сапоги" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w77"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/mgb.gif width=41 height=53 title="Магические книги" class=cath border=0></a>
-		</td></tr><tr bgcolor=white><td><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=4></td></tr><tr bgcolor=white><td align="center"><a href="?clan='.$_POST['clan'].'&vision=2&invf=w26"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/9.gif width=44 height=53 title="Пояса" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w24"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/12.gif width=41 height=53 title="Перчатки" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w80"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/13.gif width=41 height=53 title="Наручи" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w25"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/15.gif width=41 height=53 title="Кулоны" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w22"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/16.gif width=41 height=53 title="Кольца" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w28"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/17.gif width=41 height=53 title="Наплечники" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w90"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/19.gif width=41 height=53 title="Поножи" class=cath border=0></a>
-		<a href="?clan='.$_POST['clan'].'&vision=2&invf=w0"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/21.gif width=41 height=53 title="Зелья" class=cath border=0></a>
-		<br><a href="?clan='.$_POST['clan'].'&vision=2&all=1&onlyart=1"><b><u>Показать только артефакты</u></b></a><br><br>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&all=1"><img src="http://img.legendbattles.ru/image/gameplay/invent/0.gif" width="44" height="53" title="Р’СЃРµ РІРµС‰Рё" class="cath" border="0" /></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w70"><img src="http://img.legendbattles.ru/image/gameplay/invent/6.gif" width="41" height="53" title="РњР°Р·Рё" class="cath" border="0" /></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w66"><img src="http://img.legendbattles.ru/image/gameplay/invent/1.gif" width="41" height="53" title="РђР»С…РёРјРёСЏ" class="cath" border="0" /></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w69"><img src="http://img.legendbattles.ru/image/gameplay/invent/2.gif" width="41" height="53" title="Р С‹Р±Р°Р»РєР°" class="cath" border="0" /></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&im=3"><img src="http://img.legendbattles.ru/image/gameplay/invent/3.gif" width="41" height="53" title="Р РµСЃСѓСЂСЃС‹" class="cath" border="0" /></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w71"><img src="http://img.legendbattles.ru/image/gameplay/invent/4.gif" width="41" height="53" title="Р СѓРЅС‹" class="cath" border="0" /></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&im=5"><img src="http://img.legendbattles.ru/image/gameplay/invent/5.gif" width="41" height="53" title="РњР°РіРёСЏ" class="cath" border="0" /></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&im=7"><img src="http://img.legendbattles.ru/image/gameplay/invent/7.gif" width="41" height="53" title="Р–СѓСЂРЅР°Р» Р·Р°РґР°РЅРёР№" border="0" /></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w60"><img src=http://img.legendbattles.ru/image/gameplay/invent/23.gif width=41 height=53 title="РљРІРµСЃС‚РѕРІС‹Рµ РїСЂРµРґРјРµС‚С‹" border="0"></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w61"><img src=http://img.legendbattles.ru/image/gameplay/invent/8.gif width=41 height=53 title="РџСЂРёРјР°РЅРєРё"  border="0"></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w29"><img src=http://img.legendbattles.ru/image/gameplay/invent/svit.gif width=41 height=53 title="РЎРІРёС‚РєРё" border="0"></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w30"><img src=http://img.legendbattles.ru/image/gameplay/invent/10.gif width=41 height=53 title="Р›РёС†РµРЅР·РёРё" border="0"></a>
+		<a href="javascript:alert(\'РЈ РІР°СЃ РЅРµС‚ С‚СЂРѕС„РµР№РЅС‹С… РІРµС‰РµР№\');"><img src=http://img.legendbattles.ru/image/gameplay/invent/db.gif width=41 height=53 title="РўСЂРѕС„РµР№РЅС‹Рµ РІРµС‰Рё" border="0"></a>
+		</td></tr></td></tr><tr bgcolor=white><td><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=4></td></tr><tr bgcolor=white><td align="center"><a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w4"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/0.gif width=44 height=53 title="РќРѕР¶Рё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w1"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/1.gif width=41 height=53 title="РњРµС‡Рё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w2"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/2.gif width=41 height=53 title="РўРѕРїРѕСЂС‹" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w3"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/3.gif width=41 height=53 title="Р”СЂРѕР±СЏС‰РёРµ" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w6"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/4.gif width=41 height=53 title="РђР»РµР±Р°СЂРґС‹ Рё РґРІСѓСЂСѓС‡РЅРѕРµ" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w5"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/18.gif width=41 height=53 title="РљРѕРїСЊСЏ" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w7"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/6.gif width=41 height=53 title="РџРѕСЃРѕС…Рё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w20"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/7.gif width=41 height=53 title="Р©РёС‚С‹" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w18"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/10.gif width=41 height=53 title="РљРѕР»СЊС‡СѓРіРё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w19"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/11.gif width=41 height=53 title="Р”РѕСЃРїРµС…Рё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w23"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/8.gif width=41 height=53 title="РЁР»РµРјС‹" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w21"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/14.gif width=41 height=53 title="РЎР°РїРѕРіРё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w77"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/mgb.gif width=41 height=53 title="РњР°РіРёС‡РµСЃРєРёРµ РєРЅРёРіРё" class=cath border=0></a>
+		</td></tr><tr bgcolor=white><td><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=4></td></tr><tr bgcolor=white><td align="center"><a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w26"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/9.gif width=44 height=53 title="РџРѕСЏСЃР°" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w24"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/12.gif width=41 height=53 title="РџРµСЂС‡Р°С‚РєРё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w80"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/13.gif width=41 height=53 title="РќР°СЂСѓС‡Рё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w25"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/15.gif width=41 height=53 title="РљСѓР»РѕРЅС‹" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w22"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/16.gif width=41 height=53 title="РљРѕР»СЊС†Р°" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w28"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/17.gif width=41 height=53 title="РќР°РїР»РµС‡РЅРёРєРё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w90"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/19.gif width=41 height=53 title="РџРѕРЅРѕР¶Рё" class=cath border=0></a>
+		<a href="?clan=' . $_POST['clan'] . '&vision=2&invf=w0"><img src=http://img.legendbattles.ru/image/gameplay/invent/cat/21.gif width=41 height=53 title="Р—РµР»СЊСЏ" class=cath border=0></a>
+		<br><a href="?clan=' . $_POST['clan'] . '&vision=2&all=1&onlyart=1"><b><u>РџРѕРєР°Р·Р°С‚СЊ С‚РѕР»СЊРєРѕ Р°СЂС‚РµС„Р°РєС‚С‹</u></b></a><br><br>
 		</td></tr></table>';
 
 	echo'
@@ -426,13 +502,13 @@ if($_GET['vision']==2){
 	<table border=0 cellpadding=2 cellspacing=1 bordercolor=red align=center class="smallhead" width=100%>
 	<tr align=center bgcolor=#EAEAEA>
 		<td align=left class=nickname  width=50%>
-			<font class=nickname align=left style="margin: 0px 0px 0px 20px;" color=gray>Вещь
+			<font class=nickname align=left style="margin: 0px 0px 0px 20px;" color=gray>Р’РµС‰СЊ
 		</font></td>
 		<td align=left class=nickname width=30%>
-			<font class=nickname align=left style="margin: 0px 0px 0px 20px;" color=gray>Персонаж
+			<font class=nickname align=left style="margin: 0px 0px 0px 20px;" color=gray>РџРµСЂСЃРѕРЅР°Р¶
 		</font></td>
 		<td align=center class=nickname colspan=2 width=20%>
-		<font class=nickname align=center color=gray>Опции
+		<font class=nickname align=center color=gray>РћРїС†РёРё
 		</td>
 	</tr>
 	';
@@ -441,11 +517,15 @@ if($_GET['vision']==2){
 		case 1:
 		$val_iditem=varcheck($_POST['iditem']);
 			if(mysqli_query($GLOBALS['db_link'],"DELETE FROM `clan_kazna` WHERE `id_item`='".$val_iditem."' LIMIT 1;")){
-				echo 'удаление из казны: <font color=green><b>OK</b></font><br>';
-			}else{echo 'удаление из казны: <font color=red><b>ERROR</b></font><br>';}	
+                echo 'СѓРґР°Р»РµРЅРёРµ РёР· РєР°Р·РЅС‹: <font color=green><b>OK</b></font><br>';
+            } else {
+                echo 'СѓРґР°Р»РµРЅРёРµ РёР· РєР°Р·РЅС‹: <font color=red><b>ERROR</b></font><br>';
+            }
 			if(mysqli_query($GLOBALS['db_link'],"DELETE FROM `invent` WHERE `id_item`='".$val_iditem."' LIMIT 1;")){
-				echo 'удаление из инвентаря: <font color=green><b>OK</b></font><br>';
-			}else{echo 'удаление из инвентаря: <font color=red><b>ERROR</b></font><br>';}	
+                echo 'СѓРґР°Р»РµРЅРёРµ РёР· РёРЅРІРµРЅС‚Р°СЂСЏ: <font color=green><b>OK</b></font><br>';
+            } else {
+                echo 'СѓРґР°Р»РµРЅРёРµ РёР· РёРЅРІРµРЅС‚Р°СЂСЏ: <font color=red><b>ERROR</b></font><br>';
+            }
 		break;
 		case 2:
 		$val_iditem=varcheck($_POST['iditem']);
@@ -453,14 +533,20 @@ if($_GET['vision']==2){
 			$lider=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `user`.`id` FROM `user` WHERE `clan_id`='".$val_clan."' AND `clan_status`='9' LIMIT 1;"));
 			if($lider['id']){
 				if(mysqli_query($GLOBALS['db_link'],"UPDATE `clan_kazna` SET `pl_id`='".$lider['id']."' WHERE `id_item`='".$val_iditem."' LIMIT 1;") and mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `pl_id`='".$lider['id']."',`used`='0' WHERE `id_item`='".$val_iditem."' LIMIT 1;")){
-					echo 'передача лидеру: <font color=green><b>OK</b></font><br>';
-				}else{echo 'передача лидеру: <font color=red><b>ERROR</b></font>. ошибка при передаче<br>';}	
-			}else{echo 'передача лидеру: <font color=red><b>ERROR</b></font>. лидер клана не найден<br>';}	
+                    echo 'РїРµСЂРµРґР°С‡Р° Р»РёРґРµСЂСѓ: <font color=green><b>OK</b></font><br>';
+                } else {
+                    echo 'РїРµСЂРµРґР°С‡Р° Р»РёРґРµСЂСѓ: <font color=red><b>ERROR</b></font>. РѕС€РёР±РєР° РїСЂРё РїРµСЂРµРґР°С‡Рµ<br>';
+                }
+            } else {
+                echo 'РїРµСЂРµРґР°С‡Р° Р»РёРґРµСЂСѓ: <font color=red><b>ERROR</b></font>. Р»РёРґРµСЂ РєР»Р°РЅР° РЅРµ РЅР°Р№РґРµРЅ<br>';
+            }
 		break;
 		case 3:
 			if(mysqli_query($GLOBALS['db_link'],"DELETE FROM `clan_kazna` WHERE `id_item`='".$_POST['iditem']."' LIMIT 1;") and mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `clan`='0',`used`='0' WHERE `id_item`='".$_POST['iditem']."' LIMIT 1;")){
-				echo 'удаление из казны: <font color=green><b>OK</b></font><br>';
-			}else{echo 'удаление из казны: <font color=red><b>ERROR</b></font><br>';}
+                echo 'СѓРґР°Р»РµРЅРёРµ РёР· РєР°Р·РЅС‹: <font color=green><b>OK</b></font><br>';
+            } else {
+                echo 'СѓРґР°Р»РµРЅРёРµ РёР· РєР°Р·РЅС‹: <font color=red><b>ERROR</b></font><br>';
+            }
 		break;
 		case 4:
 		$val_iditem=varcheck($_POST['iditem']);
@@ -468,11 +554,15 @@ if($_GET['vision']==2){
 			$newpl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `user`.`id`,`user`.`login` FROM `user` WHERE `login`='".$val_newlogin."' LIMIT 1;"));
 			if($newpl['id']){
 				if(mysqli_query($GLOBALS['db_link'],"DELETE FROM `clan_kazna` WHERE `id_item`='".$val_iditem."' LIMIT 1;")){
-					echo 'удаление из казны: <font color=green><b>OK</b></font><br>';
-				}else{echo 'удаление из казны: <font color=red><b>ERROR</b></font><br>';}
+                    echo 'СѓРґР°Р»РµРЅРёРµ РёР· РєР°Р·РЅС‹: <font color=green><b>OK</b></font><br>';
+                } else {
+                    echo 'СѓРґР°Р»РµРЅРёРµ РёР· РєР°Р·РЅС‹: <font color=red><b>ERROR</b></font><br>';
+                }
 				if(mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `pl_id`='".$newpl['id']."',`clan`='0',`gift`='0',`gift_from`='',`used`='0' WHERE `id_item`='".$val_iditem."' LIMIT 1;")){
-					echo 'передача игроку: <font color=green><b>OK</b></font><br>';
-				}else{echo 'передача игроку: <font color=red><b>ERROR</b></font><br>';}				
+                    echo 'РїРµСЂРµРґР°С‡Р° РёРіСЂРѕРєСѓ: <font color=green><b>OK</b></font><br>';
+                } else {
+                    echo 'РїРµСЂРµРґР°С‡Р° РёРіСЂРѕРєСѓ: <font color=red><b>ERROR</b></font><br>';
+                }
 			}
 		break;
 	   }
@@ -503,17 +593,19 @@ if($_SESSION['user']['inv']!='none'){
 		<td bgcolor=#f9f9f9 align=left width=50%>
 		';
 		if($ITEMID['mod_color']==0) {
-			echo '<font class='.$art.'  style="margin: 0px 0px 0px 20px;"><b>'.$ITEM['name'].($ITEMID['modified']==1 ? " [ап]" : "").'</b>&nbsp;[&nbsp;'.$ITEM['level'].'&nbsp;]<a href="http://www.lifeiswar.ru/iteminfo.php?'.$ITEM['name'].'" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a>';
+            echo '<font class=' . $art . '  style="margin: 0px 0px 0px 20px;"><b>' . $ITEM['name'] . ($ITEMID['modified'] == 1 ? " [Р°Рї]" : "") . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="http://www.lifeiswar.ru/iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a>';
 		}
 		else{
 			if($ITEMID['mod_color']==1){
-				echo '<font class='.$art.' style="margin: 0px 0px 0px 20px;color:#006600;"><b>'.$ITEM['name'].' [мод] '.($ITEMID['modified']==1 ? " [ап]" : "").'</b>&nbsp;[&nbsp;'.$ITEM['level'].'&nbsp;]<a href="http://www.lifeiswar.ru/iteminfo.php?'.$ITEM['name'].'" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a>';' [мод]'.($ITEMID['modified']==1 ? " [ап]" : "").'</font>';
+                echo '<font class=' . $art . ' style="margin: 0px 0px 0px 20px;color:#006600;"><b>' . $ITEM['name'] . ' [РјРѕРґ] ' . ($ITEMID['modified'] == 1 ? " [Р°Рї]" : "") . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="http://www.lifeiswar.ru/iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a>';
+                ' [РјРѕРґ]' . ($ITEMID['modified'] == 1 ? " [Р°Рї]" : "") . '</font>';
 			}	
 			if($ITEMID['mod_color']==2){
-				echo '<font class='.$art.' style="margin: 0px 0px 0px 20px;color:#4ABB58;"><b>'.$ITEM['name'].' [мод] '.($ITEMID['modified']==1 ? " [ап]" : "").'</b>&nbsp;[&nbsp;'.$ITEM['level'].'&nbsp;]<a href="http://www.lifeiswar.ru/iteminfo.php?'.$ITEM['name'].'" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a>';'<font color=#4ABB58> [мод]'.($ITEMID['modified']==1 ? " [ап]" : "").'</font>';
+                echo '<font class=' . $art . ' style="margin: 0px 0px 0px 20px;color:#4ABB58;"><b>' . $ITEM['name'] . ' [РјРѕРґ] ' . ($ITEMID['modified'] == 1 ? " [Р°Рї]" : "") . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="http://www.lifeiswar.ru/iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a>';
+                '<font color=#4ABB58> [РјРѕРґ]' . ($ITEMID['modified'] == 1 ? " [Р°Рї]" : "") . '</font>';
 			}
 			if($ITEMID['mod_color']==3){
-				echo '<font class='.$art.' style="margin: 0px 0px 0px 20px;color:#993399 ;"><b>'.$ITEM['name'].' [мод] '.($ITEMID['modified']==1 ? " [ап]" : "").'</b>&nbsp;[&nbsp;'.$ITEM['level'].'&nbsp;]<a href="http://www.lifeiswar.ru/iteminfo.php?'.$ITEM['name'].'" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a>';
+                echo '<font class=' . $art . ' style="margin: 0px 0px 0px 20px;color:#993399 ;"><b>' . $ITEM['name'] . ' [РјРѕРґ] ' . ($ITEMID['modified'] == 1 ? " [Р°Рї]" : "") . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="http://www.lifeiswar.ru/iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a>';
 			}
 		}
 		echo'
@@ -521,39 +613,39 @@ if($_SESSION['user']['inv']!='none'){
 		<br>
 		</td>
 		</form>
-				<td bgcolor=#F5F5F5 align=left width=30% align=left><font class=inv style="margin: 0px 0px 0px 20px;"><b>'.$itemuser['login'].'</b>&nbsp;['.$itemuser['level'].']</font><a href="http://www.lifeiswar.ru/ipers.php?'.$itemuser['login'].'" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a></font><br><font class=inv style="margin: 0px 0px 0px 20px;">Положил в казну: '.($ITEMID['gift_from']?(mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT user.login FROM user WHERE login='".$ITEMID['gift_from']."' LIMIT 1;"))?'<b>'.$ITEMID['gift_from'].'</b></font><a href="http://www.lifeiswar.ru/ipers.php?'.$ITEMID['gift_from'].'" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a> 
+				<td bgcolor=#F5F5F5 align=left width=30% align=left><font class=inv style="margin: 0px 0px 0px 20px;"><b>' . $itemuser['login'] . '</b>&nbsp;[' . $itemuser['level'] . ']</font><a href="http://www.lifeiswar.ru/ipers.php?' . $itemuser['login'] . '" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a></font><br><font class=inv style="margin: 0px 0px 0px 20px;">РџРѕР»РѕР¶РёР» РІ РєР°Р·РЅСѓ: ' . ($ITEMID['gift_from'] ? (mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT user.login FROM user WHERE login='" . $ITEMID['gift_from'] . "' LIMIT 1;")) ? '<b>' . $ITEMID['gift_from'] . '</b></font><a href="http://www.lifeiswar.ru/ipers.php?' . $ITEMID['gift_from'] . '" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a> 
 				<form method=POST action="clan_items.php?add=1&weapon_category=all&delete=4&vision=2">
 				<input type=hidden name=iditem value="'.$ITEM['id_item'].'">
 				<input type=hidden name=clan value="'.$_POST['clan'].'">
 				<input type=hidden name=newlogin value="'.$ITEMID['gift_from'].'">
-				<font class=inv style="margin: 0px 0px 0px 20px;"><input type=submit class=submit value="Вернуть дарителю"></font>
+				<font class=inv style="margin: 0px 0px 0px 20px;"><input type=submit class=submit value="Р’РµСЂРЅСѓС‚СЊ РґР°СЂРёС‚РµР»СЋ"></font>
 				</form>
 				'
-				:'Даритель не найден в базе'):'Даритель не найден в базе').'</td>
+                : 'Р”Р°СЂРёС‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ РІ Р±Р°Р·Рµ') : 'Р”Р°СЂРёС‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ РІ Р±Р°Р·Рµ') . '</td>
 				<td bgcolor=#F5F5F5 align=center valign=middle width=40%>
 				<form method=POST action="clan_items.php?add=1&weapon_category=all&delete=1&vision=2">
 					<input type=hidden name=iditem value="'.$ITEM['id_item'].'">
 					<input type=hidden name=clan value="'.$_POST['clan'].'">
-					<input type=submit class=lbut value="удалить (полностью)">
+					<input type=submit class=lbut value="СѓРґР°Р»РёС‚СЊ (РїРѕР»РЅРѕСЃС‚СЊСЋ)">
 				</form>
 				<hr size=1 color=#e0e0e0>
 				<form method=POST action="clan_items.php?add=1&weapon_category=all&delete=2&vision=2">
 					<input type=hidden name=iditem value="'.$ITEM['id_item'].'">
 					<input type=hidden name=clan value="'.$_POST['clan'].'">
-					<input type=submit class=lbut value="передать главе клана"><br>
+					<input type=submit class=lbut value="РїРµСЂРµРґР°С‚СЊ РіР»Р°РІРµ РєР»Р°РЅР°"><br>
 				</form>	
 				<hr size=1 color=#e0e0e0>
 				<form method=POST action="clan_items.php?add=1&weapon_category=all&delete=3&vision=2">
 					<input type=hidden name=iditem value="'.$ITEM['id_item'].'">
 					<input type=hidden name=clan value="'.$_POST['clan'].'">
-					<input type=submit class=lbut value="удалить (из казны, оставить на том где одето)">
+					<input type=submit class=lbut value="СѓРґР°Р»РёС‚СЊ (РёР· РєР°Р·РЅС‹, РѕСЃС‚Р°РІРёС‚СЊ РЅР° С‚РѕРј РіРґРµ РѕРґРµС‚Рѕ)">
 				</form>
 				<hr size=1 color=#e0e0e0>
 				<form method=POST action="clan_items.php?add=1&weapon_category=all&delete=4&vision=2">
 					<input type=hidden name=iditem value="'.$ITEM['id_item'].'">
 					<input type=hidden name=clan value="'.$_POST['clan'].'">
-					<font class=inv style="margin: 0px 0px 0px 20px;"><b>Ник: <input type=text class="LoginTextBox6" name="newlogin"></b></font>
-					<input type=submit class=lbut value="передать персонажу (удалить из казны и передать)"><br>
+					<font class=inv style="margin: 0px 0px 0px 20px;"><b>РќРёРє: <input type=text class="LoginTextBox6" name="newlogin"></b></font>
+					<input type=submit class=lbut value="РїРµСЂРµРґР°С‚СЊ РїРµСЂСЃРѕРЅР°Р¶Сѓ (СѓРґР°Р»РёС‚СЊ РёР· РєР°Р·РЅС‹ Рё РїРµСЂРµРґР°С‚СЊ)"><br>
 				</form>	
 
 				</td>

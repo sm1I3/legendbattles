@@ -21,17 +21,27 @@ function message_window (type,header,message,buttons,address) {
 
 		    if (buttons[a]=='accept') {
 			addr = address.split('|');
-			if (addr[0]=='click') {buts += '<td align=center><div id="use_it"><a href="javascript:void(0);" id="use_it" onclick="'+addr[1]+'"><input type=button class=butloc value="ÏÐÈÌÅÍÈÒÜ" style="width:120;" border=0></a></div></td>'}
-			else if (addr[0]=='href') {	buts += '<td align=center><div id="use_it"><a href="javascript:void(0);" id="use_it" onclick="d.location=\''+addr[1]+'\'"><input type=button class=butloc value="ÏÐÈÌÅÍÈÒÜ" style="width:120;" border=0></a></div></td>' }
+                if (addr[0] == 'click') {
+                    buts += '<td align=center><div id="use_it"><a href="javascript:void(0);" id="use_it" onclick="' + addr[1] + '"><input type=button class=butloc value="ÐŸÐ Ð˜ÐœÐ•ÐÐ˜Ð¢Ð¬" style="width:120;" border=0></a></div></td>'
+                }
+                else if (addr[0] == 'href') {
+                    buts += '<td align=center><div id="use_it"><a href="javascript:void(0);" id="use_it" onclick="d.location=\'' + addr[1] + '\'"><input type=button class=butloc value="ÐŸÐ Ð˜ÐœÐ•ÐÐ˜Ð¢Ð¬" style="width:120;" border=0></a></div></td>'
+                }
 		    }
-		    else if (buttons[a]=='cancel') { buts += '<td align=center><div id="use_cancel"><a href="javascript:void(0);" id="use_cancel" onclick="close_window();"><input type=button class=butloc value="ÎÒÌÅÍÀ" style="width:120;" border=0></a></div></td>' }
-		    else if (buttons[a]=='ereage') {buts += '<td align=center><div id="ereage"><a href="?" id="ereage" onclick="close_window();"><input type=button class=butloc value="ÎÊ" style="width:120;" border=0></a></div></td>'}
+            else if (buttons[a] == 'cancel') {
+                buts += '<td align=center><div id="use_cancel"><a href="javascript:void(0);" id="use_cancel" onclick="close_window();"><input type=button class=butloc value="ÐžÐ¢ÐœÐ•ÐÐ" style="width:120;" border=0></a></div></td>'
+            }
+            else if (buttons[a] == 'ereage') {
+                buts += '<td align=center><div id="ereage"><a href="?" id="ereage" onclick="close_window();"><input type=button class=butloc value="ÐžÐš" style="width:120;" border=0></a></div></td>'
+            }
 		    else if (buttons[a]=='ok') { //buts += '<td><div id="use_ok"><a href="javascript:void(0);" id="use_ok" onclick="close_window();"></a></div></td>' }
 
 			addr = address.split('|');
 			if (addr.length>1 && addr[0]=='click') {
 			buts += '<td align=center><div id="use_ok"><a href="javascript:void(0);" id="use_ok" onclick="'+addr[0]+'"><img src=interface/ok.gif border=0></a></div></td>' }
-			else {			buts += '<td align=center><div id="use_ok"><a href="javascript:void(0);" id="use_ok" onclick="close_window();"><input type=button class=butloc value="ÎÊ" style="width:120;" border=0></a></div></td>'}
+            else {
+                buts += '<td align=center><div id="use_ok"><a href="javascript:void(0);" id="use_ok" onclick="close_window();"><input type=button class=butloc value="ÐžÐš" style="width:120;" border=0></a></div></td>'
+            }
 	    }
 	}
 	buts += '</tr></table>';

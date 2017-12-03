@@ -51,39 +51,39 @@ while ($row = mysql_fetch_assoc($res))
         $confirm_str = '';
     else {
         if ($row['is_confirmed']!='Y')
-            $confirm_str = ' (<a href="labyrinth_list.php?accept_confirm='.$row['labyrinth_id'].'">Подтвердить</a>)';
+            $confirm_str = ' (<a href="labyrinth_list.php?accept_confirm=' . $row['labyrinth_id'] . '">РџРѕРґС‚РІРµСЂРґРёС‚СЊ</a>)';
         else
-            $confirm_str = ' (<a href="labyrinth_list.php?decline_confirm='.$row['labyrinth_id'].'">Отменить подтверждение</a>)';
+            $confirm_str = ' (<a href="labyrinth_list.php?decline_confirm=' . $row['labyrinth_id'] . '">РћС‚РјРµРЅРёС‚СЊ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ</a>)';
     }
     
     $labyrinths.='
     <tr>
-      <td class="cms_middle" align="center">'.($row['is_confirmed']!='Y'?'<a onclick="return confirm(\'Вы действительно хотите удалить этот лабиринт?\');" href="labyrinth_list.php?delete_lab_id='.$row['labyrinth_id'].'" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a>':'').'</td>
-      <td class="cms_middle" align="center"><a href="labyrinth_edit.php?lab_id='.$row['labyrinth_id'].'" title="Изменить параметры"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="labyrinth_design.php?lab_id='.$row['labyrinth_id'].'" title="Редактор лабиринта"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
-      <td class="cms_middle" align="center"><a href="labyrinth_list.php?copy_lab_id='.$row['labyrinth_id'].'" title="Копировать лабиринт"><img src="images/cms_icons/cms_add.gif" width="18" height="18" border="0" /></a></td>
+      <td class="cms_middle" align="center">' . ($row['is_confirmed'] != 'Y' ? '<a onclick="return confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ Р»Р°Р±РёСЂРёРЅС‚?\');" href="labyrinth_list.php?delete_lab_id=' . $row['labyrinth_id'] . '" title="РЈРґР°Р»РёС‚СЊ"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a>' : '') . '</td>
+      <td class="cms_middle" align="center"><a href="labyrinth_edit.php?lab_id=' . $row['labyrinth_id'] . '" title="РР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="labyrinth_design.php?lab_id=' . $row['labyrinth_id'] . '" title="Р РµРґР°РєС‚РѕСЂ Р»Р°Р±РёСЂРёРЅС‚Р°"><img src="images/cms_icons/cms_edit.gif" width="16" height="16" border="0" /></a></td>
+      <td class="cms_middle" align="center"><a href="labyrinth_list.php?copy_lab_id=' . $row['labyrinth_id'] . '" title="РљРѕРїРёСЂРѕРІР°С‚СЊ Р»Р°Р±РёСЂРёРЅС‚"><img src="images/cms_icons/cms_add.gif" width="18" height="18" border="0" /></a></td>
       <td align="left" class="cms_middle">'.$row['labyrinth_id'].'</td>
       <td align="center" class="cms_middle"><img src="images/cms_icons/'.($row['is_confirmed']=='Y'?'cms_checked.gif':'cms_checkbox.gif').'" />'.$confirm_str.'</td>
-      <td align="left" class="cms_middle"><a href="labyrinth_design.php?lab_id='.$row['labyrinth_id'].'" title="Редактор лабиринта">'._htext($row['labyrinth_name']).'</a></td>
+      <td align="left" class="cms_middle"><a href="labyrinth_design.php?lab_id=' . $row['labyrinth_id'] . '" title="Р РµРґР°РєС‚РѕСЂ Р»Р°Р±РёСЂРёРЅС‚Р°">' . _htext($row['labyrinth_name']) . '</a></td>
     </tr>
     ';
 }
 
 ?>
-<h3>Список лабиринтов</h3> 
+    <h3>РЎРїРёСЃРѕРє Р»Р°Р±РёСЂРёРЅС‚РѕРІ</h3>
 <div class="cms_ind">
 <br />
-Лабиринты: <br />
+    Р›Р°Р±РёСЂРёРЅС‚С‹: <br/>
  <table border="1" cellpadding="0" cellspacing="0" bordercolor="#C1E1EE" class="cms_table1" >
     <tr >
-      <td class="cms_cap2 normal"> Удалить </td>
-      <td class="cms_cap2 normal"> Параметры </td>
-      <td class="cms_cap2 normal"> Редактор </td>
-      <td class="cms_cap2 normal"> Копировать </td>
+        <td class="cms_cap2 normal"> РЈРґР°Р»РёС‚СЊ</td>
+        <td class="cms_cap2 normal"> РџР°СЂР°РјРµС‚СЂС‹</td>
+        <td class="cms_cap2 normal"> Р РµРґР°РєС‚РѕСЂ</td>
+        <td class="cms_cap2 normal"> РљРѕРїРёСЂРѕРІР°С‚СЊ</td>
 
-      <td class="cms_cap2">ID Лабиринта</td>
-      <td class="cms_cap2">Подтвержден</td>
-      <td class="cms_cap2">Название лабиринта</td>
+        <td class="cms_cap2">ID Р›Р°Р±РёСЂРёРЅС‚Р°</td>
+        <td class="cms_cap2">РџРѕРґС‚РІРµСЂР¶РґРµРЅ</td>
+        <td class="cms_cap2">РќР°Р·РІР°РЅРёРµ Р»Р°Р±РёСЂРёРЅС‚Р°</td>
     </tr>
     
     <?=$labyrinths?>
@@ -91,5 +91,7 @@ while ($row = mysql_fetch_assoc($res))
     </table>
     <br />
  </div>
- <img src="images/cms_icons/cms_add.gif" alt="Добавить лабиринт" /><a href="labyrinth_edit.php" title="Добавить лабиринт">Добавить лабиринт</a> &nbsp;<br />
+    <img src="images/cms_icons/cms_add.gif" alt="Р”РѕР±Р°РІРёС‚СЊ Р»Р°Р±РёСЂРёРЅС‚"/><a href="labyrinth_edit.php"
+                                                                        title="Р”РѕР±Р°РІРёС‚СЊ Р»Р°Р±РёСЂРёРЅС‚">Р”РѕР±Р°РІРёС‚СЊ
+    Р»Р°Р±РёСЂРёРЅС‚</a> &nbsp;<br/>
 <? require('kernel/after.php'); ?>

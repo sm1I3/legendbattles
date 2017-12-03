@@ -125,26 +125,26 @@ while($row = mysql_fetch_assoc($res))
 mysql_free_result($res);
 
 ?>
-<h3><?=($resource_id == ''?'Добавить ресурс':'Изменить ресурс')?></h3>
+    <h3><?= ($resource_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СЂРµСЃСѓСЂСЃ' : 'РР·РјРµРЅРёС‚СЊ СЂРµСЃСѓСЂСЃ') ?></h3>
 
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td><span class="cms_star">*</span>Название ресурса: &nbsp;  </td>
+    <td><span class="cms_star">*</span>РќР°Р·РІР°РЅРёРµ СЂРµСЃСѓСЂСЃР°: &nbsp;</td>
   <td><input name="resource_name" type="text" class="cms_fieldstyle1" value="<?=$resource['resource_name']?>" size="30" maxlength="255" /></td>
 </tr>
 <? if ($resource_id != '') { ?>
 <tr>
-  <td valign="top">Картинка: &nbsp;  </td>
+    <td valign="top">РљР°СЂС‚РёРЅРєР°: &nbsp;</td>
   <td><img src="http://image.neverlands.ru/resources/<?=$resource_id?>.gif" /></td>
 </tr>
 <? } ?>
 <tr>
-  <td>Тип ресурса: &nbsp;  </td>
+    <td>РўРёРї СЂРµСЃСѓСЂСЃР°: &nbsp;</td>
   <td><?=createSelectFromArray('resource_type', $resource_types, $resource['resource_type'])?></td>
 </tr>
 <tr>
-  <td>Стоимость: &nbsp;  </td>
+    <td>РЎС‚РѕРёРјРѕСЃС‚СЊ: &nbsp;</td>
   <td><input name="resource_cost" type="text" class="cms_fieldstyle1" value="<?=$resource['resource_cost']?>" size="10" maxlength="255" /></td>
 </tr>
 <? //TODO: Translate Resources ?>
@@ -185,8 +185,10 @@ mysql_free_result($res);
     
     
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='<?=$_SESSION['pages']['resource_list']?>'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit"
+           onclick="document.location='<?= $_SESSION['pages']['resource_list'] ?>'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>

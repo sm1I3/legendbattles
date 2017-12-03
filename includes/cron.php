@@ -8,17 +8,17 @@ foreach($_GET as $keyget=>$val){$_GET[$keyget] = varcheck($val);}
 foreach($_GET as $keyget=>$val){$_GET[$keyget] = varcheck($val);}
 db_open();
 $player=player();
-// Реклама
+// Р РµРєР»Р°РјР°
 $check3 = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `config` WHERE `reklama` LIMIT 1;"));
 $time = time();
 
 	if($check3['reklama'] <$time){
 	$time2 = time()+1800;
-	//mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Полезная информация&nbsp;</font>    <img src=\"/img/image/chat/smiles/smiles_570.gif\">  <font color=000000><b>Возникли проблемы, а помочь некому?Наши консультанты с радостью помогут вам! Для этого зайдите на форум в раздел Жизнь в Мире Легенд /«Тех Поддержка» и отправьте нам сообщение!  </b></font><BR>'+'');")."');");
-	//mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Ментор&nbsp;</font>    <img src=\"/img/image/chat/smiles/smiles_656.gif\">  <font color=6600FF><b>Уважаемые игроки! Сотрудники структуры Ментор ответят на ваши вопросы - СТРОГО по игре! Строго в приват!   </b></font><BR>'+'');")."');");
-	mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;New Курс валюты !&nbsp;</font>     <font color=6600FF><b> 10 <img src=/img/razdor/emerald.png width=14 height=14> <font color=009900><b> = 1 (WMZ) 24 грн (WMU) 24.5 грн (Киевстар) 80 руб (Wmr) usd (wmz,WesternUnion) eur (wme, WesternUnion) 23000 или 2 рубля 3 копейки  (WMB) Быстро и Надежно! Подробнее в инфе(Администрация)   </b></font><BR>'+'');")."');");
-	//mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Официальная группа VK&nbsp;</font>     <font color=FF9900><b>http://vk.com/public76407285   </b></font><BR>'+'');")."');");
-	mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;Официальный Дилер&nbsp;</font>    <img src=\"/img/image/chat/smiles/smiles_570.gif\">  <font color=000000><b>Пополни свой игровой счёт через мобильный терминал (смс пополнения)(легко и быстро) (МTC,БИЛАЙН,МЕГАФОН) (Россия и Украина) </b></font><BR>'+'');")."');");
+        //mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РџРѕР»РµР·РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ&nbsp;</font>    <img src=\"/img/image/chat/smiles/smiles_570.gif\">  <font color=000000><b>Р’РѕР·РЅРёРєР»Рё РїСЂРѕР±Р»РµРјС‹, Р° РїРѕРјРѕС‡СЊ РЅРµРєРѕРјСѓ?РќР°С€Рё РєРѕРЅСЃСѓР»СЊС‚Р°РЅС‚С‹ СЃ СЂР°РґРѕСЃС‚СЊСЋ РїРѕРјРѕРіСѓС‚ РІР°Рј! Р”Р»СЏ СЌС‚РѕРіРѕ Р·Р°Р№РґРёС‚Рµ РЅР° С„РѕСЂСѓРј РІ СЂР°Р·РґРµР» Р–РёР·РЅСЊ РІ РњРёСЂРµ Р›РµРіРµРЅРґ /В«РўРµС… РџРѕРґРґРµСЂР¶РєР°В» Рё РѕС‚РїСЂР°РІСЊС‚Рµ РЅР°Рј СЃРѕРѕР±С‰РµРЅРёРµ!  </b></font><BR>'+'');")."');");
+        //mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РњРµРЅС‚РѕСЂ&nbsp;</font>    <img src=\"/img/image/chat/smiles/smiles_656.gif\">  <font color=6600FF><b>РЈРІР°Р¶Р°РµРјС‹Рµ РёРіСЂРѕРєРё! РЎРѕС‚СЂСѓРґРЅРёРєРё СЃС‚СЂСѓРєС‚СѓСЂС‹ РњРµРЅС‚РѕСЂ РѕС‚РІРµС‚СЏС‚ РЅР° РІР°С€Рё РІРѕРїСЂРѕСЃС‹ - РЎРўР РћР“Рћ РїРѕ РёРіСЂРµ! РЎС‚СЂРѕРіРѕ РІ РїСЂРёРІР°С‚!   </b></font><BR>'+'');")."');");
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;New РљСѓСЂСЃ РІР°Р»СЋС‚С‹ !&nbsp;</font>     <font color=6600FF><b> 10 <img src=/img/razdor/emerald.png width=14 height=14> <font color=009900><b> = 1 (WMZ) 24 РіСЂРЅ (WMU) 24.5 РіСЂРЅ (РљРёРµРІСЃС‚Р°СЂ) 80 СЂСѓР± (Wmr) usd (wmz,WesternUnion) eur (wme, WesternUnion) 23000 РёР»Рё 2 СЂСѓР±Р»СЏ 3 РєРѕРїРµР№РєРё  (WMB) Р‘С‹СЃС‚СЂРѕ Рё РќР°РґРµР¶РЅРѕ! РџРѕРґСЂРѕР±РЅРµРµ РІ РёРЅС„Рµ(РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ)   </b></font><BR>'+'');") . "');");
+        //mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('".time()."','sys','".addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РћС„РёС†РёР°Р»СЊРЅР°СЏ РіСЂСѓРїРїР° VK&nbsp;</font>     <font color=FF9900><b>http://vk.com/public76407285   </b></font><BR>'+'');")."');");
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("top.frames['chmain'].add_msg('<font class=massm>&nbsp;РћС„РёС†РёР°Р»СЊРЅС‹Р№ Р”РёР»РµСЂ&nbsp;</font>    <img src=\"/img/image/chat/smiles/smiles_570.gif\">  <font color=000000><b>РџРѕРїРѕР»РЅРё СЃРІРѕР№ РёРіСЂРѕРІРѕР№ СЃС‡С‘С‚ С‡РµСЂРµР· РјРѕР±РёР»СЊРЅС‹Р№ С‚РµСЂРјРёРЅР°Р» (СЃРјСЃ РїРѕРїРѕР»РЅРµРЅРёСЏ)(Р»РµРіРєРѕ Рё Р±С‹СЃС‚СЂРѕ) (РњTC,Р‘РР›РђР™Рќ,РњР•Р“РђР¤РћРќ) (Р РѕСЃСЃРёСЏ Рё РЈРєСЂР°РёРЅР°) </b></font><BR>'+'');") . "');");
 	mysqli_query($GLOBALS['db_link'],"UPDATE `config` SET `reklama`='".$time2."'");
 	}
 
@@ -28,7 +28,7 @@ if(date("H") == '05' and date("i") == '11'){
 	mysqli_query($GLOBALS['db_link'],"DELETE FROM `invent` WHERE `arenda`<'".time()."' AND `arenda`!='0' AND `pl_id`='".$player['id']."';");
   mysqli_query($GLOBALS['db_link'],"DELETE FROM `invent` WHERE `srok`<'".time()."' AND `srok`!='0' AND `pl_id`='".$player['id']."';");
 }
-// чистка
+// С‡РёСЃС‚РєР°
 if(date("H") == '12' and date("i") == '53'){
 	mysqli_query($GLOBALS['db_link'],"TRUNCATE `instant`");
 	//mysqli_query($GLOBALS['db_link'],"TRUNCATE `chat`");
@@ -68,32 +68,32 @@ function count_vote($uid){
 
 mysqli_query($GLOBALS['db_link'],"DELETE FROM `verification` WHERE `vTime` < '".time()."' AND `status` = '1'");
 
-// Аукцион
+// РђСѓРєС†РёРѕРЅ
 $Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `auction_system` WHERE `status`='active' and `time`<'".time()."'");
 while( $row = mysqli_fetch_assoc($Query) ){
 	if( $row['bet'] != 'none' ){
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('".time()."','sys','<".mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT `login` FROM `user` WHERE `id`='".$row['userID']."'"),0).">','".addslashes("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Ваш лот был продан за <b>".($row['price']*0.95)."</b> .</font><BR>'+'');")."');");
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('".time()."','sys','<".$row['bet'].">','".addslashes("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Курьер вам доставил вещь с аукциона.</font><BR>'+'');")."');");
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('" . time() . "','sys','<" . mysqli_result(mysqli_query($GLOBALS['db_link'], "SELECT `login` FROM `user` WHERE `id`='" . $row['userID'] . "'"), 0) . ">','" . addslashes("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;Р’Р°С€ Р»РѕС‚ Р±С‹Р» РїСЂРѕРґР°РЅ Р·Р° <b>" . ($row['price'] * 0.95) . "</b> .</font><BR>'+'');") . "');");
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('" . time() . "','sys','<" . $row['bet'] . ">','" . addslashes("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РљСѓСЂСЊРµСЂ РІР°Рј РґРѕСЃС‚Р°РІРёР» РІРµС‰СЊ СЃ Р°СѓРєС†РёРѕРЅР°.</font><BR>'+'');") . "');");
 		mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `nv`=`nv`+'".($row['price']*0.95)."' WHERE `id`='".$row['userID']."'");
 		mysqli_query($GLOBALS['db_link'],"UPDATE `auction_system` SET `status`='finished' WHERE `id`='".$row['id']."'");
 		mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `auction`='0',`pl_id`='".mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT `id` FROM `user` WHERE `login`='".$row['bet']."'"),0)."' WHERE `id_item`='".$row['itemID']."'");
 		
 	}else{
-		mysqli_query($GLOBALS['db_link'],"INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('".time()."','sys','<".mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT `login` FROM `user` WHERE `id`='".$row['userID']."'"),0).">','".addslashes("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Курьер вам доставил вещь с аукциона.</font><BR>'+'');")."');");
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('" . time() . "','sys','<" . mysqli_result(mysqli_query($GLOBALS['db_link'], "SELECT `login` FROM `user` WHERE `id`='" . $row['userID'] . "'"), 0) . ">','" . addslashes("top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Р’РЅРёРјР°РЅРёРµ!</font></b></font>&nbsp;РљСѓСЂСЊРµСЂ РІР°Рј РґРѕСЃС‚Р°РІРёР» РІРµС‰СЊ СЃ Р°СѓРєС†РёРѕРЅР°.</font><BR>'+'');") . "');");
 		mysqli_query($GLOBALS['db_link'],"UPDATE `auction_system` SET `status`='finished' WHERE `id`='".$row['id']."'");
 		mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `auction`='0' WHERE `id_item`='".$row['itemID']."'");
 	}
 }
 $sql=mysqli_query($GLOBALS['db_link'],"SELECT user.battle FROM (arena LEFT JOIN user ON arena.id_battle = user.battle)  WHERE  arena.t2+arena.timeout<".time().";");
 if(mysqli_num_rows($sql)>0){
-	$log=",[[0,\"".date("H:i")."\"],\"<b>Бой закончен по таймауту</b>.\"]";
+    $log = ",[[0,\"" . date("H:i") . "\"],\"<b>Р‘РѕР№ Р·Р°РєРѕРЅС‡РµРЅ РїРѕ С‚Р°Р№РјР°СѓС‚Сѓ</b>.\"]";
 	$time300=time()+300;
 	while ($r = mysqli_fetch_assoc($sql)) {
 		mysqli_query($GLOBALS['db_link'],"UPDATE arena SET vis=3 WHERE `id_battle`=".$r['battle'].";");
 		mysqli_query($GLOBALS['db_link'],"UPDATE user SET fight=0,battle=0,lastbattle=".$time300." WHERE `battle`=".$r['battle'].";");
 	}	
 }
-//эфекты
+//СЌС„РµРєС‚С‹
 $Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `effects`");
 if(mysqli_num_rows($Query)>0){
 	while($row = mysqli_fetch_assoc($Query)){
@@ -104,7 +104,7 @@ if(mysqli_num_rows($Query)>0){
 		}
 	}
 }
-// Таверна
+// РўР°РІРµСЂРЅР°
 $Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `tavern_eff` WHERE `updateTime` < '".time()."'");
 while($row = mysqli_fetch_assoc($Query)){
 	$oldAff = test_affect(mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT `affect` FROM `user` WHERE `id` = '" . $row['userId'] . "'"),0));
@@ -112,11 +112,11 @@ while($row = mysqli_fetch_assoc($Query)){
 	mysqli_query($GLOBALS['db_link'],"DELETE FROM `tavern_eff` WHERE `id`='" . $row['id'] . "'");
 	calcstat($row['userId']);
 }
-// включения  осады
+// РІРєР»СЋС‡РµРЅРёСЏ  РѕСЃР°РґС‹
 if(date("H") == '20' and date("i") == '00'){
     mysqli_query($GLOBALS['db_link'],"UPDATE `config` SET `osada`='1'");
 }
-// выключения  осады
+// РІС‹РєР»СЋС‡РµРЅРёСЏ  РѕСЃР°РґС‹
 if(date("H") == '21' and date("i") == '00'){
     mysqli_query($GLOBALS['db_link'],"UPDATE `config` SET `osada`='0'");
 }

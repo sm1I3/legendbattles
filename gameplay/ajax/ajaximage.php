@@ -14,7 +14,7 @@ foreach($_GET as $keyget=>$valg){
 $pers = GetUser($_SESSION['user']['login']);
 
 if($pers['clan_id'] != 'Life'){
-    exit('У вас не доступа.');
+    exit('РЈ РІР°СЃ РЅРµ РґРѕСЃС‚СѓРїР°.');
 }
 
 $GetPers = GetUserFID($_POST['userid'],true); 
@@ -32,7 +32,7 @@ if(!empty($_FILES)){
 	$checkext = explode(".", $name);
 	if($checkext[2]){
 		$ErrorScript = 1;
-		echo"Ошибка формата файла!";
+        echo "РћС€РёР±РєР° С„РѕСЂРјР°С‚Р° С„Р°Р№Р»Р°!";
 		exit;
 	}
 	
@@ -41,34 +41,34 @@ if(!empty($_FILES)){
 	}
 	
 	if(!strlen($name)){
-		echo"Пожалуйста выбирите изображение!<br />";
+        echo "РџРѕР¶Р°Р»СѓР№СЃС‚Р° РІС‹Р±РёСЂРёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ!<br />";
 		exit;
 		$ErrorScript = 1;
 	}
 		
 	if(!in_array($ext,$valid_formats) and $ErrorScript == 0){
-		echo"Формат не подходит.";
+        echo "Р¤РѕСЂРјР°С‚ РЅРµ РїРѕРґС…РѕРґРёС‚.";
 		exit;
 		$ErrorScript = 1;
 	}
 	
 	if($size>(1024*1024) and $ErrorScript == 0){
-		echo "Размер файла больше одного мб.<br />";
+        echo "Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° Р±РѕР»СЊС€Рµ РѕРґРЅРѕРіРѕ РјР±.<br />";
 		exit;
 		$ErrorScript = 1;
 	}
 	
 	if(($resi[0] != 115 or $resi[1] != 255) and $ErrorScript == 0) {
-		echo"Размер картинки должен быть (115x255)<br />";
+        echo "Р Р°Р·РјРµСЂ РєР°СЂС‚РёРЅРєРё РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ (115x255)<br />";
 		exit;
 		$ErrorScript = 1;
 	}
-	if($ErrorScript == 0){ // Залили значить праздник ;)
+    if ($ErrorScript == 0) { // Р—Р°Р»РёР»Рё Р·РЅР°С‡РёС‚СЊ РїСЂР°Р·РґРЅРёРє ;)
 		$NameHash = substr(md5(time().$GetPers['id']), 0, -24);
 		$actual_image_name = $NameHash.".jpg";
 		$tmp = $_FILES['photoimg']['tmp_name'];
-		
-		//Обрабатываем рисунок и рисуем на нем сверху
+
+        //РћР±СЂР°Р±Р°С‚С‹РІР°РµРј СЂРёСЃСѓРЅРѕРє Рё СЂРёСЃСѓРµРј РЅР° РЅРµРј СЃРІРµСЂС…Сѓ
 		$image = $tmp; 
 		$watermark = imagecreatefromgif($_SERVER['DOCUMENT_ROOT'] . '/tmp/watermark.gif');   
 		$watermark_width = imagesx($watermark);
@@ -110,8 +110,8 @@ if(!empty($_FILES)){
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 		$response = curl_exec($ch);
-		if ($response == false || curl_errno($ch) || curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200){	
-		    echo"Произошла ошибка при загрузке образа, повторите попытку позже.";
+		if ($response == false || curl_errno($ch) || curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200){
+            echo "РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ РѕР±СЂР°Р·Р°, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ РїРѕР·Р¶Рµ.";
 		    exit;
 		}
 		if($response == true){

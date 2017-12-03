@@ -194,12 +194,12 @@ for($i = 0; $i < $lab_height; $i++)
 }
 
 ?>
-<script language="javascript" src="jscript/json.js" charset="windows-1251" ></script>
+    <script language="javascript" src="jscript/json.js" charset="utf-8"></script>
 <link rel="stylesheet" href="files/modalwindow.css" type="text/css" />
-<script src="jscript/ajax.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/modal_window.js" language="javascript" charset="windows-1251"></script>
-<script src="jscript/controls/weapon_control.js" language="javascript" charset="windows-1251"></script>
-<script language="javascript" src="jscript/labyrinth_v01.js" charset="windows-1251" ></script>
+    <script src="jscript/ajax.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/modal_window.js" language="javascript" charset="utf-8"></script>
+    <script src="jscript/controls/weapon_control.js" language="javascript" charset="utf-8"></script>
+    <script language="javascript" src="jscript/labyrinth_v01.js" charset="utf-8"></script>
 <script language="javascript">
 var lab_width = <?=$lab_width?>;
 var lab_height = <?=$lab_height?>;
@@ -209,7 +209,7 @@ var start_dir = <?=(int)$start_dir?>;
 <?=createJsArray('weapon_categories', $weapon_categories_array)?> 
 </script>
 
-<h3>Редактирование лабиринта</h3>
+    <h3>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р»Р°Р±РёСЂРёРЅС‚Р°</h3>
 <form name="edit_labyrinth" action="" method="POST">
 <input type="hidden" name="start_x" value="<?=(int)$start_y?>" id="start_x" />
 <input type="hidden" name="start_y" value="<?=(int)$start_x?>" id="start_y" />
@@ -221,79 +221,79 @@ var start_dir = <?=(int)$start_dir?>;
                 <tr>
                     <td align="center">
                         <div class="lab_instrument">
-                            Курсор<br />
+                            РљСѓСЂСЃРѕСЂ<br/>
                             <img id="img_instr_none" style="border: 2px solid orange; cursor: pointer;" onclick="setInstrument(-1); return false;" src="<?=$img_folder?>spacer.gif" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Стена<br />
+                            РЎС‚РµРЅР°<br/>
                             <img id="img_instr_0" onclick="setInstrument(0); return false;" style="cursor: pointer;" src="<?=$img_folder?>wall.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Дорога<br />
+                            Р”РѕСЂРѕРіР°<br/>
                             <img id="img_instr_1" onclick="setInstrument(1); return false;" style="cursor: pointer;" src="<?=$img_folder?>way_rl.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Решетка<br />
+                            Р РµС€РµС‚РєР°<br/>
                             <img id="img_instr_2" onclick="setInstrument(2); return false;" style="cursor: pointer;" src="<?=$img_folder?>grill_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Рычаг<br />
+                            Р С‹С‡Р°Рі<br/>
                             <img id="img_instr_3" onclick="setInstrument(3); return false;" style="cursor: pointer;" src="<?=$img_folder?>lever_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Золотая дверь<br />
+                            Р—РѕР»РѕС‚Р°СЏ РґРІРµСЂСЊ<br/>
                             <img id="img_instr_41" onclick="setInstrument(41); return false;" style="cursor: pointer;" src="<?=$img_folder?>door_gold_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Серебр. дверь<br />
+                            РЎРµСЂРµР±СЂ. РґРІРµСЂСЊ<br/>
                             <img id="img_instr_42" onclick="setInstrument(42); return false;" style="cursor: pointer;" src="<?=$img_folder?>door_silver_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Бронз. дверь<br />
+                            Р‘СЂРѕРЅР·. РґРІРµСЂСЊ<br/>
                             <img id="img_instr_43" onclick="setInstrument(43); return false;" style="cursor: pointer;" src="<?=$img_folder?>door_bronze_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Дверь стража<br />
+                            Р”РІРµСЂСЊ СЃС‚СЂР°Р¶Р°<br/>
                             <img id="img_instr_44" onclick="setInstrument(44); return false;" style="cursor: pointer;" src="<?=$img_folder?>door_blue_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Золотой ключ<br />
+                            Р—РѕР»РѕС‚РѕР№ РєР»СЋС‡<br/>
                             <img id="img_instr_51" onclick="setInstrument(51); return false;" style="cursor: pointer;" src="<?=$img_folder?>key_gold_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Сереб. ключ<br />
+                            РЎРµСЂРµР±. РєР»СЋС‡<br/>
                             <img id="img_instr_52" onclick="setInstrument(52); return false;" style="cursor: pointer;" src="<?=$img_folder?>key_silver_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Борнз. ключ<br />
+                            Р‘РѕСЂРЅР·. РєР»СЋС‡<br/>
                             <img id="img_instr_53" onclick="setInstrument(53); return false;" style="cursor: pointer;" src="<?=$img_folder?>key_bronze_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Ключ стража<br />
+                            РљР»СЋС‡ СЃС‚СЂР°Р¶Р°<br/>
                             <img id="img_instr_54" onclick="setInstrument(54); return false;" style="cursor: pointer;" src="<?=$img_folder?>key_blue_t.jpg" width="38" height="38" />
                         </div>
                     </td>
@@ -304,79 +304,80 @@ var start_dir = <?=(int)$start_dir?>;
                 <tr>
                     <td align="center">
                         <div class="lab_instrument">
-                            Страж<br />
+                            РЎС‚СЂР°Р¶<br/>
                             <img id="img_instr_6" onclick="setInstrument(6); return false;" style="cursor: pointer;" src="<?=$img_folder?>guard_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Сундук<br />
+                            РЎСѓРЅРґСѓРє<br/>
                             <img id="img_instr_7" onclick="setInstrument(7); return false;" style="cursor: pointer;" src="<?=$img_folder?>chest_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Портал<br />
+                            РџРѕСЂС‚Р°Р»<br/>
                             <img id="img_instr_8" onclick="setInstrument(8); return false;" style="cursor: pointer;" src="<?=$img_folder?>portal_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Лаз<br />
+                            Р›Р°Р·<br/>
                             <img id="img_instr_9" onclick="setInstrument(9); return false;" style="cursor: pointer;" src="<?=$img_folder?>laz_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Источник<br />
+                            РСЃС‚РѕС‡РЅРёРє<br/>
                             <img id="img_instr_10" onclick="setInstrument(10); return false;" style="cursor: pointer;" src="<?=$img_folder?>water_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Выход<br />
+                            Р’С‹С…РѕРґ<br/>
                             <img id="img_instr_11" onclick="setInstrument(11); return false;" style="cursor: pointer;" src="<?=$img_folder?>exit_t.jpg" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Точка старта<br />
+                            РўРѕС‡РєР° СЃС‚Р°СЂС‚Р°<br/>
                             <img id="img_instr_100" onclick="setInstrument(100); return false;" style="cursor: pointer;" src="<?=$img_folder?>arrow_t.gif" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Карта 1<br />
+                            РљР°СЂС‚Р° 1<br/>
                             <img id="img_obj_0" onclick="setObjectInsert(0); return false;" style="cursor: pointer;" src="<?=$img_folder?>map_1.gif" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Карта 2<br />
+                            РљР°СЂС‚Р° 2<br/>
                             <img id="img_obj_1" onclick="setObjectInsert(1); return false;" style="cursor: pointer;" src="<?=$img_folder?>map_2.gif" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Карта 3<br />
+                            РљР°СЂС‚Р° 3<br/>
                             <img id="img_obj_2" onclick="setObjectInsert(2); return false;" style="cursor: pointer;" src="<?=$img_folder?>map_3.gif" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Карта 4<br />
+                            РљР°СЂС‚Р° 4<br/>
                             <img id="img_obj_3" onclick="setObjectInsert(3); return false;" style="cursor: pointer;" src="<?=$img_folder?>map_4.gif" width="38" height="38" />
                         </div>
                     </td>
                     <td align="center">
                         <div class="lab_instrument">
-                            Ластик<br />
+                            Р›Р°СЃС‚РёРє<br/>
                             <img id="img_obj_-1" onclick="setObjectInsert(-1); return false;" style="cursor: pointer;" src="<?=$img_folder?>eraser.jpg" width="38" height="38" />
                         </div>
                     </td>
                 </tr>
             </table>
-            Точка старта: <b><span id="start_point_coords"><?=$start_x.';'.$start_y.';'.$start_dir?></span></b>
+            РўРѕС‡РєР° СЃС‚Р°СЂС‚Р°: <b><span
+                        id="start_point_coords"><?= $start_x . ';' . $start_y . ';' . $start_dir ?></span></b>
         </td>
     </tr>
     <tr>
@@ -398,8 +399,10 @@ var start_dir = <?=(int)$start_dir?>;
     </tr>
 </table>
 <p></p><br />
-<input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px" <?=(!userHasPermission(8) && $is_confirmed=='Y'?'disabled="disabled"':'')?> />
-<input name="cancel" type="submit" onclick="document.location='labyrinth_list.php'; return false;" class="cms_button1" value="Отмена" /><br />
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ"
+           style="width: 150px" <?= (!userHasPermission(8) && $is_confirmed == 'Y' ? 'disabled="disabled"' : '') ?> />
+    <input name="cancel" type="submit" onclick="document.location='labyrinth_list.php'; return false;"
+           class="cms_button1" value="РћС‚РјРµРЅР°"/><br/>
 <br />
 </form>
 <script language="javascript">
@@ -408,22 +411,23 @@ drawLabyrinth(-1, -1);
 <div id="chest_properties" style="display: none;">
 <table>
     <tr>
-        <td nowrap="nowrap">Тип денег: <select name="money_type">
+        <td nowrap="nowrap">РўРёРї РґРµРЅРµРі: <select name="money_type">
             <option value="0">NV</option><option value="1">$</option><option value="2">Bonus</option>
         </select></td>
-        <td  nowrap="nowrap">Кол-во денег: <input type="text" name="money_value" size="5" /></td>
+        <td nowrap="nowrap">РљРѕР»-РІРѕ РґРµРЅРµРі: <input type="text" name="money_value" size="5"/></td>
     </tr>
     <tr>
-        <td nowrap="nowrap">Тип опыта: <select name="exp_type">
-            <option value="0">Мирный</option><option value="1">Боевой</option>
+        <td nowrap="nowrap">РўРёРї РѕРїС‹С‚Р°: <select name="exp_type">
+                <option value="0">РњРёСЂРЅС‹Р№</option>
+                <option value="1">Р‘РѕРµРІРѕР№</option>
         </select></td>
-        <td nowrap="nowrap">Кол-во опыта: <input type="text" name="exp_value" size="5" /></td>
+        <td nowrap="nowrap">РљРѕР»-РІРѕ РѕРїС‹С‚Р°: <input type="text" name="exp_value" size="5"/></td>
     </tr>
     <tr>
-        <td colspan="2"><input type="checkbox" name="win" value="Y" />Завершить</td>
+        <td colspan="2"><input type="checkbox" name="win" value="Y"/>Р—Р°РІРµСЂС€РёС‚СЊ</td>
     </tr>
     <tr>
-        <td colspan="2">Оружия:</td>
+        <td colspan="2">РћСЂСѓР¶РёСЏ:</td>
     </tr>
     <tr>
         <td colspan="2" nowrap="nowrap">

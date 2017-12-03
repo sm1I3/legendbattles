@@ -11,8 +11,8 @@
 <table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
   <tr>
     <td align=center>
-		<input type=button class=lbut onClick="location='adm.php'" value="Вернуться">
-		<input type=button class=lbut onClick="location='unground.php'" value="обновить">
+        <input type=button class=lbut onClick="location='adm.php'" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ">
+        <input type=button class=lbut onClick="location='unground.php'" value="РѕР±РЅРѕРІРёС‚СЊ">
 	</td>
    </tr>
 </table>
@@ -40,14 +40,14 @@ echo '
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 <tr align=center><td>
 <select name=level>
-<option value="none" '.(($_POST['level']!='none' and $_POST['level']!='')?'':'selected=selected').'>Выберите уровень</option>
+<option value="none" ' . (($_POST['level'] != 'none' and $_POST['level'] != '') ? '' : 'selected=selected') . '>Р’С‹Р±РµСЂРёС‚Рµ СѓСЂРѕРІРµРЅСЊ</option>
 ';
-for($i=0;$i<7;$i++){	
-	echo '<option value="'.$i.'" '.(($_POST['level']==$i)?'selected=selected':'').'>Уровень '.$i.'</option>';
+for($i=0;$i<7;$i++){
+    echo '<option value="' . $i . '" ' . (($_POST['level'] == $i) ? 'selected=selected' : '') . '>РЈСЂРѕРІРµРЅСЊ ' . $i . '</option>';
 }
 echo '
 </select>
-<input class=lbut type=submit value="Выбрать">
+<input class=lbut type=submit value="Р’С‹Р±СЂР°С‚СЊ">
 </td></tr>
 </table>
 </form>
@@ -57,11 +57,13 @@ if($_POST['level']!='none'){
 	if($_GET['add']==1){
 		$chbot=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `unground_levels`  WHERE `level_id`='".$_POST['level']."' LIMIT 1;"));
 		if(!empty($chbot)){
-			$chclr="green";$msg="Уровень не найден в базе!";
+            $chclr = "green";
+            $msg = "РЈСЂРѕРІРµРЅСЊ РЅРµ РЅР°Р№РґРµРЅ РІ Р±Р°Р·Рµ!";
 			$err=0;
 		}
 		else{
-			$chclr="red";$msg="Уровень не найден в базе! Заполните нужные поля и нажмите \"сохранить\".";
+            $chclr = "red";
+            $msg = "РЈСЂРѕРІРµРЅСЊ РЅРµ РЅР°Р№РґРµРЅ РІ Р±Р°Р·Рµ! Р—Р°РїРѕР»РЅРёС‚Рµ РЅСѓР¶РЅС‹Рµ РїРѕР»СЏ Рё РЅР°Р¶РјРёС‚Рµ \"СЃРѕС…СЂР°РЅРёС‚СЊ\".";
 			$err=0;
 			$ich = 100;
 			$lch = 100;
@@ -79,25 +81,25 @@ if($_POST['level']!='none'){
 			<tr><td>
 			<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 				<tr class=nickname bgcolor=#EAEAEA>
-					<td align=center width=30%><b>Уровень подземелья</b></td>
-					<td align=center><b>Опыт за прохождение</b></td>
-					<td align=center><b>Деньги за прохождение</b></td>
+					<td align=center width=30%><b>РЈСЂРѕРІРµРЅСЊ РїРѕРґР·РµРјРµР»СЊСЏ</b></td>
+					<td align=center><b>РћРїС‹С‚ Р·Р° РїСЂРѕС…РѕР¶РґРµРЅРёРµ</b></td>
+					<td align=center><b>Р”РµРЅСЊРіРё Р·Р° РїСЂРѕС…РѕР¶РґРµРЅРёРµ</b></td>
 				</tr>';
 		echo'
 		<tr class=freetxt bgcolor=white>
 			<td align=center width=30%>
-				Ид: '.$chbot['level_id'].'
+				РРґ: ' . $chbot['level_id'] . '
 			</td>
 			<td align=center>
-				<b>Опыт:</b> <input type=text class=logintextbox6 name="items_chance" value="'.$ich.'" />
+				<b>РћРїС‹С‚:</b> <input type=text class=logintextbox6 name="items_chance" value="' . $ich . '" />
 			</td>
 			<td align=center>
-				<b>Деньги:</b> <input type=text class=logintextbox6 name="leather_chance" value="'.$lch.'" />
+				<b>Р”РµРЅСЊРіРё:</b> <input type=text class=logintextbox6 name="leather_chance" value="' . $lch . '" />
 			</td>
 		</tr>
 		<tr class=freetxt bgcolor=white>
 			<td align=center width=100% colspan=5>
-			<input class=lbut type=submit value="Сохранить">
+			<input class=lbut type=submit value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 			<input type=hidden name=bot_login value="'.$botdrop['login'].'">
 			<input type=hidden name=bot value="'.$_POST['level'].'">
 			</td>
@@ -108,17 +110,17 @@ if($_POST['level']!='none'){
 		<form method="post" action="bot_drop.php?add=1">
 		<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 		<tr align=center><td>
-		Добавить ботов на уровень:
+		Р”РѕР±Р°РІРёС‚СЊ Р±РѕС‚РѕРІ РЅР° СѓСЂРѕРІРµРЅСЊ:
 		<select name=bot>
-		<option value="none" '.(($_POST['bot']!='none' and $_POST['bot']!='')?'':'selected=selected').'>Выберите бота</option>
+		<option value="none" ' . (($_POST['bot'] != 'none' and $_POST['bot'] != '') ? '' : 'selected=selected') . '>Р’С‹Р±РµСЂРёС‚Рµ Р±РѕС‚Р°</option>
 		';
 		while($bot = mysqli_fetch_assoc($bots)){
 			echo '<option value="'.$bot['id'].'" '.(($_POST['bot']==$bot['id'])?'selected=selected':'').'>'.$bot['login'].'</option>';
 		}
 		echo '
 		</select>
-		Количество: <input type=text class=logintextbox7 value="1">
-		<input class=lbut type=submit value="Добавить">
+		РљРѕР»РёС‡РµСЃС‚РІРѕ: <input type=text class=logintextbox7 value="1">
+		<input class=lbut type=submit value="Р”РѕР±Р°РІРёС‚СЊ">
 		</td></tr>
 		</table>
 		</form>

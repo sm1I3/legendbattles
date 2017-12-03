@@ -14,50 +14,50 @@ else
     
 $fields = array(
     1 => array(
-        array('ОД', 'i'),
-        array('Мин маны', 'i'),
-        array('Макс маны', 'i'),
-        array('Вероятность увернуться', 'i'),
-        array('Вероятность заблокировать', 'f'),
-        array('Вероятность пробоя', 'f'),
-        array('Мин урон', 'f'),
-        array('Макс урон', 'f'),
-        array('Маг удар', 'b', '', array(1 => array(9,10,11))),
-        array('Стихия', 'i', '', '', false),
-        array('Перезарядка ходов', 'i', '', '', false),
-        array('Код магии во времени', 'i', '', '', false),
+        array('РћР”', 'i'),
+        array('РњРёРЅ РјР°РЅС‹', 'i'),
+        array('РњР°РєСЃ РјР°РЅС‹', 'i'),
+        array('Р’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ СѓРІРµСЂРЅСѓС‚СЊСЃСЏ', 'i'),
+        array('Р’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ', 'f'),
+        array('Р’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ РїСЂРѕР±РѕСЏ', 'f'),
+        array('РњРёРЅ СѓСЂРѕРЅ', 'f'),
+        array('РњР°РєСЃ СѓСЂРѕРЅ', 'f'),
+        array('РњР°Рі СѓРґР°СЂ', 'b', '', array(1 => array(9, 10, 11))),
+        array('РЎС‚РёС…РёСЏ', 'i', '', '', false),
+        array('РџРµСЂРµР·Р°СЂСЏРґРєР° С…РѕРґРѕРІ', 'i', '', '', false),
+        array('РљРѕРґ РјР°РіРёРё РІРѕ РІСЂРµРјРµРЅРё', 'i', '', '', false),
     ),
     2 => array(
-        array('ОД', 'i'),
+        array('РћР”', 'i'),
         array('MP', 'i'),
-        array('Вил блока', 'so', array(0=>'Выбираемая точка', 1=>'Точечный'), array(1 => array(3,4,5,6))),
-        array('Голова', 'b', '', '', false),
-        array('Торс', 'b', '', '', false),
-        array('Пах', 'b', '', '', false),
-        array('Ноги', 'b', '', '', false),
-        array('Блок щит', 'b'),
-        array('Эффективность блока', 'f'),
-        array('Эффективность маг блока', 'f'),
-        array('Снижение урона (коэф)', 'f'),
-        array('Снижение физического урона (коэф)', 'f'),
-        array('Заморозка (шагов)', 'i'),
+        array('Р’РёР» Р±Р»РѕРєР°', 'so', array(0 => 'Р’С‹Р±РёСЂР°РµРјР°СЏ С‚РѕС‡РєР°', 1 => 'РўРѕС‡РµС‡РЅС‹Р№'), array(1 => array(3, 4, 5, 6))),
+        array('Р“РѕР»РѕРІР°', 'b', '', '', false),
+        array('РўРѕСЂСЃ', 'b', '', '', false),
+        array('РџР°С…', 'b', '', '', false),
+        array('РќРѕРіРё', 'b', '', '', false),
+        array('Р‘Р»РѕРє С‰РёС‚', 'b'),
+        array('Р­С„С„РµРєС‚РёРІРЅРѕСЃС‚СЊ Р±Р»РѕРєР°', 'f'),
+        array('Р­С„С„РµРєС‚РёРІРЅРѕСЃС‚СЊ РјР°Рі Р±Р»РѕРєР°', 'f'),
+        array('РЎРЅРёР¶РµРЅРёРµ СѓСЂРѕРЅР° (РєРѕСЌС„)', 'f'),
+        array('РЎРЅРёР¶РµРЅРёРµ С„РёР·РёС‡РµСЃРєРѕРіРѕ СѓСЂРѕРЅР° (РєРѕСЌС„)', 'f'),
+        array('Р—Р°РјРѕСЂРѕР·РєР° (С€Р°РіРѕРІ)', 'i'),
     ),
     3 => array(
-        array('ОД', 'i'),
+        array('РћР”', 'i'),
     ),
     4 => array(
-        array('ОД', 'i'),
-        array('Мин маны', 'i'),
-        array('Макс маны', 'i'),
+        array('РћР”', 'i'),
+        array('РњРёРЅ РјР°РЅС‹', 'i'),
+        array('РњР°РєСЃ РјР°РЅС‹', 'i'),
     ),
     5 => array(
-        array('ОД', 'i'),
+        array('РћР”', 'i'),
     ),
     6 => array(
-        array('ОД', 'i'),
+        array('РћР”', 'i'),
     ),
     7 => array(
-        array('ОД', 'i'),
+        array('РћР”', 'i'),
     ),
 );
     
@@ -161,22 +161,22 @@ else
 }
 
 $attack_type_array = array(
-    0 => 'Стандартный',
-    1 => 'Абилити / свитки / зелья',
-    2 => 'Магия огня',
-    3 => 'Магия земли',
-    4 => 'Магия воды',
-    5 => 'Магия воздуха',
+    0 => 'РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№',
+    1 => 'РђР±РёР»РёС‚Рё / СЃРІРёС‚РєРё / Р·РµР»СЊСЏ',
+    2 => 'РњР°РіРёСЏ РѕРіРЅСЏ',
+    3 => 'РњР°РіРёСЏ Р·РµРјР»Рё',
+    4 => 'РњР°РіРёСЏ РІРѕРґС‹',
+    5 => 'РњР°РіРёСЏ РІРѕР·РґСѓС…Р°',
 );
 
 $attack_action_type_array = array(
-    1 => 'Удар',
-    2 => 'Блок',
-    3 => 'Зелье',
-    4 => 'Магия',
-    5 => 'Абилити',
-    6 => 'Свитки',
-    7 => 'Расширенный',
+    1 => 'РЈРґР°СЂ',
+    2 => 'Р‘Р»РѕРє',
+    3 => 'Р—РµР»СЊРµ',
+    4 => 'РњР°РіРёСЏ',
+    5 => 'РђР±РёР»РёС‚Рё',
+    6 => 'РЎРІРёС‚РєРё',
+    7 => 'Р Р°СЃС€РёСЂРµРЅРЅС‹Р№',
 );
 
 $attack_type_actions = array(
@@ -189,7 +189,7 @@ $attack_type_actions = array(
 );
 
 ?>
-<h3><?=($attack_id == ''?'Добавить удар':'Изменить удар')?></h3>
+    <h3><?= ($attack_id == '' ? 'Р”РѕР±Р°РІРёС‚СЊ СѓРґР°СЂ' : 'РР·РјРµРЅРёС‚СЊ СѓРґР°СЂ') ?></h3>
 
 <script language="javascript">
 var now_type = <?=$attack['action_type']?>;
@@ -262,23 +262,26 @@ function changePos()
 <form name="edit_resource" action="" method="POST">
 <table border="0" cellpadding="0" cellspacing="1">
 <tr>
-  <td>ID Удара: &nbsp;  </td>
+    <td>ID РЈРґР°СЂР°: &nbsp;</td>
   <td><input name="attack_id" type="text" class="cms_fieldstyle1" value="<?=$attack['attack_id']?>" size="10" maxlength="255" /></td>
 </tr>
 <tr>
-  <td>Активный: &nbsp;  </td>
+    <td>РђРєС‚РёРІРЅС‹Р№: &nbsp;</td>
   <td><input name="is_active" type="checkbox" <?=($attack['is_active']==0?'':'checked="checked"')?> /></td>
 </tr>
 <tr>
-  <td>Название удара: &nbsp;  </td>
-  <td><input name="name" type="text" class="cms_fieldstyle1" value="<?=$attack['name']?>" size="30" maxlength="255" /><input name="display_name" id="display_name" type="checkbox" <?=($attack['display_name']==0?'':'checked="checked"')?> /><label for="display_name">Отображать название</label></td>
+    <td>РќР°Р·РІР°РЅРёРµ СѓРґР°СЂР°: &nbsp;</td>
+    <td><input name="name" type="text" class="cms_fieldstyle1" value="<?= $attack['name'] ?>" size="30"
+               maxlength="255"/><input name="display_name" id="display_name"
+                                       type="checkbox" <?= ($attack['display_name'] == 0 ? '' : 'checked="checked"') ?> /><label
+                for="display_name">РћС‚РѕР±СЂР°Р¶Р°С‚СЊ РЅР°Р·РІР°РЅРёРµ</label></td>
 </tr>
 <tr>
-  <td>Тип: &nbsp;  </td>
+    <td>РўРёРї: &nbsp;</td>
   <td><?=createSelectFromArray('type', $attack_type_array, $attack['type'], 'id="type" onchange="switchType(this.options[this.selectedIndex].value);"')?></td>
 </tr>
 <tr>
-  <td>Тип действия: &nbsp;  </td>
+    <td>РўРёРї РґРµР№СЃС‚РІРёСЏ: &nbsp;</td>
   <td><?=createSelectFromArray('action_type', array(), $attack['action_type'], 'id="action_type" onchange="switchActionType(this.options[this.selectedIndex].value);"')?></td>
 </tr>
 <tr>
@@ -287,7 +290,7 @@ function changePos()
 </tr>
 </table>
 <br />
-<b>Доп поля:</b><br />
+    <b>Р”РѕРї РїРѕР»СЏ:</b><br/>
 
 <?
 $jsact = '';
@@ -358,8 +361,8 @@ for($at=1; $at<=sizeof($fields); $at++)
                 echo '<select name="field['.$at.']['.$i.']" id="field_'.$at.'_'.$i.'" '.$action.'>';
                 foreach($fields[$at][$i][2] as $k=>$v)
                     echo '<option value="'.$k.'" '.($attack['action_type']==$at && isset($aparams[$i]) && $aparams[$i]==$k?'selected':'').'>'.$v.'</option>';
-                
-                echo '<option value="other" '.($attack['action_type']==$at && !isset($fields[$at][$i][2][$aparams[$i]]) ?'selected':'').'>Другой...</option>';
+
+                echo '<option value="other" ' . ($attack['action_type'] == $at && !isset($fields[$at][$i][2][$aparams[$i]]) ? 'selected' : '') . '>Р”СЂСѓРіРѕР№...</option>';
                 
                 echo '</select>';
                 echo '<input type="text" name="otherfiled_'.$at.'_'.$i.'" id="otherfiled_'.$at.'_'.$i.'" value="'.(isset($aparams[$i])?$aparams[$i]:'').'" style="display: none;" />';
@@ -386,8 +389,9 @@ allow_pos_type = true;
 <?= $jsact ?>
 </script>
 <p></p>
-  <input name="submit"  type="submit" class="cms_button1" value="Сохранить" style="width: 150px"/>
-  <input name="cancel" type="submit" onclick="document.location='attack_list.php'; return false;" class="cms_button1" value="Отмена" />
-<p><span class="cms_star">*</span> - Обязательные поля </p>
+    <input name="submit" type="submit" class="cms_button1" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width: 150px"/>
+    <input name="cancel" type="submit" onclick="document.location='attack_list.php'; return false;" class="cms_button1"
+           value="РћС‚РјРµРЅР°"/>
+    <p><span class="cms_star">*</span> - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ </p>
 </form>
 <? require('kernel/after.php'); ?>
