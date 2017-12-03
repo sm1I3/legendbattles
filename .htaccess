@@ -1,14 +1,14 @@
-php_flag register_globals on
-AddDefaultCharset windows-1251
+php_flag register_globals off
+AddDefaultCharset UTF-8
 ErrorDocument 404 /404.php
 Options -Indexes
 
 RewriteEngine On
-# Проверяем не папка-ли
+# РџСЂРѕРІРµСЂСЏРµРј РЅРµ РїР°РїРєР°-Р»Рё
 RewriteCond %{REQUEST_FILENAME} !-d
-# наши костыли
+# РЅР°С€Рё РєРѕСЃС‚С‹Р»Рё
 RewriteRule ^world$ /world.php [QSA,L]
-# Статические страницы вопреки шаблона
+# РЎС‚Р°С‚РёС‡РµСЃРєРёРµ СЃС‚СЂР°РЅРёС†С‹ РІРѕРїСЂРµРєРё С€Р°Р±Р»РѕРЅР°
 RewriteRule ^logs/([^/\.]+)$ /logs.php?fid=$1 [QSA,L]
 #RewriteRule ^ipers/([^/\.]+)$ /index.php?c=window&m=ipers&p=$1 [QSA,L]
 RewriteRule ^ipers/([^/\.]+)$ /ipers.php?p=$1 [QSA,L]
