@@ -1,7 +1,7 @@
 <?php
 
 
-include($_SERVER["DOCUMENT_ROOT"].'/includes/ks_antiddos.php')
+include($_SERVER["DOCUMENT_ROOT"] . '/includes/ks_antiddos.php');
 
 $ksa = new ks_antiddos();
 $ksa->doit(10,10);
