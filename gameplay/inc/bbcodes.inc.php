@@ -39,5 +39,3 @@ function deCodes($text)
     }
     return $text;
 }
-
-?>

@@ -344,8 +344,9 @@ ShowModal = function(){
 LoadingBar = function(){
     if(TimeSet > 0){
         TimeSet = TimeSet - TimeTik;
+        PxSize = 0;
         PxSize += 1;
-        document.getElementById("BAR").width = PxSize;
+        // document.getElementById("BAR").width = PxSize;
     }else{
         clearInterval(TimeInt);
         $('#Loading').fadeOut(600);

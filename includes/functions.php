@@ -73,13 +73,13 @@ function it_break($id){
 }
 
 function send_mail($email,$header,$body){
-	$subject = '=?windows-1251?B?'.base64_encode($header).'?=';
+    $subject = '=?utf-8?B?' . base64_encode($header) . '?=';
 	$headers = "From: <noreply@legendbattles.ru>\r\n";
 	$headers .= "Return-path: <noreply@legendbattles.ru>\r\n";
 	$headers .= "MIME-Version: 1.0\r\n";
-	$headers .= "Content-type: text/html; charset=windows-1251; boundary=\"--".md5(uniqid(time()))."\"\r\n";
-	//$email = iconv("Windows-1251UTF-8","UTF-8",$email);
-	//$body = iconv("Windows-1251","UTF-8",$body);
+    $headers .= "Content-type: text/html; charset=utf-8; boundary=\"--" . md5(uniqid(time())) . "\"\r\n";
+    //$email = iconv("utf-8UTF-8","UTF-8",$email);
+    //$body = iconv("utf-8","UTF-8",$body);
 	//$email = 'draconian.will@gmail.com';
 	if( mail($email, $subject, $body, $headers) ){
 		return true;

@@ -38,7 +38,7 @@ if ($get_id == 15) {
     } else {
         $gti = time() + ($gti / (1 + $plstt[58] / 200));
     }
-    list($x, $y) = split("_", $player[pos], 2);
+    list($x, $y) = explode("_", $player[pos], 2);
     if ($x = 1005 && $y = 1001) {
         mysqli_query($GLOBALS['db_link'], 'UPDATE user SET pos="8_4" WHERE id=' . AP . $player['id'] . AP . ' LIMIT 1;');
     }

@@ -1,7 +1,8 @@
 <?php
 session_start ();
-error_reporting(0);
 $v=time()+microtime();
+error_reporting(E_ERROR);
+ini_set("display_errors", "on");
 require_once ($_SERVER["DOCUMENT_ROOT"]."/includes/common.php");
 require_once ($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
 require_once ($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/bbcodes.inc.php");
@@ -107,7 +108,7 @@ $plst=explode("|",$player['st']);
 $plstt=allparam($player);
 unset($_SESSION['secur']);
 #calc rank
-list($uronMin,$uronMax) = split("-", $plst[1]);
+list($uronMin, $uronMax) = explode("-", $plst[1]);
 $player['rank_i'] = (($plstt[30]+$plstt[31]+$plstt[32]+$plstt[33]+$plstt[34]+($plst[9]+($perk[32]*30)))*0.3 + (($plst[7]+($perk[5]*30))+($plst[5]+($perk[19]*30))+($plst[6]+($perk[0]*30))+($plst[8]+($perk[15]*30)))*0.03 + ($player["hp_all"]+$player["mp_all"])*0.04+($uronMin+$uronMax)*0.3);
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `rank_i` = '".$player['rank_i']."' WHERE `id` = '".$player['id']."'");
 #end cals

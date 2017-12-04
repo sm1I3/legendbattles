@@ -1,6 +1,6 @@
 <?php
 #GLOBALS OFF
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=utf-8');
 session_start();
 include($_SERVER["DOCUMENT_ROOT"]."/includes/config.inc.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
@@ -32,8 +32,8 @@ switch($_GET['act']){
 		mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `clan_status`='".intval($_GET['clan_status'])."',`clan_d`='".htmlspecialchars($_GET['clan_d'])."',`clan_accesses`='".($_GET['access_1']?'1':'0').'|'.($_GET['access_2']?'2':'0').'|'.($_GET['access_3']?'4':'0').'|'.($_GET['access_4']?'8':'0')."' WHERE `id`='".$plid['id']."'");
 	break;
 	case 'additem':
-		$_GET['clanname'] = iconv("UTF-8","Windows-1251",urldecode($_GET['clanname']));
-		$_GET['itemname'] = iconv("UTF-8","Windows-1251",urldecode($_GET['itemname']));
+        $_GET['clanname'] = iconv("UTF-8", "utf-8", urldecode($_GET['clanname']));
+        $_GET['itemname'] = iconv("UTF-8", "utf-8", urldecode($_GET['itemname']));
 		$glava = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `clan_id`='".mysqli_real_escape_string($GLOBALS['db_link'],$_GET['clanname'])."' AND `clan_status`='9' LIMIT 1;"));
 		if($glava['id']){
 			$it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM items WHERE id='".intval($_GET['idit'])."';"));

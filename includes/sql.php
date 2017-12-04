@@ -4,7 +4,8 @@ class InitVars {
 # Недопустимые слова в запросах fff
         var $deny_words = array("union","char","players","from","truncate","table","select","update","drop","delete","benchmark", "order", "limit", "UNION","CHAR", "DROP", "FROM", "SELECT", "UPDATE", "DELETE", "ORDER", "PLAYERS", "TRUNCATE", "LIMIT", "TABLE", "Union","Players","From","Truncate","Table","Select","Update","Char","Drop","Delete","Benchmark","Order","Limit", "or","OR","Or","and","AND","And");
 
-function InitVars() {
+    function __construct()
+    {
 }
 
 # Метод конвентирует суперглобальные массивы $_POST, $_GET в перемнные

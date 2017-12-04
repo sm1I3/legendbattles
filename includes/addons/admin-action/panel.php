@@ -19,7 +19,7 @@ if(!empty($_REQUEST['pan'])){
 <HTML>
 <HEAD>
 <LINK href="../../../css/game.css" rel=STYLESHEET type=text/css>
-<META Http-Equiv=Content-Type Content="text/html; charset=windows-1251">
+    <META Http-Equiv=Content-Type Content="text/html; charset=utf-8">
 <META Http-Equiv=Cache-Control Content=No-Cache>
 <META Http-Equiv=Pragma Content=No-Cache>
 <META Http-Equiv=Expires Content=0>

@@ -5,7 +5,7 @@ include_once('includes/config.inc.php');
 <html>
  <head>
  <link rel="stylesheet" href="./css/css.php?f=game|stl|core|introjs.min">
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
      <title>Восстановление пароля</title>
 
 </head>
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])){
 			}
 			$newmdPassword = md5($password);
             $title = 'Востановления пароля пользователю ' . $login . ' для сайта legendbattles.ru!';
-			$headers  = "Content-type: text/plain; charset=windows-1251\r\n";
+            $headers = "Content-type: text/plain; charset=utf-8\r\n";
             $headers .= "Администрация сайта legendbattles.ru";
             $letter = 'Вы запросили восстановление пароля для аккаунта ' . $login . ' на сайте legendbattles.ru  Ваш новый пароль: ' . $password;
 

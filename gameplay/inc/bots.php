@@ -1,6 +1,6 @@
 <?
 //Боты на природе.
-list($x, $y) = split("_", $player[pos], 2);
+list($x, $y) = explode("_", $player[pos], 2);
 
 if ($x != 1000 && $y != 1000) {
 

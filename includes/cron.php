@@ -1,7 +1,6 @@
 <?php
 define('INSIDE'  , true);
 session_start ();
-error_reporting(0);
 $v=time()+microtime();
 foreach($_POST as $keypost=>$val){$_POST[$keypost] = varcheck($val);}
 foreach($_GET as $keyget=>$val){$_GET[$keyget] = varcheck($val);}

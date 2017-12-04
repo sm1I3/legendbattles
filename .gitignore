@@ -3,3 +3,6 @@ imgs1
 .idea
 adm/backup
 backup
+vendor
+composer.json
+composer.lock

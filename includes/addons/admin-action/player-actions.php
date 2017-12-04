@@ -114,7 +114,7 @@ echo'
 <HEAD>
 <LINK href="../../../css/game.css?v2" rel=STYLESHEET type=text/css>
 <SCRIPT src="../../../js/slots.js"></SCRIPT>
-<META Http-Equiv=Content-Type Content="text/html; charset=windows-1251">
+<META Http-Equiv=Content-Type Content="text/html; charset=utf-8">
 <META Http-Equiv=Cache-Control Content=No-Cache>
 <META Http-Equiv=Pragma Content=No-Cache>
 <META Http-Equiv=Expires Content=0>

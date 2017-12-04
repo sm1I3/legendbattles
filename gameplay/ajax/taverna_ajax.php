@@ -1,7 +1,7 @@
 <?php
 // mZer0ne Domain verification
 session_start();
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=utf-8');
 include($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
 

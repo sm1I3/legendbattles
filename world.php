@@ -1,10 +1,11 @@
 <?php
-session_start();
-error_reporting(0);
-require_once("./includes/common.php");
-require_once("./includes/sql_func.php");
-require_once("./gameplay/inc/bbcodes.inc.php");
 
+session_start();
+
+
+require_once($_SERVER["DOCUMENT_ROOT"] . "/includes/common.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/bbcodes.inc.php");
 switch($_GET['act']){
 	default:
 		$PLAY = db_quer('user','login = "'.mysqli_real_escape_string($GLOBALS['db_link'],strip_tags($_POST['login'])).'" and pass = "'.md5($_POST['password']).'" LIMIT 1;');
@@ -34,9 +35,9 @@ if(!empty($PLAY['block'])) {
 $lch=mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT MAX(id) FROM chat LIMIT 1;"),0);
 //--------заполняем сессии переменными----
 $uin = md5(uniqid(rand(0,1000000000)));
-setcookie("Hash", $PLAY['pass'],time()+86400, "", ".leg");
+setcookie("Hash", $PLAY['pass'], time() + 86400, "", "www.legendbattles.ru");
 setcookie('UID',$uin,time()+86400);
-setcookie("Puid", $PLAY['id'],time()+86400, "", ".leg");
+setcookie("Puid", $PLAY['id'], time() + 86400, "", "www.legendbattles.ru");
 
 $_SESSION['ignor'][] = '';
 $_SESSION['user'] = array(
