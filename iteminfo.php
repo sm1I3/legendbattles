@@ -1,5 +1,7 @@
 <?php
 session_start ();
+
+
 include($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
 include( DROOT . "/includes/functions.php");
 
