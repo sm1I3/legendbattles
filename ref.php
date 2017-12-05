@@ -21,7 +21,7 @@ foreach ($_SESSION as $keyses => $vals) {
 if (empty($_GET["p"])) {
     $_GET["p"] = $_SERVER['QUERY_STRING'];
 }
-$pers = GetUser(str_replace("%20", " ", iconv("UTF-8", "Windows-1251", urldecode($_GET["p"]))));
+$pers = GetUser(str_replace("%20", " ", iconv("UTF-8", "UTF-8", urldecode($_GET["p"]))));
 if (!empty($pers['id']) and !empty($pers['login'])) {
     $_SESSION['referal'] = $pers['login'];
     $_SESSION['referal_id'] = $pers['id'];

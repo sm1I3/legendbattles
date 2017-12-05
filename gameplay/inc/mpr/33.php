@@ -4,7 +4,7 @@
 <div style="position: absolute; left: 0; top: 0; width: 100%; z-index: 50;" id="popup"></div>
 <HTML>
 <HEAD>
-<META Http-Equiv="Content-Type" Content="text/html; charset=windows-1251">
+    <META Http-Equiv="Content-Type" Content="text/html; charset=UTF-8">
 <META Http-Equiv="Cache-Control" Content="No-Cache">
 <META Http-Equiv="Pragma" Content="No-Cache">
 <META Http-Equiv="Expires" Content="0">

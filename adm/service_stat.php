@@ -8,7 +8,7 @@ if (!$db = mysql_connect($server, $login, $pass))
     die('Cannot connect to MySQL server.');
 
 mysql_select_db('legend', $db);
-mysql_set_charset('cp1251');
+mysql_set_charset('utf8');
 date_default_timezone_set('Europe/Moscow');
 session_start();
 function generateMysqlLimit($page, $recs_per_page) { return ' LIMIT '.(($page-1)*$recs_per_page).', '.$recs_per_page.' '; }

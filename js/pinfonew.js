@@ -114,7 +114,7 @@ function mf_init(mftype,mf1,label)
 function userinfo(nowtime,new_hp,all_hp,new_ma,all_ma,new_us,chatsleep,forumsleep,align,signimage,signname,signstatus,level,nickname,image,on_off,block,pr_status,pr_info,fightid,dealer,forcep,goodluck,adroitness,intellect,health,wisdom,addforce,addadroitness,addgoodluck,addintellect,uvorot,antiuvorot,krit,antikrit,proclass,broclass,sex,inf_totem,inf_borntime,inf_borncity,inf_url,inf_name,inf_country,inf_city,inf_place,inf_nowcity,travma,abil_tx,l_s,l_a,r_s,r_a,pcount,presents,wopener)
 {
     d.write('<HTML><HEAD><TITLE>Жизнь сильнейших... [ Информация: ' + nickname + ' ]</TITLE>');
-     d.write('<META http-equiv="Content-Type" content="text/html; charset=windows-1251">');
+    d.write('<META http-equiv="Content-Type" content="text/html; charset=UTF-8">');
      d.write('<LINK href=../css/game.css rel=STYLESHEET type=text/css></HEAD>');
      d.write('<BODY link=#336699 alink=#336699 vlink=#336699 bgcolor=#ffffff topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0><table cellpadding=4 cellspacing=0 border=0 width=100%><tr><td bgcolor=#FCFAF3>');
      d.write('<form name=LoginForm method=post><TABLE cellpadding=0 cellspacing=0 border=0><tr><td rowspan=3><font class=nickname>');

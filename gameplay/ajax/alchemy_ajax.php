@@ -1,6 +1,6 @@
 <?php
 #GLOBALS OFF
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=UTF-8');
 session_start();
 include($_SERVER["DOCUMENT_ROOT"]."/includes/config.inc.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
@@ -85,7 +85,7 @@ case 1:
 	$serp=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],'SELECT `invent`.*,  `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `pl_id`="'.$pers['id'].'" AND `items`.`type`="w66" AND `items`.`slot`="3" AND `invent`.`used`="1" LIMIT 1;'));
 	$grassrow=substr($grassrow,0,strlen($grassrow)-1);
 	$captcha="00000";
-	header("Content-type: text/html; charset=windows-1251");
+    header("Content-type: text/html; charset=UTF-8");
 	echo 'AL@["'.($error?$error:'').'",""]@[0,"'.$captcha.'","'.(($serp)?$serp['id_item']:'').'",1,1000,'.$grassrow.']';
 break;
 case 2:
@@ -176,8 +176,8 @@ case 2:
 				}
 			}
 		}
-		
-		header("Content-type: text/html; charset=windows-1251");
+
+        header("Content-type: text/html; charset=UTF-8");
 		echo 'AL@["'.($error?$error:'').'"]';	
 	}
 break;	

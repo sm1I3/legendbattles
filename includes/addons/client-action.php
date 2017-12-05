@@ -9,7 +9,7 @@ echo'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.
 <head>
   <link href="/css/game.css" rel="stylesheet" type="text/css">
   <link href="/css/NewDesign.css" rel="stylesheet" type="text/css">
-  <meta content="text/html; charset=windows-1251" http-equiv="Content-type">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-type">
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">

@@ -161,7 +161,7 @@ echo'<HTML>
 <LINK href="/css/frame.css?'.$VersJS.'" rel="STYLESHEET" type="text/css">
 <LINK href="/css/labyrinth.css?'.$VersJS.'" rel="STYLESHEET" type="text/css">
 <LINK href="/css/NewDesign.css?'.$VersJS.'" rel="STYLESHEET" type="text/css">
-<META Http-Equiv="Content-Type" Content="text/html; charset=windows-1251">
+<META Http-Equiv="Content-Type" Content="text/html; charset=UTF-8">
 <META Http-Equiv="Cache-Control" Content="No-Cache">
 <META Http-Equiv="Pragma" Content="No-Cache">
 <META Http-Equiv="Expires" Content="0">

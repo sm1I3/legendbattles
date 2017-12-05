@@ -1,7 +1,7 @@
 <HTML>
 <HEAD>
     <LINK href="./css/error.css" rel=STYLESHEET type=text/css>
-    <META content="text/html; charset=windows-1251" http-equiv=Content-type>
+    <META content="text/html; charset=UTF-8" http-equiv=Content-type>
 </HEAD>
 <BODY>
 <table width=600 border=0 cellpadding=0 cellspacing=0 align=center height=100%>

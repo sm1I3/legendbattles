@@ -1,6 +1,6 @@
 <HEAD>
     <LINK href="./css/game.css" rel=STYLESHEET type=text/css>
-    <meta content="text/html; charset=windows-1251" http-equiv=Content-type>
+    <meta content="text/html; charset=UTF-8" http-equiv=Content-type>
     <META Http-Equiv=Cache-Control Content=no-cache>
     <meta http-equiv=PRAGMA content=NO-CACHE>
     <META Http-Equiv=Expires Content=0>

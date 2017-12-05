@@ -12,7 +12,7 @@ foreach($_GET as $keyget=>$valg){
 	$_GET[$keyget] = $valg;
 }
 
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=UTF-8');
 $sk='kgTvx2WrEZ';
 $pers = GetUser($_SESSION['user']['login']);
 if(new_array($pers)=='ok'){$pers['sign']=$sk;}

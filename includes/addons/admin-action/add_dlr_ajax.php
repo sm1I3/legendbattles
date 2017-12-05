@@ -4,7 +4,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/includes/connect.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
 $player=player();
 if ($player['login'] == 'mozg' or $player['login'] == 'Администрация') {
-	$login = varcheck(iconv("UTF-8","Windows-1251",urldecode($_GET['login'])));
+    $login = varcheck(iconv("UTF-8", "UTF-8", urldecode($_GET['login'])));
 	$usr = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `login`='".$login."' LIMIT 1;"));
 	if($usr['id']){
 		$add = intval($_GET['dlr']);

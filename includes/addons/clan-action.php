@@ -9,7 +9,14 @@ function sclonch($id){
 }
 $_GET['addid'] = $_GET['addid']?$_GET['addid']:'1';
 ?>
-<HEAD><LINK href="./css/game.css" rel=STYLESHEET type=text/css><LINK href="./css/stl.css" rel=STYLESHEET type=text/css><meta content="text/html; charset=windows-1251" http-equiv=Content-type><META Http-Equiv=Cache-Control Content=no-cache><meta http-equiv=PRAGMA content=NO-CACHE><META Http-Equiv=Expires Content=0><SCRIPT src="/js/ajax.js"></SCRIPT>
+<HEAD>
+    <LINK href="./css/game.css" rel=STYLESHEET type=text/css>
+    <LINK href="./css/stl.css" rel=STYLESHEET type=text/css>
+    <meta content="text/html; charset=UTF-8" http-equiv=Content-type>
+    <META Http-Equiv=Cache-Control Content=no-cache>
+    <meta http-equiv=PRAGMA content=NO-CACHE>
+    <META Http-Equiv=Expires Content=0>
+    <SCRIPT src="/js/ajax.js"></SCRIPT>
 <SCRIPT src="./js/FormUp_v01.js"></SCRIPT>
 </HEAD><body bgcolor=#ffffff topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0 link=#336699 alink=#336699 vlink=#336699>
 	<div id="overDiv" style="position:absolute;visibility:hidden;z-index:1000;"></div>

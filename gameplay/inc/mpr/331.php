@@ -2,7 +2,7 @@
     <meta name="viewport" content="width=1024, initial-scale=1.0"/>
     <meta name="mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta http-equiv="Content-type" content="text/html; charset=windows-1251"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="https://img.ereality.ru/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="https://www.ereality.ru//css/_core.css"/>
     <script type="text/javascript" src="https://www.ereality.ru//js/_jquery.js?485729374"></script>

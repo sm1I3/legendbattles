@@ -82,7 +82,7 @@ $VersJS = 'v1';
 echo'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <HTML>
 <HEAD>
-<META Http-Equiv="Content-Type" Content="text/html; charset=windows-1251">
+<META Http-Equiv="Content-Type" Content="text/html; charset=UTF-8">
 <META Http-Equiv="Cache-Control" Content="No-Cache">
 <META Http-Equiv="Pragma" Content="No-Cache">
 <META Http-Equiv="Expires" Content="0">

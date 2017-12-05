@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
@@ -16,7 +16,7 @@ $ksa->doit(10,10);
     <meta name="keywords"
           content="браузерная онлайн игра, бесплатные онлайн игры, лучшие онлайн игры, online, game, рпг, рпг игры, скачать игры, mmorpg, mmorpg игра, онлайн рпг, rpg, rpg игры, игры онлайн, офис игры, ролевые онлайн игры, игры бесплатно, бесплатная игра, ММОРПГ, стратегия, фентези, fantasy, online игры, online игра, играть, игры, интернет игры, компьютерные игры, онлайн игры , buhs jykfq,hgu buhs,buhs d gvh,рпг игра legendBattles.ru,"/>
     <meta name="description"
-          content="Официальный сайт бесплатной ролевой онлайн игры «legend bat». Огромный фэнтезийный мир.Заходи каждый день на сайт «legendBattles.ru» и играй в лучшую рпг игру для получения навыков и побед в игре «legend bat» .Властвуй целым миром legend bat."/>
+          content="Официальный сайт бесплатной ролевой онлайн игры «LegenBattles». Огромный фэнтезийный мир.Заходи каждый день на сайт «legendBattles.ru» и играй в лучшую рпг игру для получения навыков и побед в игре «legend bat» .Властвуй целым миром legend bat."/>
 
     <title>Legend Battles — бесплатная онлайн игра | Браузерная MMORPG онлайн игра — одна из старейших бесплатных
         ролевых online игр. Скачать и играть в лучшую многопользовательскую RPG игру онлайн бесплатно.</title>
@@ -27,7 +27,7 @@ $ksa->doit(10,10);
 	<script type="text/javascript" language="javascript" src="/v2/js/jquery.js" charset="utf-8"></script>
 	<script type="text/javascript" language="javascript" src="/v2/js/swfobject.js" charset="utf-8"></script>
 	<script type="text/javascript" language="javascript" src="/v2/js/cufon.js" charset="utf-8"></script>
-	
+
 	<script type="text/javascript" language="javascript" src="/v2/fonts/PTSans_400-PTSans_700.font.js" charset="utf-8"></script>
 	<script type="text/javascript" language="javascript" src="/v2/js/jquery.formstyler.min.js" charset="utf-8"></script>
 	<script type="text/javascript" language="javascript" src="/v2/js/jquery.powertip.min.js" charset="utf-8"></script>
@@ -53,26 +53,26 @@ $ksa->doit(10,10);
                     <span class="b-mainmenu__item-red-inner" data-font="PTSans">ФОРУМ</span>
 				</a>
 			</div>
-				
+
 			<div class="b-header">
 				<a href="#" class="b-logo">
 					<img src="/v2/images/locale/ru/images/logo.png" alt="Legend Battles" class="b-logo__img" />
 				</a>
 			</div>
-						
+
 			<div class="b-column-wrapper clearfix">
 				<div class="b-column-left">
 					<div class="b-main-frame b-main-frame_left-side">
 						<span class="b-main-frame__l"></span>
 						<span class="b-main-frame__t"></span>
 						<span class="b-main-frame__b"></span>
-						
+
 						<span class="b-main-frame__decor-tl"></span>
 						<span class="b-main-frame__decor-tl-2"></span>
-						
+
 						<span class="b-main-frame__decor-bl"></span>
-						
-						<div class="b-main-frame__cont">
+
+                        <div class="b-main-frame__cont">
 							<div class="b-index-decor b-index-decor_right">
 								<a href="/world.php" class="b-button-red-large b-button-red-large_enter-game" onclick="return openPopup('#authPopup');">
                                     <span class="b-button-red-large__inner" data-font="PTSans">Войти в игру</span>
@@ -116,8 +116,8 @@ $ksa->doit(10,10);
 										$('#rating-' + [Ratings.section, Ratings.type, Ratings.kind].join('-')).show();
 									});
 								</script>
-	
-	<div class="b-common-block" id="ratings">
+
+                                <div class="b-common-block" id="ratings">
 		<span class="b-common-block__l"></span>
 		<span class="b-common-block__r"></span>
 		<span class="b-common-block__t b-common-block__t_2"></span>
@@ -195,8 +195,8 @@ echo'<tr>
 			</div>
 		</div>
 	</div>
-									
-									<div class="b-common-block">
+
+                                <div class="b-common-block">
 		<span class="b-common-block__l"></span>
 		<span class="b-common-block__r"></span>
 		<span class="b-common-block__t b-common-block__t_2"></span>
@@ -221,24 +221,24 @@ echo'<tr>
 												<a href="http://www.odnoklassniki.ru/" target="_blank" class="b-communities__link">
 							<i class="b-icon-soc-64x64 b-icon-soc-64x64_odkl"></i>
 						</a>
-						
-												<a href="http://www.facebook.com/" target="_blank" class="b-communities__link">
+
+                        <a href="http://www.facebook.com/" target="_blank" class="b-communities__link">
 							<i class="b-icon-soc-64x64 b-icon-soc-64x64_fb"></i>
 						</a>
-						
-												<a href="http://twitter.com/" target="_blank" class="b-communities__link">
+
+                        <a href="http://twitter.com/" target="_blank" class="b-communities__link">
 							<i class="b-icon-soc-64x64 b-icon-soc-64x64_tw"></i>
 						</a>
-						
-												<a href="http://vk.com/public76407285" target="_blank" class="b-communities__link">
+
+                        <a href="http://vk.com/public76407285" target="_blank" class="b-communities__link">
 							<i class="b-icon-soc-64x64 b-icon-soc-64x64_vk"></i>
 						</a>
-						
-												<a href="http://my.mail.ru" target="_blank" class="b-communities__link">
+
+                        <a href="http://my.mail.ru" target="_blank" class="b-communities__link">
 							<i class="b-icon-soc-64x64 b-icon-soc-64x64_mailru"></i>
 						</a>
-						
-												<a href="https://plus.google.com" target="_blank" class="b-communities__link">
+
+                        <a href="https://plus.google.com" target="_blank" class="b-communities__link">
 							<i class="b-icon-soc-64x64 b-icon-soc-64x64_gp"></i>
 						</a>
 											</div>
@@ -246,26 +246,26 @@ echo'<tr>
 			</div>
 		</div>
 	</div>
-	
-							</div>
+
+                            </div>
 						</div>
 					</div>
 				</div>
-								
-								<div class="b-column-right">
+
+                <div class="b-column-right">
 					<div class="b-main-frame">
 						<span class="b-main-frame__l"></span>
 						<span class="b-main-frame__r"></span>
 						<span class="b-main-frame__t"></span>
 						<span class="b-main-frame__b"></span>
-						
-						<span class="b-main-frame__decor-tr"></span>
+
+                        <span class="b-main-frame__decor-tr"></span>
 						<span class="b-main-frame__decor-tr-2"></span>
-						
-						<span class="b-main-frame__decor-bl"></span>
+
+                        <span class="b-main-frame__decor-bl"></span>
 						<span class="b-main-frame__decor-br"></span>
-						
-						<div class="b-main-frame__cont">
+
+                        <div class="b-main-frame__cont">
 							<div class="b-index-decor b-index-decor_left">
 										<script type="text/javascript">
 			$(function() {
@@ -351,8 +351,8 @@ echo'<tr>
 					</span>
 				</a>
 					</div>
-									
-									<div class="b-common-block">
+
+                                <div class="b-common-block">
 		<span class="b-common-block__l"></span>
 		<span class="b-common-block__r"></span>
 		<span class="b-common-block__t b-common-block__t_2"></span>
@@ -372,7 +372,7 @@ echo'<tr>
 
 		<div class="b-common-block__cont">
 			<div class="b-common-block__bgl">
-				<div class="b-common-block__bgr clearfix"><?php 
+                <div class="b-common-block__bgr clearfix"><?php
 /* $Query = mysqli_query($GLOBALS['db_link'],"SELECT DISTINCT `forum_msg`.`topic_id` FROM `forum_msg` WHERE `cat`='15'");
 $where = "";
 while($row = mysqli_fetch_assoc($Query)){
@@ -387,7 +387,7 @@ $i++;
 	if($last_topic_id == $row["topic_id"]){
 		continue;
 	}
-} 
+}
 $last_topic_id = $row["topic_id"]; */
 
 echo'					<div class="b-news-item">
@@ -445,7 +445,7 @@ echo'					<div class="b-divider-2">
 			</div>
 
 			<div class="b-footer b-footer_main">
-				<div class="b-footer__top"></div>								
+                <div class="b-footer__top"></div>
 				<div class="b-footer__bottom">
                     <a href="#" target="_blank" class="b-footer__copyright-block"></a>
 					<a href="//www.free-kassa.ru/"><img src="//www.free-kassa.ru/img/fk_btn/5.png"></a>
@@ -580,14 +580,14 @@ echo'					<div class="b-divider-2">
 									</td>
 								</tr>
 							</table>
-						</form>	
+                        </form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div id="authPopup" class="b-common-popup">
+
+    <div id="authPopup" class="b-common-popup">
 		<div class="b-common-block b-common-block__auth">
 			<span class="b-common-block__l"></span>
 			<span class="b-common-block__r"></span>
@@ -689,14 +689,14 @@ echo'					<div class="b-divider-2">
 							<a href="#" onclick="changePopup('#authPopup', '#regPopup'); return false;" class="b-button-green-5">
                                 <span class="b-button-green-5__inner">Зарегистрироваться</span>
 							</a>
-						</p>			
+                        </p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div id="recoveryPasswordStep1" class="b-common-popup">
+
+    <div id="recoveryPasswordStep1" class="b-common-popup">
 		<div class="b-common-block b-common-block__auth">
 			<span class="b-common-block__l"></span>
 			<span class="b-common-block__r"></span>

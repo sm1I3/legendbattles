@@ -10,7 +10,7 @@ if (mysqli_connect_errno()) {
     printf("Подключение к серверу MySQL невозможно. Код ошибки: %s\n", mysqli_connect_error());
     exit;
 }
-mysqli_query($GLOBALS['db_link'], "SET NAMES cp1251");
+mysqli_query($GLOBALS['db_link'], "SET NAMES utf8");
 function mysqli_result($res, $row, $field = 0)
 {
     $res->data_seek($row);

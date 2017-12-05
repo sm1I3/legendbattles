@@ -24,7 +24,7 @@ $valid_formats = array("gif","jpg","jpeg");
 $ErrorScript = 0;
 
 $msg = '';
-header("Content-type: text/html; charset=windows-1251");
+header("Content-type: text/html; charset=UTF-8");
 if(!empty($_FILES)){
 	$resi = getimagesize($_FILES['photoimg']['tmp_name']);
 	$name = $_FILES['photoimg']['name'];

@@ -13,7 +13,7 @@ foreach($_GET as $keyget=>$valg){
 
 }
 
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=UTF-8');
 $error='';
 $pers = GetUser($_SESSION['user']['login']);
 $prem=explode("|",$pers['premium']);
@@ -38,7 +38,7 @@ switch(intval($_GET['act'])){
                 $error = 'Навигатор недоступен в этой локации!';
             }
 			$captcha="00000";
-			header("Content-type: text/html; charset=windows-1251");
+            header("Content-type: text/html; charset=UTF-8");
 			echo 'NAVI@["'.($error?$error:'').'",""]@[0,"'.$captcha.'","'.(($serp)?$serp['id_item']:'').'",1,1000,'.substr($pnature,0,strlen($pnature)-1).']';
 		}
 	break;

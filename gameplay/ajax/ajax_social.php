@@ -13,7 +13,7 @@ foreach($_GET as $keyget=>$valg){
 
 }
 
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=UTF-8');
 $pers = GetUser($_SESSION['user']['login']);
 $SyncArray = array("vkontakte","odnoklassniki","mailru","facebook","twitter","google","yandex","livejournal","openid","lastfm","linkedin","liveid","soundcloud","steam","flickr","youtube","vimeo","webmoney","foursquare","tumblr","googleplus");
 $SocialIcons = array("vkontakte"=>"35","odnoklassniki"=>"70","mailru"=>"105","facebook"=>"140","twitter"=>"175","google"=>"210","yandex"=>"245","livejournal"=>"280","openid"=>"315","flickr"=>"385","lastfm"=>"420","linkedin"=>"455","liveid"=>"490","soundcloud"=>"525","steam"=>"560","vimeo"=>"595","webmoney"=>"630","youtube"=>"665","foursquare"=>"700","tumblr"=>"735","googleplus"=>"770");
@@ -24,7 +24,7 @@ if($pers){
 			$s = file_get_contents('http://ulogin.ru/token.php?token=' . $_GET['token'] . '&host=' . $_SERVER['HTTP_HOST']);
 			$uLoginGet = json_decode($s, true);
 			if(empty($uLoginGet['error'])){
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `ulogin` (`userid`,`network`,`profile`,`profile_names`,`identity`) VALUES ('".$pers['id']."','".$uLoginGet['network']."','".mysqli_real_escape_string($GLOBALS['db_link'],$uLoginGet['profile'])."','".mysqli_real_escape_string($GLOBALS['db_link'],iconv("UTF-8", "Windows-1251",$uLoginGet['first_name']))." ".mysqli_real_escape_string($GLOBALS['db_link'],iconv("UTF-8", "Windows-1251",$uLoginGet['last_name']))."','".mysqli_real_escape_string($GLOBALS['db_link'],$uLoginGet['identity'])."');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `ulogin` (`userid`,`network`,`profile`,`profile_names`,`identity`) VALUES ('" . $pers['id'] . "','" . $uLoginGet['network'] . "','" . mysqli_real_escape_string($GLOBALS['db_link'], $uLoginGet['profile']) . "','" . mysqli_real_escape_string($GLOBALS['db_link'], iconv("UTF-8", "UTF-8", $uLoginGet['first_name'])) . " " . mysqli_real_escape_string($GLOBALS['db_link'], iconv("UTF-8", "UTF-8", $uLoginGet['last_name'])) . "','" . mysqli_real_escape_string($GLOBALS['db_link'], $uLoginGet['identity']) . "');");
 				$Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `ulogin` WHERE `userid`='".$pers['id']."'");
 				if(mysqli_num_rows($Query)>0){
 					$i = 0;

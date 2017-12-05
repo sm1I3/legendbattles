@@ -1,6 +1,6 @@
 <?php
 #GLOBALS OFF
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=UTF-8');
 session_start();
 include($_SERVER["DOCUMENT_ROOT"] . "/includes/config.inc.php");
 include($_SERVER["DOCUMENT_ROOT"] . "/includes/functions.php");
@@ -115,7 +115,7 @@ if ($pers['id']) {
             $primnames = substr($primnames, 0, strlen($primnames) - 1);
             $grassrow = substr($grassrow, 0, strlen($grassrow) - 1);
             $captcha = "00000";
-            header("Content-type: text/html; charset=windows-1251");
+            header("Content-type: text/html; charset=UTF-8");
             exit('FISH@["' . ($error ? $error : '') . '",""]@[0,"' . $captcha . '","' . (($serp) ? $serp['id_item'] : '') . '",1,1000,' . $grassrow . ']@[' . $primnames . ']');
             break;
         case 2:
@@ -205,7 +205,7 @@ if ($pers['id']) {
                     }
                 }
                 $captcha = "00000";
-                header("Content-type: text/html; charset=windows-1251");
+                header("Content-type: text/html; charset=UTF-8");
                 exit('FISH@["' . ($error ? $error : 'test') . '"]');
             }
             break;

@@ -1,5 +1,5 @@
 <?
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=UTF-8');
 session_start();
 /*			switch($tp){
 				case 1: $str = "`param`='".$par_new."'"; break;
@@ -17,7 +17,7 @@ session_start();
 include "./includes/common.php";
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
 $pers = GetUser($_SESSION['user']['login']);
-$_GET['string'] = iconv("UTF-8","Windows-1251",urldecode($_GET['string']));
+$_GET['string'] = iconv("UTF-8", "UTF-8", urldecode($_GET['string']));
 $getstatsusr = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `real_dd_bonus` WHERE `pl_id`='".$pers['id']."' LIMIT 1;"));
 $_GET['type'] = intval($_GET['type']);
 $hash = md5($_GET['type'].$_SESSION['user']['login'].$_GET['params'].$_GET['sum'].$pers['dd']);
