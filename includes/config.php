@@ -16,7 +16,7 @@ function mysqli_result($res, $row, $field = 0)
     return $datarow[$field];
 }
 
-$redirect = "parent.frames['main_top'].location='main.php';";
+$GLOBALS['redirect'] = "parent.frames['main_top'].location='main.php';";
 $quit = "parent.location='index.php';";
 
 define('AP', '\'');
