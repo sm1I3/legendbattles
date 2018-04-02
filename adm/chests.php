@@ -41,7 +41,7 @@ echo '
 <select name=present>
 <option value="none" ' . (($_POST['present'] != 'none' and $_POST['present'] != '') ? '' : 'selected=selected') . '>Выберите сундук</option>
 ';
-while ($present = mysqlu_fetch_assoc($chests)) {
+while ($present = mysqli_fetch_assoc($chests)) {
     if (mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE `chests`='1' and `id`='" . $present['cid'] . "'")) > 0) {
 		echo '<option value="'.$present['id'].'" '.(($_POST['present']==$present['id'])?'selected=selected':'').'>'.$present['name'].'</option>';
 	}else{

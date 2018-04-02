@@ -8,7 +8,7 @@ if (!userHasPermission(1)) {
 ?>
 
 <script>
-var user = '<?=$inf[sklon]?> <?=$inf[clan_gif]?> <?=$_SESSION['user']["login"]?>';
+    var user = '<?=$inf['sklon']?> <?=$inf['clan_gif']?> <?=$_SESSION['user']["login"]?>';
 var t;
 //document.onmousedown = function(event) { t_nick(event); };
 var sm = new Array('001','002','003','004','005','007','008','009','006','010','011','012','013','014','015','016','000','018','021','022','019','023','024','025','026','027','028','031','032','034','033','037','038','036','040','039','043','049','052','056','059','057','062','066','068','073','082','080','079','083','086','085','114','118','119','123','161','158','164','167','166','170','174','177','175','179','178','186','189','188','190','202','205','203','206','221','237','239','238','243','246','254','253','255','277','276','275','278','284','289','288','294','293','295','310','313','324','336','347','346','345','348','349','351','352','361','362','366','367','382','393','411','415','413','419','422','434','442','447','453','467','471','472','475','551','554','559','564','568','573','029','030','077','126','127','131','155','156','267','297','319','350','353','354','357','358','368','376','385','386','414','417','457','459','469','473','474','477','552','558','560','570','574','575','576','579','600','601','602','603','604','605','606','607','608','609','610','611','612','613','614','615','616','617','618','619','620','621','622','623','624','625','626','627','628','629','630','631','632','633','634','635','636','637','638','639','640','641','642','643','644','645','646','647','648','650','651','652','653','654','655','656','657','950','951','952','953','954','955','956','957','958','959','960');
@@ -140,7 +140,9 @@ function msg_add($p){
   </ul>
   <div class="TabbedPanelsContentGroup">
     <div class="TabbedPanelsContent"><table width="100%" border="0" cellspacing="0" cellpadding="0"><form action="player.php" method="post"><?
-if($load){$i=0;
+                $load = $_POST['load'] ?? $_GET['load'] ?? null;
+                if ($load) {
+                    $i = 0;
     $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$loginp' LIMIT 1;"));
 	if($pl!=''){
 		foreach($pl as $key=>$val){
@@ -192,9 +194,11 @@ if(isset($str)){$str=implode(",",$str);
 </select>
     <input name="molch" type="submit" class="lbut" value="   Заткнуть  "/>
     <input name="nomolch" type="submit" class="lbut" value="   Снять молчанку  "/>
-<? if($molch){
+    <?
+    $molch = $_POST['molch'] ?? $_GET['molch'] ?? null;
+    if ($molch) {
     $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
-if($pl[login]!=''){
+        if ($pl['login'] != '') {
 $time=explode("|",$time);
     mysqli_query($GLOBALS['db_link'], "UPDATE user SET sleep=" . (time() + $time[0]) . " WHERE login='$login' LIMIT 1;");
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>$pl[login]</b> заклятие молчания сроком на <b>$time[1]</b> (Хранитель Игры).</font><BR>'+'');";
@@ -203,7 +207,7 @@ $time=explode("|",$time);
 }
 if($nomolch){
     $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
-if($pl[login]!=''){
+    if ($pl['login'] != '') {
     mysqli_query($GLOBALS['db_link'], "UPDATE user SET sleep='0' WHERE login='$login' LIMIT 1;");
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>Хранитель Игры</b> снял заклятие молчания с персонажа <b>$pl[login]</b>.</font><BR>'+'');";
     chmsg($ms, '');
@@ -294,7 +298,7 @@ if ($handle = opendir('http://img.legendbattles.ru/image/obrazy')) {
     <br><br>
 <? if($prison){
     $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
-if($time!=0 and $pl[login]!=''){
+    if ($time != 0 and $pl['login'] != '') {
 $tim=time()+($time*86400)."|$prich";
     mysqli_query($GLOBALS['db_link'], "UPDATE user SET prison='$tim', mov='1',loc='33', pos='8_4' WHERE login='$login' LIMIT 1;");
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Персонаж <b>$pl[login]</b> отправлен в тюрьму (Хранитель Игры).</font><BR>'+'');$redirect";
@@ -315,7 +319,7 @@ if ($noprison and $login != '') {
     <br><br>
 <? if($block){
     $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
-if($pl[login]!=''){
+    if ($pl['login'] != '') {
     if ($prich == '') {
         $prich = "Так надо";
     }
@@ -350,7 +354,7 @@ if($_POST['textmessage']){
 <? if($stats){
     $users = mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE type=1");
     while ($row = mysqli_fetch_assoc($users)) {
-	calcstat($row[id]);
+        calcstat($row['id']);
 }
 }
 ?>
@@ -363,8 +367,8 @@ if($_POST['textmessage']){
  if($clans){
      $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM clan_kazna WHERE clan_id='biohazard';");
      while ($row = mysqli_fetch_assoc($sql)) {
-         $invsql = mysqli_query($GLOBALS['db_link'], "DELETE FROM invent WHERE id_item=" . $row[id_item] . ";");
-         mysqli_query($GLOBALS['db_link'], "DELETE FROM clan_kazna WHERE id_item=" . $row[id_item] . ";");
+         $invsql = mysqli_query($GLOBALS['db_link'], "DELETE FROM invent WHERE id_item=" . $row['id_item'] . ";");
+         mysqli_query($GLOBALS['db_link'], "DELETE FROM clan_kazna WHERE id_item=" . $row['id_item'] . ";");
 		}
 	}
 
@@ -389,7 +393,7 @@ if($_POST['textmessage']){
 </form><br><br>
 <? if($statsp){
     $user = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='" . $login . "';"));
-calcstat($user[id]);
+    calcstat($user['id']);
 }
 ?>
 </div>
@@ -440,7 +444,7 @@ function calc_koeff($item){
 }
 function obnul($login){
     $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
-switch($pl[level]){
+    switch ($pl['level']) {
 case 0: $a=array(1=>15,1,2,10);break;
 case 1: $a=array(1=>18,2,5,14);break;
 case 2: $a=array(1=>21,2,9,19);break;
