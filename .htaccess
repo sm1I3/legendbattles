@@ -1,4 +1,4 @@
-php_flag register_globals on
+php_flag register_globals off
 AddDefaultCharset UTF-8
 ErrorDocument 404 /404.php
 Options -Indexes
