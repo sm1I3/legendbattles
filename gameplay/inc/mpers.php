@@ -1,9 +1,11 @@
 <?php
 include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/pers/buffs.php");
+global $od;
 $plmases = explode("|", $player['masebonus']);
 foreach ($plmases as $val) {
     $mase = explode("@", $val);
     if ($mase[1] >= time() and $mase[0]) {
+        $maseit = $_POST['maseit'] ?? $_GET['maseit'] ?? '';
         if ($maseit == '') {
             $maseit = "`id`='" . $mase[0] . "'";
         } else {
@@ -55,6 +57,7 @@ while ($row = mysqli_fetch_assoc($mysql2)) {
         }
         if ($stat[0] == 1) {
             $tmp = explode("-", $stat[1]);
+            $tw = $_POST['tw'] ?? $_GET['tw'] ?? '';
             switch ($tw) {
                 case 'w1':
                     $k = ($um[10] / 300 + $um[1] / 150) + 1;
@@ -125,7 +128,7 @@ $params = $tmparams[0];
 <div class="module mase">
     <div class="header">
         Мази и прочее
-        <a href="javascript:parent.helpwin(\'legendbattles.ru/help.php?mases=1\')" target="_blank">
+        <a href="javascript:parent.helpwin('legendbattles.ru/help.php?mases=1')" target="_blank">
             <img src=/img/image/info.gif width=6 height=12 border=0 title="Помощь" valign=top>
         </a>
     </div>

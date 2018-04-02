@@ -103,7 +103,7 @@
 		}
 	}
 ?>
-        <font style="font-size: 13px;">С уважением, команда разработчиков проекта <?= $gamename ?></font>
+        <font style="font-size: 13px;">С уважением, команда разработчиков проекта LegendBattles</font>
         <?
         if ($player['login'] == 'alexs' or $player['login'] == 'Администрация') {
 		echo "<p>

@@ -77,6 +77,7 @@ switch(intval($_GET['act'])){
 function check_way($way){
 	list($x, $y) = explode("_",$way);
 	$query_nature = mysqli_query($GLOBALS['db_link'],"SELECT `x`,`y` FROM `nature` WHERE `x`>='".($x-1)."' and `x`<='".($x+1)."' and `y`>='".($y-1)."' and `y`<='".($y+1)."'");
+    $xy = $xy ?? '';
 	while($nature = mysqli_fetch_assoc($query_nature)){
 		$xy .= $nature['x'].'_'.$nature['y']."@";
 	}

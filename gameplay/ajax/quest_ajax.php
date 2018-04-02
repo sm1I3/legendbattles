@@ -146,7 +146,7 @@ switch ($_GET['act']) {
                                     $fault = true;
                                 } else {
                                     mysqli_query($GLOBALS['db_link'], 'UPDATE user SET nv=nv-' . $value . ' WHERE id=' . $pres['id'] . ' AND nv>=' . $value);
-                                    if (mysqli_affected_rows($link) != 1) {
+                                    if (mysqli_affected_rows($GLOBALS['db_link']) != 1) {
                                         $fault = true;
                                     }
                                 }

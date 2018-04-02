@@ -1,4 +1,8 @@
 <?
+$post_id = varcheck($_POST['post_id']) ?? varcheck($_GET['post_id']) ?? '';
+$cname = varcheck($_POST['cname']) ?? varcheck($_GET['cname']) ?? '';
+$key = varcheck($_POST['key']) ?? varcheck($_GET['key']) ?? '';
+
 if ($post_id == 2) {
     $q = mysqli_query($GLOBALS['db_link'], 'SELECT invent.*, items.* FROM items INNER JOIN invent ON items.id = invent.protype  WHERE used=' . AP . '1' . AP . ' and pl_id=' . AP . $player['id'] . AP . '');
     while ($row = mysqli_fetch_assoc($q)) {

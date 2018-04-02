@@ -1,10 +1,12 @@
 <?
+$post_id = $post_id ?? varcheck($_POST['post_id']) ?? varcheck($_GET['post_id']) ?? '';
 if ($post_id == 2) {
     $q = mysqli_query($GLOBALS['db_link'], 'SELECT invent.*, items.* FROM items INNER JOIN invent ON items.id = invent.protype  WHERE used=' . AP . '1' . AP . ' and pl_id=' . AP . $player['id'] . AP . '');
     while ($row = mysqli_fetch_assoc($q)) {
         $ids .= "@$row[id_item]";
         $slots .= "@$row[curslot]";
     }
+    $cname = $cname ?? varcheck($_POST['cname']) ?? varcheck($_GET['cname']) ?? '';
     $cname = chars($cname);
     $q = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM pcompl WHERE uid=' . AP . $player['id'] . AP . '');
     while ($r = mysqli_fetch_assoc($q)) {
@@ -23,6 +25,7 @@ if ($post_id == 2) {
 }
 
 if ($post_id == 4) {
+    $key = $key ?? varcheck($_POST['key']) ?? varcheck($_GET['key']) ?? '';
     mysqli_query($GLOBALS['db_link'], 'UPDATE invent SET used=' . AP . '0' . AP . ', curslot=' . AP . '0' . AP . ' WHERE used=' . AP . '1' . AP . ' and pl_id=' . AP . $player['id'] . AP . ';');
     $q = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM pcompl WHERE uid=' . AP . $player['id'] . AP . ' and id=' . AP . $key . AP . ' LIMIT 1;');
     $row = mysqli_fetch_assoc($q);

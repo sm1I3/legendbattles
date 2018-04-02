@@ -1,4 +1,5 @@
 <?php
+global $dmod;
 $dmodarr = array(1 => 'Урон огнем', 2 => 'Урон льдом', 3 => 'Вампиризм', 4 => 'Лечение');
 switch ($dmod[0]) {
     case 1:

@@ -27,6 +27,8 @@ mysqli_query($GLOBALS['db_link'],'UPDATE user SET battle='.AP.$fid.AP.',side="2"
 save_hp_roun($player);
 mysqli_query($GLOBALS['db_link'],'UPDATE user SET battle='.AP.$fid.AP.',side="1",hp='.AP.$fid.AP.' WHERE login='.AP.$_SESSION['user']['login'].AP.'LIMIT 1;');startbat($fid,2);}else{$msg="<b><font class=nickname><font color=#cc0000>Все тренировочные места заняты!</font></font></b>";}}
 */
+$get_id = $get_id ?? varcheck($_POST['get_id']) ?? varcheck($_GET['get_id']) ?? '';
+$gti = $gti ?? varcheck($_POST['gti']) ?? varcheck($_GET['gti']) ?? '';
 if ($get_id == 15) {
     $plstt = allparam($player);
     if ($player['ustal'] < time()) {
@@ -43,6 +45,8 @@ if ($get_id == 15) {
         mysqli_query($GLOBALS['db_link'], 'UPDATE user SET pos="8_4" WHERE id=' . AP . $player['id'] . AP . ' LIMIT 1;');
     }
 
+    $gx = $gx ?? varcheck($_POST['gx']) ?? varcheck($_GET['gx']) ?? '';
+    $gy = $gy ?? varcheck($_POST['gy']) ?? varcheck($_GET['gy']) ?? '';
     mysqli_query($GLOBALS['db_link'], 'UPDATE user SET ustal=' . AP . $ust . AP . ',pos=' . AP . $gx . "_" . $gy . AP . ', wait=' . AP . $gti . AP . ' WHERE id=' . AP . $player['id'] . AP . ' LIMIT 1;');
 
     echo "<script>parent.frames['ch_list'].location='ch.php?lo=1'</script>";
@@ -84,9 +88,12 @@ if ($get_id == 77) {
 
 
 if ($get_id == 42) {
+    $cx = $cx ?? varcheck($_POST['cx']) ?? varcheck($_GET['cx']) ?? '';
+    $cy = $cy ?? varcheck($_POST['cy']) ?? varcheck($_GET['cy']) ?? '';
     mysqli_query($GLOBALS['db_link'], "LOCK TABLES unground READ, unground WRITE;");
     $num = mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM unground WHERE x='$cx' and y='$cy';"));
     if ($act == 1 and $num != 0) {
+        $mtime = $mtime ?? varcheck($_POST['mtime']) ?? varcheck($_GET['mtime']) ?? '';
         mysqli_query($GLOBALS['db_link'], 'UPDATE user SET pos=' . AP . $cx . "_" . $cy . AP . ', wait=' . AP . (time() + $mtime) . AP . ' WHERE id=' . AP . $player['id'] . AP . ' LIMIT 1;');
     }
     if ($act == 2 and $num == 0) {

@@ -1,5 +1,6 @@
 <? //--------одевалка 
 save_hp();
+$wid = varcheck($_POST['wid']) ?? varcheck($_GET['wid']) ?? '';
 $items = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype`  WHERE id_item='" . $wid . "' and `pl_id`='" . $player['id'] . "' LIMIT 1;"));
 if ($act == 1) {
     if ($items['slot'] == 3 and $items['2w'] == 1 and mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `curslot`='3' and `used`='1' and `pl_id`='" . $player['id'] . "'")) > 0) {

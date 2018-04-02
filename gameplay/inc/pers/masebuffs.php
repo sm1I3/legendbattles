@@ -1,5 +1,6 @@
 <?php
 $plmases = explode("|", $player['masebonus']);
+$maseit = $maseit ?? varcheck($_POST['maseit']) ?? varcheck($_GET['maseit']) ?? '';
 foreach ($plmases as $val) {
     $mase = explode("@", $val);
     if ($mase[1] >= time() and $mase[0]) {
@@ -22,6 +23,7 @@ foreach ($buffs as $value) {
 }
 $mysql2 = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE " . $maseit . " ;");
 $itemcount = 0;
+//global $itemnames, $itemids, $itemgifs;
 while ($row = mysqli_fetch_assoc($mysql2)) {
     $itemnames[$itemcount] = $row['name'];
     $itemids[$itemcount] = $row['id'];

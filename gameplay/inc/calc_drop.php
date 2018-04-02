@@ -56,6 +56,7 @@ if (mysqli_num_rows($dropsql) > 0) {
                         $srok = time() + $srok2;
                         if (mysqli_query($GLOBALS['db_link'], "INSERT INTO invent (`protype` ,`pl_id` ,`dolg` ,`price` ,`gift`,`gift_from`" . (($itemsql['srok'] > 0) ? ',`arenda`' : '') . ") VALUES ('" . $itemsql['id'] . "','" . $player['id'] . "','" . $dolg . "','" . $itemsql['price'] . "','0',''" . (($itemsql['srok'] > 0) ? ",'" . $srok . "'" : '') . ");")) {
                             $dropmsg = "Найдено на трупе противника: </font><b id=drop>" . $itemsql['name'] . "</b>.";
+                            $logtg = $logtg ?? varcheck($_POST['logtg']) ?? varcheck($_GET['logtg']) ?? '';
                             $death = ",[[0,\"" . date("H:i") . "\"],$logtg,\" <b> Проиграл$tsex[1] бой.</b> <font color=#CC0000><b>$dropmsg\"]";
                             echo "<script>
 							top.frames['chmain'].add_msg_system('<font class=chattime>&nbsp;" . date("H:i:s") . "</font>&nbsp;<b><font color=#CC0000>Внимание!</font></b> $dropmsg </font><BR>'+'');
@@ -95,6 +96,7 @@ if (mysqli_num_rows($dropsql) > 0) {
                         }
                         if (mysqli_query($GLOBALS['db_link'], "INSERT INTO invent (`protype` ,`pl_id` ,`dolg` ,`price`) VALUES ('" . $itemsql['id'] . "','" . $player['id'] . "','" . $dolg . "','" . $itemsql['price'] . "');")) {
                             $dropmsg = "Найдено на трупе противника: </font><b id=drop>" . $itemsql['name'] . "</b>.";
+                            $logtg = $logtg ?? varcheck($_POST['logtg']) ?? varcheck($_GET['logtg']) ?? '';
                             $death = ",[[0,\"" . date("H:i") . "\"],$logtg,\" <b> Проиграл$tsex[1] бой.</b> <font color=#CC0000><b>$dropmsg\"]";
                             echo "<script>
 							top.frames['chmain'].add_msg_system('<font class=chattime>&nbsp;" . date("H:i:s") . "</font>&nbsp;<b><font color=#CC0000>Внимание!</font></b> $dropmsg </font><BR>'+'');

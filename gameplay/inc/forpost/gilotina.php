@@ -31,7 +31,7 @@ if($_GET['gil']==1 and !empty($_POST['login'])){
             $ms[2] = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b>&nbsp;" . $msg[2] . "<BR>'+'');";
 				chmsg($ms[1],'');
 				chmsg($ms[2],'');
-				chmsg($redirect,$usr['login']);
+            chmsg($GLOBALS['redirect'], $usr['login']);
 		}
 		else{
             echo 'Недостаточно средств!<br>';

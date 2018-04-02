@@ -180,6 +180,7 @@ elseif(isset($_GET['weapon_category']) and $_GET['weapon_category']=='sell'){
 	$fishsql = mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,`items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='".$player['id']."' AND `items`.`type`='w69' AND `items`.`num_a`='' AND `items`.`slot`='0' AND `invent`.`bank`='0' AND `invent`.`clan`='0';");
 	if(mysqli_num_rows($fishsql)>0){
 		$i=0;
+        $iz = $iz ?? varcheck($_POST['iz']) ?? varcheck($_GET['iz']) ?? '';
 		while($ITEM = mysqli_fetch_assoc($fishsql)){
 				$ItemToOne[$ITEM['id']+$ITEM['arenda']+$ITEM['rassrok']][md5($iz.'/'.$ITEM['dolg'].$ITEM['mod'].$ITEM['clan'].$ITEM['grav'])] += 1;
 				if($ItemToOne[$ITEM['id']+$ITEM['arenda']+$ITEM['rassrok']][md5($iz.'/'.$ITEM['dolg'].$ITEM['mod'].$ITEM['clan'].$ITEM['grav'])] == 1){

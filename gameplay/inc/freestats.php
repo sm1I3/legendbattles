@@ -1,4 +1,5 @@
-<? if ($player['free_stat'] > 0) { ?>
+<? if ($player['free_stat'] > 0) {
+    $mselect = $mselect ?? varcheck($_POST['mselect']) ?? varcheck($_GET['mselect']) ?? ''; ?>
     <tr>
     <td colspan=5>
         <table cellpadding=3 cellspacing=0 border=0 width=100%>

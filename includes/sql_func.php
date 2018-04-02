@@ -2186,6 +2186,7 @@ function calcstat($id)
 
 function allparam($pl)
 {
+    global $od;
     $pt = explode("|", $pl['st']);
     $um = explode("|", $pl['umen']);
     if ($pl['perk'] == '') {

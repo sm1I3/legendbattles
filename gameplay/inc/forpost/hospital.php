@@ -61,7 +61,9 @@ $mass = ($plstt[30] * 4) + ($plstt[33] * 8) + $plstt[72] + $prsql['mass'] + $mas
             <table cellpadding=0 cellspacing=1 border=0 align=center width=100%>
                 <tr>
                     <td>
-                        <? if ($hospi_sel == 2){
+                        <?
+                        $hospi_sel = $hospi_sel ?? varcheck($_POST['hospi_sel']) ?? varcheck($_GET['hospi_sel']) ?? '';
+                        if ($hospi_sel == 2){
                         $player = player();
                         $plstt = allparam($player);
                         if ($player['nv'] > 0){

@@ -19,6 +19,7 @@
 <div id="tooltip"></div>
 <SCRIPT language="JavaScript">
     <?php
+    $randomize = $randomize ?? varcheck($_POST['randomize']) ?? varcheck($_GET['randomize']) ?? '';
     $AutoBot = explode("|", $player['ABClient']);
     if ($player['side'] == 1) {
         $side = 2;

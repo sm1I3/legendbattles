@@ -2,22 +2,10 @@
 session_start();
 include($_SERVER["DOCUMENT_ROOT"] . "/includes/config.inc.php");
 include(DROOT . "/includes/functions.php");
-foreach ($_POST as $keypost => $valp) {
-    $valp = varcheck($valp);
-    $_POST[$keypost] = $valp;
-    $$keypost = $valp;
-}
-foreach ($_GET as $keyget => $valg) {
-    $valg = varcheck($valg);
-    $_GET[$keyget] = $valg;
-    $$keyget = $valg;
 
-}
-foreach ($_SESSION as $keyses => $vals) {
-    $$keyses = $vals;
-}
 function locations($loc, $pos)
 {
+    $pers = player();
     if ($pers['loc'] != '28') {
         $location = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `id`, `loc`, `room`, `city` FROM `loc` WHERE `id`='" . $loc . "' LIMIT 1;"));
     }

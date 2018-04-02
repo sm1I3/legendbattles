@@ -1,4 +1,7 @@
 <?
+$prot = $prot ?? varcheck($_POST['prot']) ?? varcheck($_GET['prot']) ?? '';
+$wn = $wn ?? varcheck($_POST['wn']) ?? varcheck($_GET['wn']) ?? '';
+$numrow = $numrow ?? varcheck($_POST['numrow']) ?? varcheck($_GET['numrow']) ?? '';
 mysqli_query($GLOBALS['db_link'], "DELETE FROM `invent` WHERE `id_item`='" . $uid . "' LIMIT 1;");
 mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `baks`=`baks`+'" . $sum . "' WHERE `id`='" . $player['id'] . "' LIMIT 1;");
 mysqli_query($GLOBALS['db_link'], "UPDATE `market` SET `kol`=`kol`+'1' WHERE `id`='" . $prot . "' and `market`='" . $player['loc'] . "' LIMIT 1;");

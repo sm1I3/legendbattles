@@ -7,19 +7,6 @@ if (isset($_POST['opass']) and isset($_POST['npass']) and isset($_POST['vpass'])
     $tmpvpass = $_POST['vpass'];
     $tmpnpass = $_POST['npass'];
 }
-foreach ($_POST as $keypost => $valp) {
-    $valp = varcheck($valp);
-    $_POST[$keypost] = $valp;
-    $$keypost = $valp;
-}
-foreach ($_GET as $keyget => $valg) {
-    $valg = varcheck($valg);
-    $_GET[$keyget] = $valg;
-    $$keyget = $valg;
-}
-foreach ($_SESSION as $keyses => $vals) {
-    $$keyses = $vals;
-}
 
 if (isset($_POST['opass']) and isset($_POST['npass']) and isset($_POST['vpass']) and $_POST['post_id'] == 49) {
     $_POST['opass'] = $tmpopass;
@@ -84,6 +71,7 @@ switch ($post_id) {
         include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/complect.php");
         break;
     case 5:
+        $macount = varcheck($_POST['macount']) ?? varcheck($_GET['macount']) ?? '';
         if (intval($macount) <= $player['mp'] and intval($macount) > 0) {
             save_hp();
             $nma = ceil(($player['hp_all'] - $player['hp']) / 2);
@@ -105,14 +93,20 @@ switch ($post_id) {
         }
         break;
     case 7:
+        $enemy = varcheck($enemy) ?? varcheck($_POST['enemy']) ?? varcheck($_GET['enemy']) ?? '';
         if ($enemy == '3') {
             require($_SERVER["DOCUMENT_ROOT"] . '/gameplay/inc/calc_bat.php');
             mysqli_query($GLOBALS['db_link'], "UPDATE `arena` SET `t2`='" . time() . "', `t1`='0' WHERE `id_battle`='" . $player['battle'] . "';");
         } else {
             mysqli_query($GLOBALS['db_link'], "UPDATE `arena` SET `t2`='" . time() . "', `t1`='" . $player['side'] . "' WHERE `id_battle`='" . $player['battle'] . "';");
             mysqli_query($GLOBALS['db_link'], "LOCK TABLES fight READ, fight WRITE;");
+            $enemyid = $enemyid ?? varcheck($_POST['enemyid']) ?? varcheck($_GET['enemyid']) ?? '';
             $s = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `fight` WHERE `battle`='" . $player['battle'] . "' AND `eid`='" . $player['id'] . "' AND `uid`='" . $enemyid . "' LIMIT 1;"));
             if (!$s) {
+                $inu = $inu ?? varcheck($_POST['inu']) ?? varcheck($_GET['inu']) ?? '';
+                $inb = $inb ?? varcheck($_POST['inb']) ?? varcheck($_GET['inb']) ?? '';
+                $ina = $ina ?? varcheck($_POST['ina']) ?? varcheck($_GET['ina']) ?? '';
+                $group = $group ?? varcheck($_POST['group']) ?? varcheck($_GET['group']) ?? '';
                 mysqli_query($GLOBALS['db_link'], 'INSERT INTO `fight` (uid,eid,battle,ud,bl,mag,side) VALUES (' . AP . $player['id'] . AP . ', ' . AP . $enemyid . AP . ', ' . AP . $player['battle'] . AP . ', ' . AP . $inu . AP . ', ' . AP . $inb . AP . ', ' . AP . $ina . AP . ', ' . AP . $group . AP . ');');
                 mysqli_query($GLOBALS['db_link'], "UNLOCK TABLES;");
             } else {
@@ -143,11 +137,14 @@ switch ($post_id) {
         } else {
             $sex2 = "fem";
         }
+        $act_id = $act_id ?? varcheck($_POST['act_id']) ?? varcheck($_GET['act_id']) ?? '';
+        $ava = $ava ?? varcheck($_POST['ava']) ?? varcheck($_GET['ava']) ?? '';
         if ($act_id == 1 and $ava != '') {
             $col[0] -= 1;
             $col = $col[0] . "|" . $col[1];
             mysqli_query($GLOBALS['db_link'], 'UPDATE user SET f_obraz=' . AP . $ava . AP . ', obr_col=' . AP . $col . AP . ' WHERE login=' . AP . $_SESSION['user']['login'] . AP . 'LIMIT 1;');
         }
+        $selectob = $selectob ?? varcheck($_POST['selectob']) ?? varcheck($_GET['selectob']) ?? '';
         if ($act_id == 2 and $selectob != '') {
             $col[1] -= 1;
             $col = $col[0] . "|" . $col[1];
@@ -266,6 +263,7 @@ switch ($post_id) {
         mysqli_query($GLOBALS['db_link'], 'UPDATE invent SET used=0 WHERE id_item=' . AP . $uid . AP . ' AND pl_id=' . AP . $pl . AP . ' LIMIT 1');
         break;
     case 14:
+        $newpl = $newpl ?? varcheck($_POST['newpl']) ?? varcheck($_GET['newpl']) ?? '';
         mysqli_query($GLOBALS['db_link'], 'UPDATE invent SET used=0,pl_id=' . AP . $newpl . AP . ' WHERE id_item=' . AP . $uid . AP . ' AND pl_id=' . AP . $pl . AP . ' LIMIT 1');
         break;
     case 15:
@@ -358,6 +356,7 @@ switch ($post_id) {
                 if ($player['level'] < $gfmi) {
                     $gfmi = $player['level'];
                 }
+                $ftime = $ftime ?? varcheck($_POST['ftime']) ?? varcheck($_GET['ftime']) ?? '';
                 switch (intval($ftime)) {
                     case 1:
                         $ftm = 120;
@@ -375,6 +374,7 @@ switch ($post_id) {
                         $ftm = 300;
                         break;
                 }
+                $ftrvm = $ftrvm ?? varcheck($_POST['ftrvm']) ?? varcheck($_GET['ftrvm']) ?? '';
                 switch (intval($ftrvm)) {
                     case 1:
                         $ftrm = 10;
@@ -392,10 +392,12 @@ switch ($post_id) {
                         $ftrm = 80;
                         break;
                 }
+                $fkind = $fkind ?? varcheck($_POST['fkind']) ?? varcheck($_GET['fkind']) ?? '';
                 $fid = newbattle($_SESSION['user']['ft'], $player['loc'], $fkind, $batstart, $ftm, $ftrm, $gfmi, $gfma, $gfco, $gsmi, $gsma, $gsco, 1, 0);
                 mysqli_query($GLOBALS['db_link'], "UPDATE user SET battle='" . $fid . "',side=1 WHERE login='" . $_SESSION['user']['login'] . "' LIMIT 1;");
                 break;
             case 2:
+                $pza = $pza ?? varcheck($_POST['pza']) ?? varcheck($_GET['pza']) ?? '';
                 if ($pza) {
                     $bid = explode(":", $pza);
                     mysqli_query($GLOBALS['db_link'], "LOCK TABLES arena READ, fight arena;");
@@ -412,9 +414,9 @@ switch ($post_id) {
                             mysqli_query($GLOBALS['db_link'], 'UPDATE arena SET ok' . $bid[0] . '=ok' . $bid[0] . '+1 WHERE  id_battle=' . AP . $bid[1] . AP . 'LIMIT 1;');
                             mysqli_query($GLOBALS['db_link'], 'UPDATE user SET battle=' . AP . $bid[1] . AP . ',side=' . AP . $bid[0] . AP . ' WHERE login=' . AP . $_SESSION['user']['login'] . AP . 'LIMIT 1;');
                             if ($_SESSION['user']['ft'] == 1) {
-                                sumbat($bid[1], "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;<b>" . $_SESSION['user']['login'] . "</b> принял вашу заявку! </font><BR>'+'');$redirect", 1);
+                                sumbat($bid[1], "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;<b>" . $_SESSION['user']['login'] . "</b> принял вашу заявку! </font><BR>'+'');" . $GLOBALS['redirect'], 1);
                             } else {
-                                sumbat($bid[1], "$redirect", 0);
+                                sumbat($bid[1], $GLOBALS['redirect'], 0);
                             }
                         }
                         mysqli_query($GLOBALS['db_link'], "UNLOCK TABLES;");
@@ -428,6 +430,10 @@ switch ($post_id) {
         break;
     case 20:
         $cut = "...";
+        $prtext = $prtext ?? varcheck($_POST['prtext']) ?? varcheck($_GET['prtext']) ?? '';
+        $prnick = $prnick ?? varcheck($_POST['prnick']) ?? varcheck($_GET['prnick']) ?? '';
+        $pid = $pid ?? varcheck($_POST['pid']) ?? varcheck($_GET['pid']) ?? '';
+
         $prtext = chars(str_replace("%", "", $prtext));
         $prtext = cutStr($prtext, 40, $cut);
         $prnick = chars($prnick);
@@ -437,6 +443,7 @@ switch ($post_id) {
             if ($pid != '' and $prnick != $player['login']) {
                 $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT user.id,user.login FROM user WHERE login='" . $prnick . "' LIMIT 1;"));
                 if ($pl['id'] != '') {
+                    $pranon = $pranon ?? varcheck($_POST['pranon']) ?? varcheck($_GET['pranon']) ?? '';
                     if (!$pranon) {
                         $message = "$prtext ($player[login])";
                     } else {
@@ -479,6 +486,9 @@ switch ($post_id) {
         break;
     case 21:
         $cut = "...";
+        $prtext = $prtext ?? varcheck($_POST['prtext']) ?? varcheck($_GET['prtext']) ?? '';
+        $prnick = $prnick ?? varcheck($_POST['prnick']) ?? varcheck($_GET['prnick']) ?? '';
+        $pid = $pid ?? varcheck($_POST['pid']) ?? varcheck($_GET['pid']) ?? '';
         $prtext = chars(str_replace("%", "", $prtext));
         $prtext = cutStr($prtext, 40, $cut);
         $prnick = chars($prnick);
@@ -489,6 +499,7 @@ switch ($post_id) {
                 if ($pid != '' and $prnick != $player['login']) {
                     $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT user.id,user.login FROM user WHERE login='" . $prnick . "' LIMIT 1;"));
                     if ($pl['id'] != '') {
+                        $pranon = $pranon ?? varcheck($_POST['pranon']) ?? varcheck($_GET['pranon']) ?? '';
                         if (!$pranon) {
                             $message = "$prtext ($player[login])";
                         } else {
@@ -539,6 +550,9 @@ switch ($post_id) {
         $fornickname = trim($fornickname);
         if ($fornickname != '' and intval($sum) > 0) {
             if ($player['login'] != $fornickname) {
+                $transferuid = $transferuid ?? varcheck($_POST['transferuid']) ?? varcheck($_GET['transferuid']) ?? '';
+                $transfernametxt = $transfernametxt ?? varcheck($_POST['']) ?? varcheck($_GET['']) ?? '';
+                $ttext = $ttext ?? varcheck($_POST['ttext']) ?? varcheck($_GET['ttext']) ?? '';
                 $ret = transfer($transferuid, $fornickname, $player['loc'], $transfernametxt, $player['login'], intval($sum), $ttext);
                 $msg = $ret['msg'];
             } else {
@@ -547,6 +561,10 @@ switch ($post_id) {
         }
         break;
     case 23:
+        $fornickname = $fornickname ?? varcheck($_POST['fornickname']) ?? varcheck($_GET['fornickname']) ?? '';
+        $presentuid = $presentuid ?? varcheck($_POST['presentuid']) ?? varcheck($_GET['presentuid']) ?? '';
+        $presentnametxt = $presentnametxt ?? varcheck($_POST['presentnametxt']) ?? varcheck($_GET['presentnametxt']) ?? '';
+        $presentnv = $presentnv ?? varcheck($_POST['presentnv']) ?? varcheck($_GET['presentnv']) ?? '';
         $fornickname = trim($fornickname);
         if ($player['login'] != $fornickname) {
             $ret = gift($presentuid, $fornickname, $player['loc'], $presentnametxt, $player['login'], $presentnv);
@@ -556,7 +574,11 @@ switch ($post_id) {
         }
         break;
     case 24:
+        $fornickname = $fornickname ?? varcheck($_POST['fornickname']) ?? varcheck($_GET['fornickname']) ?? '';
         $fornickname = trim($fornickname);
+        $transferuid = $transferuid ?? varcheck($_POST['transferuid']) ?? varcheck($_GET['transferuid']) ?? '';
+        $transfernametxt = $transfernametxt ?? varcheck($_POST['transfernametxt']) ?? varcheck($_GET['transfernametxt']) ?? '';
+        $sum = $sum ?? varcheck($_POST['sum']) ?? varcheck($_GET['sum']) ?? '';
         if ($fornickname != '' and intval($sum) > 0) {
             $ret = transfer($transferuid, $fornickname, $player['loc'], $transfernametxt, $player['login'], intval($sum));
             $msg = $ret['msg'];
@@ -581,6 +603,7 @@ switch ($post_id) {
         $msg = $ret['msg'];
         break;
     case 49:
+        $newmail = $newmail ?? varcheck($_POST['newmail']) ?? varcheck($_GET['newmail']) ?? '';
         if (!preg_match("/^[a-zA-Z0-9\._-]+@[a-z0-9\.-_]+\.[a-z]{2,4}$/", $newmail)) {
             $msg = "<span class=\"redtitle_st\"><strong>  Ошибка! Ошибочный Email!</strong></span><BR>";
         } else {
@@ -625,10 +648,21 @@ switch ($post_id) {
             $player['flash'] = $Password;
         }
         if ($act == 5) {
+            $newname = $newname ?? varcheck($_POST['newname']) ?? varcheck($_GET['newname']) ?? '';
+            $newcountry = $newcountry ?? varcheck($_POST['newcountry']) ?? varcheck($_GET['newcountry']) ?? '';
+            $newcity = $newcity ?? varcheck($_POST['newcity']) ?? varcheck($_GET['newcity']) ?? '';
+            $newicq = $newicq ?? varcheck($_POST['newicq']) ?? varcheck($_GET['newicq']) ?? '';
+            $url = $url ?? varcheck($_POST['url']) ?? varcheck($_GET['url']) ?? '';
+            $newaddon = $newaddon ?? varcheck($_POST['newaddon']) ?? varcheck($_GET['newaddon']) ?? '';
+            $newabout = $newabout ?? varcheck($_POST['newabout']) ?? varcheck($_GET['newabout']) ?? '';
             mysqli_query($GLOBALS['db_link'], "UPDATE user SET name='" . chars($newname) . "', country='" . chars($newcountry) . "', city='" . chars($newcity) . "', icq='" . chars($newicq) . "', url='" . chars($url) . "', addon='" . chars($newaddon) . "', about='" . bbCodes($newabout) . "' WHERE login='" . $_SESSION['user']['login'] . "' LIMIT 1;");
         }
         break;
     case 34:
+        $bank_act = $bank_act ?? varcheck($_POST['bank_act']) ?? varcheck($_GET['bank_act']) ?? '';
+        $bpsw = $bpsw ?? varcheck($_POST['bpsw']) ?? varcheck($_GET['bpsw']) ?? '';
+        $bpsw1 = $bpsw1 ?? varcheck($_POST['bpsw1']) ?? varcheck($_GET['bpsw1']) ?? '';
+        $bmail = $bmail ?? varcheck($_POST['bmail']) ?? varcheck($_GET['bmail']) ?? '';
         if ($bank_act == 2) {
             if ($player['nv'] < 5) {
                 $msg = "<div align=center><b><font class=proce>Нехватает денег.</font></b></div>";
@@ -643,6 +677,8 @@ switch ($post_id) {
             }
         }
         if ($bank_act == 3) {
+            $bill_num = $bill_num ?? varcheck($_POST['bill_num']) ?? varcheck($_GET['bill_num']) ?? '';
+            $bill_psw = $bill_psw ?? varcheck($_POST['bill_psw']) ?? varcheck($_GET['bill_psw']) ?? '';
             $ch = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM bank WHERE num='" . intval($bill_num) . "' LIMIT 1;"));
             if ($ch['pass'] == $bill_psw) {
                 $msg = '';
@@ -758,14 +794,14 @@ switch ($post_id) {
                 $_SESSION['user']['oldpos'] = $player['pos'];
                 $_SESSION['user']['oldloc'] = $player['loc'];
                 mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `loc`='1',`pos`='8_4' WHERE `id`='" . $player['id'] . "'");
-                echo '<script>' . $redirect . '</script>';
+                echo '<script>' . $GLOBALS["redirect"] . '</script>';
                 break;
             case 6:
                 $msg = "Вы успешно телепортированы в город. Старые координаты сохранены. При выходе из города вы будете возвращены на старое расположение.";
                 $_SESSION['user']['oldpos'] = $player['pos'];
                 $_SESSION['user']['oldloc'] = $player['loc'];
                 mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `loc`='1',`pos`='8_4' WHERE `id`='" . $player['id'] . "'");
-                echo '<script>' . $redirect . '</script>';
+                echo '<script>' . $GLOBALS["redirect"] . '</script>';
                 break;
         }
         break;
@@ -782,9 +818,11 @@ switch ($post_id) {
         }
         break;
     case 51:
+        $wn = $wn ?? varcheck($_POST['wn']) ?? varcheck($_GET['wn']) ?? '';
         mysqli_query($GLOBALS['db_link'], 'DELETE FROM podarki WHERE podarok=' . AP . $wn . AP . ' and id=' . AP . $uid . AP . '');
         break;
     case 52:
+        $wn = $wn ?? varcheck($_POST['wn']) ?? varcheck($_GET['wn']) ?? '';
         if (mysqli_query($GLOBALS['db_link'], "DELETE FROM `podarki` WHERE `podarok`='" . $wn . "' and `id`='" . $player['id'] . "' LIMIT 1;")) {
             if ($wn > 116 and $wn < 121) {
                 #$nv=2014;
@@ -811,7 +849,7 @@ switch ($post_id) {
                         } else {
                             $death = 0;
                         }
-                        if (mysqli_query($GLOBALS['db_link'], "INSERT INTO invent (`protype` ,`pl_id` ,`dolg` ,`price` ,`gift`,`gift_from`,`death`) VALUES ('" . $itemsql['id'] . "','" . $player['id'] . "','" . $dolg . "','" . $itemsql['price'] . "','1','legendbattles.ru'," . $death . ");")) {
+                        if (mysqli_query($GLOBALS['db_link'], "INSERT INTO invent (`protype` ,`pl_id` ,`dolg` ,`price` ,`gift`,`gift_from`,`death`) VALUES ('" . $itemsql['id'] . "','" . $player['id'] . "','" . $itemsql['dolg'] . "','" . $itemsql['price'] . "','1','legendbattles.ru'," . $death . ");")) {
                             $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Вы получили подарок: <b>" . $itemsql['name'] . "</b>.</font><BR>'+'');";
                             chmsg($ms, $player['login']);
                         }
@@ -867,21 +905,22 @@ switch ($post_id) {
                 }
                 break;
             case 2:
-                sumbat($player['battle'], "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Противник <b>" . $_SESSION['user']['login'] . "</b> отозвал свою заявку! </font><BR>'+'');$redirect", 1);
+                sumbat($player['battle'], "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Противник <b>" . $_SESSION['user']['login'] . "</b> отозвал свою заявку! </font><BR>'+'');" . $GLOBALS['redirect'], 1);
                 mysqli_query($GLOBALS['db_link'], 'UPDATE arena SET ok2=' . AP . '0' . AP . ' WHERE id_battle =' . AP . $player['battle'] . AP . 'LIMIT 1;');
                 mysqli_query($GLOBALS['db_link'], 'UPDATE user SET battle=' . AP . '0' . AP . ' WHERE login=' . AP . $_SESSION['user']['login'] . AP . 'LIMIT 1;');
                 break;
             case 3:
-                sumbat($player['battle'], "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Противник <b>" . $_SESSION['user']['login'] . "</b> отказался от поединка! </font><BR>'+'');$redirect", 1);
+                sumbat($player['battle'], "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Противник <b>" . $_SESSION['user']['login'] . "</b> отказался от поединка! </font><BR>'+'');" . $GLOBALS['redirect'], 1);
                 mysqli_query($GLOBALS['db_link'], 'UPDATE user SET battle=' . AP . '0' . AP . ' WHERE battle=' . AP . $player['battle'] . AP . 'and login !=' . AP . $_SESSION['user']['login'] . AP . ';');
                 mysqli_query($GLOBALS['db_link'], 'UPDATE arena SET ok2=' . AP . '0' . AP . ' WHERE id_battle =' . AP . $player['battle'] . AP . 'LIMIT 1;');
                 break;
             case 4:
-                sumbat($player['battle'], "$redirect", 1);
+                sumbat($player['battle'], $GLOBALS['redirect'], 1);
                 startbat($player['battle'], 1);
                 echo "<script>parent.frames['main_top'].location='main.php';</script>";
                 break;
             case 6:
+                $mode = $mode ?? varcheck($_POST['mode']) ?? varcheck($_GET['mode']) ?? '';
                 if ($mode == 1) {
                     $win[0] = $player['side'];
                     $win[1] = $player['level'];
@@ -1205,6 +1244,7 @@ switch ($post_id) {
             case 1:
                 $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM bank WHERE pl_id=" . $player['id'] . ";");
                 if (mysqli_num_rows($sql) == 0) {
+                    $session_id = $session_id ?? varcheck($_POST['session_id']) ?? varcheck($_GET['session_id']) ?? '';
                     $num = time() . $session_id;
                     mysqli_query($GLOBALS['db_link'], "INSERT INTO bank (num,pass,pl_id) VALUES ('" . intval($num) . "','" . md5($_POST['pass']) . "','" . $player['id'] . "');");
                     $message = "пароль: " . $_POST['pass'] . "<br> номер счета: " . $num . "<br>Просьба запомнить эти данные, при утере пароля доступ к счету не восстанавливается!";
@@ -1213,6 +1253,7 @@ switch ($post_id) {
             case 2:
                 $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM bank WHERE clan_id='" . $player['clan_id'] . "';");
                 if (mysqli_num_rows($sql) == 0) {
+                    $session_id = $session_id ?? varcheck($_POST['session_id']) ?? varcheck($_GET['session_id']) ?? '';
                     $num = time() . $session_id;
                     mysqli_query($GLOBALS['db_link'], "INSERT INTO bank (num,pass,clan_id) VALUES ('" . intval($num) . "','" . md5($_POST['pass']) . "','" . $player['clan_id'] . "');");
                     $message = "пароль: " . $_POST['pass'] . "<br> номер счета: " . $num . "<br>Просьба запомнить эти данные, при утере пароля доступ к счету не восстанавливается!";
@@ -1954,7 +1995,7 @@ switch ($post_id) {
                             $komiss = (round($ITEM['sellprice'] / 100) * 5);
                             mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `nv`=`nv`+'" . (($ITEM['sellprice'] - $komiss) * $num) . "' WHERE `id`='" . $ITEM['pl_id'] . "' LIMIT 1;");
                             mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `nv`=`nv`-'" . ($ITEM['sellprice'] * $num) . "' WHERE `id`='" . $player['id'] . "' LIMIT 1;");
-                            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> У вас приобрели <b>" . $ITEM['name'] . ($num > 1 ? " " . $num . " шт." : "") . " на рынке по цене " . (($ITEM['sellprice'] - $komiss) * $num) . " LR.</b>! Комиссия с продажи: " . $komiss . " LR. (5% от цены)</b></font><BR>'+'');$redirect";
+                            $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> У вас приобрели <b>" . $ITEM['name'] . ($num > 1 ? " " . $num . " шт." : "") . " на рынке по цене " . (($ITEM['sellprice'] - $komiss) * $num) . " LR.</b>! Комиссия с продажи: " . $komiss . " LR. (5% от цены)</b></font><BR>'+'');" . $GLOBALS['redirect'];
                             $login = getnamebyid($ITEM['pl_id']);
                             chmsg($ms, $login);
                             log_write("buybazar", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ") кол-во: " . $num . "шт.", ($ITEM['sellprice'] * $num), getnamebyid($ITEM['pl_id']));
@@ -2141,7 +2182,7 @@ switch ($post_id) {
                     $str = "UPDATE `user` SET `loc`='" . $check['loc'] . "',`pos`='8_4' WHERE `id`='" . $player['id'] . "'";
                 }
                 mysqli_query($GLOBALS['db_link'], $str);
-                $msg = '<font class=proce><b>Вы успешно телепортированы к персонажу <font class=nickname>' . $check['login'] . '</font></b></font><script>' . $redirect . '</script><br>';
+                $msg = '<font class=proce><b>Вы успешно телепортированы к персонажу <font class=nickname>' . $check['login'] . '</font></b></font><script>' . $GLOBALS["redirect"] . '</script><br>';
             }
         }
         break;
@@ -2181,7 +2222,7 @@ switch ($post_id) {
             if ($getEvent['fight'] > 0) {
                 mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `battle`='" . $getEvent['fight'] . "',`side`='1',`fight`='2' WHERE `login`='" . $player['login'] . "' LIMIT 1;");
                 mysqli_query($GLOBALS['db_link'], "UPDATE `arena` SET `kol1`=`kol1`+'1' WHERE `id_battle`='" . $getEvent['fight'] . "' LIMIT 1;");
-                sumbat($pl['battle'], "$redirect", 0);
+                sumbat($pl['battle'], $GLOBALS['redirect'], 0);
                 $logpl = '[1,1,"' . $player['login'] . '",' . $player['level'] . ',' . $player['sklon'] . ',"' . $player['clan_gif'] . '"]';
                 $income = ',[[0,"' . date("H:i") . '"],' . $logpl . '," <b> Вмешал' . (($player['sex'] == 'male') ? 'ся' : 'ась') . ' в бой.</b>"]';
                 savelog($income, $getEvent['fight']);

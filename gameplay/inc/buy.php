@@ -8,7 +8,7 @@ if ($act == 1) {
         mysqli_query($GLOBALS['db_link'], "UPDATE invent SET pl_id='" . $player['id'] . "' WHERE id_item='" . intval($id) . "' LIMIT 1;");
         mysqli_query($GLOBALS['db_link'], "UPDATE user SET nv=nv+" . $ITEM['sellprice'] . " WHERE id='" . intval($uid) . "' LIMIT 1;");
         mysqli_query($GLOBALS['db_link'], "UPDATE user SET nv=nv-" . $ITEM['sellprice'] . " WHERE id='" . $player['id'] . "' LIMIT 1;");
-        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>$player[login]</b> купил у вас <b>" . $ITEM['name'] . "</b>!</b></font><BR>'+'');$redirect";
+        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>$player[login]</b> купил у вас <b>" . $ITEM['name'] . "</b>!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($ms, $login);
         log_write("buy", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ")", $ITEM['sellprice'], $login);
         $plmsg = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . $price . "</b> LR!</b></font><BR>'+'');$redirect";
@@ -39,7 +39,7 @@ if ($act == 1) {
         if ($typetolog3 != '0' and $abouttolog3 != '0') {
             player_actions(intval($uid), $typetolog, $abouttolog);
         }
-        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>" . $player['login'] . "</b> купил у вас <b>" . $ITEM['name'] . "</b> " . $col . " шт!</b></font><BR>'+'');$redirect";
+        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>" . $player['login'] . "</b> купил у вас <b>" . $ITEM['name'] . "</b> " . $col . " шт!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($ms, $login);
         log_write("buy", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ")" . "(количество: " . $col . " шт.)", ($ITEM['sellprice'] * $col), $login);
         $plmsg = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . ($ITEM['sellprice'] * $col) . "</b> LR!</b></font><BR>'+'');$redirect";
@@ -62,7 +62,7 @@ if ($act == 1) {
         }
         if ($col != 10 and $col != 50) {
             if ($player['nv'] >= $IT['price']) {
-                mysqli_query($GLOBALS['db_link'], 'INSERT INTO invent (protype,pl_id,dolg,price) VALUES (' . AP . $IT['id'] . AP . ',' . AP . $player['id'] . AP . ',' . AP . $dolg . AP . ',' . AP . $IT['price'] . AP . ');');
+                mysqli_query($GLOBALS['db_link'], 'INSERT INTO invent (protype,pl_id,dolg,price) VALUES (' . AP . $IT['id'] . AP . ',' . AP . $player['id'] . AP . ',' . AP . $IT['dolg'] . AP . ',' . AP . $IT['price'] . AP . ');');
                 mysqli_query($GLOBALS['db_link'], 'UPDATE market SET kol=kol-1 WHERE id=' . AP . $wsuid . AP . 'LIMIT 1;');
                 mysqli_query($GLOBALS['db_link'], 'UPDATE user SET nv=nv-' . AP . $IT['price'] . AP . ' WHERE id=' . AP . $player['id'] . AP . 'LIMIT 1;');
                 $msg = "<b><font class=proce>Вы удачно купили:<br><font class=proceg> " . $IT['name'] . " </font><br></font></b>";
@@ -76,7 +76,7 @@ if ($act == 1) {
             if ($player['nv'] >= ($IT['price'] * $col)) {
                 $insert = "";
                 for ($i = 0; $i < $col; $i++) {
-                    $insert .= "('" . $IT['id'] . "','" . $player['id'] . "','" . $dolg . "','" . $IT['price'] . "'),";
+                    $insert .= "('" . $IT['id'] . "','" . $player['id'] . "','" . $IT['dolg'] . "','" . $IT['price'] . "'),";
                 }
                 $insert = substr($insert, 0, strlen($insert) - 1);
                 mysqli_query($GLOBALS['db_link'], "INSERT INTO `invent` (`protype`,`pl_id`,`dolg`,`price`) VALUES " . $insert . ";");
@@ -105,7 +105,7 @@ if ($act == 1) {
                             break;
                     }
                 }
-                mysqli_query($GLOBALS['db_link'], 'INSERT INTO invent (protype,pl_id,dolg,dd_price) VALUES (' . AP . $IT['id'] . AP . ',' . AP . $player['id'] . AP . ',' . AP . $dolg . AP . ',' . AP . $IT['dd_price'] . AP . ');');
+                mysqli_query($GLOBALS['db_link'], 'INSERT INTO invent (protype,pl_id,dolg,dd_price) VALUES (' . AP . $IT['id'] . AP . ',' . AP . $player['id'] . AP . ',' . AP . $IT['dolg'] . AP . ',' . AP . $IT['dd_price'] . AP . ');');
                 mysqli_query($GLOBALS['db_link'], 'UPDATE market SET kol=kol-1 WHERE id=' . AP . $wsuid . AP . 'LIMIT 1;');
                 mysqli_query($GLOBALS['db_link'], 'UPDATE user SET baks=baks-' . AP . $IT['dd_price'] . AP . ' WHERE id=' . AP . $player['id'] . AP . 'LIMIT 1;');
                 $typetolog .= '@10';

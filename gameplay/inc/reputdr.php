@@ -24,7 +24,7 @@ if ($act == 1) {
         mysqli_query($GLOBALS['db_link'], "UPDATE `invent` SET `pl_id`='" . $player['id'] . "' WHERE `protype`='" . intval($_GET['id']) . "' AND `pl_id`='" . $_GET['uid'] . "' AND `invent`.`used`='0' AND `invent`.`bank`='0'  AND `invent`.`clan`='0';");
         mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `reputdr`=`reputdr`+'" . ($ITEM['sellprice'] * $col) . "' WHERE `id`='" . intval($uid) . "' LIMIT 1;");
         mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `reputdr`=`reputdr`-'" . ($ITEM['sellprice'] * $col) . "' WHERE `id`='" . $player['id'] . "' LIMIT 1;");
-        $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>" . $player['login'] . "</b> купил у вас <b>" . $ITEM['name'] . "</b> " . $col . " шт!</b></font><BR>'+'');$redirect";
+        $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>" . $player['login'] . "</b> купил у вас <b>" . $ITEM['name'] . "</b> " . $col . " шт!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($ms, $login);
         log_write("buy", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ")" . "(количество: " . $col . " шт.)", ($ITEM['sellprice'] * $col), $login);
         $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . ($ITEM['sellprice'] * $col) . "</b> LR!</b></font><BR>'+'');$redirect";

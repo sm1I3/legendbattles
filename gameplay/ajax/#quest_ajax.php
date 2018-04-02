@@ -4,7 +4,7 @@ session_start();
 include($_SERVER["DOCUMENT_ROOT"]."/includes/config.inc.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
 
-$pers = GetUser($user['login']);
+$pers = GetUser($_SESSION['user']['login']);
 
 list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
 

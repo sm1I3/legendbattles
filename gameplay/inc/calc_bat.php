@@ -1,4 +1,5 @@
 <?
+$enemyid = $enemyid ?? varcheck($_POST['enemyid']) ?? varcheck($_GET['enemyid']) ?? '';
 $tg = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE id='" . intval($enemyid) . "' LIMIT 1;"));
 $pl_st = allparam($player);
 $tg_st = allparam($tg);
@@ -51,11 +52,12 @@ function sqr($x)
     return $x * $x;
 }
 
+$go_place = $go_place ?? varcheck($_POST['go_place']) ?? varcheck($_GET['go_place']) ?? '';
 if ($go_place != '') {
     mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `pos_fight`='" . $go_place . "' WHERE `id`='" . $player['id'] . "';");
     $player['pos_fight'] = $go_place;
 }
-
+$enemy = $enemy ?? varcheck($_POST['enemy']) ?? varcheck($_GET['enemy']) ?? '';
 if ($enemy == '3') {
     $bplace = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `battle_places` WHERE `id`='1'"));
     $sql = mysqli_query($GLOBALS['db_link'], "SELECT `pos_fight` FROM `user` WHERE `battle` = '" . $player['battle'] . "'))");
@@ -107,6 +109,8 @@ if ($tg['sex'] == 'female') {
 } else {
     $tsex = array(0 => 0, "", "ся");
 }
+$ina = $ina ?? varcheck($_POST['ina']) ?? varcheck($_GET['ina']) ?? '';
+$inu = $inu ?? varcheck($_POST['inu']) ?? varcheck($_GET['inu']) ?? '';
 if ($ina != '' or $s['mag'] != '') {
     include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/magic.php");
 }
@@ -117,6 +121,7 @@ if ($inu != '') {
 }
 $pl_hp = $tg_hp;
 if ($s['ud'] != '') {
+    $inb = $inb ?? varcheck($_POST['inb']) ?? varcheck($_GET['inb']) ?? '';
     $log .= udar($s['ud'], $inb, $tg, $player, $tg_st, $pl_st);
 } else {
     $tg_hp = $player['hp'];

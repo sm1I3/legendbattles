@@ -39,6 +39,8 @@
                                             function instant($level, $count)
                                             {
                                                 global $player;
+                                                $levelmin = $levelmin ?? varcheck($_POST['levelmin']) ?? varcheck($_GET['levelmin']) ?? '';
+                                                $levelmax = $levelmax ?? varcheck($_POST['levelmax']) ?? varcheck($_GET['levelmax']) ?? '';
                                                 $fid = newbattle(2, $player['loc'], 1, time(), 300, 10, 0, 0, 0, 0, 0, 0, 0, 1);
                                                 if (!empty($levelmin)) {
                                                     $Whesr = " AND level>='" . $levelmin . "' AND level<='" . $levelmax . "'";
@@ -49,6 +51,7 @@
 
                                                 foreach ($tmp1 as $tmp) {
                                                     $e = explode("=", $tmp);
+                                                    $i = $i ?? 0;
                                                     $bot[$i] = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `id`,`hp_all`,`mp_all`,`aura` FROM `user` WHERE `fight`='0' AND `id`='" . $e[1] . "'"));
                                                     mysqli_query($GLOBALS['db_link'], "INSERT INTO `fight_users` (`id`,`hp`,`mp`,`battle`,`aura`) VALUES ('" . $bot[$i]['id'] . "','" . $bot[$i]['hp_all'] . "','" . $bot[$i]['mp_all'] . "','" . $fid . "','" . $bot[$i]['aura'] . "');");
                                                 }
@@ -117,10 +120,10 @@
                                                            value="Пройти глубже в логово" style='width:180px;'>
                                                     <? echo "<center>(<b>" . $prizes2["level"] . "</b> уровень)</center>"; ?>
                                                 </form>
-                                                    <form method="post" action="">
-                                                        <input name="priroda" type="submit" class=lbut
-                                                               value="Выход из логова" style='width:180px;'>
-                                                    </form>
+                                                <form method="post" action="">
+                                                    <input name="priroda" type="submit" class=lbut
+                                                           value="Выход из логова" style='width:180px;'>
+                                                </form>
 
                                             </FIELDSET>
                                             <?

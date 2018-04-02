@@ -8,7 +8,7 @@ if ($act == 1) {
         mysqli_query($GLOBALS['db_link'], "UPDATE `invent` SET `pl_id`='" . $player['id'] . "' WHERE `id_item`='" . intval($id) . "' LIMIT 1;");
         mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `nv`=`nv`+'" . intval($price) . "' WHERE `id`='" . intval($uid) . "' LIMIT 1;");
         mysqli_query($GLOBALS['db_link'], "UPDATE u`user` SET `nv`=`nv`-'" . intval($price) . "' WHERE `id`='" . $player['id'] . "' LIMIT 1;");
-        chmsg($redirect, $login);
+        chmsg($GLOBALS['redirect'], $login);
     }
 } else {
     $wsuid = intval($wsuid);
@@ -26,7 +26,7 @@ WHERE `kol`>'0' AND `items`.`dd_price`>'0' AND `items`.`id`='" . intval($wsuid) 
                         break;
                 }
             }
-            mysqli_query($GLOBALS['db_link'], 'INSERT INTO invent (protype,pl_id,dolg,dd_price) VALUES (' . AP . $IT['id'] . AP . ',' . AP . $player['id'] . AP . ',' . AP . $dolg . AP . ',' . AP . $IT['dd_price'] . AP . ');');
+            mysqli_query($GLOBALS['db_link'], 'INSERT INTO invent (protype,pl_id,dolg,dd_price) VALUES (' . AP . $IT['id'] . AP . ',' . AP . $player['id'] . AP . ',' . AP . $IT['dolg'] . AP . ',' . AP . $IT['dd_price'] . AP . ');');
             mysqli_query($GLOBALS['db_link'], 'UPDATE market SET kol=kol-1 WHERE id=' . AP . $wsuid . AP . 'LIMIT 1;');
             mysqli_query($GLOBALS['db_link'], 'UPDATE user SET baks=baks-' . AP . $IT['dd_price'] . AP . ' WHERE id=' . AP . $player['id'] . AP . 'LIMIT 1;');
             $msg = "<b><font class=proce>Вы удачно купили:<br><font class=proceg> " . $IT['name'] . " </font><br></font></b>";
