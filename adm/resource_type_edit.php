@@ -21,18 +21,18 @@ if (isset($_POST['resource_type_name'])) {
             resource_type_name
         ) values (
             '.(int)$_POST['resource_type_id'].',
-            \''.mysql_escape_string($_POST['resource_type_name']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['resource_type_name']) . '\'
         )'  ;
     } else {
         $query = '
         update resource_types set
             resource_type_id = '.(int)$_POST['resource_type_id'].',
-            resource_type_name = \''.mysql_escape_string($_POST['resource_type_name']).'\'
+            resource_type_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['resource_type_name']) . '\'
         where
             resource_type_id = '.intval($resource_type_id).'
         '  ;
-    }    
-    mysql_query($query);
+    }
+    mysqli_query($GLOBALS['db_link'], $query);
     header('Location: resource_type_list.php');
     
 }
@@ -44,10 +44,10 @@ if ($resource_type_id == '') {
     );
 } else {
     $resource_type = array();
-    $res = mysql_query('select * from resource_types where resource_type_id = '.intval($resource_type_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from resource_types where resource_type_id = ' . intval($resource_type_id));
+    if ($row = mysqli_fetch_assoc($res))
         $resource_type = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

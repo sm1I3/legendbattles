@@ -8,13 +8,13 @@ if (!userHasPermission(2)) {
 
 if (isset($_GET['delete_place_code']) && $_GET['delete_place_code']!='') {
     $place_code = $_GET['delete_place_code'];
-    mysql_query('delete from quest_places where place_code = \''.mysql_real_escape_string($place_code).'\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from quest_places where place_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $place_code) . '\'');
     header('Location: quest_place_list.php');
 }
 
 $places = '';
-$res = mysql_query('select * from quest_places'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from quest_places');
+while ($row = mysqli_fetch_assoc($res))
 {
     $places .= '
     <tr>

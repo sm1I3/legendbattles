@@ -70,4 +70,3 @@ $recipes = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `koldyn` WHERE `nav`
 	}
 	echo'</table></td></tr></table></FIELDSET>';
 	//===================================================
-?>

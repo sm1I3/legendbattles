@@ -47,25 +47,25 @@ if (isset($_POST['labyrinth_name']))
             labyrinth_name,
             labyrinth_serialized
         ) values (
-            \''.mysql_escape_string($_POST['labyrinth_name']).'\',
-            \''.mysql_escape_string($serialized).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['labyrinth_name']) . '\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $serialized) . '\'
         )';
-        
-        mysql_query($query);
-        
-        $lab_id = mysql_insert_id($db);
+
+        mysqli_query($GLOBALS['db_link'], $query);
+
+        $lab_id = mysqli_insert_id($GLOBALS['db_link']);
         header('Location: labyrinth_design.php?lab_id='.$lab_id);
     } 
     else 
     {
         $query = '
         update labyrinth_list set
-            labyrinth_name = \''.mysql_escape_string($_POST['labyrinth_name']).'\'
+            labyrinth_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['labyrinth_name']) . '\'
         where
             labyrinth_id = '.(int)$lab_id.'
             '.(!userHasPermission(8)?' and is_confirmed = \'N\'':'').'
         '  ;
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
         header('Location: labyrinth_list.php');
     }    
     
@@ -80,11 +80,11 @@ if ($lab_id == '') {
     $is_confirmed = 'N';
 } else {
     $labyrinth = array();
-    $res = mysql_query('select * from labyrinth_list where labyrinth_id = '.(int)$lab_id);
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from labyrinth_list where labyrinth_id = ' . (int)$lab_id);
+    if ($row = mysqli_fetch_assoc($res))
         $labyrinth = $row;
     $is_confirmed = $labyrinth['is_confirmed'];
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

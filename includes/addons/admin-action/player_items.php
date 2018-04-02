@@ -1,4 +1,5 @@
-<? session_start();session_register('filter');?>
+<? session_start();
+$_SESSION['filter']; ?>
 <HTML>
 <HEAD>
 <LINK href="../../../css/game.css" rel=STYLESHEET type=text/css>

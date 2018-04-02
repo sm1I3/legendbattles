@@ -353,4 +353,3 @@ function givebut($persto,$perswho,$id){
 		break;
 	}
 }
-?>

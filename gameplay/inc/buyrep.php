@@ -99,4 +99,4 @@ if ($act == 1) {
     }
 }
 mysqli_query($GLOBALS['db_link'], "UNLOCK TABLES;");
-?>
+

@@ -15,41 +15,41 @@ $row_id = 0;
     
 // list of all weapon categories
 $weapon_categories_array = array();
-$res = mysql_query('select * from weapon_categories');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_categories');
+while ($row = mysqli_fetch_assoc($res))
     $weapon_categories_array[$row['category_code']] = $row['category_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all weapons
 $weapon_array = array();
-$res = mysql_query('select * from weapons_template');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapons_template');
+while ($row = mysqli_fetch_assoc($res)) {
     $weapon_array_id[$row['w_id']] = $row['w_name'];
     $weapon_array_uid[$row['w_uid']] = $row['w_name'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
     
 $bot_classes = array();
-$res = mysql_query('select * from bots_classes');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_classes');
+while ($row = mysqli_fetch_assoc($res)) {
     $bot_classes[$row['bot_class_id']] = $row['nickname'];
     $bot_classes_inf[$row['bot_class_id']] = $row;
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $resource_array = array();
-$res = mysql_query('select * from restore_resources');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from restore_resources');
+while ($row = mysqli_fetch_assoc($res)) {
     $resource_array[$row['resource_id']] = $row['resource_name'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $tools_array = array();
-$res = mysql_query('select * from restore_items');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from restore_items');
+while ($row = mysqli_fetch_assoc($res)) {
     $tools_array[$row['item_id']] = $row['item_name'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
     
 $fields = array(
     'level' => 'уровень',
@@ -136,21 +136,21 @@ if (isset($_POST['update_tables']) && $bot_id != '')
 {
     echo '<h5>';
     $bot = array();
-    $res = mysql_query('select * from bots_templates where inf_bot = '.intval($bot_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_templates where inf_bot = ' . intval($bot_id));
+    if ($row = mysqli_fetch_assoc($res))
         $bot = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     $bot_slots = array();
-    $res = mysql_query('select * from bots_slots where inf_bot = '.intval($bot_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_slots where inf_bot = ' . intval($bot_id));
+    if ($row = mysqli_fetch_assoc($res))
         $bot_slots = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     $player_ids = array();
     $ignore_fields = array('inf_bot', 'is_active', 'bot_class_id', 'search_possibility', 'drop_level_dec', 'drop_level_inc', 'comment');
-    $res = mysql_query('SELECT * FROM bots_fights WHERE inf_bot = '.intval($bot_id));
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM bots_fights WHERE inf_bot = ' . intval($bot_id));
+    while ($row = mysqli_fetch_assoc($res))
         $player_ids[] = $row['playerid'];
     $player_arr = array_chunk($player_ids, 100);
     foreach($player_arr as $players)
@@ -163,13 +163,13 @@ if (isset($_POST['update_tables']) && $bot_id != '')
         }
         $query = substr($query, 0, -3)."\n".' WHERE playerid IN ('.implode(',', $players).') AND inf_bot > 0';
         //echo nl2br($query);
-        if (!mysql_query($query))
-            echo mysql_error();
-        echo 'Ботов обновлено: ' . mysql_affected_rows() . ', ';
-            
-        if (!mysql_query('UPDATE e_players_slots SET sl_main = \''.mysql_real_escape_string($bot_slots['sl_main']).'\' WHERE playerid IN ('.implode(',', $players).')'))
-            echo mysql_error();
-        echo 'Слотов обновлено: ' . mysql_affected_rows();
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            echo mysqli_error($GLOBALS['db_link']);
+        echo 'Ботов обновлено: ' . mysqli_affected_rows($GLOBALS['db_link']) . ', ';
+
+        if (!mysqli_query($GLOBALS['db_link'], 'UPDATE e_players_slots SET sl_main = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $bot_slots['sl_main']) . '\' WHERE playerid IN (' . implode(',', $players) . ')'))
+            echo mysqli_error($GLOBALS['db_link']);
+        echo 'Слотов обновлено: ' . mysqli_affected_rows($GLOBALS['db_link']);
     }
     echo '</h5>';
 }
@@ -202,7 +202,7 @@ if (isset($_POST['save']) || isset($_POST['apply']))
             drop_level_dec,
             drop_level_inc
         ) values (
-            \''.mysql_real_escape_string($_POST['comment']).'\',
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['comment']) . '\',
             '.$qvalues.'
             '.(int)$_POST['bot_class_id'].',
             '.(isset($_POST['is_active']) && $_POST['is_active']==1?1:0).',
@@ -210,10 +210,10 @@ if (isset($_POST['save']) || isset($_POST['apply']))
             '.(int)$_POST['drop_level_dec'].',
             '.(int)$_POST['drop_level_inc'].'
         )';
-        if (!mysql_query($query))
-            die(mysql_error());
-        
-        $bot_id = mysql_insert_id();
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
+
+        $bot_id = mysqli_insert_id($GLOBALS['db_link']);
         
     } else {
         
@@ -228,7 +228,7 @@ if (isset($_POST['save']) || isset($_POST['apply']))
         
         $query = '
         update bots_templates set
-            comment = \''.mysql_real_escape_string($_POST['comment']).'\',
+            comment = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['comment']) . '\',
             '.$qfield.'
             bot_class_id = '.(int)$_POST['bot_class_id'].',
             is_active = '.(isset($_POST['is_active']) && $_POST['is_active']==1?1:0).',
@@ -238,8 +238,8 @@ if (isset($_POST['save']) || isset($_POST['apply']))
         where
             inf_bot = '.$bot_id.'
         '  ;
-        if (!mysql_query($query))
-            die(mysql_error());
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
     }
     
     
@@ -252,20 +252,20 @@ if (isset($_POST['save']) || isset($_POST['apply']))
     }
     
     $query = '
-    INSERT INTO bots_slots (inf_bot, sl_main, weapon_steps) VALUES ('.$bot_id.', \''.mysql_escape_string($slots).'\', \''.mysql_escape_string($weapon_steps).'\')
+    INSERT INTO bots_slots (inf_bot, sl_main, weapon_steps) VALUES (' . $bot_id . ', \'' . mysqli_escape_string($GLOBALS['db_link'], $slots) . '\', \'' . mysqli_escape_string($GLOBALS['db_link'], $weapon_steps) . '\')
     ON DUPLICATE KEY UPDATE
-        sl_main = \''.mysql_real_escape_string($slots).'\',
-        weapon_steps = \''.mysql_real_escape_string($weapon_steps).'\'
+        sl_main = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $slots) . '\',
+        weapon_steps = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $weapon_steps) . '\'
     ';
-    
-    if (!mysql_query($query))
-        die(mysql_error());
+
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
         
     
             
     
     // Drop
-    mysql_query('DELETE FROM bots_drops WHERE inf_bot = '.intval($bot_id));
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM bots_drops WHERE inf_bot = ' . intval($bot_id));
     if (isset($_POST['drop_group']) && is_array($_POST['drop_group']))
     foreach($_POST['drop_group'] as $k=>$group)
     {
@@ -288,7 +288,7 @@ if (isset($_POST['save']) || isset($_POST['apply']))
         
         if ($item_id != -1) 
         {
-            if (!mysql_query('
+            if (!mysqli_query($GLOBALS['db_link'], '
                 INSERT INTO bots_drops 
                 (
                     inf_bot, 
@@ -304,13 +304,13 @@ if (isset($_POST['save']) || isset($_POST['apply']))
                     '.intval($bot_id).', 
                     '.(int)$_POST['drop_group'][$k].',
                     '.floatval($_POST['drop_chance'][$k]).',
-                    \''.mysql_real_escape_string($drop).'\',
+                    \'' . mysqli_real_escape_string($GLOBALS['db_link'], $drop) . '\',
                     '.(int)$_POST['completed_quest'][$k].',
                     '.(int)$_POST['deactivate_by_quest'][$k].',
                     '.(int)$_POST['align'][$k].'
                 )
             '))
-                die(mysql_error());
+                die(mysqli_error($GLOBALS['db_link']));
         }
             
     }
@@ -318,15 +318,15 @@ if (isset($_POST['save']) || isset($_POST['apply']))
     /// Saving kicks
         
     if ($bot_id != '')
-        mysql_query('DELETE FROM bots_kicks WHERE inf_bot = '.intval($bot_id));
+        mysqli_query($GLOBALS['db_link'], 'DELETE FROM bots_kicks WHERE inf_bot = ' . intval($bot_id));
         
     $query = '
         INSERT INTO bots_kicks (inf_bot, kicks, blocks, adds)
-        VALUES ('.$bot_id.', \''.mysql_escape_string($_POST['bot_kicks']['kicks']).'\', \''.mysql_escape_string($_POST['bot_kicks']['blocks']).'\', \''.mysql_escape_string($_POST['bot_kicks']['adds']).'\')
+        VALUES (' . $bot_id . ', \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['bot_kicks']['kicks']) . '\', \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['bot_kicks']['blocks']) . '\', \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['bot_kicks']['adds']) . '\')
     ';
-    
-    if (!mysql_query($query))
-        die(mysql_error());
+
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     
     if (isset($_POST['save']))
         header('Location: '.$_SESSION['pages']['bot_list']);
@@ -363,22 +363,22 @@ if ($bot_id == '')
 else 
 {
     $bot = array();
-    $res = mysql_query('select * from bots_templates where inf_bot = '.intval($bot_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_templates where inf_bot = ' . intval($bot_id));
+    if ($row = mysqli_fetch_assoc($res))
         $bot = $row;
-    mysql_free_result($res);
-    
-    $res = mysql_query('select * from bots_slots where inf_bot = '.intval($bot_id));
-    if($row = mysql_fetch_assoc($res))
+    mysqli_free_result($res);
+
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_slots where inf_bot = ' . intval($bot_id));
+    if ($row = mysqli_fetch_assoc($res))
         $bot_slots = $row;
     else
         $bot_slots = '';
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     
     // Drop and time
-    $res = mysql_query('select * from bots_drops where inf_bot = '.intval($bot_id));
-    while ($row = mysql_fetch_assoc($res)) 
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_drops where inf_bot = ' . intval($bot_id));
+    while ($row = mysqli_fetch_assoc($res)) 
     {
         $arr = unserialize($row['drop_item']);
         $row['drop_type'] = $arr[0];
@@ -410,11 +410,11 @@ else
           <td align="left" class="cms_middle"><input type="text" name="align['.$row_id.']" value="'.$row['align'].'" size="8" /></td>
         </tr>';
     }
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
-$res = mysql_query('select * from bots_kicks where inf_bot = '.intval($bot_id));
-if($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_kicks where inf_bot = ' . intval($bot_id));
+if ($row = mysqli_fetch_assoc($res))
 {
     $bot_kicks['kicks'] = $row['kicks'];
     $bot_kicks['blocks'] = $row['blocks'];
@@ -424,7 +424,7 @@ if($row = mysql_fetch_assoc($res))
     $bot_kicks['blocks'] = '';
     $bot_kicks['adds'] = '';
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 if (isset($_GET['copy_bot_id']))
     $bot_id = '';

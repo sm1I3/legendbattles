@@ -1473,8 +1473,8 @@ function blocks($bl){
 	    	case 90: echo "<font class=weaponch><b><font color=#cc0000>Блокировка 3-х точек</font></b><br>"; break;
     	}}}
 echo('<script language="JavaScript">message("Починка предмета<br><font color=bb0000>успешна</font>!");</script>');
-			mysql_query("UPDATE `invent` SET `iznos`='0' WHERE `id_item`='".intval($_GET['v'])."' AND `pl_id`='".$player['id']."' LIMIT 1;");
-			mysql_query("UPDATE `user` SET `user`.`nv`=`user`.`nv`-'".$itm['iznos']."' WHERE `user`.`id`='".$player['id']."' LIMIT 1;");
+			mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `iznos`='0' WHERE `id_item`='".intval($_GET['v'])."' AND `pl_id`='".$player['id']."' LIMIT 1;");
+			mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `user`.`nv`=`user`.`nv`-'".$itm['iznos']."' WHERE `user`.`id`='".$player['id']."' LIMIT 1;");
 ?>
 </table></td></tr>
 </td></tr></table>

@@ -27,12 +27,12 @@ if (isset($_GET['action']) && $_GET['action']=='load')
         zl.x2 <= '.intval($x2).' and zl.y2 <= '.intval($y2).' and
         zl.zone_type = 1 
     ';
-    
-    if (!$res = mysql_query($query))
-        die(mysql_error());
+
+    if (!$res = mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     
     $arr = array();
-    while($row = mysql_fetch_assoc($res)) 
+    while ($row = mysqli_fetch_assoc($res))
     {
         if (!isset($arr[$row['zone_id']]))
             $arr[$row['zone_id']] = $row['zone_id'].';'.$row['x1'].';'.$row['y1'].';'.$row['x2'].';'.$row['y2'].';'.$row['time_interval'].';'.
@@ -64,14 +64,14 @@ if (isset($_POST['action']) && $_POST['action']=='save')
             zone_list 
         where 
             zone_id = '.$zone_id;
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'],$query);
         */
         $query = '
         delete from 
             bots_zones
         where 
             zone_id = '.intval($zone_id);
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
     }
     
     $arr = explode('|', urldecode($_POST['zones']));
@@ -111,9 +111,9 @@ if (isset($_POST['action']) && $_POST['action']=='save')
             for($j=1; $j<=10; $j++)
                 $query .= ','.floatval($posarr[$j]).' ';
             $query .= ')';
-            
-            mysql_query($query);
-            $zone_id = mysql_insert_id();
+
+            mysqli_query($GLOBALS['db_link'], $query);
+            $zone_id = mysqli_insert_id($GLOBALS['db_link']);
         }
         else
         {
@@ -130,7 +130,7 @@ if (isset($_POST['action']) && $_POST['action']=='save')
                 $query .= ',possibility'.$j.' = '.floatval($posarr[$j]);
             $query .= '
             WHERE zone_id = '.intval($zone_id).'';
-            mysql_query($query);
+            mysqli_query($GLOBALS['db_link'], $query);
         }
         
         $bots_array = explode(';', $bots[$id]);
@@ -145,8 +145,8 @@ if (isset($_POST['action']) && $_POST['action']=='save')
                 (zone_id, inf_bot) 
             values
                 ('.intval($zone_id).', '.intval($ar[0]).')';
-            
-            mysql_query($query);
+
+            mysqli_query($GLOBALS['db_link'], $query);
         }
         
     }
@@ -163,14 +163,14 @@ if (isset($_POST['action']) && $_POST['action']=='save')
             zone_list 
         where 
             zone_id IN ('.implode(',', array_keys($loaded_zones)).')';
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
         
         $query = '
         delete from 
             bots_zones
         where 
             zone_id IN ('.implode(',', array_keys($loaded_zones)).')';
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
     }
     
     echo 'success';
@@ -179,16 +179,16 @@ if (isset($_POST['action']) && $_POST['action']=='save')
 }
 
 $bot_templates = array();
-$res = mysql_query('select * from bots_classes ');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_classes ');
+while ($row = mysqli_fetch_assoc($res))
     $bot_templates[$row['bot_class_id']] = $row['nickname'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $bots = array();
-$res = mysql_query('select * from bots_templates ');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_templates ');
+while ($row = mysqli_fetch_assoc($res))
     $bots[$row['bot_class_id']][$row['inf_bot']] = $bot_templates[$row['bot_class_id']].' ['.$row['level'].']'.(isset($row['comment']) && $row['comment']!=''?' ('.$row['comment'].')':'');
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $zones = '';
 ?>

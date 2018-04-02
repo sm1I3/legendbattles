@@ -9,13 +9,13 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_user_id']) && $_GET['delete_user_id']!='') 
 {
     $user_id = (int)$_GET['delete_user_id'];
-    mysql_query('UPDATE user SET permissions = \'0\' WHERE user_id = '.intval($user_id));
+    mysqli_query($GLOBALS['db_link'], 'UPDATE user SET permissions = \'0\' WHERE user_id = ' . intval($user_id));
     header('Location: user_list.php');
 }
 
 $users = '';
-$res = mysql_query('select * from user WHERE permissions > 0'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from user WHERE permissions > 0');
+while ($row = mysqli_fetch_assoc($res))
 {
     $users .= '
     <tr>

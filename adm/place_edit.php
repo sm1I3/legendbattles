@@ -22,42 +22,42 @@ if (isset($_POST['city'])) {
 			city,
 			but
         ) values (
-            \''.mysql_real_escape_string($_POST['id']).'\',
-            \''.mysql_real_escape_string($_POST['loc']).'\'
-			\''.mysql_real_escape_string($_POST['city']).'\'
-			\''.mysql_real_escape_string($_POST['but']).'\'
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['id']) . '\',
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['loc']) . '\'
+			\'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['city']) . '\'
+			\'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['but']) . '\'
         )'  ;
-        if (!mysql_query($query))
-            die(mysql_error());
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
     } else {
         $query = '
         update loc set
-            id = \''.mysql_real_escape_string($_POST['id']).'\',
-            loc = \''.mysql_real_escape_string($_POST['loc']).'\',
-			city = \''.mysql_real_escape_string($_POST['city']).'\',
-			room = \''.mysql_real_escape_string($_POST['but']).'\'
+            id = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['id']) . '\',
+            loc = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['loc']) . '\',
+			city = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['city']) . '\',
+			room = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['but']) . '\'
         where
-            id = \''.mysql_real_escape_string($place_code).'\'
+            id = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $place_code) . '\'
         '  ;
-        if (!mysql_query($query))
-            die(mysql_error());
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
     }
 /*    
-    if (!mysql_query('delete from restore_located where place_code = \''.mysql_real_escape_string($place_code).'\''))
-        die(mysql_error()); 
+    if (!mysqli_query($GLOBALS['db_link'],'delete from restore_located where place_code = \''.mysqli_real_escape_string($GLOBALS['db_link'],$place_code).'\''))
+        die(mysqli_error($GLOBALS['db_link'])); 
     
     if (isset($_POST['item']) && is_array($_POST['item']))
     foreach($_POST['item'] as $k => $item_id) {
-        if (!mysql_query('insert into restore_located (place_code, item_id, item_amount, item_average, item_requirement) values (\''.mysql_escape_string($place_code).'\', '.(int)$item_id.', '.(int)$_POST['item_amount'][$k].', '.(int)$_POST['item_average'][$k].', '.(int)$_POST['item_requirement'][$k].')'))
-            die(mysql_error()); 
+        if (!mysqli_query($GLOBALS['db_link'],'insert into restore_located (place_code, item_id, item_amount, item_average, item_requirement) values (\''.mysqli_escape_string($GLOBALS['db_link'],$place_code).'\', '.(int)$item_id.', '.(int)$_POST['item_amount'][$k].', '.(int)$_POST['item_average'][$k].', '.(int)$_POST['item_requirement'][$k].')'))
+            die(mysqli_error($GLOBALS['db_link'])); 
     }
-*/    
-    mysql_query('delete from quest_to_place where place_code = \''.mysql_real_escape_string($place_code).'\'');
+*/
+    mysqli_query($GLOBALS['db_link'], 'delete from quest_to_place where place_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $place_code) . '\'');
     
     if (isset($_POST['quest']) && is_array($_POST['quest']))
     foreach($_POST['quest'] as $k => $quest_id) {
-        if (!mysql_query('insert into quest_to_place (place_code, quest_id) values (\''.mysql_escape_string($place_code).'\', '.(int)$quest_id.')'))
-            die(mysql_error()); 
+        if (!mysqli_query($GLOBALS['db_link'], 'insert into quest_to_place (place_code, quest_id) values (\'' . mysqli_escape_string($GLOBALS['db_link'], $place_code) . '\', ' . (int)$quest_id . ')'))
+            die(mysqli_error($GLOBALS['db_link'])); 
     }
     
     header('Location: place_list.php');
@@ -70,20 +70,20 @@ $row_id = 0;
 /*
 // list of items
 $item_array = array();
-$res = mysql_query('select * from restore_items');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'],'select * from restore_items');
+while($row = mysqli_fetch_assoc($res))
     $item_array[$row['item_id']] = $row['item_name'].' ('.$row['item_cost'].')';
-mysql_free_result($res);
+mysqli_free_result($res);
 */
 
 // list of all quests
 $quest_array = array();
-$res = mysql_query('select * from quest_list WHERE is_confirmed = \'Y\'');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from quest_list WHERE is_confirmed = \'Y\'');
+while ($row = mysqli_fetch_assoc($res)) {
     $tmp_arr = unserialize($row['quest_serilize']);
     $quest_array[$row['quest_id']] = $tmp_arr[0][0].(isset($tmp_arr[0][5]) && $tmp_arr[0][5] != '' ? ' ('.$tmp_arr[0][5].')' : '');
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 if ($place_code == '') {
     $place = array(
@@ -94,13 +94,13 @@ if ($place_code == '') {
     );
 } else {
     $place = array();
-    $res = mysql_query('select * from loc where id = \''.mysql_real_escape_string($place_code).'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from loc where id = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $place_code) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $place = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 /*    
-    $res = mysql_query('select * from restore_located where place_code = \''.mysql_real_escape_string($place_code).'\' order by locate_id asc');
-    while($row = mysql_fetch_assoc($res)) {
+    $res = mysqli_query($GLOBALS['db_link'],'select * from restore_located where place_code = \''.mysqli_real_escape_string($GLOBALS['db_link'],$place_code).'\' order by locate_id asc');
+    while($row = mysqli_fetch_assoc($res)) {
         $goods .= '
         <tr id="tr_items_'.(++$row_id).'">
           <td class="cms_middle" align="center"><a href="#" onclick="removeItem(\'tr_items_'.$row_id.'\'); return false;" title="Remove"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" /></a></td>
@@ -112,9 +112,9 @@ if ($place_code == '') {
         </tr>
         ';
     }
-*/    
-    $res = mysql_query('select * from quest_to_place where place_code = \''.mysql_real_escape_string($place_code).'\'');
-    while($row = mysql_fetch_assoc($res)) {
+*/
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from quest_to_place where place_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $place_code) . '\'');
+    while ($row = mysqli_fetch_assoc($res)) {
         $quests .= '
         <tr id="tr_quests_'.(++$row_id).'">
           <td class="cms_middle" align="center"><a href="#" onclick="removeItem(\'tr_quests_'.$row_id.'\'); return false;" title="Remove"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" /></a></td>

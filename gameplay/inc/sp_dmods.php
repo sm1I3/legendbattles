@@ -14,4 +14,3 @@ switch ($dmod[0]) {
         echo $dmodarr[$dmod[0]] . ': <b><font color="#FFBB88">' . $dmod[1] . '</b></font><br>';
         break;
 }
-?>

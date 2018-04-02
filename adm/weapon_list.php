@@ -8,7 +8,7 @@ if (!userHasPermission(256)) {
 
 if (isset($_GET['delete_w_uid']) && $_GET['delete_w_uid']!='' && is_numeric($_GET['delete_w_uid'])) {
     $w_uid = (int)$_GET['delete_w_uid'];
-    mysql_query('delete from weapons_template where w_uid = '.intval($w_uid));
+    mysqli_query($GLOBALS['db_link'], 'delete from weapons_template where w_uid = ' . intval($w_uid));
     header('Location: '.$_SESSION['pages']['weapon_list']);
 }
 
@@ -18,9 +18,9 @@ else
     $w_category = '';
 
 // PAGE NAVIGATOR
-$query = 'select count(*) from weapons_template '.($w_category!=''?'where w_category = \''.mysql_escape_string($w_category).'\'':'');
-$res = mysql_query($query);
-$row = mysql_fetch_row($res);
+$query = 'select count(*) from weapons_template ' . ($w_category != '' ? 'where w_category = \'' . mysqli_escape_string($GLOBALS['db_link'], $w_category) . '\'' : '');
+$res = mysqli_query($GLOBALS['db_link'], $query);
+$row = mysqli_fetch_row($res);
 $records_count = $row[0];
 
 $pages_count = ceil($records_count / $recs_per_page);
@@ -35,8 +35,8 @@ if ($cur_page <= 0) $cur_page = 1;
 
 if (isset($_GET['add_to_inventory']) && $_GET['add_to_inventory'] != '')
 {
-     $res = mysql_query('SELECT * FROM weapons_template WHERE w_uid = '.intval($_GET['add_to_inventory']));
-     if ($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM weapons_template WHERE w_uid = ' . intval($_GET['add_to_inventory']));
+    if ($row = mysqli_fetch_assoc($res))
      {
          unset($row['w_uid']);
          unset($row['w_n_um_27']);
@@ -55,14 +55,14 @@ if (isset($_GET['add_to_inventory']) && $_GET['add_to_inventory'] != '')
          $values = array();
          foreach($row as $key => $val)
             if (in_array($key, $string_fields))
-                $values[] = "'".mysql_real_escape_string($val)."'";
+                $values[] = "'" . mysqli_real_escape_string($GLOBALS['db_link'], $val) . "'";
             else
                 $values[] = floatval($val);
          
          $query .= implode(', ', $values).')';
-         
-         if (!mysql_query($query))
-            echo mysql_error();
+
+         if (!mysqli_query($GLOBALS['db_link'], $query))
+             echo mysqli_error($GLOBALS['db_link']);
          else
              header('Location: weapon_list.php?w_category=' . (isset($_GET['w_category']) ? $_GET['w_category'] : '') . '&page=' . $cur_page . '&message=Успешно добавлено');
      }
@@ -70,8 +70,8 @@ if (isset($_GET['add_to_inventory']) && $_GET['add_to_inventory'] != '')
 
 if (isset($_GET['add_to_shop']) && $_GET['add_to_shop'] != '')
 {
-     $res = mysql_query('SELECT * FROM weapons_template WHERE w_uid = '.intval($_GET['add_to_shop']));
-     if ($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM weapons_template WHERE w_uid = ' . intval($_GET['add_to_shop']));
+    if ($row = mysqli_fetch_assoc($res))
      {
          unset($row['w_uid']);
          unset($row['w_n_um_27']);
@@ -94,34 +94,34 @@ if (isset($_GET['add_to_shop']) && $_GET['add_to_shop'] != '')
          $values = array();
          foreach($row as $key => $val)
             if (in_array($key, $string_fields))
-                $values[] = "'".mysql_real_escape_string($val)."'";
+                $values[] = "'" . mysqli_real_escape_string($GLOBALS['db_link'], $val) . "'";
             else
                 $values[] = floatval($val);
          
          $query .= implode(', ', $values).')';
-         
-         if (!mysql_query($query))
-            echo mysql_error();
+
+         if (!mysqli_query($GLOBALS['db_link'], $query))
+             echo mysqli_error($GLOBALS['db_link']);
          else
              header('Location: weapon_list.php?w_category=' . (isset($_GET['w_category']) ? $_GET['w_category'] : '') . '&page=' . $cur_page . '&message=Успешно добавлено');
      }
 }
     
 $weapon_categories = array();
-$res = mysql_query('select * from weapon_categories');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_categories');
+while ($row = mysqli_fetch_assoc($res))
     $weapon_categories[$row['category_code']] = $row['category_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $query = 'select * from weapons_template '.
-        ($w_category!=''?'where w_category = \''.mysql_escape_string($w_category).'\'':'').
+    ($w_category != '' ? 'where w_category = \'' . mysqli_escape_string($GLOBALS['db_link'], $w_category) . '\'' : '') .
         generateMysqlOrder().
         generateMysqlLimit($cur_page, $recs_per_page);
 
 
 $resources = '';
-$res = mysql_query($query); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], $query);
+while ($row = mysqli_fetch_assoc($res))
 {
     $resources.='
     <tr>

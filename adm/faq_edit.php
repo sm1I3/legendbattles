@@ -33,13 +33,13 @@ function build_pages_tree($rows, $parent = 0, $level = 0)
     
 // list of all pages
 $pages_array = $rows =  array();
-$res = mysql_query('select * from faq_pages order by sort_order asc');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from faq_pages order by sort_order asc');
+while ($row = mysqli_fetch_assoc($res))
     if (isset($row['parent_page_id']))
         $rows[$row['parent_page_id']][] = $row;
     else
         $rows[0][] = $row;
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $pages_array = build_pages_tree($rows);
     
@@ -58,30 +58,30 @@ if (isset($_POST['page_title']))
             sort_order
         ) values (
             '.($_POST['parent_page_id']=='' ? 'NULL' : (int)$_POST['parent_page_id']).',
-            \''.mysql_escape_string($_POST['page_title']).'\',
-            \''.mysql_escape_string($_POST['text']).'\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['page_title']) . '\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['text']) . '\',
             '.(int)$_POST['sort_order'].'
         )';
-        
-        
-        if (!mysql_query($query))
-            die(mysql_error());
-        
-                
-        $page_id = mysql_insert_id();
+
+
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
+
+
+        $page_id = mysqli_insert_id($GLOBALS['db_link']);
         
     } else {
         
         $query = '
         update faq_pages set
             parent_page_id = '.($_POST['parent_page_id']=='' ? 'NULL' : (int)$_POST['parent_page_id']).',
-            title = \''.mysql_escape_string($_POST['page_title']).'\',
-            text = \''.mysql_escape_string($_POST['text']).'\',
+            title = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['page_title']) . '\',
+            text = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['text']) . '\',
             sort_order = '.(int)$_POST['sort_order'].'
         where
             page_id = '.intval($page_id).'
         '  ;
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
     }    
     
     
@@ -101,10 +101,10 @@ if ($page_id == '')
 else 
 {
     $page = array();
-    $res = mysql_query('select * from faq_pages where page_id = '.intval($page_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from faq_pages where page_id = ' . intval($page_id));
+    if ($row = mysqli_fetch_assoc($res))
         $page = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     $page['page_title'] = $page['title'];
 }

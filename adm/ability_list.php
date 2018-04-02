@@ -8,13 +8,13 @@ if (!userHasPermission(1)) {
 
 if (isset($_GET['delete_ability_id']) && $_GET['delete_ability_id']!='' && is_numeric($_GET['delete_ability_id'])) {
     $ability_id = (int)$_GET['delete_ability_id'];
-    mysql_query('delete from ability_list where ability_id = '.intval($ability_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from ability_list where ability_id = ' . intval($ability_id));
     header('Location: ability_list.php');
 }
 
 $abilities = '';
-$res = mysql_query('select * from ability_list', $db); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from ability_list', $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $abilities .= '
     <tr>

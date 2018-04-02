@@ -37,9 +37,9 @@ $title = new title( date("D M d Y") );
 
 $values = $axis = array();
 $max = 0;
-$res = mysql_query($query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
 $now_date = '';
-while ($row = mysql_fetch_assoc($res))
+while ($row = mysqli_fetch_assoc($res))
 {
     $values[] = new bar_value(floatval($row['value']));
     $axis[] = $row['item_id'];
@@ -53,8 +53,8 @@ $chart->add_element( $bar );
 
 $convert_names = array();
 $query = 'SELECT wuid, w_name FROM d_dilers WHERE wuid IN ('.implode(',', $axis).')';
-$res = mysql_query($query, $db);
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $convert_names[$row['wuid']] = $row['w_name'];
 }

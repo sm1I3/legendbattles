@@ -9,8 +9,8 @@ if (!userHasPermission(1024)) {
 
 if (isset($_GET['bots_items']))
 {
-    $res = mysql_query('select * from d_bots_items');
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from d_bots_items');
+    while ($row = mysqli_fetch_assoc($res))
     {
         unset($row['item_id']);
         unset($row['w_addid']);
@@ -21,7 +21,7 @@ if (isset($_GET['bots_items']))
         foreach ($row as $key => $val)
         {
             if (in_array($key, array('w_name', 'w_image', 'w_category', 'w_id', 'w_material')))
-                $values[] = '\''.mysql_escape_string($val).'\'';
+                $values[] = '\'' . mysqli_escape_string($GLOBALS['db_link'], $val) . '\'';
             else
                 $values[] = $val;
         }
@@ -32,7 +32,7 @@ if (isset($_GET['bots_items']))
 
 if (isset($_GET['delete_bot_id']) && $_GET['delete_bot_id']!='' && is_numeric($_GET['delete_bot_id'])) {
     $bot_id = (int)$_GET['delete_bot_id'];
-    mysql_query('delete from bots_templates where inf_bot = '.intval($bot_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from bots_templates where inf_bot = ' . intval($bot_id));
     header('Location: '.$_SESSION['pages']['bot_list']);
 }
 /*
@@ -41,14 +41,14 @@ if (isset($_GET['normalize']))
     $bots = array();
     $tables = array('bots_drops', 'bots_fights', 'bots_kicks', 'bots_slots', 'bots_templates', 'bots_zones', 'e_players_table');
     $i = 0;
-    $res = mysql_query('SELECT * FROM bots_templates ORDER BY inf_bot');
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'],'SELECT * FROM bots_templates ORDER BY inf_bot');
+    while($row = mysqli_fetch_assoc($res))
         $bots[++$i] = $row['inf_bot'];
         
     foreach($bots as $new_id => $old_id)
     {
         foreach($tables as $table)
-        mysql_query('UPDATE '.$table.' SET inf_bot = '.$new_id.' WHERE inf_bot = '.$old_id);
+        mysqli_query($GLOBALS['db_link'],'UPDATE '.$table.' SET inf_bot = '.$new_id.' WHERE inf_bot = '.$old_id);
     }
     header('Location: '.$_SESSION['pages']['bot_list']);
 }
@@ -59,15 +59,15 @@ else
     $bot_class_id = '';
     
 $bot_classes = array();
-$res = mysql_query('select * from bots_classes');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_classes');
+while ($row = mysqli_fetch_assoc($res))
     $bot_classes[$row['bot_class_id']] = $row['nickname'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // PAGE NAVIGATOR
 $query = 'select count(*) from bots_templates '.($bot_class_id!=''?'where bot_class_id = '.intval($bot_class_id):'');
-$res = mysql_query($query, $db);
-$row = mysql_fetch_row($res);
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$row = mysqli_fetch_row($res);
 $records_count = $row[0];
 
 $pages_count = ceil($records_count / $recs_per_page);
@@ -86,8 +86,8 @@ $query = 'select bt.*, bc.nickname from bots_templates bt inner join bots_classe
         generateMysqlLimit($cur_page, $recs_per_page);
         
 $bots = '';
-$res = mysql_query($query, $db); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $bots.='
     <tr>

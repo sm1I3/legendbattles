@@ -25,7 +25,7 @@ if (isset($_POST['fort_class'])) {
             massa
         ) values (
             '.(int)$_POST['fort_class'].',
-            \''.mysql_escape_string($_POST['class_name']).'\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['class_name']) . '\',
             '.(int)$_POST['teleport'].',
             '.(int)$_POST['hp'].',
             '.(int)$_POST['mp'].',
@@ -35,7 +35,7 @@ if (isset($_POST['fort_class'])) {
         $query = '
         update forts_classes set
             fort_class = '.(int)$_POST['fort_class'].',
-            class_name = \''.mysql_escape_string($_POST['class_name']).'\',
+            class_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['class_name']) . '\',
             teleport = '.(int)$_POST['teleport'].',
             hp = '.(int)$_POST['hp'].',
             mp = '.(int)$_POST['mp'].',
@@ -43,9 +43,9 @@ if (isset($_POST['fort_class'])) {
         where
             fort_class = '.intval($fort_class_id).'
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: fort_class_list.php');
     
 }
@@ -64,10 +64,10 @@ if ((string)$fort_class_id == '')
 else 
 {
     $ability = array();
-    $res = mysql_query('select * from forts_classes where fort_class = '.intval($fort_class_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from forts_classes where fort_class = ' . intval($fort_class_id));
+    if ($row = mysqli_fetch_assoc($res))
         $fort_class = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

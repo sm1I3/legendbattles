@@ -12,8 +12,8 @@
 		<table cellpadding=0 cellspacing=0 border=0 width=100%  bgcolor=#cccccc>
 		<tr><td >
 		<table cellpadding=5 cellspacing=1 border=0 width=100% #FCFAF3>';
-				
-		//$dd = mysql_fetch_assoc(mysql_query("SELECT `invent`.`dd_price` FROM `invent` WHERE `id_item`='".$ITEM['id_item']."' LIMIT 1;"));
+
+//$dd = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `invent`.`dd_price` FROM `invent` WHERE `id_item`='".$ITEM['id_item']."' LIMIT 1;"));
 //торговая лицензия персонажа
 			 if($player[level]<5){$licen=1;}
 			 else{$licen=tradelic($player['licens'],1);}

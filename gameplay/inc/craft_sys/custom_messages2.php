@@ -35,4 +35,3 @@ switch ($message) {
         break;
 }
 echo '</td></tr></table>';
-?>

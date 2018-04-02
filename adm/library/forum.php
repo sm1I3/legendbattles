@@ -78,4 +78,3 @@ if (isset($_GET['test']))
         return 1;
     }
 }
-?>

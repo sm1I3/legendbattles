@@ -132,4 +132,4 @@ if ($tg[hp] == 0) {
     include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/dmod_succ.php");
 }
 unset($cblock);
-?>
+

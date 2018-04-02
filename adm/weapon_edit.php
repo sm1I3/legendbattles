@@ -116,8 +116,8 @@ $fields = array(
 );
 */
 /*
-$res = mysql_query('select * from weapon_properties');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'],'select * from weapon_properties');
+while($row = mysqli_fetch_assoc($res)) {
     $fields[$row['property_code']] = $row['property_name'];
 }
 */
@@ -130,10 +130,10 @@ $property_types = array(
 );
 
 $weapon_properties = array();
-$res = mysql_query('select * from weapon_properties');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_properties');
+while ($row = mysqli_fetch_assoc($res))
     $weapon_properties[$row['property_code']] = $row;
-mysql_free_result($res);
+mysqli_free_result($res);
 
 if ($w_uid == '' && !isset($_GET['clone_w_uid'])) 
 {
@@ -149,8 +149,8 @@ else
     if (isset($_GET['clone_w_uid']))
         $w_uid = $_GET['clone_w_uid'];
     $weapon = array();
-    $res = mysql_query('select * from weapons_template where w_uid = '.intval($w_uid));
-    if($row = mysql_fetch_assoc($res)) 
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from weapons_template where w_uid = ' . intval($w_uid));
+    if ($row = mysqli_fetch_assoc($res))
     {
         foreach($weapon_properties as $f=>$name)
             $weapon[$f] = $row[$f];
@@ -159,7 +159,7 @@ else
         $weapon['w_category'] = $row['w_category'];
         $weapon['w_id'] = $row['w_id'];
     }
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     if (isset($_GET['clone_w_uid']))
         $w_uid = '';
@@ -194,11 +194,11 @@ if (isset($_POST['w_name']))
             '.$fnames.'
             w_id
         ) values (
-            \''.mysql_escape_string($_POST['w_name']).'\',
-            \''.mysql_escape_string($_POST['w_category']).'\',
-            \''.mysql_escape_string($_POST['w_image']).'\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['w_name']) . '\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['w_category']) . '\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['w_image']) . '\',
             '.$fvalues.'
-            \''.mysql_escape_string($_POST['w_id']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['w_id']) . '\'
         )'  ;
     } 
     else 
@@ -223,11 +223,11 @@ if (isset($_POST['w_name']))
         
         $query = '
         update weapons_template set
-            w_name = \''.mysql_escape_string($_POST['w_name']).'\',
-            w_image = \''.mysql_escape_string($_POST['w_image']).'\',
-            w_category = \''.mysql_escape_string($_POST['w_category']).'\',
+            w_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['w_name']) . '\',
+            w_image = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['w_image']) . '\',
+            w_category = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['w_category']) . '\',
             '.$fnames.'
-            w_id = \''.mysql_escape_string($_POST['w_id']).'\'
+            w_id = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['w_id']) . '\'
         where
             w_uid = '.intval($w_uid).'
         '  ;
@@ -236,8 +236,8 @@ if (isset($_POST['w_name']))
     echo $query;
     die();
     */
-    if (!mysql_query($query))
-        die(mysql_error());
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     
     header('Location: '.$_SESSION['pages']['weapon_list']);
     
@@ -252,10 +252,10 @@ else
 
 
 $weapon_categories = array();
-$res = mysql_query('select * from weapon_categories');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_categories');
+while ($row = mysqli_fetch_assoc($res))
     $weapon_categories[$row['category_code']] = $row['category_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 
 $row_id = 0;

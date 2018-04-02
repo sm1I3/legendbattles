@@ -49,7 +49,7 @@ switch($_POST['post_id']){
 		}
 		$money_bonus = intval($_POST['money_bonus']);
 		$money_dlr_bonus = intval($_POST['money_dlr_bonus']);
-		mysql_query("
+        mysqli_query($GLOBALS['db_link'], "
 		UPDATE `ref_adm` SET 
 			`money_bonus`='".($money_bonus>0?$money_bonus:'0')."',  
 			`money_dlr_bonus`='".($money_dlr_bonus>0?$money_dlr_bonus:'0')."', 
@@ -72,17 +72,17 @@ switch($_POST['post_id']){
 			 default:  $col='15'; break;break;
 		}
 		if($id){
-			$items=mysql_fetch_assoc(mysql_query("SELECT `ref_adm`.`items_".$col."` FROM `ref_adm` LIMIT 1;"));
+            $items = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `ref_adm`.`items_" . $col . "` FROM `ref_adm` LIMIT 1;"));
 			if($items['items_'.$col]==''){$items['items_'.$col]='||||';}
 			if($items['items_'.$col]=='||||'){
 				$additem=$id."|";
-				mysql_query("UPDATE `ref_adm` SET `items_".$col."`='".$additem."' WHERE  `id`='1' LIMIT 1;");
+                mysqli_query($GLOBALS['db_link'], "UPDATE `ref_adm` SET `items_" . $col . "`='" . $additem . "' WHERE  `id`='1' LIMIT 1;");
 			}
 			else{
 				$item=explode("|",$items['items_'.$col]);
 				if(in_array($id,$item)==false){
 					$additem=$items['items_'.$col].$id."|";
-					mysql_query("UPDATE `ref_adm` SET `items_".$col."`='".$additem."' WHERE  `id`='1' LIMIT 1;");
+                    mysqli_query($GLOBALS['db_link'], "UPDATE `ref_adm` SET `items_" . $col . "`='" . $additem . "' WHERE  `id`='1' LIMIT 1;");
 				}
 			}
 		}
@@ -98,7 +98,7 @@ switch($_POST['post_id']){
 			 default:  $col=''; break;break;
 		}
 		if($id and $col){
-			$items=mysql_fetch_assoc(mysql_query("SELECT `ref_adm`.`items_".$col."` FROM `ref_adm` LIMIT 1;"));
+            $items = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `ref_adm`.`items_" . $col . "` FROM `ref_adm` LIMIT 1;"));
 			$additem="";
 			$item=explode("|",$items['items_'.$col]);
 			foreach($item as $val){
@@ -107,12 +107,12 @@ switch($_POST['post_id']){
 				}
 			}
 			if($additem==""){$additem='||||';}
-			mysql_query("UPDATE `ref_adm` SET `items_".$col."`='".$additem."'  WHERE `id`='1'  LIMIT 1;");				
+            mysqli_query($GLOBALS['db_link'], "UPDATE `ref_adm` SET `items_" . $col . "`='" . $additem . "'  WHERE `id`='1'  LIMIT 1;");
 		}	
 	break;	
 }
 //
-	$ref = mysql_fetch_assoc(mysql_query("SELECT * FROM `ref_adm` WHERE `id`='1' LIMIT 1;"));
+$ref = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `ref_adm` WHERE `id`='1' LIMIT 1;"));
 	$bonus['all'] = explode("|",$ref['bonus_all']);	
 	$bonus[5] = explode("|",$ref['bonus_5']);
 	$bonus[10] = explode("|",$ref['bonus_10']);
@@ -249,8 +249,8 @@ switch($_POST['post_id']){
 				  <option value=0';
 				if($idit==""){echo " selected=selected";}
 echo '>Выберите тип</option>';
-				$it=mysql_query("SELECT * FROM `items` ".$filter." ".$filter2." ORDER BY type,name,level;");
-				  while ($row = mysql_fetch_assoc($it)) {
+$it = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` " . $filter . " " . $filter2 . " ORDER BY type,name,level;");
+while ($row = mysqli_fetch_assoc($it)) {
 					echo "<option value=".$row['id']."";if($idit==$row['id']){echo " selected=selected";}echo">".$row['name']." [ ".$row['level']." ]</option>";
 				  }
 				  echo '</select>';
@@ -285,7 +285,7 @@ echo '>Выберите тип</option>';
 					$itemsin=explode("|",$ref['items_'.$i]);
 					foreach($itemsin as $val){
 						if($val!=''){
-							$name=mysql_fetch_assoc(mysql_query("SELECT `items`.`name`,`items`.`id` FROM `items` WHERE `id`='".$val."' LIMIT 1;"));
+                            $name = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `items`.`name`,`items`.`id` FROM `items` WHERE `id`='" . $val . "' LIMIT 1;"));
 							echo '
 							<tr class=freetxt bgcolor=white>							
 								<td>

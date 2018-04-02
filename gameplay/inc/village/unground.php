@@ -56,4 +56,3 @@ if ($cd[2] == 'none' and $clpod[$id - 1] == $id) {
 } else {
     echo '<tr><td align=center width=33% bgcolor=f5f5f5><b><font class=freetxt><font color=#222222>' . $cd[1] . '</font></b></font></td></tr>';
 }
-?>

@@ -8,19 +8,19 @@ if (!userHasPermission(2)) {
 
 if (isset($_GET['delete_quest_id']) && $_GET['delete_quest_id']!='' && is_numeric($_GET['delete_quest_id'])) {
     $quest_id = (int)$_GET['delete_quest_id'];
-    mysql_query('delete from quest_list where quest_id = '.intval($quest_id).' AND is_confirmed = \'N\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from quest_list where quest_id = ' . intval($quest_id) . ' AND is_confirmed = \'N\'');
     header('Location: quest_list.php');
 }
 
 if (isset($_GET['accept_confirm']) && $_GET['accept_confirm']!='' && is_numeric($_GET['accept_confirm']) && userHasPermission(4)) {
     $quest_id = (int)$_GET['accept_confirm'];
-    mysql_query('update quest_list set is_confirmed = \'Y\' where quest_id = '.intval($quest_id));
+    mysqli_query($GLOBALS['db_link'], 'update quest_list set is_confirmed = \'Y\' where quest_id = ' . intval($quest_id));
     header('Location: quest_list.php');
 }
 
 if (isset($_GET['decline_confirm']) && $_GET['decline_confirm']!='' && is_numeric($_GET['decline_confirm']) && userHasPermission(4)) {
     $quest_id = (int)$_GET['decline_confirm'];
-    mysql_query('update quest_list set is_confirmed = \'N\' where quest_id = '.intval($quest_id));
+    mysqli_query($GLOBALS['db_link'], 'update quest_list set is_confirmed = \'N\' where quest_id = ' . intval($quest_id));
     header('Location: quest_list.php');
 }
 
@@ -35,25 +35,25 @@ else
     $quest_group_id = '';
     
 $quest_groups = array();
-$res = mysql_query('select * from quest_groups');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from quest_groups');
+while ($row = mysqli_fetch_assoc($res))
     $quest_groups[$row['quest_group_id']] = $row['quest_group_name'];
 
 $quests = '';
-$res = mysql_query('
+$res = mysqli_query($GLOBALS['db_link'], '
     SELECT 
         * 
     FROM 
         quest_list 
     WHERE
         1 > 0
-    '.($is_confirmed!='' ? ' AND is_confirmed = \''.mysql_escape_string($is_confirmed).'\'' : '').'
+    ' . ($is_confirmed != '' ? ' AND is_confirmed = \'' . mysqli_escape_string($GLOBALS['db_link'], $is_confirmed) . '\'' : '') . '
     '.($quest_group_id!='' ? ' AND quest_group_id = '.intval($quest_group_id).'' : '').'
     ORDER BY 
         quest_id
 ', $db);
- 
-while ($row = mysql_fetch_assoc($res))
+
+while ($row = mysqli_fetch_assoc($res))
 {
     $arr = unserialize($row['quest_serilize']);
     

@@ -238,4 +238,3 @@ switch ($stat[0]) {
         echo "&nbsp;Масса: <font color=#BB0000>$plus<b>" . $modstroke . "</b></font><br>";
         break;
 }
-?>

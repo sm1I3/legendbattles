@@ -14,10 +14,10 @@ else
     $service_id = (int)$_GET['service_id'];
     
 $service_types_array = array();
-$res = mysql_query('select * from service_types'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from service_types');
+while ($row = mysqli_fetch_assoc($res))
     $service_types_array[$row['service_type']] = $row['service_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
     
 if (isset($_POST['service_type'])) {
     
@@ -42,8 +42,8 @@ if (isset($_POST['service_type'])) {
         where
             list_id = '.intval($service_id).'
         ';
-    }    
-    mysql_query($query);
+    }
+    mysqli_query($GLOBALS['db_link'], $query);
     header('Location: service_list.php');
     
 }
@@ -56,10 +56,10 @@ if ($service_id == '') {
     );
 } else {
     $service = array();
-    $res = mysql_query('select * from service_list where list_id = '.intval($service_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from service_list where list_id = ' . intval($service_id));
+    if ($row = mysqli_fetch_assoc($res))
         $service = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

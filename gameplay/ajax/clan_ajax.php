@@ -50,4 +50,3 @@ switch ($_GET['act']) {
         mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `clan_d`='" . htmlspecialchars($_GET['clan_d']) . "',`clan_accesses`='" . ($_GET['access_1'] ? '1' : '0') . '|' . ($_GET['access_2'] ? '2' : '0') . '|' . ($_GET['access_3'] ? '4' : '0') . '|' . ($_GET['access_4'] ? '8' : '0') . "' WHERE `id`='" . $plid['id'] . "'");
         break;
 }
-?>

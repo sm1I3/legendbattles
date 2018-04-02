@@ -29,7 +29,7 @@ if (isset($_POST['resource_name'])) {
             resource_ready,
             resource_life
         ) values (
-            "'.mysql_escape_string($_POST['resource_name']).'",
+            "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['resource_name']) . '",
             '.(int)$_POST['resource_type'].',
             '.(float)$_POST['resource_cost'].',
             '.(float)$_POST['resource_store'].',
@@ -41,9 +41,9 @@ if (isset($_POST['resource_name'])) {
             '.(float)$_POST['resource_ready'].',
             '.(int)$_POST['resource_life'].'
         )'  ;
-        
-        mysql_query($query);
-        $resource_id = mysql_insert_id();
+
+        mysqli_query($GLOBALS['db_link'], $query);
+        $resource_id = mysqli_insert_id($GLOBALS['db_link']);
         
         $query = '
         insert into mem_restore_resources
@@ -55,16 +55,16 @@ if (isset($_POST['resource_name'])) {
         ) values (
             '.$resource_id.',
             '.(int)$_POST['resource_type'].',
-            "'.mysql_escape_string($_POST['resource_name']).'",
+            "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['resource_name']) . '",
             '.(float)$_POST['resource_cost'].'
         )';
-        
-        mysql_query($query); 
+
+        mysqli_query($GLOBALS['db_link'], $query);
         
     } else {
         $query = '
         update restore_resources set
-            resource_name = "'.mysql_escape_string($_POST['resource_name']).'",
+            resource_name = "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['resource_name']) . '",
             resource_type = '.(int)$_POST['resource_type'].',
             resource_cost = '.(float)$_POST['resource_cost'].',
             resource_store = '.(float)$_POST['resource_store'].',
@@ -78,18 +78,18 @@ if (isset($_POST['resource_name'])) {
         where
             resource_id = '.intval($resource_id).'
         ';
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
         
         $query = '
         update mem_restore_resources set
-            resource_name = "'.mysql_escape_string($_POST['resource_name']).'",
+            resource_name = "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['resource_name']) . '",
             resource_type = '.(int)$_POST['resource_type'].',
             resource_cost = '.(float)$_POST['resource_cost'].'
         where
             resource_id = '.intval($resource_id).'
         ';
-        
-        mysql_query($query); 
+
+        mysqli_query($GLOBALS['db_link'], $query);
     }    
     
     header('Location: '.$_SESSION['pages']['resource_list']);
@@ -112,17 +112,17 @@ if ($resource_id == '') {
     );
 } else {
     $resource = array();
-    $res = mysql_query('select * from restore_resources where resource_id = '.intval($resource_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from restore_resources where resource_id = ' . intval($resource_id));
+    if ($row = mysqli_fetch_assoc($res))
         $resource = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 $resource_types = array();
-$res = mysql_query('select * from resource_types');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from resource_types');
+while ($row = mysqli_fetch_assoc($res))
     $resource_types[$row['resource_type_id']] = $row['resource_type_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 ?>
     <h3><?= ($resource_id == '' ? 'Добавить ресурс' : 'Изменить ресурс') ?></h3>

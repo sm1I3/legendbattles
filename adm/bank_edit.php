@@ -19,23 +19,23 @@ if (isset($_POST['num'])) {
         (
             id, num, lr, dlr, pass
         ) VALUES (
-            '.(int)$_POST['id'].', \''.mysql_escape_string($_POST['num']).'\', '.(float)$_POST['lr'].', '.(float)$_POST['dlr'].', \''.mysql_escape_string($_POST['pass']).'\'
+            ' . (int)$_POST['id'] . ', \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['num']) . '\', ' . (float)$_POST['lr'] . ', ' . (float)$_POST['dlr'] . ', \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['pass']) . '\'
         )'  ;
     } else {
         $query = '
         UPDATE bank 
         SET
             id = '.(int)$_POST['id'].',
-            num = \''.mysql_real_escape_string($_POST['num']).'\',
+            num = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['num']) . '\',
             lr = '.(float)$_POST['lr'].',
             dlr = '.(float)$_POST['dlr'].',
-						pass = \''.mysql_real_escape_string($_POST['pass']).'\'
+						pass = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['pass']) . '\'
         WHERE
             id = '.$id.'
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: bank_list.php');
     
 }
@@ -50,10 +50,10 @@ if ($id == '') {
     );
 } else {
     $bank = array();
-    $res = mysql_query('select * from bank where id = '.intval($id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bank where id = ' . intval($id));
+    if ($row = mysqli_fetch_assoc($res))
         $bank = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

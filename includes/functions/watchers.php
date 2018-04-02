@@ -321,7 +321,7 @@ function givebut($persto,$perswho,$id){
 	switch($id){
 		case 1: 
 			if(mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `accesses` WHERE `uid` = '".$persto['id']."' LIMIT 1;"))==0){
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `accesses` (`uid`,`pvu`) VALUES ('".$persto['id']."','1|2|4|16');")  or DIE(mysql_error());
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `accesses` (`uid`,`pvu`) VALUES ('" . $persto['id'] . "','1|2|4|16');") or DIE(mysqli_error($GLOBALS['db_link']));
                 echo 'кнопки выданы';
             } else {
                 echo 'кнопки уже есть';
@@ -330,7 +330,7 @@ function givebut($persto,$perswho,$id){
 		break;
 		case 2:
             echo 'кнопки убраны';
-			mysqli_query($GLOBALS['db_link'],"DELETE FROM `accesses` WHERE `uid`='".$persto['id']."' LIMIT 1;") or DIE(mysql_error());
+            mysqli_query($GLOBALS['db_link'], "DELETE FROM `accesses` WHERE `uid`='" . $persto['id'] . "' LIMIT 1;") or DIE(mysqli_error($GLOBALS['db_link']));
 		break;
 		case 3:
             echo 'доступ дан';
@@ -342,7 +342,7 @@ function givebut($persto,$perswho,$id){
 		break;
 		case 5:
 			if(mysqli_num_rows(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `accesses` WHERE `uid` = '".$persto['id']."' LIMIT 1;"))==0){
-				mysqli_query($GLOBALS['db_link'],"INSERT INTO `accesses` (`uid`,`pvu`,`bots`,`clans`,`out`,`editor`,`dealer`) VALUES ('".$persto['id']."','1|2|4|8|16|32|64|128|256','1','1','1','1','1');")  or DIE(mysql_error());
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `accesses` (`uid`,`pvu`,`bots`,`clans`,`out`,`editor`,`dealer`) VALUES ('" . $persto['id'] . "','1|2|4|8|16|32|64|128|256','1','1','1','1','1');") or DIE(mysqli_error($GLOBALS['db_link']));
                 echo 'кнопки выданы';
 			}else{
                 echo 'кнопки выданы';
@@ -353,4 +353,3 @@ function givebut($persto,$perswho,$id){
 		break;
 	}
 }
-?>

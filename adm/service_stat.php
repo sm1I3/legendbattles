@@ -4,11 +4,11 @@ $login = 'root';
 $pass  = 'Hv40JK5A';
 $server = 'localhost';
 
-if (!$db = mysql_connect($server, $login, $pass))
+if (!$db = mysqli_connect($server, $login, $pass))
     die('Cannot connect to MySQL server.');
 
-mysql_select_db('legend', $db);
-mysql_set_charset('utf8');
+mysqli_select_db($db, 'legend');
+mysqli_set_charset($db, 'utf8');
 date_default_timezone_set('Europe/Moscow');
 session_start();
 function generateMysqlLimit($page, $recs_per_page) { return ' LIMIT '.(($page-1)*$recs_per_page).', '.$recs_per_page.' '; }
@@ -81,8 +81,8 @@ $query = 'SELECT COUNT(*) as count, SUM(service_dnv) as sum FROM service_clients
         (isset($date_from)?' AND service_time >= '.$date_from:'').
         (isset($date_to)?' AND service_time <= '.$date_to:'').
         (isset($type)?' AND service_type = '.$type:' AND service_type in ('.implode(',', $access[$cur_id]).')');
-$res = mysql_query($query);
-$row = mysql_fetch_assoc($res);
+$res = mysqli_query($GLOBALS['db_link'], $query);
+$row = mysqli_fetch_assoc($res);
 $records_count = $row['count'];
 $total_dnv = $row['sum'];
 
@@ -104,11 +104,11 @@ $query = 'SELECT
         (isset($date_to)?' AND sc.service_time <= '.$date_to:'').
         (isset($type)?' AND sc.service_type = '.$type:' AND sc.service_type in ('.implode(',', $access[$cur_id]).')').
         generateMysqlLimit($cur_page, $recs_per_page);
-        
-$res = mysql_query($query);
+
+$res = mysqli_query($GLOBALS['db_link'], $query);
 
 $table = '<table border="1">';
-while($row = mysql_fetch_assoc($res))
+while ($row = mysqli_fetch_assoc($res))
 {
     $table .= '
     <tr>

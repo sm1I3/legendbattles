@@ -40,18 +40,18 @@ if (isset($_POST['service_id']) && $_POST['service_id']!='') {
         where
             list_id = '.intval($fort_service_id).'
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: fort_service_list.php');
     
 }
 
 $service_classes = array();
-$res = mysql_query('select * from forts_serv_classes');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from forts_serv_classes');
+while ($row = mysqli_fetch_assoc($res))
     $service_classes[$row['service_id']] = $row['service_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 if ((string)$fort_service_id == '') {
     $fort_service = array(
@@ -63,10 +63,10 @@ if ((string)$fort_service_id == '') {
     );
 } else {
     $fort_service = array();
-    $res = mysql_query('select * from forts_serv_lists where list_id = \''.mysql_real_escape_string($fort_service_id).'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from forts_serv_lists where list_id = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $fort_service_id) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $fort_service = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

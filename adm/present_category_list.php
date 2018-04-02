@@ -9,13 +9,13 @@ if (!userHasPermission(131072)) {
 if (isset($_GET['delete_pr_cat_id']) && $_GET['delete_pr_cat_id']!='' && is_numeric($_GET['delete_pr_cat_id'])) 
 {
     $category_id = (int)$_GET['delete_pr_cat_id'];
-    mysql_query('delete from present_category where pr_cat_id = '.intval($category_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from present_category where pr_cat_id = ' . intval($category_id));
     header('Location: present_category_list.php');
 }
 
 $categories = '';
-$res = mysql_query('select * from present_category'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from present_category');
+while ($row = mysqli_fetch_assoc($res))
 {
     $categories .= '
     <tr>

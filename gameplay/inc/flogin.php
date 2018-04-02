@@ -19,4 +19,3 @@ if ($_SESSION["user"] != '' and $player['firstlogin'] == 0) {
     $newplayerms = "top.frames['chmain'].add_msg('<font class=massm>&nbsp;&nbsp;<b>News.legendbattles.ru</b>&nbsp;&nbsp;</font>В свет наших земель вышел будущий герой <b>" . $player['login'] . "</b><a style=\"COLOR: #336699;text-decoration : none;cursor: pointer;\" href=\"/ipers.php?" . $player['login'] . "\" target=\"_blank\"><img src=/img/image/chat/info.gif width=11 height=12 border=0 onClick=\"window.open(\'http://legendbattles.ru/ipers.php?" . $player['login'] . "\');\" ></a>, желаем увлекательного пребывания в нашем мире.</font><BR>'+'');";
     chmsg($newplayerms, "");
 }
-?>

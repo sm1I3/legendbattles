@@ -177,4 +177,3 @@ function recpath($start, $goal, $kletka){
 
 
 
-?>

@@ -1,6 +1,6 @@
 <? 
 session_start();
-session_register('filter');
+$_SESSION['filter'];
 $sign = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "select `sign` from `user` where `login`='Администрация' LIMIT 1;"));
 ?>
 <HTML>
@@ -828,8 +828,8 @@ if($fr!="")echo "<label><font class=weaponch><b>$fr</b></font></label><input nam
 
   // Рабочий блок. Проверено.
 if($id_adm==2){?><br>
-   </form>
-<form name="addmark" method="post" action="adm.php?id_adm=2">
+
+    <form name="addmark" method="post" action="adm.php?id_adm=2">
 <select name="type1" >
     <option value="" selected="selected">все типы</option>
     <option value="w4">Ножи</option>

@@ -11,8 +11,8 @@ $global_id = 1;
 $inscode = $_GET['inscode'];
 $trfcode = $_GET['trfcode'];
 
-$res = mysql_query('SELECT * FROM d_custom_item WHERE id = '.intval($global_id));
-if ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM d_custom_item WHERE id = ' . intval($global_id));
+if ($row = mysqli_fetch_assoc($res))
     $array = unserialize($row['description']);
     
     
@@ -47,8 +47,8 @@ if (isset($_POST['delete']))
     /*
     dump($array['akeys']);
     die();
-    */    
-    mysql_query('UPDATE d_custom_item SET description = \''.mysql_escape_string(serialize($array)).'\' WHERE id = '.intval($global_id));
+    */
+    mysqli_query($GLOBALS['db_link'], 'UPDATE d_custom_item SET description = \'' . mysqli_escape_string($GLOBALS['db_link'], serialize($array)) . '\' WHERE id = ' . intval($global_id));
     
     header('Location: dealers_custom_item_list.php');
     die();
@@ -74,10 +74,10 @@ if (isset($_POST['action']) && $_POST['action'] == 'save')
     
     if (!in_array($inscode, $array['akeys'][$trfcode]))
         $array['akeys'][$trfcode][] = $inscode;
-    
-    if (!mysql_query('UPDATE d_custom_item SET description = \''.mysql_escape_string(serialize($array)).'\' WHERE id = '.intval($global_id)))
+
+    if (!mysqli_query($GLOBALS['db_link'], 'UPDATE d_custom_item SET description = \'' . mysqli_escape_string($GLOBALS['db_link'], serialize($array)) . '\' WHERE id = ' . intval($global_id)))
     {
-        die(mysql_error());
+        die(mysqli_error($GLOBALS['db_link']));
     }
     
     header('Location: dealers_custom_item_list.php');

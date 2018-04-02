@@ -22,22 +22,22 @@ if (isset($_POST['date']))
             date,
             type
         ) values (
-            "'.mysql_escape_string($_POST['date']).'",
+            "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date']) . '",
             '.(int)$_POST['type'].'
         )'  ;
-        
-        mysql_query($query);
+
+        mysqli_query($GLOBALS['db_link'], $query);
     } 
     else 
     {
         $query = '
         update z_days set
-            date = \''.mysql_escape_string($_POST['date']).'\',
+            date = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date']) . '\',
             type = '.(int)$_POST['type'].'
         where
-            date = \''.mysql_escape_string($_POST['date']).'\'
+            date = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date']) . '\'
         ';
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
     }    
     
     header('Location: report_days.php');
@@ -54,10 +54,10 @@ if ($date == '')
 else 
 {
     $rep_date = array();
-    $res = mysql_query('select * from z_days where date = \''.mysql_escape_string($date).'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from z_days where date = \'' . mysqli_escape_string($GLOBALS['db_link'], $date) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $rep_date = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 $types = array(1 => 'Выходной', 2 => 'Рабочий');

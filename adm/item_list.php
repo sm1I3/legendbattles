@@ -8,14 +8,14 @@ if (!userHasPermission(64)) {
 
 if (isset($_GET['delete_item_id']) && $_GET['delete_item_id']!='' && is_numeric($_GET['delete_item_id'])) {
     $item_id = (int)$_GET['delete_item_id'];
-    mysql_query('delete from items where item_id = '.intval($item_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from items where item_id = ' . intval($item_id));
     header('Location: '.$_SESSION['pages']['item_list']);
 }
 
 // PAGE NAVIGATOR
 $query = 'select count(*) from items';
-$res = mysql_query($query, $db);
-$row = mysql_fetch_row($res);
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$row = mysqli_fetch_row($res);
 $records_count = $row[0];
 
 $pages_count = ceil($records_count / $recs_per_page);
@@ -31,9 +31,9 @@ $items = '';
 $query = 'select * from items'.
         generateMysqlOrder().
         generateMysqlLimit($cur_page, $recs_per_page);
-        
-$res = mysql_query($query, $db); 
-while ($row = mysql_fetch_assoc($res))
+
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $items.='
     <tr>

@@ -88,4 +88,4 @@ if ($pl_st[104] != 0) {
         mysqli_query($GLOBALS['db_link'], "UPDATE user SET heal=heal+'" . $dps . "' WHERE id='" . $player['id'] . "' LIMIT 1;");
     }
 }
-?>
+

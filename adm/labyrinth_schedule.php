@@ -9,7 +9,7 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_event_id']) && $_GET['delete_event_id']!='' && is_numeric($_GET['delete_event_id'])) 
 {
     $event_id = (int)$_GET['delete_event_id'];
-    mysql_query('delete from labyrinth_schedule where event_id = '.intval($event_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from labyrinth_schedule where event_id = ' . intval($event_id));
     header('Location: labyrinth_schedule.php');
 }
 
@@ -19,18 +19,18 @@ else
     $lab_id = '';
     
 $labs = array();
-$res = mysql_query('select * from labyrinth_list order by labyrinth_name asc');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from labyrinth_list order by labyrinth_name asc');
+while ($row = mysqli_fetch_assoc($res))
     $labs[$row['labyrinth_id']] = $row['labyrinth_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $events = '';
 $i = 0;
-$res = mysql_query('
+$res = mysqli_query($GLOBALS['db_link'], '
     select * from labyrinth_schedule
     '.($lab_id!=''?'where lab_id = '.(int)($lab_id).'':'').'
-'); 
-while ($row = mysql_fetch_assoc($res))
+');
+while ($row = mysqli_fetch_assoc($res))
 {
    $i++;
     $events.='

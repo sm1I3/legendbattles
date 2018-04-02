@@ -213,4 +213,3 @@ if (strrchr($_SERVER['SCRIPT_NAME'],'/')==='/ks_antiddos.php') { // вызов �
 }
 
 
-?>

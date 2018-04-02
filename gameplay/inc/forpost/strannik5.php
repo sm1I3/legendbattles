@@ -49,7 +49,7 @@ if ($msg) {
         <td>
             <table cellpadding=0 cellspacing=1 border=0 align=center width=100%>
                 <tr>
-                    <td><? $locname = mysql_fetch_array(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `loc` WHERE `id`='" . $player['loc'] . "' LIMIT 1;")); ?>
+                    <td><? $locname = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `loc` WHERE `id`='" . $player['loc'] . "' LIMIT 1;")); ?>
                         <fieldset>
                             <legend align="center"><b><font color="gray"><?= $locname['loc']; ?></font></b></legend>
                             <img src=http://w2.dwar.ru/info/pictures/image/yarmarka_mag.jpg width=960 height=260

@@ -10,13 +10,12 @@ if (!isset($_POST['user_login']))
 {
     $_POST['user_login'] = '';
 }
-else 
-{    
-    $login = mysql_escape_string($_POST['user_login']);
+else {
+    $login = mysqli_escape_string($GLOBALS['db_link'], $_POST['user_login']);
     $password = md5($_POST['user_password']);
-    
-    $res = mysql_query('select * from user where login = \''.$login.'\' and pass = \''.$password.'\'');
-    if ($row = mysql_fetch_assoc($res)) 
+
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from user where login = \'' . $login . '\' and pass = \'' . $password . '\'');
+    if ($row = mysqli_fetch_assoc($res)) 
     {
         $_SESSION['USER'] = array(
             'user_login' => $row['login'],

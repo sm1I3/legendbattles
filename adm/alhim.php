@@ -1,4 +1,5 @@
-<? session_start();session_register('filter');
+<? session_start();
+$_SESSION['filter'];
 require('kernel/before.php');
 ?>
 <HTML>
@@ -52,8 +53,8 @@ if($create==1){
 	<form action="alhim.php?create=1&items='.$itm.'" method="post">
 	<select name="idit" onmouseover="tooltip(this,\'<b>Выберите реагент и добавьте его в рецепт</b>\')" onmouseout="hide_info(this)">
 	<option value="0" selected=selected>Выберите</option>';
-	$it=mysql_query("SELECT * FROM `items` WHERE (`type`='w66' OR `type`='w69') AND `master`='' ORDER BY type,name,level;");
-	 while ($row = mysql_fetch_assoc($it)) {
+    $it = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE (`type`='w66' OR `type`='w69') AND `master`='' ORDER BY type,name,level;");
+    while ($row = mysqli_fetch_assoc($it)) {
 		echo "<option value=\"$row[id]@$row[name]\">$row[name] [ $row[level] ]</option>";
 	 }
 	echo'
@@ -88,8 +89,8 @@ if($create==1){
 		<form action="alhim.php?recipe=1" method="post">
 		<select name="idit" onmouseover="tooltip(this,\'<b>Выберите зелье, которое будет создано по рецепту</b>\')" onmouseout="hide_info(this)">
 		<option value="0" ' . ($_POST['itemr'] ? '' : 'selected=selected') . '>Выберите</option>';
-		$it=mysql_query("SELECT * FROM `items` WHERE `type`='w0' AND `master`='' AND `dd_price`='0' ORDER BY type,name,level;");
-		while ($row = mysql_fetch_assoc($it)) {
+        $it = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE `type`='w0' AND `master`='' AND `dd_price`='0' ORDER BY type,name,level;");
+        while ($row = mysqli_fetch_assoc($it)) {
 			echo "<option value=\"$row[id]@$row[name]\" ".(($_POST['itemr']==$row['id'])?'selected=selected':'').">$row[name] [ $row[level] ]</option>";
 		}
 		echo'
@@ -118,18 +119,18 @@ if($_GET['recipe']==1){
 	}
 	else{
 		$item=explode("@",$_POST['idit']);
-		if(mysql_num_rows(mysql_query("SELECT * FROM `alhim` WHERE `protype`='".$item[0]."';"))>0){
-			mysql_query("UPDATE `alhim` SET `reagents`='".$_POST['recipe']."',`col`='".((intval($_POST['col'])=="")?"5":intval($_POST['col']))."',`nav`='".((intval($_POST['nav'])=="")?"1":intval($_POST['nav']))."',`price`='".((intval($_POST['price'])=="")?"100":intval($_POST['price']))."' WHERE `protype`='".$item[0]."';");
+        if (mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `alhim` WHERE `protype`='" . $item[0] . "';")) > 0) {
+            mysqli_query($GLOBALS['db_link'], "UPDATE `alhim` SET `reagents`='" . $_POST['recipe'] . "',`col`='" . ((intval($_POST['col']) == "") ? "5" : intval($_POST['col'])) . "',`nav`='" . ((intval($_POST['nav']) == "") ? "1" : intval($_POST['nav'])) . "',`price`='" . ((intval($_POST['price']) == "") ? "100" : intval($_POST['price'])) . "' WHERE `protype`='" . $item[0] . "';");
 		}
 		else{
-			mysql_query("INSERT INTO `alhim` (protype,name,reagents,col,nav,price) VALUES ('".$item[0]."','".$item[1]."','".$_POST['recipe']."','".((intval($_POST['col'])=="")?"5":intval($_POST['col']))."','".((intval($_POST['nav'])=="")?"1":intval($_POST['nav']))."','".((intval($_POST['price'])=="")?"100":intval($_POST['price']))."')");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO `alhim` (protype,name,reagents,col,nav,price) VALUES ('" . $item[0] . "','" . $item[1] . "','" . $_POST['recipe'] . "','" . ((intval($_POST['col']) == "") ? "5" : intval($_POST['col'])) . "','" . ((intval($_POST['nav']) == "") ? "1" : intval($_POST['nav'])) . "','" . ((intval($_POST['price']) == "") ? "100" : intval($_POST['price'])) . "')");
 			echo 'test2';
 		}
 	}
 }
 if($_GET['look']==1){
 if($_POST['delete']){
-	mysql_query("DELETE FROM `alhim` WHERE `id`='".$_POST['delete']."' LIMIT 1;");
+    mysqli_query($GLOBALS['db_link'], "DELETE FROM `alhim` WHERE `id`='" . $_POST['delete'] . "' LIMIT 1;");
 }
 echo'
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
@@ -147,8 +148,8 @@ echo'
 		</tr>
 		
 		';
-	$recipes=mysql_query("SELECT * FROM `alhim`");
-	while ($row = mysql_fetch_assoc($recipes)){
+    $recipes = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `alhim`");
+    while ($row = mysqli_fetch_assoc($recipes)) {
 			$reg=explode("|",$row['reagents']);			
 			echo '<tr class=nickname bgcolor=white>
 			<td align=center>'.$row['id'].'</td>
@@ -158,7 +159,7 @@ echo'
 			$itm="";
 			foreach ($reg as $val){
 				$reagent=explode("@",$val);
-				$regit=mysql_fetch_assoc(mysql_query("SELECT `items`.`name` FROM `items` WHERE `items`.`id`='".$reagent[0]."';"));
+                $regit = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `items`.`name` FROM `items` WHERE `items`.`id`='" . $reagent[0] . "';"));
 				echo "<b>".$regit['name']."</b> (".$reagent[1].")<br>";
 				$itm.=$reagent[0]."@".$regit['name']."@".$reagent[1]."|";
 			}
@@ -198,15 +199,15 @@ echo'
 		</tr>
 		
 		';
-	$players=mysql_query("SELECT * FROM `user` WHERE `alhim`>'1'");
-	while ($row = mysql_fetch_assoc($players)){
+    $players = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `alhim`>'1'");
+    while ($row = mysqli_fetch_assoc($players)) {
 			$pt=allparam($row);
 			echo '<tr class=nickname bgcolor=white>
 			<td align=center>'.$row['login'].'</td>
 			<td align=center>Алхимия: ' . $row['alhim'] . ' (' . $pt[68] . ' с вещами)<br>Травничество: ' . $row['trav'] . ' (' . $pt[70] . ' с вещами)</td><td>';
 			$rec=explode("|",$row['alhim_rec']);
 			foreach ($rec as $val){
-				$recipe = mysql_fetch_assoc(mysql_query("SELECT `alhim`.`name` FROM `alhim` WHERE `id`='".$val."' LIMIT 1;"));
+                $recipe = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `alhim`.`name` FROM `alhim` WHERE `id`='" . $val . "' LIMIT 1;"));
 				if($recipe!=""){
 					echo $recipe['name']."<br>";
 				}

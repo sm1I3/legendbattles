@@ -13,36 +13,36 @@ else
     
 // list of all resources
 $resource_array = array();
-$res = mysql_query('select * from restore_resources');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from restore_resources');
+while ($row = mysqli_fetch_assoc($res)) {
     $resource_array[$row['resource_id']] = $row['resource_name'];
     $resource_prices[$row['resource_id']] = $row['resource_cost'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all weapon categories
 $weapon_categories_array = array();
-$res = mysql_query('select * from weapon_categories');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_categories');
+while ($row = mysqli_fetch_assoc($res))
     $weapon_categories_array[$row['category_code']] = $row['category_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all weapons
 $weapon_array = array();
-$res = mysql_query('select * from weapons_template');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapons_template');
+while ($row = mysqli_fetch_assoc($res)) {
     $weapon_array_uid[$row['w_uid']] = $row['w_name'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all quests
 $quest_array = array();
-$res = mysql_query('SELECT * FROM quest_list');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM quest_list');
+while ($row = mysqli_fetch_assoc($res)) {
     $tmp_arr = unserialize($row['quest_serilize']);
     $quest_array[$row['quest_id']] = $tmp_arr[0][0].(isset($tmp_arr[0][5]) && $tmp_arr[0][5] != '' ? ' ('.$tmp_arr[0][5].')' : '');
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 require('library/modificators.php');
     
@@ -194,8 +194,8 @@ if (isset($_POST['item_name'])) {
             item_gos,
             item_params
         ) values (
-            \''.mysql_escape_string($_POST['item_name']).'\',
-            \''.mysql_escape_string($_POST['description']).'\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['item_name']) . '\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['description']) . '\',
             '.(int)$_POST['item_cost'].',
             '.(isset($_POST['item_captcha']) && $_POST['item_captcha']==1?'1':'0').',
             '.(int)$_POST['item_spoiling'].',
@@ -209,15 +209,15 @@ if (isset($_POST['item_name'])) {
             '.(int)$_POST['item_level'].',
             '.(int)$_POST['item_direct'].',
             '.(int)$_POST['item_gos'].',
-            "'.mysql_escape_string($serialized).'"
+            "' . mysqli_escape_string($GLOBALS['db_link'], $serialized) . '"
         )'  ;
-        mysql_query($query); 
-        $item_id = mysql_insert_id($db);
+        mysqli_query($GLOBALS['db_link'], $query);
+        $item_id = mysqli_insert_id($GLOBALS['db_link']);
     } else {
         $query = '
         update restore_items set
-            item_name = \''.mysql_escape_string($_POST['item_name']).'\',
-            description = \''.mysql_escape_string($_POST['description']).'\',
+            item_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['item_name']) . '\',
+            description = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['description']) . '\',
             item_cost = '.(int)$_POST['item_cost'].',
             item_captcha = '.(isset($_POST['item_captcha']) && $_POST['item_captcha'] == 1?'1':'0').',
             item_spoiling = '.(int)$_POST['item_spoiling'].',
@@ -231,18 +231,18 @@ if (isset($_POST['item_name'])) {
             item_level = '.(int)$_POST['item_level'].',
             item_direct = '.(int)$_POST['item_direct'].',
             item_gos = '.(int)$_POST['item_gos'].',
-            item_params = "'.mysql_escape_string($serialized).'"
+            item_params = "' . mysqli_escape_string($GLOBALS['db_link'], $serialized) . '"
         where
             item_id = '.intval($item_id).'
         '  ;
-        mysql_query($query); 
-    }    
-    
-    mysql_query('delete from restore_consists where item_id = '.intval($item_id));
+        mysqli_query($GLOBALS['db_link'], $query);
+    }
+
+    mysqli_query($GLOBALS['db_link'], 'delete from restore_consists where item_id = ' . intval($item_id));
     if (isset($_POST['resources']) && is_array($_POST['resources']))
     foreach($_POST['resources'] as $k=>$resource_id)
         if ($resource_id != '')
-            mysql_query('insert into restore_consists (item_id, resource_id, resource_amount) values ('.intval($item_id).', '.intval($resource_id).', '.(float)$_POST['resources_amount'][$k].')');
+            mysqli_query($GLOBALS['db_link'], 'insert into restore_consists (item_id, resource_id, resource_amount) values (' . intval($item_id) . ', ' . intval($resource_id) . ', ' . (float)$_POST['resources_amount'][$k] . ')');
     header('Location: '.$_SESSION['pages']['item_list']);
     
 }
@@ -282,20 +282,20 @@ else
         $item_id = $_GET['clone_id'];
         
     $item = array();
-    $res = mysql_query('select * from restore_items where item_id = '.intval($item_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from restore_items where item_id = ' . intval($item_id));
+    if ($row = mysqli_fetch_assoc($res))
         $item = $row;
-    mysql_free_result($res);
-    
-    $res = mysql_query('select * from restore_consists where item_id = '.intval($item_id));
-    while($row = mysql_fetch_assoc($res))
+    mysqli_free_result($res);
+
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from restore_consists where item_id = ' . intval($item_id));
+    while ($row = mysqli_fetch_assoc($res))
         $item_consists .= '
         <tr id="tr_resource_'.(++$row_id).'">
           <td class="cms_middle" align="center"><a href="#" onclick="removeItem(\'tr_resource_'.$row_id.'\'); recalcResourceCount(); recalcResourcePrice(); return false;" title="Remove"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" /></a></td>
           <td align="left" class="cms_middle">'.createSelectFromArray('resources[]',$resource_array,$row['resource_id'],'id="init_res_'.$row_id.'" onchange="recalcResourceCount(); recalcResourcePrice();"').'</td>
           <td align="left" class="cms_middle"><input type="text" name="resources_amount[]" value="'.$row['resource_amount'].'" id="init_res_'.$row_id.'_count" onchange="recalcResourcePrice();" /></td>
         </tr>';
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     $add = unserialize($item['item_params']);
     

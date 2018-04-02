@@ -302,7 +302,7 @@ echo'<tr>
 
 					var b = data[n - 1];
 
-					$switch.find('a.b-banner-switch__item').removeClass('b-banner-switch__item_active')
+                    $switch.find('a.b-banner-switch__item').removeClass('b-banner-switch__item_active');
 					$switch.find('a.b-banner-switch__item:eq('+(n * 1 - 1)+')').addClass('b-banner-switch__item_active');
 
 				}

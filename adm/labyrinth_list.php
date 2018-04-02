@@ -9,7 +9,7 @@ if (!userHasPermission(8)) {
 if (isset($_GET['copy_lab_id']) && $_GET['copy_lab_id']!='' && filter_var($_GET['copy_lab_id'], FILTER_VALIDATE_INT)) 
 {
     $lab_id = (int)$_GET['copy_lab_id'];
-    if (!mysql_query('
+    if (!mysqli_query($GLOBALS['db_link'], '
         INSERT INTO labyrinth_list
             (labyrinth_name, date_from, date_to, opened_from, opened_to, labyrinth_params, labyrinth_serialized)
         SELECT 
@@ -19,32 +19,32 @@ if (isset($_GET['copy_lab_id']) && $_GET['copy_lab_id']!='' && filter_var($_GET[
         WHERE
             labyrinth_id = '.(int)$lab_id.'
     ', $db))
-        die(mysql_error());
-    $last_id = mysql_insert_id($db);
+        die(mysqli_error($GLOBALS['db_link']));
+    $last_id = mysqli_insert_id($GLOBALS['db_link']);
     header('Location: labyrinth_design.php?lab_id='.$last_id); 
 }
 
 if (isset($_GET['delete_lab_id']) && $_GET['delete_lab_id']!='' && is_numeric($_GET['delete_lab_id'])) {
     $lab_id = (int)$_GET['delete_lab_id'];
-    mysql_query('delete from labyrinth_list where labyrinth_id = '.(int)$lab_id.' AND is_confirmed = \'N\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from labyrinth_list where labyrinth_id = ' . (int)$lab_id . ' AND is_confirmed = \'N\'');
     header('Location: labyrinth_list.php');
 }
 
 if (isset($_GET['accept_confirm']) && $_GET['accept_confirm']!='' && is_numeric($_GET['accept_confirm']) && userHasPermission(16)) {
     $lab_id = (int)$_GET['accept_confirm'];
-    mysql_query('update labyrinth_list set is_confirmed = \'Y\' where labyrinth_id = '.(int)$lab_id);
+    mysqli_query($GLOBALS['db_link'], 'update labyrinth_list set is_confirmed = \'Y\' where labyrinth_id = ' . (int)$lab_id);
     header('Location: labyrinth_list.php');
 }
 
 if (isset($_GET['decline_confirm']) && $_GET['decline_confirm']!='' && is_numeric($_GET['decline_confirm']) && userHasPermission(16)) {
     $lab_id = (int)$_GET['decline_confirm'];
-    mysql_query('update labyrinth_list set is_confirmed = \'N\' where labyrinth_id = '.(int)$lab_id);
+    mysqli_query($GLOBALS['db_link'], 'update labyrinth_list set is_confirmed = \'N\' where labyrinth_id = ' . (int)$lab_id);
     header('Location: labyrinth_list.php');
 }
 
 $labyrinths = '';
-$res = mysql_query('select * from labyrinth_list'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from labyrinth_list');
+while ($row = mysqli_fetch_assoc($res))
 {
     
     if (!userHasPermission(16))

@@ -19,4 +19,3 @@ if (mysqli_num_rows($chrecipe) > 0) {
         include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/alhim/alhim_messages" . ".php");
     }
 }
-?>

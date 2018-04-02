@@ -1,5 +1,6 @@
 <?php require('kernel/before.php');?>
-<? session_start();session_register('filter');?>
+<? session_start();
+$_SESSION['filter']; ?>
 <HTML>
 <HEAD>
 <LINK href="../../../css/game.css" rel=STYLESHEET type=text/css>
@@ -26,13 +27,13 @@ foreach($_SESSION as $keyses=>$vals){
 	$$keyses = $vals;
 }
 
-$Newchests2 = mysql_query("SELECT * FROM `items` WHERE `chests`='2';");
-while($row = mysql_fetch_array($Newchests2)){
-	if(mysql_num_rows(mysql_query("SELECT * FROM `chests2` WHERE `cid`='".$row['id']."'")) == 0){
-		mysql_query("INSERT INTO `chests2` (`cid`, `name`) VALUES ('".$row['id']."', '".$row['name']."');");
+$Newchests2 = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE `chests`='2';");
+while ($row = mysqli_fetch_array($Newchests2)) {
+    if (mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2` WHERE `cid`='" . $row['id'] . "'")) == 0) {
+        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chests2` (`cid`, `name`) VALUES ('" . $row['id'] . "', '" . $row['name'] . "');");
 	}
 }
-$chests2 = mysql_query("SELECT * FROM `chests2`;");
+$chests2 = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2`;");
 echo '
 <form method="post" action="?useaction=admin-action&addid=chests2&add=1">
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
@@ -40,11 +41,11 @@ echo '
 <select name=present>
 <option value="none" ' . (($_POST['present'] != 'none' and $_POST['present'] != '') ? '' : 'selected=selected') . '>Выберите сундук</option>
 ';
-while($present = mysql_fetch_array($chests2)){
-	if(mysql_num_rows(mysql_query("SELECT * FROM `items` WHERE `chests`='2' and `id`='".$present['cid']."'")) > 0){
+while ($present = mysqli_fetch_array($chests2)) {
+    if (mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE `chests`='2' and `id`='" . $present['cid'] . "'")) > 0) {
 		echo '<option value="'.$present['id'].'" '.(($_POST['present']==$present['id'])?'selected=selected':'').'>'.$present['name'].'</option>';
 	}else{
-		mysql_query("DELETE FROM `chests2` WHERE `cid`='".$present['cid']."'");
+        mysqli_query($GLOBALS['db_link'], "DELETE FROM `chests2` WHERE `cid`='" . $present['cid'] . "'");
 	}
 }
 echo '
@@ -57,7 +58,7 @@ echo '
 $err=0;
 if($_POST['present']!='none' and !empty($_POST['present'])){
 	if(!empty($_POST['delete'])){
-		$items=mysql_fetch_array(mysql_query("SELECT * FROM `chests2` WHERE `id`='".$_POST['present']."' LIMIT 1;"));
+        $items = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2` WHERE `id`='" . $_POST['present'] . "' LIMIT 1;"));
 		$additem="";
 		switch($_POST['delete_id']){
 			case 'items':
@@ -68,26 +69,26 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 					}
 				}
 				if($additem==""){$additem=0;}
-				mysql_query("UPDATE `chests2` SET `items`='".$additem."'  WHERE `id`='".$_POST['present']."'  LIMIT 1;");				
+                mysqli_query($GLOBALS['db_link'], "UPDATE `chests2` SET `items`='" . $additem . "'  WHERE `id`='" . $_POST['present'] . "'  LIMIT 1;");
 			break;
 		}
 	}
 	if($_POST['idit']){
-		$items=mysql_fetch_array(mysql_query("SELECT * FROM `chests2` WHERE `id`='".$_POST['present']."' LIMIT 1;"));
+        $items = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2` WHERE `id`='" . $_POST['present'] . "' LIMIT 1;"));
 		if($items['items']=='0'){
 			$additem=intval($_POST['idit'])."|";
-			mysql_query("UPDATE `chests2` SET `items`='".$additem."' WHERE  `id`='".$_POST['present']."' LIMIT 1;");
+            mysqli_query($GLOBALS['db_link'], "UPDATE `chests2` SET `items`='" . $additem . "' WHERE  `id`='" . $_POST['present'] . "' LIMIT 1;");
 		}
 		else{
 			$item=explode("|",$items['items']);
 			if(in_array(intval($_POST['idit']),$item)==false){
 				$additem=$items['items'].intval($_POST['idit'])."|";
-				mysql_query("UPDATE `chests2` SET `items`='".$additem."'  WHERE `id`='".$_POST['present']."'  LIMIT 1;");
+                mysqli_query($GLOBALS['db_link'], "UPDATE `chests2` SET `items`='" . $additem . "'  WHERE `id`='" . $_POST['present'] . "'  LIMIT 1;");
 			}
 		}
 	}
 	if($_GET['add']==1){
-	$present=mysql_fetch_array(mysql_query("SELECT * FROM `chests2` WHERE `id`='".$_POST['present']."';"));
+        $present = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2` WHERE `id`='" . $_POST['present'] . "';"));
 	echo'
 			<form method="post" action="?useaction=admin-action&addid=chests2&add=1&save=1">
 			<br><table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
@@ -161,8 +162,8 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 				  <option value=0';
 				if($idit==""){echo " selected=selected";}
         echo '>Выберите тип</option>';
-				$it=mysql_query("SELECT * FROM `items` ".$filter." ".$filter2." ORDER BY type,name,level;");
-				  while ($row = mysql_fetch_assoc($it)) {
+        $it = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` " . $filter . " " . $filter2 . " ORDER BY type,name,level;");
+        while ($row = mysqli_fetch_assoc($it)) {
 					echo "<option value=".$row['id']."";if($idit==$row['id']){echo " selected=selected";}echo">".$row['name']." [ ".$row['level']." ]</option>";
 				  }
 				  echo'
@@ -181,7 +182,7 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 				$itemsin=explode("|",$present['items']);
 				foreach($itemsin as $val){
 					if($val!=''){
-						$name=mysql_fetch_array(mysql_query("SELECT `items`.`name`,`items`.`id` FROM `items` WHERE `id`='".$val."' LIMIT 1;"));
+                        $name = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `items`.`name`,`items`.`id` FROM `items` WHERE `id`='" . $val . "' LIMIT 1;"));
 						echo'
 						<tr class=freetxt bgcolor=white>							
 							<td>

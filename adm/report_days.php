@@ -8,7 +8,7 @@ if (!userHasPermission(1)) {
 
 if (isset($_GET['delete_date']))
 {
-    mysql_query('DELETE FROM z_days WHERE date = \''.mysql_escape_string($_GET['delete_date']).'\'');
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM z_days WHERE date = \'' . mysqli_escape_string($GLOBALS['db_link'], $_GET['delete_date']) . '\'');
 }
 
 if (!isset($_GET['date_from']) || $_GET['date_from'] == '')
@@ -18,7 +18,7 @@ if (!isset($_GET['date_to']) || $_GET['date_to'] == '')
     $_GET['date_to'] = date('Y').'-12-31';
 
 $vizor_days = array();
-$res = mysql_query('SELECT * FROM z_days WHERE date >= \''.mysql_escape_string($_GET['date_from']).'\' AND date <= \''.mysql_escape_string($_GET['date_to']).'\' ORDER BY date');
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM z_days WHERE date >= \'' . mysqli_escape_string($GLOBALS['db_link'], $_GET['date_from']) . '\' AND date <= \'' . mysqli_escape_string($GLOBALS['db_link'], $_GET['date_to']) . '\' ORDER BY date');
 
 $types = array(1 => 'Выходной', 2 => 'Рабочий');
 ?>
@@ -125,7 +125,7 @@ function clearFilter()
                 <td class="cms_cap2">Дата</td>
                 <td class="cms_cap2">Тип</td>
             </tr>
-            <? while($row = mysql_fetch_assoc($res)) {
+             <? while ($row = mysqli_fetch_assoc($res)) {
             echo '
             <tr>
                 <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этот день?\');" href="report_days.php?delete_date=' . $row['date'] . '" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>

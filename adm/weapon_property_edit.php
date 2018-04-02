@@ -29,21 +29,21 @@ if (isset($_POST['property_name'])) {
             property_type,
             property_name
         ) values (
-            \''.mysql_escape_string($_POST['property_code']).'\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['property_code']) . '\',
             '.(int)$_POST['property_type'].',
-            \''.mysql_escape_string($_POST['property_name']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['property_name']) . '\'
         )'  ;
     } else {
         $query = '
         update weapon_properties set
-            property_code = \''.mysql_escape_string($_POST['property_code']).'\',
+            property_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['property_code']) . '\',
             property_type = '.(int)$_POST['property_type'].',
-            property_name = \''.mysql_escape_string($_POST['property_name']).'\'
+            property_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['property_name']) . '\'
         where
-            property_code = \''.mysql_escape_string($weapon_property_code).'\'
+            property_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $weapon_property_code) . '\'
         '  ;
-    }    
-    mysql_query($query);
+    }
+    mysqli_query($GLOBALS['db_link'], $query);
     header('Location: weapon_property_list.php');
     
 }
@@ -56,10 +56,10 @@ if ($weapon_property_code == '') {
     );
 } else {
     $weapon_category = array();
-    $res = mysql_query('select * from weapon_properties where property_code = \''.mysql_escape_string($weapon_property_code).'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_properties where property_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $weapon_property_code) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $weapon_property = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

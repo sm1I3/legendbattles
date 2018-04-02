@@ -10,7 +10,7 @@ if (!userHasPermission(1024)) {
 if (isset($_POST['update']))
 {
     // Level koef
-    mysql_query('DELETE FROM bots_level_koef');
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM bots_level_koef');
     for($i = 0; $i <= 33; $i++)
     {
         $query = 'INSERT INTO bots_level_koef (level';
@@ -22,14 +22,14 @@ if (isset($_POST['update']))
             $values .= ', '.(isset($_POST['bot_koef'][$i][$j]) ? floatval($_POST['bot_koef'][$i][$j]) : 1);
         }
         $query .= $keys . ') VALUES ('.$i.' '.$values.')';
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
     }
 }
 
 // Level koef
-$res = mysql_query('select * from bots_level_koef');
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_level_koef');
 $bot_koef = array();
-while ($row = mysql_fetch_assoc($res)) 
+while ($row = mysqli_fetch_assoc($res)) 
 {
     for($i = 1; $i <= 10; $i++)
         $bot_koef[$row['level']][$i] = floatval($row['koef_'.$i]);

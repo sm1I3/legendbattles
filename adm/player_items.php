@@ -1,5 +1,6 @@
 <? require('kernel/before.php');
-session_start();session_register('filter');?>
+session_start();
+$_SESSION['filter']; ?>
 <HTML>
 <HEAD>
 <LINK href="../../../css/game.css" rel=STYLESHEET type=text/css>
@@ -36,25 +37,25 @@ echo '
 </form>';
 if($_GET['load']==1 and $_POST['loginp']!=''){
 	$val_loginp=varcheck($_POST['loginp']);
-	$plid=mysql_fetch_assoc(mysql_query("SELECT `user`.`id` FROM `user` WHERE `login`='".$val_loginp."' LIMIT 1;"));	
+    $plid = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `user`.`id` FROM `user` WHERE `login`='" . $val_loginp . "' LIMIT 1;"));
 	if($_POST['delete']){
 		if($_POST['delete']!='all'){
 		$val_delete=varcheck($_POST['delete']);
-	
-			mysql_query("DELETE FROM `invent` WHERE `id_item`='".$val_delete."' AND `pl_id`='".$plid['id']."' LIMIT 1;");
+
+            mysqli_query($GLOBALS['db_link'], "DELETE FROM `invent` WHERE `id_item`='" . $val_delete . "' AND `pl_id`='" . $plid['id'] . "' LIMIT 1;");
 		}
 		else{
-			mysql_query("DELETE FROM `invent` WHERE `pl_id`='".$plid['id']."';");
+            mysqli_query($GLOBALS['db_link'], "DELETE FROM `invent` WHERE `pl_id`='" . $plid['id'] . "';");
 		}
 	}
-	$allitems=mysql_query("SELECT * FROM `invent` WHERE `pl_id`='".$plid['id']."';");
+    $allitems = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `invent` WHERE `pl_id`='" . $plid['id'] . "';");
 			echo'
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 				<tr align=center class=nickname><td><b>Вещи персонажа <b>' . $_POST['loginp'] . '</b>:</b></td></tr>';
-					while($row = mysql_fetch_assoc($allitems)){
-						$name=mysql_fetch_assoc(mysql_query("SELECT `items`.`name`,`items`.`id` FROM `items` WHERE `id`='".$row['protype']."' LIMIT 1;"));
+    while ($row = mysqli_fetch_assoc($allitems)) {
+        $name = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `items`.`name`,`items`.`id` FROM `items` WHERE `id`='" . $row['protype'] . "' LIMIT 1;"));
 						echo '
 						<tr class=freetxt bgcolor=white>							
 							<td>
@@ -67,7 +68,7 @@ if($_GET['load']==1 and $_POST['loginp']!=''){
 							</td>
 						</tr>';
 					}
-					if(mysql_num_rows($allitems)>0){
+    if (mysqli_num_rows($allitems) > 0) {
 						echo '
 						<tr class=freetxt bgcolor=white>							
 							<td>

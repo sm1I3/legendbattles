@@ -61,4 +61,3 @@ switch ($pers['useaction']) {
         include($_SERVER["DOCUMENT_ROOT"] . "/includes/locations/" . $location['folder'] . "/" . $location['inc']);
         break;
 }
-?>

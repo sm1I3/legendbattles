@@ -9,13 +9,13 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_resource_type_id']) && $_GET['delete_resource_type_id']!='' && is_numeric($_GET['delete_resource_type_id'])) 
 {
     $resource_type_id = (int)$_GET['delete_resource_type_id'];
-    mysql_query('delete from resource_types where resource_type_id = '.intval($resource_type_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from resource_types where resource_type_id = ' . intval($resource_type_id));
     header('Location: resource_type_list.php');
 }
 
 $resource_types = '';
-$res = mysql_query('select * from resource_types'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from resource_types');
+while ($row = mysqli_fetch_assoc($res))
 {
     $resource_types .= '
     <tr>

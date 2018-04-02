@@ -1,6 +1,6 @@
 <?
 session_start();
-session_register('filter');
+$_SESSION['filter'];
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
 //=================== FUNC
 function botslot($id,$s)
@@ -245,4 +245,3 @@ foreach($immunes as $key=>$val){
  
  echo'<td style="width:100%" valign=top rowspan=2 >test</td>	';
 }
-?>

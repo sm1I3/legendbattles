@@ -163,7 +163,7 @@ if (isset($_POST['present_id']))
             '.(float)$_POST['pr_dnv'].',
             '.(int)$_POST['pr_sex'].',
             '.(int)$_POST['pr_limit'].',
-            \''.mysql_escape_string($str_params).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $str_params) . '\'
         )'  ;
     } else {
         $query = '
@@ -175,13 +175,13 @@ if (isset($_POST['present_id']))
             pr_dnv = '.(float)$_POST['pr_dnv'].',
             pr_sex = '.(int)($_POST['pr_sex']==''?2:$_POST['pr_sex']).',
             pr_limit = '.(int)$_POST['pr_limit'].',
-            pr_params = \''.mysql_escape_string($str_params).'\'
+            pr_params = \'' . mysqli_escape_string($GLOBALS['db_link'], $str_params) . '\'
         where
             pr_code = '.intval($present_id).'
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: '.$_SESSION['pages']['present_list']);
     
 }
@@ -193,8 +193,8 @@ if ((string)$present_id == '')
     {
         $copy_present_id = (int)$_GET['copy_present_id'];
         $present = array();
-        $res = mysql_query('select * from present_list where pr_code = '.intval($copy_present_id));
-        if($row = mysql_fetch_assoc($res))
+        $res = mysqli_query($GLOBALS['db_link'], 'select * from present_list where pr_code = ' . intval($copy_present_id));
+        if ($row = mysqli_fetch_assoc($res))
         {
             $present = $row;
             $present['present_id'] = $row['pr_code'];
@@ -202,8 +202,8 @@ if ((string)$present_id == '')
             
             $present_add = unserialize($present['pr_params']);
         }
-        
-        mysql_free_result($res);
+
+        mysqli_free_result($res);
     }
     else
     {
@@ -229,8 +229,8 @@ if ((string)$present_id == '')
 else 
 {
     $present = array();
-    $res = mysql_query('select * from present_list where pr_code = '.intval($present_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from present_list where pr_code = ' . intval($present_id));
+    if ($row = mysqli_fetch_assoc($res))
     {
         $present = $row;
         $present['present_id'] = $row['pr_code'];
@@ -240,15 +240,15 @@ else
         
         //var_dump($present_add);
     }
-    
-    mysql_free_result($res);
+
+    mysqli_free_result($res);
 }
 
 $categories = array();
-$res = mysql_query('select * from present_category order by pr_cat_title asc');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from present_category order by pr_cat_title asc');
+while ($row = mysqli_fetch_assoc($res))
     $categories[$row['pr_cat_id']] = $row['pr_cat_title'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $sexes = array(
     2 => 'Любой',
@@ -279,10 +279,10 @@ $item_actions = array(
 
 // list of all weapon categories
 $weapon_categories_array = array();
-$res = mysql_query('select * from weapon_categories');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_categories');
+while ($row = mysqli_fetch_assoc($res))
     $weapon_categories_array[$row['category_code']] = $row['category_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $row_id = 1;
 
@@ -421,13 +421,13 @@ $: <input type="text" name="money_d" value="<?=(isset($present_add['XX']['MONEY'
             $item_name = '';
             if ($item['type']=='D')
             {
-                $res = mysql_query('SELECT * FROM d_dilers WHERE wuid = \''.mysql_escape_string($item['item']).'\'');
-                if ($row = mysql_fetch_assoc($res))
+                $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM d_dilers WHERE wuid = \'' . mysqli_escape_string($GLOBALS['db_link'], $item['item']) . '\'');
+                if ($row = mysqli_fetch_assoc($res))
                     $item_name = $row['w_name'];
             } else
             {
-                $res = mysql_query('SELECT * FROM weapons_template WHERE w_uid = \''.mysql_escape_string($item['item']).'\'');
-                if ($row = mysql_fetch_assoc($res))
+                $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM weapons_template WHERE w_uid = \'' . mysqli_escape_string($GLOBALS['db_link'], $item['item']) . '\'');
+                if ($row = mysqli_fetch_assoc($res))
                     $item_name = $row['w_name'];
             } 
         ?>

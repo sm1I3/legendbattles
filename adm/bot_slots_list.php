@@ -10,18 +10,18 @@ if (isset($_GET['delete_bot_template_id']) && $_GET['delete_bot_template_id']!='
 {
     $bot_template_id = $_GET['delete_bot_template_id'];
     $level = $_GET['level'];
-    mysql_query('delete from e_players_bots_slots where bot_template_id = '.intval($bot_template_id).' and level = '.intval($level));
+    mysqli_query($GLOBALS['db_link'], 'delete from e_players_bots_slots where bot_template_id = ' . intval($bot_template_id) . ' and level = ' . intval($level));
     header('Location: bot_slots_list.php');
 }
 
 $bot_templates = array();
-$res = mysql_query('select * from e_players_bots_templates'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from e_players_bots_templates');
+while ($row = mysqli_fetch_assoc($res))
     $bot_templates[$row['bot_template_id']] = $row['nickname'];
 
 $bot_slots = '';
-$res = mysql_query('select * from e_players_bots_slots'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from e_players_bots_slots');
+while ($row = mysqli_fetch_assoc($res))
 {
     $bot_slots .= '
     <tr>

@@ -7,13 +7,13 @@ if (!userHasPermission(1)) {
 }
 
 $workers = array();
-$res = mysql_query('SELECT * FROM z_worker ORDER BY worker_name');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM z_worker ORDER BY worker_name');
+while ($row = mysqli_fetch_assoc($res))
     $workers[$row['worker_id']] = $row['worker_name'];
     
 $vizor_days = array();
-$res = mysql_query('SELECT * FROM z_days ');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM z_days ');
+while ($row = mysqli_fetch_assoc($res))
     $vizor_days[$row['date']] = $row['type'];
 
 $days_arr = array();
@@ -27,13 +27,13 @@ if (isset($_POST['upload']) && isset($_FILES['input_file']))
         $arr = explode(';', $str);
         if (isset($arr[3]) && ($arr[3] == 62 || $arr[3] == 63))
         {
-            mysql_query('INSERT IGNORE INTO z_worker_event (event_id, worker_id, event_type, datetime) VALUES (
-            '.intval($arr[0]).', '.intval($arr[4]).', '.intval($arr[3]).', \''.mysql_escape_string($arr[1].' '.$arr[2]).'\'
+            mysqli_query($GLOBALS['db_link'], 'INSERT IGNORE INTO z_worker_event (event_id, worker_id, event_type, datetime) VALUES (
+            ' . intval($arr[0]) . ', ' . intval($arr[4]) . ', ' . intval($arr[3]) . ', \'' . mysqli_escape_string($GLOBALS['db_link'], $arr[1] . ' ' . $arr[2]) . '\'
             )');
             
             if (!isset($workers[$arr[4]]))
             {
-                mysql_query('INSERT IGNORE INTO z_worker (worker_id, worker_name) VALUES ('.intval($arr[4]).', \''.mysql_escape_string($arr[5]).'\')');
+                mysqli_query($GLOBALS['db_link'], 'INSERT IGNORE INTO z_worker (worker_id, worker_name) VALUES (' . intval($arr[4]) . ', \'' . mysqli_escape_string($GLOBALS['db_link'], $arr[5]) . '\')');
             }
         }
     }
@@ -44,13 +44,13 @@ if (isset($_POST['date_from']) && $_POST['date_from'] != '' && $_POST['date_to']
     $short = (isset($_POST['short']));
     
     $vacations = array();
-    $res = mysql_query('SELECT * FROM z_vacations WHERE 1 > 0'.
-            ($_POST['date_from'] != '' ? ' AND date_to >= \''.mysql_escape_string($_POST['date_from'].' 00:00:00').'\'' : '').
-            ($_POST['date_to'] != '' ? ' AND date_from <= \''.mysql_escape_string($_POST['date_to'].' 23:59:59').'\'' : '').
+    $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM z_vacations WHERE 1 > 0' .
+        ($_POST['date_from'] != '' ? ' AND date_to >= \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date_from'] . ' 00:00:00') . '\'' : '') .
+        ($_POST['date_to'] != '' ? ' AND date_from <= \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date_to'] . ' 23:59:59') . '\'' : '') .
             ($_POST['worker_id'] != '' ? ' AND worker_id = '.intval($_POST['worker_id']).'' : '').
             ' ORDER BY date_from ASC'
     );
-    while($row = mysql_fetch_assoc($res))
+    while ($row = mysqli_fetch_assoc($res))
     {
         $i = 0;
         $date_from = $row['date_from'];
@@ -66,10 +66,10 @@ if (isset($_POST['date_from']) && $_POST['date_from'] != '' && $_POST['date_to']
     }
     
     $report = array();
-    
-    $res = mysql_query('SELECT * FROM z_worker_event WHERE 1 > 0'.
-            ($_POST['date_from'] != '' ? ' AND datetime >= \''.mysql_escape_string($_POST['date_from'].' 00:00:00').'\'' : '').
-            ($_POST['date_to'] != '' ? ' AND datetime <= \''.mysql_escape_string($_POST['date_to'].' 23:59:59').'\'' : '').
+
+    $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM z_worker_event WHERE 1 > 0' .
+        ($_POST['date_from'] != '' ? ' AND datetime >= \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date_from'] . ' 00:00:00') . '\'' : '') .
+        ($_POST['date_to'] != '' ? ' AND datetime <= \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date_to'] . ' 23:59:59') . '\'' : '') .
             ($_POST['worker_id'] != '' ? ' AND worker_id = '.intval($_POST['worker_id']).'' : '').
             ' ORDER BY event_id ASC'
     );
@@ -83,8 +83,8 @@ if (isset($_POST['date_from']) && $_POST['date_from'] != '' && $_POST['date_to']
         $days_arr[$date_from] = true;
         $date_from = date('Y-m-d', strtotime($date_from) + 24*60*60);
     }
-    
-    while($row = mysql_fetch_array($res)) 
+
+    while ($row = mysqli_fetch_array($res))
     {
         $date = date('Y-m-d', strtotime($row['datetime']));
         $report[ $row['worker_id'] ][ $date ][] = $row;

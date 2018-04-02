@@ -25,7 +25,7 @@ if (isset($_POST['fort_id'])) {
             massa,
             cmassa
         ) values (
-            \''.mysql_real_escape_string($_POST['fort_id']).'\',
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['fort_id']) . '\',
             '.(int)$_POST['fort_class'].',
             '.(int)$_POST['teleport'].',
             '.(int)$_POST['hp'].',
@@ -36,7 +36,7 @@ if (isset($_POST['fort_id'])) {
     } else {
         $query = '
         update forts set
-            fort_id = \''.mysql_escape_string($_POST['fort_id']).'\',
+            fort_id = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['fort_id']) . '\',
             fort_class = '.(int)$_POST['fort_class'].',
             teleport = '.(int)$_POST['teleport'].',
             hp = '.(int)$_POST['hp'].',
@@ -44,20 +44,20 @@ if (isset($_POST['fort_id'])) {
             massa = '.(int)$_POST['massa'].',
             cmassa = '.(int)$_POST['cmassa'].'
         where
-            fort_id = \''.mysql_real_escape_string($fort_id).'\'
+            fort_id = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $fort_id) . '\'
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: fort_list.php');
     
 }
 
 $fort_classes = array();
-$res = mysql_query('select * from forts_classes');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from forts_classes');
+while ($row = mysqli_fetch_assoc($res))
     $fort_classes[$row['fort_class']] = $row['class_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 if ((string)$fort_id == '') {
     $fort = array(
@@ -71,10 +71,10 @@ if ((string)$fort_id == '') {
     );
 } else {
     $fort = array();
-    $res = mysql_query('select * from forts where fort_id = \''.mysql_real_escape_string($fort_id).'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from forts where fort_id = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $fort_id) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $fort = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

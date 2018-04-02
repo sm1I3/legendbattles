@@ -51,7 +51,7 @@ if (isset($_POST['submit'])){
 		}		
 	}
 }
-mysql_close();
+mysqli_close($GLOBALS['db_link']);
 ?>
 
 <table>

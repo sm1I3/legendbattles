@@ -106,4 +106,4 @@ function calc_um($id, $value)
     return $skill;
 }
 
-?>
+

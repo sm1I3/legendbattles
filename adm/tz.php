@@ -33,22 +33,22 @@ foreach($_SESSION as $keyses=>$vals){
 }
 
 if($_GET['addtz']==1){
-	mysql_query("INSERT INTO `tzamin` (`text`,`date`,`srok`) VALUES ('".bbCodes($tztext)."','".time()."','".$srok."')");
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO `tzamin` (`text`,`date`,`srok`) VALUES ('" . bbCodes($tztext) . "','" . time() . "','" . $srok . "')");
     echo 'Тз добавлено';
 }
 
 if($_GET['addtz']==2){
-	mysql_query("UPDATE `tzamin` SET `status`='1',`who`='".$_SESSION['user']['login']."' WHERE `id`='".$tzid."';");
+    mysqli_query($GLOBALS['db_link'], "UPDATE `tzamin` SET `status`='1',`who`='" . $_SESSION['user']['login'] . "' WHERE `id`='" . $tzid . "';");
 }
 
 if($_GET['addtz']==3){
-	mysql_query("UPDATE `tzamin` SET `status`='0',`who`='' WHERE `id`='".$tzid."';");
+    mysqli_query($GLOBALS['db_link'], "UPDATE `tzamin` SET `status`='0',`who`='' WHERE `id`='" . $tzid . "';");
 }	
 if($_GET['addtz']==4){
-	mysql_query("DELETE FROM `tzamin` WHERE `id`='".$tzid."';");
+    mysqli_query($GLOBALS['db_link'], "DELETE FROM `tzamin` WHERE `id`='" . $tzid . "';");
 }
 if($_GET['addtz']==5){
-	mysql_query("UPDATE `tzamin` SET `status`='3',`who`='".$_SESSION['user']['login']."',`startdate`='".time()."' WHERE `id`='".$tzid."';");
+    mysqli_query($GLOBALS['db_link'], "UPDATE `tzamin` SET `status`='3',`who`='" . $_SESSION['user']['login'] . "',`startdate`='" . time() . "' WHERE `id`='" . $tzid . "';");
 }
 
 $filt="";
@@ -58,8 +58,8 @@ if($fl==1){
 if($fl==2){
 	$filt="WHERE srok='1'";
 }
-$tzsql=mysql_query("SELECT * FROM tzamin $filt ORDER BY `srok` DESC, `id` ASC;");
-if(mysql_num_rows($tzsql)>0){
+$tzsql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM tzamin $filt ORDER BY `srok` DESC, `id` ASC;");
+if (mysqli_num_rows($tzsql) > 0) {
 echo  '<br>
 <table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 <tr><td>
@@ -72,7 +72,7 @@ echo  '<br>
 			<td align=center><b>Статус</b></td>
 			<td align=center><b>Изменить статус</b></td>
 		</tr>';
-	while($row = mysql_fetch_assoc($tzsql)){
+    while ($row = mysqli_fetch_assoc($tzsql)) {
 		echo'
 		<tr class=nickname bgcolor=white>
 			<td>'.$row['text'].'</td>

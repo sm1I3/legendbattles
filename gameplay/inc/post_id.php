@@ -2311,4 +2311,4 @@ switch ($post_id) {
         echo "<script type='text/javascript'> parent.location.href = 'http://leg/'; </script>";
         break;
 }
-?>
+

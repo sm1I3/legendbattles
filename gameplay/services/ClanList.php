@@ -59,4 +59,3 @@ while ($ClanRow = mysqli_fetch_assoc($ClanQuery)) {
 }
 echo substr($s, 0, strlen($s) - 1) . ');';
 mysqli_free_result($ClanQuery);
-?>

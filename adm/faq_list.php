@@ -11,8 +11,8 @@ if (!userHasPermission(2)) {
 $query = 'select * from faq_pages order by sort_order asc';
 
 $pages = 'd = new dTree(\'d\'); d.add(0,-1,\'FAQ\');';
-$res = mysql_query($query, $db); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $pages .= 'd.add('.$row['page_id'].','.(isset($row['parent_page_id'])?$row['parent_page_id']:'0').',\''.$row['title'].'\',\'faq_edit.php?page_id='.$row['page_id'].'\');';
     /*

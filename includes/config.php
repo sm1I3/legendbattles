@@ -106,4 +106,3 @@ function scode()
     return $cod;
 }
 
-?>

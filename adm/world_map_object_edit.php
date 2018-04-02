@@ -21,16 +21,16 @@ else
     $object_code = $_GET['object_code'];
     
 $zones = array();
-$res = mysql_query('select * from world_zones');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from world_zones');
+while ($row = mysqli_fetch_assoc($res))
     $zones[$row['zone_code']] = $row['zone_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $object_array = array();
-$res = mysql_query('select * from world_objects');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from world_objects');
+while ($row = mysqli_fetch_assoc($res))
     $object_array[$row['object_code']] = $row['object_name'].' ('.$row['object_code'].')';
-mysql_free_result($res);
+mysqli_free_result($res);
     
 if (isset($_POST['object_code'])) 
 {
@@ -53,30 +53,30 @@ if (isset($_POST['object_code']))
             object_type,
             object_params
         ) values (
-        \''.mysql_real_escape_string($_POST['object_code']).'\',
-        \''.mysql_real_escape_string($_POST['object_module']).'\',
-        '.($parent_code!=''?'\''.mysql_real_escape_string($parent_code).'\'':'NULL').',
-        \''.mysql_real_escape_string($_POST['zone_code']).'\',
-        \''.mysql_real_escape_string($_POST['object_name']).'\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['object_code']) . '\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['object_module']) . '\',
+        ' . ($parent_code != '' ? '\'' . mysqli_real_escape_string($GLOBALS['db_link'], $parent_code) . '\'' : 'NULL') . ',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['zone_code']) . '\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['object_name']) . '\',
         '.(int)$_POST['object_type'].',
         \'\'
         )'  ;
     } else {
         $query = '
         update world_objects set
-            object_code = \''.mysql_real_escape_string($_POST['object_code']).'\',
-            object_module = \''.mysql_real_escape_string($_POST['object_module']).'\',
-            parent_code = '.($parent_code!=''?'\''.mysql_real_escape_string($parent_code).'\'':'NULL').',
-            zone_code = \''.mysql_real_escape_string($_POST['zone_code']).'\',
+            object_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['object_code']) . '\',
+            object_module = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['object_module']) . '\',
+            parent_code = ' . ($parent_code != '' ? '\'' . mysqli_real_escape_string($GLOBALS['db_link'], $parent_code) . '\'' : 'NULL') . ',
+            zone_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['zone_code']) . '\',
             object_type = '.(int)$_POST['object_type'].',
-            object_name = \''.mysql_real_escape_string($_POST['object_name']).'\'
+            object_name = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['object_name']) . '\'
         where
-            object_code = \''.mysql_real_escape_string($object_code).'\'
+            object_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $object_code) . '\'
         '  ;
-    }    
-    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: '.$_SESSION['pages']['world_map_object_list']);
     
 }
@@ -89,10 +89,10 @@ if ($object_code == '') {
     );
 } else {
     $object = array();
-    $res = mysql_query('select * from world_objects where object_code = \''.mysql_real_escape_string($object_code).'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from world_objects where object_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $object_code) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $object = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

@@ -15,13 +15,13 @@ $property_types = array(
 
 if (isset($_GET['delete_property_code']) && $_GET['delete_property_code']!='') {
     $weapon_property_code = $_GET['delete_property_code'];
-    mysql_query('delete from weapon_properties where property_code = \''.mysql_real_escape_string($weapon_property_code).'\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from weapon_properties where property_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $weapon_property_code) . '\'');
     header('Location: weapon_property_list.php');
 }
 
 $weapon_properties = '';
-$res = mysql_query('select * from weapon_properties'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_properties');
+while ($row = mysqli_fetch_assoc($res))
 {
     $weapon_properties .= '
     <tr>

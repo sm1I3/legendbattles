@@ -21,19 +21,19 @@ if (isset($_POST['service_id'])) {
             service_name
         ) values (
             '.(int)$_POST['service_id'].',
-            \''.mysql_escape_string($_POST['service_name']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['service_name']) . '\'
         )'  ;
     } else {
         $query = '
         update forts_serv_classes set
             service_id = '.(int)$_POST['service_id'].',
-            service_name = \''.mysql_escape_string($_POST['service_name']).'\'
+            service_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['service_name']) . '\'
         where
             service_id = '.intval($fort_service_class_id).'
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: fort_service_class_list.php');
     
 }
@@ -45,10 +45,10 @@ if ((string)$fort_service_class_id == '') {
     );
 } else {
     $fort_service_class = array();
-    $res = mysql_query('select * from forts_serv_classes where service_id = '.intval($fort_service_class_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from forts_serv_classes where service_id = ' . intval($fort_service_class_id));
+    if ($row = mysqli_fetch_assoc($res))
         $fort_service_class = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

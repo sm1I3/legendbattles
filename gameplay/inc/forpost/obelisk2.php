@@ -11,7 +11,7 @@
 <script type="text/javascript" src="js/interface/get_windows2.js?"></script>
 <LINK href=./css/info_loc.css rel=STYLESHEET type=text/css>
 </HEAD>
-<body>
+<BODY>
 <script LANGUAGE="JavaScript">
 
 function getRandomArbitary(min, max)
@@ -21,12 +21,12 @@ function getRandomArbitary(min, max)
 
 
 // скорость прокрутки
-var speed = 180
+var speed = 180;
 // останавливаем на 1 сек.
-var pause = 1000
-var timerID = null
-var wireRunning = false
-var cc = new Array()
+var pause = 1000;
+var timerID = null;
+var wireRunning = false;
+var cc = new Array();
 
 
 cc[0] = "Каждый день с 8 по 17 мая включительно";
@@ -37,39 +37,39 @@ cc[4] = "тем на большее количество призов сможе
 //cc[5] = "тем на большее количество призов сможете расчитывать!";
 //cc[6] = "Желаю мира и добра с любовью Админстрация";
 
-var currentMessage = 0
-var offset = 0
+var currentMessage = 0;
+var offset = 0;
 
 // останавливаем вывод сообщений
 function stopWire() {
                 if (wireRunning)
-                clearTimeout(timerID)
+                    clearTimeout(timerID);
                 wireRunning = false
 
 }
 
 // стартуем
 function startWire() {
-                stopWire()
+    stopWire();
                 showWire()
 }
 function showWire() {
                 var text = cc[currentMessage]
                 if (offset < text.length) {
                                 if (text.charAt(offset) == " ")
-                                                offset++
+                                    offset++;
                                 var partialMessage = text.substring(0, offset + 1)
-                document.wireForm.wireField.value = partialMessage
-                                offset++
-                timerID = setTimeout("showWire()", speed)
+                    document.wireForm.wireField.value = partialMessage;
+                    offset++;
+                    timerID = setTimeout("showWire()", speed);
         wireRunning = true
         ///alert(1);
         } else {
-               offset = 0
-               currentMessage++
+                    offset = 0;
+                    currentMessage++;
                 if (currentMessage == cc.length)
-                        currentMessage = 0
-                timerID = setTimeout("showWire()", pause)
+                    currentMessage = 0;
+                    timerID = setTimeout("showWire()", pause);
 
            if (currentMessage == 0 && offset == 0){
                // останавливаем функцию =)
@@ -143,15 +143,16 @@ echo "<script>location='main.php';</script>";
 <tr><td align=center>
 
 
-
-
-
-</div>
+    </td>
 </table></td></table></tr></td></table>
-</td></tr></table></TD></TR></TABLE>
+        </td>
+    </tr>
+</table>
+</BODY>
+</html><
 
 <script type="text/javascript">
 <? if (isset($secrets) && !empty($secrets)){?>
-message_window ('success','','<?=$secrets?>','cancel','')
+message_window('success', '', '<?=$secrets?>', 'cancel', '');
 <? } ?>
 </script>

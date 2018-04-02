@@ -81,4 +81,3 @@ echo'
 	'.$table.'
 </table></td></tr>
 ';
-?>

@@ -45,4 +45,3 @@
 			include ($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/craft_sys/custom_messages2".".php");
 		}
 	}
-?>

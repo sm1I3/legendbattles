@@ -10,7 +10,7 @@ else
 
 
 // Главный запрос
-$topic_counts = mysql_num_rows(mysql_query("SELECT * FROM user_subscribers"));
+$topic_counts = mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user_subscribers"));
 
 $getPage = intval($_GET['p']);
 $page = (intval($getPage)-1)*30;
@@ -22,17 +22,17 @@ if($page > (($topic_counts/30)*30))
 if($getPage > $cPage)
 	exit(json_encode(array('status'=>'success')));
 
-$res = mysql_query('SELECT * FROM module_subscribe WHERE id = ' . intval($message_id));
-if($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM module_subscribe WHERE id = ' . intval($message_id));
+if ($row = mysqli_fetch_assoc($res))
 	$message = $row;
-mysql_free_result($res);
-$res = mysql_query("SELECT * FROM user_subscribers LIMIT " . (($page < 0) ? 0 : $page) . ",30");
-while($row = mysql_fetch_assoc($res)){
+mysqli_free_result($res);
+$res = mysqli_query($GLOBALS['db_link'], "SELECT * FROM user_subscribers LIMIT " . (($page < 0) ? 0 : $page) . ",30");
+while ($row = mysqli_fetch_assoc($res)) {
 	$Headers  = "From: Legendbattles.ru<news@legendbattles.ru>\n";
     $Headers .= "Content-Type: text/html; charset=utf-8\n";
 	@mail($row['email'], $message['theame'], BbToHtml(nl2br($message['message'])), $Headers);
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 if($cPage == $getPage)
 	exit(json_encode(array('status'=>'success')));
 else

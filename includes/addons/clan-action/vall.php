@@ -383,4 +383,3 @@ switch($stat[0])
 echo'</td><td bgcolor=#B9A05C><img src=/img/image/1x1.gif width=1 height=1></td><td bgcolor=#FCFAF3><font class=weaponch>'.$tr_b.'</font></td></tr></table></td></tr></table></td></tr></table>';
 echo'</td></tr></table></td>';
 
-?>

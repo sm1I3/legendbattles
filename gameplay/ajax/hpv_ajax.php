@@ -114,4 +114,3 @@ switch($_GET['act']){
 	break;
 }
 echo $ShowResult;
-?>

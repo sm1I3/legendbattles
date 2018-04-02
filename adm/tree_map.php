@@ -25,12 +25,12 @@ if (isset($_GET['action']) && $_GET['action']=='load') {
         zl.x2 <= '.intval($x2).' and zl.y2 <= '.intval($y2).' and
         zl.zone_type = 9
     ';
-    
-    if (!$res = mysql_query($query))
-        die(mysql_error());
+
+    if (!$res = mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     
     $arr = array();
-    while($row = mysql_fetch_assoc($res)) {
+    while ($row = mysqli_fetch_assoc($res)) {
         if (!isset($arr[$row['zone_id']]))
             $arr[$row['zone_id']] = $row['zone_id'].';'.$row['x1'].';'.$row['y1'].';'.$row['x2'].';'.$row['y2'];
             
@@ -53,14 +53,14 @@ if (isset($_POST['action']) && $_POST['action']=='save') {
             zone_list 
         where 
             zone_id = '.intval($zone_id);
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
         
         $query = '
         delete from 
             resource_group_zones 
         where 
             zone_id = '.intval($zone_id);
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
     }
     
     $arr = explode('|', urldecode($_POST['zones']));
@@ -82,8 +82,8 @@ if (isset($_POST['action']) && $_POST['action']=='save') {
                 (x1, y1, x2, y2, zone_type) 
             values
                 ('.intval($x1).', '.intval($y1).', '.intval($x2).', '.intval($y2).', 9)';
-        mysql_query($query);
-        $zone_id = mysql_insert_id();
+        mysqli_query($GLOBALS['db_link'], $query);
+        $zone_id = mysqli_insert_id($GLOBALS['db_link']);
         
         $plants_array = explode(';', $plants[$id]);
         if (is_array($plants_array) && sizeof($plants_array)>0) 
@@ -93,7 +93,7 @@ if (isset($_POST['action']) && $_POST['action']=='save') {
                 (zone_id, resource_group_id) 
             values
                 ('.intval($zone_id).', '.intval($plant).')';
-            mysql_query($query);
+            mysqli_query($GLOBALS['db_link'], $query);
         }
         
     }
@@ -103,10 +103,10 @@ if (isset($_POST['action']) && $_POST['action']=='save') {
 }
 
 $resource_groups = array();
-$res = mysql_query('select * from resource_group');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from resource_group');
+while ($row = mysqli_fetch_assoc($res))
     $resource_groups[$row['resource_group_id']] = $row['resource_group_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 
 $zones = '';

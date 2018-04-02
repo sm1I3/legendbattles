@@ -64,4 +64,3 @@ viewlog();
 </body>
 </html>
 ';
-?>

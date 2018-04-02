@@ -19,17 +19,17 @@ if (isset($_POST['msg_text'])) {
         (
             msg_text
         ) values (
-            \''.mysql_escape_string($_POST['msg_text']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['msg_text']) . '\'
         )'  ;
     } else {
         $query = '
         update mass_msg set
-            msg_text = \''.mysql_escape_string($_POST['msg_text']).'\'
+            msg_text = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['msg_text']) . '\'
         where
             msg_id = '.intval($message_id).'
         '  ;
-    }    
-    mysql_query($query);
+    }
+    mysqli_query($GLOBALS['db_link'], $query);
     header('Location: mass_message_list.php');
     
 }
@@ -40,10 +40,10 @@ if ((string)$message_id == '') {
     );
 } else {
     $ability = array();
-    $res = mysql_query('select * from mass_msg where msg_id = '.intval($message_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from mass_msg where msg_id = ' . intval($message_id));
+    if ($row = mysqli_fetch_assoc($res))
         $message = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

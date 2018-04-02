@@ -168,4 +168,3 @@ function messageToHtml($err) {
     else
         return '<div class="winmodify">'._htext($err).'</div>';
 }
-?>

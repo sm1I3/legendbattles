@@ -75,6 +75,8 @@ function view_hau_sell_form()
 
 function view_stavka()
 {
-    switch(haupa[2])
-    {
-        case 2: retu
+    switch (haupa[2]) {
+        case 2:
+            return;
+    }
+}

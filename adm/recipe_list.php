@@ -8,17 +8,17 @@ if (!userHasPermission(128)) {
 
 if (isset($_GET['delete_rec_id']) && $_GET['delete_rec_id']!='' && is_numeric($_GET['delete_rec_id'])) {
     $rec_id = (int)$_GET['delete_rec_id'];
-    mysql_query('delete from recipe_initial_resources where rec_id = '.$rec_id);
-    mysql_query('delete from recipe_receive_resources where rec_id = '.$rec_id);
-    mysql_query('delete from recipe_toolkit where rec_id = '.$rec_id);
-    mysql_query('delete from recipe_list where rec_id = '.$rec_id);
+    mysqli_query($GLOBALS['db_link'], 'delete from recipe_initial_resources where rec_id = ' . $rec_id);
+    mysqli_query($GLOBALS['db_link'], 'delete from recipe_receive_resources where rec_id = ' . $rec_id);
+    mysqli_query($GLOBALS['db_link'], 'delete from recipe_toolkit where rec_id = ' . $rec_id);
+    mysqli_query($GLOBALS['db_link'], 'delete from recipe_list where rec_id = ' . $rec_id);
     header('Location: '.$_SESSION['pages']['recipe_list']);
 }
 
 // PAGE NAVIGATOR
 $query = 'select count(*) from recipe_list';
-$res = mysql_query($query);
-$row = mysql_fetch_row($res);
+$res = mysqli_query($GLOBALS['db_link'], $query);
+$row = mysqli_fetch_row($res);
 $records_count = $row[0];
 
 $pages_count = ceil($records_count / $recs_per_page);
@@ -35,9 +35,9 @@ $recipes = '';
 $query = 'select * from recipe_list'.
          generateMysqlOrder().
          generateMysqlLimit($cur_page, $recs_per_page);
-         
-$res = mysql_query($query); 
-while ($row = mysql_fetch_assoc($res))
+
+$res = mysqli_query($GLOBALS['db_link'], $query);
+while ($row = mysqli_fetch_assoc($res))
 {
     $recipes .= '
     <tr>

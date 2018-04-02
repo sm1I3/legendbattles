@@ -36,11 +36,11 @@ echo $bot_id[0] ;
 foreach($_POST as $keypost=>$val){$_POST[$keypost] = varcheck($val);}
 foreach($_GET as $keyget=>$val){$_GET[$keyget] = varcheck($val);}
 ## Считываем персонажа в инсте.
-$prizes2 = mysql_fetch_assoc(mysql_query("SELECT `id`,`uid`,`login`,`level`,`time`,`type`,`ohr` FROM `logovo` WHERE uid=".$player["id"]." and type=0 LIMIT 1"));
+$prizes2 = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `id`,`uid`,`login`,`level`,`time`,`type`,`ohr` FROM `logovo` WHERE uid=" . $player["id"] . " and type=0 LIMIT 1"));
 
 ## Если нет персонажа, добавляем ячеку.
 if (!$prizes2){
-mysql_query("INSERT INTO `instant` (`id`,`uid`,`login`,`level`,`time`,`type`,`ohr`) VALUES (NULL,'".$player["id"]."','".$player["login"]."','0','0','0','0')");
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO `instant` (`id`,`uid`,`login`,`level`,`time`,`type`,`ohr`) VALUES (NULL,'" . $player["id"] . "','" . $player["login"] . "','0','0','0','0')");
 echo "<script>location='main.php';</script>";
 }
 
@@ -69,7 +69,7 @@ echo "<script>location='main.php';</script>";
 </FIELDSET>
 <?
 if ($_POST["priroda"]){
-mysql_query("UPDATE `user` SET `loc`=28,`pos`='7_15' WHERE `id`='".$player["id"]."' LIMIT 1");
+    mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `loc`=28,`pos`='7_15' WHERE `id`='" . $player["id"] . "' LIMIT 1");
 echo "<script>location='main.php';</script>";
 }
 ?>
@@ -89,13 +89,13 @@ if ($_GET["vz"] == 'ok' and $player["level"]<19){
 if ($player["nv"]<10000)
     $secrets = 'Ха-ха, да Вы беднее, чем мои башмаки...';
 else{
-mysql_query("UPDATE `user` SET `nv`=`nv`-10000 WHERE `id`='".$player["id"]."' LIMIT 1");
+    mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `nv`=`nv`-10000 WHERE `id`='" . $player["id"] . "' LIMIT 1");
     $secrets = 'Ваша смелость не знает границ, но пройти я Вам не дам, пока не покажете себя в бою! победите моего напарника и сможете пройти! спасибо за монетку <a href=main.php?vz=attack>Напасть на охранника.</a>';
 }
 }
 ## Если чувак смелый =)
 if ($_GET["vz"] == 'attack' and $prizes2["ohr"] == 0 and $player["level"]<19){
-mysql_query("UPDATE `instant` SET `ohr`=1 WHERE `uid`='".$player["id"]."' LIMIT 1");
+    mysqli_query($GLOBALS['db_link'], "UPDATE `instant` SET `ohr`=1 WHERE `uid`='" . $player["id"] . "' LIMIT 1");
     if ($player["sex"] == 'female') {
         $sex = 'смелая';
     } else {
@@ -121,14 +121,14 @@ elseif ($prizes2["time"]>time())
 else{
 
 ## Вмешиваемся если там уже идет бой
-$gds=mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `loc`=26 and `battle`>0 and type!=3"));
-$arenka = mysql_fetch_assoc(mysql_query("SELECT * FROM `arena` WHERE `id_battle`='".$gds["battle"]."' and `vis`=0"));
+    $gds = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `loc`=26 and `battle`>0 and type!=3"));
+    $arenka = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `arena` WHERE `id_battle`='" . $gds["battle"] . "' and `vis`=0"));
 
 if($gds["id"] and $arenka["id_battle"]){
 //$btls = mysql_fetch_array(sql('SELECT * FROM `fights` WHERE `id`='.$drug['battle'].''));
 ##Вмешиваемся в бой
 
-mysql_query("UPDATE `user` SET `side`='".$gds["side"]."',`battle`='".$gds["battle"]."',`fight`=2 WHERE `id`='".$player["id"]."'");
+    mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `side`='" . $gds["side"] . "',`battle`='" . $gds["battle"] . "',`fight`=2 WHERE `id`='" . $player["id"] . "'");
 save_hp_roun($player);
 echo '<script>location="main.php";</script>';
 }else{

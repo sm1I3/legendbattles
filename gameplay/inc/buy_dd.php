@@ -42,4 +42,4 @@ mysqli_query($GLOBALS['db_link'], "UNLOCK TABLES;");
 if ($typetolog != '0' and $abouttolog != '0') {
     player_actions($player['id'], $typetolog, $abouttolog);
 }
-?>
+

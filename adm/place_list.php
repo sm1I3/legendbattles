@@ -9,13 +9,13 @@ if (!userHasPermission(16384)) {
 if (isset($_GET['delete_place_code']) && $_GET['delete_place_code']!='') 
 {
     $place_code = $_GET['delete_place_code'];
-    mysql_query('delete from loc where place_code = \''.mysql_real_escape_string($place_code).'\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from loc where place_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $place_code) . '\'');
     header('Location: place_list.php');
 }
 
 $places = '';
-$res = mysql_query('select * from loc'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from loc');
+while ($row = mysqli_fetch_assoc($res))
 {
     $places .= '
     <tr>

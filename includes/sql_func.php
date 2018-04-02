@@ -772,7 +772,7 @@ function itemfilter2()
 function chars($inp)
 {
     $inp = htmlspecialchars($inp);
-    $inp = eregi_replace("[\'\"\<\>\/\%]", "", $inp);
+    $inp = preg_replace("[\'\"\<\>\/\%]", "", $inp);
     return $inp;
 }
 
@@ -1068,7 +1068,6 @@ function online_now($loc)
     }
     $result = mysqli_query($GLOBALS['db_link'], $sql);
     return mysqli_num_rows($result);
-    mysqli_free_result($result);
 }
 
 function option($pl, $num)

@@ -9,13 +9,13 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_category_code']) && $_GET['delete_category_code']!='') 
 {
     $weapon_category_code = $_GET['delete_category_code'];
-    mysql_query('delete from weapon_categories where category_code = \''.mysql_real_escape_string($weapon_category_code).'\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from weapon_categories where category_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $weapon_category_code) . '\'');
     header('Location: weapon_category_list.php');
 }
 
 $weapon_categories = '';
-$res = mysql_query('select * from weapon_categories'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_categories');
+while ($row = mysqli_fetch_assoc($res))
 {
     $weapon_categories .= '
     <tr>

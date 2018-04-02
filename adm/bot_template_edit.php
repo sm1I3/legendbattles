@@ -33,42 +33,42 @@ if (isset($_POST['nickname'])) {
             inf_infoabout
         ) values (
         '.(int)$_POST['bot_template_id'].',
-        \''.mysql_escape_string($_POST['nickname']).'\',
-        \''.mysql_escape_string($_POST['shortnn']).'\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['nickname']) . '\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['shortnn']) . '\',
         \'a771143db1ae5cd42c9b9b947c2a701f\',
-        \''.mysql_escape_string($_POST['image']).'\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['image']) . '\',
         '.(int)$_POST['intsex'].',
-        \''.mysql_escape_string($_POST['nowcity']).'\',
-        \''.mysql_escape_string($_POST['nowplace']).'\',
-        \''.mysql_escape_string($_POST['nowstatus']).'\',
-        \''.mysql_escape_string($_POST['inf_name']).'\',
-        \''.mysql_escape_string($_POST['inf_country']).'\',
-        \''.mysql_escape_string($_POST['inf_city']).'\',
-        \''.mysql_escape_string($_POST['inf_url']).'\',
-        \''.mysql_escape_string($_POST['inf_infoabout']).'\'
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['nowcity']) . '\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['nowplace']) . '\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['nowstatus']) . '\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['inf_name']) . '\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['inf_country']) . '\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['inf_city']) . '\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['inf_url']) . '\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['inf_infoabout']) . '\'
         )'  ;
     } else {
         $query = '
         update e_players_bots_templates set
             bot_template_id = '.(int)$_POST['bot_template_id'].',
-            nickname = \''.mysql_escape_string($_POST['nickname']).'\',
-            shortnn = \''.mysql_escape_string($_POST['shortnn']).'\',
-            image = \''.mysql_escape_string($_POST['image']).'\',
+            nickname = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['nickname']) . '\',
+            shortnn = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['shortnn']) . '\',
+            image = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['image']) . '\',
             intsex = '.(int)($_POST['intsex']).',
-            nowcity = \''.mysql_escape_string($_POST['nowcity']).'\',
-            nowplace = \''.mysql_escape_string($_POST['nowplace']).'\',
-            nowstatus = \''.mysql_escape_string($_POST['nowstatus']).'\',
-            inf_name = \''.mysql_escape_string($_POST['inf_name']).'\',
-            inf_country = \''.mysql_escape_string($_POST['inf_country']).'\',
-            inf_city = \''.mysql_escape_string($_POST['inf_city']).'\',
-            inf_url = \''.mysql_escape_string($_POST['inf_url']).'\',
-            inf_infoabout = \''.mysql_escape_string($_POST['int_infoabout']).'\'
+            nowcity = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['nowcity']) . '\',
+            nowplace = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['nowplace']) . '\',
+            nowstatus = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['nowstatus']) . '\',
+            inf_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['inf_name']) . '\',
+            inf_country = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['inf_country']) . '\',
+            inf_city = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['inf_city']) . '\',
+            inf_url = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['inf_url']) . '\',
+            inf_infoabout = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['int_infoabout']) . '\'
         where
             bot_template_id = '.$bot_template_id.'
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: bot_template_list.php');
     
 }
@@ -89,10 +89,10 @@ if ($bot_template_id == '')
 else 
 {
     $bot_template = array();
-    $res = mysql_query('select * from e_players_bots_templates where bot_template_id = '.intval($bot_template_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from e_players_bots_templates where bot_template_id = ' . intval($bot_template_id));
+    if ($row = mysqli_fetch_assoc($res))
         $bot_template = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

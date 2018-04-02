@@ -111,4 +111,3 @@ while ($row = mysqli_fetch_assoc($recipes)) {
 }
 echo '</table></td></tr></table></FIELDSET>';
 //===================================================
-?>

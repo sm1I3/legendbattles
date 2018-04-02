@@ -44,34 +44,34 @@ $pl_types = array(
 );
     
 $quest_groups = array();
-$res = mysql_query('select * from quest_groups');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from quest_groups');
+while ($row = mysqli_fetch_assoc($res))
     $quest_groups[$row['quest_group_id']] = $row['quest_group_name'];
     
 // list of all quests
 $quest_array = array();
-$res = mysql_query('SELECT * FROM quest_list');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM quest_list');
+while ($row = mysqli_fetch_assoc($res)) {
     $tmp_arr = unserialize($row['quest_serilize']);
     $quest_array[$row['quest_id']] = $tmp_arr[0][0].(isset($tmp_arr[0][5]) && $tmp_arr[0][5] != '' ? ' ('.$tmp_arr[0][5].')' : '');
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all abilities
 $image_array = array();
-$res = mysql_query('select * from quest_images');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from quest_images');
+while ($row = mysqli_fetch_assoc($res)) {
     $image_array[$row['image']] = $row['image_name'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all abilities
 $ability_array = array();
-$res = mysql_query('select * from ability_list');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from ability_list');
+while ($row = mysqli_fetch_assoc($res)) {
     $ability_array[$row['ability_id']] = $row['ability_name'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of sps abilities
 $sps_abilities = array(
@@ -85,25 +85,25 @@ $sps_abilities = array(
 
 // list of all resources
 $resource_array = array();
-$res = mysql_query('select * from restore_resources');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from restore_resources');
+while ($row = mysqli_fetch_assoc($res))
     $resource_array[$row['resource_id']] = $row['resource_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all weapon categories
 $weapon_categories_array = array();
-$res = mysql_query('select * from weapon_categories');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_categories');
+while ($row = mysqli_fetch_assoc($res))
     $weapon_categories_array[$row['category_code']] = $row['category_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all weapons
 $weapon_array = array();
-$res = mysql_query('select * from items');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from items');
+while ($row = mysqli_fetch_assoc($res)) {
     $weapon_array_id[$row['id']] = $row['name'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 if (isset($_POST['quest_name'])) 
 {
@@ -305,7 +305,7 @@ if (isset($_POST['quest_name']))
             insert into quest_list 
                 (quest_id, quest_group_id, quest_serilize) 
             values 
-                ('.(int)$_POST['quest_id'].', '.($_POST['quest_group_id'] != '' ? intval($_POST['quest_group_id']) : 'NULL').', "'.mysql_escape_string($serialized).'")';
+                (' . (int)$_POST['quest_id'] . ', ' . ($_POST['quest_group_id'] != '' ? intval($_POST['quest_group_id']) : 'NULL') . ', "' . mysqli_escape_string($GLOBALS['db_link'], $serialized) . '")';
     } else {
         $query = '
         update 
@@ -313,13 +313,13 @@ if (isset($_POST['quest_name']))
         set 
             quest_id = '.(int)$_POST['quest_id'].',
             quest_group_id = '.($_POST['quest_group_id'] != '' ? intval($_POST['quest_group_id']) : 'NULL').',
-            quest_serilize = "'.mysql_escape_string($serialized).'" 
+            quest_serilize = "' . mysqli_escape_string($GLOBALS['db_link'], $serialized) . '" 
         where 
             quest_id = '.intval($quest_id).'
             '.(!userHasPermission(32)?' and is_confirmed = \'N\'':'').'
             ';
     }
-    mysql_query($query);    
+    mysqli_query($GLOBALS['db_link'], $query);
     header('Location: '.$_SESSION['cp_pages']['quest_list']);
 }
 
@@ -360,13 +360,13 @@ if ($quest_id == '' && !isset($_GET['clone_quest_id'])) {
         $quest_id = $_GET['clone_quest_id'];
     
     $item = array();
-    $res = mysql_query('select * from quest_list where quest_id = '.intval($quest_id));
-    if($row = mysql_fetch_assoc($res)) {
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from quest_list where quest_id = ' . intval($quest_id));
+    if ($row = mysqli_fetch_assoc($res)) {
         $quest_row = $row;
         $is_confirmed = $row['is_confirmed'];
         $quest = unserialize($row['quest_serilize']);
     }
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     if (isset($_GET['clone_quest_id']) && $_GET['clone_quest_id'] != '')
     {
@@ -875,10 +875,10 @@ var last_id = <?=(int)$row_id?>;
     </tr>
     <? 
     if (isset($quest[12]['WUID']) && is_array($quest[12]['WUID']))
-    foreach($quest[12]['WUID'] as $id => $item) 
-    { 
-        $res = mysql_query('SELECT * FROM items WHERE id = \''.mysql_real_escape_string($item['item']).'\'');
-        if ($row = mysql_fetch_assoc($res))
+    foreach($quest[12]['WUID'] as $id => $item)
+    {
+    $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM items WHERE id = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $item['item']) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
             $item_name = $row['name'];
     ?>
     <tr id="tr_wuid<?=$id?>">

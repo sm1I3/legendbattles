@@ -8,19 +8,19 @@ if (!userHasPermission(1)) {
 
 if (isset($_GET['delete_fort_id']) && $_GET['delete_fort_id']!='') {
     $fort_id = $_GET['delete_fort_id'];
-    mysql_query('delete from forts where fort_id  = \''.mysql_real_escape_string($fort_id).'\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from forts where fort_id  = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $fort_id) . '\'');
     header('Location: fort_list.php');
 }
 
 $fort_classes = array();
-$res = mysql_query('select * from forts_classes');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from forts_classes');
+while ($row = mysqli_fetch_assoc($res))
     $fort_classes[$row['fort_class']] = $row['class_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $forts = '';
-$res = mysql_query('select * from forts'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from forts');
+while ($row = mysqli_fetch_assoc($res))
 {
     $forts .= '
     <tr>

@@ -1,5 +1,5 @@
-<? session_start();session_register('filter');?>
-<?php
+<? session_start();
+$_SESSION['filter'];
 echo'
 <HTML>
 <HEAD>

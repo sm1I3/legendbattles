@@ -8,7 +8,7 @@ if (!userHasPermission(131072)) {
 
 if (isset($_GET['delete_present_id']) && $_GET['delete_present_id']!='' && is_numeric($_GET['delete_present_id'])) {
     $present_id = (int)$_GET['delete_present_id'];
-    mysql_query('delete from mark_pod where id = '.intval($present_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from mark_pod where id = ' . intval($present_id));
     header('Location: mark_pod.php');
 }
 
@@ -18,18 +18,18 @@ else
     $present_category = '';
     
 $categories = array();
-$res = mysql_query('select * from mark_pod order by name asc');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from mark_pod order by name asc');
+while ($row = mysqli_fetch_assoc($res))
     $categories[$row['id']] = $row['name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $images = '';
 $i = 0;
-$res = mysql_query('select * from mark_pod
+$res = mysqli_query($GLOBALS['db_link'], 'select * from mark_pod
     '.($present_category!=''?'where id = '.(int)($present_category).'':'').'
     ORDER BY dlr DESC, price DESC
-    '); 
-while ($row = mysql_fetch_assoc($res))
+    ');
+while ($row = mysqli_fetch_assoc($res))
 {
    $i++;
     $images.='

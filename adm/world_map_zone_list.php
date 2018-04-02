@@ -9,13 +9,13 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_zone_code']) && $_GET['delete_zone_code']!='') 
 {
     $zone_code = $_GET['delete_zone_code'];
-    mysql_query('delete from world_zones where zone_code = \''.mysql_real_escape_string($zone_code).'\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from world_zones where zone_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $zone_code) . '\'');
     header('Location: world_map_zone_list.php');
 }
 
 $zones = '';
-$res = mysql_query('select * from world_zones'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from world_zones');
+while ($row = mysqli_fetch_assoc($res))
 {
     $zones .= '
     <tr>

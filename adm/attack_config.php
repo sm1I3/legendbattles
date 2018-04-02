@@ -4,6 +4,5 @@ if (!userHasPermission(1)) {
     header('Location: index.php');
     die();
 }
-?>
 
-<? require('kernel/after.php'); ?>
+require('kernel/after.php');

@@ -12,10 +12,10 @@ else
     $branch_code = $_GET['branch_code'];
     
 $banks = array();
-$res = mysql_query('select * from bank');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bank');
+while ($row = mysqli_fetch_assoc($res))
     $banks[$row['bank_id']] = $row['bank_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
     
 if (isset($_POST['branch_name'])) {
     
@@ -33,9 +33,9 @@ if (isset($_POST['branch_name'])) {
             clan_usd_cell_size,
             clan_dnv_cell_size
         ) values (
-            \''.mysql_real_escape_string($_POST['branch_code']).'\',
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['branch_code']) . '\',
             '.(int)$_POST['bank_id'].',
-            \''.mysql_real_escape_string($_POST['branch_name']).'\',
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['branch_name']) . '\',
             '.(int)$_POST['player_nv_cell_size'].',
             '.(int)$_POST['player_usd_cell_size'].',
             '.(int)$_POST['player_dnv_cell_size'].',
@@ -46,9 +46,9 @@ if (isset($_POST['branch_name'])) {
     } else {
         $query = '
         update bank_branch set
-            branch_code = \''.mysql_real_escape_string($_POST['branch_code']).'\',
+            branch_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['branch_code']) . '\',
             bank_id = '.(int)$_POST['bank_id'].',
-            branch_name = \''.mysql_real_escape_string($_POST['branch_name']).'\',
+            branch_name = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['branch_name']) . '\',
             player_nv_cell_size = '.(int)$_POST['player_nv_cell_size'].',
             player_usd_cell_size = '.(int)$_POST['player_usd_cell_size'].',
             player_dnv_cell_size = '.(int)$_POST['player_dnv_cell_size'].',
@@ -58,9 +58,9 @@ if (isset($_POST['branch_name'])) {
         where
             branch_code = \''.$branch_code.'\'
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: bank_branch_list.php');
     
 }
@@ -79,10 +79,10 @@ if ($branch_code == '') {
     );
 } else {
     $branch = array();
-    $res = mysql_query('select * from bank_branch where branch_code = \''.mysql_real_escape_string($branch_code).'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bank_branch where branch_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $branch_code) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $branch = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

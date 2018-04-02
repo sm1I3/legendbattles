@@ -20,20 +20,20 @@ if (isset($_POST['message']) and isset($_POST['theame'])) {
             theame,
             message
         ) values (
-            \''.mysql_escape_string($_POST['theame']).'\',
-            \''.mysql_escape_string(BbToHtml($_POST['message'])).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['theame']) . '\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], BbToHtml($_POST['message'])) . '\'
         )'  ;
     } else {
         $query = '
         update module_subscribe set
-            theame = \''.mysql_escape_string($_POST['theame']).'\',
-            message = \''.mysql_escape_string(BbToHtml($_POST['message'])).'\'
+            theame = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['theame']) . '\',
+            message = \'' . mysqli_escape_string($GLOBALS['db_link'], BbToHtml($_POST['message'])) . '\'
         where
             id = '.intval($message_id).'
         '  ;
-    }    
-    mysql_query($query);
-	$sendId = (($message_id == '') ? mysql_insert_id() : intval($message_id) );
+    }
+    mysqli_query($GLOBALS['db_link'], $query);
+    $sendId = (($message_id == '') ? mysqli_insert_id($GLOBALS['db_link']) : intval($message_id));
 	if (isset($_GET['sender']))
 		header('Location: sendmail_sender.php?message_id=' . $sendId);
 	else
@@ -47,10 +47,10 @@ if ((string)$message_id == '') {
     );
 } else {
     $ability = array();
-    $res = mysql_query('select * from module_subscribe where id = '.intval($message_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from module_subscribe where id = ' . intval($message_id));
+    if ($row = mysqli_fetch_assoc($res))
         $message = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

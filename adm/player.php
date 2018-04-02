@@ -101,9 +101,9 @@ function get_by_id(name)
 </script>
 <?
 function msg_add($p){
-	$result=mysql_query("SELECT * FROM `chat` WHERE (`login`='".$p['login']."' OR `dlya`='<".$p['login'].">' OR `dlya`='%<".$p['login'].">') AND `login`!='sys' AND `dlya`!='%<mozg>' AND `dlya`!='%<SANTA>' ORDER by `id`;"); 
+    $result = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chat` WHERE (`login`='" . $p['login'] . "' OR `dlya`='<" . $p['login'] . ">' OR `dlya`='%<" . $p['login'] . ">') AND `login`!='sys' AND `dlya`!='%<mozg>' AND `dlya`!='%<SANTA>' ORDER by `id`;");
 	echo "<script>";
-	while ($row=mysql_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
 		$ctimecolor="prchattime";
 		$msg=$row["msg"];
 		$dlya=$row["dlya"];
@@ -141,7 +141,7 @@ function msg_add($p){
   <div class="TabbedPanelsContentGroup">
     <div class="TabbedPanelsContent"><table width="100%" border="0" cellspacing="0" cellpadding="0"><form action="player.php" method="post"><?
 if($load){$i=0;
-	$pl= mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE login='$loginp' LIMIT 1;"));
+    $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$loginp' LIMIT 1;"));
 	if($pl!=''){
 		foreach($pl as $key=>$val){
 			if($i==0){echo "<tr>";}
@@ -160,11 +160,12 @@ if($load){$i=0;
 }
 
 if($save){$i=0;
-$pl= mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE id='$idp' LIMIT 1;"));
+    $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE id='$idp' LIMIT 1;"));
 if($pl!=''){
 foreach($pr as $key=>$val){if($pr[$key]!=$pl[$key]){$str[]=" $key='$val'";}}
 if(isset($str)){$str=implode(",",$str);
-mysql_query("UPDATE user SET $str WHERE id='$idp' LIMIT 1;");}
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET $str WHERE id='$idp' LIMIT 1;");
+}
 }$pl='';}
 ?>
                 <? if ($pl == '') { ?><br><span class="logintext"> Введите логин: </span><input name="loginp"
@@ -192,18 +193,18 @@ mysql_query("UPDATE user SET $str WHERE id='$idp' LIMIT 1;");}
     <input name="molch" type="submit" class="lbut" value="   Заткнуть  "/>
     <input name="nomolch" type="submit" class="lbut" value="   Снять молчанку  "/>
 <? if($molch){
-$pl= mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE login='$login' LIMIT 1;"));
+    $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
 if($pl[login]!=''){
 $time=explode("|",$time);
-mysql_query("UPDATE user SET sleep=".(time()+$time[0])." WHERE login='$login' LIMIT 1;");
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET sleep=" . (time() + $time[0]) . " WHERE login='$login' LIMIT 1;");
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>$pl[login]</b> заклятие молчания сроком на <b>$time[1]</b> (Хранитель Игры).</font><BR>'+'');";
     chmsg($ms, '');
 }
 }
 if($nomolch){
-$pl= mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE login='$login' LIMIT 1;"));
+    $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
 if($pl[login]!=''){
-mysql_query("UPDATE user SET sleep='0' WHERE login='$login' LIMIT 1;");
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET sleep='0' WHERE login='$login' LIMIT 1;");
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>Хранитель Игры</b> снял заклятие молчания с персонажа <b>$pl[login]</b>.</font><BR>'+'');";
     chmsg($ms, '');
 }
@@ -216,7 +217,8 @@ mysql_query("UPDATE user SET sleep='0' WHERE login='$login' LIMIT 1;");
                 class="logintext">Сумма:</span> <input name="NV" type="text" value="0" class="LogintextBox2"/>
         <input name="gmoney" type="submit" value="   Дать NV  " class="lbut"/>
 <? if($gmoney){
-if($NV!=0 and $login!=''){mysql_query("UPDATE user SET nv=nv+$NV WHERE login='$login' LIMIT 1;");
+    if ($NV != 0 and $login != '') {
+        mysqli_query($GLOBALS['db_link'], "UPDATE user SET nv=nv+$NV WHERE login='$login' LIMIT 1;");
 if($NV>0){
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Получены <b>$NV NV</b> от <b>Хранителя Игры!</b></font><BR>'+'');";
     chmsg($ms, $login);
@@ -230,7 +232,7 @@ echo $login['id'];
         <span class="logintext">Логин:</span> <input name="login" type="text" class="LogintextBox"/>
         <input name="free" type="submit" value="   Снять все аффекты  " class="lbut"/>
 <? if($free and $login!=''){
-mysql_query("UPDATE user SET affect='',viselica='' WHERE login='$login' LIMIT 1;");
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET affect='',viselica='' WHERE login='$login' LIMIT 1;");
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>Хранитель Игры</b> исцелил Вас от травм и развеял все чары.</font><BR>'+'');";
     chmsg($ms, $login);
 }
@@ -256,7 +258,7 @@ if ($handle = opendir('http://img.legendbattles.ru/image/obrazy')) {
     </select>
         <input name="obr" type="submit" value="   Установить образ  " class="lbut"/>
 <? if($obr and $login!=''){
-mysql_query("UPDATE user SET obraz='$gif' WHERE login='$login' LIMIT 1;");
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET obraz='$gif' WHERE login='$login' LIMIT 1;");
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>Хранитель Игры</b> установил Вам новый образ.</font><BR>'+'');";
     chmsg($ms, $login);
 }?>
@@ -269,12 +271,12 @@ mysql_query("UPDATE user SET obraz='$gif' WHERE login='$login' LIMIT 1;");
 
 <? if($obn){
 	if($login!=''){
-		$player=mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE login='".$login."';"));
+        $player = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='" . $login . "';"));
 		obnul_pl($player);
 	}
 	else{
-	$alluser=mysql_query("SELECT * FROM user WHERE type=1 AND id>9999;");
-	while($row = mysql_fetch_assoc($alluser)){
+        $alluser = mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE type=1 AND id>9999;");
+        while ($row = mysqli_fetch_assoc($alluser)) {
 		obnul_pl($row);
 	}
 }
@@ -291,15 +293,17 @@ mysql_query("UPDATE user SET obraz='$gif' WHERE login='$login' LIMIT 1;");
         <input name="noprison" type="submit" value="   Выпустить  " class="lbut"/></form>
     <br><br>
 <? if($prison){
-$pl= mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE login='$login' LIMIT 1;"));
+    $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
 if($time!=0 and $pl[login]!=''){
 $tim=time()+($time*86400)."|$prich";
-mysql_query("UPDATE user SET prison='$tim', mov='1',loc='33', pos='8_4' WHERE login='$login' LIMIT 1;");
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET prison='$tim', mov='1',loc='33', pos='8_4' WHERE login='$login' LIMIT 1;");
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Персонаж <b>$pl[login]</b> отправлен в тюрьму (Хранитель Игры).</font><BR>'+'');$redirect";
     chmsg($ms, '');
 }
 }
-if($noprison and $login!=''){mysql_query("UPDATE user SET prison='0' WHERE login='$login' LIMIT 1;");}
+if ($noprison and $login != '') {
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET prison='0' WHERE login='$login' LIMIT 1;");
+}
 ?></div>
 
 
@@ -310,7 +314,7 @@ if($noprison and $login!=''){mysql_query("UPDATE user SET prison='0' WHERE login
         <input name="unblock" type="submit" value="   Разблокировать  " class="lbut"/></form>
     <br><br>
 <? if($block){
-$pl= mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE login='$login' LIMIT 1;"));
+    $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
 if($pl[login]!=''){
     if ($prich == '') {
         $prich = "Так надо";
@@ -321,7 +325,9 @@ mysqli_query($GLOBALS['db_link'],"UPDATE user SET block='$prich' WHERE login='$l
     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;НА персонажа <b>$pl[login]</b> наложено заклятие смерти. Пусть земля тебе будет пухом. (Хранитель Игры).</font><BR>'+'');";
     chmsg($ms, '');
 }}
-if($unblock and $login!=''){mysql_query("UPDATE user SET block='' WHERE login='$login' LIMIT 1;");}
+if ($unblock and $login != '') {
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET block='' WHERE login='$login' LIMIT 1;");
+}
 ?>
 </div>
 
@@ -331,7 +337,7 @@ if($unblock and $login!=''){mysql_query("UPDATE user SET block='' WHERE login='$
     <br><br>
 <?php
 if($_POST['textmessage']){
-    mysql_query("INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=#000000><b><font color=#FF0000>Внимание!</font></b> " . $_POST['message'] . "</font><BR>'+'');") . "');");
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=#000000><b><font color=#FF0000>Внимание!</font></b> " . $_POST['message'] . "</font><BR>'+'');") . "');");
 //    $ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp; $message </font><BR>'+'');";
 //    chmsg($ms,'');
 }
@@ -342,8 +348,8 @@ if($_POST['textmessage']){
         <input name="stats" type="submit" value=" статы " class="lbut"/></form>
     <br><br>
 <? if($stats){
-$users=mysql_query("SELECT * FROM user WHERE type=1");
-while ($row = mysql_fetch_assoc($users)){
+    $users = mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE type=1");
+    while ($row = mysqli_fetch_assoc($users)) {
 	calcstat($row[id]);
 }
 }
@@ -355,10 +361,10 @@ while ($row = mysql_fetch_assoc($users)){
     <br><br>
 <?
  if($clans){
-	$sql=mysql_query("SELECT * FROM clan_kazna WHERE clan_id='biohazard';");
-	while($row = mysql_fetch_assoc($sql)){
-		$invsql=mysql_query("DELETE FROM invent WHERE id_item=".$row[id_item].";");
-		mysql_query("DELETE FROM clan_kazna WHERE id_item=".$row[id_item].";");
+     $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM clan_kazna WHERE clan_id='biohazard';");
+     while ($row = mysqli_fetch_assoc($sql)) {
+         $invsql = mysqli_query($GLOBALS['db_link'], "DELETE FROM invent WHERE id_item=" . $row[id_item] . ";");
+         mysqli_query($GLOBALS['db_link'], "DELETE FROM clan_kazna WHERE id_item=" . $row[id_item] . ";");
 		}
 	}
 
@@ -382,7 +388,7 @@ while ($row = mysql_fetch_assoc($users)){
         <input name="statsp" type="submit" value=" статы " class="lbut"/>
 </form><br><br>
 <? if($statsp){
-$user=mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE login='".$login."';"));
+    $user = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='" . $login . "';"));
 calcstat($user[id]);
 }
 ?>
@@ -430,10 +436,10 @@ function calc_koeff($item){
 	}
 	if($koeff==0){$newpar.="|71@$newkoeff";}
     //$ms="parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;".date("H:i:s")."&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;<b>$newpar</b> $item[name].</font><BR>'+'');";chmsg($ms,'');
-	mysql_query("UPDATE items SET param='".$newpar."',master='' WHERE id=".$item['id'].";");
+    mysqli_query($GLOBALS['db_link'], "UPDATE items SET param='" . $newpar . "',master='' WHERE id=" . $item['id'] . ";");
 }
 function obnul($login){
-$pl= mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE login='$login' LIMIT 1;"));
+    $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$login' LIMIT 1;"));
 switch($pl[level]){
 case 0: $a=array(1=>15,1,2,10);break;
 case 1: $a=array(1=>18,2,5,14);break;
@@ -454,8 +460,9 @@ case 15: $a=array(1=>139,8,138,135);break;
 case 16: $a=array(1=>154,9,153,155);break;
 case 17: $a=array(1=>169,10,168,175);break;}
 
-mysql_query("UPDATE user SET sila=default,lovk=default,uda4a=default,zdorov=default,znan=default,mudr=default,obr_col=default,od=default,bl=default,free_stat=$a[1],hp=default,hp_all=default,mp=default,mp_all=default,hps=default,mps=default,chp=0,cmp=0,st='',umen='',perk='',fr_bum=$a[4],fr_mum=$a[3],nav=$a[2] WHERE id='$pl[id]' LIMIT 1;");
-mysql_query("UPDATE invent SET used=0 WHERE pl_id='$pl[id]';");}
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET sila=default,lovk=default,uda4a=default,zdorov=default,znan=default,mudr=default,obr_col=default,od=default,bl=default,free_stat=$a[1],hp=default,hp_all=default,mp=default,mp_all=default,hps=default,mps=default,chp=0,cmp=0,st='',umen='',perk='',fr_bum=$a[4],fr_mum=$a[3],nav=$a[2] WHERE id='$pl[id]' LIMIT 1;");
+    mysqli_query($GLOBALS['db_link'], "UPDATE invent SET used=0 WHERE pl_id='$pl[id]';");
+}
 
 
 

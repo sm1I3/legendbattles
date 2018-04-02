@@ -15,34 +15,34 @@ $row_id = 0;
 
 // list of all resources
 $resource_array = array();
-$res = mysql_query('select * from restore_resources');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from restore_resources');
+while ($row = mysqli_fetch_assoc($res))
     $resource_array[$row['resource_id']] = $row['resource_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all abilities
 $ability_array = array();
-$res = mysql_query('select * from ability_list');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from ability_list');
+while ($row = mysqli_fetch_assoc($res)) {
     $ability_array[$row['ability_id']] = $row['ability_name'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all items
 $item_array = array();
-$res = mysql_query('select * from restore_items');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from restore_items');
+while ($row = mysqli_fetch_assoc($res))
     $item_array[$row['item_id']] = $row['item_name'].' ('.$row['item_cost'].')';
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // list of all quests
 $quest_array = array();
-$res = mysql_query('select * from quest_list');
-while($row = mysql_fetch_assoc($res)) {
+$res = mysqli_query($GLOBALS['db_link'], 'select * from quest_list');
+while ($row = mysqli_fetch_assoc($res)) {
     $tmp_arr = unserialize($row['quest_serilize']);
     $quest_array[$row['quest_id']] = $tmp_arr[0][0];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 if (isset($_POST['rec_name'])) {
     
@@ -84,47 +84,47 @@ if (isset($_POST['rec_name'])) {
             rec_serialize,
             rec_final
         ) values (
-        \''.mysql_escape_string($_POST['rec_name']).'\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['rec_name']) . '\',
         '.(isset($_POST['initial_resources'])?(int)sizeof($_POST['initial_resources']):0).',
-        \''.mysql_escape_string($serialize).'\',
+        \'' . mysqli_escape_string($GLOBALS['db_link'], $serialize) . '\',
         '.(int)$_POST['rec_final'].'
         )'  ;
-        
-        mysql_query($query);
-        $rec_id = mysql_insert_id($db);
+
+        mysqli_query($GLOBALS['db_link'], $query);
+        $rec_id = mysqli_insert_id($GLOBALS['db_link']);
     } else {
         $query = '
         update recipe_list set
-            rec_name = \''.mysql_escape_string($_POST['rec_name']).'\',
+            rec_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['rec_name']) . '\',
             rec_size = '.(isset($_POST['initial_resources'])?(int)sizeof($_POST['initial_resources']):0).',
-            rec_serialize = \''.mysql_escape_string($serialize).'\',
+            rec_serialize = \'' . mysqli_escape_string($GLOBALS['db_link'], $serialize) . '\',
             rec_final = '.(int)$_POST['rec_final'].'
         where
             rec_id = '.intval($rec_id).'
         '  ;
-        mysql_query($query); 
+        mysqli_query($GLOBALS['db_link'], $query);
     }
     
     //updating initial resources
-    mysql_query('delete from recipe_initial_resources where rec_id = '.intval($rec_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from recipe_initial_resources where rec_id = ' . intval($rec_id));
     if (isset($_POST['initial_resources']) && is_array($_POST['initial_resources']))
     foreach($_POST['initial_resources'] as $k=>$resource_id)
         if ($resource_id != '')
-            mysql_query('insert into recipe_initial_resources (rec_id, resource_id, resource_share) values ('.intval($rec_id).', '.intval($resource_id).', '.(float)$_POST['initial_resources_share'][$k].')');
+            mysqli_query($GLOBALS['db_link'], 'insert into recipe_initial_resources (rec_id, resource_id, resource_share) values (' . intval($rec_id) . ', ' . intval($resource_id) . ', ' . (float)$_POST['initial_resources_share'][$k] . ')');
             
     //updating initial resources
-    mysql_query('delete from recipe_receive_resources where rec_id = '.intval($rec_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from recipe_receive_resources where rec_id = ' . intval($rec_id));
     if (isset($_POST['receive_resources']) && is_array($_POST['receive_resources']))
     foreach($_POST['receive_resources'] as $k=>$resource_id)
         if ($resource_id != '')
-            mysql_query('insert into recipe_receive_resources (rec_id, resource_id, resource_share) values ('.intval($rec_id).', '.intval($resource_id).', '.(float)$_POST['receive_resources_share'][$k].')');
+            mysqli_query($GLOBALS['db_link'], 'insert into recipe_receive_resources (rec_id, resource_id, resource_share) values (' . intval($rec_id) . ', ' . intval($resource_id) . ', ' . (float)$_POST['receive_resources_share'][$k] . ')');
    
     //updating recipe toolkit 
-    mysql_query('delete from recipe_toolkit where rec_id = '.intval($rec_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from recipe_toolkit where rec_id = ' . intval($rec_id));
     if (isset($_POST['recipe_toolkit']) && is_array($_POST['recipe_toolkit']))
     foreach($_POST['recipe_toolkit'] as $k=>$item_id)
         if ($resource_id != '')
-            mysql_query('insert into recipe_toolkit (rec_id, item_id) values ('.intval($rec_id).', '.intval($item_id).')');
+            mysqli_query($GLOBALS['db_link'], 'insert into recipe_toolkit (rec_id, item_id) values (' . intval($rec_id) . ', ' . intval($item_id) . ')');
             
     header('Location: '.$_SESSION['pages']['recipe_list']);
 }
@@ -146,15 +146,15 @@ if ($rec_id == '' && !isset($_GET['clone_rec_id'])) {
         $rec_id = $_GET['clone_rec_id'];
     
     $recipe = array();
-    $res = mysql_query('select * from recipe_list where rec_id = '.intval($rec_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from recipe_list where rec_id = ' . intval($rec_id));
+    if ($row = mysqli_fetch_assoc($res))
         $recipe = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 
     
     // list of initial resources
-    $res = mysql_query('select * from recipe_initial_resources where rec_id = '.intval($rec_id));
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from recipe_initial_resources where rec_id = ' . intval($rec_id));
+    while ($row = mysqli_fetch_assoc($res))
         $resouce_initial .= '
         <tr id="tr_initialres_'.(++$row_id).'">
           <td class="cms_middle" align="center"><a href="#" onclick="removeItem(\'tr_initialres_'.$row_id.'\'); return false;" title="Remove"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" /></a></td>  
@@ -162,11 +162,11 @@ if ($rec_id == '' && !isset($_GET['clone_rec_id'])) {
           <td align="left" class="cms_middle"><input type="text" name="initial_resources_share[]" value="'.$row['resource_share'].'" /></td>
         </tr>
         ';
-    mysql_free_result($res);
+    mysqli_free_result($res);
 
     // list of recieve resources    
-    $res = mysql_query('select * from recipe_receive_resources where rec_id = '.intval($rec_id));
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from recipe_receive_resources where rec_id = ' . intval($rec_id));
+    while ($row = mysqli_fetch_assoc($res))
         $resouce_receive .= '
         <tr id="tr_receiveres_'.(++$row_id).'">
           <td class="cms_middle" align="center"><a href="#" onclick="removeItem(\'tr_receiveres_'.$row_id.'\'); return false;" title="Remove"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" /></a></td>
@@ -174,18 +174,18 @@ if ($rec_id == '' && !isset($_GET['clone_rec_id'])) {
           <td align="left" class="cms_middle"><input type="text" name="receive_resources_share[]" value="'.$row['resource_share'].'" /></td>
         </tr>
         ';
-    mysql_free_result($res);
+    mysqli_free_result($res);
 
     // list of recipe toolkit
-    $res = mysql_query('select * from recipe_toolkit where rec_id = '.intval($rec_id));
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from recipe_toolkit where rec_id = ' . intval($rec_id));
+    while ($row = mysqli_fetch_assoc($res))
         $recipe_toolkit .= '
         <tr id="tr_toolkitres_'.(++$row_id).'">
           <td class="cms_middle" align="center"><a href="#" onclick="removeItem(\'tr_toolkitres_'.$row_id.'\'); return false;" title="Remove"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" /></a></td>
           <td align="left" class="cms_middle">'.createSelectFromArray('recipe_toolkit[]', $item_array, $row['item_id']).'</td>
         </tr>
         ';
-    mysql_free_result($res);
+    mysqli_free_result($res);
 
     $rcp_add = unserialize($recipe['rec_serialize']);
     /*

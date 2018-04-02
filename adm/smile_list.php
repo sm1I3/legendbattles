@@ -11,7 +11,7 @@ if (isset($_POST['delete']))
     if (isset($_POST['smile']) && is_array($_POST['smile']))
     foreach($_POST['smile'] as $smile_id => $val) {
         if ($val == 1) {
-            mysql_query('DELETE FROM smile_list WHERE smile_id = '.intval($smile_id));
+            mysqli_query($GLOBALS['db_link'], 'DELETE FROM smile_list WHERE smile_id = ' . intval($smile_id));
         }
     }
     header('Location: smile_list.php');
@@ -35,7 +35,7 @@ if (isset($_POST['add'])) {
         $height = $info[1];
             
         if ($width > 0 && $height > 0)
-        mysql_query('
+            mysqli_query($GLOBALS['db_link'], '
             INSERT INTO smile_list (smile_id, smile_image, width, height)
             VALUES ('.$i.', \''.(string)$smile.'\', '.intval($width).', '.intval($height).')
         ');
@@ -72,8 +72,8 @@ function selectSmile(smile)
 <tr >
 <? 
 $i = 0;
-$res = mysql_query('select * from smile_list order by smile_id'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from smile_list order by smile_id');
+while ($row = mysqli_fetch_assoc($res))
 {
     $i++;
     echo '

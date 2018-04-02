@@ -22,11 +22,11 @@ if (isset($_POST['resource_group_name']))
             resource_group_id,
             resource_group_name
         ) values (
-            \''.mysql_real_escape_string($_POST['resource_group_id']).'\',
-            \''.mysql_real_escape_string($_POST['resource_group_name']).'\'
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['resource_group_id']) . '\',
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['resource_group_name']) . '\'
         )'  ;
-        if (!mysql_query($query))
-            die(mysql_error());
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
         
         $resource_group_id = intval($_POST['resource_group_id']);
     }
@@ -34,26 +34,26 @@ if (isset($_POST['resource_group_name']))
     {
         $query = '
         update resource_group set
-            resource_group_id = \''.mysql_real_escape_string($_POST['resource_group_id']).'\',
-            resource_group_name = \''.mysql_real_escape_string($_POST['resource_group_name']).'\'
+            resource_group_id = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['resource_group_id']) . '\',
+            resource_group_name = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['resource_group_name']) . '\'
         where
             resource_group_id = '.intval($resource_group_id).'
         '  ;
-        if (!mysql_query($query))
-            die(mysql_error());
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
     }
-    
-    if (!mysql_query('delete from resource_group_cont where resource_group_id = '.intval($resource_group_id).''))
-        die(mysql_error()); 
+
+    if (!mysqli_query($GLOBALS['db_link'], 'delete from resource_group_cont where resource_group_id = ' . intval($resource_group_id) . ''))
+        die(mysqli_error($GLOBALS['db_link'])); 
     
     if (isset($_POST['resource_id']) && is_array($_POST['resource_id']))
     foreach($_POST['resource_id'] as $k => $resource_id) {
-        if (!mysql_query('insert into resource_group_cont (
+        if (!mysqli_query($GLOBALS['db_link'], 'insert into resource_group_cont (
                             resource_group_id, resource_id, resource_type, count, restore_time
                           ) values (
                             '.(int)$resource_group_id.', '.(int)$resource_id.', '.(int)$_POST['resource_type'][$k].', '.(int)$_POST['count'][$k].', '.(int)$_POST['restore_time'][$k].'
                           )'))
-            die(mysql_error()); 
+            die(mysqli_error($GLOBALS['db_link'])); 
     }
     
     header('Location: resource_group_list.php');
@@ -65,24 +65,24 @@ $row_id = 0;
 
 // list of res types
 $resource_types = array();
-$res = mysql_query('select * from resource_types');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from resource_types');
+while ($row = mysqli_fetch_assoc($res))
     $resource_types[$row['resource_type_id']] = $row['resource_type_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $type_resources = array();
 
 // list of resources
 $resources = array();
-$res = mysql_query('select * from restore_resources');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from restore_resources');
+while ($row = mysqli_fetch_assoc($res))
 {
     $resources[$row['resource_id']] = $row['resource_name'];
     if (!isset($type_resources[$row['resource_type']]))
         $type_resources[$row['resource_type']] = array();
     $type_resources[$row['resource_type']][] = $row['resource_id'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $tr = array();
 foreach($type_resources as $r => $t)
@@ -113,13 +113,13 @@ if ($resource_group_id == '')
 else 
 {
     $resource_group = array();
-    $res = mysql_query('select * from resource_group where resource_group_id = '.intval($resource_group_id).'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from resource_group where resource_group_id = ' . intval($resource_group_id) . '');
+    if ($row = mysqli_fetch_assoc($res))
         $resource_group = $row;
-    mysql_free_result($res);
-    
-    $res = mysql_query('select * from resource_group_cont where resource_group_id = '.intval($resource_group_id).' ');
-    while($row = mysql_fetch_assoc($res)) {
+    mysqli_free_result($res);
+
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from resource_group_cont where resource_group_id = ' . intval($resource_group_id) . ' ');
+    while ($row = mysqli_fetch_assoc($res)) {
         $group_resources .= '
         <tr id="tr_resource_'.(++$row_id).'">
           <td class="cms_middle" align="center"><a href="#" onclick="removeItem(\'tr_resource_'.$row_id.'\'); return false;" title="Remove"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" /></a></td>

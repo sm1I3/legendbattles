@@ -14,4 +14,4 @@
 			if( !$yes ) {
                 echo "<tr><td bgcolor=#F5F5F5 align=center><font class=inv><b>Нет активных заданий</b></font></td></tr>";
 			}
-			echo'</table>';?>
+echo '</table>';

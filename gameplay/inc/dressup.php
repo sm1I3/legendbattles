@@ -35,4 +35,3 @@ if ($act == 1) {
 updateslot($act, $wid, $player['id'], $items['slot']);
 calcstat($player[id]);
 testcompl();
-?>

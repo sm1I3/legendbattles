@@ -9,19 +9,19 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_branch_code']) && $_GET['delete_branch_code']!='') 
 {
     $branch_code = $_GET['delete_branch_code'];
-    mysql_query('delete from bank_branch where branch_code = \''.mysql_real_escape_string($branch_code).'\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from bank_branch where branch_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $branch_code) . '\'');
     header('Location: bank_branch_list.php');
 }
 
 $banks = array();
-$res = mysql_query('select * from bank');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bank');
+while ($row = mysqli_fetch_assoc($res))
     $banks[$row['bank_id']] = $row['bank_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $branches = '';
-$res = mysql_query('select * from bank_branch'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bank_branch');
+while ($row = mysqli_fetch_assoc($res))
 {
     $branches .= '
     <tr>

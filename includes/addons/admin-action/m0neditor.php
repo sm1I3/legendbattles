@@ -33,7 +33,7 @@ if ($_GET['type'] == 'items') { // вещи
 		foreach($_POST as $key=>$val){
 			$update .= "`".$key."`='".$val."',";
 		}
-		if(mysql_query("UPDATE `items` SET " . substr($update,0,strlen($update)-1) . " WHERE `id`='".intval($_GET['id'])."'")){
+        if (mysqli_query($GLOBALS['db_link'], "UPDATE `items` SET " . substr($update, 0, strlen($update) - 1) . " WHERE `id`='" . intval($_GET['id']) . "'")) {
             echo "<script>parent.jAlert('Изменения сохранены.');</script>";
 		}		
 	}

@@ -24,7 +24,7 @@ if (isset($_POST['category_id'])) {
             pr_cat_end
         ) values (
             '.(int)$_POST['category_id'].',
-            \''.mysql_escape_string($_POST['category_name']).'\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['category_name']) . '\',
             '.strtotime($_POST['category_start']).',
             '.strtotime($_POST['category_end']).'
         )'  ;
@@ -32,14 +32,14 @@ if (isset($_POST['category_id'])) {
         $query = '
         update present_category set
             pr_cat_id = '.(int)$_POST['category_id'].',
-            pr_cat_title = \''.mysql_escape_string($_POST['category_name']).'\',
+            pr_cat_title = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['category_name']) . '\',
             pr_cat_start = '.strtotime($_POST['category_start']).',
             pr_cat_end = '.strtotime($_POST['category_end']).'
         where
             pr_cat_id = '.intval($category_id).'
         '  ;
-    }    
-    mysql_query($query);
+    }
+    mysqli_query($GLOBALS['db_link'], $query);
     header('Location: present_category_list.php');
     
 }
@@ -53,16 +53,16 @@ if ((string)$category_id == '') {
     );
 } else {
     $category = array();
-    $res = mysql_query('select * from present_category where pr_cat_id = '.intval($category_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from present_category where pr_cat_id = ' . intval($category_id));
+    if ($row = mysqli_fetch_assoc($res))
     {
         $category['category_id'] = $row['pr_cat_id'];
         $category['category_name'] = $row['pr_cat_title'];
         $category['category_start'] = date('Y-m-d H:i:s', $row['pr_cat_start']);
         $category['category_end'] = date('Y-m-d H:i:s', $row['pr_cat_end']);
     }
-    
-    mysql_free_result($res);
+
+    mysqli_free_result($res);
 }
 
 ?>

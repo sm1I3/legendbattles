@@ -31,12 +31,12 @@ if ($_GET['type'] == 'items') { // вещи
 		foreach($_POST as $key=>$val){
 			$update .= "`".$key."`='".$val."',";
 		}
-		if(mysql_query("UPDATE `items` SET " . substr($update,0,strlen($update)-1) . " WHERE `id`='".intval($_GET['id'])."'")){
+        if (mysqli_query($GLOBALS['db_link'], "UPDATE `items` SET " . substr($update, 0, strlen($update) - 1) . " WHERE `id`='" . intval($_GET['id']) . "'")) {
             echo "<script>parent.jAlert('Изменения сохранены.');</script>";
 		}		
 	}
 	$Editor = 'items';
-	$GetItem = mysql_fetch_assoc(mysql_query("SELECT * FROM `items` WHERE `id`='".intval($_GET['id'])."'"));
+    $GetItem = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE `id`='" . intval($_GET['id']) . "'"));
 
     // Декодирываем статы
 	$Effects = explode("|", $GetItem['param']);
@@ -85,13 +85,13 @@ if ($_GET['type'] == 'items') { // вещи
 		foreach($_POST as $key=>$val){
 			$update .= "`".$key."`='".$val."',";
 		}
-		if(mysql_query("UPDATE `tavern` SET " . substr($update,0,strlen($update)-1) . " WHERE `id`='".intval($_GET['id'])."'")){
+        if (mysqli_query($GLOBALS['db_link'], "UPDATE `tavern` SET " . substr($update, 0, strlen($update) - 1) . " WHERE `id`='" . intval($_GET['id']) . "'")) {
             echo "<script>parent.jAlert('Изменения сохранены.');</script>";
 		}
 	}
 	
 	$Editor = 'tavern';
-	$GetItem = mysql_fetch_assoc(mysql_query("SELECT * FROM `tavern` WHERE `id`='".intval($_GET['id'])."'"));
+    $GetItem = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `tavern` WHERE `id`='" . intval($_GET['id']) . "'"));
 
     // Разбераем Эффекты
 	$Effects = explode("@", $GetItem['effects']);

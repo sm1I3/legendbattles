@@ -9,13 +9,13 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_fort_class_id']) && $_GET['delete_fort_class_id']!='') 
 {
     $fort_class_id = $_GET['delete_fort_class_id'];
-    mysql_query('delete from forts_classes where fort_class  = '.intval($fort_class_id).'');
+    mysqli_query($GLOBALS['db_link'], 'delete from forts_classes where fort_class  = ' . intval($fort_class_id) . '');
     header('Location: fort_class_list.php');
 }
 
 $fort_classes = '';
-$res = mysql_query('select * from forts_classes'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from forts_classes');
+while ($row = mysqli_fetch_assoc($res))
 {
     $fort_classes .= '
     <tr>

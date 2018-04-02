@@ -160,4 +160,3 @@ switch ($treb[0]) {
         break;
 
 }
-?>

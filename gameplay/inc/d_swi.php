@@ -394,4 +394,3 @@ switch ($d_swi) {
         include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/dealers/obraz_check" . ".php");
         break;
 }
-?>

@@ -16,11 +16,11 @@ require('kernel/before.php');
         return (($g) ? $g . ' <img src=/img/image/gold.png width=14 height=14 valign=middle title=Золото>  ' : '') . (($s) ? $s . ' <img src=/img/image/silver.png width=14 height=14 valign=middle title=Серебро> ' : '') . (($b) ? $b . ' <img src=/img/image/bronze.png width=14 height=14 valign=middle title=Бронза> ' : '');
 	}
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
-$all = mysql_query("SELECT * FROM `user` WHERE `last`>'".(time()-300)."'");
+$all = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `last`>'" . (time() - 300) . "'");
 echo "<tr><td>логин</td><td>уровень</td><td>клан</td><td>молчанка</td><td>травма</td><td>Деньги</td><td>DLR</td><td>Валюта</td><td>склонность</td><td>клиент</td></tr>";
 $s = '';
 
-while ($row = mysql_fetch_assoc($all)) {
+while ($row = mysqli_fetch_assoc($all)) {
 	if(effects($row['affect'],0)!=''){
 		$traw=effects($row['affect'],0);
 	}else{
@@ -46,7 +46,7 @@ while ($row = mysql_fetch_assoc($all)) {
 	$s .= "\n </tr></th>";
 }
 echo '';
-mysql_free_result($all);
+mysqli_free_result($all);
 echo  substr($s,0,strlen($s)-1);
 ?>
 <? require('kernel/after.php'); ?>

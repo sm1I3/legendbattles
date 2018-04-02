@@ -75,7 +75,7 @@
 ## Продажа DLR, на биржу. ( от 3 до 30) DLR.
 if (!empty($_POST['addbirja'])) {
     $bcount = mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `dlr_birja` WHERE `uid`='" . $player["id"] . "';"));
-    $gold_sale = ereg_replace("[^0-9]", "", $_POST['gold_birja']);
+    $gold_sale = preg_replace("[^0-9]", "", $_POST['gold_birja']);
     $silver_sale = (intval($_POST['gold'])) * 10000 + (intval($_POST['silver'])) * 100 + (intval($_POST['bronze']));
 ## Проверяем кол-во ставок продавца.
     if ($bcount >= 1)

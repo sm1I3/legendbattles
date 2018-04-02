@@ -7,8 +7,8 @@ if (!userHasPermission(1)) {
 }
 
 $workers = array();
-$res = mysql_query('SELECT * FROM z_worker ORDER BY worker_name');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM z_worker ORDER BY worker_name');
+while ($row = mysqli_fetch_assoc($res))
     $workers[$row['worker_id']] = $row['worker_name'];
 
 if (!isset($_GET['vacation_id']) || $_GET['vacation_id'] == '')
@@ -28,24 +28,24 @@ if (isset($_POST['date_from']))
             date_to,
             worker_id
         ) values (
-            "'.mysql_escape_string($_POST['date_from']).'",
-            "'.mysql_escape_string($_POST['date_to']).'",
+            "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date_from']) . '",
+            "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date_to']) . '",
             '.(int)$_POST['worker_id'].'
         )'  ;
-        
-        mysql_query($query);
+
+        mysqli_query($GLOBALS['db_link'], $query);
     } 
     else 
     {
         $query = '
         update z_vacations set
-            date_from = \''.mysql_escape_string($_POST['date_from']).'\',
-            date_to = \''.mysql_escape_string($_POST['date_to']).'\',
+            date_from = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date_from']) . '\',
+            date_to = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['date_to']) . '\',
             worker_id = '.(int)$_POST['worker_id'].'
         where
             vacation_id = '.intval($vacation_id).'
         ';
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
     }    
     
     header('Location: report_vacation.php');
@@ -63,10 +63,10 @@ if ($vacation_id == '')
 else 
 {
     $vacation = array();
-    $res = mysql_query('select * from z_vacations where vacation_id = '.intval($vacation_id).'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from z_vacations where vacation_id = ' . intval($vacation_id) . '');
+    if ($row = mysqli_fetch_assoc($res))
         $vacation = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 $types = array(1 => 'Выходной', 2 => 'Рабочий');

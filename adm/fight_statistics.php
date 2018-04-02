@@ -8,35 +8,35 @@ if (!userHasPermission(1)) {
 
 if (isset($_GET['set_active']))
 {
-    mysql_query('UPDATE bots_fights SET bot_active = 1 WHERE playerid = '.(int)$_GET['set_active']);
+    mysqli_query($GLOBALS['db_link'], 'UPDATE bots_fights SET bot_active = 1 WHERE playerid = ' . (int)$_GET['set_active']);
     header('Location: '.$_SESSION['fight_stat_url']);
 }
 
 if (isset($_GET['set_inactive']))
 {
-    mysql_query('UPDATE bots_fights SET bot_active = 0 WHERE playerid = '.(int)$_GET['set_inactive']);
+    mysqli_query($GLOBALS['db_link'], 'UPDATE bots_fights SET bot_active = 0 WHERE playerid = ' . (int)$_GET['set_inactive']);
     header('Location: '.$_SESSION['fight_stat_url']);
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'delete_all_inactive')
 {
     $ids = array();
-    $res = mysql_query('SELECT playerid FROM bots_fights WHERE bot_active = 0');
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'SELECT playerid FROM bots_fights WHERE bot_active = 0');
+    while ($row = mysqli_fetch_assoc($res))
     {
         $ids[] = $row['playerid'];
     }
-    mysql_query('DELETE FROM e_players_table WHERE playerid IN ('.implode(',',$ids).')');   
-    mysql_query('DELETE FROM e_players_modify WHERE playerid IN ('.implode(',',$ids).')');   
-    mysql_query('DELETE FROM e_players_slots WHERE playerid IN ('.implode(',',$ids).')');   
-    mysql_query('DELETE FROM e_players_info WHERE playerid IN ('.implode(',',$ids).')');   
-    mysql_query('DELETE FROM bots_fights WHERE playerid IN ('.implode(',',$ids).')');   
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM e_players_table WHERE playerid IN (' . implode(',', $ids) . ')');
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM e_players_modify WHERE playerid IN (' . implode(',', $ids) . ')');
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM e_players_slots WHERE playerid IN (' . implode(',', $ids) . ')');
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM e_players_info WHERE playerid IN (' . implode(',', $ids) . ')');
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM bots_fights WHERE playerid IN (' . implode(',', $ids) . ')');
     header('Location: '.$_SESSION['fight_stat_url']);
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'activate_all_inactive')
 {
-    mysql_query('UPDATE bots_fights SET bot_active = 1 WHERE bot_active = 0');
+    mysqli_query($GLOBALS['db_link'], 'UPDATE bots_fights SET bot_active = 1 WHERE bot_active = 0');
     header('Location: '.$_SESSION['fight_stat_url']);
 }
 
@@ -62,26 +62,26 @@ else
     $is_active = ''; 
     
 $bot_classes = array();
-$res = mysql_query('select * from bots_classes ');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_classes ');
+while ($row = mysqli_fetch_assoc($res))
     $bot_classes[$row['bot_class_id']] = $row['nickname'];
-mysql_free_result($res);
+mysqli_free_result($res);
     
 $bots = $bots_inf = $bot_class_ids = array();
-$res = mysql_query('select * from bots_templates '.($bot_class_id!=''?'where bot_class_id = '.intval($bot_class_id):''));
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_templates ' . ($bot_class_id != '' ? 'where bot_class_id = ' . intval($bot_class_id) : ''));
+while ($row = mysqli_fetch_assoc($res))
 {
     $bots[$row['inf_bot']] = $bot_classes[$row['bot_class_id']].' '.(isset($row['comment']) && $row['comment']!=''?' ('.$row['comment'].')':'');
     $bots_inf[$row['inf_bot']] = $row;
     $bot_class_ids[$row['bot_class_id']][] = $row['inf_bot'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
     
 if (isset($_GET['deactivate_group']) && (int)$_GET['deactivate_group'] > 0)
 {
     $count = (int)$_GET['deactivate_group'];
-    
-    mysql_query('UPDATE bots_fights SET bot_active = 0 WHERE bot_active = 1 '.
+
+    mysqli_query($GLOBALS['db_link'], 'UPDATE bots_fights SET bot_active = 0 WHERE bot_active = 1 ' .
     ($inf_bot!=''?' and inf_bot = '.intval($inf_bot):'').' '.
     ($bot_type!=''?' and bot_type = '.intval($bot_type):'').' '.
     ($is_active!=''?' and bot_active = '.intval($is_active):'').' '.
@@ -96,8 +96,8 @@ $query = 'select count(*) from bots_fights where 1=1 '.
     ($bot_type!=''?' and bot_type = '.intval($bot_type):'').' '.
     ($is_active!=''?' and bot_active = '.intval($is_active):'').' '.
     ($bot_class_id!=''?' and inf_bot IN ('.implode(',',$bot_class_ids[$bot_class_id]).')':'').' ';
-$res = mysql_query($query, $db);
-$row = mysql_fetch_row($res);
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$row = mysqli_fetch_row($res);
 $records_count = $row[0];
 
 $pages_count = ceil($records_count / $recs_per_page);
@@ -119,8 +119,8 @@ $query = 'select * from bots_fights where 1=1 '.
         generateMysqlLimit($cur_page, $recs_per_page);
 
 $stats = '';
-$res = mysql_query($query, $db); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $stats.='
     <tr>

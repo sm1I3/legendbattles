@@ -14,13 +14,13 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_bank_id']) && $_GET['delete_bank_id']!='') 
 {
     $bank_id = (int)$_GET['delete_bank_id'];
-    mysql_query('delete from bank where id = '.intval($id).'');
+    mysqli_query($GLOBALS['db_link'], 'delete from bank where id = ' . intval($id) . '');
     header('Location: bank_list.php');
 }
 
 $banks = '';
-$res = mysql_query('SELECT * FROM user, bank WHERE user.id = bank.pl_id '); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM user, bank WHERE user.id = bank.pl_id ');
+while ($row = mysqli_fetch_assoc($res))
 {
     $banks .= '
     <tr>

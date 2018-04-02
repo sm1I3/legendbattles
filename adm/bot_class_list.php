@@ -8,13 +8,13 @@ if (!userHasPermission(512)) {
 
 if (isset($_GET['delete_bot_class_id']) && $_GET['delete_bot_class_id']!='') {
     $bot_class_id = $_GET['delete_bot_template_id'];
-    mysql_query('delete from bots_classes where bot_class_id = '.intval($bot_class_id).'');
+    mysqli_query($GLOBALS['db_link'], 'delete from bots_classes where bot_class_id = ' . intval($bot_class_id) . '');
     header('Location: bot_class_list.php');
 }
 
 $bot_classes = '';
-$res = mysql_query('select * from bots_classes'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_classes');
+while ($row = mysqli_fetch_assoc($res))
 {
     $bot_classes .= '
     <tr>

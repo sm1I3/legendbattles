@@ -89,7 +89,7 @@ if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_
     {
         $from = strtotime($_POST['year'].'-'.$_POST['month'].'-01');
         $to = strtotime($_POST['year'].'-'.$_POST['month'].'-'.date('t', $from));
-        mysql_query('DELETE FROM log_analyzer WHERE datetime >= '.intval($from).' AND datetime <= '.intval($to));
+        mysqli_query($GLOBALS['db_link'], 'DELETE FROM log_analyzer WHERE datetime >= ' . intval($from) . ' AND datetime <= ' . intval($to));
     }
     foreach($arr as &$ar1)
     {
@@ -97,8 +97,8 @@ if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_
         $t1 = explode(' ', $row[0]);
         $t2 = explode(':', $t1[0]);
         $date = '20'.$t2[2].'-'.$t2[1].'-'.$t2[0].' '.$t1[1];
-        mysql_query('INSERT INTO log_analyzer (datetime, user_id, view_user_id, view_params, view_from, view_to, user_ip)
-        VALUES ('.strtotime($date).', '.intval($row[1]).', '.intval($row[2]).', '.intval($row[3]).', \''.mysql_escape_string($row[4].'-'.$row[6].'-00').'\', \''.mysql_escape_string($row[5].'-'.$row[7].'-00').'\', \''.mysql_escape_string($row[8]).'\' )');
+        mysqli_query($GLOBALS['db_link'], 'INSERT INTO log_analyzer (datetime, user_id, view_user_id, view_params, view_from, view_to, user_ip)
+        VALUES (' . strtotime($date) . ', ' . intval($row[1]) . ', ' . intval($row[2]) . ', ' . intval($row[3]) . ', \'' . mysqli_escape_string($GLOBALS['db_link'], $row[4] . '-' . $row[6] . '-00') . '\', \'' . mysqli_escape_string($GLOBALS['db_link'], $row[5] . '-' . $row[7] . '-00') . '\', \'' . mysqli_escape_string($GLOBALS['db_link'], $row[8]) . '\' )');
     }
 }
 
@@ -143,8 +143,8 @@ $query = 'SELECT * FROM log_analyzer WHERE
     '.($action != '' ? 'AND view_params = '.intval($action): '').'
     ORDER BY id DESC LIMIT 100';
 $logs = $users = array();
-$res = mysql_query($query, $db); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $logs[] = $row;
     $users[$row['user_id']] = true;
@@ -154,8 +154,8 @@ while ($row = mysql_fetch_assoc($res))
 $user_names = array();
 if (sizeof($users) > 0)
 {
-    /*$res = mysql_query('SELECT playerid, nickname FROM e_players_table WHERE playerid IN ('.implode(',', array_keys($users)).')');
-    while($row = mysql_fetch_assoc($res))
+    /*$res = mysqli_query($GLOBALS['db_link'],'SELECT playerid, nickname FROM e_players_table WHERE playerid IN ('.implode(',', array_keys($users)).')');
+    while($row = mysqli_fetch_assoc($res))
         $user_names[$row['playerid']] = $row['nickname'];*/
     if (!isset($_GET['noapi']))
     foreach($users as $id=>$t)

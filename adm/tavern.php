@@ -23,8 +23,9 @@ include($_SERVER["DOCUMENT_ROOT"] . "/includes/functions/TavernStats.php");
 		$g = intval($lr / 10000);
         return (($g) ? $g . ' <img src=http://img.legendbattles.ru/image/gold.png width=14 height=14 valign=middle title=Золото>  ' : '') . (($s) ? $s . ' <img src=http://img.legendbattles.ru/image/silver.png width=14 height=14 valign=middle title=Серебро> ' : '') . (($b) ? $b . ' <img src=http://img.legendbattles.ru/image/bronze.png width=14 height=14 valign=middle title=Бронза> ' : '');
 	}
-$Query = mysql_query("SELECT * FROM `tavern` WHERE `type`='".intval($_GET['type'])."'");
-while($row = mysql_fetch_assoc($Query)){
+
+$Query = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `tavern` WHERE `type`='" . intval($_GET['type']) . "'");
+while ($row = mysqli_fetch_assoc($Query)) {
 	$Effects = explode("@", $row['effects']);
 	$ParamFirst = $ParamSecond = '';
 	$EffectTime = 0;

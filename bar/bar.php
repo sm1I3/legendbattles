@@ -4,7 +4,7 @@ if (isset($_GET["i"])) {
  $player=$_GET["i"];
  $row=mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE id=".intval($player)));
   if ($row["id"]==$id) {
-   echo "Извиняемся, но такого игрока нет!";
+   echo "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ!";
  } else
  {
  
@@ -43,8 +43,8 @@ if (isset($_GET["i"])) {
 	$exp=explode("|",$row['exp']);
  $element4 = $exp[0]; 
   imagettftext($im, 13, 0, 200, 55, $color1, "SERPENTN.TTF",  $element4); 
- if ($row["access"]==admin) $rase="Админ";
- if ($row["rase"]==2) $rase="Зверлинг";
+ if ($row["access"]==admin) $rase="пїЅпїЅпїЅпїЅпїЅ";
+ if ($row["rase"]==2) $rase="пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
   $element4 = win_uni($rase); 
   imagettftext($im, 13, 0, 325, 20, $color1, "ARIAL.TTF",  win_uni($element4)); 
    $register_time    =  $row['bdaypers'];
@@ -64,4 +64,4 @@ if (isset($_GET["i"])) {
   $host=GetEnv("HTTP_HOST");
 Header("Location: http://$host");
   }
-  ?>
+  

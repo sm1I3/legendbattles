@@ -53,7 +53,7 @@ if ($msg) {
 
             <table cellpadding=0 cellspacing=1 border=0 align=center width=100%>
                 <tr align=center>
-                    <td align=center><? $locname = mysql_fetch_array(mysql_query("SELECT * FROM `loc` WHERE `id`='" . $player['loc'] . "' LIMIT 1;")); ?>
+                    <td align=center><? $locname = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `loc` WHERE `id`='" . $player['loc'] . "' LIMIT 1;")); ?>
                         <fieldset>
                             <legend align="center"><b><font color="gray"><?= $locname['loc']; ?></font></b></legend>
                             <img src=http://w1.dwar.ru/info/pictures/image/vertep.jpg width=760 height=255 border=0
@@ -140,10 +140,10 @@ if ($msg) {
                 <tr>
                     <td>
                         <? if (isset($weapon_category)){
-                        $ITEMS = mysql_query("SELECT market.*, items.*
+                        $ITEMS = mysqli_query($GLOBALS['db_link'], "SELECT market.*, items.*
 FROM market LEFT JOIN items ON market.id = items.id
 WHERE items.dd_price=0 AND market='" . $player['loc'] . "' AND `level`>='" . $_SESSION["min_lev"] . "' AND `level`<='" . $_SESSION["max_lev"] . "'" . (($_SESSION["max_nv"] > '0') ? " AND `price`<='" . $_SESSION["max_nv"] . "'" : "") . " AND type='" . preg_replace('/[^w0-9]/', '', $_GET["weapon_category"]) . "' ORDER BY `items`.`" . $_SESSION['sorttype'] . "` ASC");
-                        $num = (mysql_num_rows($ITEMS));
+                        $num = (mysqli_num_rows($ITEMS));
                         if ($num > 0){
                         ?>
                         <table cellpadding=0 cellspacing=0 border=0 width=100%>
@@ -159,7 +159,7 @@ WHERE items.dd_price=0 AND market='" . $player['loc'] . "' AND `level`>='" . $_S
                                         </tr>
                                         <?
                                         $freemass = $plstt[71];
-                                        while ($ITEM = mysql_fetch_assoc($ITEMS)) {
+                                        while ($ITEM = mysqli_fetch_assoc($ITEMS)) {
                                             $par = explode("|", $ITEM['param']);
                                             $need = explode("|", $ITEM[need]);
                                             $bt = 0;
@@ -631,7 +631,7 @@ WHERE items.dd_price=0 AND market='" . $player['loc'] . "' AND `level`>='" . $_S
                                 </td>
                             </tr>
                         </table>
-                        </fieldset>
+                    </td>
                         <SCRIPT src="./js/t_v01.js"></SCRIPT>
                         <SCRIPT src="./js/tooltip.js"></SCRIPT>
                         <SCRIPT language='JavaScript'>

@@ -77,4 +77,3 @@ function use_b($id, $pl, $sex)
     return $msg;
 }
 
-?>

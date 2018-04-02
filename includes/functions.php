@@ -447,7 +447,9 @@ if($stat[0]==1){
 		case w6: $k=$um[6]/150+1;break;
 		case w7: $k=$um[7]/150+1;break;
 		case w8: $k=1;break;
-		case w9: $k=1;break;;
+        case w9:
+            $k = 1;
+            break;
 		case w10: $k=1;break;
 		case w11: $k=1;break;
 		case w12: $k=1;break;
@@ -609,6 +611,6 @@ function declination($num, $one, $ed, $mn, $notnumber = false){
 }
 
 function normJsonStr($str){
-	$str = preg_replace_callback('/\\\u([a-f0-9]{4})/i', create_function('$m', 'return chr(hexdec($m[1])-1072+224);'), $str);
-    return iconv('utf8', 'utf-8', $str);
+//	$str = preg_replace_callback('/\\\u([a-f0-9]{4})/i', create_function('$m', 'return chr(hexdec($m[1])-1072+224);'), $str);
+    //  return iconv('utf8', 'utf-8', $str);
 }

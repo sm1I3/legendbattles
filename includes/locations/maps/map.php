@@ -185,4 +185,4 @@ setInterval(show_dlr, 1000);
 </SCRIPT>
 </BODY>
 </HTML>';
-?>
+

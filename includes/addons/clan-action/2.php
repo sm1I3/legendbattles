@@ -39,4 +39,3 @@ if($pers['clan_id']!='none'){
 echo'
 </table>
 </FIELDSET>';
-?>

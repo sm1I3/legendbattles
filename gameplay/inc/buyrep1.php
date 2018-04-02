@@ -101,4 +101,4 @@ else
 	}
 }
 mysqli_query($GLOBALS['db_link'],"UNLOCK TABLES;");
-?>
+

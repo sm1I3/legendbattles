@@ -27,4 +27,3 @@ if (!empty($pers['id']) and !empty($pers['login'])) {
     $_SESSION['referal_id'] = $pers['id'];
 }
 exit(header("Location: /index.php"));
-?>

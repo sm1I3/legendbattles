@@ -8,15 +8,15 @@ if (!userHasPermission(32)) {
 
 if (isset($_GET['delete_resource_group_id']) && $_GET['delete_resource_group_id']!='' && is_numeric($_GET['delete_resource_group_id'])) {
     $resource_group_id = (int)$_GET['delete_resource_group_id'];
-    mysql_query('delete from resource_group_cont where resource_group_id = '.$resource_group_id);
-    mysql_query('delete from resource_group where resource_group_id = '.$resource_group_id);
+    mysqli_query($GLOBALS['db_link'], 'delete from resource_group_cont where resource_group_id = ' . $resource_group_id);
+    mysqli_query($GLOBALS['db_link'], 'delete from resource_group where resource_group_id = ' . $resource_group_id);
     header('Location: '.$_SESSION['pages']['resource_group_list']);
 }
 
 // PAGE NAVIGATOR
 $query = 'select count(*) from resource_group ';
-$res = mysql_query($query);
-$row = mysql_fetch_row($res);
+$res = mysqli_query($GLOBALS['db_link'], $query);
+$row = mysqli_fetch_row($res);
 $records_count = $row[0];
 
 $pages_count = ceil($records_count / $recs_per_page);
@@ -36,8 +36,8 @@ $query = 'select * from resource_group '.
 
 
 $resource_groups = '';
-$res = mysql_query($query); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], $query);
+while ($row = mysqli_fetch_assoc($res))
 {
     $resource_groups.='
     <tr>

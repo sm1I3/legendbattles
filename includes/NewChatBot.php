@@ -543,4 +543,4 @@ function GetMsg($query){
 	$response = $response[GetMsg($message)][rand(1,count($response[GetMsg($message)]))];
 	$_SESSION['bot_last_msg'] = mb_strtolower($message);
 //}
-?>
+

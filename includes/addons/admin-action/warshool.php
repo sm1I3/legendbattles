@@ -38,4 +38,4 @@ echo'<table cellpadding="0" cellspacing="5" border="0" align="center" width="50%
     </table></td>
   </tr>
 </table>';
-?>
+

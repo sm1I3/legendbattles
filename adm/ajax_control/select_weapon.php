@@ -4,7 +4,7 @@ ob_end_clean();
 
     $query = 'select * from items where 1=1 ';
     if (isset($_GET['wtype']) && $_GET['wtype']!='')
-        $query .= ' and type = \''.mysql_escape_string($_GET['wtype']).'\' ';
+        $query .= ' and type = \'' . mysqli_escape_string($GLOBALS['db_link'], $_GET['wtype']) . '\' ';
         
     if (isset($_GET['wname']) && $_GET['wname']!='')
         $wname = iconv('UTF-8', 'utf-8', $_GET['wname']);
@@ -18,7 +18,7 @@ ob_end_clean();
 
 
     if ($wname != '')
-        $query .= ' and name like \'%'.mysql_escape_string($wname).'%\' ';
+        $query .= ' and name like \'%' . mysqli_escape_string($GLOBALS['db_link'], $wname) . '%\' ';
         
 
     if (isset($_GET['id']) && $_GET['id'] != '')
@@ -30,10 +30,10 @@ ob_end_clean();
 
     $table = '<table border="0" cellpadding="0" cellspacing="0">';
 
-    $res = mysql_query($query);
+$res = mysqli_query($GLOBALS['db_link'], $query);
     $i = 0;
-    $count = mysql_num_rows($res);
-    while($i < 100 && $row = mysql_fetch_assoc($res)) {
+$count = mysqli_num_rows($res);
+while ($i < 100 && $row = mysqli_fetch_assoc($res)) {
         $i++;
         $rid = ($use_uid?$row['id']:$row['id']);
         $table .= '<tr>

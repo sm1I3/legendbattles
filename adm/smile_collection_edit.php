@@ -31,24 +31,24 @@ if (isset($_POST['collection_name']))
             collection_name
         ) values (
             '.(int)$_POST['collection_id'].',
-            \''.mysql_escape_string($_POST['collection_name']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['collection_name']) . '\'
         )';
-        mysql_query($query);
-        $collection_id = mysql_insert_id();
+        mysqli_query($GLOBALS['db_link'], $query);
+        $collection_id = mysqli_insert_id($GLOBALS['db_link']);
     } else {
         $query = '
         update smile_collections set
             collection_id = '.(int)$_POST['collection_id'].',
-            collection_name = \''.mysql_escape_string($_POST['collection_name']).'\'
+            collection_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['collection_name']) . '\'
         where
             collection_id = '.intval($collection_id).'
         ';
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
     }
-    
-    mysql_query('UPDATE smile_list SET collection_id = NULL WHERE collection_id = '.intval($collection_id));
+
+    mysqli_query($GLOBALS['db_link'], 'UPDATE smile_list SET collection_id = NULL WHERE collection_id = ' . intval($collection_id));
     if (sizeof($tarr) > 0) {
-        mysql_query('UPDATE smile_list SET collection_id = '.(int)$_POST['collection_id'].' WHERE smile_id IN ('.implode(',', $tarr).')');
+        mysqli_query($GLOBALS['db_link'], 'UPDATE smile_list SET collection_id = ' . (int)$_POST['collection_id'] . ' WHERE smile_id IN (' . implode(',', $tarr) . ')');
     }
         
     
@@ -64,10 +64,10 @@ if ($collection_id == '') {
     );
 } else {
     $collection = array();
-    $res = mysql_query('select * from smile_collections where collection_id = '.intval($collection_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from smile_collections where collection_id = ' . intval($collection_id));
+    if ($row = mysqli_fetch_assoc($res))
         $collection = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>
@@ -107,8 +107,8 @@ function selectSmile(smile)
 <tr>
 <? 
 $i = 0;
-$res = mysql_query('select * from smile_list order by smile_id'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from smile_list order by smile_id');
+while ($row = mysqli_fetch_assoc($res))
 {
     $i++;
     echo '

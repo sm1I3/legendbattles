@@ -1,6 +1,6 @@
 <? require('kernel/before.php');
 session_start();
-session_register('filter'); ?>
+$_SESSION['filter']; ?>
 
     <script>
         var user = '<?=$inf[sklon]?> <?=$inf[clan_gif]?> <?=$_SESSION['user']["login"]?>';
@@ -85,9 +85,9 @@ session_register('filter'); ?>
 <?php
 function msg_add($p)
 {
-    $result = mysql_query("SELECT * FROM `chat` WHERE (`login`='" . $p['login'] . "' OR `dlya`='<" . $p['login'] . ">' OR `dlya`='%<" . $p['login'] . ">') AND `login`!='sys' AND `dlya`!='%<mozg>' AND `dlya`!='%<SANTA>' ORDER by `id`;");
+    $result = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chat` WHERE (`login`='" . $p['login'] . "' OR `dlya`='<" . $p['login'] . ">' OR `dlya`='%<" . $p['login'] . ">') AND `login`!='sys' AND `dlya`!='%<mozg>' AND `dlya`!='%<SANTA>' ORDER by `id`;");
     echo "<script>";
-    while ($row = mysql_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
         $ctimecolor = "prchattime";
         $msg = $row["msg"];
         $dlya = $row["dlya"];
@@ -227,7 +227,7 @@ if ($_POST['perslogin']) {
     if ($_GET['id_adm'] != '' and $_GET['id_adm'] != '0') {
         $filter = 'AND `type` LIKE \'%@' . $_GET['id_adm'] . '\' ';
     }
-    $pl = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `login`='" . $_POST['perslogin'] . "' LIMIT 1;"));
+    $pl = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `login`='" . $_POST['perslogin'] . "' LIMIT 1;"));
     if ($_GET['chat'] == 1) {
         //if($pl['clan']!='Life'){
         echo '<table width="60%" border="1" cellspacing="1" cellpadding="0" align=center>';
@@ -235,7 +235,7 @@ if ($_POST['perslogin']) {
         echo '<tr><td colspan=3 align=center>' . msg_add($pl) . '</td></tr></table>';
         //}else{echo'<tr><td colspan=3 align=center>просмотр чата игроков клана LIFE - недоступен</td></tr></table>';}
     } elseif ($_GET['bank'] == 1 and $pl['id']) {
-        $bankid = mysql_fetch_assoc(mysql_query("SELECT * FROM `bank` WHERE `pl_id`='" . $pl['id'] . "' LIMIT 1;"));
+        $bankid = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `bank` WHERE `pl_id`='" . $pl['id'] . "' LIMIT 1;"));
         $vklad = $player['vklad'] != 0 ? explode("|", $pl['vklad']) : $vklad[0] = "";
         $vklad[0] != "" ?
             $message = "Вложеные деньги: " . $vklad[1] . " LR.<br>Деньги к получению: " . $vklad[2] . " LR.<br>Дата получения: " . date("d.m.yг.", $vklad[0])
@@ -257,15 +257,15 @@ if ($_POST['perslogin']) {
 				<tr><td align=center colspan=5>Вклад в ДЦ:<br><b>' . $message2 . '</b></td></tr>			   
 			   <tr><td align=center colspan=5>Вещи в банке:</td></tr>
 			   ';
-        $ITEMS = mysql_query("SELECT `invent`.*,`items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='" . $pl['id'] . "' AND `invent`.`used`='0' AND `invent`.`clan`='0' AND `invent`.`bank`='1';");
-        if (mysql_num_rows($ITEMS) > 0) {
+        $ITEMS = mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*,`items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='" . $pl['id'] . "' AND `invent`.`used`='0' AND `invent`.`clan`='0' AND `invent`.`bank`='1';");
+        if (mysqli_num_rows($ITEMS) > 0) {
             echo '
 				<table cellpadding=0 cellspacing=0 border=0 width=100% align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=60%>
 				';
-            if (mysql_num_rows($ITEMS) > 0) {
-                while ($ITEM = mysql_fetch_assoc($ITEMS)) {
+            if (mysqli_num_rows($ITEMS) > 0) {
+                while ($ITEM = mysqli_fetch_assoc($ITEMS)) {
                     if ($ITEM['dd_price'] > 0) {
                         $art = "weaponchart";
                     } else {
@@ -274,7 +274,7 @@ if ($_POST['perslogin']) {
                     $iz = $ITEM['dolg'] - $ITEM['iznos'];
                     $ItemToOne[$ITEM['id'] + $ITEM['arenda'] + $ITEM['rassrok']][md5($iz . '/' . $ITEM['dolg'])] += 1;
                     if ($ItemToOne[$ITEM['id'] + $ITEM['arenda'] + $ITEM['rassrok']][md5($iz . '/' . $ITEM['dolg'])] == 1) {
-                        $count = mysql_num_rows(mysql_query("SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='" . $player['id'] . "' and `invent`.`used`='0' and `invent`.`dolg`='" . $ITEM['dolg'] . "' and `invent`.`iznos`='" . $ITEM['iznos'] . "' and `items`.`id`='" . $ITEM['id'] . "' and `invent`.`arenda`='" . $ITEM['arenda'] . "' and `invent`.`rassrok`='" . $ITEM['rassrok'] . "' and `invent`.`bank`='1' ORDER BY `items`.`dd_price`,`items`.`name`;"));
+                        $count = mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='" . $player['id'] . "' and `invent`.`used`='0' and `invent`.`dolg`='" . $ITEM['dolg'] . "' and `invent`.`iznos`='" . $ITEM['iznos'] . "' and `items`.`id`='" . $ITEM['id'] . "' and `invent`.`arenda`='" . $ITEM['arenda'] . "' and `invent`.`rassrok`='" . $ITEM['rassrok'] . "' and `invent`.`bank`='1' ORDER BY `items`.`dd_price`,`items`.`name`;"));
                         echo '
 							<tr align=center>
 							<td bgcolor=#f9f9f9 align=left width=50%>
@@ -298,7 +298,7 @@ if ($_POST['perslogin']) {
     }
 
     if (!$_GET['chat'] and !$_GET['bank']) {
-        $zapros = mysql_query("SELECT * FROM `user_actions` WHERE `pl_login`='" . $_POST['perslogin'] . "' " . $filter . " ORDER by `id` DESC;");
+        $zapros = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user_actions` WHERE `pl_login`='" . $_POST['perslogin'] . "' " . $filter . " ORDER by `id` DESC;");
         echo '<table width="60%" border="1" cellspacing="1" cellpadding="0" align=center>
 			  <tr>
 				<td align=center><b>дата</b></td>
@@ -307,7 +307,7 @@ if ($_POST['perslogin']) {
 				<td align=center><b>ип игрока</b></td>
 				<td align=center><b>лог</b></td>
 			   </tr>';
-        while ($row = mysql_fetch_assoc($zapros)) {
+        while ($row = mysqli_fetch_assoc($zapros)) {
             echo '
 			 <tr>
 				<td align=center>' . $row['time'] . '</td>

@@ -13,15 +13,15 @@ if (!userHasPermission(32768)) {
 
 if (isset($_GET['delete_mine_code']) && $_GET['delete_mine_code']!='') {
     $mine_code = $_GET['delete_mine_code'];
-    mysql_query('delete from mine_res where mine_code = \''.mysql_real_escape_string($mine_code).'\'');
-    mysql_query('delete from mine_list where mine_code = \''.mysql_real_escape_string($mine_code).'\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from mine_res where mine_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $mine_code) . '\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from mine_list where mine_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $mine_code) . '\'');
     header('Location: mine_list.php');
 }
 
 
 $mines = '';
-$res = mysql_query('select * from mine_list', $db); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from mine_list', $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $mines.='
     <tr>

@@ -447,4 +447,3 @@ echo'
 		</table></div></div>
 		';	
 
-?>

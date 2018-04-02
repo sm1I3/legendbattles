@@ -7,9 +7,9 @@ if (!userHasPermission(1)){
 }
 
 // если была нажата кнопка "Отправить" 
-if($_POST['submit']) { 
-$SQL = mysql_query("SELECT `email` FROM `user` WHERE `id`>'9999'");
-while($row = mysql_fetch_assoc($SQL)){
+if ($_POST['submit']) {
+    $SQL = mysqli_query($GLOBALS['db_link'], "SELECT `email` FROM `user` WHERE `id`>'9999'");
+    while ($row = mysqli_fetch_assoc($SQL)) {
     // $_POST['title'] содержит данные из поля "Тема", trim() - убираем все лишние пробелы и переносы строк, htmlspecialchars() - преобразует специальные символы в HTML сущности, будем считать для того, чтобы простейшие попытки взломать наш сайт обломались, ну и  substr($_POST['title'], 0, 1000) - урезаем текст до 1000 символов. Для переменной $_POST['mess'] все аналогично
 	$title = substr(htmlspecialchars(trim($_POST['title'])), 0, 1000); 
 	$mess =  substr(htmlspecialchars(trim($_POST['mess'])), 0, 1000000);

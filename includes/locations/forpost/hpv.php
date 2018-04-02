@@ -52,4 +52,3 @@ else{
 	$redirect="parent.frames['main_top'].location='main.php';";
 	echo "<script>".$redirect."</script>";
 }
-?>

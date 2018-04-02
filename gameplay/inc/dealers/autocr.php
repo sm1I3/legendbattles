@@ -159,4 +159,3 @@ $par=substr_replace($par, '', -1);
 mysqli_query($GLOBALS['db_link'],"INSERT INTO items (gif,name,block,2w,type,param,need,acte,num_a,level,price,dd_price,massa,slot,effect) VALUES ('i_".$row['type']."_101.gif' , '".$_POST['artname']."' , '".$block."' , ".$wtor." , '".$row['type']."' , '".$par."' , '".$treb."' , '' , '' , 3 , 0 , ".$row['price']." , 7 , ".$slot." ,'');");
 mysqli_query($GLOBALS['db_link'],"UPDATE art_zayav SET compl='1',name='".$_POST['artname']."' WHERE id=".intval($_POST['id'])." ;");
 
-?>

@@ -175,7 +175,7 @@ if ($_GET[set] == game) {
                             $summa_comp = $comp_1 + $comp_2;
                             if ($summa_player > $summa_comp) {
                                 $stwin = $st * 2;
-                                mysql_query("UPDATE user SET nv=nv+" . $st . " WHERE id='" . $player['id'] . "'");
+                                mysqli_query($GLOBALS['db_link'], "UPDATE user SET nv=nv+" . $st . " WHERE id='" . $player['id'] . "'");
 
                                 $player[nv] = $player[nv] + $st;
                                 echo "<p><center><font class=sysmessage>Поздравляем! Вы победили и получаете <b>$st <img src='/img/image/money_all.gif' title='LR'></b> поверх вашей ставки!</font></center><p>";

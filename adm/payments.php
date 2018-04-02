@@ -44,9 +44,9 @@ $title = new title( date("D M d Y") );
 
 $values = $axis = array();
 $max = 0;
-$res = mysql_query($query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
 $now_date = '';
-while ($row = mysql_fetch_assoc($res))
+while ($row = mysqli_fetch_assoc($res))
 {
     if ($now_date != $row['date'])
     {

@@ -15,10 +15,10 @@ else
     
 // list of all weapon categories
 $weapon_categories_array = array();
-$res = mysql_query('select * from weapon_categories');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_categories');
+while ($row = mysqli_fetch_assoc($res))
     $weapon_categories_array[$row['category_code']] = $row['category_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 function encodeChestJson($array)
 {
@@ -121,23 +121,23 @@ if (isset($_POST['val']))
         update 
             labyrinth_list 
         set 
-            labyrinth_serialized = \''.mysql_escape_string($serialized).'\'
+            labyrinth_serialized = \'' . mysqli_escape_string($GLOBALS['db_link'], $serialized) . '\'
         where 
             labyrinth_id = '.(int)$lab_id.'
             '.(!userHasPermission(8)?' and is_confirmed = \'N\'':'').' 
         ';
         
     }
-    
-    mysql_query($query);
+
+    mysqli_query($GLOBALS['db_link'], $query);
     
     header('Location: labyrinth_list.php');
 }
 
 if ($lab_id != '') {
-    
-    $res = mysql_query('select * from labyrinth_list where labyrinth_id = '.(int)$lab_id);
-    $row = mysql_fetch_assoc($res);
+
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from labyrinth_list where labyrinth_id = ' . (int)$lab_id);
+    $row = mysqli_fetch_assoc($res);
     
     $is_confirmed = $row['is_confirmed'];
     $tarr = unserialize($row['labyrinth_serialized']);

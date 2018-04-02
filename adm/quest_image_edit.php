@@ -20,20 +20,20 @@ if (isset($_POST['image_name'])) {
             image,
             image_name
         ) values (
-            \''.mysql_escape_string($_POST['image']).'\',
-            \''.mysql_escape_string($_POST['image_name']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['image']) . '\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['image_name']) . '\'
         )'  ;
     } else {
         $query = '
         update quest_images set
-            image = \''.mysql_escape_string($_POST['image']).'\',
-            image_name = \''.mysql_escape_string($_POST['image_name']).'\'
+            image = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['image']) . '\',
+            image_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['image_name']) . '\'
         where
             image_id = '.intval($image_id).'
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: '.$_SESSION['pages']['quest_image_list']);
     
 }
@@ -48,10 +48,10 @@ if ($image_id == '')
 else 
 {
     $image = array();
-    $res = mysql_query('select * from quest_images where image_id = '.intval($image_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from quest_images where image_id = ' . intval($image_id));
+    if ($row = mysqli_fetch_assoc($res))
         $image = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

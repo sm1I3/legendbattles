@@ -20,20 +20,20 @@ else
     //header('Location: bot_list.php');
 
 $bot_classes = array();
-$res = mysql_query('select * from bots_classes', $db); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_classes', $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $bot_classes[$row['bot_class_id']] = $row['nickname'];
     $bot_classes_inf[$row['bot_class_id']] = $row;
 }
-mysql_free_result($res);    
+mysqli_free_result($res);
 
 if ($bot_class_id != '') 
 {
     
     $bots = array();
-    $res = mysql_query('select * from bots_templates where bot_class_id = '.intval($bot_class_id).' ORDER BY level', $db); 
-    while ($row = mysql_fetch_assoc($res)) 
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_templates where bot_class_id = ' . intval($bot_class_id) . ' ORDER BY level', $db);
+    while ($row = mysqli_fetch_assoc($res)) 
     {
         $bots_array[$row['inf_bot']] = $row;
         $bots_array[$row['inf_bot']]['nickname'] = $bot_classes_inf[$row['bot_class_id']]['nickname'];
@@ -41,7 +41,7 @@ if ($bot_class_id != '')
         $bots_array[$row['inf_bot']]['image'] = $bot_classes_inf[$row['bot_class_id']]['image'];
         $bots[$row['inf_bot']] = '['.$row['level'].']'.(isset($row['comment']) && $row['comment']!=''?' ('.$row['comment'].')':'');
     }
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     if (isset($_POST['generate']) && isset($_POST['fill_type']) && $_POST['fill_type']!='') 
     {
@@ -63,10 +63,10 @@ if ($bot_class_id != '')
             $bot = $bots_array[$bot_uid];
             
             $bot_slots = '';
-            $res = mysql_query('SELECT * FROM bots_slots WHERE inf_bot = '.intval($bot_uid), $db); 
-            if ($row = mysql_fetch_assoc($res))
+            $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM bots_slots WHERE inf_bot = ' . intval($bot_uid), $db);
+            if ($row = mysqli_fetch_assoc($res))
                 $bot_slots = $row['sl_main'];
-            mysql_free_result($res);
+            mysqli_free_result($res);
             
             $bot_class = $bot_classes_inf[$bot['bot_class_id']];
             
@@ -92,26 +92,26 @@ if ($bot_class_id != '')
                     add_um_0,add_um_1,add_um_2,add_um_3,add_um_4,add_um_5,add_um_6,add_um_7,add_um_8,add_um_9,add_um_10,add_um_11,add_um_12,add_um_13,add_um_14,add_um_15,add_um_16,add_um_17,add_um_18,add_um_19,add_um_20,add_um_21,add_um_22,add_um_23,add_um_24,add_um_25,add_um_26,add_um_27,add_um_28,add_um_29,add_um_30,add_um_31,add_um_32,add_um_33,add_um_34,add_um_35,add_um_36,add_um_37,add_um_38,
                     inf_totem, inf_totem_2, fplace, tplace, magic, pr_cam
                 ) VALUES (
-                    \''.mysql_real_escape_string($bot['nickname']).'\', \''.mysql_real_escape_string($bot['shortnn']).'\', \''.str_repeat('0',32).'\', \''.mysql_real_escape_string($bot['image']).'\',
+                    \'' . mysqli_real_escape_string($GLOBALS['db_link'], $bot['nickname']) . '\', \'' . mysqli_real_escape_string($GLOBALS['db_link'], $bot['shortnn']) . '\', \'' . str_repeat('0', 32) . '\', \'' . mysqli_real_escape_string($GLOBALS['db_link'], $bot['image']) . '\',
                     \'map\', \'m_0_0\', \'free\', 0, 0, 0, 0, 
                     \'none\', \'\', \'\', \'n\', 0, \'\', 
                     '.$ins_v.'
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     '.intval($totem).', '.intval($totem).', \'\', \'\', \'\', 0
                 )';
-                
-                
-                if (!mysql_query($query))
-                    die(mysql_error());
-                
-                $plid = mysql_insert_id();
+
+
+                if (!mysqli_query($GLOBALS['db_link'], $query))
+                    die(mysqli_error($GLOBALS['db_link']));
+
+                $plid = mysqli_insert_id($GLOBALS['db_link']);
                 if($plid > 0)
                 {
-                    $res = mysql_query('SELECT nickname,level,curhp,weaponbase,inf_bot FROM e_players_table WHERE playerid = '.intval($plid));
+                    $res = mysqli_query($GLOBALS['db_link'], 'SELECT nickname,level,curhp,weaponbase,inf_bot FROM e_players_table WHERE playerid = ' . intval($plid));
                     if (!$res)
-                        die(mysql_error());
-                    
-                    $row = mysql_fetch_row($res);
+                        die(mysqli_error($GLOBALS['db_link']));
+
+                    $row = mysqli_fetch_row($res);
                     
                     $query = '
                         INSERT INTO bots_fights (
@@ -119,9 +119,9 @@ if ($bot_class_id != '')
                         ) VALUES (
                             '.$plid.', '.$bot_uid.', '.(int)$_POST['fill_type'].',0
                         )';
-                   
-                    if (!mysql_query($query))
-                        die(mysql_error()); 
+
+                    if (!mysqli_query($GLOBALS['db_link'], $query))
+                        die(mysqli_error($GLOBALS['db_link'])); 
                     
                     $query = '
                         INSERT INTO e_players_modify (
@@ -129,26 +129,26 @@ if ($bot_class_id != '')
                         ) VALUES (
                             '.intval($plid).', ""
                         )';
-                    if (!mysql_query($query))
-                        die(mysql_error());
+                    if (!mysqli_query($GLOBALS['db_link'], $query))
+                        die(mysqli_error($GLOBALS['db_link']));
                         
                     $query = '
                         INSERT INTO e_players_slots (
                             playerid, sl_main, sl_uids, sl_wids, sl_csol, sl_wmas, sl_magic
                         ) VALUES (
-                            '.intval($plid).',"'.mysql_real_escape_string($bot_slots).'","@@@@@@@@@@@@@@@@","@@@@@@@@@@@@@@@@","@@@@@@@@@@@@@@@@","@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@"
+                            ' . intval($plid) . ',"' . mysqli_real_escape_string($GLOBALS['db_link'], $bot_slots) . '","@@@@@@@@@@@@@@@@","@@@@@@@@@@@@@@@@","@@@@@@@@@@@@@@@@","@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@"
                         )';
-                    if (!mysql_query($query))
-                        die(mysql_error());
+                    if (!mysqli_query($GLOBALS['db_link'], $query))
+                        die(mysqli_error($GLOBALS['db_link']));
                         
                     $query = '
                         INSERT INTO e_players_info (
                             playerid, inf_icq, inf_d, inf_m, inf_y, inf_borntime, bl_info, pr_info, inf_email, inf_name, inf_country, inf_city, inf_borncity, inf_bornip, inf_url, inf_infoadd, inf_infoabout
                         ) VALUES (
-                            '.intval($plid).',0,6,6,1906,1122638011,"","","info@neverlands.ru","'.mysql_real_escape_string($bot_class['inf_name']).'","'.mysql_real_escape_string($bot_class['inf_country']).'","'.mysql_real_escape_string($bot_class['inf_city']).'","city1","127.0.0.1","'.mysql_real_escape_string($bot_class['inf_url']).'","","'.mysql_real_escape_string($bot_class['inf_infoabout']).'"
+                            ' . intval($plid) . ',0,6,6,1906,1122638011,"","","info@neverlands.ru","' . mysqli_real_escape_string($GLOBALS['db_link'], $bot_class['inf_name']) . '","' . mysqli_real_escape_string($GLOBALS['db_link'], $bot_class['inf_country']) . '","' . mysqli_real_escape_string($GLOBALS['db_link'], $bot_class['inf_city']) . '","city1","127.0.0.1","' . mysqli_real_escape_string($GLOBALS['db_link'], $bot_class['inf_url']) . '","","' . mysqli_real_escape_string($GLOBALS['db_link'], $bot_class['inf_infoabout']) . '"
                         )';
-                    if (!mysql_query($query))
-                        die(mysql_error()); 
+                    if (!mysqli_query($GLOBALS['db_link'], $query))
+                        die(mysqli_error($GLOBALS['db_link'])); 
                 }
             }
             

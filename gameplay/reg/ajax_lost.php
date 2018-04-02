@@ -21,8 +21,8 @@ $vowels_lok = array("*", "/", ",", "<", "'", "\"", "-");
 if (isset($_POST['submit'])) {
     $login = str_replace($vowels_lok, "", strip_tags($_POST['login']));
     $email = str_replace($vowels_lok, "", strip_tags($_POST['email']));
-    $login = mysql_real_escape_string($login);
-    $email = mysql_real_escape_string($email);
+    $login = mysqli_real_escape_string($GLOBALS['db_link'], $login);
+    $email = mysqli_real_escape_string($GLOBALS['db_link'], $email);
 
     if (empty($login)) {
         echo "Введите логин!";
@@ -43,10 +43,10 @@ if (isset($_POST['submit'])) {
                 $password .= $chars[rand(0, $size)];
             }
             $newmdPassword = md5($password);
-            $title = 'Востановления пароля пользователю ' . mysql_real_escape_string($login) . ' для сайта legendbattles.ru!';
+            $title = 'Востановления пароля пользователю ' . mysqli_real_escape_string($GLOBALS['db_link'], $login) . ' для сайта legendbattles.ru!';
             $headers = "Content-type: text/plain; charset=utf-8\r\n";
             $headers .= "Администрация сайта legendbattles.ru";
-            $letter = 'Вы запросили восстановление пароля для аккаунта ' . mysql_real_escape_string($login) . ' на сайте legendbattles.ru  Ваш новый пароль: ' . mysql_real_escape_string($password);
+            $letter = 'Вы запросили восстановление пароля для аккаунта ' . mysqli_real_escape_string($GLOBALS['db_link'], $login) . ' на сайте legendbattles.ru  Ваш новый пароль: ' . mysqli_real_escape_string($GLOBALS['db_link'], $password);
 
 // Отправляем письмо
             if (mail($email, $title, $letter, $headers)) {
@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-mysql_close();
+mysqli_close($GLOBALS['db_link']);
 ?>
 
 <table>

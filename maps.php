@@ -141,6 +141,7 @@ else{
 }
 ?>
 </table>
+<!--suppress ALL -->
 <div align=center>
     <font class=weaponchdis align=center> © Команда «legendbat LLC. inc.», Copyright 2012-2015 | Все права
         защищены.</font>

@@ -14,16 +14,16 @@ if (!userHasPermission(2)) {
 if (isset($_GET['delete_image_id']) && $_GET['delete_image_id']!='' && is_numeric($_GET['delete_image_id'])) 
 {
     $image_id = (int)$_GET['delete_image_id'];
-    mysql_query('delete from quest_images where quest_id = '.intval($image_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from quest_images where quest_id = ' . intval($image_id));
     header('Location: quest_image_list.php');
 }
 
 
 $images = '';
 $i = 0;
-$res = mysql_query('select * from quest_images'); 
+$res = mysqli_query($GLOBALS['db_link'], 'select * from quest_images');
 if ($mode == 'text')
-    while ($row = mysql_fetch_assoc($res))
+    while ($row = mysqli_fetch_assoc($res))
     {
         $images.='
         <tr>
@@ -35,7 +35,7 @@ if ($mode == 'text')
         ';
     }
 else
-    while ($row = mysql_fetch_assoc($res))
+    while ($row = mysqli_fetch_assoc($res))
     {
         $i++;
         $images.='

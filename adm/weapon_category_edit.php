@@ -21,19 +21,19 @@ if (isset($_POST['category_name'])) {
             category_code,
             category_name
         ) values (
-            "'.mysql_escape_string($_POST['category_code']).'",
-            "'.mysql_escape_string($_POST['category_name']).'"
+            "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['category_code']) . '",
+            "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['category_name']) . '"
         )'  ;
     } else {
         $query = '
         update weapon_categories set
-            category_code = "'.mysql_escape_string($_POST['category_code']).'",
-            category_name = "'.mysql_escape_string($_POST['category_name']).'"
+            category_code = "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['category_code']) . '",
+            category_name = "' . mysqli_escape_string($GLOBALS['db_link'], $_POST['category_name']) . '"
         where
-            category_code = \''.mysql_escape_string($weapon_category_code).'\'
+            category_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $weapon_category_code) . '\'
         '  ;
-    }    
-    mysql_query($query);
+    }
+    mysqli_query($GLOBALS['db_link'], $query);
     header('Location: weapon_category_list.php');
     
 }
@@ -45,10 +45,10 @@ if ($weapon_category_code == '') {
     );
 } else {
     $weapon_category = array();
-    $res = mysql_query('select * from weapon_categories where category_code = \''.mysql_escape_string($weapon_category_code).'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from weapon_categories where category_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $weapon_category_code) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $weapon_category = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

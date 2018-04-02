@@ -9,4 +9,3 @@ $typetolog .= '@11';
 $abouttolog .= '@<b>' . $wn . '</b> (' . $numrow . ' шт.). По цене: <b>' . $sum . '</b> $.';
 player_actions($player['id'], $typetolog, $abouttolog);
 log_write("selldprise", $wn, $sum, "market");
-?>

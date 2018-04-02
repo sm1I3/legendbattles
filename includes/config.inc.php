@@ -18,4 +18,3 @@ function mysqli_result($res, $row, $field = 0)
     return $datarow[$field];
 }
 
-?>

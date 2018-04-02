@@ -7,4 +7,3 @@ switch ($it['num_a']) {
         }
         break;
 }
-?>

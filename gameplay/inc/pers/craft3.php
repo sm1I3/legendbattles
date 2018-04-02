@@ -90,4 +90,4 @@
                 echo '</td><td class="collection-ico" bgcolor="#FFFFFF" align="center"><b>=</b></td><td bgcolor="#FFFFFF" align="center"><img src="' . $IMG . '/image/weapon/' . $ResultItem['gif'] . '" onmouseover="tooltip(this,ShowInfo(\'' . $ResultItem['name'] . '\',\'' . $ResultItem['gif'] . '\',\'' . lr($ResultItem['price']) . '\',\'' . $ResultItem['slot'] . '\',\'' . $ResultItem['block'] . '\',\'' . $ResultItem['hand'] . '\',\'' . preg_replace('/@/', ':', $ResultItem['param']) . '\',\'' . preg_replace('/@/', ':', $ResultItem['need']) . '\',\'' . $ResultItem['massa'] . '\',\'' . $ResultItem['level'] . '\'));" onmouseout="hide_info(this);" /></td><td bgcolor="#FFFFFF" align="center"><input type=submit' . ($ParamsNeeds == true ? ' class=lbut' : ' class=lbutdis disabled') . ' value="Собрать" /></td></tr></table></form>';
 			}
 			echo'</td></tr></table>';
-		?>
+		

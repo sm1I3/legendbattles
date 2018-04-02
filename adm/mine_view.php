@@ -6,11 +6,11 @@ if (!userHasPermission(32768)) {
     die();
 }
 
-$mine_code = $_GET['mine_code']; 
+$mine_code = $_GET['mine_code'];
 
-$query = 'SELECT * FROM mine_list WHERE mine_code = \''.mysql_real_escape_string($mine_code).'\'';
-$res = mysql_query($query);
-$mine = mysql_fetch_assoc($res);
+$query = 'SELECT * FROM mine_list WHERE mine_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $mine_code) . '\'';
+$res = mysqli_query($GLOBALS['db_link'], $query);
+$mine = mysqli_fetch_assoc($res);
 
 $mine_array = unserialize($mine['mine_levels']);
 $height = sizeof($mine_array['m'][1]);
@@ -22,9 +22,9 @@ if (isset($_POST['remove']))
     if ($level > 0)
     {
         $resource = (isset($_POST['resource']) ? $_POST['resource'] : '');
-        $query = 'DELETE FROM mine_res WHERE mine_code = \''.mysql_real_escape_string($mine_code).'\' AND cell_pos LIKE \''.$level.'_%\''.($resource != '' ? ' AND resource_id = '.intval($resource) : '');
-        if (!mysql_query($query))
-            die(mysql_error());
+        $query = 'DELETE FROM mine_res WHERE mine_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $mine_code) . '\' AND cell_pos LIKE \'' . $level . '_%\'' . ($resource != '' ? ' AND resource_id = ' . intval($resource) : '');
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
     }
 }
 
@@ -34,9 +34,9 @@ if (isset($_POST['restore']))
     if ($level > 0)
     {
         $resource = (isset($_POST['resource']) ? $_POST['resource'] : '');
-        $query = 'UPDATE mine_res SET count_left = count_total WHERE mine_code = \''.mysql_escape_string($mine_code).'\' AND cell_pos LIKE \''.$level.'_%\''.($resource != '' ? ' AND resource_id = '.intval($resource) : '');
-        if (!mysql_query($query))
-            die(mysql_error());
+        $query = 'UPDATE mine_res SET count_left = count_total WHERE mine_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $mine_code) . '\' AND cell_pos LIKE \'' . $level . '_%\'' . ($resource != '' ? ' AND resource_id = ' . intval($resource) : '');
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
     }
 }
 
@@ -110,12 +110,12 @@ if (isset($_POST['add']))
             $ar =explode('_', $cell_pos);
             $query = '
                 INSERT INTO mine_res (mine_code, cell_pos, resource_id, level, count_total, count_left, min_ability, chance) 
-                VALUES (\''.mysql_escape_string($mine_code).'\', \''.$cell_pos.'\', '.(int)$res_id.', '.(int)$ar[0].', '.(int)$res_count.', '.(int)$res_count.', '.(int)$_POST['ability'].', '.(int)$chance.')
+                VALUES (\'' . mysqli_escape_string($GLOBALS['db_link'], $mine_code) . '\', \'' . $cell_pos . '\', ' . (int)$res_id . ', ' . (int)$ar[0] . ', ' . (int)$res_count . ', ' . (int)$res_count . ', ' . (int)$_POST['ability'] . ', ' . (int)$chance . ')
                 ON DUPLICATE KEY UPDATE
                     count_total = count_total + '.(int)$res_count.',
                     count_left = count_left + '.(int)$res_count.'';
-            if (!mysql_query($query))
-                die(mysql_error());
+            if (!mysqli_query($GLOBALS['db_link'], $query))
+                die(mysqli_error($GLOBALS['db_link']));
         }
     }
 }
@@ -149,14 +149,14 @@ if (isset($_POST['add']))
 
 // list of mineral resources
 $resource_array = array();
-$res = mysql_query('select * from restore_resources where resource_type = 8');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from restore_resources where resource_type = 8');
+while ($row = mysqli_fetch_assoc($res))
     $resource_array[$row['resource_id']] = $row['resource_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
-$query = 'SELECT * FROM mine_res WHERE mine_code = \''.mysql_escape_string($mine_code).'\' order by cell_pos';
-$res = mysql_query($query);
-while($row = mysql_fetch_assoc($res))
+$query = 'SELECT * FROM mine_res WHERE mine_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $mine_code) . '\' order by cell_pos';
+$res = mysqli_query($GLOBALS['db_link'], $query);
+while ($row = mysqli_fetch_assoc($res))
 {
     $ar = explode('_', $row['cell_pos']);
     $resources[$ar[0]][$ar[1].'_'.$ar[2]][] = $row;

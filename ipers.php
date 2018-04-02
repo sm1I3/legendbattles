@@ -20,14 +20,14 @@ foreach($_SESSION as $keyses=>$vals){$$keyses = $vals;}
 
 if($_GET['Ajax'] == 'yes'){
 	if(strlen($_GET['q'])>0){
-		
-		$_GET['q']= mysql_real_escape_string($_GET['q']);
+
+        $_GET['q'] = mysqli_real_escape_string($GLOBALS['db_link'], $_GET['q']);
 
 
-        $GetUsers = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `login` LIKE '" . preg_replace("/[^a-zA-Zа-яА-Я0-9 _-]/", "", iconv("UTF-8", "utf-8", mysql_real_escape_string($_GET['q']))) . "%' ORDER BY `level` DESC LIMIT 7;");
+        $GetUsers = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `login` LIKE '" . preg_replace("/[^a-zA-Zа-яА-Я0-9 _-]/", "", iconv("UTF-8", "utf-8", mysqli_real_escape_string($GLOBALS['db_link'], $_GET['q']))) . "%' ORDER BY `level` DESC LIMIT 7;");
 		if(mysqli_num_rows($GetUsers) > 0){
 			while($Row = mysqli_fetch_assoc($GetUsers)){
-				echo mysql_real_escape_string($Row['login'])."\r\n";
+                echo mysqli_real_escape_string($GLOBALS['db_link'], $Row['login']) . "\r\n";
 			}
 		}
 	}
@@ -38,7 +38,9 @@ $WatchUser = GetUser($_SESSION['user']['login']);
 
 $FilesVersion = time();
 
-if($_POST['newnick']){echo "<script type='text/javascript'> parent.location.href = '?".mysql_real_escape_string($_POST['newnick'])."'; </script>";}
+if ($_POST['newnick']) {
+    echo "<script type='text/javascript'> parent.location.href = '?" . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['newnick']) . "'; </script>";
+}
 if(!empty($_GET['info'])){
     exit(header("Location: /ipers.php?" . (iconv("UTF-8", "utf-8", urldecode($_GET['info'])) ? iconv("UTF-8", "utf-8", urldecode($_GET['info'])) : urldecode($_GET['info']))));
 		}

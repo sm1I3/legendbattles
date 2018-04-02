@@ -23,18 +23,18 @@ if (isset($_POST['quest_group_name']))
             quest_group_name
         ) values (
             '.(int)$_POST['quest_group_id'].',
-            \''.mysql_escape_string($_POST['quest_group_name']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['quest_group_name']) . '\'
         )'  ;
     } else {
         $query = '
         update quest_groups set
             quest_group_id = '.(int)$_POST['quest_group_id'].',
-            quest_group_name = \''.mysql_escape_string($_POST['quest_group_name']).'\'
+            quest_group_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['quest_group_name']) . '\'
         where
             quest_group_id = '.intval($category_id).'
         '  ;
-    }    
-    mysql_query($query);
+    }
+    mysqli_query($GLOBALS['db_link'], $query);
     header('Location: quest_group_list.php');
     
 }
@@ -49,14 +49,14 @@ if ((string)$quest_group_id == '')
 else 
 {
     $category = array();
-    $res = mysql_query('select * from quest_groups where quest_group_id = '.intval($quest_group_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from quest_groups where quest_group_id = ' . intval($quest_group_id));
+    if ($row = mysqli_fetch_assoc($res))
     {
         $category['quest_group_id'] = $row['quest_group_id'];
         $category['quest_group_name'] = $row['quest_group_name'];
     }
-    
-    mysql_free_result($res);
+
+    mysqli_free_result($res);
 }
 
 ?>

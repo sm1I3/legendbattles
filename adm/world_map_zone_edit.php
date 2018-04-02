@@ -21,19 +21,19 @@ if (isset($_POST['zone_code'])) {
             zone_code,
             zone_name
         ) values (
-            \''.mysql_escape_string($_POST['zone_code']).'\',
-            \''.mysql_escape_string($_POST['zone_name']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['zone_code']) . '\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['zone_name']) . '\'
         )'  ;
     } else {
         $query = '
         update world_zones set
-            zone_code = \''.mysql_escape_string($_POST['zone_code']).'\',
-            zone_name = \''.mysql_escape_string($_POST['zone_name']).'\'
+            zone_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['zone_code']) . '\',
+            zone_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['zone_name']) . '\'
         where
-            zone_code = \''.mysql_escape_string($zone_code).'\'
+            zone_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $zone_code) . '\'
         '  ;
-    }    
-    mysql_query($query);
+    }
+    mysqli_query($GLOBALS['db_link'], $query);
     header('Location: world_map_zone_list.php');
     
 }
@@ -45,10 +45,10 @@ if ($zone_code == '') {
     );
 } else {
     $zone = array();
-    $res = mysql_query('select * from world_zones where zone_code = \''.mysql_escape_string($zone_code).'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from world_zones where zone_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $zone_code) . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $zone = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

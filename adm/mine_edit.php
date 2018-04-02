@@ -22,10 +22,10 @@ $row_id = 0;
 
 // list of mineral resources
 $resource_array = array();
-$res = mysql_query('select * from restore_resources where resource_type = 8');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from restore_resources where resource_type = 8');
+while ($row = mysqli_fetch_assoc($res))
     $resource_array[$row['resource_id']] = $row['resource_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $mine_resources = '';
 // resources
@@ -307,8 +307,8 @@ if (isset($_POST['mine_name']))
             wait_ust,
             mine_levels
         ) values (
-            \''.mysql_escape_string($_POST['mine_code']).'\',
-            \''.mysql_escape_string($_POST['mine_name']).'\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['mine_code']) . '\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['mine_name']) . '\',
             '.(int)$_POST['mine_type'].',
             '.(int)$depth.',
             '.(int)$_POST['levels_opened'].',
@@ -320,11 +320,11 @@ if (isset($_POST['mine_name']))
             '.(float)$_POST['digg_ust'].',
             '.(int)$_POST['wait_time'].',
             '.(float)$_POST['wait_ust'].',
-            \''.mysql_escape_string(serialize($mine_array)).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], serialize($mine_array)) . '\'
         )';
-        
-        if (!mysql_query($query)) {
-            echo mysql_error();
+
+        if (!mysqli_query($GLOBALS['db_link'], $query)) {
+            echo mysqli_error($GLOBALS['db_link']);
             die();
         }
         
@@ -336,17 +336,17 @@ if (isset($_POST['mine_name']))
             $ar =explode('_', $cell_pos);
             $query = '
                 INSERT INTO mine_res (mine_code, cell_pos, resource_id, level, count_total, count_left, min_ability) 
-                VALUES (\''.mysql_escape_string($mine_code).'\', \''.$cell_pos.'\', '.(int)$res_id.', '.(int)$ar[0].', '.(int)$count_ability['count'].', '.(int)$count_ability['count'].', '.(int)$count_ability['ability'].')';
-            if (!mysql_query($query))
-                die(mysql_error());
+                VALUES (\'' . mysqli_escape_string($GLOBALS['db_link'], $mine_code) . '\', \'' . $cell_pos . '\', ' . (int)$res_id . ', ' . (int)$ar[0] . ', ' . (int)$count_ability['count'] . ', ' . (int)$count_ability['count'] . ', ' . (int)$count_ability['ability'] . ')';
+            if (!mysqli_query($GLOBALS['db_link'], $query))
+                die(mysqli_error($GLOBALS['db_link']));
         }
         
         header('Location: mine_view.php?mine_code='.$mine_code);
     } else {
         $query = '
         update mine_list set
-            mine_code = \''.mysql_escape_string($_POST['mine_code']).'\',
-            mine_name = \''.mysql_escape_string($_POST['mine_name']).'\',
+            mine_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['mine_code']) . '\',
+            mine_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['mine_name']) . '\',
             mine_type = '.intval($_POST['mine_type']).',
             levels_opened = '.intval($_POST['levels_opened']).',
             move_time = '.intval($_POST['move_time']).',
@@ -358,9 +358,9 @@ if (isset($_POST['mine_name']))
             wait_time = '.intval($_POST['wait_time']).',
             wait_ust = '.floatval($_POST['wait_ust']).'
         where
-            mine_code = \''.mysql_escape_string($_POST['mine_code']).'\'
+            mine_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['mine_code']) . '\'
         '  ;
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
         header('Location: mine_list.php');
     }    
     
@@ -384,10 +384,10 @@ if ($mine_code == '') {
 else 
 {
     $mine = array();
-    $res = mysql_query('select * from mine_list where mine_code = \''.$mine_code.'\'');
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from mine_list where mine_code = \'' . $mine_code . '\'');
+    if ($row = mysqli_fetch_assoc($res))
         $mine = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

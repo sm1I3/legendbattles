@@ -7,13 +7,13 @@ if (!userHasPermission(1)) {
 }
 
 $workers = array();
-$res = mysql_query('SELECT * FROM z_worker ORDER BY worker_name');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM z_worker ORDER BY worker_name');
+while ($row = mysqli_fetch_assoc($res))
     $workers[$row['worker_id']] = $row['worker_name'];
 
 if (isset($_GET['delete_vacation']))
 {
-    mysql_query('DELETE FROM z_vacations WHERE vacation_id = '.intval($_GET['delete_vacation']));
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM z_vacations WHERE vacation_id = ' . intval($_GET['delete_vacation']));
 }
 
 if (!isset($_GET['date_from']) || $_GET['date_from'] == '')
@@ -23,10 +23,10 @@ if (!isset($_GET['date_to']) || $_GET['date_to'] == '')
     $_GET['date_to'] = date('Y').'-12-31';
 
 
-$res = mysql_query('
+$res = mysqli_query($GLOBALS['db_link'], '
     SELECT * FROM z_vacations 
-    WHERE date_to >= \''.mysql_escape_string($_GET['date_from']).'\' AND 
-    date_from <= \''.mysql_escape_string($_GET['date_to']).'\' 
+    WHERE date_to >= \'' . mysqli_escape_string($GLOBALS['db_link'], $_GET['date_from']) . '\' AND 
+    date_from <= \'' . mysqli_escape_string($GLOBALS['db_link'], $_GET['date_to']) . '\' 
     '.(isset($_GET['worker_id']) && $_GET['worker_id'] != '' ? ' AND worker_id = '.intval($_GET['worker_id']).'' : '').'
     ORDER BY date_from
 ');
@@ -140,7 +140,7 @@ function clearFilter()
               <td class="cms_cap2">C</td>
                 <td class="cms_cap2">По</td>
             </tr>
-            <? while($row = mysql_fetch_assoc($res)) {
+             <? while ($row = mysqli_fetch_assoc($res)) {
             echo '
             <tr>
                 <td class="cms_middle" align="center"><a onclick="return confirm(\'Вы уверены что хотите удалить этот отпуск?\');" href="report_vacation.php?delete_vacation=' . $row['vacation_id'] . '" title="Удалить"><img src="images/cms_icons/cms_delete.gif" width="16" height="16" border="0" /></a></td>

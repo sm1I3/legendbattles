@@ -16,20 +16,20 @@ if (isset($_POST['generate'])) {
     
     
     $zones = array();
-    $res = mysql_query('select * from world_zones');
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from world_zones');
+    while ($row = mysqli_fetch_assoc($res))
         $zones[$row['zone_code']] = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     $cells = array();
-    $res = mysql_query('select * from world_cells');
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from world_cells');
+    while ($row = mysqli_fetch_assoc($res))
         $cells[$row['zone_code']][$row['cell_code']] = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     $objects = array();
-    $res = mysql_query('select * from world_objects');
-    while($row = mysql_fetch_assoc($res)) {
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from world_objects');
+    while ($row = mysqli_fetch_assoc($res)) {
         
         $objects[$row['zone_code']][$row['object_code']] = $row;
         $object_array[$row['object_code']] = $row;
@@ -37,7 +37,7 @@ if (isset($_POST['generate'])) {
         if (isset($row['parent_code']))
             $object_parent[$row['parent_code']] = $row['object_code'];
     }
-    mysql_free_result($res);
+    mysqli_free_result($res);
 
 
     $config = '# Локации игры

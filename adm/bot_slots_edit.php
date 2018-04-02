@@ -21,8 +21,8 @@ $slot_fields = array(
 );
 
 $bot_templates = array();
-$res = mysql_query('select * from e_players_bots_templates'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from e_players_bots_templates');
+while ($row = mysqli_fetch_assoc($res))
     $bot_templates[$row['bot_template_id']] = $row['nickname'];
     
 if (isset($_POST['level'])) {
@@ -43,21 +43,21 @@ if (isset($_POST['level'])) {
         ) values (
         '.(int)$_POST['bot_template_id'].',
         '.(int)$_POST['level'].',
-        \''.mysql_real_escape_string($slots).'\'
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $slots) . '\'
         )'  ;
     } else {
         $query = '
         update e_players_bots_slots set
             bot_template_id = '.(int)$_POST['bot_template_id'].',
             level = '.(int)$_POST['level'].',
-            slots = \''.mysql_real_escape_string($slots).'\'
+            slots = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $slots) . '\'
         where
             bot_template_id = '.intval($bot_template_id).' and
             level = '.intval($level).' 
         '  ;
-    }    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: bot_slots_list.php');
     
 }
@@ -76,10 +76,10 @@ if ($bot_template_id == '') {
     );
 } else {
     $bot_slots = array();
-    $res = mysql_query('select * from e_players_bots_slots where bot_template_id = '.intval($bot_template_id).' and level = '.intval($level));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from e_players_bots_slots where bot_template_id = ' . intval($bot_template_id) . ' and level = ' . intval($level));
+    if ($row = mysqli_fetch_assoc($res))
         $bot_slots = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 if (isset($_GET['copy_bot_template_id']))

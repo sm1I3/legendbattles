@@ -9,13 +9,13 @@ if (!userHasPermission(131072)) {
 if (isset($_GET['delete_quest_group_id']) && $_GET['delete_quest_group_id']!='' && is_numeric($_GET['delete_quest_group_id'])) 
 {
     $quest_group_id = (int)$_GET['delete_quest_group_id'];
-    mysql_query('delete from quest_groups where quest_group_id = '.intval($quest_group_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from quest_groups where quest_group_id = ' . intval($quest_group_id));
     header('Location: quest_groups.php');
 }
 
 $categories = '';
-$res = mysql_query('select * from quest_groups'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from quest_groups');
+while ($row = mysqli_fetch_assoc($res))
 {
     $categories .= '
     <tr>

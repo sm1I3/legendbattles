@@ -162,4 +162,3 @@ if(accesses($pers['id'],'out')){
 		
 	}
 }
-?>

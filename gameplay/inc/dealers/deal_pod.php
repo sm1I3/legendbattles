@@ -28,4 +28,4 @@ if ($i != 0) {
 }
 echo '</SCRIPT></tr><tr><td colspan=4 bgcolor=#ffffff><div align=center><font class=freetxt>Подарок для: <input type=text name=prnick class=input_cl_s size=20 maxlength=25> Подпись: <input type=text name=prtext class=input_cl_s size=40 maxlength=40> <input type=submit value="Отправить" class=lbut onClick="javascript: return check_pres();"></div></td></tr>';
 echo '</td></tr></table></FIELDSET>';
-?>
+

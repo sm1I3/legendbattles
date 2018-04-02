@@ -10,8 +10,8 @@ if (isset($_FILES['config_file']))
 {
     $config = file_get_contents($_FILES['config_file']['tmp_name']);
     $arr = explode("\n", $config);
-    
-    mysql_query('DELETE FROM attack_list');
+
+    mysqli_query($GLOBALS['db_link'], 'DELETE FROM attack_list');
     
     foreach($arr as $id=>$row)
     if (trim($row) != '')
@@ -29,12 +29,12 @@ if (isset($_FILES['config_file']))
         if ($arr2[0] == 1 && $arr2[2] == 5) $gv = 3;
         if ($arr2[0] == 1 && $arr2[2] == 6) $gv = 4;
         if ($arr2[0] == 2 || $arr2[0] == 3 || $arr2[0] == 4 || $arr2[0] == 5) $gv = 3;
-        
-        mysql_query('
+
+        mysqli_query($GLOBALS['db_link'], '
             INSERT INTO attack_list
                 (attack_id, is_active, name, display_name, type, action_type, pos_type, params)
             VALUES
-                ('.intval($id).', 1, \''.mysql_real_escape_string($arr2[1]).'\', 1, '.intval($arr2[0]).', '.intval($arr2[2]).', '.intval($gv).', \''.mysql_real_escape_string( implode('|', $arr3) ).'\')
+                (' . intval($id) . ', 1, \'' . mysqli_real_escape_string($GLOBALS['db_link'], $arr2[1]) . '\', 1, ' . intval($arr2[0]) . ', ' . intval($arr2[2]) . ', ' . intval($gv) . ', \'' . mysqli_real_escape_string($GLOBALS['db_link'], implode('|', $arr3)) . '\')
         ');
     }
 }

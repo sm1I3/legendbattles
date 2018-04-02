@@ -16,4 +16,3 @@
 			include ($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/koldyn/koldyn_messages".".php");
 		}
 	}
-?>

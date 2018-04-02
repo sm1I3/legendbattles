@@ -9,21 +9,21 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_object_code']) && $_GET['delete_object_code']!='') 
 {
     $object_code = $_GET['delete_object_code'];
-    mysql_query('delete from world_objects where object_code = \''.mysql_real_escape_string($object_code).'\'');
+    mysqli_query($GLOBALS['db_link'], 'delete from world_objects where object_code = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $object_code) . '\'');
     header('Location: '.$_SESSION['pages']['world_map_object_list']);
 }
 
 $zones = array();
-$res = mysql_query('select * from world_zones');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from world_zones');
+while ($row = mysqli_fetch_assoc($res))
     $zones[$row['zone_code']] = $row['zone_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $object_array = array();
-$res = mysql_query('select * from world_objects');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from world_objects');
+while ($row = mysqli_fetch_assoc($res))
     $object_array[$row['object_code']] = $row['object_name'].' ('.$row['object_code'].')';
-mysql_free_result($res);
+mysqli_free_result($res);
 
 if (isset($_GET['zone_code']))
     $zone_code = $_GET['zone_code'];
@@ -32,9 +32,9 @@ else
 
 // PAGE NAVIGATOR
 $query = 'select count(*) from world_objects '.
-            ($zone_code!=''?'where zone_code = \''.mysql_escape_string($zone_code).'\'':'');
-$res = mysql_query($query, $db);
-$row = mysql_fetch_row($res);
+    ($zone_code != '' ? 'where zone_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $zone_code) . '\'' : '');
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$row = mysqli_fetch_row($res);
 $records_count = $row[0];
 
 $pages_count = ceil($records_count / $recs_per_page);
@@ -49,12 +49,12 @@ elseif ($cur_page > $pages_count) $cur_page = $pages_count;
 
 $objects = '';
 $query = 'select * from world_objects '.
-        ($zone_code!=''?'where zone_code = \''.mysql_escape_string($zone_code).'\'':'').
+    ($zone_code != '' ? 'where zone_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $zone_code) . '\'' : '') .
         generateMysqlOrder().
         generateMysqlLimit($cur_page, $recs_per_page);
-        
-$res = mysql_query($query, $db); 
-while ($row = mysql_fetch_assoc($res))
+
+$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+while ($row = mysqli_fetch_assoc($res))
 {
     $objects.='
     <tr>

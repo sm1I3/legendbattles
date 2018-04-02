@@ -1,4 +1,5 @@
-<? session_start();session_register('filter');?>
+<? session_start();
+$_SESSION['filter']; ?>
 
 <script>
 var user = '<?=$inf[sklon]?> <?=$inf[clan_gif]?> <?=$_SESSION['user']["login"]?>';

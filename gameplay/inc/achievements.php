@@ -563,4 +563,3 @@ function checkAchievements($um, $wins, $checkAchieve, $days, $travnik, $fisher, 
 }
 
 
-?>

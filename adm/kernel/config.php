@@ -5,8 +5,8 @@ session_start();
 	die();
 }
 */
-if (!$db = mysql_connect('localhost', '34', '34'))
+if (!$db = mysqli_connect('localhost', '34', '34'))
     die('Cannot connect to MySQL server.');
 
-mysql_select_db('34', $db);
-mysql_set_charset('utf8');
+mysqli_select_db($db, '34');
+mysqli_set_charset($db, 'utf8');

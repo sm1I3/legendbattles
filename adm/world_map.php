@@ -8,8 +8,8 @@ if (!userHasPermission(2048)) {
 /*
 if (isset($_GET['action']) && $_GET['action'] == 'update_old_params')
 {
-    $res = mysql_query('SELECT * FROM world_cells');
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'],'SELECT * FROM world_cells');
+    while($row = mysqli_fetch_assoc($res))
     {
         $ar = explode('|', $row['cell_params']);
         $bin = 0;
@@ -19,15 +19,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'update_old_params')
         if (isset($ar[4]) && $ar[4] > 0) $bin += 8;
         
         $details = $ar[0].'|'.$bin;
-        mysql_query('UPDATE world_cells SET cell_details = \''.$details.'\' WHERE cell_code = \''.$row['cell_code'].'\'');
+        mysqli_query($GLOBALS['db_link'],'UPDATE world_cells SET cell_details = \''.$details.'\' WHERE cell_code = \''.$row['cell_code'].'\'');
     }
 }
 */
 $zones = array();
-$res = mysql_query('select * from world_zones');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from world_zones');
+while ($row = mysqli_fetch_assoc($res))
     $zones[$row['zone_code']] = $row['zone_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 if (isset($_POST['action']) && $_POST['action']=='save') 
 {
@@ -52,22 +52,22 @@ if (isset($_POST['action']) && $_POST['action']=='save')
         delete from 
             world_cells
         where
-            cell_code = \''.mysql_escape_string($cell_code).'\'
+            cell_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $cell_code) . '\'
         ';
     } else {
         $query = '
         insert into world_cells (cell_code, zone_code, x, y, cell_name, cell_params, cell_details, cell_add) 
-        values (\''.mysql_escape_string($cell_code).'\', \''.mysql_escape_string($_POST['zone_code']).'\', '.intval($x).', '.intval($y).', \''.mysql_escape_string($cell_name).'\', \'\', \''.mysql_escape_string($_POST['cell_details']).'\', \''.mysql_escape_string($_POST['cell_add']).'\') 
+        values (\'' . mysqli_escape_string($GLOBALS['db_link'], $cell_code) . '\', \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['zone_code']) . '\', ' . intval($x) . ', ' . intval($y) . ', \'' . mysqli_escape_string($GLOBALS['db_link'], $cell_name) . '\', \'\', \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['cell_details']) . '\', \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['cell_add']) . '\') 
         on duplicate key update 
-            zone_code = \''.mysql_escape_string($_POST['zone_code']).'\',
-            cell_name = \''.mysql_escape_string($cell_name).'\',
-            cell_add = \''.mysql_escape_string($_POST['cell_add']).'\',
-            cell_details = \''.mysql_escape_string($_POST['cell_details']).'\';
+            zone_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['zone_code']) . '\',
+            cell_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $cell_name) . '\',
+            cell_add = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['cell_add']) . '\',
+            cell_details = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['cell_details']) . '\';
         ';
     }
-    
-    if (!$res = mysql_query($query))
-        die(mysql_error());
+
+    if (!$res = mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     elseif (trim($_POST['cell_name'] == '') && trim($_POST['cell_details'] == '|0'))
         echo 'deleted@'.$x.'_'.$y;
     else
@@ -104,22 +104,22 @@ if (isset($_POST['action']) && $_POST['action']=='saveall')
             delete from 
                 world_cells
             where
-                cell_code = \''.mysql_escape_string($cell_code).'\'
+                cell_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $cell_code) . '\'
             ';
         } else {
             $query = '
             insert into world_cells (cell_code, zone_code, x, y, cell_name, cell_params, cell_details, cell_add) 
-            values (\''.mysql_escape_string($cell_code).'\', \''.mysql_escape_string($row['zone_code']).'\', '.$x.', '.$y.', \''.mysql_escape_string($cell_name).'\', \'\', \''.mysql_escape_string($row['cell_details']).'\', \''.mysql_escape_string($row['cell_add']).'\') 
+            values (\'' . mysqli_escape_string($GLOBALS['db_link'], $cell_code) . '\', \'' . mysqli_escape_string($GLOBALS['db_link'], $row['zone_code']) . '\', ' . $x . ', ' . $y . ', \'' . mysqli_escape_string($GLOBALS['db_link'], $cell_name) . '\', \'\', \'' . mysqli_escape_string($GLOBALS['db_link'], $row['cell_details']) . '\', \'' . mysqli_escape_string($GLOBALS['db_link'], $row['cell_add']) . '\') 
             on duplicate key update 
-                zone_code = \''.mysql_escape_string($row['zone_code']).'\',
-                cell_name = \''.mysql_escape_string($cell_name).'\',
-                cell_add = \''.mysql_escape_string($row['cell_add']).'\',
-                cell_details = \''.mysql_escape_string($row['cell_details']).'\';
+                zone_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $row['zone_code']) . '\',
+                cell_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $cell_name) . '\',
+                cell_add = \'' . mysqli_escape_string($GLOBALS['db_link'], $row['cell_add']) . '\',
+                cell_details = \'' . mysqli_escape_string($GLOBALS['db_link'], $row['cell_details']) . '\';
             ';
         }
-        
-        if (!$res = mysql_query($query))
-            die(mysql_error());
+
+        if (!$res = mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
     }
     
     die('success');
@@ -136,11 +136,11 @@ if (isset($_GET['action']) && $_GET['action']=='load')
     $y2 = $_GET['y2'];
     
     $object_array = array();
-    $res = mysql_query('SELECT * FROM world_objects WHERE parent_code IS NOT NULL');
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM world_objects WHERE parent_code IS NOT NULL');
+    while ($row = mysqli_fetch_assoc($res))
         if (substr($row['parent_code'], 0, 2) == 'm_')
             $object_array[$row['parent_code']] = $row['object_name'].' ('.$row['object_code'].')';
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     $query = '
     select 
@@ -151,13 +151,13 @@ if (isset($_GET['action']) && $_GET['action']=='load')
         x >= '.$x1.' and y >= '.$y1.' and
         x <= '.$x2.' and y <= '.$y2.'
     ';
-    
-    
-    if (!$res = mysql_query($query))
-        die(mysql_error());
+
+
+    if (!$res = mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     
     $arr = array();
-    while($row = mysql_fetch_assoc($res)) {
+    while ($row = mysqli_fetch_assoc($res)) {
         $arr[] = $row['x'].';'.$row['y'].';'.$row['zone_code'].';'.rawurlencode($row['cell_name']).';'.$row['cell_details'].';'.rawurlencode((isset($object_array[$row['cell_code']])?$object_array[$row['cell_code']]:'')).';'.$row['cell_add'];
     }
     
@@ -176,14 +176,14 @@ if (isset($_POST['action']) && $_POST['action']=='save') {
             zone_list 
         where 
             zone_id = '.$zone_id;
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'],$query);
         
         $query = '
         delete from 
             e_players_bots_zones 
         where 
             zone_id = '.$zone_id;
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'],$query);
     }
     
     $arr = explode('|', urldecode($_POST['zones']));
@@ -205,8 +205,8 @@ if (isset($_POST['action']) && $_POST['action']=='save') {
                 (x1, y1, x2, y2, zone_type) 
             values
             ('.$x1.', '.$y1.', '.$x2.', '.$y2.', 1)';
-        mysql_query($query);
-        $zone_id = mysql_insert_id();
+        mysqli_query($GLOBALS['db_link'],$query);
+        $zone_id = mysqli_insert_id($GLOBALS['db_link']);
         
         $bots_array = explode(';', $bots[$id]);
         if (is_array($bots_array) && sizeof($bots_array)>0) 
@@ -216,7 +216,7 @@ if (isset($_POST['action']) && $_POST['action']=='save') {
                 (zone_id, bot_uid) 
             values
             ('.$zone_id.', '.$bot.')';
-            mysql_query($query);
+            mysqli_query($GLOBALS['db_link'],$query);
         }
         
     }

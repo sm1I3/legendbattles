@@ -9,7 +9,7 @@ if (!userHasPermission(1)) {
 if (isset($_GET['delete_attack_id']) && $_GET['delete_attack_id']!='' && is_numeric($_GET['delete_attack_id'])) 
 {
     $attack_id = (int)$_GET['delete_attack_id'];
-    mysql_query('delete from attack_list where attack_id = '.intval($attack_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from attack_list where attack_id = ' . intval($attack_id));
     header('Location: attack_list.php');
 }
 
@@ -33,8 +33,8 @@ $attack_action_type_array = array(
 );
 
 $abilities = '';
-$res = mysql_query('select * from attack_list order by attack_id asc'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from attack_list order by attack_id asc');
+while ($row = mysqli_fetch_assoc($res))
 {
     $abilities .= '
     <tr>
@@ -84,16 +84,16 @@ if (isset($_POST['generate'])) {
     $config = $configjs = '';
     
     $rows = array();
-    $res = mysql_query('select max(attack_id) as max_id from attack_list WHERE is_active = 1');
-    $row = mysql_fetch_assoc($res);
+    $res = mysqli_query($GLOBALS['db_link'], 'select max(attack_id) as max_id from attack_list WHERE is_active = 1');
+    $row = mysqli_fetch_assoc($res);
     $max_id = $row['max_id'];
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     $js_pos_vars = $js_pos_ochd = $js_pos_type = $js_pos_mana = array();
     
     $ci = 0;
-    $res = mysql_query('select * from attack_list WHERE is_active = 1 ORDER BY attack_id ASC');
-    while($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from attack_list WHERE is_active = 1 ORDER BY attack_id ASC');
+    while ($row = mysqli_fetch_assoc($res))
     {
         while ($row['attack_id'] > $ci)
         {
@@ -126,7 +126,7 @@ if (isset($_POST['generate'])) {
         $config .= $row['type'].'|'.($row['display_name']==1?$row['name']:'').'|'.$row['action_type'].'|'.$row['params']."\n";
         $ci++;
     }
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
         
     $configjs .= 'var pos_vars = ['.implode(',', $js_pos_vars).'];'."\n";

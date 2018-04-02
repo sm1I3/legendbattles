@@ -40,10 +40,10 @@ if ($user_id == '') {
     $user['permission'] = array();
 } else {
     $user = array();
-    $res = mysql_query('select * from user where id = '.intval($user_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from user where id = ' . intval($user_id));
+    if ($row = mysqli_fetch_assoc($res))
         $user = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
     $user['login'] = $row['login'];
     $user['permission'] = array();
     foreach($permissions as $code=>$value)
@@ -68,7 +68,7 @@ if (isset($_POST['login'])) {
         where
             id = '.intval($user_id).'
         '  ;
-        mysql_query($query);
+        mysqli_query($GLOBALS['db_link'], $query);
         header('Location: user_list.php');
     }
     

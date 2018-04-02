@@ -71,4 +71,3 @@ switch($_GET['act']){
 
 
 
-?>

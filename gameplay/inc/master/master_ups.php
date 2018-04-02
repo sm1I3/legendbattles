@@ -104,4 +104,3 @@ echo '<font class=weaponch><a href="javascript: writebuttons(\'mod\',\'' . $ITEM
 	echo"</tr></table></TD></TR></table></td></tr>";
 	$code='';
 	
-?>

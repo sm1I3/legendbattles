@@ -37,15 +37,15 @@ if (isset($_POST['nickname']))
             attack_disable_effect
         ) values (
         '.(int)$_POST['bot_class_id'].',
-        \''.mysql_real_escape_string($_POST['nickname']).'\',
-        \''.mysql_real_escape_string($_POST['shortnn']).'\',
-        \''.mysql_real_escape_string($_POST['image']).'\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['nickname']) . '\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['shortnn']) . '\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['image']) . '\',
         '.(int)$_POST['intsex'].',
-        \''.mysql_real_escape_string($_POST['inf_name']).'\',
-        \''.mysql_real_escape_string($_POST['inf_country']).'\',
-        \''.mysql_real_escape_string($_POST['inf_city']).'\',
-        \''.mysql_real_escape_string($_POST['inf_url']).'\',
-        \''.mysql_real_escape_string($_POST['inf_infoabout']).'\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_name']) . '\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_country']) . '\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_city']) . '\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_url']) . '\',
+        \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_infoabout']) . '\',
         '.(int)(isset($_POST['check_attack_conditions']) ? 1 : 0).',
         '.(int)$_POST['min_attack_level'].',
         '.(int)$_POST['max_attack_level'].',
@@ -53,24 +53,24 @@ if (isset($_POST['nickname']))
         '.(int)$_POST['quest_attack_finish'].',
         '.(int)$_POST['attack_disable_effect'].'
         )';
-        
-        if (!mysql_query($query))
-            die(mysql_error());
+
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
     } 
     else 
     {
         $query = '
         update bots_classes set
             bot_class_id = '.(int)$_POST['bot_class_id'].',
-            nickname = \''.mysql_real_escape_string($_POST['nickname']).'\',
-            shortnn = \''.mysql_real_escape_string($_POST['shortnn']).'\',
-            image = \''.mysql_real_escape_string($_POST['image']).'\',
+            nickname = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['nickname']) . '\',
+            shortnn = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['shortnn']) . '\',
+            image = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['image']) . '\',
             intsex = '.(int)($_POST['intsex']).',
-            inf_name = \''.mysql_real_escape_string($_POST['inf_name']).'\',
-            inf_country = \''.mysql_real_escape_string($_POST['inf_country']).'\',
-            inf_city = \''.mysql_real_escape_string($_POST['inf_city']).'\',
-            inf_url = \''.mysql_real_escape_string($_POST['inf_url']).'\',
-            inf_infoabout = \''.mysql_real_escape_string($_POST['inf_infoabout']).'\',
+            inf_name = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_name']) . '\',
+            inf_country = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_country']) . '\',
+            inf_city = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_city']) . '\',
+            inf_url = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_url']) . '\',
+            inf_infoabout = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['inf_infoabout']) . '\',
             check_attack_conditions = '.(int)(isset($_POST['check_attack_conditions']) ? 1 : 0).',
             min_attack_level = '.(int)$_POST['min_attack_level'].',
             max_attack_level = '.(int)$_POST['max_attack_level'].',
@@ -80,15 +80,15 @@ if (isset($_POST['nickname']))
         where
             bot_class_id = '.$bot_class_id.'
         '  ;
-        
-        if (!mysql_query($query))
-            die(mysql_error());
+
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
     }    
     
     // Saving times
     
     if ($bot_class_id != '')
-        mysql_query('DELETE FROM bots_times WHERE bot_class_id = '.intval($bot_class_id));
+        mysqli_query($GLOBALS['db_link'], 'DELETE FROM bots_times WHERE bot_class_id = ' . intval($bot_class_id));
     
     $query = 'INSERT INTO bots_times (bot_class_id,';
     for ($i=0; $i<24; $i++) 
@@ -109,9 +109,9 @@ if (isset($_POST['nickname']))
         $query .= '`'.$h.'` = '.(float)$_POST['hours'][$h].',';
     }
     $query .= 'bot_koef = '.$_POST['bot_koef'];
-    
-    if (!mysql_query($query))
-        die(mysql_error());
+
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
         
     header('Location: bot_class_list.php');
     
@@ -155,10 +155,10 @@ if ($bot_class_id == '')
 else 
 {
     $bot_class = array();
-    $res = mysql_query('select * from bots_classes where bot_class_id = '.intval($bot_class_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_classes where bot_class_id = ' . intval($bot_class_id));
+    if ($row = mysqli_fetch_assoc($res))
         $bot_class = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
     
     if ($bot_class['min_attack_level'] == '0')
         $bot_class['min_attack_level'] = '';
@@ -168,9 +168,9 @@ else
         $bot_class['quest_attack_start'] = '';
     if ($bot_class['quest_attack_finish'] == '0')
         $bot_class['quest_attack_finish'] = '';
-    
-    $res = mysql_query('select * from bots_times where bot_class_id = '.intval($bot_class_id));
-    if($row = mysql_fetch_assoc($res))
+
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_times where bot_class_id = ' . intval($bot_class_id));
+    if ($row = mysqli_fetch_assoc($res))
     {
         for ($i=0; $i<24; $i++) 
         { 
@@ -186,7 +186,7 @@ else
             $hvalues[$h] = '1.00';
         }
     }
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 ?>

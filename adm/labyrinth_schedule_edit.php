@@ -55,16 +55,16 @@ if (isset($_POST['min_lvl']))
             '.strtotime($_POST['date_to']).',
             '.strtotime($_POST['opened_from']).',
             '.strtotime($_POST['opened_to']).',
-            \''.mysql_escape_string($serialized_params).'\',
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $serialized_params) . '\',
             '.(isset($_POST['system_message']) && $_POST['system_message'] == '1' ? 1 : 0).',
             0,
             '.strtotime($_POST['notification_time']).',
-            \''.mysql_escape_string($_POST['start_point']).'\'
+            \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['start_point']) . '\'
         )';
-        
-        mysql_query($query);
-        
-        $lab_id = mysql_insert_id($db);
+
+        mysqli_query($GLOBALS['db_link'], $query);
+
+        $lab_id = mysqli_insert_id($GLOBALS['db_link']);
         header('Location: labyrinth_schedule.php');
     } else {
         $query = '
@@ -77,17 +77,17 @@ if (isset($_POST['min_lvl']))
             date_to = '.strtotime($_POST['date_to']).',
             opened_from = '.strtotime($_POST['opened_from']).',
             opened_to = '.strtotime($_POST['opened_to']).',
-            labyrinth_params = \''.mysql_escape_string($serialized_params).'\',
+            labyrinth_params = \'' . mysqli_escape_string($GLOBALS['db_link'], $serialized_params) . '\',
             system_message = '.(isset($_POST['system_message']) && $_POST['system_message'] == '1' ? 1 : 0).',
             started = 0,
-            start_point = \''.mysql_escape_string($_POST['start_point']).'\'
+            start_point = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['start_point']) . '\'
         where
             event_id = '.intval($event_id).'
         ';
-        
-        
-        if (!mysql_query($query))
-            die(mysql_error());
+
+
+        if (!mysqli_query($GLOBALS['db_link'], $query))
+            die(mysqli_error($GLOBALS['db_link']));
             
         header('Location: labyrinth_schedule.php');
     }    
@@ -118,10 +118,10 @@ if ($event_id == '' && !isset($_GET['copy_event_id'])) {
 } else {
     $event = array();
     if (isset($_GET['copy_event_id']) && $_GET['copy_event_id']!='')
-        $res = mysql_query('select * from labyrinth_schedule where event_id = '.(int)$_GET['copy_event_id']);
+        $res = mysqli_query($GLOBALS['db_link'], 'select * from labyrinth_schedule where event_id = ' . (int)$_GET['copy_event_id']);
     else
-        $res = mysql_query('select * from labyrinth_schedule where event_id = '.(int)$event_id);
-    if($row = mysql_fetch_assoc($res))
+        $res = mysqli_query($GLOBALS['db_link'], 'select * from labyrinth_schedule where event_id = ' . (int)$event_id);
+    if ($row = mysqli_fetch_assoc($res))
         $event = $row;
     $event['date_from'] = date('Y-m-d H:i:s', $event['date_from']);
     $event['date_to'] = date('Y-m-d H:i:s', $event['date_to']);
@@ -129,14 +129,14 @@ if ($event_id == '' && !isset($_GET['copy_event_id'])) {
     $event['opened_to'] = date('Y-m-d H:i:s', $event['opened_to']);
     $event['notification_time'] = date('Y-m-d H:i:s', $event['notification_time']);
     $params = unserialize($row['labyrinth_params']);
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 
 $labs = array();
-$res = mysql_query('select * from labyrinth_list order by labyrinth_name asc');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from labyrinth_list order by labyrinth_name asc');
+while ($row = mysqli_fetch_assoc($res))
     $labs[$row['labyrinth_id']] = $row['labyrinth_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 ?>
     <h3><?= ($event_id == '' ? 'Добавить событие' : 'Изменить событие') ?></h3>

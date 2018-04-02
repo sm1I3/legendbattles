@@ -3,8 +3,8 @@
 // THIS LICENSE MESSAGE IS ONLY ADDED BY THE EVALUATION ENCODER AND
 // IS NOT PRESENT IN PRODUCTION ENCODED FILES
 
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo('Site error: the file <b>'.__FILE__.'</b> requires the ionCube PHP Loader '.basename($__ln).' to be installed by the website operator. If you are the website operator please use the <a href="http://www.ioncube.com/lw/">ionCube Loader Wizard</a> to assist with installation.');exit(199);
-?>
+//if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo('Site error: the file <b>'.__FILE__.'</b> requires the ionCube PHP Loader '.basename($__ln).' to be installed by the website operator. If you are the website operator please use the <a href="http://www.ioncube.com/lw/">ionCube Loader Wizard</a> to assist with installation.');exit(199);
+/*
 HR+cP/UYJ32GEhK7QMVP4q893u6Q9PLk+dcyhhMyAwNCKpvqABsFDO+AG9dmDWMEWc3jZfw3WqTA
 Woy+CiE38RNgH4S6asvkp2nWYBuQjnNteNENYH1sBt0GBV/z5XBuIeh414ZPY3wC7zcQg/SeHyu8
 4oraBHKeNGWquRxYVc5MYqGWLYmAagqPp/Sw057FitDWNHn+Iq8z6yLVsjDO2VTS1ouZLsHB0AIS
@@ -95,4 +95,5 @@ XiDAtyUXFlNGm3iNhyR27k2/dT7ZDEBj4/taEq0Jijb6kDKL5odajK/IEUR14Fn17xxvsxit3W/9
 FwQmDu5KRdDdDSkQ6YKeDmG4xoAhSo2N/+bNs3+zbd62D0ZeevzO9iYVyrkDga/DFsKx0k1ojl4b
 JyPPr75UdAN39V7xiywWo7PQKnSH68mSVVYp4wKfpJYCdVs6peOZFf/wMFUO7NyEgtqENsf3vHH3
 duaLM366FPX2vKukwXKMFOUFKVFZba01GaTFz0KkTFnlGnKWrP/Yih9kO9sf/EcgXFsFZ+/ahhaP
-p2QuKnFde8kC/RDCxhBxYo71
+p2QuKnFde8kC/RDCxhBxYo71 */
+?>

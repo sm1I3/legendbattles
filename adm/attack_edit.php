@@ -108,31 +108,31 @@ if (isset($_POST['attack_id']))
         ) values (
             '.intval($_POST['attack_id']).',
             '.(isset($_POST['is_active']) ? 1 : 0).',
-            \''.mysql_real_escape_string($_POST['name']).'\',
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['name']) . '\',
             '.(isset($_POST['display_name']) ? 1 : 0).',
             '.intval($_POST['type']).',
             '.intval($at).',
             '.intval($_POST['pos_type']).',
-            \''.mysql_real_escape_string(implode('|', $params)).'\'
+            \'' . mysqli_real_escape_string($GLOBALS['db_link'], implode('|', $params)) . '\'
         )'  ;
     } else {
         $query = '
         update attack_list set
             attack_id = '.intval($_POST['attack_id']).',
             is_active = '.(isset($_POST['is_active']) ? 1 : 0).',
-            name = \''.mysql_real_escape_string($_POST['name']).'\',
+            name = \'' . mysqli_real_escape_string($GLOBALS['db_link'], $_POST['name']) . '\',
             display_name = '.(isset($_POST['display_name']) ? 1 : 0).',
             type = '.intval($_POST['type']).',
             action_type = '.intval($at).',
             pos_type = '.intval($_POST['pos_type']).',
-            params = \''.mysql_real_escape_string(implode('|', $params)).'\'
+            params = \'' . mysqli_real_escape_string($GLOBALS['db_link'], implode('|', $params)) . '\'
         where
             attack_id = '.intval($attack_id).'
         '  ;
-    }    
-    
-    if (!mysql_query($query))
-        die(mysql_error());
+    }
+
+    if (!mysqli_query($GLOBALS['db_link'], $query))
+        die(mysqli_error($GLOBALS['db_link']));
     header('Location: attack_list.php');
     
 }
@@ -153,10 +153,10 @@ if ((string)$attack_id == '')
 else 
 {
     $attack = array();
-    $res = mysql_query('select * from attack_list where attack_id = '.intval($attack_id));
-    if($row = mysql_fetch_assoc($res))
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from attack_list where attack_id = ' . intval($attack_id));
+    if ($row = mysqli_fetch_assoc($res))
         $attack = $row;
-    mysql_free_result($res);
+    mysqli_free_result($res);
     $aparams = explode('|', $attack['params']);
 }
 

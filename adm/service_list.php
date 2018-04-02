@@ -8,22 +8,22 @@ if (!userHasPermission(1)) {
 
 if (isset($_GET['delete_service_type_id']) && $_GET['delete_service_type_id']!='' && is_numeric($_GET['delete_service_type_id'])) {
     $service_type = (int)$_GET['delete_service_type_id'];
-    mysql_query('delete from service_add where service_type = '.$service_type);
-    mysql_query('delete from service_types where service_type = '.$service_type);
+    mysqli_query($GLOBALS['db_link'], 'delete from service_add where service_type = ' . $service_type);
+    mysqli_query($GLOBALS['db_link'], 'delete from service_types where service_type = ' . $service_type);
     header('Location: service_list.php');
 }
 
 if (isset($_GET['delete_service_id']) && $_GET['delete_service_id']!='' && is_numeric($_GET['delete_service_id'])) {
     $service_id = (int)$_GET['delete_service_id'];
-    mysql_query('delete from service_list where list_id = '.$service_id);
+    mysqli_query($GLOBALS['db_link'], 'delete from service_list where list_id = ' . $service_id);
     header('Location: service_list.php');
 }
 
 
 $service_types = '';
 $service_types_array = array();
-$res = mysql_query('select * from service_types'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from service_types');
+while ($row = mysqli_fetch_assoc($res))
 {
     $service_types .= '
     <tr>
@@ -37,12 +37,12 @@ while ($row = mysql_fetch_assoc($res))
     ';
     $service_types_array[$row['service_type']] = $row['service_name'];
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 
 $services = '';
-$res = mysql_query('select * from service_list'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from service_list');
+while ($row = mysqli_fetch_assoc($res))
 {
     $services .= '
     <tr>
@@ -55,7 +55,7 @@ while ($row = mysql_fetch_assoc($res))
     </tr>
     ';
 }
-mysql_free_result($res);
+mysqli_free_result($res);
 
 ?>
     <h3>Список платных сервисов</h3>

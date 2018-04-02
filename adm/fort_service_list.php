@@ -8,20 +8,20 @@ if (!userHasPermission(1)) {
 
 if (isset($_GET['delete_fort_service_id']) && $_GET['delete_fort_service_id']!='') {
     $fort_service_id = (int)$_GET['delete_fort_service_id'];
-    mysql_query('delete from forts_serv_lists where list_id = '.intval($fort_service_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from forts_serv_lists where list_id = ' . intval($fort_service_id));
     header('Location: fort_service_list.php');
 }
 
 $classes = array();
-$res = mysql_query('SELECT * FROM forts_serv_classes ORDER BY service_name ASC');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM forts_serv_classes ORDER BY service_name ASC');
+while ($row = mysqli_fetch_assoc($res))
     $classes[$row['service_id']] = $row['service_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 $services = '';
 $now_class = '';
-$res = mysql_query('select * from forts_serv_lists ORDER BY service_id ASC, service_nv ASC'); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from forts_serv_lists ORDER BY service_id ASC, service_nv ASC');
+while ($row = mysqli_fetch_assoc($res))
 {
     if ($now_class != $row['service_id'])
         $services .= '

@@ -9,7 +9,7 @@ if (!userHasPermission(32)) {
 if (isset($_GET['delete_resource_id']) && $_GET['delete_resource_id']!='' && is_numeric($_GET['delete_resource_id'])) 
 {
     $resource_id = (int)$_GET['delete_resource_id'];
-    mysql_query('delete from restore_resources where resource_id = '.intval($resource_id));
+    mysqli_query($GLOBALS['db_link'], 'delete from restore_resources where resource_id = ' . intval($resource_id));
     header('Location: '.$_SESSION['pages']['resource_list']);
 }
 
@@ -19,15 +19,15 @@ else
     $resource_type = '';
     
 $resource_types = array();
-$res = mysql_query('select * from resource_types');
-while($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], 'select * from resource_types');
+while ($row = mysqli_fetch_assoc($res))
     $resource_types[$row['resource_type_id']] = $row['resource_type_name'];
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // PAGE NAVIGATOR
 $query = 'select count(*) from restore_resources '.($resource_type!=''?'where resource_type = '.intval($resource_type):'');
-$res = mysql_query($query);
-$row = mysql_fetch_row($res);
+$res = mysqli_query($GLOBALS['db_link'], $query);
+$row = mysqli_fetch_row($res);
 $records_count = $row[0];
 
 $pages_count = ceil($records_count / $recs_per_page);
@@ -48,8 +48,8 @@ $query = 'select * from restore_resources '.
 
 
 $resources = '';
-$res = mysql_query($query); 
-while ($row = mysql_fetch_assoc($res))
+$res = mysqli_query($GLOBALS['db_link'], $query);
+while ($row = mysqli_fetch_assoc($res))
 {
     $resources.='
     <tr>
