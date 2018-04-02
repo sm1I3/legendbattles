@@ -1,37 +1,23 @@
-<?php require('kernel/before.php');?>
+<?php require('kernel/before.php'); ?>
 <? session_start();
 $_SESSION['filter']; ?>
-<HTML>
-<HEAD>
-<LINK href="../../../css/game.css" rel=STYLESHEET type=text/css>
-    <META Http-Equiv=Content-Type Content="text/html; charset=utf-8">
-<META Http-Equiv=Cache-Control Content=No-Cache>
-<META Http-Equiv=Pragma Content=No-Cache>
-<META Http-Equiv=Expires Content=0>
-</HEAD>
+    <HTML>
+    <HEAD>
+        <LINK href="../../../css/game.css" rel=STYLESHEET type=text/css>
+        <META Http-Equiv=Content-Type Content="text/html; charset=utf-8">
+        <META Http-Equiv=Cache-Control Content=No-Cache>
+        <META Http-Equiv=Pragma Content=No-Cache>
+        <META Http-Equiv=Expires Content=0>
+    </HEAD>
 <BODY bgcolor=#FFFFFF topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0>
-<? 
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
-
-}
-foreach($_SESSION as $keyses=>$vals){
-	$$keyses = $vals;
-}
+<?
+require_once($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
 
 $Newchests2 = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE `chests`='2';");
 while ($row = mysqli_fetch_array($Newchests2)) {
     if (mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2` WHERE `cid`='" . $row['id'] . "'")) == 0) {
         mysqli_query($GLOBALS['db_link'], "INSERT INTO `chests2` (`cid`, `name`) VALUES ('" . $row['id'] . "', '" . $row['name'] . "');");
-	}
+    }
 }
 $chests2 = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2`;");
 echo '
@@ -43,10 +29,10 @@ echo '
 ';
 while ($present = mysqli_fetch_array($chests2)) {
     if (mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE `chests`='2' and `id`='" . $present['cid'] . "'")) > 0) {
-		echo '<option value="'.$present['id'].'" '.(($_POST['present']==$present['id'])?'selected=selected':'').'>'.$present['name'].'</option>';
-	}else{
+        echo '<option value="' . $present['id'] . '" ' . (($_POST['present'] == $present['id']) ? 'selected=selected' : '') . '>' . $present['name'] . '</option>';
+    } else {
         mysqli_query($GLOBALS['db_link'], "DELETE FROM `chests2` WHERE `cid`='" . $present['cid'] . "'");
-	}
+    }
 }
 echo '
 </select>
@@ -55,41 +41,42 @@ echo '
 </table>
 </form>
 ';
-$err=0;
-if($_POST['present']!='none' and !empty($_POST['present'])){
-	if(!empty($_POST['delete'])){
+$err = 0;
+if ($_POST['present'] != 'none' and !empty($_POST['present'])) {
+    if (!empty($_POST['delete'])) {
         $items = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2` WHERE `id`='" . $_POST['present'] . "' LIMIT 1;"));
-		$additem="";
-		switch($_POST['delete_id']){
-			case 'items':
-				$item=explode("|",$items['items']);
-				foreach($item as $val){
-					if($val!='' and $val!=$_POST['delete']){
-						$additem.=$val."|";
-					}
-				}
-				if($additem==""){$additem=0;}
+        $additem = "";
+        switch ($_POST['delete_id']) {
+            case 'items':
+                $item = explode("|", $items['items']);
+                foreach ($item as $val) {
+                    if ($val != '' and $val != $_POST['delete']) {
+                        $additem .= $val . "|";
+                    }
+                }
+                if ($additem == "") {
+                    $additem = 0;
+                }
                 mysqli_query($GLOBALS['db_link'], "UPDATE `chests2` SET `items`='" . $additem . "'  WHERE `id`='" . $_POST['present'] . "'  LIMIT 1;");
-			break;
-		}
-	}
-	if($_POST['idit']){
+                break;
+        }
+    }
+    if ($_POST['idit']) {
         $items = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2` WHERE `id`='" . $_POST['present'] . "' LIMIT 1;"));
-		if($items['items']=='0'){
-			$additem=intval($_POST['idit'])."|";
+        if ($items['items'] == '0') {
+            $additem = intval($_POST['idit']) . "|";
             mysqli_query($GLOBALS['db_link'], "UPDATE `chests2` SET `items`='" . $additem . "' WHERE  `id`='" . $_POST['present'] . "' LIMIT 1;");
-		}
-		else{
-			$item=explode("|",$items['items']);
-			if(in_array(intval($_POST['idit']),$item)==false){
-				$additem=$items['items'].intval($_POST['idit'])."|";
+        } else {
+            $item = explode("|", $items['items']);
+            if (in_array(intval($_POST['idit']), $item) == false) {
+                $additem = $items['items'] . intval($_POST['idit']) . "|";
                 mysqli_query($GLOBALS['db_link'], "UPDATE `chests2` SET `items`='" . $additem . "'  WHERE `id`='" . $_POST['present'] . "'  LIMIT 1;");
-			}
-		}
-	}
-	if($_GET['add']==1){
+            }
+        }
+    }
+    if ($_GET['add'] == 1) {
         $present = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chests2` WHERE `id`='" . $_POST['present'] . "';"));
-	echo'
+        echo '
 			<form method="post" action="?useaction=admin-action&addid=chests2&add=1&save=1">
 			<br><table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
@@ -97,7 +84,7 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 					<tr class=nickname bgcolor=#EAEAEA>
 						<td align=center width=30%><b>Имя</b></td>
 					</tr>';
-			echo'
+        echo '
 			<tr class=freetxt bgcolor=white>
 				<td align=center width=30%>
 					Имя: <input type=text class=logintextbox6 name="present_name" value="' . $present['name'] . '" /><br>
@@ -107,13 +94,13 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 			<tr class=freetxt bgcolor=white>
 				<td align=center width=100% colspan=5>
 				<input class=lbut type=submit value="Сохранить">
-				<input type=hidden name=present value="'.$_POST['present'].'">
+				<input type=hidden name=present value="' . $_POST['present'] . '">
 				</td>
 			</tr>	
 			</table></form></td></tr></table>';
-	}
-	if($err==0){	
-			echo'
+    }
+    if ($err == 0) {
+        echo '
 			<form method="post" action="?useaction=admin-action&addid=chests2&add=1">
 			<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 			<tr align=left class=nickname><td align=center>
@@ -149,61 +136,69 @@ if($_POST['present']!='none' and !empty($_POST['present'])){
 				  <option value="w70">Мази</option>
 				  <option value="w100">Ресурсы</option>
 				 </select>  <input name="smb7" type="submit" class="lbut" value="Применить фильтр" />';
-				 $filter2="WHERE master=''";
-				 if($smb7){
-					if($type==""){
-						$filter="";$filter2="WHERE master=''";
-					}
-					else $filter="WHERE type='".$type."'";
-					$filter2=" AND master=''";
-				}
-				echo'    
+        $filter2 = "WHERE master=''";
+        $smb7 = varcheck($_POST['smb7']) ?? varcheck($_GET['smb7']) ?? '';
+        if ($smb7) {
+            if ($type == "") {
+                $filter = "";
+                $filter2 = "WHERE master=''";
+            } else $filter = "WHERE type='" . $type . "'";
+            $filter2 = " AND master=''";
+        }
+        echo '    
 				  <select name="idit" >
 				  <option value=0';
-				if($idit==""){echo " selected=selected";}
+        $idit = varcheck($_POST['idit']) ?? varcheck($_GET['idit ']) ?? '';
+        if ($idit == "") {
+            echo " selected=selected";
+        }
         echo '>Выберите тип</option>';
         $it = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` " . $filter . " " . $filter2 . " ORDER BY type,name,level;");
         while ($row = mysqli_fetch_assoc($it)) {
-					echo "<option value=".$row['id']."";if($idit==$row['id']){echo " selected=selected";}echo">".$row['name']." [ ".$row['level']." ]</option>";
-				  }
-				  echo'
-			<input type=hidden name=present value="'.$_POST['present'].'">
+            echo "<option value=" . $row['id'] . "";
+            if ($idit == $row['id']) {
+                echo " selected=selected";
+            }
+            echo ">" . $row['name'] . " [ " . $row['level'] . " ]</option>";
+        }
+        echo '
+			<input type=hidden name=present value="' . $_POST['present'] . '">
 			<input class=lbut type=submit value="Добавить в дроп">
 			</td></tr>
 			</table>
 			</form><br>
 			';
-			if($present['items']!='0'){
-			echo'
+        if ($present['items'] != '0') {
+            echo '
 				<table cellpadding=0 cellspacing=0 border=0 width=65% bgcolor=#e0e0e0 align=center>
 				<tr><td>
 				<table border=0 cellpadding=4 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
 				<tr align=center class=nickname><td><b>Добавленные вещи:</b></td></tr>';
-				$itemsin=explode("|",$present['items']);
-				foreach($itemsin as $val){
-					if($val!=''){
-                        $name = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `items`.`name`,`items`.`id` FROM `items` WHERE `id`='" . $val . "' LIMIT 1;"));
-						echo'
+            $itemsin = explode("|", $present['items']);
+            foreach ($itemsin as $val) {
+                if ($val != '') {
+                    $name = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `items`.`name`,`items`.`id` FROM `items` WHERE `id`='" . $val . "' LIMIT 1;"));
+                    echo '
 						<tr class=freetxt bgcolor=white>							
 							<td>
-							<form method="post" action="?useaction=admin-action&addid=chests2&add=1" id="itdel_'.$name['id'].'">
-							'.$name['name'].'							
-								<input type=hidden name=present value="'.$_POST['present'].'">
-								<input type=hidden name=delete value="'.$name['id'].'">
+							<form method="post" action="?useaction=admin-action&addid=chests2&add=1" id="itdel_' . $name['id'] . '">
+							' . $name['name'] . '							
+								<input type=hidden name=present value="' . $_POST['present'] . '">
+								<input type=hidden name=delete value="' . $name['id'] . '">
 								<input type=hidden name=delete_id value="items">
-								<input type=image src=http://img.legendbattles.ru/image/del.gif width=14 height=14 border=0 onClick="javasctipt: document.getElementById(\'itdel_'.$name['id'].'\').submit()" value="x" />
+								<input type=image src=http://img.legendbattles.ru/image/del.gif width=14 height=14 border=0 onClick="javasctipt: document.getElementById(\'itdel_' . $name['id'] . '\').submit()" value="x" />
 							</form>
 							</td>
 						</tr>';
-					}
-				}
-				echo'
+                }
+            }
+            echo '
 				</table>
 				</td></tr>
 				</table>';
-			}
+        }
 
-	}
+    }
 }
 ?>
 <? require('kernel/after.php'); ?>

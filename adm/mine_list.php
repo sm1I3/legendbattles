@@ -20,7 +20,7 @@ if (isset($_GET['delete_mine_code']) && $_GET['delete_mine_code']!='') {
 
 
 $mines = '';
-$res = mysqli_query($GLOBALS['db_link'], 'select * from mine_list', $db);
+$res = mysqli_query($GLOBALS['db_link'], 'select * from mine_list');
 while ($row = mysqli_fetch_assoc($res))
 {
     $mines.='

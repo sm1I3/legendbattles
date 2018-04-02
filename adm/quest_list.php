@@ -51,7 +51,7 @@ $res = mysqli_query($GLOBALS['db_link'], '
     '.($quest_group_id!='' ? ' AND quest_group_id = '.intval($quest_group_id).'' : '').'
     ORDER BY 
         quest_id
-', $db);
+');
 
 while ($row = mysqli_fetch_assoc($res))
 {

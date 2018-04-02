@@ -2531,7 +2531,7 @@ function zelused($id, $login, $loc)
                 $msg['msg'] = "<b><font class=nickname><font color=#cc0000>Вы удачно применили \"$msg[0]\"!</font></font></b><br>";
                 mysqli_query($GLOBALS['db_link'], "UPDATE user SET buffs='$buff' WHERE login='$login'");
                 mysqli_query($GLOBALS['db_link'], "INSERT INTO `effects` (`uid`,`eff_id`,`effects`,`side_effects`,`time`,`side_time`) VALUES ('" . $pl['id'] . "','" . $it['eff_id'] . "','" . $it['effects'] . "','" . $it['side_effects'] . "','" . ($it['eftime'] + time()) . "','" . (($it['efside_time'] > 0) ? $it['efside_time'] + time() : '0') . "');");
-                calcstat($pl[id]);
+                calcstat($pl['id']);
                 if ($user['login'] != $login) {
                     $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Персонаж <b>$user[login]</b>  применил к вам <b>\"$it[name]\".</b></font><BR>'+'');";
                     chmsg($ms, $login);

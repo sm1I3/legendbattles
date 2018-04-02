@@ -175,6 +175,7 @@ else
         for ($i=0; $i<24; $i++) 
         { 
             if ($i<10) $h = '0'.$i; else $h = $i;
+            $hvalues = $hvalues ?? null;
             $hvalues[$h] = $row[$h];
         }
         $bot_koef = $row['bot_koef'];

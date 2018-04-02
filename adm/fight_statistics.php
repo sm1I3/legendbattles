@@ -96,7 +96,7 @@ $query = 'select count(*) from bots_fights where 1=1 '.
     ($bot_type!=''?' and bot_type = '.intval($bot_type):'').' '.
     ($is_active!=''?' and bot_active = '.intval($is_active):'').' '.
     ($bot_class_id!=''?' and inf_bot IN ('.implode(',',$bot_class_ids[$bot_class_id]).')':'').' ';
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 $row = mysqli_fetch_row($res);
 $records_count = $row[0];
 

@@ -66,7 +66,7 @@ mysqli_free_result($res);
 
 // PAGE NAVIGATOR
 $query = 'select count(*) from bots_templates '.($bot_class_id!=''?'where bot_class_id = '.intval($bot_class_id):'');
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 $row = mysqli_fetch_row($res);
 $records_count = $row[0];
 

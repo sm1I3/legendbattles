@@ -17,21 +17,9 @@
 </table>
 <? 
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
-
-}
-foreach($_SESSION as $keyses=>$vals){
-	$$keyses = $vals;
-}
-
+$tztext = varcheck($_POST['tztext']) ?? varcheck($_GET['tztext']) ?? '';
+$srok = varcheck($_POST['srok']) ?? varcheck($_GET['srok']) ?? '';
+$tzid = varcheck($_POST['tzid']) ?? varcheck($_GET['tzid']) ?? '';
 if($_GET['addtz']==1){
     mysqli_query($GLOBALS['db_link'], "INSERT INTO `tzamin` (`text`,`date`,`srok`) VALUES ('" . bbCodes($tztext) . "','" . time() . "','" . $srok . "')");
     echo 'Тз добавлено';
@@ -52,6 +40,7 @@ if($_GET['addtz']==5){
 }
 
 $filt="";
+$fl = varcheck($_POST['fl']) ?? varcheck($_GET['fl']) ?? '';
 if($fl==1){
 	$filt="WHERE status='0'";
 }

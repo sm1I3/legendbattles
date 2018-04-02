@@ -1,6 +1,8 @@
 <? require('kernel/before.php');
 session_start();
-$_SESSION['filter']; ?>
+$_SESSION['filter'];
+$inf = player();
+?>
 
     <script>
         var user = '<?=$inf['sklon']?> <?=$inf['clan_gif']?> <?=$_SESSION['user']["login"]?>';

@@ -28,10 +28,10 @@ if (isset($_POST['quest_group_name']))
     } else {
         $query = '
         update quest_groups set
-            quest_group_id = '.(int)$_POST['quest_group_id'].',
+            quest_group_id = ' . (int)$_POST["quest_group_id"] . ',
             quest_group_name = \'' . mysqli_escape_string($GLOBALS['db_link'], $_POST['quest_group_name']) . '\'
         where
-            quest_group_id = '.intval($category_id).'
+            quest_group_id = ' . intval($_POST["category_id"]) . '
         '  ;
     }
     mysqli_query($GLOBALS['db_link'], $query);

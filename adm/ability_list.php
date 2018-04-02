@@ -13,7 +13,7 @@ if (isset($_GET['delete_ability_id']) && $_GET['delete_ability_id']!='' && is_nu
 }
 
 $abilities = '';
-$res = mysqli_query($GLOBALS['db_link'], 'select * from ability_list', $db);
+$res = mysqli_query($GLOBALS['db_link'], 'select * from ability_list');
 while ($row = mysqli_fetch_assoc($res))
 {
     $abilities .= '

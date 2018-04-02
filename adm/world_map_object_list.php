@@ -33,7 +33,7 @@ else
 // PAGE NAVIGATOR
 $query = 'select count(*) from world_objects '.
     ($zone_code != '' ? 'where zone_code = \'' . mysqli_escape_string($GLOBALS['db_link'], $zone_code) . '\'' : '');
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 $row = mysqli_fetch_row($res);
 $records_count = $row[0];
 

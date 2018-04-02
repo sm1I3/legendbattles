@@ -20,7 +20,7 @@ else
     //header('Location: bot_list.php');
 
 $bot_classes = array();
-$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_classes', $db);
+$res = mysqli_query($GLOBALS['db_link'], 'select * from bots_classes');
 while ($row = mysqli_fetch_assoc($res))
 {
     $bot_classes[$row['bot_class_id']] = $row['nickname'];

@@ -143,7 +143,7 @@ $query = 'SELECT * FROM log_analyzer WHERE
     '.($action != '' ? 'AND view_params = '.intval($action): '').'
     ORDER BY id DESC LIMIT 100';
 $logs = $users = array();
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 while ($row = mysqli_fetch_assoc($res))
 {
     $logs[] = $row;
@@ -351,4 +351,5 @@ echo createSelectFromArray('year', $years, '');
 File: <input type="file" name="file"><br>
     <input type="submit" name="upload" value="Загрузить">
 </form>
-<? require('kernel/after.php'); ?>
+<? die("В разработке");
+require('kernel/after.php'); ?>

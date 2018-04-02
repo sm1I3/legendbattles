@@ -14,7 +14,7 @@ if (isset($_GET['delete_item_id']) && $_GET['delete_item_id']!='' && is_numeric(
 
 // PAGE NAVIGATOR
 $query = 'select count(*) from items';
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 $row = mysqli_fetch_row($res);
 $records_count = $row[0];
 

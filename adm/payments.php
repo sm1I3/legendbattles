@@ -44,7 +44,7 @@ $title = new title( date("D M d Y") );
 
 $values = $axis = array();
 $max = 0;
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 $now_date = '';
 while ($row = mysqli_fetch_assoc($res))
 {

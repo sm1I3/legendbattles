@@ -25,20 +25,7 @@ require('kernel/before.php');
 </table>
 <? 
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
-
-}
-foreach($_SESSION as $keyses=>$vals){
-	$$keyses = $vals;
-}
+$create = varcheck($_POST['create']) ?? varcheck($_GET['create']) ?? '';
 if($create==1){
 	$itm="";
 	if($_POST['idit']!=0){
@@ -70,6 +57,7 @@ if($create==1){
 		$item=explode("|",$itm);
 		foreach($item as $value){
 			$param=explode("@",$value);
+            $recipe = varcheck($_POST['recipe']) ?? varcheck($_GET['recipe']) ?? '';
 			$recipe[$param[0]]+=$param[2];
 			$fullrec[$param[0]]=$param[0]."@".$recipe[$param[0]]."@".$param[1];
 		}

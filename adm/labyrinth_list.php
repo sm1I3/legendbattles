@@ -18,7 +18,7 @@ if (isset($_GET['copy_lab_id']) && $_GET['copy_lab_id']!='' && filter_var($_GET[
             labyrinth_list
         WHERE
             labyrinth_id = '.(int)$lab_id.'
-    ', $db))
+    '))
         die(mysqli_error($GLOBALS['db_link']));
     $last_id = mysqli_insert_id($GLOBALS['db_link']);
     header('Location: labyrinth_design.php?lab_id='.$last_id); 
