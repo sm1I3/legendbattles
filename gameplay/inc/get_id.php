@@ -29,16 +29,16 @@ mysqli_query($GLOBALS['db_link'],'UPDATE user SET battle='.AP.$fid.AP.',side="1"
 */
 if ($get_id == 15) {
     $plstt = allparam($player);
-    if ($player[ustal] < time()) {
-        $player[ustal] = time();
+    if ($player['ustal'] < time()) {
+        $player['ustal'] = time();
     }
-    $ust = $player[ustal] + (150 / ($plstt[58] / 200 + 1));
+    $ust = $player['ustal'] + (150 / ($plstt[58] / 200 + 1));
     if ($gti == 0 or $gti == '') {
         $gti = 0;
     } else {
         $gti = time() + ($gti / (1 + $plstt[58] / 200));
     }
-    list($x, $y) = explode("_", $player[pos], 2);
+    list($x, $y) = explode("_", $player['pos'], 2);
     if ($x = 1005 && $y = 1001) {
         mysqli_query($GLOBALS['db_link'], 'UPDATE user SET pos="8_4" WHERE id=' . AP . $player['id'] . AP . ' LIMIT 1;');
     }
@@ -96,12 +96,12 @@ if ($get_id == 42) {
     mysqli_query($GLOBALS['db_link'], "UNLOCK TABLES;");
 }
 
-if ($get_id == 14 and $player[obnul] > 0) {
+if ($get_id == 14 and $player['obnul'] > 0) {
     obnul_pl($player);
     echo "<script>parent.jAlert('Ваши статы обнулились.');</script>";
 }
-if ($get_id == 11 and $player[obnul] > 0) {
-    mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `thotem`='" . ((intval($_REQUEST['ch_tot']) > 11) ? 0 : intval($_REQUEST['ch_tot'])) . "',`obnul`=`obnul`-'1' WHERE `id`='" . $player[id] . "' LIMIT 1;");
+if ($get_id == 11 and $player['obnul'] > 0) {
+    mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `thotem`='" . ((intval($_REQUEST['ch_tot']) > 11) ? 0 : intval($_REQUEST['ch_tot'])) . "',`obnul`=`obnul`-'1' WHERE `id`='" . $player['id'] . "' LIMIT 1;");
 }
 if ($_GET['get_id'] == '34') {
     $msg = '';

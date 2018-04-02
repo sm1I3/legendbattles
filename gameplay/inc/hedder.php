@@ -52,8 +52,8 @@ $img = array('1x1', 'darks', 'lights', 'sumers', 'chaoss', 'light', 'dark', 'sum
 $name = array('', '?ети “ьмы', '?ети —вета', '?ети —умерек', '?ети ’аоса', '»стинный —вет', '»стинна¤ “ьма', 'Ќейтральные —умерки', 'јбсолютный ’аос', 'јнгел');
 $vis = explode("|", $player['viselica']);
 $ret = ret_id($player['loc'], $player['pos']);
-$pris = explode("|", $player[prison]);
-$travm = explode("@", $player[affect]);
+$pris = explode("|", $player['prison']);
+$travm = explode("@", $player['affect']);
 $userprem = explode("|", $player['premium']);
 if ($userprem[1] < time()) {
     mysqli_query($GLOBALS['db_link'], "UPDATE user SET premium='1|0',forum_smiles='1' WHERE id='" . $player['id'] . "';");
@@ -75,7 +75,7 @@ foreach ($otherbonus as $val) {
 
 $mass = ($plstt[30] * 4) + ($plstt[33] * 8) + $plstt[72] + $prsql['mass'] + $massbonus;
 
-if ($player[wait] > time() or $plstt[71] > $mass or $pris[0] > time() or $vis[1] > time()) {
+if ($player['wait'] > time() or $plstt[71] > $mass or $pris[0] > time() or $vis[1] > time()) {
     $dis = 1;
 } else {
     $dis = 0;

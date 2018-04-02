@@ -13,10 +13,10 @@ if ($player['loc'] == 80) {
     }
     while ($row = mysqli_fetch_assoc($podq)) {
         if ($row['end_time'] > time() and $row['level'] == 1) {
-            $cd[1] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row[end_time]) . "";
+            $cd[1] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row['end_time']) . "";
         }
         if ($row['end_time'] > time() and $row['level'] == 2) {
-            $cd[2] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row[end_time]) . "";
+            $cd[2] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row['end_time']) . "";
         }
     }
     $id = 1;
@@ -28,10 +28,10 @@ if ($player['loc'] == 80) {
     }
     while ($row = mysqli_fetch_assoc($podq)) {
         if ($row['end_time'] > time() and $row['level'] == 1) {
-            $cd[1] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row[end_time]) . "";
+            $cd[1] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row['end_time']) . "";
         }
         if ($row['end_time'] > time() and $row['level'] == 2) {
-            $cd[2] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row[end_time]) . "";
+            $cd[2] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row['end_time']) . "";
         }
     }
     $id = 2;

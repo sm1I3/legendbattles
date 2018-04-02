@@ -26,13 +26,13 @@ WHERE `kol`>'0' AND `items`.`dd_price`>'0' AND `items`.`id`='" . intval($wsuid) 
                         break;
                 }
             }
-            mysqli_query($GLOBALS['db_link'], 'INSERT INTO invent (protype,pl_id,dolg,dd_price) VALUES (' . AP . $IT[id] . AP . ',' . AP . $player[id] . AP . ',' . AP . $dolg . AP . ',' . AP . $IT[dd_price] . AP . ');');
+            mysqli_query($GLOBALS['db_link'], 'INSERT INTO invent (protype,pl_id,dolg,dd_price) VALUES (' . AP . $IT['id'] . AP . ',' . AP . $player['id'] . AP . ',' . AP . $dolg . AP . ',' . AP . $IT['dd_price'] . AP . ');');
             mysqli_query($GLOBALS['db_link'], 'UPDATE market SET kol=kol-1 WHERE id=' . AP . $wsuid . AP . 'LIMIT 1;');
-            mysqli_query($GLOBALS['db_link'], 'UPDATE user SET baks=baks-' . AP . $IT[dd_price] . AP . ' WHERE id=' . AP . $player[id] . AP . 'LIMIT 1;');
+            mysqli_query($GLOBALS['db_link'], 'UPDATE user SET baks=baks-' . AP . $IT['dd_price'] . AP . ' WHERE id=' . AP . $player['id'] . AP . 'LIMIT 1;');
             $msg = "<b><font class=proce>Вы удачно купили:<br><font class=proceg> " . $IT['name'] . " </font><br></font></b>";
             $typetolog .= '@10';
             $abouttolog .= '@<b>' . $IT['name'] . '</b>. По цене: ' . $IT['dd_price'];
-            log_write("buy", $IT[name], $IT[dd_price], "market");
+            log_write("buy", $IT['name'], $IT['dd_price'], "market");
         } else {
             $msg = "<b><font class=proce>Нехватает денег</font></b>";
         }

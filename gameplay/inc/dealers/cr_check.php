@@ -319,7 +319,7 @@ foreach($koeff as $key=>$value){
 }
 if($pr>0){
 //echo "koeff: ".$z;
-	mysqli_query($GLOBALS['db_link'],"INSERT INTO art_zayav (type,damage,armor,proboi,hp,sila,lovkost,udacha,znan,ylov,toch,sokr,stoi,nav,pl_id,name,price,koeff,cr_time) VALUES ('".$tp."',".$val."'".$navval."',".$player[id].",'".$name."',".$pr.",".$z.",".time().");");
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO art_zayav (type,damage,armor,proboi,hp,sila,lovkost,udacha,znan,ylov,toch,sokr,stoi,nav,pl_id,name,price,koeff,cr_time) VALUES ('" . $tp . "'," . $val . "'" . $navval . "'," . $player['id'] . ",'" . $name . "'," . $pr . "," . $z . "," . time() . ");");
 	}
 }
 

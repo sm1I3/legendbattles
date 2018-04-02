@@ -68,11 +68,11 @@ $mass = ($plstt[30] * 4) + ($plstt[33] * 8) + $plstt[72] + $prsql['mass'] + $mas
                         ?>
                         <br>
                     <td width=50% bgcolor=#f5f5f5>
-                        <div align=center><a href=main.php?get_id=98&type=1&vcode=<?= scod() ?>><font class=zaya><b>Восстановить
+                        <div align=center><a href=main.php?get_id=98&type=1&vcode=<?= scode() ?>><font class=zaya><b>Восстановить
                                         100HP за 1LR</b></font></a></div>
                         <br>
                     <td width=50% bgcolor=#f5f5f5>
-                        <div align=center><a href=main.php?get_id=98&type=2&vcode=<?= scod() ?>><font class=zaya><b>Восстановить
+                        <div align=center><a href=main.php?get_id=98&type=2&vcode=<?= scode() ?>><font class=zaya><b>Восстановить
                                         100MP за 1LR</b></font></a></div>
                         <br>
                         <?

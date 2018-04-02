@@ -1,8 +1,4 @@
-<?
-require_once "/var/www/legendbattles.ru/includes/sql.php";
-$stop_injection = new InitVars();
-$stop_injection->checkVars();
-?>
+
 <? session_start();
 $tsql = array('dlr' => 0, 'lr' => 0);
 if (!empty($_POST['pass']) and !empty($_POST['schet'])) {
@@ -29,7 +25,7 @@ echo '
 	 <tr align="center"><td>
 	<div align=center>
 	<b>Вас приветствуют работники банка города Барус</b></font></font>
-	<br>У Вас с собой: <b>' . lr($player[nv]) . '
+	<br>У Вас с собой: <b>' . lr($player['nv']) . '
 	<b>' . (!empty($_POST['dlr']) ? ($_POST['tp'] == 0 ? ($tsql['dlr'] - intval($_POST['dlr']) > 0 ? $player['dd'] + intval($_POST['dlr']) : $player['dd']) : ($player['dd'] - intval($_POST['dlr']) > 0 ? $player['dd'] - intval($_POST['dlr']) : $player['dd'])) : $player['dd']) . '
 	</b> DLR и вещей на массу ' . $plstt[71] . '.<br><br>
 	' . ($message != '' ? "<font class=nickname style=\"color:red\"><b>" . $message . "</b></font>" : "") . '	

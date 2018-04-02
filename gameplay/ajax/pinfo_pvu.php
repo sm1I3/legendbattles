@@ -104,7 +104,7 @@ $WatchUser = GetUser();
 			while($row = mysqli_fetch_assoc($query)){
 				if($ip != $row['ip']){
 					$ip=$row['ip'];
-					$oneip=mysqli_query($GLOBALS['db_link'],"SELECT * FROM mlog WHERE login!='".$pers[login]."' AND ip='".$ip."';");
+                    $oneip = mysqli_query($GLOBALS['db_link'], "SELECT * FROM mlog WHERE login!='" . $pers['login'] . "' AND ip='" . $ip . "';");
 					$oneip = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `pvu_logs`.`logs_1` WHERE `uid` != '".$_GET['puid']."' and `ip` = '".$ip."'");
 					if(mysqli_num_rows($oneip)>0){
 						while($newrow = mysqli_fetch_assoc($oneip)){

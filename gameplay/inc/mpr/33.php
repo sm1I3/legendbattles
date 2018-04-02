@@ -78,9 +78,10 @@ function new_game () {
         <center>
             Ставка: <SELECT class=lbut name=type>
                 <OPTION value='1' selected>1000 серебра<img src="http://img.legendbattles.ru/image/gold.png"></b>
-                <OPTION value='2'>2500
-                <OPTION value='3'>10000
-                <OPTION value='4'>50000
+                </OPTION>
+                <OPTION value='2'>2500></OPTION>
+                <OPTION value='3'>10000</OPTION>
+                <OPTION value='4'>50000</OPTION>
                 <OPTION value='5'>10000</OPTION>
             </SELECT>
             <p><input type=submit value='Начать игру' class=lbut>
@@ -92,19 +93,19 @@ function new_game () {
         </table>
         <?
         }
-if (!$_GET[set])
+        if (!$_GET['set'])
 {
 new_game();
 }
-if ($_GET[set]==game) {
-        if ($_POST[type]==1 or $_POST[type]==2 or $_POST[type]==3 or $_POST[type]==4 or $_POST[type]==5) {
-                if ($_POST[type]==1) $st=100;
-                if ($_POST[type]==2) $st=250;
-                if ($_POST[type]==3) $st=1000;
-                if ($_POST[type]==4) $st=5000;
-                if ($_POST[type]==5) $st=10000;
-                if ($player[nv]>=$st) {
-                        if ($_POST[play]==1) {
+        if ($_GET['set'] == 'game') {
+            if ($_POST['type'] == 1 or $_POST['type'] == 2 or $_POST['type'] == 3 or $_POST['type'] == 4 or $_POST['type'] == 5) {
+                if ($_POST['type'] == 1) $st = 100;
+                if ($_POST['type'] == 2) $st = 250;
+                if ($_POST['type'] == 3) $st = 1000;
+                if ($_POST['type'] == 4) $st = 5000;
+                if ($_POST['type'] == 5) $st = 10000;
+                if ($player['nv'] >= $st) {
+                    if ($_POST['play'] == 1) {
                                 $player_1 = rand(1,6);
                                 $player_2 = rand(1,6);
                                 $comp_1 = rand(2,6);
@@ -122,11 +123,11 @@ if($player['clan_gif']!=''){echo"<img src=http://img.legendbattles.ru/image/sign
 ?>
 </center>
 <br>
-        Деньги: <b><?= $player[nv] ?> <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
+        Деньги: <b><?= $player['nv'] ?> <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
 <br>
         Ставка: <b><?= $st ?> <img src="http://img.legendbattles.ru/image/money_all.gif" title="LR"></b>
 <?
-if ($_POST[play]==1) {
+if ($_POST['play'] == 1) {
 ?>
 <br>
     Выпало:
@@ -164,25 +165,25 @@ if ($_POST['play']==1) {
 </tr>
 </table>
 <form action='?33=1&set=game&type=play&get=3&vcode=<?php scode()?>' method=post>
-<input type="hidden" name="type" value="<?=$_POST[type]?>">
+    <input type="hidden" name="type" value="<?= $_POST['type'] ?>">
 <input type="hidden" name="play" value="1">
     <FIELDSET>
         <LEGEND>Действия</LEGEND>
 <center>
-<? if ($_POST[play]==1) {
+    <? if ($_POST['play'] == 1) {
         $summa_player = $player_1+$player_2;
         $summa_comp = $comp_1+$comp_2;
         if ($summa_player>$summa_comp) {
 				$stwin = $st*2;
                 mysqli_query($GLOBALS['db_link'],"UPDATE user SET nv=nv+".$st." WHERE id='".$player['id']."'");
 
-                                $player[nv] = $player[nv]+$st;
+            $player['nv'] = $player['nv'] + $st;
             echo "<p><center><font class=sysmessage>Поздравляем! Вы победили и получаете <b>$st <img src='http://img.legendbattles.ru/image/money_all.gif' title='LR'></b> поверх вашей ставки!</font></center><p>";
         }
         if ($summa_player<$summa_comp) {
                                 mysqli_query($GLOBALS['db_link'],"UPDATE user SET nv=nv-".$st." WHERE id='".$player['id']."'");
 
-                                $player[nv] = $player[nv]-$st;
+            $player['nv'] = $player['nv'] - $st;
             echo "<p><center><font class=sysmessage>Вы проиграли! У Вас снимается  <b>$st <img src='http://img.legendbattles.ru/image/money_all.gif' title='LR'></b>!</font></center><p>";
         }
         if ($summa_player==$summa_comp) {

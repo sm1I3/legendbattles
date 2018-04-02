@@ -52,7 +52,7 @@ if ($prizes2["time"]>time()){
 ## Если прошел последний ур.
 if ($prizes2["level"]>=6){
 $time_in = time()+21600;
-sql("UPDATE `instant` SET `level`='0',`time`='".$time_in."' WHERE `uid`='".$player['id']."' and `type`=0");
+    db_query("UPDATE `instant` SET `level`='0',`time`='" . $time_in . "' WHERE `uid`='" . $player['id'] . "' and `type`=0");
 echo "<script>location='main.php';</script>";
 }
 ?>
@@ -64,7 +64,7 @@ echo "<script>location='main.php';</script>";
 </form>
 <form method="post" action="">
     <input name="priroda" type="submit" class=lbut value="Выход из логова" style='width:180px;'>
-</from>
+</form>
 
 </FIELDSET>
 <?
@@ -176,9 +176,7 @@ echo "<script>location='main.php';</script>";
 ?>
 
 
-
-
-</div>
+    </td>
 </table></td></table></tr></td></table>
 </td></tr></table></TD></TR></TABLE>
 

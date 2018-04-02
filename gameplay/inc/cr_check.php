@@ -276,6 +276,6 @@ if (testchr($name) == 1) {
         }
     }
 //echo "koeff: ".$z;
-    mysqli_query($GLOBALS['db_link'], "INSERT INTO art_zayav (type,damage,armor,proboi,sila,lovkost,udacha,znan,ylov,toch,sokr,stoi,nav,pl_id,name,price,koeff) VALUES ('" . $tp . "'," . $val . "'" . $navval . "'," . $player[id] . ",'" . chars($_POST['artname']) . "'," . $pr . "," . $z . ");");
+    mysqli_query($GLOBALS['db_link'], "INSERT INTO art_zayav (type,damage,armor,proboi,sila,lovkost,udacha,znan,ylov,toch,sokr,stoi,nav,pl_id,name,price,koeff) VALUES ('" . $tp . "'," . $val . "'" . $navval . "'," . $player['id'] . ",'" . chars($_POST['artname']) . "'," . $pr . "," . $z . ");");
 }
 

@@ -38,8 +38,8 @@ foreach ($f as $key => $val) {
         }
     }
 }
-$freeskills = $player[fr_bum] - ($b_new_skills - $b_skills);
-$freeskillsmir = $player[fr_mum] - ($m_new_skills - $m_skills);
+$freeskills = $player['fr_bum'] - ($b_new_skills - $b_skills);
+$freeskillsmir = $player['fr_mum'] - ($m_new_skills - $m_skills);
 //echo "$player[fr_bum] | $b_new_skills | $b_skills";
 if ($freeskills >= 0 and $freeskillsmir >= 0 and $fail == 0) {
     if ($f[30] > 0 or $f[33] > 0) {

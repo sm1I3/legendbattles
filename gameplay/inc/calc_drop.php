@@ -43,7 +43,7 @@ if (mysqli_num_rows($dropsql) > 0) {
                     }
                     if ($i > 0) {
                         $itemsql = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE `id`='" . $item[rand(0, $i - 1)] . "' LIMIT 1;"));
-                        $par = explode("|", $itemsql[param]);
+                        $par = explode("|", $itemsql['param']);
                         foreach ($par as $value) {
                             $stat = explode("@", $value);
                             switch ($stat[0]) {
@@ -84,7 +84,7 @@ if (mysqli_num_rows($dropsql) > 0) {
                     }
                     if ($i > 0) {
                         $itemsql = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `items` WHERE `id`='" . $item[rand(0, $i - 1)] . "' LIMIT 1;"));
-                        $par = explode("|", $itemsql[param]);
+                        $par = explode("|", $itemsql['param']);
                         foreach ($par as $value) {
                             $stat = explode("@", $value);
                             switch ($stat[0]) {

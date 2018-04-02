@@ -5,7 +5,7 @@
 	
 <tr><td><img src=/img/image/1x1.gif width=1 height=10></td></tr>
 <form action=main.php method=POST name=present>
-<input type=hidden name=post_id value=20><input type=hidden name=vcode value=<?=scod()?>>
+    <input type=hidden name=post_id value=20><input type=hidden name=vcode value=<?= scode() ?>>
 <tr><td>
 <table cellpadding=4 cellspacing=1 border=0 align=center width=100%>
 <tr><th colspan=4 align=center><img src=/img/image/gameplay/other/shopod.jpg width=760 height=255 border=0></th></tr>
@@ -57,6 +57,7 @@ else {
 }
 echo'</table></td></tr>';
 ?>
-</td></tr>
+</table>
+</tr>
 </form>
 </div>

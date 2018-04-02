@@ -6,7 +6,7 @@ echo'
 </td>
 </tr>
 <table cellpadding=0 cellspacing=0 border=0 width=100%>
-<tr><td><FIELDSET name=field_dealers id=field_dealers><LEGEND align=center><b> <font color=gray>У Вас с собой ' . $player[baks] . ' Изумруд</font> </b></LEGEND><table cellpadding=3 cellspacing=1 border=0 width=100%></form>
+<tr><td><FIELDSET name=field_dealers id=field_dealers><LEGEND align=center><b> <font color=gray>У Вас с собой ' . $player['baks'] . ' Изумруд</font> </b></LEGEND><table cellpadding=3 cellspacing=1 border=0 width=100%></form>
 ';
 $vklad = $player['vklad_bank']!=0 ? explode("|",$player['vklad_bank']) : $vklad[1]="";
 		if($vklad[0]!=""){

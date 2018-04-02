@@ -5,7 +5,7 @@
 <table cellpadding=0 cellspacing=0 border=0 width=100%>
 <tr><td>
 <table cellpadding=0 cellspacing=4 border=0 width=100%><tr><td align=center><font class=freetxt>
-<? $sql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM podarki WHERE id='".$player[id]."';");
+                <? $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM podarki WHERE id='" . $player['id'] . "';");
 if(mysqli_num_rows($sql)>0){
 $i=0;
 while ($r = mysqli_fetch_assoc($sql)) {

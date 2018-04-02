@@ -87,7 +87,8 @@ $profs = array(
 					<div class="dopline" id="dop<?=$key?>"></div>
 				</div>
 				<div class="text">
-<?if((($key==24)?$nablud:$umt[$key])<100 and (($player[fr_mum]>0 && $key>=21) || ($player[fr_bum]>0 && $key<=21))){?>
+                    <?
+                    if ((($key == 24) ? $nablud : $umt[$key]) < 100 and (($player['fr_mum'] > 0 && $key >= 21) || ($player['fr_bum'] > 0 && $key <= 21))) { ?>
 					<a href="javascript: AddSkill('<?=$key?>');">+</a> <a href="javascript: RemoveSkill('<?=$key?>');">-</a>
 <?}?>
 					<span class="name"><?=$value?></span> <span class="cnt" id="sk<?=$key?>"><?=(($key==24)?$nablud:$umt[$key])?>/100</span>
@@ -96,20 +97,21 @@ $profs = array(
 				</div>
 			</div>
 <?}
-if($player[fr_mum]>0 or $player[fr_bum]>0){?>
+if ($player['fr_mum'] > 0 or $player['fr_bum'] > 0) {
+    ?>
 			<div class="save">
                 <input type="submit" value="Сохранить">
 			</div>
 			<div align=center id=frskdiv>
-                Увеличение боевых, магических умений, сопротивления: <span id="skillbum"><?= $player[fr_bum] ?></span>
+                Увеличение боевых, магических умений, сопротивления: <span id="skillbum"><?= $player['fr_bum'] ?></span>
                 единиц<br>
-                Увеличение мирных умений: <span id="skillmum"><?= $player[fr_mum] ?></span> единиц
+                Увеличение мирных умений: <span id="skillmum"><?= $player['fr_mum'] ?></span> единиц
 			</div>
 <?}?>
 			<INPUT TYPE=hidden name=vcode value="<?=scode()?>">
 			<INPUT TYPE=hidden name=post_id value="16">
-			<INPUT TYPE=hidden name=freeskills value="<?=$player[fr_bum]?>">
-			<INPUT TYPE=hidden name=freeskillsmir value="<?=$player[fr_mum]?>">
+            <INPUT TYPE=hidden name=freeskills value="<?= $player['fr_bum'] ?>">
+            <INPUT TYPE=hidden name=freeskillsmir value="<?= $player['fr_mum'] ?>">
 			<INPUT TYPE=hidden name=mselect value="1">
 		</FORM><br>
 			</div>

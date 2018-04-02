@@ -31,16 +31,16 @@ $col = explode("|", $player['obr_col']);
                                         <td><font class=freemain><b><font color=#336699>Сортировка списка чата</td>
                                         <td>
                                             <div align=right><select name=inf_sort class=LogintextBox6>
-                                                    <option value=a_z <? if ($player[filt] == 'a_z') echo " SELECTED"; ?>>
+                                                    <option value=a_z <? if ($player['filt'] == 'a_z') echo " SELECTED"; ?>>
                                                         a-z
                                                     </option>
-                                                    <option value=z_a <? if ($player[filt] == 'z_a') echo " SELECTED"; ?>>
+                                                    <option value=z_a <? if ($player['filt'] == 'z_a') echo " SELECTED"; ?>>
                                                         z-a
                                                     </option>
-                                                    <option value=0_35 <? if ($player[filt] == '0_35') echo " SELECTED"; ?>>
+                                                    <option value=0_35 <? if ($player['filt'] == '0_35') echo " SELECTED"; ?>>
                                                         0-35
                                                     </option>
-                                                    <option value=35_0<? if ($player[filt] == '35_0') echo " SELECTED"; ?>>
+                                                    <option value=35_0<? if ($player['filt'] == '35_0') echo " SELECTED"; ?>>
                                                         35-0
                                                     </option>
                                                 </select></div>
@@ -51,7 +51,7 @@ $col = explode("|", $player['obr_col']);
                                         </td>
                                         <td>
                                             <div align=right><font class=freemain><b>Текущий цвет: </font><font
-                                                        style="background: #<?= $player[chcolor] ?>"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></font>
+                                                        style="background: #<?= $player['chcolor'] ?>"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></font>
                                                 <select class=LogintextBox name=newchatcolor>
                                                     <option value=000000 SELECTED style="BACKGROUND: #000000"></option>
                                                     <option value=FF3366 style="background: #FF3366"></option>
@@ -152,7 +152,7 @@ $col = explode("|", $player['obr_col']);
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan=2><input type=hidden name=vcode value=<?= scod() ?>><input
+                                        <td colspan=2><input type=hidden name=vcode value=<?= scode() ?>><input
                                                     type=image src=http://img.legendbattles.ru/image/save.gif width=73
                                                     height=15 border=0></td>
                                     </tr></form>
@@ -164,7 +164,7 @@ $col = explode("|", $player['obr_col']);
             <form action="main.php?mselect=3" method="POST">
                 <input type=hidden name=post_id value=10>
                 <input type=hidden name=act_id value=1>
-                <input type=hidden name=vcode value=<?= scod() ?>>
+                <input type=hidden name=vcode value=<?= scode() ?>>
                 <table cellpadding=5 cellspacing=0 border=0 align=center>
                     <tr>
                         <td bgcolor=#CCCCCC>
@@ -229,7 +229,7 @@ $col = explode("|", $player['obr_col']);
 <td colspan=2>
     <form action=main.php?mselect=3 method=POST><input type=hidden name=post_id value=10><input type=hidden name=act_id
                                                                                                 value=2><input
-                type=hidden name=vcode value=<?= scod() ?>>
+                type=hidden name=vcode value=<?= scode() ?>>
         <table cellpadding=15 cellspacing=0 border=0 align=center>
             <tr>
                 <td>

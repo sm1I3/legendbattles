@@ -150,7 +150,7 @@ if($num>0 and $_GET['weapon_category']=='priman'){?>
 		}
 		else{
 			if($player['baks']>=$ITEM['dd_price'] AND $ITEM['kol']>0 and $m!=0){
-                echo '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="купить (' . $ITEM[dd_price] . '$)"><br>';
+                echo '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="купить (' . $ITEM['dd_price'] . '$)"><br>';
 			}
 		}
 		echo'</div>
@@ -171,7 +171,7 @@ elseif($_GET['weapon_category']=='sellles'){
 	<tr><td bgcolor=#e0e0e0>
 	<table cellpadding=3 cellspacing=1 border=0 width=100%>
 	<tr><td colspan=4 bgcolor=#F9f9f9>
-	<div align=center><font class=inv><b> У Вас с собой ' . lr($player[nv]) . '  и вещей массой: ' . $plstt[71] . ' Максимальный вес: ' . $mass . '</b></div></td></tr>';
+	<div align=center><font class=inv><b> У Вас с собой ' . lr($player['nv']) . '  и вещей массой: ' . $plstt[71] . ' Максимальный вес: ' . $mass . '</b></div></td></tr>';
 	$fishsql = mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,`items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='".$player['id']."' AND `items`.`type`='w68' AND `items`.`effect`>'0' AND `items`.`num_a`='' AND `items`.`slot`='0' AND `invent`.`bank`='0' AND `invent`.`clan`='0';");
 	if(mysqli_num_rows($fishsql)>0){
 		$i=0;
@@ -202,7 +202,7 @@ elseif(isset($_GET['weapon_category']) and $_GET['weapon_category']=='sell'){
 	<tr><td bgcolor=#e0e0e0>
 	<table cellpadding=3 cellspacing=1 border=0 width=100%>
 	<tr><td colspan=4 bgcolor=#F9f9f9>
-	<div align=center><font class=inv><b> У Вас с собой ' . lr($player[nv]) . '  и вещей массой: ' . $plstt[71] . ' Максимальный вес: ' . $mass . '</b></div></td></tr>';
+	<div align=center><font class=inv><b> У Вас с собой ' . lr($player['nv']) . '  и вещей массой: ' . $plstt[71] . ' Максимальный вес: ' . $mass . '</b></div></td></tr>';
 	$fishsql = mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,`items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='".$player['id']."' AND `items`.`type`='w68' AND `items`.`num_a`='32' AND `items`.`slot`='0' AND `invent`.`bank`='0' AND `invent`.`clan`='0';");
 	if(mysqli_num_rows($fishsql)>0){
 		$i=0;

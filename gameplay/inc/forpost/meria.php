@@ -32,8 +32,8 @@ if (isset($_POST['fcheck']) and ($player['clan'] == 'Life' or $player['clan'] ==
 					foreach ($pr as $value) {
 					$stat=explode("@",$value);
 					switch($stat[0]){case 2: $dolg=$stat[1];break;}}
-					mysqli_query($GLOBALS['db_link'],'INSERT INTO invent (protype,pl_id,dolg,price) VALUES ('.AP.$check3[id].AP.','.AP.$check2[id].AP.','.AP.$dolg.AP.','.AP.$check3[price].AP.');');
-					mysqli_query($GLOBALS['db_link'],'UPDATE user SET nv=nv-'.AP.$check3[price].AP.' WHERE id='.AP.$check2[id].AP.'LIMIT 1;');
+                    mysqli_query($GLOBALS['db_link'], 'INSERT INTO invent (protype,pl_id,dolg,price) VALUES (' . AP . $check3['id'] . AP . ',' . AP . $check2['id'] . AP . ',' . AP . $dolg . AP . ',' . AP . $check3['price'] . AP . ');');
+                    mysqli_query($GLOBALS['db_link'], 'UPDATE user SET nv=nv-' . AP . $check3['price'] . AP . ' WHERE id=' . AP . $check2['id'] . AP . 'LIMIT 1;');
 					mysqli_query($GLOBALS['db_link'],"UPDATE `meria_items` SET `licens`=`licens`-'1' WHERE `clan`='meria' LIMIT 1;");
 					mysqli_query($GLOBALS['db_link'],"DELETE FROM `meria` WHERE `id`='".$check['id']."';");
                     $msg = '<font class=proceg>Лицензия выдана. Заявка удалена.</font>';

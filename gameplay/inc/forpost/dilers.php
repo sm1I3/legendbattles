@@ -1,6 +1,10 @@
-<? 
-if(isset($_GET['weapon_category'])){$_SESSION[mark]=$_GET['weapon_category'];}
-if($_SESSION[mark]!=''){$_GET['weapon_category']=$_SESSION[mark];}
+<?
+if (isset($_GET['weapon_category'])) {
+    $_SESSION['mark'] = $_GET['weapon_category'];
+}
+if ($_SESSION['mark'] != '') {
+    $_GET['weapon_category'] = $_SESSION['mark'];
+}
 ?>
 <LINK href="/css/stl.css" rel="STYLESHEET" type="text/css">
 <?

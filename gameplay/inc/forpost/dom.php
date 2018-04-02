@@ -174,7 +174,7 @@
                                                 }
                                                 ## Если чувак смелый =)
                                                 if ($_GET["vz"] == 'attack' and $prizes["ohr"] == 0 and $player["level"] < 10) {
-                                                    mmysqli_query($GLOBALS['db_link'], "UPDATE `instant` SET `ohr`=1 WHERE `uid`='" . $player["id"] . "' LIMIT 1");
+                                                    mysqli_query($GLOBALS['db_link'], "UPDATE `instant` SET `ohr`=1 WHERE `uid`='" . $player["id"] . "' LIMIT 1");
                                                     if ($player["sex"] == 'female') {
                                                         $sex = 'смелая';
                                                     } else {

@@ -201,7 +201,7 @@
                                 <span id="emptySpan"
                                       style="display: none;margin-left: 5px;">Предметы не обнаружены.</span>
                                 <?
-                                if ($_SESSION['user'][inv] != '') {
+                                if ($_SESSION['user']['inv'] != '') {
                                     $sq = "and `type`='" . $_SESSION['user']['inv'] . "'";
                                 } else {
                                     $sq = '';

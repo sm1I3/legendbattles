@@ -1,5 +1,5 @@
 <?php
-require_once"I:\home\leg\www/includes/config.inc.php";
+require_once "/includes/config.inc.php";
 if (isset($_GET["i"])) { 
  $player=$_GET["i"];
  $row=mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE id=".intval($player)));

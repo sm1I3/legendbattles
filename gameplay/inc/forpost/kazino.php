@@ -68,7 +68,8 @@
                                     <?
                                     function new_game () {
                                     ?>
-                                    <form action='main.php?kazino=1&set=game&get=123&vcode=<?php scod() ?>' method=post>
+                                    <form action='main.php?kazino=1&set=game&get=123&vcode=<?php scode() ?>'
+                                          method=post>
                                         <P>
                                             <FIELDSET>
                                                 <LEGEND>Новая игра</LEGEND>
@@ -82,25 +83,25 @@
                                                     </SELECT>
                                         <p><input type=submit value='Начать игру' class=lbut>
 </center>
-</FIELDSET>
-</form>
+</BODY>
+</HTML>
 </td>
 </tr>
 </table>
 <?
 }
-if (!$_GET[set]) {
+if (!$_GET['set']) {
     new_game();
 }
-if ($_GET[set] == game) {
-    if ($_POST[type] == 1 or $_POST[type] == 2 or $_POST[type] == 3 or $_POST[type] == 4 or $_POST[type] == 5) {
-        if ($_POST[type] == 1) $st = 100;
-        if ($_POST[type] == 2) $st = 250;
-        if ($_POST[type] == 3) $st = 1000;
-        if ($_POST[type] == 4) $st = 5000;
-        if ($_POST[type] == 5) $st = 10000;
-        if ($player[nv] >= $st) {
-            if ($_POST[play] == 1) {
+if ($_GET['set'] == 'game') {
+    if ($_POST['type'] == 1 or $_POST['type'] == 2 or $_POST['type'] == 3 or $_POST['type'] == 4 or $_POST['type'] == 5) {
+        if ($_POST['type'] == 1) $st = 100;
+        if ($_POST['type'] == 2) $st = 250;
+        if ($_POST['type'] == 3) $st = 1000;
+        if ($_POST['type'] == 4) $st = 5000;
+        if ($_POST['type'] == 5) $st = 10000;
+        if ($player['nv'] >= $st) {
+            if ($_POST['play'] == 1) {
                 $player_1 = rand(1, 6);
                 $player_2 = rand(1, 6);
                 $comp_1 = rand(2, 6);
@@ -121,11 +122,11 @@ if ($_GET[set] == game) {
                                 ?>
                             </center>
                             <br>
-                            Деньги: <b><?= $player[nv] ?> <img src="/img/image/money_all.gif" title="LR"></b>
+                            Деньги: <b><?= $player['nv'] ?> <img src="/img/image/money_all.gif" title="LR"></b>
                             <br>
                             Ставка: <b><?= $st ?> <img src="/img/image/money_all.gif" title="LR"></b>
                             <?
-                            if ($_POST[play] == 1) {
+                            if ($_POST['play'] == 1) {
                                 ?>
                                 <br>
                                 Выпало:
@@ -164,26 +165,26 @@ if ($_GET[set] == game) {
                     </td>
                 </tr>
             </table>
-            <form action='?kazino=1&set=game&type=play&get=3&vcode=<?php scod() ?>' method=post>
-                <input type="hidden" name="type" value="<?= $_POST[type] ?>">
+            <form action='?kazino=1&set=game&type=play&get=3&vcode=<?php scode() ?>' method=post>
+                <input type="hidden" name="type" value="<?= $_POST['type'] ?>">
                 <input type="hidden" name="play" value="1">
                 <FIELDSET>
                     <LEGEND>Действия</LEGEND>
                     <center>
-                        <? if ($_POST[play] == 1) {
+                        <? if ($_POST['play'] == 1) {
                             $summa_player = $player_1 + $player_2;
                             $summa_comp = $comp_1 + $comp_2;
                             if ($summa_player > $summa_comp) {
                                 $stwin = $st * 2;
                                 mysqli_query($GLOBALS['db_link'], "UPDATE user SET nv=nv+" . $st . " WHERE id='" . $player['id'] . "'");
 
-                                $player[nv] = $player[nv] + $st;
+                                $player['nv'] = $player['nv'] + $st;
                                 echo "<p><center><font class=sysmessage>Поздравляем! Вы победили и получаете <b>$st <img src='/img/image/money_all.gif' title='LR'></b> поверх вашей ставки!</font></center><p>";
                             }
                             if ($summa_player < $summa_comp) {
                                 mysqli_query($GLOBALS['db_link'], "UPDATE user SET nv=nv-" . $st . " WHERE id='" . $player['id'] . "'");
 
-                                $player[nv] = $player[nv] - $st;
+                                $player['nv'] = $player['nv'] - $st;
                                 echo "<p><center><font class=sysmessage>Вы проиграли! У Вас снимается  <b>$st <img src='/img/image/money_all.gif' title='LR'></b>!</font></center><p>";
                             }
                             if ($summa_player == $summa_comp) {

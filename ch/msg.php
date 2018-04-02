@@ -10,7 +10,7 @@ session_start();
 <HEAD>
 <LINK href="/ch/chat.css" rel=STYLESHEET type=text/css>
 <SCRIPT>
-var user = '<?=$inf[sklon]?> <?=$inf[clan_gif]?> <?=$_SESSION['user']["login"]?>';
+    var user = '<?=$inf["sklon"]?> <?=$inf["clan_gif"]?> <?=$_SESSION['user']["login"]?>';
 </SCRIPT>
 <script type="text/javascript" src="/js/jquery.min.js?v7"></script>
 <SCRIPT LANGUAGE="JavaScript" src="/ch/ch_msg.js?v9"></SCRIPT>

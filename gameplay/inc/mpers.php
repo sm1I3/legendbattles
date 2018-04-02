@@ -56,28 +56,28 @@ while ($row = mysqli_fetch_assoc($mysql2)) {
         if ($stat[0] == 1) {
             $tmp = explode("-", $stat[1]);
             switch ($tw) {
-                case w1:
+                case 'w1':
                     $k = ($um[10] / 300 + $um[1] / 150) + 1;
                     break;
-                case w2:
+                case 'w2':
                     $k = ($um[10] / 300 + $um[2] / 150) + 1;
                     break;
-                case w3:
+                case 'w3':
                     $k = ($um[10] / 300 + $um[3] / 150) + 1;
                     break;
-                case w4:
+                case 'w4':
                     $k = ($um[10] / 300 + $um[4] / 150) + 1;
                     break;
-                case w5:
+                case 'w5':
                     $k = ($um[10] / 300 + $um[5] / 150) + 1;
                     break;
-                case w6:
+                case 'w6':
                     $k = ($um[10] / 300 + $um[6] / 150) + 1;
                     break;
-                case w7:
+                case 'w7':
                     $k = ($um[10] / 300 + $um[7] / 150) + 1;
                     break;
-                case w20:
+                case 'w20':
                     $k = $um[10] / 300 + 1;
                     break;
             }
@@ -192,7 +192,7 @@ $params = $tmparams[0];
             <div class="content">
                 <SCRIPT language="JavaScript">
                     <?
-                    $q = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM pcompl WHERE uid=' . AP . $player[id] . AP . '');
+                    $q = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM pcompl WHERE uid=' . AP . $player['id'] . AP . '');
                     while ($row = mysqli_fetch_assoc($q)) {
                         echo "compl_view(\"$row[name]\",\"$row[id]\",\"" . scode() . "\");";
                     }
@@ -213,11 +213,11 @@ $params = $tmparams[0];
 
 <div id="second-column">
     <?php
-    $trw = affect($player[affect], 3, true);
+    $trw = affect($player['affect'], 3, true);
     foreach ($trw as $key => $val) {
         $plst[$key] += $val;
     }
-    foreach (explode("|", $player[perk]) as $key => $val) {
+    foreach (explode("|", $player['perk']) as $key => $val) {
         if ($val == '') {
             $val = 0;
         }
@@ -298,9 +298,9 @@ $params = $tmparams[0];
                     Очки действия (об) : <span class="cnt"><?= $plstt[28] ?></span>
                 </div>
             <? } ?>
-            <? if ($player[od] > 0) { ?>
+            <? if ($player['od'] > 0) { ?>
                 <div>
-                    Очки действия (уд) : <span class="cnt"><?= $player[od] ?></span>
+                    Очки действия (уд) : <span class="cnt"><?= $player['od'] ?></span>
                 </div>
             <? } ?>
             <? if ($plst[5]) { ?>
@@ -396,39 +396,39 @@ $params = $tmparams[0];
         <div class="content">
             <? if ($plstt[70] != 0 and $plstt[70] != '') { ?>
                 <div>
-                    Травничество : <span class="cnt"><?= ($plst[70] + ($player[trav])) ?></span>
+                    Травничество : <span class="cnt"><?= ($plst[70] + ($player['trav'])) ?></span>
                 </div>
             <? } ?>
             <? if ($plstt[68]) { ?>
                 <div>
-                    Алхимия : <span class="cnt"><?= ($plst[68] + ($player[alhim])) ?></span>
+                    Алхимия : <span class="cnt"><?= ($plst[68] + ($player['alhim'])) ?></span>
                 </div>
             <? } ?>
             <? if ($plstt[68]) { ?>
                 <div>
-                    Лесоруб : <span class="cnt"><?= ($plst[60] + ($player[les])) ?></span>
+                    Лесоруб : <span class="cnt"><?= ($plst[60] + ($player['les'])) ?></span>
                 </div>
             <? } ?>
             <? if ($plstt[59]) { ?>
                 <div>
-                    Рыболов : <span class="cnt"><?= ($plst[59] + ($player[fish_skill])) ?></span>
+                    Рыболов : <span class="cnt"><?= ($plst[59] + ($player['fish_skill'])) ?></span>
                 </div>
             <? } ?>
             <? if ($plstt[75] != 0 and $plstt[75] != '') { ?>
                 <div>
-                    Колдун : <span class="cnt"><?= ($plst[75] + ($player[koldyn])) ?></span>
+                    Колдун : <span class="cnt"><?= ($plst[75] + ($player['koldyn'])) ?></span>
                 </div>
             <? } ?>
-            <? if ($player[vzlomshik_nav] > 0) { ?>
+            <? if ($player['vzlomshik_nav'] > 0) { ?>
                 <div>
                     Взломщик : <span class="cnt"
-                                     onmouseover="tooltip(this,'Взломанных сундуков: <b><?php echo $player[vzlomshik_exp]; ?> </b>')"
-                                     onmouseout="hide_info(this)"><?= $player[vzlomshik_nav] ?></span>
+                                     onmouseover="tooltip(this,'Взломанных сундуков: <b><?php echo $player['vzlomshik_exp']; ?> </b>')"
+                                     onmouseout="hide_info(this)"><?= $player['vzlomshik_nav'] ?></span>
                 </div>
             <? } ?>
             <? if ($plstt[55] != 0 and $plstt[55] != '') { ?>
                 <div>
-                    Палач : <span class="cnt"><?= ($plst[55] + ($player[palac])) ?></span>
+                    Палач : <span class="cnt"><?= ($plst[55] + ($player['palac'])) ?></span>
                 </div>
             <? } ?>
         </div>

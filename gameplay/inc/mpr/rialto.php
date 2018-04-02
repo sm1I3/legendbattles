@@ -119,14 +119,14 @@ elseif ($player["nv"]<($bgive["lr"]*$bgive["dlr"]))
 $gold_koef = 0.97; ## 10%
 ## Информируем о покупке покупателя.
         $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><font color=#000000><b>Системная информация.</b></font> Вы купили <b>" . $bgive["dlr"] . " Изумруд</b> за <b>" . $bgive["lr"] * $bgive["dlr"] . " Бронзы</b> <BR>'+'');";
-chmsg($ms,$_SESSION['user'][login]);
+        chmsg($ms, $_SESSION['user']['login']);
 ## Апдейтим покупателя
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `nv`=`nv`-'".$bgive["lr"]*$bgive["dlr"]."',`baks`=`baks`+".$bgive["dlr"]." WHERE `id`='".$player["id"]."' LIMIT 1;");
 ## Апдейтим продавца
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `nv`=`nv`+'".($bgive["lr"]*$bgive["dlr"])*$gold_koef."' WHERE `id`='".$bgive["uid"]."' LIMIT 1;");
 ## Информируем продавца.
         $mss = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><font color=#000000><b>Системная информация.</b></font><strong> У вас купили: <b>" . $bgive["dlr"] . "</b> Изумруд , начислено на счет: <b>" . ($bgive["lr"] * $bgive["dlr"]) * $gold_koef . "</b> Бронзы, налог: 3% <BR>'+'');";
-chmsg($mss,$bgive[user]);
+        chmsg($mss, $bgive['user']);
 ## Апдейтим биржу
 $val_give_birja=varcheck($_GET['give_birja']);
 mysqli_query($GLOBALS['db_link'],"DELETE FROM `dlr_birja` WHERE `id`=".$val_give_birja." LIMIT 1");
@@ -171,7 +171,7 @@ if ($un_count<1)
 else { ## Если всё хорошо, то хорошо что хорошо :))
 $gold_koef = 0.90; ## 10%
     $msst = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><font color=#000000><b>Системная информация.</b></font><strong> Вы сняли с продажи <b>" . $unselect["dlr"] * $gold_koef . " Изумруда</b>, налог: 10% <BR>'+'');";
-chmsg($msst,$_SESSION['user'][login]);
+    chmsg($msst, $_SESSION['user']['login']);
 ## Апдейтим юзера
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `baks`=`baks`+".($unselect["dlr"]*$gold_koef)." WHERE `id`='".$player["id"]."' LIMIT 1;");
 ## Апдейтим биржу

@@ -136,14 +136,14 @@ if (!empty($_GET['give_birja']) and !empty($_GET["kolvo"]) and $_GET["kolvo"] >=
         $gold_koef = 0.94; ## 10%
 ## Информируем о покупке покупателя.
         $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><font color=#000000><b>Системная информация.</b></font> Вы купили <b>" . $bgive["dlr"] . " <img src=http://img.legendbattles.ru/razdor/emerald.png width=14 title=Изумруд height=14></b> за <b>" . lr($bgive["lr"]) * $bgive["dlr"] . " <img src=http://img.legendbattles.ru/image/gold.png width=14 height=14 valign=middle title=Золото></b> <BR>'+'');";
-        chmsg($ms, $_SESSION['user'][login]);
+        chmsg($ms, $_SESSION['user']['login']);
 ## Апдейтим покупателя
         mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `nv`=`nv`-'" . $bgive["lr"] * $bgive["dlr"] . "',`baks`=`baks`+" . $bgive["dlr"] . " WHERE `id`='" . $player["id"] . "' LIMIT 1;");
 ## Апдейтим продавца
         mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `nv`=`nv`+'" . ($bgive["lr"] * $bgive["dlr"]) * $gold_koef . "' WHERE `id`='" . $bgive["uid"] . "' LIMIT 1;");
 ## Информируем продавца.
         $mss = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><font color=#000000><b>Системная информация.</b></font><strong> У вас купили: <b>" . $bgive["dlr"] . "</b> <img src=http://img.legendbattles.ru/razdor/emerald.png width=14 title=Изумруд height=14>, начислено на счет: <b>" . (lr($bgive["lr"]) * $bgive["dlr"]) * $gold_koef . "</b> <img src=http://img.legendbattles.ru/image/gold.png width=14 height=14 valign=middle title=Золото> , налог: 16% <BR>'+'');";
-        chmsg($mss, $bgive[user]);
+        chmsg($mss, $bgive['user']);
 ## Апдейтим биржу
         $val_give_birja = varcheck($_GET['give_birja']);
         mysqli_query($GLOBALS['db_link'], "DELETE FROM `dlr_birja` WHERE `id`=" . $val_give_birja . " LIMIT 1");
@@ -187,7 +187,7 @@ if (!empty($_POST['unselect'])) {
     else { ## Если всё хорошо, то хорошо что хорошо :))
         $gold_koef = 0.87; ## 20%
         $msst = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font><font color=000000><font color=#000000><b>Системная информация.</b></font><strong> Вы сняли с продажи <b>" . $unselect["dlr"] * $gold_koef . " <img src=http://img.legendbattles.ru/razdor/emerald.png width=14 title=Изумруд height=14></b>, налог: 20% <BR>'+'');";
-        chmsg($msst, $_SESSION['user'][login]);
+        chmsg($msst, $_SESSION['user']['login']);
 ## Апдейтим юзера
         mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `baks`=`baks`+" . ($unselect["dlr"] * $gold_koef) . " WHERE `id`='" . $player["id"] . "' LIMIT 1;");
 ## Апдейтим биржу

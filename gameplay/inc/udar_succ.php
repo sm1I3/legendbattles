@@ -87,7 +87,7 @@ if ($damage < 1) {
     $damage = 1;
 }
 
-if ($tg[hp] == 0) {
+if ($tg['hp'] == 0) {
     $log .= ",$logpl,\" нанес$psex[1] контрольный$ms[1] удар\",[6,$ud[0]],\"$ms[0] по трупу\",$logtg,\".\"";
 } else {
     $immunes = explode("|", $tg['immunes']);
@@ -105,12 +105,12 @@ if ($tg[hp] == 0) {
             $log .= ",$logtg,\" не получил$tsex[1] урон от удара, потому что имеет $immunes_arr[4][???/???].\"";
         }
     } else {
-        if ($tg[hp] <= $damage) {
-            $exp[1] += $tg[hp];
-            $tg[hp] = 0;
+        if ($tg['hp'] <= $damage) {
+            $exp[1] += $tg['hp'];
+            $tg['hp'] = 0;
             $exp[6] += 1;
         } else {
-            $tg[hp] -= $damage;
+            $tg['hp'] -= $damage;
             $exp[1] += $damage;
         }
         $exp[0] += $damage;

@@ -3,11 +3,11 @@ if($msg){
 echo '<LINK href="/css/stl.css" rel="STYLESHEET" type="text/css">';
 echo "<SCRIPT>MessBoxDiv('".$msg."',0,0,0,0);</SCRIPT>";
 }
-$opt=explode("|",$player[options]);
+$opt = explode("|", $player['options']);
 if(isset($soc)){$opt[0]=$soc;$save=1;}
 if(isset($sort)){$opt[1]=$sort;$save=1;}
 if($save==1){
-	$player[options]=implode("|",$opt);
+    $player['options'] = implode("|", $opt);
 	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `options`='".$player['options']."' WHERE `id`='".$player['id']."' LIMIT 1;");
 }
 $doclic=0;
@@ -45,7 +45,9 @@ if($_GET['all']==1){
                 href="main.php?invf=w30"><img src=img/image/gameplay/invent/10.gif width=41 height=53 title="Лицензии"
                                               border="0"></a><a href="main.php?invf=w62"><img
                     src=img/image/gameplay/invent/db.gif width=41 height=53 title="Сундуки" border="0"></a></td>
-    </tr></td></tr>
+</table>
+    </td>
+</tr>
     <tr>
         <td><img src=img/image/1x1.gif width=1 height=4></td>
     </tr>
@@ -107,9 +109,9 @@ if($_GET['all']==1){
                     href="main.php?post_id=57&act=3&vcode=<?= scode() ?>"><img src=img/image/gameplay/invent/cat/b0.gif
                                                                                width=41 height=53 title="Снять все вещи"
                                                                                class=cath border=0/></a></td>
-</td>
+    </tr>
 <table width="100%">
-</td></tr>
+</table></tr>
 </tr><tr><td><img src=img/image/1x1.gif width=1 height=4></td></tr>
 
 <tr><td width=100%>
@@ -163,7 +165,7 @@ if($ITEM['chests'] == '1'){
 ?>"  border=0><br><img src=img/image/1x1.gif width=62 height=1><br><img <?php
 $DolgWidth = round(56*($iz/$ITEM['dolg']));
             ?>
-            <img <? echo($iz <= $ITEM[dolg] / 4 ? "src=/img/image/solidst.gif" : ($iz <= $ITEM[dolg] / 2 ? "src=/img/image/solidst.gif" : "src=/img/image/solidst.gif")) ?>
+            <img <? echo($iz <= $ITEM['dolg'] / 4 ? "src=/img/image/solidst.gif" : ($iz <= $ITEM['dolg'] / 2 ? "src=/img/image/solidst.gif" : "src=/img/image/solidst.gif")) ?>
                     width="<?php echo $DolgWidth; ?>" height=3 border=0 title="Долговечность: <?= "$iz/$ITEM[dolg]" ?>"><img
                     src=/img/image/nosolidst.gif width="<?php echo(56 - $DolgWidth); ?>" height=3 border=0
                     title="Долговечность: <?= "$iz/$ITEM[dolg]" ?>"><br><?php echo(($count > 1) ? ' <font color="#CCCCCC">(<b>' . $count . ' шт.</b>)</font>' : ''); ?><?
@@ -275,9 +277,9 @@ $DolgWidth = round(56*($iz/$ITEM['dolg']));
 
             $buttons .= $inputs . "onclick=\"sellingform('" . $ITEM['id_item'] . "','" . $ITEM['name'] . "','" . scode() . "','" . $ITEM['price'] . "','" . $ITEM['massa'] . "',1)\" value=\"Продать (игроку)\" " . $inpute;
             $buttons .= $inputs . "onclick=\"sellingmassform('" . $ITEM['protype'] . "','" . $ITEM['name'] . "','" . scode() . "','" . $ITEM['price'] . "','" . $ITEM['massa'] . "',1)\" value=\"Продать все (игроку)\" " . $inpute;
-            $buttons .= $inputs . " style='font-weight: bold;' onClick=\"javascript: if(parent.DeleteTrue('" . $ITEM['name'] . "')){location='main.php?post_id=53&uid=" . $ITEM[id_item] . "&vcode=" . $vcod . "'}\" value=\"Выкинуть все такого типа\" />";
+            $buttons .= $inputs . " style='font-weight: bold;' onClick=\"javascript: if(parent.DeleteTrue('" . $ITEM['name'] . "')){location='main.php?post_id=53&uid=" . $ITEM['id_item'] . "&vcode=" . $vcod . "'}\" value=\"Выкинуть все такого типа\" />";
 
-            $buttons .= "<input type=image src=/img/image/del.gif width=14 height=14 border=0 title='Удалить' onClick=\"javascript: if(parent.DeleteTrue('" . $ITEM['name'] . "')){location='main.php?post_id=50&uid=" . $ITEM[id_item] . "&vcode=" . $vcod . "'}\" value=\"x\" />";
+            $buttons .= "<input type=image src=/img/image/del.gif width=14 height=14 border=0 title='Удалить' onClick=\"javascript: if(parent.DeleteTrue('" . $ITEM['name'] . "')){location='main.php?post_id=50&uid=" . $ITEM['id_item'] . "&vcode=" . $vcod . "'}\" value=\"x\" />";
 
 		}		
 	}
@@ -307,34 +309,39 @@ $DolgWidth = round(56*($iz/$ITEM['dolg']));
                     </tr>
                     <tr>
                         <td bgcolor=#FCFAF3><img src=img/image/1x1.gif width=5 height=1></td>
-							<?if($ITEM[mod_color]==0){?>
+                        <?
+                        if ($ITEM['mod_color'] == 0){ ?>
                     <td bgcolor=#FCFAF3 width=50%><font class=nickname><b><?
-                        echo $ITEM[name] . ($ITEM[modified] == 1 ? " [ап]" : ""); ?><a
-                                href="/iteminfo.php?<?= $ITEM[name] ?>" target="_blank"> <img src=img/image/info.gif
+                        echo $ITEM['name'] . ($ITEM['modified'] == 1 ? " [ап]" : ""); ?><a
+                                href="/iteminfo.php?<?= $ITEM['name'] ?>" target="_blank"> <img src=img/image/info.gif
                                                                                               width=6 height=12 border=0
                                                                                               valign=top>
 		</a></b><br>
-							<?}else{if($ITEM[mod_color]==1){?>
+                    <?
+                    }else{
+                    if ($ITEM['mod_color'] == 1){ ?>
                     <td bgcolor=#FCFAF3 width=50%><font class=nickname><b><font
-                                color=#006600><?= $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") ?>
-                            <a href="/iteminfo.php?<?= $ITEM[name] ?>" target="_blank"> <img src=img/image/info.gif
+                                color=#006600><?= $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") ?>
+                            <a href="/iteminfo.php?<?= $ITEM['name'] ?>" target="_blank"> <img src=img/image/info.gif
                                                                                              width=6 height=12 border=0
                                                                                              valign=top></font></b><br>
-								 <?}if($ITEM[mod_color]==2){?>
+                    <?
+                    }if ($ITEM['mod_color'] == 2){ ?>
                     <td bgcolor=#FCFAF3 width=50%><font class=nickname color=#4ABB58><b><font
-                                color=#3333CC><?= $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") ?>
-                            <a href="/iteminfo.php?<?= $ITEM[name] ?>" target="_blank"> <img src=img/image/info.gif
+                                color=#3333CC><?= $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") ?>
+                            <a href="/iteminfo.php?<?= $ITEM['name'] ?>" target="_blank"> <img src=img/image/info.gif
                                                                                              width=6 height=12 border=0
                                                                                              valign=top></font></b><br>
-								 <?}if($ITEM[mod_color]==3){?>
+                    <?
+                    }if ($ITEM['mod_color'] == 3){ ?>
                         <td bgcolor=#FCFAF3 width=50%><font class=nickname color=#AF51B5><b><font
-                                            color=#993399><?= $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") ?>
-                                        <a href="/iteminfo.php?<?= $ITEM[name] ?>" target="_blank"> <img
+                                            color=#993399><?= $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") ?>
+                                        <a href="/iteminfo.php?<?= $ITEM['name'] ?>" target="_blank"> <img
                                                     src=img/image/info.gif width=6 height=12 border=0 valign=top></font></b><br>
 								 <?}}?>
 
-                                <? if ($ITEM[dd_price] > 0) { ?> <font class=weaponch>&nbsp;Цена:
-                                    <b><?= $ITEM[dd_price] ?> <img src="img/razdor/emerald.png" width=14
+                                <? if ($ITEM['dd_price'] > 0) { ?> <font class=weaponch>&nbsp;Цена:
+                                    <b><?= $ITEM['dd_price'] ?> <img src="img/razdor/emerald.png" width=14
                                                                    height=14></b><br> <? } else { ?>
                                     <font class=weaponch>Цена: <b><?= lr($ITEM['price']) ?></b><br> <? } ?>
 
@@ -346,11 +353,11 @@ echo $par_i;
 
 ?></font></td><td bgcolor=#FCFAF3><img src=img/image/1x1.gif width=5 height=1></td><td bgcolor=#B9A05C><img src=img/image/1x1.gif width=1 height=1></td><td bgcolor=#FCFAF3><img src=img/image/1x1.gif width=5 height=1></td>
 <td bgcolor=#FCFAF3 width=50%>
-    <? if ($ITEM[gift] == 1 and empty($ITEM[gift_from])) {
+    <? if ($ITEM['gift'] == 1 and empty($ITEM['gift_from'])) {
         echo '<font class=weaponch><img src="img/image/gift/gift1.gif"/>&nbsp;Подарок!</font><br><br>';
     } else {
-        if ($ITEM[gift] == 1 and $ITEM[gift_from] != '') {
-            echo '<font class=weaponch><img src="img/image/gift/gift1.gif"/>&nbsp;Подарок от <b>' . $ITEM[gift_from] . '</b>!</font><br><br>';
+        if ($ITEM['gift'] == 1 and $ITEM['gift_from'] != '') {
+            echo '<font class=weaponch><img src="img/image/gift/gift1.gif"/>&nbsp;Подарок от <b>' . $ITEM['gift_from'] . '</b>!</font><br><br>';
         }
     }
     if ($ITEM['dd_price'] > 0) {

@@ -22,7 +22,7 @@ switch ($stat[0]) {
         echo "&nbsp;Удар: <b>" . $modstroke . "</b><br>";
         break;
     case 2:
-        echo "&nbsp;Долговечность: <b>" . (($iz == 1 and $ITEM[slot] != 5) ? "<font color=red>" . $iz . "</font>" : $iz) . "/$ITEM[dolg]</b><br>";
+        echo "&nbsp;Долговечность: <b>" . (($iz == 1 and $ITEM['slot'] != 5) ? "<font color=red>" . $iz . "</font>" : $iz) . "/$ITEM[dolg]</b><br>";
         break;
     case 3:
         echo "&nbsp;Карманов: <b>" . $modstroke . "</b><br>";

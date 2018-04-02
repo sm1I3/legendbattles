@@ -1,4 +1,5 @@
 <?php
+$_GET["f"] = varcheck($_GET['f']) ?? '';
 $files = explode("|", $_GET["f"]);
 
 $contents = "";

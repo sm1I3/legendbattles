@@ -1,12 +1,12 @@
 <?
 //Боты на природе.
-list($x, $y) = explode("_", $player[pos], 2);
+list($x, $y) = explode("_", $player['pos'], 2);
 
 if ($x != 1000 && $y != 1000) {
 
     if ($player['fight'] == 0) {
         if ($player['lastbattle'] == 0) {
-            mysqli_query($GLOBALS['db_link'], "UPDATE user SET lastbattle=" . AP . time() . AP . " WHERE login=" . AP . $_SESSION['user'][login] . AP . "");
+            mysqli_query($GLOBALS['db_link'], "UPDATE user SET lastbattle=" . AP . time() . AP . " WHERE login=" . AP . $_SESSION['user']['login'] . AP . "");
             $lb = $player['lastbattle'];
         } else {
             $lb = $player['lastbattle'];
@@ -21,7 +21,7 @@ if ($x != 1000 && $y != 1000) {
                         mysqli_query($GLOBALS['db_link'], 'UPDATE user SET battle=' . AP . $fid . AP . ',side="2",hp=hp_all,mp=mp_all WHERE fight=0 AND type=3 ORDER by rand() LIMIT 1;');
                         break;
                     case 2:
-                        dmysqli_query($GLOBALS['db_link'], 'UPDATE user SET battle=' . AP . $fid . AP . ',side="2",hp=hp_all,mp=mp_all WHERE fight=0 AND type=3 ORDER by rand() LIMIT 2;');
+                        mysqli_query($GLOBALS['db_link'], 'UPDATE user SET battle=' . AP . $fid . AP . ',side="2",hp=hp_all,mp=mp_all WHERE fight=0 AND type=3 ORDER by rand() LIMIT 2;');
                         break;
                     case 3:
                         mysqli_query($GLOBALS['db_link'], 'UPDATE user SET battle=' . AP . $fid . AP . ',side="2",hp=hp_all,mp=mp_all WHERE fight=0 AND type=3 ORDER by rand() LIMIT 3;');
@@ -50,7 +50,7 @@ if ($x != 1000 && $y != 1000) {
                 }
                 save_hp_roun($player);
                 mysqli_query($GLOBALS['db_link'], 'UPDATE user SET battle=' . AP . $fid . AP . ',side="1",hp=' . AP . $fid . AP . ' WHERE login=' . AP . $_SESSION['user']['login'] . AP . 'LIMIT 1;');
-                mysqli_query($GLOBALS['db_link'], "UPDATE user SET lastbattle=" . AP . time() . AP . " WHERE login=" . AP . $_SESSION['user'][login] . AP . "");
+                mysqli_query($GLOBALS['db_link'], "UPDATE user SET lastbattle=" . AP . time() . AP . " WHERE login=" . AP . $_SESSION['user']['login'] . AP . "");
                 startbat($fid, 2);
 
             }

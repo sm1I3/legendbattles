@@ -150,7 +150,7 @@ if (mysqli_num_rows($query) > 0) {
 <input type=hidden name=id value=" . $row['id'] . ">
 <input type=hidden id=post_id name=post_id value=86 />
 <input type=hidden name=vcode value=";
-        echo scod();
+        echo scode();
         echo " />
 </form>
 ";

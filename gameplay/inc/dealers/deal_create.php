@@ -5,7 +5,7 @@ echo '
  <form method=post>	
 	<input type="hidden" name="post_id" value="85" />
 	<input type="hidden" name="vcode" value="';
-echo scod();
+echo scode();
 echo '" />
 		<FIELDSET name=field_dealers id=field_dealers>
 		<LEGEND align=center><B>

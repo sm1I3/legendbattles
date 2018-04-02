@@ -5,9 +5,9 @@
 	<div class="content">
 		<div class="field">
             <label>Текущий E-mail:</label>
-			<span style="line-height:28px"><?=$player[email]?></span>
+            <span style="line-height:28px"><?= $player['email'] ?></span>
 		</div>
-<?if($player[finblock]<time()){?>
+        <? if ($player['finblock'] < time()) { ?>
 		<form action="main.php?mselect=secure" method="POST">
 			<input type=hidden name=vcode value="<?=scode()?>">
 			<input type=hidden name=post_id value=49>
@@ -74,23 +74,23 @@
 <?}?>
         <div class="header">Отчет по 30 последним заходам игрока в игру.</div>
 		<table width=100% class="otch">
-<?  $sql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM mlog WHERE typ='1' and login='".$player[login]."' ORDER BY time DESC LIMIT 0,30;");
+            <? $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM mlog WHERE typ='1' and login='" . $player['login'] . "' ORDER BY time DESC LIMIT 0,30;");
 $col=array(0=>"FCFAF3","FCFAF3");$i=0;
 while ($row = mysqli_fetch_assoc($sql)) {
-    if ($row[action] == "err: пароль") $row[action] = "<font color=#FF0000><b>err: пароль</b></font>";
+    if ($row['action'] == "err: пароль") $row['action'] = "<font color=#FF0000><b>err: пароль</b></font>";
 ?>
 			<tr>
 				<td>
 					<?=$row['time']?>
 				</td>
 				<td>
-					<B><?=$row[action]?></B>
+                    <B><?= $row['action'] ?></B>
 				</td>
 				<td>
-					<?=$row[ip]?>
+                    <?= $row['ip'] ?>
 				</td>
 				<td>
-					<?=$row[brouser]?>
+                    <?= $row['brouser'] ?>
 				</td>
 			</tr>
 <? if($i==0){$i++;}else{$i=0;}}?>

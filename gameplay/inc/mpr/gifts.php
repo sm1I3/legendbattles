@@ -3,7 +3,7 @@
         <span>Подарки и открытки</span>
 	</div>
 	<div class="content">
-<? $sql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM podarki WHERE id='".$player[id]."';");
+        <? $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM podarki WHERE id='" . $player['id'] . "';");
 if(mysqli_num_rows($sql)>0){
 $i=0;
 while ($r = mysqli_fetch_assoc($sql)) {

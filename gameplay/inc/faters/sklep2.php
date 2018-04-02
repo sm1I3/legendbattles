@@ -106,7 +106,7 @@
                                             ## Если прошел последний ур.
                                             if ($prizes2["level"] >= 6) {
                                                 $time_in = time() + 21600;
-                                                sql("UPDATE `instant` SET `level`='0',`time`='" . $time_in . "' WHERE `uid`='" . $player['id'] . "' and `type`=0");
+                                                db_query("UPDATE `instant` SET `level`='0',`time`='" . $time_in . "' WHERE `uid`='" . $player['id'] . "' and `type`=0");
                                                 echo "<script>location='main.php';</script>";
                                             }
                                             ?>
@@ -116,11 +116,11 @@
                                                     <input name="att_dom" type="submit" class=lbut
                                                            value="Пройти глубже в логово" style='width:180px;'>
                                                     <? echo "<center>(<b>" . $prizes2["level"] . "</b> уровень)</center>"; ?>
-                                                    </from>
+                                                </form>
                                                     <form method="post" action="">
                                                         <input name="priroda" type="submit" class=lbut
                                                                value="Выход из логова" style='width:180px;'>
-                                                        </from>
+                                                    </form>
 
                                             </FIELDSET>
                                             <?
@@ -179,14 +179,14 @@
                                                 else {
 
 ## Вмешиваемся если там уже идет бой
-                                                    $gds = mysqli_fetch_array(sql("SELECT * FROM `user` WHERE `loc`=1007 and `groups`='" . $player['groups'] . "' and `battle`>0"));
-                                                    $arenka = mysqli_fetch_array(sql("SELECT * FROM `arena` WHERE `id_battle`='" . $gds["battle"] . "' and `vis`=0"));
+                                                    $gds = mysqli_fetch_array(db_query("SELECT * FROM `user` WHERE `loc`=1007 and `groups`='" . $player['groups'] . "' and `battle`>0"));
+                                                    $arenka = mysqli_fetch_array(db_query("SELECT * FROM `arena` WHERE `id_battle`='" . $gds["battle"] . "' and `vis`=0"));
 
                                                     if ($gds["id"] and $arenka["id_battle"]) {
 //$btls = mysqli_fetch_array(sql('SELECT * FROM `fights` WHERE `id`='.$drug['battle'].''));
 ##Вмешиваемся в бой
-                                                        sql("INSERT INTO `fight_users` (`id`,`hp`,`mp`,`battle`,`side`) VALUES ('" . $player['id'] . "','" . $player['hp'] . "','" . $player['mp'] . "','" . $gds['battle'] . "','" . $gds['side'] . "');");
-                                                        sql("UPDATE `user` SET `side`='" . $gds["side"] . "',`battle`='" . $gds["battle"] . "',`fight`=2 WHERE `id`='" . $player["id"] . "'");
+                                                        db_query("INSERT INTO `fight_users` (`id`,`hp`,`mp`,`battle`,`side`) VALUES ('" . $player['id'] . "','" . $player['hp'] . "','" . $player['mp'] . "','" . $gds['battle'] . "','" . $gds['side'] . "');");
+                                                        db_query("UPDATE `user` SET `side`='" . $gds["side"] . "',`battle`='" . $gds["battle"] . "',`fight`=2 WHERE `id`='" . $player["id"] . "'");
                                                         save_hp_roun($player);
                                                         echo '<script>location="main.php";</script>';
                                                     } else {
@@ -242,7 +242,7 @@
                                             ?>
 
 
-                                            </div>
+                                        </td>
                                 </table>
                             </td>
                         </table>

@@ -1,9 +1,9 @@
 <?php
 if ($treb[0] == 72) {
-    $treb[1] = $ITEM[level];
+    $treb[1] = $ITEM['level'];
 }
 if ($treb[0] == 71) {
-    $treb[1] = $ITEM[massa];
+    $treb[1] = $ITEM['massa'];
     if ($mass - $plstt[71] < $treb[1]) {
         $treb[1] = "<font color=#cc0000>$treb[1]</font>";
     }

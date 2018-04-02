@@ -61,7 +61,7 @@
                     $team1 .= $z . "[4,$p[fight_x],$p[fight_y],$p[level],$p[id]]";
                 }
                 // бой между
-                if ($p[type] == 1) {
+                if ($p['type'] == 1) {
                     if ($p['invisible'] < time()) {
                         $livg1 .= $z . "[$p[type],\"$p[login]\",$p[level],$p[sklon],\"$p[clan_gif]\",$p[hp],$p[hp_all],$p[id]]";
                     } else {
@@ -83,7 +83,7 @@
                     $team2 .= $z2 . "[4,$p[fight_x],$p[fight_y],$p[level],$p[id]]";
                 }
                 // бой между
-                if ($p[type] == 1) {
+                if ($p['type'] == 1) {
                     if ($p['invisible'] < time()) {
                         $livg2 .= $z2 . "[$p[type],\"$p[login]\",$p[level],$p[sklon],\"$p[clan_gif]\",$p[hp],$p[hp_all],$p[id]]";
                     } else {
@@ -110,9 +110,9 @@
                 $bat = 1;
                 $ty = 0;
                 $en = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT user.* FROM user LEFT JOIN fight ON user.id = fight.eid WHERE user.battle='$player[battle]' AND user.side='$side' AND user.hp>0 AND fight.eid Is Null ORDER BY rand() LIMIT 1;"));
-                $tmpeninv = str_replace(" [Лидер]", "", $en[login]);
+                $tmpeninv = str_replace(" [Лидер]", "", $en['login']);
                 $eninv = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM user WHERE login='$tmpeninv' AND id<9999 LIMIT 1;"));
-                $en_st = explode("|", $en[st]);
+                $en_st = explode("|", $en['st']);
                 for ($i = 5; $i <= 36; $i++) {
                     if ($en_st[$i] == '') $en_st[$i] = 0;
                 }
@@ -139,24 +139,24 @@
             $end = '';
         }
     }
-    $expp = exp_level($player[level]);
-    $naemnik = explode("|", $player[naemnik]);
+    $expp = exp_level($player['level']);
+    $naemnik = explode("|", $player['naemnik']);
     $naimbut = ($naemnik[1] < time() ? 1 : 0);
     list($player['fight_x'], $player['fight_y']) = explode('_', $player['pos_fight']);
     ?>
     var naemnik = <?=$naimbut?>;
-    var fight_ty = [<?=$fight?>,<?=$bat;?>,<?=$ty;?>, "<?=$end?>", "<?=$vc?>", "<?=$expp[ex]?>", "<?=$player['battle'];?>"];
+    var fight_ty = [<?=$fight?>,<?=$bat;?>,<?=$ty;?>, "<?=$end?>", "<?=$vc?>", "<?=$expp['ex']?>", "<?=$player['battle'];?>"];
     var param_ow = ["<?=$player['login'];?>", "<?=$player['hp'];?>", "<?=$player['hp_all'];?>", "<?=$player['mp'];?>", "<?=$player['mp_all'];?>", "<?=$player['level'];?>", "<?=$player['sklon'];?>", "<?=$player['clan_gif'];?>", "<?=$player['clan'];?>", "<?=$player['clan_d'];?>", "1", "100", "115", "", "",<?=$player['thotem'];?>, [<?php echo $AutoBot[0]; ?>,<?php echo $AutoBot[1]; ?>], [<?php echo $player['fight_x']; ?>,<?php echo $player['fight_y']; ?>]];
-    var slots_ow = ["<?=$player['obraz']?>", "<? $magic = slotwiev($player[id], 0);?>"];
+    var slots_ow = ["<?=$player['obraz']?>", "<? $magic = slotwiev($player['id'], 0);?>"];
     var lives_g1 = [<?=$livg1?>];
     var lives_g2 = [<?=$livg2?>];
     var go_no = '<?php echo $bplace["xy"]; ?>';
     var map = ["map1", [<?php echo $team1; ?>], [<?php echo $team2; ?>], "<?php echo scode(); ?>"]
-    var fight_pm = [<?=$expp[ma]?>,<?=$plstt[28]?>,<?=$player[od]?>,<?=$player[bl]?>, "<?=scod()?>",<?=$en['type'];?>,<?=$player['side']?>, 3, 0, "",<?=$en['id'];?>];
+    var fight_pm = [<?=$expp['ma']?>,<?=$plstt[28]?>,<?=$player['od']?>,<?=$player['bl']?>, "<?=scode()?>",<?=$en['type'];?>,<?=$player['side']?>, 3, 0, "",<?=$en['id'];?>];
     <?php
     if($bat != 0){
     $magic = explode("|", $magic);
-    if ($player[znan] > 2 and $player[mp] > 0) {
+    if ($player['znan'] > 2 and $player['mp'] > 0) {
         $magic_in .= "320,";
         $alchemy .= "0,";
     }
@@ -179,13 +179,13 @@
     }else{
     ?>
     var slots_en = ["<?=$en['obraz'];?>", "<? if ($en['type'] == 1) {
-        slotwiev($en[id], 0);
+        slotwiev($en['id'], 0);
     } else {
-        if ($en[addon] == 99) {
+        if ($en['addon'] == 99) {
             echo '1';
-            slotwiev($player[id], 0);
+            slotwiev($player['id'], 0);
         } else {
-            botslot($eninv[id], 0);
+            botslot($eninv['id'], 0);
         }
     }?>"];
     var addpa_en = [<?="$en[sila],$en_st[30],$en[lovk],$en_st[31],$en[uda4a],$en_st[32],$en[mudr],$en_st[35],$en[znan],$en_st[34],$en_st[5],$en_st[6],$en_st[7],$en_st[8],$en_st[9],$en_st[10]"?>];
@@ -198,13 +198,13 @@
         echo Show_Stat($player['battle']);
     }
     echo "];\n";
-    ?> var fexp = ["<?=$player['dmg']?>", "15", "<?=$player['id']?>", "<?=scod()?>", "<?=$randomize?>", "",<? if ($player[wait] > time()) {
-        print $player[wait] - time();
+    ?> var fexp = ["<?=$player['dmg']?>", "15", "<?=$player['id']?>", "<?=scode()?>", "<?=$randomize?>", "",<? if ($player['wait'] > time()) {
+        print $player['wait'] - time();
     } else {
         print 0;
     }?>, 0]; <?
     }else{?>
-    var stats = [<?=$player[dmg]?>];<? }
+    var stats = [<?=$player['dmg']?>];<? }
     echo 'var logs = [1';
     if (is_file("/var/www/legen451/data/www/battles/logs/" . $player['battle'] . ".txt")) {
         echo Show_Log($player['battle'], 10);

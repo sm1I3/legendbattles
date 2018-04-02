@@ -55,28 +55,28 @@ while ($row = mysqli_fetch_assoc($mysql2)) {
         if ($stat[0] == 1) {
             $tmp = explode("-", $stat[1]);
             switch ($tw) {
-                case w1:
+                case 'w1':
                     $k = ($um[10] / 300 + $um[1] / 150) + 1;
                     break;
-                case w2:
+                case 'w2':
                     $k = ($um[10] / 300 + $um[2] / 150) + 1;
                     break;
-                case w3:
+                case 'w3':
                     $k = ($um[10] / 300 + $um[3] / 150) + 1;
                     break;
-                case w4:
+                case 'w4':
                     $k = ($um[10] / 300 + $um[4] / 150) + 1;
                     break;
-                case w5:
+                case 'w5':
                     $k = ($um[10] / 300 + $um[5] / 150) + 1;
                     break;
-                case w6:
+                case 'w6':
                     $k = ($um[10] / 300 + $um[6] / 150) + 1;
                     break;
-                case w7:
+                case 'w7':
                     $k = ($um[10] / 300 + $um[7] / 150) + 1;
                     break;
-                case w20:
+                case 'w20':
                     $k = $um[10] / 300 + 1;
                     break;
             }

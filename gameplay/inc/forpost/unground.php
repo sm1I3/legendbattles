@@ -13,10 +13,10 @@
 		}
 		while($row = mysqli_fetch_array($podq)){
 			if($row['end_time']>time() and $row['level']==1){
-                $cd[1] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row[end_time]) . "";
+                $cd[1] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row['end_time']) . "";
 			}
 			if($row['end_time']>time() and $row['level']==2){
-                $cd[2] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row[end_time]) . "";
+                $cd[2] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row['end_time']) . "";
 			}
 		}
 		$id=1;
@@ -29,10 +29,10 @@
 		}
 		while($row = mysqli_fetch_array($podq)){
 			if($row['end_time']>time() and $row['level']==1){
-                $cd[1] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row[end_time]) . "";
+                $cd[1] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row['end_time']) . "";
 			}
 			if($row['end_time']>time() and $row['level']==2){
-                $cd[2] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row[end_time]) . "";
+                $cd[2] = "Подземелье откроется: " . date("d.m.y (в Hч. iмин. sсек.)", $row['end_time']) . "";
 			}
 		}
 		$id=2;
@@ -42,7 +42,7 @@
 	
 	if($cd[1]=='none'){
         echo '<tr><td align=center width=33% bgcolor=f5f5f5><b><a href="main.php?post_id=80&vcode=';
-        echo scod();
+        echo scode();
         echo '"><font class=weaponchart>Войти в подземелье (1й уровень)</font></a></b></font></td></tr>';
 	}
 	else{
@@ -51,7 +51,7 @@
 	
 	if($cd[2]=='none' and $clpod[$id-1]==$id){
         echo '<tr><td align=center width=33% bgcolor=f5f5f5><b><a href="main.php?post_id=80&vcode=';
-        echo scod();
+        echo scode();
         echo '"><font class=weaponchart>Войти в подземелье (2й уровень)</font></a></b></font></td></tr>';
     } else if ($player['clan_id'] == 'none' or $clpod[$id - 1] != $id) {
         echo '<td align=center width=33% bgcolor=f5f5f5><b><font class=freetxt><font color=#222222>Вход на 2й уровень недоступен</font></b></font></td></tr>';

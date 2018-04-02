@@ -15,7 +15,7 @@ if($_SESSION['mark']!=''){
 <tr><td bgcolor=#e0e0e0><table cellpadding=0 cellspacing=1 border=0 width=100%>
             <tr>
                 <td colspan=2 bgcolor=#F9f9f9>
-                    <div align=center><font class=inv><b> У Вас с собой <?= lr($player[nv]) ?> и вещей
+                    <div align=center><font class=inv><b> У Вас с собой <?= lr($player['nv']) ?> и вещей
                                 массой: <?= $plstt[71] ?> Максимальный вес: <?= $mass ?></b></div>
                 </td>
             </tr>
@@ -150,8 +150,8 @@ if($_SESSION['mark']!=''){
 		
 	}
 	$pl_st=allparam($player);
-	$filt="AND `items`.`type`!='w0' AND `items`.`type`!='w61' AND `items`.`type`!='w29' AND `items`.`type`!='w30' AND `items`.`type`!='w66' AND `items`.`type`!='w69'  AND `items`.`type`!='w68'";   
-	$it=mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,  `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `pl_id`='".$player[id]."' and `used`='0' and `auction`='0' and `items`.`dd_price`='0' AND type='".preg_replace('/[^w0-9]/','',$_GET["weapon_category"])."' ".$filt.";");
+	$filt="AND `items`.`type`!='w0' AND `items`.`type`!='w61' AND `items`.`type`!='w29' AND `items`.`type`!='w30' AND `items`.`type`!='w66' AND `items`.`type`!='w69'  AND `items`.`type`!='w68'";
+$it = mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*,  `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `pl_id`='" . $player['id'] . "' and `used`='0' and `auction`='0' and `items`.`dd_price`='0' AND type='" . preg_replace('/[^w0-9]/', '', $_GET["weapon_category"]) . "' " . $filt . ";");
 	while ($ITEM = mysqli_fetch_assoc($it)){
 		include($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/master/master_items".".php");
 		include($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/master/master_ups".".php");
@@ -160,4 +160,4 @@ echo'
 </td></tr>';
 include($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/master/master_upcheck".".php");	
 ?>
-</SCRIPT>
+        </table>

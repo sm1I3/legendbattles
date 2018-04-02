@@ -14,7 +14,7 @@
         $json2 = json_encode($wins);
         $regDate = $player['bdaypers'];
         $currentDate = date('y-m-d H:m:s');
-        $gameDate = date_diffe($regDate, $currentDate);
+        $gameDate = date_diff($regDate, $currentDate);
         $gameDate = floor($gameDate / 31536000);
         $json3 = json_encode($gameDate);
         $lesnik = $player['les'];

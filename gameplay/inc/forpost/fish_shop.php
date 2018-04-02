@@ -86,7 +86,7 @@ if($num>0 and $_GET['weapon_category']=='priman'){?>
 <tr><td bgcolor=#e0e0e0>
 <table cellpadding=3 cellspacing=1 border=0 width=100%>
 <tr><td colspan=4 bgcolor=#F9f9f9>
-        <div align=center><font class=inv><b> У Вас с собой <?= lr($player[nv]) ?> и вещей массой: <?= $plstt[71] ?>
+        <div align=center><font class=inv><b> У Вас с собой <?= lr($player['nv']) ?> и вещей массой: <?= $plstt[71] ?>
                     Максимальный вес: <?= $mass ?></b></div>
     </td>
 </tr>
@@ -155,7 +155,7 @@ if($num>0 and $_GET['weapon_category']=='priman'){?>
 		}
 		else{
 			if($player['baks']>=$ITEM['dd_price'] AND $ITEM['kol']>0 and $m!=0){
-                echo '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="купить (' . $ITEM[dd_price] . '$)"><br>';
+                echo '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="купить (' . $ITEM['dd_price'] . '$)"><br>';
 			}
 		}
 		echo'</div>

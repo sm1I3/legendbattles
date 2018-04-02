@@ -139,12 +139,13 @@ echo "<script>location='main.php';</script>";
 <tr><td align=center>
 
 
-
-
-
-</div>
+    </td>
 </table></td></table></tr></td></table>
-</td></tr></table></TD></TR></TABLE>
+        </td>
+    </tr>
+</table>
+</body>
+</html></TABLE>
 
 <script type="text/javascript">
 <? if (isset($secrets) && !empty($secrets)){?>

@@ -152,7 +152,8 @@ WHERE items.dd_price=0 AND market='" . $player['loc'] . "' AND `level`>='" . $_S
                                     <table cellpadding=3 cellspacing=1 border=0 width=100%>
                                         <tr>
                                             <td colspan=2 bgcolor=#F9f9f9>
-                                                <div align=center><font class=inv><b> У Вас с собой <?= $player[Zlo] ?>
+                                                <div align=center><font class=inv><b> У Вас с
+                                                            собой <?= $player['Zlo'] ?>
                                                             Репутация зла и вещей массой: <?= $plstt[71] ?> Максимальный
                                                             вес: <?= $mass ?></b></div>
                                             </td>
@@ -161,15 +162,15 @@ WHERE items.dd_price=0 AND market='" . $player['loc'] . "' AND `level`>='" . $_S
                                         $freemass = $plstt[71];
                                         while ($ITEM = mysqli_fetch_assoc($ITEMS)) {
                                             $par = explode("|", $ITEM['param']);
-                                            $need = explode("|", $ITEM[need]);
+                                            $need = explode("|", $ITEM['need']);
                                             $bt = 0;
                                             $tr_b = '';
                                             $m = 1;
                                             foreach ($need as $value) {
                                                 $treb = explode("@", $value);
-                                                if ($treb[0] == 72) $treb[1] = $ITEM[level];
+                                                if ($treb[0] == 72) $treb[1] = $ITEM['level'];
                                                 if ($treb[0] == 71) {
-                                                    $treb[1] = $ITEM[massa];
+                                                    $treb[1] = $ITEM['massa'];
                                                     $plstt[71] = $mass - $freemass;
                                                 }
                                                 if ($treb[0] != 28) {
@@ -307,20 +308,22 @@ WHERE items.dd_price=0 AND market='" . $player['loc'] . "' AND `level`>='" . $_S
                                             <tr>
                                                 <td bgcolor=#f9f9f9>
                                                     <div align=center><img
-                                                                src=/img/image/weapon/<?= $ITEM[gif] ?> border=0></div>
+                                                                src=/img/image/weapon/<?= $ITEM['gif'] ?> border=0>
+                                                    </div>
                                                 </td>
                                                 <td width=100% bgcolor=#ffffff valign=top>
                                                     <table cellpadding=0 cellspacing=0 border=0 width=100%>
                                                         <tr>
                                                             <td bgcolor=#ffffff width=100%><font
-                                                                        class=nickname><b><? if ($player[Zlo] >= $ITEM[price] AND $ITEM[kol] > 0 and $m != 0) { ?>
+                                                                        class=nickname><b><? if ($player['Zlo'] >= $ITEM['price'] AND $ITEM['kol'] > 0 and $m != 0) { ?>
                                                                             <input type=button class=invbut
-                                                                                   onclick="location='main.php?post_id=117&wsuid=<?= $ITEM[id] ?>&vcode=<?= scod() ?>'"
+                                                                                   onclick="location='main.php?post_id=117&wsuid=<?= $ITEM['id'] ?>&vcode=<?= scode() ?>'"
                                                                                    value="купить"> <? }
                                                                         if ($player['login'] == 'Администрация' or $player['login'] == 'Спецназ') {
                                                                             echo '<input type=button class=invbut onclick="location=\'main.php?post_id=111&wsuid=' . $ITEM['id'] . '&market=' . $ITEM['market'] . '&vcode=' . scode() . '\'" value="Удалить из магазина"><br>';
-                                                                        } ?><?= $ITEM[name] ?></b><font class=weaponch>
-                                                                        (количество: <?= (($ITEM[kol] > 0) ? '<font color=green>' . $ITEM[kol] . '</font>' : '<font color=red>' . $ITEM[kol] . '</font>') ?>
+                                                                        } ?><?= $ITEM['name'] ?></b><font
+                                                                            class=weaponch>
+                                                                        (количество: <?= (($ITEM['kol'] > 0) ? '<font color=green>' . $ITEM['kol'] . '</font>' : '<font color=red>' . $ITEM['kol'] . '</font>') ?>
                                                                         )<br><img src=/img/image/1x1.gif width=1
                                                                                   height=3></td>
                                                             <td><br><img src=/img/image/1x1.gif width=1 height=3</td>
@@ -342,13 +345,13 @@ WHERE items.dd_price=0 AND market='" . $player['loc'] . "' AND `level`>='" . $_S
                                                                     </tr>
                                                                     <tr>
                                                                         <td bgcolor=#FCFAF3><font class=weaponch>&nbsp;Цена:
-                                                                                <b><? if ($ITEM[price] > $player[Zlo]) {
+                                                                                <b><? if ($ITEM['price'] > $player['Zlo']) {
                                                                                         echo "<font color=#cc0000>$ITEM[price] Репутация зла</font>";
                                                                                     } else {
-                                                                                        echo $ITEM[price] . " Репутация зла";
+                                                                                        echo $ITEM['price'] . " Репутация зла";
                                                                                     } ?></b><?php ?><br>
-                                                                                <? if ($ITEM[slot] == 16) echo "<font class=weaponch><b><font color=#cc0000>Можно одевать на кольчуги</font></b><br>";
-                                                                                blocks($ITEM[block]);
+                                                                                <? if ($ITEM['slot'] == 16) echo "<font class=weaponch><b><font color=#cc0000>Можно одевать на кольчуги</font></b><br>";
+                                                                                blocks($ITEM['block']);
                                                                                 foreach ($par as $value) {
                                                                                     $stat = explode("@", $value);
                                                                                     if ($stat[1] > 0) {
@@ -632,8 +635,8 @@ WHERE items.dd_price=0 AND market='" . $player['loc'] . "' AND `level`>='" . $_S
                             </tr>
                         </table>
                     </td>
-                        <SCRIPT src="./js/t_v01.js"></SCRIPT>
-                        <SCRIPT src="./js/tooltip.js"></SCRIPT>
-                        <SCRIPT language='JavaScript'>
-                            NewLinksView();
-                        </SCRIPT>
+                    <SCRIPT src="./js/t_v01.js"></SCRIPT>
+                    <SCRIPT src="./js/tooltip.js"></SCRIPT>
+                    <SCRIPT language='JavaScript'>
+                        NewLinksView();
+                    </SCRIPT>

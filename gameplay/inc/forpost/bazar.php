@@ -249,31 +249,31 @@ echo '</select> не дороже
 					<?
 					if($ITEM['pl_id']==$player['id']){?>
                         <b><input type=button class=invbut
-                                  onclick="if(confirm('При отмене лота взимается комиссия 5% от цены лота. Вы уверены, что хотите отменить лот?')) { location='main.php?post_id=110&act=2&uid=<?= $ITEM['id_item'] ?>&vcode=<?= scod() ?>' }"
+                                  onclick="if(confirm('При отмене лота взимается комиссия 5% от цены лота. Вы уверены, что хотите отменить лот?')) { location='main.php?post_id=110&act=2&uid=<?= $ITEM['id_item'] ?>&vcode=<?= scode() ?>' }"
                                   value="Отменить продажу"></b>
 					<? }	
 					elseif($player['nv']>=$ITEM['sellprice'] and $m!=0){?>
                         Количество: <input type=text class=logintextbox7 name=col value=1
-                                           onkeyup="writeBuy(this.value,'<?= $ITEM['id_item'] ?>','<?= scod() ?>');">&nbsp;
+                                           onkeyup="writeBuy(this.value,'<?= $ITEM['id_item'] ?>','<?= scode() ?>');">&nbsp;
                         <b id="buybutton_<?= $ITEM['id_item'] ?>"><input type=button class=invbut
-                                                                         onclick="location='main.php?post_id=110&act=1&col=1&uid=<?= $ITEM['id_item'] ?>&vcode=<?= scod() ?>'"
+                                                                         onclick="location='main.php?post_id=110&act=1&col=1&uid=<?= $ITEM['id_item'] ?>&vcode=<?= scode() ?>'"
                                                                          value="Купить"></b>
 					<? }?>
 					<b>
 					<?
-                    if ($ITEM[mod_color] == 0) {
-                        echo $ITEM[name] . ($ITEM[modified] == 1 ? " [ап]" : "") . "</b>";
+                    if ($ITEM['mod_color'] == 0) {
+                        echo $ITEM['name'] . ($ITEM['modified'] == 1 ? " [ап]" : "") . "</b>";
                     }
 						    else
 							  {
-                                  if ($ITEM[mod_color] == 1) {
-                                      echo "<font color=#006600>" . $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") . "</font></b>";
+                                  if ($ITEM['mod_color'] == 1) {
+                                      echo "<font color=#006600>" . $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") . "</font></b>";
                                   }
-                                  if ($ITEM[mod_color] == 2) {
-                                      echo "<font color=#3333CC>" . $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") . "</font></b>";
+                                  if ($ITEM['mod_color'] == 2) {
+                                      echo "<font color=#3333CC>" . $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") . "</font></b>";
                                   }
-                                  if ($ITEM[mod_color] == 3) {
-                                      echo "<font color=#993399>" . $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") . "</font></b>";
+                                  if ($ITEM['mod_color'] == 3) {
+                                      echo "<font color=#993399>" . $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") . "</font></b>";
                                   }
 	    					  }
                     echo '<font class=proceb> (в наличии: ' . $count . ') продавец: <b>' . (namebyid($ITEM['pl_id'])) . '</b></font>';
@@ -431,31 +431,31 @@ elseif(intval($_GET['ob'])==1){
 					<?
 					if($ITEM['pl_id']==$player['id']){?>
                         <b><input type=button class=invbut
-                                  onclick="if(confirm('При отмене лота взимается комиссия 5% от цены лота. Вы уверены, что хотите отменить лот?')) { location='main.php?post_id=110&act=2&uid=<?= $ITEM['id_item'] ?>&vcode=<?= scod() ?>' }"
+                                  onclick="if(confirm('При отмене лота взимается комиссия 5% от цены лота. Вы уверены, что хотите отменить лот?')) { location='main.php?post_id=110&act=2&uid=<?= $ITEM['id_item'] ?>&vcode=<?= scode() ?>' }"
                                   value="Отменить продажу"></b>
 					<? }	
 					elseif($player['nv']>=$ITEM['sellprice'] and $m!=0){?>
                         Количество: <input type=text class=logintextbox7 name=col value=1
-                                           onkeyup="writeBuy(this.value,'<?= $ITEM['id_item'] ?>','<?= scod() ?>');">&nbsp;
+                                           onkeyup="writeBuy(this.value,'<?= $ITEM['id_item'] ?>','<?= scode() ?>');">&nbsp;
                         <b id="buybutton_<?= $ITEM['id_item'] ?>"><input type=button class=invbut
-                                                                         onclick="location='main.php?post_id=110&act=1&col=1&uid=<?= $ITEM['id_item'] ?>&vcode=<?= scod() ?>'"
+                                                                         onclick="location='main.php?post_id=110&act=1&col=1&uid=<?= $ITEM['id_item'] ?>&vcode=<?= scode() ?>'"
                                                                          value="Купить"></b>
 					<? }?>
 					<b>
 					<?
-                    if ($ITEM[mod_color] == 0) {
-                        echo $ITEM[name] . ($ITEM[modified] == 1 ? " [ап]" : "") . "</b>";
+                    if ($ITEM['mod_color'] == 0) {
+                        echo $ITEM['name'] . ($ITEM['modified'] == 1 ? " [ап]" : "") . "</b>";
                     }
 						    else
 							  {
-                                  if ($ITEM[mod_color] == 1) {
-                                      echo "<font color=#006600>" . $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") . "</font></b>";
+                                  if ($ITEM['mod_color'] == 1) {
+                                      echo "<font color=#006600>" . $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") . "</font></b>";
                                   }
-                                  if ($ITEM[mod_color] == 2) {
-                                      echo "<font color=#3333CC>" . $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") . "</font></b>";
+                                  if ($ITEM['mod_color'] == 2) {
+                                      echo "<font color=#3333CC>" . $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") . "</font></b>";
                                   }
-                                  if ($ITEM[mod_color] == 3) {
-                                      echo "<font color=#993399>" . $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") . "</font></b>";
+                                  if ($ITEM['mod_color'] == 3) {
+                                      echo "<font color=#993399>" . $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") . "</font></b>";
                                   }
 	    					  }
                     echo '<font class=proceb> (в наличии: ' . $count . ') продавец: <b>' . (namebyid($ITEM['pl_id'])) . '</b></font>';

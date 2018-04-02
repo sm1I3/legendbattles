@@ -1,6 +1,6 @@
 <?php
 $exp = explode("|", $player['exp']);
-$expn = exp_level($player[level]);
+$expn = exp_level($player['level']);
 $wins = explode("|", $player['wins']);
 if (!$player['reput3']) $player['reput3'] = 0;
 ?>
@@ -22,7 +22,7 @@ if (!$player['reput3']) $player['reput3'] = 0;
             Доблесть : <span class="cnt"><?= $exp[2] ?></span>
         </div>
         <div>
-            До уровня : <span class="cnt"><?= $expn[exp] - $x ?></span>
+            До уровня : <span class="cnt"><?= $expn['exp'] - $x ?></span>
         </div>
         <div>
             Квесты : <span

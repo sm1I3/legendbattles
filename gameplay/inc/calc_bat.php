@@ -21,7 +21,7 @@ if ($oldlogin != $newlogin) {
     $champ = 0;
 }
 if ($tg['invisible'] < time()) {
-    $logtg = "[1,$tg[side],\"" . ($champ ? "<font style=\'color: #CC0000;\'>" : "") . $tg[login] . ($champ ? "</font>" : "") . "\",$tg[level],$tg[sklon],\"$tg[clan_gif]\"]";
+    $logtg = "[1,$tg[side],\"" . ($champ ? "<font style=\'color: #CC0000;\'>" : "") . $tg['login'] . ($champ ? "</font>" : "") . "\",$tg[level],$tg[sklon],\"$tg[clan_gif]\"]";
 } else {
     $logtg = '[4,' . $tg['side'] . ']';
 }
@@ -129,7 +129,7 @@ if ($pl_hp <= 0) {
         include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/calc_drop.php");
     }
     savelog($death, $player['battle']);
-    if (rand(0, 100) <= $ftr and $tg[level] > 5 and $tg[type] == 1) {
+    if (rand(0, 100) <= $ftr and $tg['level'] > 5 and $tg['type'] == 1) {
         $death = ",[[0,\"" . date("H:i") . "\"],$logtg";
         $death = "" . $death . "" . add_trw($tg, $ftr) . "";
         savelog($death, $player['battle']);
@@ -138,7 +138,7 @@ if ($pl_hp <= 0) {
 if ($tg_hp == 0) {
     $death = ",[[0,\"" . date("H:i") . "\"],$logpl,\" <b>Проиграл$psex[1] бой.</b>\"]";
     savelog($death, $player['battle']);
-    if (rand(0, 100) <= $ftr and $player[level] > 5 and $player[type] == 1) {
+    if (rand(0, 100) <= $ftr and $player['level'] > 5 and $player['type'] == 1) {
         $death = ",[[0,\"" . date("H:i") . "\"],$logpl";
         $death = "" . $death . "" . add_trw($player, $ftr) . "";
         savelog($death, $player['battle']);
@@ -164,17 +164,17 @@ function udar($inu, $block, $player, $tg, $pl_st, $tg_st)
     } else {
         $logtg = '[4,' . $tg['side'] . ']';
     }
-
+    $log = $log ?? '';
     $log .= ",[[0,\"" . date("H:i") . "\"]";
-    $exp = explode(",", $player[dmg]);
-    $exx = exp_level($player[level]);
-    if ($tg[bl] > 0) {
+    $exp = explode(",", $player['dmg']);
+    $exx = exp_level($player['level']);
+    if ($tg['bl'] > 0) {
         $ms[2] = " щитом";
         $ms[3] = " щит";
     } else {
         $ms[3] = " блок";
     }
-    $cblock = ($pl_st[30] - $tg_st[30]) / 2 + (($player[level] - $tg[level]) * 5) + rand(0, 50) + ($player[bl] / 2);
+    $cblock = ($pl_st[30] - $tg_st[30]) / 2 + (($player['level'] - $tg['level']) * 5) + rand(0, 50) + ($player['bl'] / 2);
     if ($cblock < 5) {
         $cblock = 5;
     } else if ($cblock > 95) {
@@ -230,9 +230,9 @@ function udar($inu, $block, $player, $tg, $pl_st, $tg_st)
                 $s = 1;
                 include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/udar_succ.php");
             } else {
-                if (random($cblock) == 1 or $tg[hp] == 0) {
+                if (random($cblock) == 1 or $tg['hp'] == 0) {
                     $s = (rand(3, 6)) / 10;
-                    if ($tg[hp] <= 0) {
+                    if ($tg['hp'] <= 0) {
                         $s = 1;
                     }
                     include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/udar_succ.php");

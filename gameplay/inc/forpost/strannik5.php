@@ -287,7 +287,7 @@ $num = (mysqli_num_rows($ITEMS));
                             center > < font class
 
                             =
-                            inv > < b > У Вас с собой <?= $player[nv] ?> и вещей массой: <?= $plstt[71] ?> Максимальный вес:
+                            inv > < b > У Вас с собой <?= $player['nv'] ?> и вещей массой: <?= $plstt[71] ?> Максимальный вес:
 
                             <?= $mass ?>
                             <
@@ -305,12 +305,15 @@ $num = (mysqli_num_rows($ITEMS));
 $freemass=$plstt[71];
 while ($ITEM = mysqli_fetch_assoc($ITEMS)) {
 $par=explode("|",$ITEM['param']);
-$need=explode("|",$ITEM[need]);
+    $need = explode("|", $ITEM['need']);
 $bt=0;$tr_b='';$m=1;
 foreach ($need as $value) {
 $treb=explode("@",$value);
-if($treb[0]==72)$treb[1]=$ITEM[level];
-if($treb[0]==71){$treb[1]=$ITEM[massa];$plstt[71]=$mass-$freemass;}
+    if ($treb[0] == 72) $treb[1] = $ITEM['level'];
+    if ($treb[0] == 71) {
+        $treb[1] = $ITEM['massa'];
+        $plstt[71] = $mass - $freemass;
+    }
 if($treb[0]!=28){if($plstt[$treb[0]]<$treb[1]){$treb[1]="<font color=#cc0000>$treb[1]</font>";if($treb[0]==71){$m=0
 ;}}}
 switch($treb[0])
@@ -446,7 +449,7 @@ switch($treb[0])
     center > < img src
 
     =
-    /img/ image /weapon/<?= $ITEM[gif] ?> border
+    /img/ image /weapon/<?= $ITEM['gif'] ?> border
 
     =
     0
@@ -503,10 +506,10 @@ if($ITEM['dd_price']==0){
 }
 else{
 	if($player['baks']>=$ITEM['dd_price'] AND $ITEM['kol']>0 and $m!=0){
-        echo '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="купить (' . $ITEM[dd_price] . '$)"><br>';
+        echo '<input type=button class=invbut onclick="location=\'main.php?post_id=1&wsuid=' . $ITEM['id'] . '&vcode=' . scode() . '\'" value="купить (' . $ITEM['dd_price'] . '$)"><br>';
 	}
 }
-    ?> & nbsp<?= $ITEM[name] ?><
+    ?> & nbsp<?= $ITEM['name'] ?><
 
     /
     b > < font class
@@ -671,8 +674,8 @@ if($ITEM['dd_price']>$player['baks']){echo '<font color=#cc0000>'.$ITEM['dd_pric
     ?> <
 
     /
-    b > < br ><? if ($ITEM[slot] == 16) echo "<font class=weaponch><b><font color=#cc0000>Можно одевать на кольчуги</font></b><br>";
-blocks($ITEM[block]);
+    b > < br ><? if ($ITEM['slot'] == 16) echo "<font class=weaponch><b><font color=#cc0000>Можно одевать на кольчуги</font></b><br>";
+    blocks($ITEM['block']);
 foreach ($par as $value) {
 $stat=explode("@",$value);
 if($stat[1]>0){$plus = "+";}else{$plus ="";}

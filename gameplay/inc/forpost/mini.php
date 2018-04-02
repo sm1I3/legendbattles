@@ -202,9 +202,9 @@ $t = $t;
 if ($t < $player["wait"] or $tunnel["time_ready"] > $t) {
     if ($t < $tunnel["time_ready"]) {
         $player["wait"] = $tunnel["time_ready"];
-        $cursor .= "<div align=center id=wtime>Выполняется действие...</div><br><div align=center><img src=\"/img/image/gameplay/72R5.gif\"></div><SCRIPT language=\"JavaScript\">wtime(" . ($player[wait] - time()) . ");</SCRIPT>";//"<div id=wtime>Выполняется действие...</div><script>wtime(".mtrunc($player["wait"]-$t).");</script>";
+        $cursor .= "<div align=center id=wtime>Выполняется действие...</div><br><div align=center><img src=\"/img/image/gameplay/72R5.gif\"></div><SCRIPT language=\"JavaScript\">wtime(" . ($player['wait'] - time()) . ");</SCRIPT>";//"<div id=wtime>Выполняется действие...</div><script>wtime(".mtrunc($player["wait"]-$t).");</script>";
     } else {
-        $cursor .= "<div align=center id=wtime>Выполняется действие...</div><br><div align=center><img src=\"/img/image/gameplay/72R5.gif\"></div><SCRIPT language=\"JavaScript\">wtime(" . ($player[wait] - time()) . ");</SCRIPT>";//"<div id=wtime>Выполняется действие...</div><script>wtime(".mtrunc($player["wait"]-$t).");</script>";
+        $cursor .= "<div align=center id=wtime>Выполняется действие...</div><br><div align=center><img src=\"/img/image/gameplay/72R5.gif\"></div><SCRIPT language=\"JavaScript\">wtime(" . ($player['wait'] - time()) . ");</SCRIPT>";//"<div id=wtime>Выполняется действие...</div><script>wtime(".mtrunc($player["wait"]-$t).");</script>";
         $no_make = 1;  ## ЗапрещаемА добыча) при необходимости включить.
     }
 }
@@ -323,7 +323,7 @@ if (!$resources) $resources .= 'Не обнаружено.';
     </tr>
 </table> <!--id=inf_from_php-->
 <!--<div  id=inf_from_php style="position:absolute;display:none;"><?= $cursor; ?></div>-->
-</TD></TR></TABLE>
+</html></TR></TABLE>
 
 <script type="text/javascript">
     <? if (isset($m_mine) && !empty($m_mine)): ?>

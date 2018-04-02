@@ -25,10 +25,10 @@ $col = explode("|",$player['obr_col']);
                 <td><font class=freemain><b><font color="#336699">Сортировка списка чата</td>
                 <td>
                     <div align=right><select name=inf_sort class=LogintextBox6>
-                            <option value=a_z <? if ($player[filt] == 'a_z') echo " SELECTED"; ?>>a-z</option>
-                            <option value=z_a <? if ($player[filt] == 'z_a') echo " SELECTED"; ?>>z-a</option>
-                            <option value=0_35 <? if ($player[filt] == '0_35') echo " SELECTED"; ?>>0-35</option>
-                            <option value=35_0<? if ($player[filt] == '35_0') echo " SELECTED"; ?>>35-0</option>
+                            <option value=a_z <? if ($player['filt'] == 'a_z') echo " SELECTED"; ?>>a-z</option>
+                            <option value=z_a <? if ($player['filt'] == 'z_a') echo " SELECTED"; ?>>z-a</option>
+                            <option value=0_35 <? if ($player['filt'] == '0_35') echo " SELECTED"; ?>>0-35</option>
+                            <option value=35_0<? if ($player['filt'] == '35_0') echo " SELECTED"; ?>>35-0</option>
                         </select></div>
                 </td>
             </tr>
@@ -36,7 +36,7 @@ $col = explode("|",$player['obr_col']);
                 <td><font class=freemain><b><font color=#777777>Цвет сообщений в чате</b></font></td>
                 <td>
                     <div align=right><font class=freemain><b>Текущий цвет: </font><font
-                                style="background: #<?= $player[chcolor] ?>"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></font>
+                                style="background: #<?= $player['chcolor'] ?>"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></font>
                         <select class=LogintextBox name=newchatcolor>
                             <option value=000000 SELECTED style="BACKGROUND: #000000"></option>
                             <option value=FF3366 style="background: #FF3366"></option>
