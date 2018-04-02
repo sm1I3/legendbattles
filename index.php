@@ -2,12 +2,7 @@
 session_start();
 include($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
-include($_SERVER["DOCUMENT_ROOT"].'/includes/ks_antiddos.php');
 
-$ksa = new ks_antiddos();
-$ksa->doit(10,10);
-
-// разрешаем 10 хитов за 20 секунд
 ?><!doctype html>
 <html lang="ru">
 <head>
