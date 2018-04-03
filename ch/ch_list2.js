@@ -157,7 +157,7 @@ function chatlist_build(sort_type) {
             inj = "<img src=https://img.lifeiswar.ru/image/chat/tr4.gif width=15 height=12 border=0 title=\"" + str_array[6] + "\" align=absmiddle>";
 
         if (str_array[7] != '0') {
-            var dilers = new Array('', 'Дилер', 'Дилер', '', '', '', '', '', '', '', '', 'Помощник дилера');
+            var dilers = ['', 'Дилер', 'Дилер', '', '', '', '', '', '', '', '', 'Помощник дилера'];
             psg = "<img src=https://img.lifeiswar.ru/image/signs/d_sm_" + str_array[7] + ".gif width=15 height=12 align=absmiddle border=0 title=\"" + dilers[str_array[7]] + "\">&nbsp;";
         }
         if (str_array[8] != '') {

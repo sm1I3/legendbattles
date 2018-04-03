@@ -11,7 +11,7 @@ function t_nick ()
 admWindow = function(login){	
     parent.$('#basic-modal-content').html('<iframe src="/includes/addons/admin-action/player.php?loginp='+login+'&load=1" id="useaction" name="useaction" scrolling="auto" style="width:'+(screen.width-100)+'px;height:'+(screen.height-300)+'px;" frameborder="0"></iframe>');
     parent.ShowModal();
-}
+};
 
 function ch_clear_ignor (nick)
 {
@@ -155,7 +155,7 @@ function chatlist_build (sort_type)
 
      if (str_array[7] != '0')
      {
-         var dilers = new Array('', 'Дилер', 'Дилер', '', '', '', '', '', '', '', '', 'Помощник дилера');
+         var dilers = ['', 'Дилер', 'Дилер', '', '', '', '', '', '', '', '', 'Помощник дилера'];
        psg = "<img src=img/image/signs/d_sm_"+str_array[7]+".gif width=15 height=12 align=absmiddle border=0 title=\""+dilers[str_array[7]]+"\">&nbsp;";
      }
      if (str_array[8] != '0')

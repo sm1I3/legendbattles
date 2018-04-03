@@ -27,8 +27,8 @@ ShowForm = function(msg){
 	}else if(document.getElementById('darker').style.display == 'block'){
 		document.getElementById('darker').style.display = 'none';
 		document.getElementById('ContentError').innerHTML = msg;
-	}	
-}
+	}
+};
 // Показываем редактор
 ShowEditor = function(){
 	var html = '<form method="post" action="">';
@@ -48,7 +48,7 @@ ShowEditor = function(){
 	d.write(html);
 	main_inf();
 	ShowPar();
-}
+};
 main_inf = function(){
 	var html = '<table border="1" cellpadding="0" cellspacing="0" align="center" width="100%">';
 	html += '<tr>';
@@ -71,7 +71,7 @@ main_inf = function(){
 	html += '</tr>';
 	html += '</table>';
 	$('prices').innerHTML = html;
-}
+};
 ShowPar = function(){
 	var str_par = '';
 	var showPars = '';
@@ -107,7 +107,7 @@ ShowPar = function(){
 	
 	
 	return true;
-}
+};
 // Типы и категории вещей
 SelectTypes = function(){
 	var html = '<select name="type" onchange="ChSelect(4,this.options[this.selectedIndex].value);">';
@@ -116,7 +116,7 @@ SelectTypes = function(){
 	}
 	html += '</select>';
 	return html;
-}
+};
 SelectSlots = function(){
 	var html = '<select name="slot" onchange="ChSelect(5,this.options[this.selectedIndex].value);">';
 	for(var i = 0; i < statsArray.length; i++){
@@ -126,7 +126,7 @@ SelectSlots = function(){
 	}
 	html += '</select>';
 	return html;
-}
+};
 SelectBlocks = function(){
 	var html = '<select name="block" onchange="ChSelect(10,this.options[this.selectedIndex].value);">';
 	html += '<option value="0"'+((params[10] == 0)?' selected="selected"':'')+'>-------</option>';
@@ -135,31 +135,31 @@ SelectBlocks = function(){
     html += '<option value="90"' + ((params[10] == 90) ? ' selected="selected"' : '') + '>3 точки</option>';
 	html += '</select>';
 	return html;
-}
+};
 ChSelect = function(type, value){
 	params[type] = value;
 	main_inf();
-}
+};
 // Всплывающие формы
 changeParams = function(paramID){
 	var html = '<form onsubmit="changeParamsM(' + paramID + ');return false;"><center><input class="login" type="text" value="'+params[paramID]+'" id="param" size=30><hr><input type="submit" value="[OK]"></center></form>';
 	ShowForm(html);
-}
+};
 changeParamsM = function(paramID){
 	params[paramID] = $('param').value;
 	ShowForm();
 	main_inf();
-}
+};
 // Меняем статы
 changeStats = function(type,par,val){
 	var html = '<form onsubmit="changeStatsM(' + type + ',' + par + ');return false;"><center><input class="login" type="text" value="' + val + '" id="param" size=30><hr><input type="submit" value="[OK]"></center></form>';
 	ShowForm(html);
-}
+};
 changeStatsM = function(type,par){
 	par_set(type,par,$('param').value);
 	ShowForm();
 	ShowPar();
-}
+};
 // Меняем Картинку
 changeImage = function(){
     return alert('В разработке');
@@ -172,17 +172,17 @@ changeImage = function(){
 	}else{
         alert('Слот вещи не выбран');
 	}
-}
+};
 changeImageM = function(image){
 	params[1] = image;
 	ShowForm();
 	main_inf();
-}
+};
 changeImageAjax = function(x, y){
 	xmlhttp.open('get', '/gameplay/ajax/imageUpdate.php?action=get&width=' + x +'&height=' + y + '&rand=' + Math.random());
 	xmlhttp.onreadystatechange = ajax_response;
 	xmlhttp.send(null);
-}
+};
 // Добавляем новые статы
 AddParams = function(type){
 	var DataID = [8,9];
@@ -204,18 +204,18 @@ AddParams = function(type){
 	}
     // Строим шаблон
 	ShowForm('<form onsubmit="AddParamsM(' + type + ');return false;"><center><select class="login" id="addParamsId">' + select + '</select><br /><input class="login" type="text" value="0" id="addParamsName" size=30><hr><input type="submit" value="[OK]"></center></form>');
-}
+};
 AddParamsM = function(type){
 	var DataID = [8,9];
 	params[DataID[type]] += ((params[DataID[type]] != '')? '|' : '') + $('addParamsId').value + '@' + $('addParamsName').value;
 	ShowForm();
 	ShowPar();
-}
+};
 // Редактируем переменные в режиме онлайн
 fast_up = function(type,par,val){
 	val = parseInt(val);
 	return '<img style="cursor:pointer" src=http"//img.legendbattles.ru/images/fixed_on.gif onclick="par_set('+type+','+par+','+(val*2)+')"> <img style="cursor:pointer" src=http"//img.legendbattles.ru/images/battle/down.gif onclick="par_set('+type+','+par+','+(val-1)+')"> <img style="cursor:pointer" src=http"//img.legendbattles.ru/images/battle/up.gif onclick="par_set('+type+','+par+','+(val+1)+')"> <img style="cursor:pointer" src=http"//img.legendbattles.ru/images/fixed_off.gif onclick="par_set('+type+','+par+','+(val/2)+')">';
-}
+};
 par_set = function(type,par,val){
 	var NewParams = '';
 	switch(type){
@@ -241,7 +241,7 @@ par_set = function(type,par,val){
 		break;
 	}
 	ShowPar();
-}
+};
 
 qsort_int = function(arr,first,last){
 	if (first<last){
@@ -263,7 +263,7 @@ qsort_int = function(arr,first,last){
 		qsort_int(arr,first,j-1);
 		qsort_int(arr,j+1,last);
 	}
-}
+};
 
 ajax_response = function(){
 	if(xmlhttp.readyState == 4){
@@ -283,7 +283,7 @@ ajax_response = function(){
 			}
 		}
 	}
-}
+};
 
 in_array = function(needle, haystack, strict) {
 	var found = false, key, strict = !!strict;
@@ -294,4 +294,4 @@ in_array = function(needle, haystack, strict) {
 		}
 	}
 	return found;
-}
+};

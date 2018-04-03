@@ -13,8 +13,8 @@ function smile_open(page, e)
 	
 }
 
-var map_en = new Array('s`h', 'S`h', 'S`H', 's`Х', 'sh`', 'Sh`', 'SH`', "'o", 'yo', "'O", 'Yo', 'YO', 'zh', 'w', 'Zh', 'ZH', 'W', 'ch', 'Ch', 'CH', 'sh', 'Sh', 'SH', 'e`', 'E`', "'u", 'yu', "'U", 'Yu', "YU", "'a", 'ya', "'A", 'Ya', 'YA', 'a', 'A', 'b', 'B', 'v', 'V', 'g', 'G', 'd', 'D', 'e', 'E', 'z', 'Z', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'o', 'O', 'p', 'P', 'r', 'R', 's', 'S', 't', 'T', 'u', 'U', 'f', 'F', 'h', 'H', 'c', 'C', '`', 'y', 'Y', "'");
-var map_ru = new Array('сх', 'Сх', 'СХ', 'сХ', 'щ', 'Щ', 'Щ', 'ё', 'ё', 'Ё', 'Ё', 'Ё', 'ж', 'ж', 'Ж', 'Ж', 'Ж', 'ч', 'Ч', 'Ч', 'ш', 'Ш', 'Ш', 'э', 'Э', 'ю', 'ю', 'Ю', 'Ю', 'Ю', 'я', 'я', 'Я', 'Я', 'Я', 'а', 'А', 'б', 'Б', 'в', 'В', 'г', 'Г', 'д', 'Д', 'е', 'Е', 'з', 'З', 'и', 'И', 'й', 'Й', 'к', 'К', 'л', 'Л', 'м', 'М', 'н', 'Н', 'о', 'О', 'п', 'П', 'р', 'Р', 'с', 'С', 'т', 'Т', 'у', 'У', 'ф', 'Ф', 'х', 'Х', 'ц', 'Ц', 'ъ', 'ы', 'Ы', 'ь');
+var map_en = ['s`h', 'S`h', 'S`H', 's`Х', 'sh`', 'Sh`', 'SH`', "'o", 'yo', "'O", 'Yo', 'YO', 'zh', 'w', 'Zh', 'ZH', 'W', 'ch', 'Ch', 'CH', 'sh', 'Sh', 'SH', 'e`', 'E`', "'u", 'yu', "'U", 'Yu', "YU", "'a", 'ya', "'A", 'Ya', 'YA', 'a', 'A', 'b', 'B', 'v', 'V', 'g', 'G', 'd', 'D', 'e', 'E', 'z', 'Z', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'o', 'O', 'p', 'P', 'r', 'R', 's', 'S', 't', 'T', 'u', 'U', 'f', 'F', 'h', 'H', 'c', 'C', '`', 'y', 'Y', "'"];
+var map_ru = ['сх', 'Сх', 'СХ', 'сХ', 'щ', 'Щ', 'Щ', 'ё', 'ё', 'Ё', 'Ё', 'Ё', 'ж', 'ж', 'Ж', 'Ж', 'Ж', 'ч', 'Ч', 'Ч', 'ш', 'Ш', 'Ш', 'э', 'Э', 'ю', 'ю', 'Ю', 'Ю', 'Ю', 'я', 'я', 'Я', 'Я', 'Я', 'а', 'А', 'б', 'Б', 'в', 'В', 'г', 'Г', 'д', 'Д', 'е', 'Е', 'з', 'З', 'и', 'И', 'й', 'Й', 'к', 'К', 'л', 'Л', 'м', 'М', 'н', 'Н', 'о', 'О', 'п', 'П', 'р', 'Р', 'с', 'С', 'т', 'Т', 'у', 'У', 'ф', 'Ф', 'х', 'Х', 'ц', 'Ц', 'ъ', 'ы', 'Ы', 'ь'];
 
 function convert(str)
 {
@@ -35,7 +35,7 @@ function submit_msg()
 
   if (parent.latrus === 1)
   {
-    var msg = new Array();
+      var msg = [];
     msg = re.exec(document.FBT.text.value);
 
     if (msg)
@@ -79,9 +79,9 @@ function use_action(usetype){
 useaction = function(usetype){
     parent.$('#basic-modal-content').html('<iframe src="/main.php?useaction=' + usetype + '" id="useaction" name="useaction" scrolling="auto" style="width:1050px;height:600px;" frameborder="0"></iframe>');
     parent.ShowModal();
-}
+};
 
 useactions = function(usetype){
     parent.$('#basic-modal-content').html('<iframe src="/gameplay/ajax/addons-action.php" id="useaction" name="useaction" scrolling="auto" style="width:1050px;height:600px;" frameborder="0"></iframe>');
     parent.ShowModal();
-}
+};
