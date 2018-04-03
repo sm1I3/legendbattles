@@ -1,7 +1,7 @@
 <?
 session_start();
 $_SESSION['filter'];
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 //=================== FUNC
 function botslot($id,$s)
 {

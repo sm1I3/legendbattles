@@ -1,9 +1,6 @@
 <?
-session_start();
-error_reporting(0);
-require_once($_SERVER["DOCUMENT_ROOT"] . "/includes/common.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
-db_open();
 
 $textstr = $_POST['text'];
 $text = $textstr;

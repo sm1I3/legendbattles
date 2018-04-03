@@ -21,9 +21,8 @@ $_SESSION['filter'];
    </tr>
 </table>
 <?
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
-db_open();
+require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/includes/functions.php");
 	if(!empty($_POST)){
 		$GetUser = GetUser($_POST['nickname']);
 		$_POST['valute'] = floatval($_POST['valute']);

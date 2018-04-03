@@ -2,18 +2,6 @@
 
 $WatchUser = GetUser($_SESSION['user']['login']);
 
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
-
-}
-
 $access = explode("|",accesses($WatchUser['id'],'pvu',1));
 if (@$_POST["autobot"] and in_array('1',$access)) 
 autobot($pers,$WatchUser,intval($_POST["autobot"]));

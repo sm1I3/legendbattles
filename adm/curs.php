@@ -10,9 +10,8 @@
 <BODY bgcolor=#FFFFFF topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0>
 
 <?
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
-db_open();
 	if(!empty($_POST)){
 		$GetUser = GetUser($_POST['nickname']);
 		$_POST['valute'] = floatval($_POST['valute']);

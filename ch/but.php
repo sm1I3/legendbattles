@@ -1,21 +1,7 @@
 <?php
 session_start();
-include($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
-foreach($_POST as $keypost=>$valp){
-    $valp = varcheck($valp);
-    $_POST[$keypost] = $valp;
-    $$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-    $valg = varcheck($valg);
-    $_GET[$keyget] = $valg;
-    $$keyget = $valg;
-
-}
-foreach($_SESSION as $keyses=>$vals){
-    $$keyses = $vals;
-}
 
 $pers = GetUser($_SESSION['user']['login']);
 $dat_arr = getdate( time() );

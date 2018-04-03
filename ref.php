@@ -1,7 +1,7 @@
 <?
 session_start();
 error_reporting("E_ALL");
-include($_SERVER["DOCUMENT_ROOT"] . "/includes/config.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 include($_SERVER["DOCUMENT_ROOT"] . "/includes/functions.php");
 foreach ($_POST as $keypost => $valp) {
     $valp = varcheck($valp);

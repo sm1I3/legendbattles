@@ -1,5 +1,5 @@
 <?php
-require('kernel/config.php');
+require($_SERVER['DOCUMENT_ROOT'] . 'system/config.php');
 
 $errors = '';
 

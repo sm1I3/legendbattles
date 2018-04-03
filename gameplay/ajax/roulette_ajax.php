@@ -1,8 +1,7 @@
 <?php
 #GLOBALS OFF
 header('Content-type: text/html; charset=UTF-8');
-session_start();
-include($_SERVER["DOCUMENT_ROOT"]."/includes/config.inc.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
 
 $pers = GetUser($_SESSION['user']['login']);

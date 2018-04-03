@@ -3,20 +3,7 @@
 <SCRIPT src="./js/signs.js"></SCRIPT>
 <SCRIPT src="./js/logs.js"></SCRIPT>
 
-<? 
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
-}
-foreach($_SESSION as $keyses=>$vals){
-	$$keyses = $vals;
-}
+<?
 $room = array ("6"=>0,"7"=>1,"8"=>2,"9"=>3,"10"=>4,"11"=>5,"12"=>6,"13"=>7,"14"=>8,"15"=>9);
 if (isset($_GET['sh'])) {
     $_SESSION['user']['sh'] = $_GET['sh'];

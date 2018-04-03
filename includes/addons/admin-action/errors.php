@@ -18,25 +18,10 @@ $_SESSION['filter']; ?>
 	</td>
    </tr>
 </table>
-<? 
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/func/connect.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/func/sql_func.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/inc/bbcodes.inc.php");
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
-
-}
-foreach($_SESSION as $keyses=>$vals){
-	$$keyses = $vals;
-}
-db_open();
+<?
+require($_SERVER["DOCUMENT_ROOT"] . "/includes/func/connect.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/includes/func/sql_func.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/inc/bbcodes.inc.php");
 
 if($_GET['addtz']==1){
 	mysqli_query($GLOBALS['db_link'],"INSERT INTO `bug_reports` (`text`,`date`,`srok`) VALUES ('".bbCodes($tztext)."','".time()."','".$srok."')");

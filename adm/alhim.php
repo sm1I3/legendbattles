@@ -1,4 +1,4 @@
-<? session_start();
+<?
 $_SESSION['filter'];
 require('kernel/before.php');
 ?>
@@ -23,8 +23,8 @@ require('kernel/before.php');
 	</td>
    </tr>
 </table>
-<? 
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
+<?
+require($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
 $create = varcheck($_POST['create']) ?? varcheck($_GET['create']) ?? '';
 if($create==1){
 	$itm="";

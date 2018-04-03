@@ -43,7 +43,7 @@ showHide = function(e,ev,a){
    </tr>
 </table>
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/bbcodes.inc.php");
 function ShowParBot($i,$par,$type){
@@ -199,21 +199,7 @@ function ShowParBot($i,$par,$type){
 			}	
 			return $str;
 		}
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
 
-}
-foreach($_SESSION as $keyses=>$vals){
-	$$keyses = $vals;
-}
-db_open();
 $player=player();
 $bots=mysqli_query($GLOBALS['db_link'],"SELECT `user`.`id`,`user`.`login` FROM `user` WHERE `user`.`type`='3' AND `user`.`id`<'9999';");
 echo '

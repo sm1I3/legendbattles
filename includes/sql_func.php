@@ -1056,11 +1056,6 @@ function ar_rooms()
     echo "$a[6],$a[7],$a[8],$a[9],$a[10],$a[11],$a[12],$a[13],$a[14],$a[15]";
 }
 
-function online($login, $pcid)
-{//------добавление, обновление online----------------
-    mysqli_query($GLOBALS['db_link'], 'UPDATE user SET pcid=' . AP . $pcid . AP . ',last=' . AP . time() . AP . ' WHERE login=' . AP . $login . AP . 'LIMIT 1;');
-}
-
 function online_now($loc)
 {//------количество человек online------
     if ($loc == '0') {
@@ -1070,34 +1065,6 @@ function online_now($loc)
     }
     $result = mysqli_query($GLOBALS['db_link'], $sql);
     return mysqli_num_rows($result);
-}
-
-function option($pl, $num)
-{
-    $opt = explode('|', $pl);
-
-    return $opt[$num];
-}
-
-function chat($login, $str)
-{
-    $res = $res ?? '';
-    $chat = player();
-    if ($chat['chat'] == 1) {
-        $arr = explode(" ", $str);
-        for ($i = 0; $i < strlen($str); $i++) {
-            $arr[$i] = str_shuffle($arr[$i]);
-            $res .= $arr[$i] . " ";
-        }
-        return $res;
-    }
-    if ($chat['chat'] == 0) {
-        return $str;
-    }
-    if ($chat['chat'] == 2) {
-        $str = '';
-        return $str;
-    }
 }
 
 function save_hp_roun($pl)
@@ -1453,16 +1420,6 @@ function botslot($id, $s)
     }
     echo "$item\"$invs,\"$pr";
     return substr_replace($ret, '', -1);
-}
-
-function getPF($id)
-{
-    $p = Array('18954954', '10142', '10001');
-    if (in_array($id, $p)) {
-        return 1;
-    } else {
-        return 0;
-    }
 }
 
 function slotwiev($id, $s)
@@ -3097,71 +3054,6 @@ function trw_time($t)
 }
 
 
-// Дроп с ботов!
-function add_drops($pl, $persent)
-{
-    if ($persent < 100) {
-        $rand = rand(0, 100);
-        if ($rand <= $persent) {
-            $rand = rand(0, 100);
-            if ($rand < 50) {
-                $tr = 1;
-                $m0ne_tr = 4;
-                $time = time() + trw_time(rand(1, 3));
-                $sts = rand(1, 2) / 10;
-            } else if ($rand < 80) {
-                $tr = 2;
-                $m0ne_tr = 3;
-                $time = time() + trw_time(rand(3, 6));
-                $sts = rand(3, 4) / 10;
-            } else {
-                $tr = 3;
-                $m0ne_tr = 2;
-                $time = time() + trw_time(rand(7, 9));
-                $sts = rand(5, 6) / 10;
-            }
-        }
-        $stt = rand(0, 4);
-        switch ($stt) {
-            case 0:
-                $st = "30/-" . round($pl['sila'] * $sts);
-                $m0ne_st = "30@-" . round($pl['sila'] * $sts);
-                break;
-            case 1:
-                $st = "31/-" . round($pl['lovk'] * $sts);
-                $m0ne_st = "31@-" . round($pl['lovk'] * $sts);
-                break;
-            case 2:
-                $st = "32/-" . round($pl['uda4a'] * $sts);
-                $m0ne_st = "32@-" . round($pl['uda4a'] * $sts);
-                break;
-            case 3:
-                $st = "33/-" . round($pl['zdorov'] * $sts);
-                $m0ne_st = "33@-" . round($pl['zdorov'] * $sts);
-                break;
-            case 4:
-                $st = "34/-" . round($pl['znan'] * $sts);
-                $m0ne_st = "34@-" . round($pl['znan'] * $sts);
-                break;
-        }
-        $par .= "$st@$time@$tr|";
-    } else {
-        $tr = 3;
-        $m0ne_tr = 2;
-        $time = time() + trw_time(rand(8, 9));
-        $par .= "$st@$time@$tr|";
-    }
-    $old = test_affect($pl['affect']);
-    // New Database
-    mysqli_query($GLOBALS['db_link'], "INSERT INTO `effects` (`uid`,`eff_id`,`effects`,`time`) VALUES ('" . $pl['id'] . "','" . $m0ne_tr . "','" . $m0ne_st . "','" . $time . "');");
-    // New Database
-    mysqli_query($GLOBALS['db_link'], 'UPDATE user SET affect=' . AP . $par . $old[0] . AP . ' WHERE id=' . AP . $pl['id'] . AP . 'LIMIT 1;');
-    testcompl();
-    $ret .= ",\" <font color=#CC0000><b>Получает травму</b>\",";
-    return $ret;
-}
-
-
 function stats($st)
 {
     switch ($st) {/*case 0: $st="Гравировка"; break;*/
@@ -3383,11 +3275,6 @@ function stats($st)
             break;
     }
     return $st;
-}
-
-function free_bot()
-{
-    mysqli_query($GLOBALS['db_link'], 'UPDATE arena,user SET arena.vis = ' . AP . '3' . AP . ',user.fight=' . AP . '0' . AP . ', user.battle=' . AP . '0' . AP . ' WHERE `id_battle` =`battle` AND user.type=3 AND arena.t2+arena.timeout<' . AP . time() . AP . ';');
 }
 
 function endbat($id, $t, $k4)
@@ -3976,12 +3863,6 @@ function exp_level($level)
     return $arr;
 }
 
-function mtrunc($q)
-{
-    if ($q < 0) $q = 0;
-    return $q;
-}
-
 function ins_bot($botxy, $kb, $fid)
 {
     $player = player();
@@ -4518,40 +4399,6 @@ function PlayerAttack($login, $id, $trw, $type)
     return $msg;
 }
 
-function StartStorm($FortName, $Position)
-{
-    $fid = newbattle(2, "1001", 1, time(), 300, 80, 0, 0, 0, 0, 0, 0, 0, 0);
-    mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `battle`='" . $fid . "',`side`='1' WHERE `fort_storm`='1' AND `loc`='1001' AND `pos`='" . $Position . "' AND `battle`='0' AND `hp`>'0' AND `last`>'" . (time() - 300) . "'");
-    mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `battle`='" . $fid . "',`side`='2' WHERE `fort_storm`='2' AND `loc`='1001' AND `pos`='" . $Position . "' AND `battle`='0' AND `hp`>'0' AND `last`>'" . (time() - 300) . "'");
-    startbat($fid, 1);
-    save_hp_all($fid);
-    // Пишем логи NEW
-    $log = ',[[0,"' . date("H:i") . '"],"Нападение на ' . $FortName . ', осаждают "';
-    $LeftTeam = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `side` = '1' AND `battle`='" . $fid . "'");
-    while ($val = mysqli_fetch_assoc($LeftTeam)) {
-        if ($val['invisible'] < time()) {
-            $log .= ',[1,' . $val['side'] . ',"' . $val['login'] . '",' . $val['level'] . ',' . $val['sklon'] . ',"' . $val['clan_gif'] . '"],","';
-        } else {
-            $log .= ',[4,' . $val['side'] . '],","';
-        }
-        chmsg("parent.frames['main_top'].location='main.php';", $val['login']);
-    }
-    $log = substr_replace($log, '', -3);
-    $log .= '" и в обороне "';
-    $RightTeam = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `side` = '2' AND `battle`='" . $fid . "'");
-    while ($val = mysqli_fetch_assoc($RightTeam)) {
-        if ($val['invisible'] < time()) {
-            $log .= ',[1,' . $val['side'] . ',"' . $val['login'] . '",' . $val['level'] . ',' . $val['sklon'] . ',"' . $val['clan_gif'] . '"],","';
-        } else {
-            $log .= ',[4,' . $val['side'] . '],","';
-        }
-        chmsg("parent.frames['main_top'].location='main.php';", $val['login']);
-    }
-    $log = substr_replace($log, '', -3);
-    $log .= '" ну что, удачи!."]';
-    savelog($log, $fid);
-}
-
 function NaemAttack($login)
 {
     $user = player();
@@ -4632,14 +4479,6 @@ function accesses($uid, $acc, $response = NULL)
     }
 }
 
-function allitemparam($it, $loc)
-{
-    switch ($loc) {
-        case 'inv':
-            break;
-    }
-}
-
 function effects($UserID, $var)
 {
     /* DataBase */
@@ -4701,50 +4540,6 @@ function send_mail($email, $header, $body)
     } else {
         return false;
     }
-}
-
-function CountOD($pod, $inu, $inb, $ina)
-{
-    // Стандартные Параметры из базы
-    $pos_ochd = array(0, 0, 50, 90, 35, 50, 60, 30, 50, 60, 30, 50, 35, 80, 40, 85, 40, 85, 40, 85, 40, 100, 45, 70, 70, 70, 130, 90, 90, 45, 60, 90, 30, 30, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90, 70, 90, 70, 90, 70, 90, 70, 100, 100, 100, 70, 100, 70, 70, 100, 0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 0, 0, 30, 30, 30);
-    $shtra_ud = array(0, 0, 25, 75, 150, 250);
-    // Проверяем удары
-    $tInu = explode("@", $inu);
-    for ($i = 0; $i < count($tInu) - 1; $i++) {
-        $t2Inu = explode("_", $tInu[$i]);
-        $ochd[] = $t2Inu[1];
-    }
-    // Удары с учетом штрафов
-    $count_od = $shtra_ud[count($ochd)];
-    // Проверяем Блоки
-    $tInb = explode("@", $inb);
-    for ($i = 0; $i < count($tInb) - 1; $i++) {
-        $t2Inb = explode("_", $tInb[$i]);
-        $ochd[] = $t2Inb[1];
-    }
-    // Проверяем Магию
-    $tIna = explode("@", $ina);
-    for ($i = 0; $i < count($tIna) - 1; $i++) {
-        $t2Ina = explode("_", $tIna[$i]);
-        $ochd[] = $t2Ina[1];
-    }
-    //Считаем количество ОД
-    for ($i = 0; $i < count($ochd); $i++) {
-        if ($ochd[$i] > 2) {
-            $count_od += $pos_ochd[$ochd[$i]];
-        } else {
-            switch ($ochd[$i]) {
-                case 0:
-                    $count_od += $pod;
-                    break;
-                case 1:
-                    $count_od += ($pod + 20);
-                    break;
-            }
-        }
-    }
-    // Выводим результат ОД
-    return $count_od;
 }
 
 //мази:

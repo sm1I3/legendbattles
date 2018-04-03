@@ -1,11 +1,6 @@
 <?php
 define('INSIDE'  , true);
-session_start ();
 $v=time()+microtime();
-foreach($_POST as $keypost=>$val){$_POST[$keypost] = varcheck($val);}
-foreach($_GET as $keyget=>$val){$_GET[$keyget] = varcheck($val);}
-foreach($_GET as $keyget=>$val){$_GET[$keyget] = varcheck($val);}
-db_open();
 $player=player();
 // Реклама
 $check3 = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `config` WHERE `reklama` LIMIT 1;"));

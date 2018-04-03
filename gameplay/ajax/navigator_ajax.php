@@ -1,17 +1,7 @@
 <?php
 #GLOBALS OFF
-session_start();
-include($_SERVER["DOCUMENT_ROOT"]."/includes/config.inc.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-
-}
 
 header('Content-type: text/html; charset=UTF-8');
 $error='';

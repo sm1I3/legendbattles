@@ -134,24 +134,10 @@ echo'
    </tr>
 </table>
 ';
-require_once($_SERVER["DOCUMENT_ROOT"]."/func/connect.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/func/sql_func.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/inc/bbcodes.inc.php");
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
+require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/bbcodes.inc.php");
 
-}
-foreach($_SESSION as $keyses=>$vals){
-	$$keyses = $vals;
-}
-db_open();
 $player=player();
 if($_POST['perslogin']){$_GET['id_adm']=2;}
 if($_GET['perslogin'] and !$_POST['perslogin']){$_POST['perslogin']=$_GET['perslogin'];}

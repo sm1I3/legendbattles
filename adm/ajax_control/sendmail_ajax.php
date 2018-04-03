@@ -1,7 +1,7 @@
 <?php
 header('Content-type: text/html; charset=utf-8');
-require('./../kernel/config.php');
-require('./../kernel/functions.php');
+require($_SERVER['DOCUMENT_ROOT'] . 'system/config.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/adm/kernel/functions.php');
 
 if (isset($_GET['message_id']))
     $message_id = (int)$_GET['message_id'];

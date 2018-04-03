@@ -19,24 +19,10 @@ session_start();
    </tr>
 </table>
 <?
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/bbcodes.inc.php");
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
+require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/bbcodes.inc.php");
 
-}
-foreach($_SESSION as $keyses=>$vals){
-	$$keyses = $vals;
-}
-db_open();
 /*foreach($_POST as $keypost=>$valp){ //тестовые сообщения
 	echo '<br>post-key:'.$keypost.' | post-val:'.$valp;
 }*/

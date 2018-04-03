@@ -11,24 +11,10 @@ $_SESSION['filter']; ?>
 </HEAD>
 <BODY bgcolor=#FFFFFF topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0>
 
-<? 
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
+<?
+require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/bbcodes.inc.php");
-foreach($_POST as $keypost=>$valp){
-	$valp = varcheck($valp);
-	$_POST[$keypost] = $valp;
-	$$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-	$valg = varcheck($valg);
-	$_GET[$keyget] = $valg;
-	$$keyget = $valg;
-
-}
-foreach($_SESSION as $keyses=>$vals){
-	$$keyses = $vals;
-}
 
 echo '
 <form method="post" action="player_items.php?load=1">

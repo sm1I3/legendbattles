@@ -1,22 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 
-session_start();
-include($_SERVER["DOCUMENT_ROOT"]."/includes/common.php");
-foreach($_POST as $keypost=>$valp){
-     //$valp = varcheck($valp);
-     $_POST[$keypost] = $valp;
-     $$keypost = $valp;
-}
-foreach($_GET as $keyget=>$valg){
-    // $valg = varcheck($valg);
-     $_GET[$keyget] = $valg;
-     $$keyget = $valg;
-
-}
-foreach($_SESSION as $keyses=>$vals){
-     $$keyses = $vals;
-}
+require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 if($_GET['mone']){
 	for($x=0;$x<=19;$x++){
 		for($y=0;$y<=11;$y++){

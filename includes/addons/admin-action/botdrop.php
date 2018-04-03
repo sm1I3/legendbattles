@@ -15,10 +15,9 @@
       </td>
    </tr>
 </table>
-<? 
-require_once($_SERVER["DOCUMENT_ROOT"]."/func/connect.php");
+<?
+require($_SERVER['DOCUMENT_ROOT'] . 'system/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/bbcodes.inc.php");
-db_open();
 $bots=mysqli_query($GLOBALS['db_link'],"SELECT `user`.`id`,`user`.`login`,`user`.`level` FROM `user` WHERE `user`.`type`='3' AND `user`.`id`<'9999';");
 echo '
 <form method="post" action="?useaction=admin-action&addid=botdrop&add=1">

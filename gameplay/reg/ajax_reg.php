@@ -1,6 +1,6 @@
 <?php
 session_start();
-include($_SERVER["DOCUMENT_ROOT"] . "/includes/config.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 include($_SERVER["DOCUMENT_ROOT"] . "/includes/functions.php");
 header('Content-type: text/html; charset=utf-8');
 

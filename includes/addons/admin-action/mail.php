@@ -1,7 +1,6 @@
-<?php 
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/config.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
-db_open();
+<?php
+require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
 
 // если была нажата кнопка "Отправить" 
 if($_POST['submit']) { 

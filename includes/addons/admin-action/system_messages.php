@@ -21,9 +21,9 @@
    </tr>
 </table>
 <?
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/func/connect.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/func/sql_func.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/inc/bbcodes.inc.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/bbcodes.inc.php");
 //<select class="LogintextBox" name="newchatcolor"></select>
 
 /*foreach($_POST as $keypost=>$valp){ //тестовые сообщения

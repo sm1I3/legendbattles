@@ -1,6 +1,5 @@
 <?php
-session_start();
-include($_SERVER["DOCUMENT_ROOT"] . "/includes/config.inc.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 include(DROOT . "/includes/functions.php");
 
 echo "var ServerStatus = [", mysqli_result(mysqli_query($GLOBALS['db_link'], "SELECT count(*) FROM `user` WHERE `id`>'10000'"), 0) . "," .

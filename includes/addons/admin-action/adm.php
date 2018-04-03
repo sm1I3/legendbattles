@@ -71,7 +71,7 @@ $sign = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "select `sign` from
 
 
 <?
-require_once($_SERVER["DOCUMENT_ROOT"] . "/includes/config.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 function varcheck($input)
 {
     if (!is_array($input)) {
@@ -100,7 +100,6 @@ function varcheck($input)
     }
 }
 
-db_open();
 $forlogin = $forlogin ?? varcheck($_POST['forlogin']) ?? varcheck($_GET['forlogin']) ?? '';
 $id_adm = $id_adm ?? varcheck($_POST['id_adm']) ?? varcheck($_GET['id_adm']) ?? '';
 if ($id_adm == 7) {

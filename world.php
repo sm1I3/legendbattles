@@ -1,11 +1,9 @@
 <?php
 
-session_start();
+require $_SERVER["DOCUMENT_ROOT"] . "/system/config.php";
+require($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/bbcodes.inc.php");
 
-
-require_once($_SERVER["DOCUMENT_ROOT"] . "/includes/common.php");
-require_once($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
-require_once($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/bbcodes.inc.php");
 switch($_GET['act']){
 	default:
 		$PLAY = db_quer('user','login = "'.mysqli_real_escape_string($GLOBALS['db_link'],strip_tags($_POST['login'])).'" and pass = "'.md5($_POST['password']).'" LIMIT 1;');
