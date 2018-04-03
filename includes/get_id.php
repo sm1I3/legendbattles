@@ -184,5 +184,6 @@ if ($_GET['get_id'] == '14' and $pers['obnul'] > 0) {
     obnul_pl($pers);
 }
 if ($_GET['get_id'] == '11' and $pers['obnul'] > 0) {
+    $ch_tot = $ch_tot ?? varcheck($_POST['ch_tot']) ?? varcheck($_GET['ch_tot']) ?? '';
     mysqli_query($GLOBALS['db_link'], "UPDATE user SET thotem=$ch_tot, obnul=obnul-1 WHERE id=$player[id] LIMIT 1;");
 }

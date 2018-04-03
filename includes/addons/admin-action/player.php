@@ -304,7 +304,7 @@ $pl= mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHE
     if ($time != 0 and $pl['login'] != '') {
 $tim=time()+($time*86400)."|$prich";
 mysqli_query($GLOBALS['db_link'],"UPDATE user SET prison='$tim', mov='1',loc='33', pos='8_4' WHERE login='$login' LIMIT 1;");
-    $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Персонаж <b>$pl[login]</b> отправлен в тюрьму (Хранитель Игры).</font><BR>'+'');$redirect";
+        $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Персонаж <b>$pl[login]</b> отправлен в тюрьму (Хранитель Игры).</font><BR>'+'');" . $GLOBALS['redirect'];
     chmsg($ms, '');
 }
 }
