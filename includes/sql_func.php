@@ -469,7 +469,7 @@ function show_shop($type, $ITEMS, $mass)
 			<table cellpadding=0 cellspacing=1 border=0 width=90% align=center bgcolor="#B9A05C">
 			<tr>
 				<td colspan=3 bgcolor="#FCFAF3">
-					<div align=center><font class=inv><b> У Вас с собой ' . lr($player[nv]) . ' и вещей массой: ' . $plstt[71] . ' Максимальный вес: ' . $mass . '</b></div>
+					<div align=center><font class=inv><b> У Вас с собой ' . lr($player['nv']) . ' и вещей массой: ' . $plstt[71] . ' Максимальный вес: ' . $mass . '</b></div>
 				</td>
 			</tr>';
         //
@@ -580,7 +580,7 @@ function show_shop($type, $ITEMS, $mass)
 			</td>
 			</tr>
 			<table cellpadding=0 cellspacing=0 border=0 width=100%>
-			<tr><td><FIELDSET style="background: white;" name=field_dealers id=field_dealers><LEGEND align=center style="background: white; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border: solid 1px gray;"><b> <font color=gray>У Вас с собой ' . $player[baks] . ' <img src=img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд></font> </b></LEGEND><table cellpadding=3 cellspacing=1 border=0 width=100% bgcolor=#e0e0e0>
+			<tr><td><FIELDSET style="background: white;" name=field_dealers id=field_dealers><LEGEND align=center style="background: white; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border: solid 1px gray;"><b> <font color=gray>У Вас с собой ' . $player["baks"] . ' <img src=img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд></font> </b></LEGEND><table cellpadding=3 cellspacing=1 border=0 width=100% bgcolor=#e0e0e0>
 			';
         $freemass = $plstt[71];
         while ($ITEM = mysqli_fetch_assoc($ITEMS)) {
@@ -1081,6 +1081,7 @@ function option($pl, $num)
 
 function chat($login, $str)
 {
+    $res = $res ?? '';
     $chat = player();
     if ($chat['chat'] == 1) {
         $arr = explode(" ", $str);
@@ -1256,7 +1257,7 @@ function ret_id($id, $pos)
 {
     if ($id == 28) {
         $loc = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT map.go_id, map.but FROM map WHERE coord='$pos' LIMIT 1;"));
-        $loc[folder] = "maps";
+        $loc['folder'] = "maps";
     } else {
         $loc = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT loc.id, loc.loc,loc.go_id, loc.but, loc.folder FROM loc WHERE id='$id' LIMIT 1;"));
     }
@@ -2392,7 +2393,7 @@ function addlic($login, $item, $type)
                     $newlic .= "1@" . (time() + $time) . "|";
                     $msg['msg'] = "Использована \"$item[name]\" на $item[effect] дней.";
                 }
-                mysqli_query($GLOBALS['db_link'], "UPDATE user SET licens='" . $newlic . "' WHERE id=" . $login[id] . " ;");
+                mysqli_query($GLOBALS['db_link'], "UPDATE user SET licens='" . $newlic . "' WHERE id=" . $login['id'] . " ;");
                 it_break($item['id_item']);
             }
             break;
@@ -2772,7 +2773,7 @@ function transfer($id, $login, $loc, $name, $transferer, $sum, $ttext = NULL)
                     chmsg($ms, $transferer);
                     pvu_logs($player['id'], "2", "|0|" . getIP() . "|" . $pl['ip'] . "|" . $pl['level'] . "|" . $pl['login'] . "|" . $sum . "|0|" . $ttext);
                     pvu_logs($pl['id'], "2", "|1|" . $pl['ip'] . "|" . getIP() . "|" . $player['level'] . "|" . $player['login'] . "|" . $sum . "|0|" . $ttext);
-                    log_write("transfer", "LR", $sum, $pl[login]);
+                    log_write("transfer", "LR", $sum, $pl['login']);
                     $typetolog .= '@16';
                     $abouttolog .= '@<b><font color="#CC0000">' . lr($sum) . '</font></b> персонажу: <b>' . $pl['login'] . '</b>';
                 } else {
@@ -2803,7 +2804,7 @@ function transfer($id, $login, $loc, $name, $transferer, $sum, $ttext = NULL)
                             chmsg($ms, $login);
                             $ms = "parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#cc0000>Внимание!</font></b> &nbsp;Вы передали персонажу <b>$login</b> <b>$sum DLR.</b></font><BR>'+'');";
                             chmsg($ms, $transferer);
-                            log_write("transfer", "DLR", $sum, $pl[login]);
+                            log_write("transfer", "DLR", $sum, $pl['login']);
                             $typetolog .= '@17';
                             $abouttolog .= '@<b><font color="#CC0000">' . $sum . '</font></b> DLR персонажу: <b>' . $pl['login'] . '</b>';
                         } else {
@@ -3057,7 +3058,7 @@ function add_trw($pl, $persent)
     mysqli_query($GLOBALS['db_link'], "INSERT INTO `effects` (`uid`,`eff_id`,`effects`,`time`) VALUES ('" . $pl['id'] . "','" . $m0ne_tr . "','" . $m0ne_st . "','" . $time . "');");
 // New Database
     mysqli_query($GLOBALS['db_link'], "UPDATE user SET affect='" . $newaff . "' " . (($pl['ability'] > 0 and $pl['sklon'] == 5 and $pl['lastability'] <= time() and $trwtime == 2) ? ',ability=ability-1,lastability=' . (time() + 1800) . '' : '') . " WHERE id=" . $pl['id'] . " LIMIT 1;");
-    calcstat($pl[id]);
+    calcstat($pl['id']);
     testcompl();
     $ret .= ",\" <font color=#CC0000><b>Получает $travm травму." . ($trwtime == 2 ? ' Силы света помогают ему, время травмы сократилось в 2 раза!' : '') . "</b> $stat\"]";
     return $ret;
@@ -3416,7 +3417,7 @@ function endbat($id, $t, $k4)
                     $win .= ",[4,$p[side]],\" \"";
                 }
                 $k3 = 1;//коэфф опыта выигрыш
-                $wins[$p[bt]] += 1;
+                $wins[$p['bt']] += 1;
                 mysqli_query($GLOBALS['db_link'], "update instant set level=level+1 where uid='$usr[id]'");
             } else if ($t[0] != 0) {
                 if ($t[999] == 1) {
@@ -3648,7 +3649,7 @@ function endbat($id, $t, $k4)
     }
     savelog($log, $id);
     mysqli_query($GLOBALS['db_link'], "DELETE FROM user WHERE type=3 AND id>9999 AND battle=" . $id . ";");
-    mysqli_query($GLOBALS['db_link'], "UPDATE user SET naemnik=0 WHERE login='" . $player['login'] . "' LIMIT 1;");
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET naemnik=0 WHERE login='" . $_SESSION['user']['login'] . "' LIMIT 1;");
     return $li;
 }
 
@@ -4444,10 +4445,10 @@ function PlayerAttack($login, $id, $trw, $type)
             } else {
                 $side = 1;
             }
-            mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `battle`='" . $pl[battle] . "',`side`='" . $side . "',`fight`='" . $pl['fight'] . "' WHERE `login`='" . $user['login'] . "' LIMIT 1;");
+            mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `battle`='" . $pl['battle'] . "',`side`='" . $side . "',`fight`='" . $pl['fight'] . "' WHERE `login`='" . $user['login'] . "' LIMIT 1;");
             mysqli_query($GLOBALS['db_link'], "UPDATE `arena` SET kol$side=kol$side+1 WHERE `id_battle`='" . $pl['battle'] . "' LIMIT 1;");
-            sumbat($pl[battle], "$redirect", 0);
-            if ($user[sex] == male) {
+            sumbat($pl['battle'], $GLOBALS['redirect'], 0);
+            if ($user['sex'] == 'male') {
                 $sex = 'ся';
             } else {
                 $sex = 'ась';
@@ -4504,7 +4505,7 @@ function PlayerAttack($login, $id, $trw, $type)
             } else {
                 $logpl = "[4,$side]";
             }
-            if ($user[sex] == male) {
+            if ($user['sex'] == 'male') {
                 $sex = '';
             } else {
                 $sex = 'а';

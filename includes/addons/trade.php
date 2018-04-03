@@ -16,7 +16,7 @@ foreach ($otherbonus as $val) {
 $mass = ($plstt[30] * 4) + ($plstt[33] * 8) + $plstt[72] + $prsql['mass'] + $massbonus;
 switch (intval($_GET['act'])) {
     case 1:
-        $lic = tradelic($player[licens], 1);
+        $lic = tradelic($player['licens'], 1);
         $val_id = varcheck($_GET['id']);
         $ITEM = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*, `items`.* FROM `invent` INNER JOIN `items` ON `invent`.`protype` = `items`.`id` WHERE `invent`.`id_item`='" . $val_id . "' LIMIT 1;"));
         $frmass = $mass - $plstt[71];
@@ -51,12 +51,12 @@ switch (intval($_GET['act'])) {
         <table width=90% cellpadding=10 cellspacing=0 align=center>
         <tr><td><table width=100% cellpadding=0 cellspacing=3 align=center><tr><td width=100% bgcolor=#ffffff valign=top><table cellpadding=4 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%><font class=nickname><b>
         <font color=#cc0000>Купить вещь у <?= $login ?> за <?= $forprice ?> Золото?</font><br><br>
-        <?php if ($frmass >= $ITEM[massa] and $player[nv] >= $forprice) {
+        <?php if ($frmass >= $ITEM['massa'] and $player['nv'] >= $forprice) {
         echo "<input type=button class=invbut onclick=\"parent.$.modal.close();location='main.php?post_id=1&act=1&price=" . $forprice . "&uid=" . $_GET['uid'] . "&id=" . $ITEM['id_item'] . "&login=" . $_GET['login'] . "&vcode=" . scode() . "'\" value=\"купить\">&nbsp;";
     }
         break;
     case 2:
-        $lic = tradelic($player[licens], 1);
+        $lic = tradelic($player['licens'], 1);
         $val_id = varcheck($_GET['id']);
         $val_uid = varcheck($_GET['uid']);
         $ITEM = mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*, `items`.* FROM `invent` INNER JOIN `items` ON `invent`.`protype` = `items`.`id` WHERE `invent`.`protype`='" . $val_id . "' AND `pl_id`='" . $val_uid . "' AND `invent`.`used`='0' AND `invent`.`bank`='0' AND `invent`.`clan`='0';");
@@ -106,41 +106,42 @@ switch (intval($_GET['act'])) {
         </table><table width=90% cellpadding=10 cellspacing=0 align=center>
         <tr><td><table width=100% cellpadding=0 cellspacing=3 align=center><tr><td width=100% bgcolor=#ffffff valign=top><table cellpadding=4 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%><font class=nickname><b>
         <font color=#cc0000>Купить вещь у <?= $_GET['login'] ?> за <?= $forprice ?> LR?</font><br><br>
-        <? if ($frmass >= $ITEM[massa] and $player[nv] >= $forprice) {
+        <? if ($frmass >= $ITEM['massa'] and $player['nv'] >= $forprice) {
         echo "<input type=button class=invbut onclick=\"location='main.php?post_id=1&act=3&price=" . $forprice . "&uid=" . $_GET['uid'] . "&id=" . $ITEM['protype'] . "&login=" . $_GET['login'] . "&vcode=" . scode() . "'\" value=\"купить все\">&nbsp;";
     }
         break;
 }
 ?><?
-if ($ITEM[mod_color] == 0) {
+if ($ITEM['mod_color'] == 0) {
     ?>
-    <font class=nickname><b><?= ($col ? $col . " х " : '') . $ITEM[name] . ($ITEM[modified] == 1 ? " [ап]" : "") ?></b>
+    <font class=nickname>
+    <b><?= ($col ? $col . " х " : '') . $ITEM['name'] . ($ITEM['modified'] == 1 ? " [ап]" : "") ?></b>
     <br>
     <?
 } else {
-    if ($ITEM[mod_color] == 1) {
+    if ($ITEM['mod_color'] == 1) {
         ?>
         <font class=nickname><b><font
-                    color=#006600><?= ($col ? $col . " х " : '') . $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") ?></font></b>
+                    color=#006600><?= ($col ? $col . " х " : '') . $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") ?></font></b>
         <br>
         <?
     }
-if ($ITEM[mod_color] == 2)
+if ($ITEM['mod_color'] == 2)
 {
     ?>
     <font class=nickname color=#4ABB58><b><font
-                color=#3333CC><?= ($col ? $col . " х " : '') . $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") ?></font></b>
+                color=#3333CC><?= ($col ? $col . " х " : '') . $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") ?></font></b>
     <br>
     <?
 }
-    if ($ITEM[mod_color] == 3) {
+    if ($ITEM['mod_color'] == 3) {
         ?>
         <font class=nickname color=#AF51B5><b><font
-                    color=#993399><?= ($col ? $col . " х " : '') . $ITEM[name] . "</font> [мод]" . ($ITEM[modified] == 1 ? " [ап]" : "") ?></font></b><br>
+                    color=#993399><?= ($col ? $col . " х " : '') . $ITEM['name'] . "</font> [мод]" . ($ITEM['modified'] == 1 ? " [ап]" : "") ?></font></b><br>
         <?
     }
 }
-?></b> <? if ($frmass < $ITEM[massa]) {
+?></b> <? if ($frmass < $ITEM['massa']) {
     echo "<b><font class=nickname><font color=#cc0000> Нет места в инвентаре</font></font></b>";
 } ?>
 
@@ -174,16 +175,16 @@ $par_i = $pararr[0]; //параметры
         <tr>
             <td bgcolor=#FCFAF3><img src=/img/image/1x1.gif width=5 height=1></td>
             <td bgcolor=#FCFAF3 width=50%>
-                <? if ($ITEM[slot] == 16) echo "<font class=weaponch><b><font color=#cc0000>Можно одевать на кольчуги</font></b><br>";
-                blocks($ITEM[block]); ?>
-                <font class=weaponch>Цена: <b><?= $ITEM[price] ?> Меди</b><br><?
+                <? if ($ITEM['slot'] == 16) echo "<font class=weaponch><b><font color=#cc0000>Можно одевать на кольчуги</font></b><br>";
+                blocks($ITEM['block']); ?>
+                <font class=weaponch>Цена: <b><?= $ITEM['price'] ?> Меди</b><br><?
                     echo $par_i;
                     ?></font></td>
             <td bgcolor=#FCFAF3><img src=/img/image/1x1.gif width=5 height=1></td>
             <td bgcolor=#B9A05C><img src=/img/image/1x1.gif width=1 height=1></td>
             <td bgcolor=#FCFAF3><img src=/img/image/1x1.gif width=5 height=1></td>
             <td bgcolor=#FCFAF3 width=50%>
-                <? if ($ITEM[gift] != "" and $ITEM[gift] != "0" and $ITEM[gift] != "1") {
+                <? if ($ITEM['gift'] != "" and $ITEM['gift'] != "0" and $ITEM['gift'] != "1") {
                     echo "<img src=/img/image/gift/gift1.gif width=15 height=15 border=0 align=absmiddle title='$ITEM[gift]'> <font class=weaponch><b>$ITEM[gift]</b><br></font>";
                 } ?>
 

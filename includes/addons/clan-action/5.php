@@ -3,10 +3,10 @@ if  ($pers['pair_id']!='none'){
 
 	function locations($loc,$pos){
 		if($loc != '28'){
-			$location = mysqil_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `loc`,`room`,`city` FROM `loc` WHERE `id`='".$loc."' LIMIT 1;"));
+            $location = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `loc`,`room`,`city` FROM `loc` WHERE `id`='" . $loc . "' LIMIT 1;"));
 		}elseif($loc == '28'){
 			$pos = explode('_', $pos);
-			$location = mysqil_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `city`,`name` FROM `nature` WHERE `x`='".$pos[0]."' AND `y`='".$pos[1]."' LIMIT 1;"));
+            $location = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `city`,`name` FROM `nature` WHERE `x`='" . $pos[0] . "' AND `y`='" . $pos[1] . "' LIMIT 1;"));
 			$location['room'] = $location['name'];
 		}
 		return $location['city']." [".(($location['room'])?$location['room']:$location['loc'])."]";

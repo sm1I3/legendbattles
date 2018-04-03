@@ -125,7 +125,7 @@ if($_GET['act'] and $player['sklon']!=0 and $player['sklon']!=''){
 								 break;
                                 case 6: //Темное нападение
 										$ret=PlayerAttack($target['login'],0,80,3);
-										$msg=$ret[msg];
+                                    $msg = $ret['msg'];
 										echo $msg;
 								 break;
                                 case 7: //Ускорение
@@ -358,8 +358,8 @@ if($player['sklon']!=0 and $player['sklon']!=''){
 //енд_склонки
     $thotems = array('0' => 'Час Сфинкса', '1' => 'Час Саблезубого тигра', '2' => 'Час Мудрого Льва', '3' => 'Час Изумрудного Дракона', '4' => 'Час Василиска', '5' => 'Час Скорпиона', '6' => 'Час Ужасающей Рыбы', '7' => 'Час мутанта-острозуба', '8' => 'Час Небесного кита', '9' => 'Час Древнего Ящера', '10' => 'Час Ворона Смерти', '11' => 'Час Острых Клинков', '17' => 'Официальный дилер');
     echo '<font class=freetxt><font class=nickname><font color=#222222><div class="block info"><div class="header"><span>Общие Возможности</span></div><table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td><font class=freetxt><b>УСЛУГИ САНИТАРА</b> (помощь людям с тяжелыми травмами - перенос людей в больницу)<SCRIPT src=\'java/sanitar.js\'></SCRIPT><div id=sanitardiv><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></div><a href="javascript:sanitar(\'' . scode() . '\')"><b>использовать</b></a><br><br><b>ВОССТАНОВИТЬ HP</b> (за счет маны - доступно ' . ceil($player['mp']) . ' маны)<SCRIPT src=\'java/addon.js\'></SCRIPT><div id=addondiv><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=1></div><a href="javascript:addon_ma2hp(\'' . scode() . '\')"><b>использовать</b></a></font></td></tr></table></div>';
-    if ($player[obnul] > 0) {
-        echo '<br><div class="block info"><div class="header"><span>Обнуление Вашего Персонажа</span></div><table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%><form method=POST><div align=center><table cellpadding=2 cellspacing=0 border=0><tr><td colspan=2><font class=freetxt>Вы можете сбросить статы или сменить тотем. Возможных действий: ' . $player[obnul] . '</font></td></tr><tr><td><input type=button class=lbut onClick="location=\'main.php?get_id=14&vcode=' . scode() . '\'" value="Сбросить статы, умения и навыки"></td><td><font class=freetxt> <b>стоимость</b>: 1 действие</font></td></tr><tr><td>
+    if ($player['obnul'] > 0) {
+        echo '<br><div class="block info"><div class="header"><span>Обнуление Вашего Персонажа</span></div><table cellpadding=5 cellspacing=0 border=0 width=100%><tr><td bgcolor=#ffffff width=100%><form method=POST><div align=center><table cellpadding=2 cellspacing=0 border=0><tr><td colspan=2><font class=freetxt>Вы можете сбросить статы или сменить тотем. Возможных действий: ' . $player["obnul"] . '</font></td></tr><tr><td><input type=button class=lbut onClick="location=\'main.php?get_id=14&vcode=' . scode() . '\'" value="Сбросить статы, умения и навыки"></td><td><font class=freetxt> <b>стоимость</b>: 1 действие</font></td></tr><tr><td>
 <input type=hidden name=get_id value=11><input type=hidden name=vcode value='.scode().'><select name=ch_tot class=LogintextBox6>
 <option value=n>Выберите тотем</option>';
 foreach($thotems as $key=>$val){

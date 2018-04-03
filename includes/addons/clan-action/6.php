@@ -23,19 +23,26 @@ if(!empty($_POST['tr'])){
 	 <table cellpadding="10" class=tbl1 border="0" width="100%">
 	 <tr align="center"><td>
 	<div align=center>
-        <b>Вас приветствуют работники банка</b></font></font>
+        <b>Вас приветствуют работники банка</b></div>
+         </td>
 	<tr><td colspan=3 align=center><?=$msg?></td></tr>
          <tr align=center>
-             <td colspan=3><font class=travma>Денег с собой: <b><?= $pers[baks] ?><img src="/img/razdor/emerald.png"
-                                                                                       width=14
-                                                                                       height=14></b></font> </b></LEGEND>
-                 <table cellpadding=3 cellspacing=1 border=0 width=100%></font></td></tr>
+             <td colspan=3><font class=travma>Денег с собой: <b><?= $pers['baks'] ?><img src="/img/razdor/emerald.png"
+                                                                                         width=14
+                                                                                         height=14></b></font></td>
+         </tr>
+         <table cellpadding=3 cellspacing=1 border=0 width=100%></table>
+     </table>
+   </tr>
 	<tr align=left><td colspan=3><div class="underline"></div></td></tr>
                      <tr>
                          <td>
-                             <div align=center>Денег в казне: <?= $sign[baks] ?> <img src="/img/razdor/emerald.png"
-                                                                                      width=14
-                                                                                      height=14></b></font> </b></LEGEND>
+                             <div align=center>Денег в казне: <?= $sign['baks'] ?> <img src="/img/razdor/emerald.png"
+                                                                                        width=14
+                                                                                        height=14></div>
+                         </td>
+                     </tr>
+  </table>
                                  <table cellpadding=3 cellspacing=1 border=0 width=100%>
 <div class="block info">
 	<div class="header">
@@ -53,7 +60,7 @@ if(!empty($_POST['tr'])){
 </form> <?}?>
 									</div>
     Правила : Только Глава Клана имеет вожможнось забрать деньги с казны.
-								</form>										
+</div>
 							</td></tr>
 							</table>
 							<div class="block info">

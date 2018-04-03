@@ -62,7 +62,7 @@ function it_break($id){
 	$it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `invent`.`iznos`, `invent`.`dolg`, `items`.`acte`,`invent`.`clan` FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `id_item`='".$id."' LIMIT 1;"));
 	$it['iznos']+=1;
 	if($it['iznos']>=$it['dolg']){
-		if($it[clan]==1){
+        if ($it['clan'] == 1) {
 			mysqli_query($GLOBALS['db_link'],"DELETE FROM `clan_kazna` WHERE `id_item`='".$id."';");
 		}
 		mysqli_query($GLOBALS['db_link'],'DELETE FROM `invent` WHERE `id_item` = "'.$id.'" LIMIT 1;');
@@ -424,52 +424,116 @@ return $st;
 
 function calcstat($id){
 $pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE id='$id';"));
-$um=explode("|",$pl[umen]);
+    $um = explode("|", $pl['umen']);
 $t=array(0=> 0,2,4);$od=45;$bl=0;
 $sitems=mysqli_query($GLOBALS['db_link'],"SELECT invent.*, items.* FROM items INNER JOIN invent ON items.id = invent.protype WHERE used=1 and pl_id='$id';");
 while ($row = mysqli_fetch_array($sitems)) {
 $item = explode("|",$row['param']);
-if($row[type]=="w20"){$bl=$row[block];$tw=$row[type];}
-if($row[slot]>0 and $row[type]!="w20"){
+    if ($row['type'] == "w20") {
+        $bl = $row['block'];
+        $tw = $row['type'];
+    }
+    if ($row['slot'] > 0 and $row['type'] != "w20") {
 $it = explode("|",$row['need']);
-foreach ($it as $val) { $need=explode("@",$val);if($need[0]==28 and $need[1]>$od)$od=$need[1];$tw=$row[type];}}
+        foreach ($it as $val) {
+            $need = explode("@", $val);
+            if ($need[0] == 28 and $need[1] > $od) $od = $need[1];
+            $tw = $row['type'];
+        }
+    }
 foreach ($item as $value) {
 $stat=explode("@",$value);
 if(in_array ($stat[0], $t)){$par[$stat[0]]='';continue;}
 if($stat[0]==1){
 	$tmp=explode("-",$stat[1]);
 	switch($tw){
-		case w1: $k=$um[1]/150+1;break;
-		case w2: $k=$um[2]/150+1;break;
-		case w3: $k=$um[3]/150+1;break;
-		case w4: $k=$um[4]/150+1;break;
-		case w5: $k=$um[5]/150+1;break;
-		case w6: $k=$um[6]/150+1;break;
-		case w7: $k=$um[7]/150+1;break;
-		case w8: $k=1;break;
-        case w9:
+        case 'w1':
+            $k = $um[1] / 150 + 1;
+            break;
+        case 'w2':
+            $k = $um[2] / 150 + 1;
+            break;
+        case 'w3':
+            $k = $um[3] / 150 + 1;
+            break;
+        case 'w4':
+            $k = $um[4] / 150 + 1;
+            break;
+        case 'w5':
+            $k = $um[5] / 150 + 1;
+            break;
+        case 'w6':
+            $k = $um[6] / 150 + 1;
+            break;
+        case 'w7':
+            $k = $um[7] / 150 + 1;
+            break;
+        case 'w8':
             $k = 1;
             break;
-		case w10: $k=1;break;
-		case w11: $k=1;break;
-		case w12: $k=1;break;
-		case w13: $k=1;break;
-		case w14: $k=1;break;
-		case w15: $k=1;break;
-		case w16: $k=1;break;
-		case w17: $k=1;break;
-		case w18: $k=1;break;
-		case w19: $k=1;break;
-		case w20: $k=1;break;
-		case w21: $k=1;break;
-		case w22: $k=1;break;
-		case w23: $k=1;break;
-		case w24: $k=1;break;
-		case w25: $k=1;break;
-		case w26: $k=1;break;
-		case w27: $k=1;break;
-		case w28: $k=1;break;
-		case w29: $k=1;break;
+        case 'w9':
+            $k = 1;
+            break;
+        case 'w10':
+            $k = 1;
+            break;
+        case 'w11':
+            $k = 1;
+            break;
+        case 'w12':
+            $k = 1;
+            break;
+        case 'w13':
+            $k = 1;
+            break;
+        case 'w14':
+            $k = 1;
+            break;
+        case 'w15':
+            $k = 1;
+            break;
+        case 'w16':
+            $k = 1;
+            break;
+        case 'w17':
+            $k = 1;
+            break;
+        case 'w18':
+            $k = 1;
+            break;
+        case 'w19':
+            $k = 1;
+            break;
+        case 'w20':
+            $k = 1;
+            break;
+        case 'w21':
+            $k = 1;
+            break;
+        case 'w22':
+            $k = 1;
+            break;
+        case 'w23':
+            $k = 1;
+            break;
+        case 'w24':
+            $k = 1;
+            break;
+        case 'w25':
+            $k = 1;
+            break;
+        case 'w26':
+            $k = 1;
+            break;
+        case 'w27':
+            $k = 1;
+            break;
+        case 'w28':
+            $k = 1;
+            break;
+        case 'w29':
+            $k = 1;
+            break;
 	}
 	$tmp[0]=round($tmp[0]*$k);$tmp[1]=round($tmp[1]*$k);
 	$tmp1=explode("-",$par[1]);
@@ -478,20 +542,34 @@ if($stat[0]==1){
 $par[1]=implode("-",$tmp);
 $par[$stat[0]]+=$stat[1];}}
 
-$sil=$par[30]+$pl[sila];
+    $sil = $par[30] + $pl['sila'];
 $dmg=explode("-",$par[1]);
 $dmg[0]+=$sil;
 $dmg[1]+=$sil*1.5;
 $par[1]=implode("-",$dmg);
 switch($tw){
 	case '': $od=round($od/(($um[0]/100)*0.15+1));$par[1]=round($sil*(1+$um[0]/300))."-".round($sil*(1+$um[0]/150)+1); break;
-	case w1: $od=round($od/(($um[1]/100)*0.15+1));break;
-	case w2: $od=round($od/(($um[2]/100)*0.15+1));break;
-	case w3: $od=round($od/(($um[3]/100)*0.15+1));break;
-	case w4: $od=round($od/(($um[4]/100)*0.15+1));break;
-	case w5: $od=round($od/(($um[5]/100)*0.15+1));break;
-	case w6: $od=round($od/(($um[6]/100)*0.15+1));break;
-	case w7: $od=round($od/(($um[7]/100)*0.15+1));break;
+    case 'w1':
+        $od = round($od / (($um[1] / 100) * 0.15 + 1));
+        break;
+    case 'w2':
+        $od = round($od / (($um[2] / 100) * 0.15 + 1));
+        break;
+    case 'w3':
+        $od = round($od / (($um[3] / 100) * 0.15 + 1));
+        break;
+    case 'w4':
+        $od = round($od / (($um[4] / 100) * 0.15 + 1));
+        break;
+    case 'w5':
+        $od = round($od / (($um[5] / 100) * 0.15 + 1));
+        break;
+    case 'w6':
+        $od = round($od / (($um[6] / 100) * 0.15 + 1));
+        break;
+    case 'w7':
+        $od = round($od / (($um[7] / 100) * 0.15 + 1));
+        break;
 	}
 $hps=(1500/(($par[62]+$um[30])/100+1)); $mps=(9000/(($par[66]+$um[33])/100+1));
 for($i=0;$i<=70;$i++){

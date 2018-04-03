@@ -106,14 +106,14 @@ slots_<? if($_SESSION['user']['pos']==1){echo "inv";}else{echo "pla";} ?>("<?=$p
           <tr>
               <td bgcolor=#FCFAF3><font class=nickname><img src=http://img.legendbattles.ru/image/money_all.gif width=16
                                                             height=14 border=0 title='Передать LR' align=absmiddle
-                                                            <? if ($player[level] > 4 and $player[finblock] < time()){ ?>onClick="transferform('0','0','Игровую валюту','<?= scod() ?>','0','0','0','0')"<? } ?>
+                                                            <? if ($player['level'] > 4 and $player['finblock'] < time()){ ?>onClick="transferform('0','0','Игровую валюту','<?= scode() ?>','0','0','0','0')"<? } ?>
                                                             vspace=0>&nbsp;Деньги:</td>
               <td width=100% bgcolor=#fafafa nowrap><font class=nickname><b>&nbsp;<?= $player['nv'] . " LR"; ?></td>
 <? if($player['dd']>0){ ?>
           <tr>
               <td bgcolor=#FCFAF3><font class=nickname><img src=http://img.legendbattles.ru/image/money_dea.gif width=16
                                                             height=14 border=0 title='Передать/Обменять DLR'
-                                                            onClick="transferform('1','0','Обменять/перевести DLR','<?= scod() ?>','0','0','0','0')"
+                                                            onClick="transferform('1','0','Обменять/перевести DLR','<?= scode() ?>','0','0','0','0')"
                                                             vspace=0>&nbsp;DLR:</td>
               <td width=100% bgcolor=#FAfafa nowrap><font class=nickname><b>&nbsp;<?= $player['dd'] . " DLR"; ?></td>
           </tr> <? } ?>
@@ -144,8 +144,8 @@ slots_<? if($_SESSION['user']['pos']==1){echo "inv";}else{echo "pla";} ?>("<?=$p
 <table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=10></td></tr></table></td></tr>
 <tr><td colspan=7 width=100%><table cellpadding=0 cellspacing=0 border=0 width=100%>
 <tr><td>
-        <input type=button class=invbut onClick="compl_f('<?= scod() ?>')" value="Запомнить комплект">
-        <input type=button class=invbut onClick="javascript: location='main.php?post_id=57&act=3&vcode=<?= scod() ?>'"
+        <input type=button class=invbut onClick="compl_f('<?= scode() ?>')" value="Запомнить комплект">
+        <input type=button class=invbut onClick="javascript: location='main.php?post_id=57&act=3&vcode=<?= scode() ?>'"
                value="Снять все вещи">
  <br>
  <img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=10>
@@ -161,7 +161,7 @@ slots_<? if($_SESSION['user']['pos']==1){echo "inv";}else{echo "pla";} ?>("<?=$p
     </tr>
 <SCRIPT language="JavaScript">
 <?
-$q = mysqli_query($GLOBALS['db_link'],'SELECT * FROM pcompl WHERE uid='.AP.$player[id].AP.'');
+$q = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM pcompl WHERE uid=' . AP . $player['id'] . AP . '');
 while ($row = mysqli_fetch_assoc($q)) {
 echo "compl_view(\"$row[name]\",\"$row[id]\",\"".scode()."\");";
 }

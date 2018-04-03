@@ -45,8 +45,14 @@ echo'<tr>
               </select>
             </div></td>
           </tr>'; 
-					?>					
-<tr><td colspan=2><input type=hidden name=vcode value=<?=scod()?>><input type=image src=http://img.LegendBattles.ru/image/save.gif width=73 height=15 border=0></td></tr></form>
+					?>
+                <tr>
+                    <td colspan=2><input type=hidden name=vcode value=<?= scode() ?>><input type=image
+                                                                                            src=http://img.LegendBattles.ru/image/save.gif
+                                                                                            width=73 height=15 border=0>
+                    </td>
+                </tr>
+            </table>
 
 
 

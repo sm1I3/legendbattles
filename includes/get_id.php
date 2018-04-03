@@ -180,5 +180,9 @@ if($_GET['get_id'] == '56' and in_array($_GET['vcode'],$_SESSION['vcodes'])){
 	}
 }
 
-if($_GET['get_id'] =='14' and $pers[obnul]>0){obnul_pl($pers);}
-if($_GET['get_id'] == '11' and $pers[obnul]>0){mysqli_query($GLOBALS['db_link'],"UPDATE user SET thotem=$ch_tot, obnul=obnul-1 WHERE id=$player[id] LIMIT 1;");}
+if ($_GET['get_id'] == '14' and $pers['obnul'] > 0) {
+    obnul_pl($pers);
+}
+if ($_GET['get_id'] == '11' and $pers['obnul'] > 0) {
+    mysqli_query($GLOBALS['db_link'], "UPDATE user SET thotem=$ch_tot, obnul=obnul-1 WHERE id=$player[id] LIMIT 1;");
+}

@@ -45,6 +45,10 @@ $i = 0;
 while($ShowItems = mysqli_fetch_assoc($GetYouItems)){
 	$i++;
 	$bgcolor = (($i%2)?'f0f0f0':'ffffff');
-	if($_SESSION['user'][inv]!=''){$sq="and `type`='".$_SESSION['user']['inv']."'";}else{$sq='';}
+    if ($_SESSION['user']['inv'] != '') {
+        $sq = "and `type`='" . $_SESSION['user']['inv'] . "'";
+    } else {
+        $sq = '';
+    }
     echo '<tr><td bgcolor=#' . $bgcolor . '><font class=nickname><b style="cursor:default;" onmouseover="tooltip(this,ShowInfo(\'' . $ShowItems['ItemName'] . '\',\'' . $ShowItems['img'] . '\',\'' . $ShowItems['price'] . '\',\'' . $ShowItems['slot'] . '\',\'' . $ShowItems['block'] . '\',\'' . $ShowItems['hand'] . '\',\'' . preg_replace('/@/', ':', $ShowItems['i_param']) . '\',\'' . preg_replace('/@/', ':', $ShowItems['i_need']) . '\',\'' . $ShowItems['massa'] . '\',\'' . $ShowItems['level'] . '\'))" onmouseout="hide_info(this)">' . $ShowItems['ItemName'] . '</b></font></td><td bgcolor=#' . $bgcolor . '><div align=center><font class=weaponch><b>' . GetUserFID($ShowItems['pl_id']) . '</b></font></div></td><td bgcolor=#' . $bgcolor . '><div align=center><font class=weaponch><b>Долговечность:</b> ' . (($ShowItems['dolg']) ? ($ShowItems['dolg'] - $ShowItems['iznos']) . '/' . $ShowItems['dolg'] : 'вечная') . '</font></div></td><td bgcolor=#' . $bgcolor . '><div align=center><font class=weaponch><b><font color=#00A80C>свободен</font></b></font></div></td><td bgcolor=#' . $bgcolor . '><div align=center><input type=button class=invbut onClick="location=\'?get_id=18&uid=' . $ShowItems['id_item'] . '&vcode=' . vCode() . '&useaction=clan-action&addid=3' . (($_GET["wca"]) ? '&wca=' . preg_replace('/[^w0-9]/', '', $_GET["wca"]) : '') . '\'" value="Пожертвовать"></div></td></tr>';
 }

@@ -49,14 +49,14 @@ function clango($persto,$perswho){
 
 //инфа о действиях перса
 if (@$_POST['pactions'] and in_array('1',$access)) {
-    if ($pers[login] != 'mozg' and $pers[login] != 'Администрация') {
+    if ($pers['login'] != 'mozg' and $pers['login'] != 'Администрация') {
 		view_act($pers);
 	} else {
         echo "<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Вы не можете просматривать информацию об этом персонаже!";
     }
 }
 function view_act($pers){
-    $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM mlog WHERE login='" . $pers[login] . "' AND action!='вход в игру' AND action!='WARNING' AND action!='newpass' ORDER BY action;");
+    $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM mlog WHERE login='" . $pers['login'] . "' AND action!='вход в игру' AND action!='WARNING' AND action!='newpass' ORDER BY action;");
 	echo'<table width=80% align=center border=1 cellpadding=5 cellspacing=0>
 	<tr>
 	<td><font class=weaponch>Время</td>
@@ -69,7 +69,7 @@ function view_act($pers){
 	';	
 	while($row = mysqli_fetch_assoc($sql)){
 			$act="";
-			switch($row[action]){
+        switch ($row['action']) {
                 case 'selldprise':
                     $act = "Продажа в ДЦ";
                     break;
@@ -86,16 +86,31 @@ function view_act($pers){
                     $act = "Покупка";
                     break;
 			}
-			if($row[action]=="buy" and $row[tologin]=="market"){}
+        if ($row['action'] == "buy" and $row['tologin'] == "market") {
+        }
 			else{
 				echo"<tr>";
-				echo"<td><font class=weaponch>".$row[time]."</td>";
-				echo"<td><font class=weaponch>".$row[ip]."</td>";
-				if($act==""){echo"<td><font class=weaponch>".$row[action]."</td>";}
+                echo "<td><font class=weaponch>" . $row['time'] . "</td>";
+                echo "<td><font class=weaponch>" . $row['ip'] . "</td>";
+                if ($act == "") {
+                    echo "<td><font class=weaponch>" . $row['action'] . "</td>";
+                }
 				else{echo"<td><font class=weaponch>".$act."</td>";}
-				if($row[id_item]!=''){	echo"<td><font class=weaponch>".$row[id_item]."</td>";}else{echo"<td>&nbsp;</td>";}
-				if($row[sum]!=''){	echo"<td><font class=weaponch>".$row[sum]."</td>";}else{echo"<td>&nbsp;</td>";}
-				if($row[tologin]!=''){	echo"<td><font class=weaponch>".$row[tologin]."</td>";}else{echo"<td>&nbsp;</td>";}
+                if ($row['id_item'] != '') {
+                    echo "<td><font class=weaponch>" . $row['id_item'] . "</td>";
+                } else {
+                    echo "<td>&nbsp;</td>";
+                }
+                if ($row['sum'] != '') {
+                    echo "<td><font class=weaponch>" . $row['sum'] . "</td>";
+                } else {
+                    echo "<td>&nbsp;</td>";
+                }
+                if ($row['tologin'] != '') {
+                    echo "<td><font class=weaponch>" . $row['tologin'] . "</td>";
+                } else {
+                    echo "<td>&nbsp;</td>";
+                }
 				echo"</tr>";
 			}			
 	}
@@ -104,14 +119,14 @@ function view_act($pers){
 
 //заходы с одного ип
 if (@$_POST['pip'] and in_array('1',$access)) {
-    if ($pers[login] != 'mozg' and $pers[login] != 'Администрация' and $pers[clan] != 'Life') {
+    if ($pers['login'] != 'mozg' and $pers['login'] != 'Администрация' and $pers['clan'] != 'Life') {
 		view_ip($pers);
 	} else {
         echo "<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Вы не можете просматривать информацию об этом персонаже!";
     }
 }
 function view_ip($pers){
-	$sql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM mlog WHERE login='".$pers[login]."' ORDER BY ip;");
+    $sql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM mlog WHERE login='" . $pers['login'] . "' ORDER BY ip;");
 	echo'<table width=80% align=center border=1 cellpadding=5 cellspacing=0>
 	<tr>
 	<td><font class=weaponch>IP</td>
@@ -121,16 +136,16 @@ function view_ip($pers){
 	$ip='';	
 	$login='';
 	while($row = mysqli_fetch_assoc($sql)){
-		if($ip!=$row[ip]){
-			$ip=$row[ip];
-			$oneip=mysqli_query($GLOBALS['db_link'],"SELECT * FROM mlog WHERE login!='".$pers[login]."' AND ip='".$ip."';");
+        if ($ip != $row['ip']) {
+            $ip = $row['ip'];
+            $oneip = mysqli_query($GLOBALS['db_link'], "SELECT * FROM mlog WHERE login!='" . $pers['login'] . "' AND ip='" . $ip . "';");
 			if(mysqli_num_rows($oneip)>0){
 				while($newrow = mysqli_fetch_assoc($oneip)){
-                    if ($login != $newrow[login] and $newrow[login] != 'Администрация' and $newrow[login] != 'Администрация' and $newrow[login] != 'z7' and $newrow[login] != 'ReadOnly' and $newrow[login] != 'NINTENDO' and $newrow[login] != '') {
-						$login=$newrow[login];
+                    if ($login != $newrow['login'] and $newrow['login'] != 'Администрация' and $newrow['login'] != 'Администрация' and $newrow['login'] != 'z7' and $newrow['login'] != 'ReadOnly' and $newrow['login'] != 'NINTENDO' and $newrow['login'] != '') {
+                        $login = $newrow['login'];
 						echo"<tr>";
-						echo"<td><font class=weaponch>".$newrow[ip]."</td>";
-						echo'<td><font class=weaponch>'.$newrow[login].'<a href="ipers.php?'.$newrow[login].'" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a></td>';
+                        echo "<td><font class=weaponch>" . $newrow['ip'] . "</td>";
+                        echo '<td><font class=weaponch>' . $newrow['login'] . '<a href="ipers.php?' . $newrow['login'] . '" target=_blank><img src=http://img.legendbattles.ru/image/chat/info.gif width=11 height=12 border=0></a></td>';
 						echo"</tr>";
 					}
 				}

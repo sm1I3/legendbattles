@@ -210,7 +210,11 @@ if($id_adm==99){?>
           </option>
   <? $it=mysqli_query($GLOBALS['db_link'],"SELECT * FROM items $filter $filter2 ORDER BY type,name,level;");
 	  while ($row = mysqli_fetch_assoc($it)) {
-		echo "<option value=$row[id]";if($idit==$row[id]){echo " selected=selected";}echo">$row[name] [ $row[level] ] [ $row[effect] ]</option>";
+          echo "<option value=$row[id]";
+          if ($idit == $row['id']) {
+              echo " selected=selected";
+          }
+          echo ">$row[name] [ $row[level] ] [ $row[effect] ]</option>";
 	  }
 	  ?>
   </select> <input type=text class="LoginText" name="forlogin">
@@ -246,16 +250,21 @@ if($giveall and $forlogin!=''){
 	if($pl['id']){
 		while($row = mysqli_fetch_array($it)){
 			echo $row['protype']."<br>";
-			mysqli_query($GLOBALS['db_link'],"INSERT INTO invent (protype,pl_id,dolg,price,dd_price) VALUES ('".$row['protype']."','".$pl['id']."','".$row[dolg]."','".$row[price]."','".$row[dd_price]."');");
+            mysqli_query($GLOBALS['db_link'], "INSERT INTO invent (protype,pl_id,dolg,price,dd_price) VALUES ('" . $row['protype'] . "','" . $pl['id'] . "','" . $row['dolg'] . "','" . $row['price'] . "','" . $row['dd_price'] . "');");
 		}
 	}
 }
 if($giveitem and $forlogin!=''){
 	$it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM items WHERE id='$idit';"));
 	$pl=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM user WHERE login='$forlogin';"));
-	if($it[dd_price]>0){$pr=$it[dd_price];$filt="dd_price";}
-	else{$pr=$it[price];$filt="price";}
-	$par=explode("|",$it[param]);
+    if ($it['dd_price'] > 0) {
+        $pr = $it['dd_price'];
+        $filt = "dd_price";
+    } else {
+        $pr = $it['price'];
+        $filt = "price";
+    }
+    $par = explode("|", $it['param']);
 	foreach ($par as $value) {
 		$stat=explode("@",$value);
 		switch($stat[0]){case 2: $dolg=$stat[1];break;}
@@ -1054,7 +1063,11 @@ if($id_adm==2){?><br>
           </option>
   <? $it=mysqli_query($GLOBALS['db_link'],"SELECT items.id, items.name ,items.level, items.type, items.effect FROM items $filter $filter2 ORDER BY effect,level,name;");
 	  while ($row = mysqli_fetch_assoc($it)) {
-	  echo "<option value=$row[id]";if($idit==$row[id]){echo " selected=selected";}echo">$row[name] [ $row[level] ] [ $row[effect] ]</option>";
+          echo "<option value=$row[id]";
+          if ($idit == $row['id']) {
+              echo " selected=selected";
+          }
+          echo ">$row[name] [ $row[level] ] [ $row[effect] ]</option>";
 	  }
 	  ?>
       </select> <input name="edit" type="submit" class="lbut" value="Загрузить"/>
@@ -1070,40 +1083,103 @@ if($id_adm==2){?><br>
          <?php 
 
 unset($w);
-          switch($it[type])
-{
-case w0: $w[0]=" selected=selected";break;
-case w1: $w[1]=" selected=selected";break;
-case w2: $w[2]=" selected=selected";break;
-case w3: $w[3]=" selected=selected";break;
-case w4: $w[4]=" selected=selected";break;
-case w6: $w[5]=" selected=selected";break;
-case w5: $w[6]=" selected=selected";break;
-case w7: $w[7]=" selected=selected";break;
-case w20: $w[8]=" selected=selected";break;
-case w23: $w[9]=" selected=selected";break;
-case w26: $w[10]=" selected=selected";break;
-case w18: $w[11]=" selected=selected";break;
-case w19: $w[12]=" selected=selected";break;
-case w24: $w[13]=" selected=selected";break;
-case w80: $w[14]=" selected=selected";break;
-case w21: $w[15]=" selected=selected";break;
-case w25: $w[16]=" selected=selected";break;
-case w22: $w[17]=" selected=selected";break;
-case w28: $w[18]=" selected=selected";break;
-case w90: $w[19]=" selected=selected";break;
-case w29: $w[29]=" selected=selected";break;
-case w30: $w[30]=" selected=selected";break;
-case w61: $w[61]=" selected=selected";break;
-case w66: $w[66]=" selected=selected";break;
-case w67: $w[67]=" selected=selected";break;
-case w68: $w[68]=" selected=selected";break;
-case w69: $w[69]=" selected=selected";break;
-case w70: $w[70]=" selected=selected";break;
-case w60: $w[60]=" selected=selected";break;
-case w71: $w[71]=" selected=selected";break;
-case w62: $w[62]=" selected=selected";break;
-case w100: $w[100]=" selected=selected";break;
+         switch ($it['type']) {
+             case 'w0':
+                 $w[0] = " selected=selected";
+                 break;
+             case 'w1':
+                 $w[1] = " selected=selected";
+                 break;
+             case 'w2':
+                 $w[2] = " selected=selected";
+                 break;
+             case 'w3':
+                 $w[3] = " selected=selected";
+                 break;
+             case 'w4':
+                 $w[4] = " selected=selected";
+                 break;
+             case 'w6':
+                 $w[5] = " selected=selected";
+                 break;
+             case 'w5':
+                 $w[6] = " selected=selected";
+                 break;
+             case 'w7':
+                 $w[7] = " selected=selected";
+                 break;
+             case 'w20':
+                 $w[8] = " selected=selected";
+                 break;
+             case 'w23':
+                 $w[9] = " selected=selected";
+                 break;
+             case 'w26':
+                 $w[10] = " selected=selected";
+                 break;
+             case 'w18':
+                 $w[11] = " selected=selected";
+                 break;
+             case 'w19':
+                 $w[12] = " selected=selected";
+                 break;
+             case 'w24':
+                 $w[13] = " selected=selected";
+                 break;
+             case 'w80':
+                 $w[14] = " selected=selected";
+                 break;
+             case 'w21':
+                 $w[15] = " selected=selected";
+                 break;
+             case 'w25':
+                 $w[16] = " selected=selected";
+                 break;
+             case 'w22':
+                 $w[17] = " selected=selected";
+                 break;
+             case 'w28':
+                 $w[18] = " selected=selected";
+                 break;
+             case 'w90':
+                 $w[19] = " selected=selected";
+                 break;
+             case 'w29':
+                 $w[29] = " selected=selected";
+                 break;
+             case 'w30':
+                 $w[30] = " selected=selected";
+                 break;
+             case 'w61':
+                 $w[61] = " selected=selected";
+                 break;
+             case 'w66':
+                 $w[66] = " selected=selected";
+                 break;
+             case 'w67':
+                 $w[67] = " selected=selected";
+                 break;
+             case 'w68':
+                 $w[68] = " selected=selected";
+                 break;
+             case 'w69':
+                 $w[69] = " selected=selected";
+                 break;
+             case 'w70':
+                 $w[70] = " selected=selected";
+                 break;
+             case 'w60':
+                 $w[60] = " selected=selected";
+                 break;
+             case 'w71':
+                 $w[71] = " selected=selected";
+                 break;
+             case 'w62':
+                 $w[62] = " selected=selected";
+                 break;
+             case 'w100':
+                 $w[100] = " selected=selected";
+                 break;
 }
 
 
@@ -1144,9 +1220,9 @@ case w100: $w[100]=" selected=selected";break;
         <option value="w62"<?= $w[62] ?>>Сундуки</option>
         <option value="w100"<?= $w[100] ?>>Ресурсы для крафта</option>
     </select>
-    <input name="name" type="text" value="<?=$it[name]?>" />
+                      <input name="name" type="text" value="<?= $it['name'] ?>"/>
 <? unset($w);
-     switch($it[block])
+switch ($it['block'])
 {
 case 0: $w[0]=" selected=selected";break;
 case 40: $w[1]=" selected=selected";break;
@@ -1161,7 +1237,7 @@ case 90: $w[3]=" selected=selected";break;
         <option value="90"<?= $w[3] ?>>3 точки</option>
     </select>
     <? unset($w);
-switch($it[num_a])
+    switch ($it['num_a'])
 {
 case 0: $w[0]=" selected=selected";break;
 case 32: $w[32]=" selected=selected";break;
@@ -1208,22 +1284,48 @@ case 34:$w[34]=" selected=selected";break;
     </select>
 
     <? unset($w);
-         switch($it[acte])
+    switch ($it['acte'])
 {
 case "": $w[0]=" selected=selected";break;
-case magicreform: $w[1]=" selected=selected";break;
-case fightmagicform: $w[2]=" selected=selected";break;
-case chatsleepform: $w[3]=" selected=selected";break;
-case zelreform: $w[4]=" selected=selected";break;
-case licensform: $w[5]=" selected=selected";break;
-case licensform2: $w[6]=" selected=selected";break;
-case doktorreform: $w[7]=" selected=selected";break;
-case zelinvis: $w[8]=" selected=selected";break;
-case BotNapForm: $w[9]=" selected=selected";break;
-case ObnulForm: $w[10]=" selected=selected";break;
-case MaseForm: $w[11]=" selected=selected";break;
-case teleport: $w[12]=" selected=selected";break;
-case teleport2: $w[13]=" selected=selected";break;
+        case 'magicreform':
+            $w[1] = " selected=selected";
+            break;
+        case 'fightmagicform':
+            $w[2] = " selected=selected";
+            break;
+        case 'chatsleepform':
+            $w[3] = " selected=selected";
+            break;
+        case 'zelreform':
+            $w[4] = " selected=selected";
+            break;
+        case 'licensform':
+            $w[5] = " selected=selected";
+            break;
+        case 'licensform2':
+            $w[6] = " selected=selected";
+            break;
+        case 'doktorreform':
+            $w[7] = " selected=selected";
+            break;
+        case 'zelinvis':
+            $w[8] = " selected=selected";
+            break;
+        case 'BotNapForm':
+            $w[9] = " selected=selected";
+            break;
+        case 'ObnulForm':
+            $w[10] = " selected=selected";
+            break;
+        case 'MaseForm':
+            $w[11] = " selected=selected";
+            break;
+        case 'teleport':
+            $w[12] = " selected=selected";
+            break;
+        case 'teleport2':
+            $w[13] = " selected=selected";
+            break;
 }
     ?>
         <select name="acte" >
@@ -1252,7 +1354,7 @@ case teleport2: $w[13]=" selected=selected";break;
    
     <?
 unset($w);
-switch($it[slot])
+    switch ($it['slot'])
 {
 case 0: $w[0]=" selected=selected";break;
 case 1: $w[1]=" selected=selected";break;
@@ -1335,7 +1437,7 @@ foreach($immunes as $key=>$val){
                           <option value="16"<?= $w[16] ?>>Броня</option>
                           <option value="17"<?= $w[17] ?>>Кольчуга</option>
                           <option value="20"<?= $w[20] ?>>Руна</option>
-                      </select> эффект: <input name="effect" type="text" value="<?= $it[effect] ?>"/>
+                      </select> эффект: <input name="effect" type="text" value="<?= $it['effect'] ?>"/>
                       <br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3></td>
               <td><br><img src=http://img.legendbattles.ru/image/1x1.gif width=1 height=3</td>
           </tr>
@@ -1353,9 +1455,9 @@ foreach($immunes as $key=>$val){
                       </tr>
                       <tr>
                           <td align="right" bgcolor="#FCFAF3"><font class=weaponch><b><label>Цена</label>
-                                      <input name="price" type="text" value="<?= $it[price] ?>"/>&nbsp;<label>Цена
+                                      <input name="price" type="text" value="<?= $it['price'] ?>"/>&nbsp;<label>Цена
                                           ДД</label>&nbsp;<input name="dd_price" type="text"
-                                                                 value="<?= $it[dd_price] ?>"/><br>
+                                                                 value="<?= $it['dd_price'] ?>"/><br>
               ---------------------------------------------------------------<br>
                                       &nbsp;<label>Дополнительный урон (только если выбран мод, пример
                                           20-30)</label><br>
@@ -1395,8 +1497,8 @@ foreach($immunes as $key=>$val){
 			  </select><br>
 			  ---------------------------------------------------------------<br>
                         <?
-			  
-$param=explode("|",$it[param]);
+
+                        $param = explode("|", $it['param']);
 foreach ($param as $value) { 
 $stat=explode("@",$value);
 $par[$stat[0]]=$stat[1];} 						
@@ -1627,15 +1729,15 @@ if($fr!="")echo '<label><font class=weaponch><b>'.$fr.'</b></font></label><input
                           <td bgcolor=#B9A05C><img src=http://img.Fight4Life.ru/image/1x1.gif width=1 height=1></td>
                           <td align="right" valign="top" bgcolor="#FCFAF3"><font
                                       class=weaponch><b><label>Уровень:</label>
-                                      <input name="level" type="text" value="<?= $it[level] ?>"/><br><font
+                                      <input name="level" type="text" value="<?= $it['level'] ?>"/><br><font
                                               class=weaponch><b><label>Масса:</label>
-              <input name="massa" type="text" value="<?=$it[massa]?>" /><br>
+                                              <input name="massa" type="text" value="<?= $it['massa'] ?>"/><br>
                                               <font class=weaponch><b><label>Срок годности вещи (в днях)<i>0 - без
                                                               срока</i>:</label>
-              <input name="srok" type="text" value="<?=$it[srok]?>" /><br>
+                                                      <input name="srok" type="text" value="<?= $it['srok'] ?>"/><br>
 			  <?
-			  
-$need=explode("|",$it[need]);
+
+              $need = explode("|", $it['need']);
 foreach ($need as $value) { 
 $stat=explode("@",$value);
 $ned[$stat[0]]=$stat[1];}
