@@ -41,7 +41,7 @@ if($player['mov']==1){
 	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `mov`=DEFAULT WHERE `id`='".$player['id']."' LIMIT 1;");
 }
 $check = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `blocklist` WHERE `ip`='".$player['ip']."',`ip`='".$player['lastip']."' LIMIT 1;"));
-if(!preg_match("/{$HTTP_HOST}/" ,getenv ('HTTP_REFERER' )) or $_SESSION['user']['login']=='' or $_COOKIE['UID']!=$player['pcid'] or $player['block']!='' or $check['id']){
+if (!preg_match("/{$_SERVER['HTTP_HOST']}/", getenv('HTTP_REFERER')) or $_SESSION['user']['login'] == '' or $_COOKIE['UID'] != $player['pcid'] or $player['block'] != '' or $check['id']) {
 if($player['block']!=''){echo "<script>parent.location = 'index.php?act=logout';</script>";}else{echo "<script>parent.location = 'error.php';</script>";}}
 if(isset($_POST['newabout']) and $_POST['post_id']==49){
 	$tmptext = $_POST['newabout'];

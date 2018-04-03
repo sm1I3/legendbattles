@@ -1,15 +1,8 @@
 <?php
-include($_SERVER["DOCUMENT_ROOT"].'/includes/ks_antiddos.php');
-
-$ksa = new ks_antiddos();
-$ksa->doit(10,10);
 session_start();
 error_reporting("0");
 include"./includes/common.php";
 include"./includes/functions.php";
-foreach($_POST as $keypost=>$valp){$valp = varcheck($valp);$_POST[$keypost] = $valp;$$keypost = $valp;}
-foreach($_GET as $keyget=>$valg){$valg = varcheck($valg);$_GET[$keyget] = $valg;$$keyget = $valg;}
-foreach($_SESSION as $keyses=>$vals){$$keyses = $vals;}
 
 	function lr($lr) {
 		$b = $lr % 100;
@@ -44,13 +37,14 @@ if ($_POST['newnick']) {
 if(!empty($_GET['info'])){
     exit(header("Location: /ipers.php?" . (iconv("UTF-8", "utf-8", urldecode($_GET['info'])) ? iconv("UTF-8", "utf-8", urldecode($_GET['info'])) : urldecode($_GET['info']))));
 		}
-if(!empty($_GET['userid'])){	
+if (!empty($_GET['userid'])) {
+    $userid = $userid ?? varcheck($_POST['userid']) ?? varcheck($_GET['userid']) ?? '';
 	exit(header("Location: /ipers.php?".GetUserFID(intval($userid))));
 }
 if (empty($_GET["p"])){
 	$_GET["p"] = $_SERVER['QUERY_STRING'];	
 }
-$pers = GetUser($_GET["p"]);
+$pers = GetUser(varcheck($_GET["p"]));
 
 if(!$pers['id']){
 	$_GET["p"]=urldecode($_GET["p"]);
@@ -204,7 +198,7 @@ echo'
 <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
 ';
 if(accesses($WatchUser['id'],'pvu')){
-echo'<script type="text/javascript" src="/js/jquery.form.js"></script';
+    echo '<script type="text/javascript" src="/js/jquery.form.js"></script>';
 echo'
 <link rel="stylesheet" type="text/css" href="/css/themes/smodal.css">
 <script type="text/javascript" src="../js/jquery.smodal.js"></script>
@@ -397,16 +391,16 @@ while ($row = mysqli_fetch_assoc($slot)) {
 	}
 	switch($row['mod_color']){
         case 0:
-            $rnn = "<b>" . $row[name] . ($row['modified'] == 1 ? "</b> [ап]" : "") . "</b>";
+            $rnn = "<b>" . $row['name'] . ($row['modified'] == 1 ? "</b> [ап]" : "") . "</b>";
             break;
         case 1:
-            $rnn = "<b><font color=#006600>" . $row[name] . " [мод]" . ($row['modified'] == 1 ? "</b> [ап]" : "") . "</b></font>";
+            $rnn = "<b><font color=#006600>" . $row['name'] . " [мод]" . ($row['modified'] == 1 ? "</b> [ап]" : "") . "</b></font>";
             break;
         case 2:
-            $rnn = "<b><font color=#3333CC>" . $row[name] . " [мод]" . ($row['modified'] == 1 ? "</b> [ап]" : "") . "</b></font>";
+            $rnn = "<b><font color=#3333CC>" . $row['name'] . " [мод]" . ($row['modified'] == 1 ? "</b> [ап]" : "") . "</b></font>";
             break;
         case 3:
-            $rnn = "<b><font color=#AF51B5>" . $row[name] . " [мод]" . ($row['modified'] == 1 ? "</b> [ап]" : "") . "</b></font>";
+            $rnn = "<b><font color=#AF51B5>" . $row['name'] . " [мод]" . ($row['modified'] == 1 ? "</b> [ап]" : "") . "</b></font>";
             break;
 	}
 	$sl_free[$row['curslot']] = $row['gif'];

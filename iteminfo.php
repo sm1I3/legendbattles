@@ -23,26 +23,26 @@ function itemparams($inv, $ITEM, $player, $plstt, $mass)
     $need = explode("|", $ITEM['need']);
     if ($inv == 1) {
         //торговая лицензия персонажа
-        if ($player[level] < 5) {
+        if ($player['level'] < 5) {
             $licen = 1;
         } else {
             $licen = tradelic($player['licens'], 1);
         }
         //
-        $iz = $ITEM[dolg] - $ITEM[iznos];
-        $izn = round(($iz / ($ITEM[dolg] / 100)) * 0.62);
+        $iz = $ITEM['dolg'] - $ITEM['iznos'];
+        $izn = round(($iz / ($ITEM['dolg'] / 100)) * 0.62);
         $pro = 62 - $izn;
-        if ($ITEM[dd_price] > 0) {
+        if ($ITEM['dd_price'] > 0) {
             $licen = 0.9;
-            $price_dd = round(($ITEM[dd_price] * $licen * $iz / $ITEM[dolg]), 2);
-        } else if ($ITEM[gift] == 1) {
+            $price_dd = round(($ITEM['dd_price'] * $licen * $iz / $ITEM['dolg']), 2);
+        } else if ($ITEM['gift'] == 1) {
             $licen = 0.4;
-            $price = round($ITEM[price] * $licen * $iz / $ITEM[dolg]);
+            $price = round($ITEM['price'] * $licen * $iz / $ITEM['dolg']);
             if ($price < 1) {
                 $price = 1;
             }
         } else {
-            $price = round($ITEM[price] * $licen * $iz / $ITEM[dolg]);
+            $price = round($ITEM['price'] * $licen * $iz / $ITEM['dolg']);
             if ($price < 1) {
                 $price = 1;
             }
@@ -622,7 +622,7 @@ if ($ITEM['slot'] == 16) {
 blocks($ITEM['block']);
 
 
-if ($ITEM[dd_price] > 0) { ?> <font class=weaponch>&nbsp;Цена: <b><?= $ITEM[dd_price] ?> <img
+if ($ITEM['dd_price'] > 0) { ?> <font class=weaponch>&nbsp;Цена: <b><?= $ITEM['dd_price'] ?> <img
                 src="/img/razdor/emerald.png" width=14 height=14></b><br> <? } else { ?>
     <font class=weaponch>Цена: <b><?= lr($ITEM['price']) ?></b><br> <? } ?>
 

@@ -1,9 +1,4 @@
 <?php
-include($_SERVER["DOCUMENT_ROOT"].'/includes/ks_antiddos.php');
-
-$ksa = new ks_antiddos();
-$ksa->doit(20, 20);
-
 session_start();
 function savelog($log,$bat){
 	$fp = fopen ($_SERVER["DOCUMENT_ROOT"]."/logs/".$bat.".txt","a");
