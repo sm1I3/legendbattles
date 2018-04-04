@@ -33,6 +33,7 @@ echo '
 	</td>
 	</tr>
 	</table>';
+$bank_c = $bank_c ?? varcheck($_POST['bank_c']) ?? varcheck($_GET['bank_c']) ?? '';
 if (empty($bank_c)) {
     $bank_c = 0;
 }

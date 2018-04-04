@@ -31,6 +31,7 @@ if ($act == 1) {
         chmsg($plmsg, $player['login']);
     }
 } else {
+    $wsuid = $wsuid ?? varcheck($_POST['wsuid']) ?? varcheck($_GET['wsuid']) ?? '';
     $wsuid = intval($wsuid);
     $IT = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT market.*, items.*
 	FROM market LEFT JOIN items ON market.id = items.id

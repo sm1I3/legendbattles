@@ -267,6 +267,11 @@ switch ($post_id) {
         mysqli_query($GLOBALS['db_link'], 'UPDATE invent SET used=0,pl_id=' . AP . $newpl . AP . ' WHERE id_item=' . AP . $uid . AP . ' AND pl_id=' . AP . $pl . AP . ' LIMIT 1');
         break;
     case 15:
+        $f0 = $f0 ?? varcheck($_POST['f0']) ?? varcheck($_GET['f0']) ?? '';
+        $f1 = $f1 ?? varcheck($_POST['f1']) ?? varcheck($_GET['f1']) ?? '';
+        $f2 = $f2 ?? varcheck($_POST['f2']) ?? varcheck($_GET['f2']) ?? '';
+        $f3 = $f3 ?? varcheck($_POST['f3']) ?? varcheck($_GET['f3']) ?? '';
+        $f4 = $f4 ?? varcheck($_POST['f4']) ?? varcheck($_GET['f4']) ?? '';
         $f0 = round(intval($f0));
         $f1 = round(intval($f1));
         $f2 = round(intval($f2));
@@ -547,6 +552,7 @@ switch ($post_id) {
         break;
     case 22:
         $sum = intval($_POST['gold']) * 10000 + intval($_POST['silver']) * 100 + intval($_POST['bronze']);
+        $fornickname = $fornickname ?? varcheck($_POST['fornickname']) ?? varcheck($_GET['fornickname']) ?? '';
         $fornickname = trim($fornickname);
         if ($fornickname != '' and intval($sum) > 0) {
             if ($player['login'] != $fornickname) {
@@ -1264,7 +1270,7 @@ switch ($post_id) {
     case 94:
         $typetolog = '0';
         $abouttolog = '0';  # переменные для логов: первая всегда 0
-
+        $wsuid = $wsuid ?? varcheck($_POST['wsuid']) ?? varcheck($_GET['wsuid']) ?? '';
         $wsuid = intval($wsuid);
         $IT = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `market`.*, `items`.*
 			FROM `market` LEFT JOIN `items` ON `market`.`id` = `items`.`id`
@@ -1390,6 +1396,7 @@ switch ($post_id) {
     case 95:
         $typetolog = '0';
         $abouttolog = '0';  # переменные для логов: первая всегда 0
+        $wsuid = $wsuid ?? varcheck($_POST['wsuid']) ?? varcheck($_GET['wsuid']) ?? '';
         $wsuid = intval($wsuid);
         $IT = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT market.*, items.*
 		FROM market LEFT JOIN items ON market.id = items.id
@@ -1469,6 +1476,7 @@ switch ($post_id) {
         }
         break;
     case 96:
+        $wsuid = $wsuid ?? varcheck($_POST['wsuid']) ?? varcheck($_GET['wsuid']) ?? '';
         $wsuid = intval($wsuid);
         $ITEM = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT invent.*,  items.* FROM items INNER JOIN invent ON items.id = invent.protype WHERE pl_id=" . $player['id'] . " and invent.used='0' AND invent.bank='0' and invent.id_item = " . $wsuid . " LIMIT 1;"));
         $dd = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT invent.dd_price FROM invent WHERE id_item=" . $ITEM['id_item'] . " LIMIT 1;"));
@@ -2194,6 +2202,10 @@ switch ($post_id) {
         }
         break;
     case 116:
+        $uid = $uid ?? varcheck($_POST['uid']) ?? varcheck($_GET['uid']) ?? '';
+        $id = $id ?? varcheck($_POST['id']) ?? varcheck($_GET['id']) ?? '';
+        $login = $login ?? varcheck($_POST['login']) ?? varcheck($_GET['login']) ?? '';
+        $col = $col ?? varcheck($_POST['col']) ?? varcheck($_GET['col']) ?? '';
         $id = intval($id);
         $uid = intval($uid);
         $login = chars($login);
@@ -2201,12 +2213,16 @@ switch ($post_id) {
         include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/buysneg.php");
         break;
     case 117:
+        $uid = $uid ?? varcheck($_POST['uid']) ?? varcheck($_GET['uid']) ?? '';
+        $id = $id ?? varcheck($_POST['id']) ?? varcheck($_GET['id']) ?? '';
+        $login = $login ?? varcheck($_POST['login']) ?? varcheck($_GET['login']) ?? '';
+        $col = $col ?? varcheck($_POST['col']) ?? varcheck($_GET['col']) ?? '';
         $id = intval($id);
         $uid = intval($uid);
         $login = chars($login);
         $col = intval($col);
         include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/buyrep.php");
-        include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/buyrep1.php");
+        // include($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/buyrep1.php");
         break;
     case 1223:
         $id = intval($id);

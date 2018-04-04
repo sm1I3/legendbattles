@@ -7,7 +7,7 @@ if (!userHasPermission(262144)) {
     die();
 }
 
-$id = 1;
+$id = $id ?? varcheck($_POST['id']) ?? varcheck($_GET['id']) ?? '';
 
 $res = mysqli_query($GLOBALS['db_link'], 'SELECT * FROM d_custom_item WHERE id = ' . intval($id));
 if ($row = mysqli_fetch_assoc($res))

@@ -5,6 +5,7 @@ mysqli_query($GLOBALS['db_link'], "LOCK TABLES market READ, market WRITE;");
 $login = $login ?? varcheck($_POST['login']) ?? varcheck($_GET['login']) ?? '';
 $act = $act ?? varcheck($_POST['act']) ?? varcheck($_GET['act']) ?? '';
 $uid = $uid ?? varcheck($_POST['uid']) ?? varcheck($_GET['uid']) ?? '';
+$id = $id ?? varcheck($_POST['id']) ?? varcheck($_GET['id']) ?? '';
 if ($act == 1) {
     $ITEM = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT invent.*, items.* FROM invent INNER JOIN items ON invent.protype = items.id WHERE invent.id_item='" . intval($id) . "' and invent.pl_id='" . intval($uid) . "' LIMIT 1;"));
     if ($ITEM != '') {

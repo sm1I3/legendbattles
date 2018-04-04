@@ -2,6 +2,10 @@
 $typetolog = '0';
 $abouttolog = '0';  # переменные для логов: первая всегда 0
 mysqli_query($GLOBALS['db_link'], "LOCK TABLES market READ, market WRITE;");
+$id = $id ?? varcheck($_POST['id']) ?? varcheck($_GET['id']) ?? '';
+$uid = $uid ?? varcheck($_POST['uid']) ?? varcheck($_GET['uid']) ?? '';
+$price = $price ?? varcheck($_POST['price']) ?? varcheck($_GET['price']) ?? '';
+$gfrom = $wsuid ?? varcheck($_POST['wsuid']) ?? varcheck($_GET['wsuid']) ?? '';
 if ($act == 1) {
     $ITEM = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*, `items`.* FROM `invent` INNER JOIN `items` ON `invent`.`protype` = `items`.`id` WHERE `invent`.`id_item`='" . intval($id) . "' and `invent`.`pl_id`='" . intval($uid) . "' LIMIT 1;"));
     if ($ITEM != '') {
