@@ -10,12 +10,6 @@ if (mysqli_connect_errno()) {
 }
 $GLOBALS['db_link'] = $db_link;
 mysqli_query($GLOBALS['db_link'], "SET NAMES utf8");
-/*function mysqli_result($res, $row, $field = 0)
-{
-    $res->data_seek($row);
-    $datarow = $res->fetch_array();
-    return $datarow[$field];
-}*/
 
 $GLOBALS['redirect'] = "parent.frames['main_top'].location='main.php';";
 $quit = "parent.location='index.php';";
@@ -27,16 +21,6 @@ function goto_error($err_text)
     echo '<br><b>����� �������: </b><br>' . $err_text . '<br><INPUT TYPE="button" VALUE="�����" onClick="history.back()">';
     die;
 }
-
-/*function db_open()
-{
-    global $db_link;
-    if ($db_link == 0) {
-        $db_link = mysqli_connect("localhost", "root", "", "legends") or goto_error(mysqli_error($GLOBALS['db_link']));
-        mysqli_select_db($db_link, "legends") or goto_error(mysqli_error($db_link));
-    }
-    mysqli_query($GLOBALS['db_link'], "SET NAMES utf8");
-}*/
 
 function db_query($str)
 {

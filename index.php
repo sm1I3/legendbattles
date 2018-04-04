@@ -1,7 +1,5 @@
 <?php
-session_start();
 include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
-include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
 
 ?><!doctype html>
 <html lang="ru">
