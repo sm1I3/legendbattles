@@ -42,8 +42,8 @@ if (isset($_GET["i"])) {
   imagettftext($im, 13, 0, 200, 38, $color1, "SERPENTN.TTF",  $element3); 
 	$exp=explode("|",$row['exp']);
  $element4 = $exp[0]; 
-  imagettftext($im, 13, 0, 200, 55, $color1, "SERPENTN.TTF",  $element4); 
- if ($row["access"]==admin) $rase="�����";
+  imagettftext($im, 13, 0, 200, 55, $color1, "SERPENTN.TTF",  $element4);
+     if ($row["access"] == 'admin') $rase = "�����";
  if ($row["rase"]==2) $rase="��������";
   $element4 = win_uni($rase); 
   imagettftext($im, 13, 0, 325, 20, $color1, "ARIAL.TTF",  win_uni($element4)); 

@@ -9,6 +9,7 @@ function GetInventId($uId){
 	return mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*,  `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`auction` = '1' AND `invent`.`id_item` = '".$uId."'"));
 }
 if($_POST['del'] == 1){
+    $uId = $uId ?? varcheck($_POST['uId']) ?? varcheck($_GET['uId']) ?? '';
 mysqli_query($GLOBALS['db_link'],"UPDATE `invent` SET `auction`='0' WHERE `id_item`='".$uId."'");
 }
 $Query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `auction_system` WHERE `status`='active' AND `userID` = '".$pers['id']."'");

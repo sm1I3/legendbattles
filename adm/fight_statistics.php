@@ -119,7 +119,7 @@ $query = 'select * from bots_fights where 1=1 '.
         generateMysqlLimit($cur_page, $recs_per_page);
 
 $stats = '';
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 while ($row = mysqli_fetch_assoc($res))
 {
     $stats.='

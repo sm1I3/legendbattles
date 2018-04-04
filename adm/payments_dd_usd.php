@@ -53,7 +53,7 @@ $chart->add_element( $bar );
 
 $convert_names = array();
 $query = 'SELECT wuid, w_name FROM d_dilers WHERE wuid IN ('.implode(',', $axis).')';
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 while ($row = mysqli_fetch_assoc($res))
 {
     $convert_names[$row['wuid']] = $row['w_name'];

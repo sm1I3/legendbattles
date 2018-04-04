@@ -32,7 +32,7 @@ if ($bot_class_id != '')
 {
     
     $bots = array();
-    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_templates where bot_class_id = ' . intval($bot_class_id) . ' ORDER BY level', $db);
+    $res = mysqli_query($GLOBALS['db_link'], 'select * from bots_templates where bot_class_id = ' . intval($bot_class_id) . ' ORDER BY level');
     while ($row = mysqli_fetch_assoc($res)) 
     {
         $bots_array[$row['inf_bot']] = $row;

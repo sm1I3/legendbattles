@@ -1,5 +1,8 @@
 <?
 mysqli_query($GLOBALS['db_link'], "LOCK TABLES market READ, market WRITE;");
+$login = $login ?? varcheck($_POST['login']) ?? varcheck($_GET['login']) ?? '';
+$act = $act ?? varcheck($_POST['act']) ?? varcheck($_GET['act']) ?? '';
+$wsuid = $wsuid ?? varcheck($_POST['wsuid']) ?? varcheck($_GET['wsuid']) ?? '';
 if ($act == 1) {
     $ITEM = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT invent.*, items.* FROM invent INNER JOIN items ON invent.protype = items.id WHERE invent.id_item='" . intval($id) . "' and invent.pl_id='" . intval($uid) . "' LIMIT 1;"));
     if ($ITEM != '') {
@@ -9,7 +12,7 @@ if ($act == 1) {
         $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>$player[login]</b> купил у вас <b>" . $ITEM['name'] . "</b>!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($ms, $login);
         log_write("buy", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ")", $ITEM['sellprice'], $login);
-        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . $price . "</b> LR!</b></font><BR>'+'');$redirect";
+        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . $price . "</b> LR!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($plmsg, $player['login']);
 
     }
@@ -27,7 +30,7 @@ if ($act == 1) {
         $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>" . $player['login'] . "</b> купил у вас <b>" . $ITEM['name'] . "</b> " . $col . " шт!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($ms, $login);
         log_write("buy", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ")" . "(количество: " . $col . " шт.)", ($ITEM['sellprice'] * $col), $login);
-        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . ($ITEM['sellprice'] * $col) . "</b> LR!</b></font><BR>'+'');$redirect";
+        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . ($ITEM['sellprice'] * $col) . "</b> LR!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($plmsg, $player['login']);
     }
 } else {

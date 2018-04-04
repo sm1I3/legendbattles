@@ -53,7 +53,7 @@ $query = 'select * from world_objects '.
         generateMysqlOrder().
         generateMysqlLimit($cur_page, $recs_per_page);
 
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 while ($row = mysqli_fetch_assoc($res))
 {
     $objects.='

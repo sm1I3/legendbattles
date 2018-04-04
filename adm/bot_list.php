@@ -86,7 +86,7 @@ $query = 'select bt.*, bc.nickname from bots_templates bt inner join bots_classe
         generateMysqlLimit($cur_page, $recs_per_page);
         
 $bots = '';
-$res = mysqli_query($GLOBALS['db_link'], $query, $db);
+$res = mysqli_query($GLOBALS['db_link'], $query);
 while ($row = mysqli_fetch_assoc($res))
 {
     $bots.='

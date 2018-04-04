@@ -125,6 +125,7 @@ if ($_GET["starik"] == 1 and $pers["time_prz"]<time() and $player["level"]>=5){
 ## Џолучение подарка.
 if ($_GET["starik"] == 'senk' and $player["time_prz"]<time() and $player["level"]>=5){
 $prz_time = (time()+86400);
+    $gfrom = $gfrom ?? varcheck($_POST['gfrom']) ?? varcheck($_GET['gfrom']) ?? '';
 mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price` ,`curslot` ,`clan` ,`gift` ,`gift_from`) VALUES ('3544',  '".$player['id']."',  '0',  '0',  '1',  '1',  '0',  '0',  '0',  '1',  '".$gfrom."');");
     $res = "Вы обнаружили в подарке <b>Жетон «Яркое резное пламя»</b> !";
     chmsg("top.frames['chmain'].add_msg('<font class=massm>&nbsp;&nbsp;<b>Корвус</b>&nbsp;&nbsp;</font>   <font color=000000><b><font color=#cc0000>Внимание! </font></b>" . $res . ".<BR>'+'');", $player['login']);

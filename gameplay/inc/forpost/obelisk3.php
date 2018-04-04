@@ -120,6 +120,7 @@ if ($_GET["starik"] == 1 and $pers["time_prz"]<time() and $player["level"]>=1){
 ## Џолучение подарка.
 if ($_GET["starik"] == 'senk' and $player["time_prz"]<time() and $player["level"]>=1){
 $prz_time = (time()+86400);
+    $gfrom = $gfrom ?? varcheck($_POST['gfrom']) ?? varcheck($_GET['gfrom']) ?? '';
 mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price` ,`curslot` ,`clan` ,`gift` ,`gift_from`) VALUES ('116',  '".$player['id']."',  '0',  '0',  '10',  '10',  '0',  '0',  '0',  '0',  '".$gfrom."');");
 mysqli_query($GLOBALS['db_link'],"INSERT INTO `invent` (`protype` ,`pl_id` ,`used` ,`iznos` ,`dolg` ,`price` ,`dd_price` ,`curslot` ,`clan` ,`gift` ,`gift_from`) VALUES ('116',  '".$player['id']."',  '0',  '0',  '10',  '10',  '0',  '0',  '0',  '0',  '".$gfrom."');");
     $res = "Вы получили <b>Заточка Начинающего (2 шт)</b> !";

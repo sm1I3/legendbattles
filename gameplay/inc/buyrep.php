@@ -9,7 +9,7 @@ if ($act == 1) {
         $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>$player[login]</b> купил у вас <b>" . $ITEM['name'] . "</b>!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($ms, $login);
         log_write("buy", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ")", $ITEM['sellprice'], $login);
-        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . $price . "</b> LR!</b></font><BR>'+'');$redirect";
+        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . $price . "</b> LR!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($plmsg, $player['login']);
 
     }
@@ -27,11 +27,12 @@ if ($act == 1) {
         $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>" . $player['login'] . "</b> купил у вас <b>" . $ITEM['name'] . "</b> " . $col . " шт!</b></font><BR>'+'');:" . $GLOBALS['redirect'];
         chmsg($ms, $login);
         log_write("buy", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ")" . "(количество: " . $col . " шт.)", ($ITEM['sellprice'] * $col), $login);
-        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . ($ITEM['sellprice'] * $col) . "</b> LR!</b></font><BR>'+'');$redirect";
+        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . ($ITEM['sellprice'] * $col) . "</b> LR!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($plmsg, $player['login']);
     }
 } else {
-    $wsuid = intval($wsuid);
+
+    $wsuid = intval($wsuid) ?? intval($_POST['wsuid']) ?? intval($_GET['wsuid']) ?? '';
     $IT = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT market.*, items.*
 	FROM market LEFT JOIN items ON market.id = items.id
 	WHERE kol>0 AND items.dd_price=0 AND items.id=$wsuid LIMIT 1;"));

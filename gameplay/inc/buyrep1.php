@@ -9,7 +9,7 @@ if($act==1){
         $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>$player[login]</b> купил у вас <b>" . $ITEM['name'] . "</b>!</b></font><BR>'+'');" . $GLOBALS['redirect'];
 		chmsg($ms,$login);
         log_write("buy", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ")", $ITEM['sellprice'], $login);
-        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . $price . "</b> LR!</b></font><BR>'+'');$redirect";
+        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . $price . "</b> LR!</b></font><BR>'+'');" . $GLOBALS['redirect'];
         chmsg($plmsg, $player['login']);
 		
 	}
@@ -29,7 +29,7 @@ else if ($act==3){
         $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Персонаж <b>" . $player['login'] . "</b> купил у вас <b>" . $ITEM['name'] . "</b> " . $col . " шт!</b></font><BR>'+'');" . $GLOBALS['redirect'];
 		chmsg($ms,$login);
         log_write("buy", $ITEM['name'] . " (гос цена: " . $ITEM['price'] . ")" . "(количество: " . $col . " шт.)", ($ITEM['sellprice'] * $col), $login);
-        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . ($ITEM['sellprice'] * $col) . "</b> LR!</b></font><BR>'+'');$redirect";
+        $plmsg = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> Вы удачно купили <b>" . $ITEM['name'] . "</b> за <b>" . ($ITEM['sellprice'] * $col) . "</b> LR!</b></font><BR>'+'');" . $GLOBALS['redirect'];
 		chmsg($plmsg,$player['login']);
 	}		
 }
