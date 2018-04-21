@@ -12,7 +12,7 @@
         return (($g) ? $g . ' <img src=http://img.legendbattles.ru/image/gold.png width=14 height=14 valign=middle title=Золото>  ' : '') . (($s) ? $s . ' <img src=http://img.legendbattles.ru/image/silver.png width=14 height=14 valign=middle title=Серебро> ' : '') . (($b) ? $b . ' <img src=http://img.legendbattles.ru/image/bronze.png width=14 height=14 valign=middle title=Бронза> ' : '');
 	}
 
-require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 require($_SERVER["DOCUMENT_ROOT"] . "/includes/functions.php");
 $all = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `user` WHERE `last`>'".(time()-300)."'");
 echo "<tr><td>логин</td><td>уровень</td><td>клан</td><td>молчанка</td><td>травма</td><td>Деньги</td><td>DLR</td><td>Валюта</td><td>склонность</td><td>клиент</td></tr>";

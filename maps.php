@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 if($_GET['mone']){
 	for($x=0;$x<=19;$x++){
 		for($y=0;$y<=11;$y++){

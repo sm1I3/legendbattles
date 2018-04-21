@@ -71,7 +71,7 @@ $sign = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "select `sign` from
 
 
 <?
-require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 function varcheck($input)
 {
     if (sizeof($input) == 0) {
@@ -92,7 +92,7 @@ function varcheck($input)
             $out_string = htmlspecialchars($out_string);
             #Экранирует специальные символы в строке,принмимая во внимание кодировку соединения.
             mysqli_real_escape_string($GLOBALS['db_link'], $out_string);
-            $out_string = str_replace(array('<', '>', "'", '"', ')', '('), array('&lt;', '&gt;', '&apos;', '&#x22;', '&#x29;', '&#x28;'), $input_str);
+            $out_string = str_replace(array('<', '>', "'", '"', ')', '('), array('&lt;', '&gt;', '&apos;', '&#x22;', '&#x29;', '&#x28;'), $out_string);
             $out_string = str_ireplace('%3Cscript', '', $out_string);
             return $out_string;
 

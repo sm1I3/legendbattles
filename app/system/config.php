@@ -1,4 +1,9 @@
 <?php
+
+use app\system\Autoloader;
+
+require($_SERVER['DOCUMENT_ROOT'] . '/app/system/Autoloader.php');
+
 session_start();
 error_reporting(0);
 define('DROOT', $_SERVER["DOCUMENT_ROOT"]);

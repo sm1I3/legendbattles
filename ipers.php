@@ -1,5 +1,5 @@
 <?php
-require $_SERVER["DOCUMENT_ROOT"] . "/system/config.php";
+require $_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php";
 require $_SERVER["DOCUMENT_ROOT"] . "/includes/functions.php";
 
 function lr($lr)

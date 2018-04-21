@@ -1,5 +1,5 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 require($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
 
 $conf = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `serv_connect` WHERE `serv` LIMIT 1;"));

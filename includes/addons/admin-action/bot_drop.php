@@ -43,7 +43,7 @@ showHide = function(e,ev,a){
    </tr>
 </table>
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/includes/sql_func.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/bbcodes.inc.php");
 function ShowParBot($i,$par,$type){

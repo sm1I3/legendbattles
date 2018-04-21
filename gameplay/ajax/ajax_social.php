@@ -1,7 +1,7 @@
 <?php
 #GLOBALS OFF
 session_start();
-include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
 
 header('Content-type: text/html; charset=UTF-8');

@@ -13,7 +13,7 @@ header('Content-type: text/html; charset=UTF-8');
 			
 			
 */
-require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 require($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
 $pers = player();
 $_GET['string'] = iconv("UTF-8", "UTF-8", urldecode($_GET['string']));

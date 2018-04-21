@@ -27,7 +27,7 @@ echo'
    </tr>
 </table>
 ';
-require($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 require($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
 require($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/bbcodes.inc.php");
 

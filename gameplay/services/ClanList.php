@@ -1,5 +1,5 @@
 <?php
-include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 include(DROOT . "/includes/functions.php");
 
 function locations($loc, $pos)

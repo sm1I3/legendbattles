@@ -1,6 +1,6 @@
 <?php
 #GLOBALS OFF
-include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 include(DROOT."/includes/functions.php");
 
 $WatchUser = GetUser();

@@ -1,5 +1,5 @@
 <?
-require($_SERVER['DOCUMENT_ROOT'] . '/system/config.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/app/system/config.php');
 
 if (!isset($_SESSION['USER']) || !isset($_SESSION['USER']['user_id']) || $_SESSION['USER']['user_id'] == '') {
     header('Location: login.php');

@@ -2,7 +2,7 @@
 // mZer0ne Domain verification
 session_start();
 header('Content-type: text/html; charset=utf-8');
-include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
 
 $pers = GetUser($_SESSION['user']['login']);
