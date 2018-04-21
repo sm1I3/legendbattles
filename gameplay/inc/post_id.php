@@ -2,21 +2,17 @@
 
 $plstt = allparam($player);
 $post_id = $post_id ?? varcheck($_POST['post_id']) ?? varcheck($_GET['post_id']) ?? '';
+$act = $act ?? varcheck($_POST['act']) ?? varcheck($_GET['act']) ?? '';
 settype($post_id, "integer");
 if (isset($_POST['opass']) and isset($_POST['npass']) and isset($_POST['vpass']) and $_POST['post_id'] == 49) {
     $tmpopass = $_POST['opass'];
     $tmpvpass = $_POST['vpass'];
     $tmpnpass = $_POST['npass'];
-}
-
-if (isset($_POST['opass']) and isset($_POST['npass']) and isset($_POST['vpass']) and $_POST['post_id'] == 49) {
-    $_POST['opass'] = $tmpopass;
-    $_POST['vpass'] = $tmpvpass;
-    $_POST['npass'] = $tmpnpass;
     $opass = $tmpopass;
     $vpass = $tmpvpass;
     $npass = $tmpnpass;
 }
+
 $sk = 'kgTvx2WrEZ';
 function cutStr($str, $sCount, $cutParam)
 {
