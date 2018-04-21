@@ -3,7 +3,7 @@ $v = time() + microtime();
 require($_SERVER["DOCUMENT_ROOT"] . "/app/system/config.php");
 require($_SERVER["DOCUMENT_ROOT"] . "/includes/sql_func.php");
 require($_SERVER["DOCUMENT_ROOT"] . "/gameplay/inc/bbcodes.inc.php");
-require($_SERVER["DOCUMENT_ROOT"] . "/system/cron.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/app/system/cron.php");
 
 $player = player();
 $rt = '<script type="text/javascript"> function locs(){window.location = window.location;}setTimeout("locs()", 60000);</script>';
