@@ -710,6 +710,9 @@ function blocks2($bl)
 
 function varcheck($input)
 {
+    if (sizeof($input) == 0) {
+        return null;
+    }
     if (!is_array($input)) {
         if (is_numeric($input)) {
 

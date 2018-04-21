@@ -3,7 +3,9 @@
 $plstt = allparam($player);
 $post_id = $post_id ?? varcheck($_POST['post_id']) ?? varcheck($_GET['post_id']) ?? '';
 $act = $act ?? varcheck($_POST['act']) ?? varcheck($_GET['act']) ?? '';
+die('test=' . $post_id);
 settype($post_id, "integer");
+
 if (isset($_POST['opass']) and isset($_POST['npass']) and isset($_POST['vpass']) and $_POST['post_id'] == 49) {
     $tmpopass = $_POST['opass'];
     $tmpvpass = $_POST['vpass'];
@@ -27,7 +29,6 @@ function getnamebyid($id)
     $plname = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'], "SELECT `user`.`login`,`user`.`id` FROM `user` WHERE `id`='" . $id . "' LIMIT 1;"));
     return $plname['login'];
 }
-
 switch ($post_id) {
     case 0:
         $fornickname = trim($_POST['fornickname']);

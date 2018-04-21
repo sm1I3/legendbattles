@@ -3,7 +3,6 @@ $files = explode("|", $_GET["f"]);
 
 $contents = "";
 foreach ($files as $file) {
-    $file = varcheck($file);
     $contents .= file_get_contents($file . ".css");
 }
 
