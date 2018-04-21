@@ -34,4 +34,13 @@ class DBController
         }
     }
 
+    public function unsafeQuery($sql): PDOStatement
+    {
+        try {
+            return $this->link->query($sql);
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
 }

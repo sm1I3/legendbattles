@@ -110,7 +110,7 @@ if ($player['wait'] > time() or $plstt[71] > $mass or $pris[0] > time() or $vis[
         <SCRIPT src="/js/svitok.js?v2"></SCRIPT>
     <? } ?>
     <?php
-    if ($GLOBALS['DBlink']->query("SELECT `quest` FROM `loc` WHERE `id`= ?", array($player['loc']))->fetchColumn(0) and $_SESSION['user']['pos'] > 1) {
+    if ($GLOBALS['DBLink']->query("SELECT `quest` FROM `loc` WHERE `id`= ?", array($player['loc']))->fetchColumn(0) and $_SESSION['user']['pos'] > 1) {
         echo '<SCRIPT src="/js/ajax.js"></SCRIPT>
 <SCRIPT src="/js/quest.js"></SCRIPT>
 <SCRIPT src="/js/nl_windows_mess_v01.js"></SCRIPT>';

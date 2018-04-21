@@ -254,7 +254,7 @@ if (isset($_GET['lo'])) {
                     }
                     print implode(",", $tarr);
                     echo "); ";
-                    mysqli_free_result($res);
+                    $res->closeCursor();
                     ?>
                     chatlist_build('<?=$_SESSION['user']['filt']?>');
             </SCRIPT>
@@ -322,20 +322,20 @@ if ($text != '') {
             }
             $_SESSION['StopFlood']['time'] = time();
             if (is_rvs($message) and $player['login'] != 'Администрация' and $player['login'] != 'alexs') {
-                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>" . $player['login'] . "</b> наложено заклятие молчания сроком на <b>5</b> мин. Подозрение на РВС. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');") . "');");
-                mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `sleep`='" . (time() + 5 * 60) . "' WHERE `login`='" . $player['login'] . "' LIMIT 1;");
+                $GLOBALS['DBLink']->unsafeQuery("INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>" . $player['login'] . "</b> наложено заклятие молчания сроком на <b>5</b> мин. Подозрение на РВС. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');") . "');");
+                $GLOBALS['DBLink']->query("UPDATE `user` SET `sleep`=? WHERE `login`=? LIMIT 1;", array((time() + 5 * 60), $player['login']));
             } elseif (is_mat($message) and $player['login'] != 'Администрация' and $player['login'] != 'alexs') {
-                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>" . $player['login'] . "</b> наложено заклятие молчания сроком на <b>10</b> мин. Подозрение на мат. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');") . "');");
-                mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `sleep`='" . (time() + 10 * 60) . "' WHERE `login`='" . $player['login'] . "' LIMIT 1;");
+                $GLOBALS['DBLink']->unsafeQuery("INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>" . $player['login'] . "</b> наложено заклятие молчания сроком на <b>10</b> мин. Подозрение на мат. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');") . "');");
+                $GLOBALS['DBLink']->query("UPDATE `user` SET `sleep`=? WHERE `login`=? LIMIT 1;", array((time() + 10 * 60), $player['login']));
             } elseif (is_rkp($message) and $player['login'] != 'Администрация' and $player['login'] != 'alexs') {
-                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>" . $player['login'] . "</b> наложено заклятие молчания сроком на <b>10</b> мин. Подозрение на РКП. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');") . "');");
-                mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `sleep`='" . (time() + 10 * 60) . "' WHERE `login`='" . $player['login'] . "' LIMIT 1;");
+                $GLOBALS['DBLink']->unsafeQuery("INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>" . $player['login'] . "</b> наложено заклятие молчания сроком на <b>10</b> мин. Подозрение на РКП. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');") . "');");
+                $GLOBALS['DBLink']->query("UPDATE `user` SET `sleep`=? WHERE `login`=? LIMIT 1;", array((time() + 10 * 60), $player['login']));
             } elseif ($_SESSION['StopFlood']['count'] > 2 and $player['login'] != 'Администрация' and $player['login'] != 'alexs') {
                 $_SESSION['StopFlood']['count'] = 0;
-                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>" . $player['login'] . "</b> наложено заклятие молчания сроком на <b>15</b> мин. Причина: Флуд. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');") . "');");
-                mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `sleep`='" . (time() + 15 * 60) . "' WHERE `login`='" . $player['login'] . "' LIMIT 1;");
+                $GLOBALS['DBLink']->unsafeQuery("INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : '')) . "('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;На персонажа <b>" . $player['login'] . "</b> наложено заклятие молчания сроком на <b>15</b> мин. Причина: Флуд. (<b>Страж Служителей Порядка</b>)</font><BR>'+'');") . "');");
+                $GLOBALS['DBLink']->query("UPDATE `user` SET `sleep`=? WHERE `login`=? LIMIT 1;", array((time() + 15 * 60), $player['login']));
             } else {
-                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`ot_color`,`inv`,`dlya`,`loc`,`pos`,`msg`,`mode`) VALUES ('" . time() . "','" . varcheck($_SESSION['user']['login']) . "','" . ($nickclr ? $nickclr : '000000') . "','" . (($player['invisible'] < time()) ? '0' : '1') . "','" . $to . "','" . $player['loc'] . "','" . $player['pos'] . "','" . mysqli_real_escape_string($GLOBALS['db_link'], stripcslashes($message)) . "','" . $ch_mode . "')");
+                $GLOBALS['DBLink']->unsafeQuery("INSERT INTO `chat` (`time`,`login`,`ot_color`,`inv`,`dlya`,`loc`,`pos`,`msg`,`mode`) VALUES ('" . time() . "','" . varcheck($_SESSION['user']['login']) . "','" . ($nickclr ? $nickclr : '000000') . "','" . (($player['invisible'] < time()) ? '0' : '1') . "','" . $to . "','" . $player['loc'] . "','" . $player['pos'] . "','" . mysqli_real_escape_string($GLOBALS['db_link'], stripcslashes($message)) . "','" . $ch_mode . "')");
             }
             if ($to == '<Страж Порядка> ' or $to == '%<Страж Порядка> ') {
                 include("includes/NewChatBot.php");
@@ -343,7 +343,7 @@ if ($text != '') {
                     if ($response != '') {
 
                         $response = "<font color=000000> " . $response . "</font> <BR>'+'');";
-                        mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`inv`,`dlya`,`loc`,`pos`,`msg`) VALUES ('" . time() . "','Страж Порядка','0','<" . $player['login'] . "> ','" . $player['loc'] . "','" . $player['pos'] . "','" . mysqli_real_escape_string($GLOBALS['db_link'], stripcslashes($response)) . "');");
+                        $GLOBALS['DBLink']->unsafeQuery("INSERT INTO `chat` (`time`,`login`,`inv`,`dlya`,`loc`,`pos`,`msg`) VALUES ('" . time() . "','Страж Порядка','0','<" . $player['login'] . "> ','" . $player['loc'] . "','" . $player['pos'] . "','" . mysqli_real_escape_string($GLOBALS['db_link'], stripcslashes($response)) . "');");
                         echo "<script>parent.frames['chmain'].add_msg" . ($ch_mode == 0 ? '' : ($ch_mode == 1 ? '_trade' : ($ch_mode == 3 ? '_system' : ''))) . " ('<font class=yochattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <SPL><SPAN>Страж Порядка</SPAN><SPL><" . $player['login'] . "> <SPL> " . $response . "\nparent.set_lmid(8);\n</script>";
                     }
                 } elseif ($to == '%<Страж Порядка> ') {
@@ -363,18 +363,18 @@ if (isset($_GET['show'])) {
     if ($player['onlineBouns'] > (time() - 37000) and $player['onlineBouns'] < time()) {
         $player['onlineHour'] += 1;
         if ($player['onlineHour'] < 10) {
-            mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `onlineHour` = `onlineHour`+'1',`onlineBouns` = '" . (3600 + time()) . "' WHERE `id`='" . $player['id'] . "' LIMIT 1;");
+            $GLOBALS['DBLink']->query("UPDATE `user` SET `onlineHour` = `onlineHour`+'1',`onlineBouns` = ? WHERE `id`=? LIMIT 1;", array((3600 + time()), $player['id']));
             echo "<script>parent.frames['chmain'].add_msg('<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Вы находитесь в игре уже более <b>" . ($player['onlineHour']) . "</b> ч.</font> <br />'+'');</script>";
         } else if ($player['onlineHour'] >= 10) {
-            mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `onlineHour` = '0',`onlineBouns` = '" . (3600 + time()) . "',`baks`=`baks`+'1' WHERE `id`='" . $player['id'] . "' LIMIT 1;");
-            mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Legend Battles&nbsp;</font>: <font color=\"#000000\">Персонаж <b>" . $player['login'] . "</b> находиться в игре 10 часов. За это достижение он получает бонус <b>1</b> <img src=/img/razdor/emerald.png width=14 title=Изумруд height=14>.</font><BR>'+'');") . "');");
+            $GLOBALS['DBLink']->query("UPDATE `user` SET `onlineHour` = ?,`onlineBouns` = ?,`baks`=`baks`+'1' WHERE `id`=? LIMIT 1;", array(0, (3600 + time()), $player['id']));
+            $GLOBALS['DBLink']->unsafeQuery("INSERT INTO `chat` (`time`,`login`,`msg`) VALUES ('" . time() . "','sys','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Legend Battles&nbsp;</font>: <font color=\"#000000\">Персонаж <b>" . $player['login'] . "</b> находиться в игре 10 часов. За это достижение он получает бонус <b>1</b> <img src=/img/razdor/emerald.png width=14 title=Изумруд height=14>.</font><BR>'+'');") . "');");
         }
     }
 
     if ($player['battle'] > 0 and $player['fight'] == 2) {
-        $sqltime = mysqli_query($GLOBALS['db_link'], "SELECT `user`.`battle` FROM `arena` LEFT JOIN `user` ON `arena`.`id_battle`=`user`.`battle` WHERE `user`.`id`='" . $player['id'] . "' AND `arena`.`vis`!='3' AND `arena`.`t2`+`arena`.`timeout`<'" . time() . "';");
-        if (mysqli_num_rows($sqltime) > 0) {
-            while ($r = mysqli_fetch_assoc($sqltime)) {
+        $sqltime = $GLOBALS['DBLink']->query("SELECT `user`.`battle` FROM `arena` LEFT JOIN `user` ON `arena`.`id_battle`=`user`.`battle` WHERE `user`.`id`=? AND `arena`.`vis`!=? AND `arena`.`t2`+`arena`.`timeout`<?;", array($player['id'], 3, time()));
+        if ($sqltime->rowCount() > 0) {
+            while ($r = $sqltime->fetch()) {
                 $win[0] = 4;
                 $win[1] = $player['level'];
                 $win[999] = 1;
@@ -398,11 +398,11 @@ if (isset($_GET['show'])) {
         }
     }
     if ($rebuff == 1) {
-        mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `buffs`='" . $newbuff . "' WHERE `id`='" . $player['id'] . "';");
+        $GLOBALS['DBLink']->query("UPDATE `user` SET `buffs`=? WHERE `id`=?;", array($newbuff, $player['id']));
         calcstat($player['id']);
     }
     if ($player['firstlogin'] == '0') {
-        include "./gameplay/inc/flogin.php";
+        include $_SERVER['DOCUMENT_ROOT'] . "/gameplay/inc/flogin.php";
     }
     if ($player['lastbattle'] < time() and $player['fight'] == '0' and $player['loc'] == '28' and $player['hp'] >= '1' and ($player['battle'] == '0' or $player['battle'] == '') and $player['wait'] < time()) {
         BotAttack($player);
@@ -410,7 +410,7 @@ if (isset($_GET['show'])) {
 
     if ($_SESSION['user']['on_time'] <= time()) {
         $_SESSION['user']['on_time'] = time() + 200;
-        mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `last`='" . time() . "' WHERE `login`='" . varcheck($_SESSION['user']['login']) . "' LIMIT 1;");
+        $GLOBALS['DBLink']->query("UPDATE `user` SET `last`=? WHERE `login`=? LIMIT 1;", array(time(), varcheck($_SESSION['user']['login'])));
     }
     if ($_SESSION['user']['wait'] == 1 and $player['fight'] > 0) {
         if ($player['side'] == 1) {
@@ -418,7 +418,7 @@ if (isset($_GET['show'])) {
         } else {
             $side = 1;
         }
-        $en = mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT `user`.`id`,`user`.`side`,`user`.`battle`,`user`.`hp`,`fight`.`eid` FROM `user` LEFT JOIN `fight` ON `user`.`id`=`fight`.`eid` WHERE `user`.`battle`='" . $player['battle'] . "' AND `user`.`side`='" . $side . "' AND `user`.`hp`>'0' AND `fight`.`eid` Is Null LIMIT 1;"));
+        $en = $GLOBALS['DBLink']->query("SELECT `user`.`id`,`user`.`side`,`user`.`battle`,`user`.`hp`,`fight`.`eid` FROM `user` LEFT JOIN `fight` ON `user`.`id`=`fight`.`eid` WHERE `user`.`battle`=? AND `user`.`side`=? AND `user`.`hp`>? AND `fight`.`eid` Is Null LIMIT 1;", array($player['battle'], $side, 0,))->rowCount();
         if ($en > 0) {
             echo "<script> parent.frames['main_top'].location='main.php';</script>";
         }
@@ -430,9 +430,9 @@ if (isset($_GET['show'])) {
 
     */
 
-    $result = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chat` WHERE ((`login`!='" . varcheck($_SESSION['user']['login']) . "' AND `chat`.`dlya` LIKE '%\%<" . varcheck($_SESSION['user']['login']) . ">%' AND `id`>'" . varcheck($_SESSION['user']['lastch']) . "') or (`login`!='" . varcheck($_SESSION['user']['login']) . "' AND `chat`.`dlya` LIKE '%" . varcheck($_SESSION['user']['login']) . "%' AND `id`>'" . varcheck($_SESSION['user']['lastch']) . "') OR (`login`!='" . varcheck($_SESSION['user']['login']) . "' AND (`chat`.`dlya` not LIKE '%\%<%>%' OR `dlya`='') AND `id`>'" . varcheck($_SESSION['user']['lastch']) . "')) OR ((`login`='sys' or `login`='mass') and `id`>'" . varcheck($_SESSION['user']['lastch']) . "') OR ((`login`='sys' or `login`='mass') and `id`>'" . varcheck($_SESSION['user']['lastch']) . "');");
+    $result = $GLOBALS['DBLink']->unsafeQuery("SELECT * FROM `chat` WHERE ((`login`!='" . varcheck($_SESSION['user']['login']) . "' AND `chat`.`dlya` LIKE '%\%<" . varcheck($_SESSION['user']['login']) . ">%' AND `id`>'" . varcheck($_SESSION['user']['lastch']) . "') or (`login`!='" . varcheck($_SESSION['user']['login']) . "' AND `chat`.`dlya` LIKE '%" . varcheck($_SESSION['user']['login']) . "%' AND `id`>'" . varcheck($_SESSION['user']['lastch']) . "') OR (`login`!='" . varcheck($_SESSION['user']['login']) . "' AND (`chat`.`dlya` not LIKE '%\%<%>%' OR `dlya`='') AND `id`>'" . varcheck($_SESSION['user']['lastch']) . "')) OR ((`login`='sys' or `login`='mass') and `id`>'" . varcheck($_SESSION['user']['lastch']) . "') OR ((`login`='sys' or `login`='mass') and `id`>'" . varcheck($_SESSION['user']['lastch']) . "');");
     echo "<script>";
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = $result->fetch()) {
         $msg = $row['msg'];
         $dlya = $row['dlya'];
         $ot = $row['login'];
@@ -492,12 +492,12 @@ if (isset($_GET['show'])) {
     }
     echo "parent.set_lmid(8);
 </script>";
-    mysqli_free_result($result);
+    $result->closeCursor();
 
 //-----------КЛАНЧАТ----------------
-    $resultclan = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `chat` WHERE `chat`.`dlya` LIKE '%\%<" . $player['clan_id'] . ">%' AND `id`>'" . varcheck($_SESSION['user']['lastch']) . "' AND `login`!='" . varcheck($_SESSION['user']['login']) . "';");
+    $resultclan = $GLOBALS['DBLink']->query("SELECT * FROM `chat` WHERE `chat`.`dlya` LIKE ? AND `id`>? AND `login`!=?;", array("%\%<" . $player['clan_id'] . ">%", varcheck($_SESSION['user']['lastch']), varcheck($_SESSION['user']['login'])));
     echo "<script>";
-    while ($row = mysqli_fetch_assoc($resultclan)) {
+    while ($row = $resultclan->fetch()) {
         $ctimecolor = "prchattime";
         $msg = $row["msg"];
         $dlya = $row["dlya"];
@@ -505,13 +505,13 @@ if (isset($_GET['show'])) {
         $time = $p . date("H:i:s", $row["time"]);
         $_SESSION['user']['lastch'] = $row["id"];
         $ctimecolor = "clchattime";
-        $checkuser = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `user`.`clan_id` FROM `user` WHERE `login`='" . $ot . "' LIMIT 1;"));
-        if ($checkuser['clan_id'] == $player['clan_id'] or $ot == 'Администрация' or $ot == 'mozg') {
+        $checkuser = $GLOBALS['DBLink']->query("SELECT `user`.`clan_id` FROM `user` WHERE `login`=? LIMIT 1;", array($ot))->fetch();
+        if ($checkuser['clan_id'] == $player['clan_id'] or $ot == 'Администрация') {
             $users = $dlya ? '<SPL><font style="color: #' . $row['ot_color'] . '"><SPAN>' . $ot . '</SPAN></font><SPL>' . $dlya . '<SPL>' : '<SPAN>' . $ot . '</SPAN>:';
             echo "parent.frames['chmain'].add_msg ('<font class=" . $ctimecolor . ">&nbsp;" . $time . "&nbsp;</font> " . $users . " " . $msg;
         }
     }
     echo "parent.set_lmid(8);
 </script>";
-    mysqli_free_result($resultclan);
+    $resultclan->closeCursor();
 }
