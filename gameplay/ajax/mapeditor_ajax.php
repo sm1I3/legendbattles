@@ -83,7 +83,7 @@ if(accesses($pers['id'],'out')){
 			if(mysqli_query($GLOBALS['db_link'],"UPDATE `nature` SET `tele_coord`='".$val_telex."' WHERE `x`='".intval($_GET['x'])."' AND `y`='".intval($_GET['y'])."'")){
 				echo"OK5@";
 				if($_GET['telex']){
-				  list($tele['x'], $tele['y']) = explode('_', $_GET['telex']);
+                    list($tele['y'], $tele['x']) = explode('_', $_GET['telex']);
 				  $locname = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x`='".$tele['x']."' AND `y`='".$tele['y']."' LIMIT 1;"));
 				  echo '<br>'.$locname['city'].'<br>['.($locname['name']?$locname['name']:'').']';
 				}else{

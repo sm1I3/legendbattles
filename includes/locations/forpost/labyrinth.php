@@ -1,6 +1,6 @@
 <?php
 $build = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `locations` WHERE `id` = '".$pers['loc']."'"));
-list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 $labyrinth = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `labyrinth` WHERE `x`='".$pers['x']."' and `y`='".$pers['y']."'"));
 
 function GoBut($ViewTo){

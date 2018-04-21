@@ -65,7 +65,7 @@ if($create==1){
 		sort($fullrec);
 		$forbd="";
         echo '<br><b>Рецепт:</b><br>';
-		while (list($key,$val) = each($fullrec)) {
+        while (list($val, $key) = each($fullrec)) {
 			$forp=explode("@",$val);
 			$forbd.=$forp[0]."@".$forp[1]."|";
             echo $forp[2] . " (<b>" . $forp[1] . " шт</b>.)<br>";

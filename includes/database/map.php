@@ -1,6 +1,6 @@
 <?php
 if(accesses($pers['id'],'out')){
-list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+    list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 if(!empty($_GET['x']) and !empty($_GET['y'])){
 mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `pos`='".$_GET['x']."_".$_GET['y']."' WHERE `id`='".$pers['id']."'");
 $pers['x']=$_GET['x'];

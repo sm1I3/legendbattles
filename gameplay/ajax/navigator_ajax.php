@@ -10,7 +10,7 @@ $prem=explode("|",$pers['premium']);
 switch(intval($_GET['act'])){
 	case 1:
 		if($pers['id']){
-			list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+            list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 			if($pers['x']<=14 and $pers['y']<=9){
 				$query_nature = mysqli_query($GLOBALS['db_link'],"SELECT `x`,`y` FROM `nature` WHERE `x`<='".(14)."' and `y`<='".(9)."' ORDER BY `y`,`x`");
 			}
@@ -37,7 +37,7 @@ switch(intval($_GET['act'])){
 		// $way['end'] = $GoPos['x']."_".$GoPos['y'];
 		if($pers['id']){
 			$count=0;
-			list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+            list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 			$GoPos = array('x'=>intval($_GET['x']),'y'=>intval($_GET['y']));
 			//if($GoPos['x']<=14 and $GoPos['y']<=9){
 				$path = findpath($pers['x'],$pers['y'],$GoPos['x'],$GoPos['y']);
@@ -50,7 +50,7 @@ switch(intval($_GET['act'])){
 							mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `navidest`='".$dest[0]."',`navipath`='".$patharr."' WHERE `id`='".$pers['id']."' LIMIT 1;");
 						}
 						foreach($path as $key=>$val){
-							list($x, $y) = explode('_', $val);		
+                            list($y, $x) = explode('_', $val);
 							if($key==1){$pnature .= '['.$x.','.$y.',"'.vCode().'","'.$key.'|'.$val.'"],';}			
 						}	
 					
@@ -65,7 +65,7 @@ switch(intval($_GET['act'])){
 }
 
 function check_way($way){
-	list($x, $y) = explode("_",$way);
+    list($y, $x) = explode("_", $way);
 	$query_nature = mysqli_query($GLOBALS['db_link'],"SELECT `x`,`y` FROM `nature` WHERE `x`>='".($x-1)."' and `x`<='".($x+1)."' and `y`>='".($y-1)."' and `y`<='".($y+1)."'");
     $xy = $xy ?? '';
 	while($nature = mysqli_fetch_assoc($query_nature)){

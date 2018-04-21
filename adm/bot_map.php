@@ -84,7 +84,7 @@ if (isset($_POST['action']) && $_POST['action']=='save')
     foreach($arr as $id => $zone) 
     if ($zone != '' && strpos($zone, '@') !== false) 
     {
-        list($zone_id, $zone) = explode('@', $zone);
+        list($zone, $zone_id) = explode('@', $zone);
         unset($loaded_zones[$zone_id]);
         $t = explode(';', $zone);
         $t1 = explode(',', $t[0]);

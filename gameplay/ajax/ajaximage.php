@@ -29,7 +29,7 @@ if(!empty($_FILES)){
 	}
 	
 	if($ErrorScript == 0){
-		list($txt, $ext) = explode(".", $name);
+        list($ext, $txt) = explode(".", $name);
 	}
 	
 	if(!strlen($name)){

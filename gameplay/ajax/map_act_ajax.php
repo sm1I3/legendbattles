@@ -5,7 +5,7 @@ include($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.php");
 
 $pers = GetUser($_SESSION['user']['login']);
-list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 
 if(in_array($_GET['vcode'],$_SESSION['vcodes'])){
 	if($_GET['act'] == '1'){

@@ -69,14 +69,14 @@ if($create==1){
 		sort($fullrec);
 		$forbd="";
         echo '<br><b>Рецепт:</b><br>';
-		while (list($key,$val) = each($fullrec)) {
+        while (list($val, $key) = each($fullrec)) {
 			$forp=explode("@",$val);
 			if(	$forp[1] > 0 ){
 				$forbd.=$forp[0]."@".$forp[1]."|";
                 echo $forp[2] . " (<b>" . $forp[1] . " шт</b>.)<br>";
 			}			
 		}
-		while (list($key,$val) = each($gospr)) {
+        while (list($val, $key) = each($gospr)) {
 			if($val>0){
 				$gosprice += $val;
 			}

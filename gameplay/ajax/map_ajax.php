@@ -8,7 +8,7 @@ $sk='kgTvx2WrEZ';
 $pers = GetUser($_SESSION['user']['login']);
 if(new_array($pers)=='ok'){$pers['sign']=$sk;}
 $prem=explode("|",$pers['premium']);
-list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 for($x = ($pers['x']-1);$x <= ($pers['x']+1);$x++){
 	for($y = ($pers['y']-1);$y <= ($pers['y']+1);$y++){
 		if(($_GET['x'] == $x and $_GET['y'] == $y)){
@@ -127,7 +127,7 @@ for($i=5;$i<=40;$i++){
 	$nst[$i]=$nst[$i]?$nst[$i]:0;
 }
 $for_cord = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x` = '".$pers['x']."' and `y` = '".$pers['y']."'"));
-list($GoPos['x'], $GoPos['y']) = explode('_', $for_cord['tele_coord']);
+    list($GoPos['y'], $GoPos['x']) = explode('_', $for_cord['tele_coord']);
 $is_cord = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x` = '".intval($GoPos['x'])."' and `y` = '".intval($GoPos['y'])."'"));
 if((!empty($is_cord['x']) or $is_cord['x']=='0') and (!empty($is_cord['y']) or $is_cord['y']=='0') and in_array($_GET['vcode'],$_SESSION['vcodes'])){
 	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `pos`='".$is_cord['x']."_".$is_cord['y']."' WHERE `id` = '".$pers['id']."'");

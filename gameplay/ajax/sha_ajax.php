@@ -67,7 +67,7 @@ if ($Trv > 0) {
 switch (intval($_GET['act'])) {
     case 1:
         //mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `lastbattle`='".(time()+120)."' WHERE `id`='".$pers['id']."' LIMIT 1;");
-        list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+        list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
         //mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `wait_prof`='".(time()+$trvtimer[6])."' WHERE `id`='".$pers['id']."' LIMIT 1;");
         $grasssql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `nature_sha` WHERE `x`='" . $pers['x'] . "' AND `y`='" . $pers['y'] . "';");
         $serp = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], 'SELECT `invent`.*,`items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `pl_id`="' . $pers['id'] . '" AND `items`.`type`="w70" AND `items`.`slot`="3" AND `invent`.`used`="1" LIMIT 1;'));
@@ -98,7 +98,7 @@ switch (intval($_GET['act'])) {
         break;
     case 2:
         $tst = 0;
-        list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+        list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
         //$tst = $pers['wait_prof']-time()-2;
         if ($tst <= 0) {
             $trvtimer6 = $trvtimer6 ?? varcheck($_POST['trvtimer6']) ?? varcheck($_GET['trvtimer6']) ?? '';

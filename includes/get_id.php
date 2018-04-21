@@ -1,7 +1,7 @@
 <?php
 if ($_GET['get_id'] == '5' and in_array($_GET['vcode'], $_SESSION['vcodes'])) {// Лаберинт
 	if($pers['loc'] == 500 or $pers['loc'] == 501){
-		list($pers['x'],$pers['y']) = explode('_', $pers['pos']);
+        list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 		switch($_GET['act']){
 			case'0':
                 $GetMove = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `labyrinth` WHERE `x`='".($pers['x'])."' and `y`='".($pers['y'])."'"));
@@ -17,7 +17,7 @@ if ($_GET['get_id'] == '5' and in_array($_GET['vcode'], $_SESSION['vcodes'])) {/
                     if($GetMove['L_img'] == '3' or $GetMove['L_img'] == '8' or $GetMove['L_img'] == '9'){
                         if(!empty($GetMove) and $GetMove['d_to'] != '0_0'){
                             if($GetMove['L_img'] == '3'){
-                                list($d_to['x'],$d_to['y']) = explode('_', $GetMove['d_to']);
+                                list($d_to['y'], $d_to['x']) = explode('_', $GetMove['d_to']);
                                 $GetDoor = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `labyrinth` WHERE `x`='".($d_to['x'])."' and `y`='".($d_to['y'])."'"));
                                 $DialogMSG = 'Механизм успешно задействован.<br />Решетка ' . (($GetDoor['doors'] == 0) ? 'поднята' : 'опущена') . '.';
                                 mysqli_query($GLOBALS['db_link'],"UPDATE `labyrinth` SET `doors`='".(($GetDoor['doors'] == 0)?1:0)."' WHERE `x`='".($d_to['x'])."' and `y`='".($d_to['y'])."'");
@@ -145,7 +145,7 @@ if($_GET['get_id'] == '56' and in_array($_GET['vcode'],$_SESSION['vcodes'])){
 			switch($_GET['go']){
 				case'dep':
 					if($pers['wite']<time()){
-						list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+                        list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 						$LocID = mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT `dep` FROM `nature` WHERE `x`='".$pers['x']."' AND `y`='".$pers['y']."'"),0);
 						if($LocID){
 							$prem=explode("|",$pers['premium']);
