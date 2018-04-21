@@ -28,9 +28,35 @@ function birthday($birthdayDate, $getYears = false, $text = false){
     return $text ? $birthdayDate . "(" . declination($year, "год", "года", "лет") . ")" : false;
 }
 
-function varcheck($str){
-	if(!is_numeric($str)){$str = addslashes(htmlspecialchars($str));}else{$str = intval($str);}
-	return $str;
+function varcheck($input)
+{
+    if (sizeof($input) == 0) {
+        return null;
+    }
+    if (!is_array($input)) {
+        if (is_numeric($input)) {
+
+            #Функция актуальна при условии, если значение больше 0
+            #Получает целочисленное значение переменной
+            $number = intval($input);
+            //echo 'numeric';
+            return $number;
+        } else {
+            #Вырезаем html теги
+            $out_string = strip_tags($input);
+            #Преобразует специальные символы в HTML сущности.
+            $out_string = htmlspecialchars($out_string);
+            #Экранирует специальные символы в строке,принмимая во внимание кодировку соединения.
+            $out_string = mysqli_real_escape_string($GLOBALS['db_link'], $out_string);
+            return $out_string;
+
+        }
+    } else {
+        foreach ($input as $key => $val) {
+            $out_string[$key] = varcheck($val);
+        }
+        return $out_string;
+    }
 }
 
 function GetUser($user=NULL){

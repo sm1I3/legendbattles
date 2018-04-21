@@ -74,6 +74,9 @@ $sign = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "select `sign` from
 require_once($_SERVER["DOCUMENT_ROOT"] . "/system/config.php");
 function varcheck($input)
 {
+    if (sizeof($input) == 0) {
+        return null;
+    }
     if (!is_array($input)) {
         if (is_numeric($input)) {
 
