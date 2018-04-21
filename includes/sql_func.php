@@ -727,7 +727,9 @@ function varcheck($input)
             #Преобразует специальные символы в HTML сущности.
             $out_string = htmlspecialchars($out_string);
             #Экранирует специальные символы в строке,принмимая во внимание кодировку соединения.
-            $out_string = mysqli_real_escape_string($GLOBALS['db_link'], $out_string);
+            mysqli_real_escape_string($GLOBALS['db_link'], $out_string);
+            $out_string = str_replace(array('<', '>', "'", '"', ')', '('), array('&lt;', '&gt;', '&apos;', '&#x22;', '&#x29;', '&#x28;'), $input_str);
+            $out_string = str_ireplace('%3Cscript', '', $out_string);
             return $out_string;
 
         }
