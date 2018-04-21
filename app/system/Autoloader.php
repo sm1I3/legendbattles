@@ -1,8 +1,5 @@
 <?php
 
-namespace app\system;
-
-
 class Autoloader
 {
     static public function loader($className)
