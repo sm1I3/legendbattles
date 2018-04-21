@@ -32,7 +32,7 @@ $UnderWater = false;
 if ($player['loc'] >= 101 and $player['loc'] <= 104) {
     $NeedItemsArr = array(2786, 2787, 2788, 2789, 2791, 2792, 2793, 2794, 3158);
     for ($i = 0; $i < count($NeedItemsArr); $i++) {
-        if (mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `invent` WHERE `pl_id`='" . $player['id'] . "' and `protype`='" . $NeedItemsArr[$i] . "' and `used`='1'")) > 0) {
+        if (mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `invent` WHERE `pl_id`='" . $player['id'] . "' AND `protype`='" . $NeedItemsArr[$i] . "' AND `used`='1'")) > 0) {
             $TempWater[] = true;
         }
     }
@@ -110,7 +110,7 @@ if ($player['wait'] > time() or $plstt[71] > $mass or $pris[0] > time() or $vis[
         <SCRIPT src="/js/svitok.js?v2"></SCRIPT>
     <? } ?>
     <?php
-    if (mysqli_result(mysqli_query($GLOBALS['db_link'], "SELECT `quest` FROM `loc` WHERE `id`='" . $player['loc'] . "'"), 0) and $_SESSION['user']['pos'] > 1) {
+    if ($GLOBALS['DBlink']->query("SELECT `quest` FROM `loc` WHERE `id`= ?", array($player['loc']))->fetchColumn(0) and $_SESSION['user']['pos'] > 1) {
         echo '<SCRIPT src="/js/ajax.js"></SCRIPT>
 <SCRIPT src="/js/quest.js"></SCRIPT>
 <SCRIPT src="/js/nl_windows_mess_v01.js"></SCRIPT>';

@@ -30,7 +30,7 @@ if(!empty($PLAY['block'])) {
 	header("Location: /index.php?msg=block");
 	exit;
 }
-$lch=mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT MAX(id) FROM chat LIMIT 1;"),0);
+$lch = $GLOBALS['DBLink']->query("SELECT MAX(id) FROM chat LIMIT 1;")->fetchColumn(0);
 //--------заполняем сессии переменными----
 $uin = md5(uniqid(rand(0,1000000000)));
 setcookie("Hash", $PLAY['pass'], time() + 86400, "", "www.legendbattles.ru");

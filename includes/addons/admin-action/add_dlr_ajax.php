@@ -11,7 +11,7 @@ if ($player['login'] == 'mozg' or $player['login'] == 'Администраци�
 		if($add>0){
 			$str='';
 			if(mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `dd`=`dd`+'".$add."' WHERE `id`='".$usr['id']."';")){
-                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('" . time() . "','sys','<" . mysqli_result(mysqli_query($GLOBALS['db_link'], "SELECT `login` FROM `user` WHERE `id`='" . $usr['id'] . "'"), 0) . ">','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Life is War&nbsp;</font> <font color=000000>Вам удачно начислена игровая валюта в размере <b>" . $add . "</b> DLR</font><BR>'+'');") . "');");
+                mysqli_query($GLOBALS['db_link'], "INSERT INTO `chat` (`time`,`login`,`dlya`,`msg`) VALUES ('" . time() . "','sys','<" . $GLOBALS['DBLink']->query("SELECT `login` FROM `user` WHERE `id`= ?", array($usr['id']))->fetchColumn(0) . ">','" . addslashes("parent.frames['chmain'].add_msg('<font class=massm>&nbsp;Life is War&nbsp;</font> <font color=000000>Вам удачно начислена игровая валюта в размере <b>" . $add . "</b> DLR</font><BR>'+'');") . "');");
                 //начисление бабла тому кто пригласил
 					$referal=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `ref_system` WHERE `ref_id`='".$usr['id']."' LIMIT 1;"));
 					if($referal['who_id']){

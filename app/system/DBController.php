@@ -2,11 +2,11 @@
 
 namespace app\system;
 
-use \PDO;
+use \PDO, \PDOException, \PDOStatement;
 
 class DBController
 {
-    private $DBLink;
+    private $link;
 
     public function __construct()
     {
@@ -17,17 +17,21 @@ class DBController
                 PDO::ATTR_EMULATE_PREPARES => false,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ];
-            $this->DBLink = new PDO($dsn, 'root', '', $options);
-        } catch (\PDOException $e) {
+            $this->link = new PDO($dsn, 'root', '', $options);
+        } catch (PDOException $e) {
             die("Произошла ошибка при подключении. Попробуйте снова через пару минут.");
         }
     }
 
-    public function query($sql, array $args = array()): \PDOStatement
+    public function query($sql, array $args = array()): PDOStatement
     {
-        $query = $this->DBLink->prepare($sql);
-        $query->execute($args);
-        return $query;
+        try {
+            $query = $this->link->prepare($sql);
+            $query->execute($args);
+            return $query;
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
     }
 
 }

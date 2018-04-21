@@ -62,7 +62,7 @@ if ($_POST['p_id'] == 3) {
             chmsg("<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Ваша ставка на аукционе аннулирована, лот был выкуплен.</font>", $getItem['bet']);
         }
         echo "<script>parent.jAlert('Вы успешно купили лот.');</script>";
-        chmsg("<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Ваш лот был продан за <b>" . lr($getItem['maxprice'] * 0.95) . "</b>.</font>", mysqli_result(mysqli_query($GLOBALS['db_link'], "SELECT `login` FROM `user` WHERE `id`='" . $getItem['userID'] . "'"), 0));
+        chmsg("<font class=chattime>&nbsp;" . date("H:i:s") . "&nbsp;</font> <font color=000000><b><font color=#CC0000>Внимание!</font></b></font>&nbsp;Ваш лот был продан за <b>" . lr($getItem['maxprice'] * 0.95) . "</b>.</font>", $GLOBALS['DBLink']->query("SELECT `login` FROM `user` WHERE `id`=?", array($getItem['userID']))->fetchColumn(0));
         mysqli_query($GLOBALS['db_link'], "UPDATE `auction_system` SET `status`='finished',`bet`='" . $pers['login'] . "',`oldbet`='" . $getItem['oldbet'] . "' WHERE `id`='" . $getItem['id'] . "'");
         mysqli_query($GLOBALS['db_link'], "UPDATE `invent` SET `auction`='0',`pl_id`='" . $pers['id'] . "' WHERE `id_item`='" . $getItem['itemID'] . "'");
         mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `nv`=`nv`-'" . $getItem['maxprice'] . "' WHERE `id`='" . $pers['id'] . "'");

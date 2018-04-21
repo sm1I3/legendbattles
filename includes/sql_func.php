@@ -914,8 +914,8 @@ function newbattle($style, $arena, $type, $time_start, $timeout, $travma, $downl
 {
     mysqli_query($GLOBALS['db_link'], 'LOCK TABLES arena WRITE;');
     mysqli_query($GLOBALS['db_link'], 'INSERT INTO arena (style,arena,type,time,time_start,timeout,travma,downl,upl,kol1,downr,upr,kol2,vis,t2,bt) VALUES (' . AP . $style . AP . ',' . AP . $arena . AP . ',' . AP . $type . AP . ',' . AP . date("H:i:s") . AP . ',' . AP . $time_start . AP . ',' . AP . $timeout . AP . ',' . AP . $travma . AP . ',' . AP . $downl . AP . ',' . AP . $upl . AP . ',' . AP . $koll . AP . ',' . AP . $downr . AP . ',' . AP . $upr . AP . ',' . AP . $kolr . AP . ',' . AP . $vis . AP . ',' . AP . time() . AP . ',' . AP . $bt . AP . ');');
-    $V01 = mysqli_query($GLOBALS['db_link'], 'SELECT MAX(id_battle) FROM arena LIMIT 1;');
-    $V01 = mysqli_result($V01, 0);
+    $V01 = $GLOBALS['DBLink']->query('SELECT MAX(id_battle) FROM arena LIMIT 1;');
+    $V01 = $V01->fetchColumn(0);
     mysqli_query($GLOBALS['db_link'], "UNLOCK TABLES;");
     return $V01;
 }

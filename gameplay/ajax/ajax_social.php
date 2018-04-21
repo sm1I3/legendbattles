@@ -58,7 +58,7 @@ if($pers){
 		break;
         case'SocialUpdateList':// AJAX обновление списка профилей
 			foreach($SyncArray as $Socials){
-				if(!mysqli_result(mysqli_query($GLOBALS['db_link'],"SELECT `network` FROM `ulogin` WHERE `userid`='".$pers['id']."' and `network`='".$Socials."'"),0)){
+                if (!($GLOBALS['DBLink']->query("SELECT `network` FROM `ulogin` WHERE `userid`= ? and `network`= ?", array($pers['id'], $Socials))->fetchColumn(0))) {
 					$ShowSocial[] = $Socials;
 				}
 			}

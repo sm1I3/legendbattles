@@ -2,7 +2,7 @@
 $_POST['fileid'] = varcheck($_POST['fileid']);
 function NickName_by_ID($id)
 {
-    return mysqli_result(mysqli_query($GLOBALS['db_link'], "SELECT `login`,`dd`,`baks` FROM `user` WHERE `id`='" . $id . "'"), 0);
+    return $GLOBALS['DBlink']->query("SELECT `login`,`dd`,`baks` FROM `user` WHERE `id`= ?", array($id))->fetchColumn(0);
 }
 
 if ($_GET['reject']) {

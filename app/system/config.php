@@ -10,6 +10,7 @@ define('DROOT', $_SERVER["DOCUMENT_ROOT"]);
 define('AP', '\'');
 
 $DBLink = new DBController();
+$GLOBALS['DBLink'] = $DBLink;
 
 $db_link = 0;
 $db_link = mysqli_connect('localhost', 'root', '', 'lb_local');
