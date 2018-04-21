@@ -276,7 +276,7 @@ switch (intval($bank_c)) {
                             echo '
 							<tr align=center>
 							<td bgcolor=#f9f9f9 align=left width=50%>
-							<font class=' . $art . '  style="margin: 0px 0px 0px 20px;"><b>' . $ITEM['name'] . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=/img/image/chat/info.gif width=11 height=12 border=0></a></font><font class=weaponch>' . (($count > 1) ? ' <font color="gray">(<b>' . $count . ' шт.</b>)</font>' : '') . '
+							<font class=' . $art . '  style="margin: 0px 0px 0px 20px;"><b>' . $ITEM['name'] . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=/img/chat/info.gif width=11 height=12 border=0></a></font><font class=weaponch>' . (($count > 1) ? ' <font color="gray">(<b>' . $count . ' шт.</b>)</font>' : '') . '
 							</td>
 							<td align=center width=50% bgcolor=#f9f9f9>
 							<form method=POST>
@@ -337,7 +337,7 @@ switch (intval($bank_c)) {
                             echo '
 						<tr align=center>
 						<td bgcolor=#f9f9f9 align=left width=50%>
-						<font class=' . $art . '  style="margin: 0px 0px 0px 20px;"><b>' . $ITEM['name'] . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=/img/image/chat/info.gif width=11 height=12 border=0></a></font><font class=weaponch>' . (($count > 1) ? ' <font color="gray">(<b>' . $count . ' шт.</b>)</font>' : '') . '
+						<font class=' . $art . '  style="margin: 0px 0px 0px 20px;"><b>' . $ITEM['name'] . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=/img/chat/info.gif width=11 height=12 border=0></a></font><font class=weaponch>' . (($count > 1) ? ' <font color="gray">(<b>' . $count . ' шт.</b>)</font>' : '') . '
 						</td>
 						<td align=center width=50% bgcolor=#f9f9f9>
 						<form method=POST>

@@ -15,31 +15,7 @@ echo'
 <SCRIPT src="/js/clan.js"></SCRIPT>
 <table table border=0 cellpadding=0 cellspacing=0 bordercolor=#e0e0e0 align=center class="smallhead" width=100% bgcolor=#e0e0e0>
 <tr><td colspan=9 class=nickname bgcolor=white>
-<font class=nickname><b><a href="javascript:clan_private(\''.$clanid.'\')"><img src=/img/image/chat/private.gif width=11 height=12 border=0 align=absmiddle></a></font>&nbsp;<font color=#336699>Всему составу</font></b><br>
-</td></tr>
-<tr><td colspan=10 class=nickname bgcolor=white><img src=/img/image/1x1.gif width=1 height=2></td></tr>
-<tr><td colspan=10 bgcolor=#E0D6BB><img src=/img/image/1x1.gif width=1 height=1></td></tr>
-<tr><td width=100% colspan=10>
-<table border=0 cellpadding=2 cellspacing=1 bordercolor=#e0e0e0 align=center class="smallhead" width=100%>
-<tr align=center bgcolor=#EAEAEA>
-	<td align=left class=nickname>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font class=nickname align=center color=gray>ник
-	</font></td>
-	<td align=left class=nickname>
-		&nbsp;&nbsp;<font class=nickname align=center color=gray>должность
-	</font></td>
-	<td align=center class=nickname>
-		<font class=nickname align=center color=gray>статус
-	</td>
-	<td align=left class=nickname>
-		&nbsp;&nbsp;<font class=nickname align=center color=gray>местоположение
-	</td>
-	<td align=center class=nickname>
-	<font class=nickname align=center color=gray>опции
-	</td>
-</tr>
-<SCRIPT>
-';
+<font class=nickname><b><a href="javascript:clan_private(\'' . $clanid . '\"";
 $access = explode("|",$pers['clan_accesses']);
 echo"clan_init(".$pers['id'].",".$sign['clan_sclon'].",'".$sign['clan_gif']."','".(in_array('2',$access)?vCode():'')."','".(in_array('4',$access)?vCode():'')."','".(in_array('8',$access)?vCode():'')."');\n";
 $query = mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `clan_id` = '".$sign['clan_id']."' ORDER BY `level` DESC");

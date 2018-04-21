@@ -468,8 +468,8 @@ if($_POST['bot']!='none'){
 						<tr  bgcolor=white class="itemstr freetxt">							
 							<td>
 							<form method="post" action="bot_drop.php?add=1" id="itdel_'.$name['id'].'">
-							[id:'.$name['id'].'] '.$name['name'].' <a href="http://legendbattles.ru//iteminfo.php?'.$name['name'].'" target="_blank"><img src="/img/image/chat/info1.gif" width="11" height="12" border="0" align="absmiddle"></a>							
-								<input type=hidden name=bot value="'.$_POST['bot'].'">
+							[id:' . $name['id'] . '] ' . $name['name'] . ' <a href="http://legendbattles.ru//iteminfo.php?' . $name['name'] . '" target="_blank"><img src="/img/chat/info1.gif" width="11" height="12" border="0" align="absmiddle"></a>							
+								<input type=hidden name=bot value="' . $_POST['bot'] . '">
 								<input type=hidden name=delete value="'.$name['id'].'">
 								<input type=hidden name=delete_id value="items">
 								<input type=image src=/img/image/del.gif width=14 height=14 border=0 onClick="javasctipt: document.getElementById(\'itdel_'.$name['id'].'\').submit()" value="x" />

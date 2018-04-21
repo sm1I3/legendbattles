@@ -33,8 +33,8 @@ while($row = mysqli_fetch_array($query)){
 		$useronline = '0';
 	}
 echo'    <tr>
-      <td><font class="nickname"><a href="javascript:top.say_private(\''.$row['login'].'\')"><img src="/img/image/chat/private.gif" width="11" height="12" border="0" align="absmiddle"></a>&nbsp;<script>document.write(sh_align("'.$row['sklon'].'")+sh_sign("'.$row['clan_gif'].'","'.$row['clan'].'"));</script> <b>'.$row['login'].'</b>['.$row['level'].']<a href="ipers.php?'.$row['login'].'" target="_blank"><img src="/img/image/chat/info1.gif" width="11" height="12" border="0" align="absmiddle"></a></font></td>
-      <td><font class="nickname">&nbsp;&nbsp;'.$row['clan_d'].'</b></font></td>
+      <td><font class="nickname"><a href="javascript:top.say_private(\'' . $row['login'] . '.$row['sklon'].'")+sh_sign("'.$row['clan_gif'].'","'.$row['clan'].'"));</script> <b>'.$row['login'].'</b>['.$row['level'].']<a href="ipers . php ? '.$row['login']. '" target="_blank"><img src=" / img / chat / info1 . gif" width="11" height="12" border="0" align="absmiddle"></a></font></td>
+      <td><font class="nickname">&nbsp;&nbsp;' .$row['clan_d'].'</b></font></td>
       <td nowrap=""><font class="hpfont">&nbsp;&nbsp;'.($useronline?locations($row["loc"],$row["pos"]):'').'</font></td>
     </tr>
 ';

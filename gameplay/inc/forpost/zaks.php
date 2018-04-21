@@ -29,7 +29,7 @@ if ($player['login'] == 'Администрация' AND $_POST['status']) {
     $zk = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'], "SELECT * FROM zaks WHERE id='" . $_POST['id'] . "'"));
     mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `semija` = '" . (($_POST['status'] == 0) ?: $zk['female']) . "' WHERE `login` = '" . $zk['male'] . "'");
     mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `semija` = '" . (($_POST['status'] == 0) ?: $zk['male']) . "' WHERE `login` = '" . $zk['female'] . "'");
-    $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;&nbsp;</font> <font class=massm>&nbsp;&nbsp;<b>Поздравляем молодоженов</b>&nbsp;&nbsp;</font>: <img src=/img/image/chat/smiles/smiles_267.gif >  " . $zk['male'] . " взял замуж " . $zk['female'] . ".</font><img src=/img/image/rings.gif ><BR>'+'');";
+    $ms = "top.frames['chmain'].add_msg('<font class=chattime>&nbsp;&nbsp;</font> <font class=massm>&nbsp;&nbsp;<b>Поздравляем молодоженов</b>&nbsp;&nbsp;</font>: <img src=/img/chat/smiles/smiles_267.gif >  " . $zk['male'] . " взял замуж " . $zk['female'] . ".</font><img src=/img/image/rings.gif ><BR>'+'');";
     chmsg($ms);
     echo "Активно";
 }

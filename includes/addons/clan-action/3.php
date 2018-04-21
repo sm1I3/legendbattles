@@ -165,7 +165,7 @@ else{
 if($ITEM['dd_price']>0){$art="weaponchart";}else{$art="weaponch";}
 echo'
 <td bgcolor=#f9f9f9 align=left width=50%><form method="post" align=left valign=middle name="RemoveItem">
-<font class='.$art.'  style="margin: 0px 0px 0px 20px;"><b>'.$ITEM['name'].'</b>&nbsp;[&nbsp;'.$ITEM['level'].'&nbsp;]<a href="iteminfo.php?'.$ITEM['name'].'" target=_blank><img src=/img/image/chat/info.gif width=11 height=12 border=0></a></font><font class=weaponch>
+<font class=' . $art . '  style="margin: 0px 0px 0px 20px;"><b>' . $ITEM['name'] . '</b>&nbsp;[&nbsp;' . $ITEM['level'] . '&nbsp;]<a href="iteminfo.php?' . $ITEM['name'] . '" target=_blank><img src=/img/chat/info.gif width=11 height=12 border=0></a></font><font class=weaponch>
 ';
 if($pers['clan_status']==9 and $ITEM['dd_price']==0){
 	if($itemused['used']==0){
@@ -186,7 +186,7 @@ echo'
 </td>';
 }	
 		echo'
-		<td bgcolor=#F5F5F5 align=left width=30% align=left><font class=inv style="margin: 0px 0px 0px 20px;"><b>'.$itemuser['login'].'</b>&nbsp;['.$itemuser['level'].']</font><a href="ipers.php?'.$itemuser['login'].'" target=_blank><img src=/img/image/chat/info.gif width=11 height=12 border=0></a></td>
+		<td bgcolor=#F5F5F5 align=left width=30% align=left><font class=inv style="margin: 0px 0px 0px 20px;"><b>' . $itemuser['login'] . '</b>&nbsp;[' . $itemuser['level'] . ']</font><a href="ipers.php?' . $itemuser['login'] . '" target=_blank><img src=/img/chat/info.gif width=11 height=12 border=0></a></td>
 		<td bgcolor=#F5F5F5 align=center valign=middle width=10%>';
 		$placcess = explode("|",$pers['clan_accesses']);
 		$itemuseracc = explode("|",$itemuser['clan_accesses']);

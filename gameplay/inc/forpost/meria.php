@@ -188,7 +188,7 @@ if ($msg) {
                                             }
                                             $i++;
                                             echo '
-					<td bgcolor=white align=center><font class=nickname><b>' . $licuser . '<a href="/ipers.php?' . $licuser . '" target="_blank"><img src="/img/image/chat/info.gif" width="11" height="12" border="0" align="absmiddle"></a></b></font></td>
+					<td bgcolor=white align=center><font class=nickname><b>' . $licuser . '<a href="/ipers.php?' . $licuser . '" target="_blank"><img src="/img/chat/info.gif" width="11" height="12" border="0" align="absmiddle"></a></b></font></td>
 					<td bgcolor=white align=center><font class=nickname>' . $lic['name'] . '</font></td>
 					<td bgcolor=white align=center><font class=nickname>' . $lic['price'] . ' LR</font></td>
 					<td bgcolor=white align=center>

@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 define('DROOT', $_SERVER["DOCUMENT_ROOT"]);
 $db_link = 0;
-$db_link = mysqli_connect('localhost', 'root', '', 'legends');
+$db_link = mysqli_connect('localhost', 'root', '', 'lb_local');
 if (mysqli_connect_errno()) {
     printf("Подключение к серверу MySQL невозможно. Код ошибки: %s\n", mysqli_connect_error());
     exit;

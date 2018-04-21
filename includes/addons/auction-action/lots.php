@@ -258,7 +258,7 @@ $Query = mysqli_query($GLOBALS['db_link'], "SELECT `auction_system`.* FROM `auct
 			</td>
 				<td bgcolor="#' . $bgcolor . '">
 					<font class="nickname">
-					   <b>' . $ItemInfo['name'] . '' . $itemsql['name'] . '<a href="/iteminfo.php?i=' . $ItemInfo['id_item'] . '&auc=1" target="_blank"><img src="/img/image/chat/info.gif" width="11" height="12" border="0" align="absmiddle"></a>' . '</b>
+					   <b>' . $ItemInfo['name'] . '' . $itemsql['name'] . '<a href="/iteminfo.php?i=' . $ItemInfo['id_item'] . '&auc=1" target="_blank"><img src="/img/chat/info.gif" width="11" height="12" border="0" align="absmiddle"></a>' . '</b>
 						</b><br />
 						Уровень: <b>' . $ItemInfo['level'] . '</b><br />
 						Масса: <b>' . $ItemInfo['massa'] . '
@@ -273,7 +273,7 @@ $Query = mysqli_query($GLOBALS['db_link'], "SELECT `auction_system`.* FROM `auct
 				</td>
 				<td align="center" bgcolor="#' . $bgcolor . '">
 					<font class="nickname">
-						<b>' . $UserInfo['login'] . '[' . $UserInfo['level'] . ']<a href="/ipers.php?' . $UserInfo['login'] . '" target="_blank"><img src="/img/image/chat/info.gif" width="11" height="12" border="0" align="absmiddle"></a>' . '</b>
+						<b>' . $UserInfo['login'] . '[' . $UserInfo['level'] . ']<a href="/ipers.php?' . $UserInfo['login'] . '" target="_blank"><img src="/img/chat/info.gif" width="11" height="12" border="0" align="absmiddle"></a>' . '</b>
 					</font>
 														</td>
 				<td align="center" bgcolor="#' . $bgcolor . '">

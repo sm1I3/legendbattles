@@ -365,7 +365,7 @@ switch ($d_swi) {
                 $itname = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT items.name FROM items WHERE id=" . $row['protype'] . " LIMIT 1;"));
                 echo '
 					<tr bgcolor=white>
-						<td align=center class=nickname2>' . $row['login'] . '<a href="/ipers/' . $row['login'] . '" target="_blank"><img src="/img/image/chat/info.gif" width="11" height="12" border="0" valign="absmiddle" /></a></td>
+						<td align=center class=nickname2>' . $row['login'] . '<a href="/ipers/' . $row['login'] . '" target="_blank"><img src="/img/chat/info.gif" width="11" height="12" border="0" valign="absmiddle" /></a></td>
 						<td align=center class=nickname2>' . date("d.m.yг.", $row['arenda']) . '</td>
 						<td align=center class=nickname2>' . $row['id_item'] . ' | ' . $row['protype'] . '</td>
 						<td align=center class=nickname2>' . $itname['name'] . '</td>

@@ -33,7 +33,7 @@ if($pupil){
 			  <tr>
 			    <td bgcolor="#FCFAF3" colspan="2" align="center">
 				  <font class="weaponch">
-					<font class=nickname><b>' . $pupil['login'] . '</b> [' . $pupil['level'] . '/' . $pupil['u_lvl'] . '] <a href="/ipers.php?' . $pupil['login'] . '" target="_blank"><img src="/img/image/chat/info.gif" width="11" height="12" border="0" align="absmiddle"></a> <input type=button class=lbut value="Отказаться от обучения" onclick="location = \'/main.php?mselect=teach&deny=1\'">
+					<font class=nickname><b>' . $pupil['login'] . '</b> [' . $pupil['level'] . '/' . $pupil['u_lvl'] . '] <a href="/ipers.php?' . $pupil['login'] . '">
 				  </font>
 				</td>
 			  </tr>

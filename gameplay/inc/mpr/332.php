@@ -22,7 +22,7 @@ while($bot = mysqli_fetch_assoc($bots)){
 						<tr>							
 							<td>
 							<form>
-							<img src="/img/image/weapon/'.$name['gif'].'" width="20" height="20" border="0" align="absmiddle" onmouseover="tooltip(this,\'<b>'.$name['name'].'</b>\')" onmouseout="hide_info(this)">  '.$name['name'].' <a href="/iteminfo.php?'.$name['name'].'" target="_blank"><img src="/img/image/chat/info1.gif" width="11" height="12" border="0" align="absmiddle"></a>							
+							<img src="/img/image/weapon/' . $name['gif'] . '" width="20" height="20" border="0" align="absmiddle" onmouseover="tooltip(this,\'<b>' . $name['name'] . '</b>\')" onmouseout="hide_info(this)">  ' . $name['name'] . ' <a href="/iteminfo.php?' . $name['name'] . '" target="_blank"><img src="/img/chat/info1.gif" width="11" height="12" border="0" align="absmiddle"></a>							
 							</form>
 							</td>
 						</tr>';
