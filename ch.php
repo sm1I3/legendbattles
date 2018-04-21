@@ -206,11 +206,16 @@ if (isset($_GET['lo'])) {
                     <?php
                     $tarr[] = '"страж порядка:Страж Порядка:35;15:botsp.gif;Верховная Инквизиция;Автобот Смотритель:0:0:0:0:0:0:0:Legendbattles.ru:0:0"';
                     if ($player['clan'] != 'Служители порядка') {
-                        $res = mysqli_query($GLOBALS['db_link'], "SELECT `user`.`login`,`user`.`invisible`,`user`.`sleep`,`user`.`loc`,`user`.`clan_d`,`user`.`level`,`user`.`clan`,`user`.`clan_gif`,`user`.`sklon`,`user`.`last`,`user`.`affect`,`user`.`pos`,`user`.`a_m`,`user`.`premium`,`user`.`id`,`user`.`u_lvl`,`user`.`fcolor`,`user`.`fcolor_time`,`user`.`vzlomshik_nav`,`user`.`semija`,`user`.`palac` FROM `user` LEFT JOIN `loc` ON `user`.`loc`=`loc`.`id` WHERE `user`.`loc`='" . $player['loc'] . "' " . ($player['loc'] != 28 ? "" : "AND `user`.`pos`='" . $player['pos'] . "'") . " AND `user`.`last`>'" . (time() - 300) . "' and `user`.`id`!='15391743';");
+                        if ($player['loc'] != 28) {
+                            $res = $GLOBALS['DBLink']->query("SELECT `user`.`login`,`user`.`invisible`,`user`.`sleep`,`user`.`loc`,`user`.`clan_d`,`user`.`level`,`user`.`clan`,`user`.`clan_gif`,`user`.`sklon`,`user`.`last`,`user`.`affect`,`user`.`pos`,`user`.`a_m`,`user`.`premium`,`user`.`id`,`user`.`u_lvl`,`user`.`fcolor`,`user`.`fcolor_time`,`user`.`vzlomshik_nav`,`user`.`semija`,`user`.`palac` FROM `user` LEFT JOIN `loc` ON `user`.`loc`=`loc`.`id` WHERE `user`.`loc`=? AND `user`.`last`> ? ;", array($player['loc'], (time() - 300)));
+                        } else {
+                            $res = $GLOBALS['DBLink']->query("SELECT `user`.`login`,`user`.`invisible`,`user`.`sleep`,`user`.`loc`,`user`.`clan_d`,`user`.`level`,`user`.`clan`,`user`.`clan_gif`,`user`.`sklon`,`user`.`last`,`user`.`affect`,`user`.`pos`,`user`.`a_m`,`user`.`premium`,`user`.`id`,`user`.`u_lvl`,`user`.`fcolor`,`user`.`fcolor_time`,`user`.`vzlomshik_nav`,`user`.`semija`,`user`.`palac` FROM `user` LEFT JOIN `loc` ON `user`.`loc`=`loc`.`id` WHERE `user`.`loc`=? AND `user`.`pos`=?  AND `user`.`last`> ? ;", array($player['loc'], $player['pos'], (time() - 300)));
+                        }
+
                     } else {//полный список чата
-                        $res = mysqli_query($GLOBALS['db_link'], "SELECT `user`.`login`,`user`.`invisible`,`user`.`sleep`,`user`.`loc`,`user`.`clan_d`,`user`.`level`,`user`.`clan`,`user`.`clan_gif`,`user`.`sklon`,`user`.`last`,`user`.`affect`,`user`.`pos`,`user`.`a_m`,`user`.`premium`,`user`.`id`,`user`.`u_lvl`,`user`.`fcolor`,`user`.`fcolor_time`,`user`.`vzlomshik_nav`,`user`.`semija`,`user`.`palac` FROM `user` LEFT JOIN `loc` ON `user`.`loc`=`loc`.`id` WHERE `user`.`last`>'" . (time() - 300) . "';");
+                        $res = $GLOBALS['DBLink']->query("SELECT `user`.`login`,`user`.`invisible`,`user`.`sleep`,`user`.`loc`,`user`.`clan_d`,`user`.`level`,`user`.`clan`,`user`.`clan_gif`,`user`.`sklon`,`user`.`last`,`user`.`affect`,`user`.`pos`,`user`.`a_m`,`user`.`premium`,`user`.`id`,`user`.`u_lvl`,`user`.`fcolor`,`user`.`fcolor_time`,`user`.`vzlomshik_nav`,`user`.`semija`,`user`.`palac` FROM `user` LEFT JOIN `loc` ON `user`.`loc`=`loc`.`id` WHERE `user`.`last`> ?;", array((time() - 300)));
                     }
-                    while ($row = mysqli_fetch_assoc($res)) {
+                    while ($row = $res->fetch()) {
                         $prem = explode("|", $row['premium']);
                         $dealer = 0;
                         if ($row['fcolor_time'] > time() or $row['fcolor_time'] == 0) {
