@@ -109,7 +109,7 @@ if (!empty($pers['id']) and !empty($pers['login'])) {
     }
 
     if (empty($pers['id']) and empty($_GET['watch_menu'])) {
-        echo '<HTML><HEAD><title>Персонаж не найден.</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><LINK href="./css/error.css?v' . $FilesVersion . '" rel=STYLESHEET type=text/css><META content="text/html; charset=utf-8" http-equiv=Content-type></HEAD><BODY><table width=600 border=0 cellpadding=0 cellspacing=0 align=center height=100%><tr><td><table width=600 border=0 cellpadding=1 cellspacing=0><tr><td bgcolor=#777777><table width=100% border=0 cellpadding=2 cellspacing=0><tr><td bgcolor=#FFFFFF><table width=100% border=0 cellpadding=5 cellspacing=0><tr>
+        echo '<HTML><HEAD><title>Персонаж не найден.</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><LINK href="http://www.legendbattles.ru/css/error.css?v' . $FilesVersion . '" rel=STYLESHEET type=text/css><META content="text/html; charset=utf-8" http-equiv=Content-type></HEAD><BODY><table width=600 border=0 cellpadding=0 cellspacing=0 align=center height=100%><tr><td><table width=600 border=0 cellpadding=1 cellspacing=0><tr><td bgcolor=#777777><table width=100% border=0 cellpadding=2 cellspacing=0><tr><td bgcolor=#FFFFFF><table width=100% border=0 cellpadding=5 cellspacing=0><tr>
   <td bgcolor=#FFFFFF><b><font color=#dd0000>Внимание! Персонаж не найден.</b></td></tr><tr><td bgcolor=#E0E0E0><font class=about><b>Возможные причины:</b><br><b>1.</b> Вы ошиблись при вводе логина<br><b>2.</b> Проверьте расскладку клавиатуры<br><br><div align=center><form name=LoginForm method=post>Введите имя <input type=text class="LogintextBox2" style="text-align:center;" name=newnick onSubmit="javascript:  document.LoginForm.submit();" onBlur="if (value == \'\') {value=\'персонажа\'}" onFocus="if (value == \'персонажа\') {value =\'\'}" value="персонажа" title="Введите имя персонажа и нажмите &quot;Enter&quot;"> еще раз.</form></div></font></td></tr></table></td></tr></table></td></tr></table></td></tr></table></BODY></HTML>';
     } elseif (!empty($_GET['bigObraz'])) {
         echo '
@@ -122,16 +122,16 @@ if (!empty($pers['id']) and !empty($pers['login'])) {
 <meta http-equiv=\"cache-control\" content=\"no-cache, no-store\"> 
 <meta http-equiv=\"expires\" content=\"0\"> 
 <meta name=\"description\" content=\"Информация персонажа бесплатной ролевой онлайн игры «legendbattles». Огромный фэнтезийный мир!\"> 
-<LINK href=\"./css/game.css?' . $FilesVersion . '\" rel=STYLESHEET type=text/css>
+<LINK href=\"http://www.legendbattles.ru/css/game.css?' . $FilesVersion . '\" rel=STYLESHEET type=text/css>
 
-<link href=\"./css/pinfo_v01.css?".$FilesVersion."\" rel=\"stylesheet\" type=\"text/css\"> 
-<link href=\"./css/system.css?".$FilesVersion."\" rel=\"stylesheet\" type=\"text/css\"> 
+<link href=\"http://www.legendbattles.ru/css/pinfo_v01.css?".$FilesVersion."\" rel=\"stylesheet\" type=\"text/css\"> 
+<link href=\"http://www.legendbattles.ru/css/system.css?".$FilesVersion."\" rel=\"stylesheet\" type=\"text/css\"> 
 <!--[if lt IE 7]>
 <link href=\"./css/iepng.css?".$FilesVersion."\" rel=\"stylesheet\" type=\"text/css\">
 <![endif]-->
 </head>
 <body>
-<HEAD><LINK href=../css/game.css rel=STYLESHEET type=text/css><LINK href=../css/stl.css rel=STYLESHEET type=text/css><meta content="text/html; charset=utf-8" http-equiv=Content-type><META Http-Equiv=Cache-Control Content=no-cache><meta http-equiv=PRAGMA content=NO-CACHE><META Http-Equiv=Expires Content=0></HEAD><body bgcolor=#ffffff topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0 link=#336699 alink=#336699 vlink=#336699>
+<HEAD><LINK href=http://www.legendbattles.ru/css/game.css rel=STYLESHEET type=text/css><LINK href=http://www.legendbattles.ru/css/stl.css rel=STYLESHEET type=text/css><meta content="text/html; charset=utf-8" http-equiv=Content-type><META Http-Equiv=Cache-Control Content=no-cache><meta http-equiv=PRAGMA content=NO-CACHE><META Http-Equiv=Expires Content=0></HEAD><body bgcolor=#ffffff topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0 link=#336699 alink=#336699 vlink=#336699>
 </style>
   <tr>
   <table cellpadding="0" cellspacing="0" border="0" align="center" width="800">
@@ -166,59 +166,66 @@ if (!empty($pers['id']) and !empty($pers['login'])) {
 <meta http-equiv=\"cache-control\" content=\"no-cache, no-store\"> 
 <meta http-equiv=\"expires\" content=\"0\"> 
 <meta name=\"description\" content=\"Информация персонажа бесплатной ролевой онлайн игры «legendbattles». Огромный фэнтезийный мир!\"> 
-<LINK href=\"./css/game.css?'.$FilesVersion.'\" rel=STYLESHEET type=text/css>
-<link href=\"./css/pinfo_v01.css?" . $FilesVersion . "\" rel=\"stylesheet\" type=\"text/css\"> 
-<link href=\"./css/system.css?" . $FilesVersion . "\" rel=\"stylesheet\" type=\"text/css\"> 
+<LINK href=\"http://www.legendbattles.ru/css/game.css?'.$FilesVersion.'\" rel=STYLESHEET type=text/css>
+<link href=\"http://www.legendbattles.ru/css/pinfo_v01.css?" . $FilesVersion . "\" rel=\"stylesheet\" type=\"text/css\"> 
+<link href=\"http://www.legendbattles.ru/css/system.css?" . $FilesVersion . "\" rel=\"stylesheet\" type=\"text/css\"> 
 <!--[if lt IE 7]>
 <link href=\"./css/iepng.css?" . $FilesVersion . "\" rel=\"stylesheet\" type=\"text/css\">
 <![endif]-->\n";
 
         if (accesses($WatchUser['id'], 'pvu')) {
-            echo '<link href="./css/nl_calendar.css?' . $FilesVersion . '" rel="stylesheet" type="text/css">
-<SCRIPT src="./js/ajax.js?' . $FilesVersion . '"></SCRIPT>
-<SCRIPT src="./js/nl_pinfo_pvu.js?' . $FilesVersion . '"></SCRIPT>
-<SCRIPT src="./js/nl_calendar.js?' . $FilesVersion . '"></SCRIPT>
+            echo '<link href="http://www.legendbattles.ru/css/nl_calendar.css?' . $FilesVersion . '" rel="stylesheet" type="text/css">
+<SCRIPT src="http://www.legendbattles.ru/js/ajax.js?' . $FilesVersion . '"></SCRIPT>
+<SCRIPT src="http://www.legendbattles.ru/js/nl_pinfo_pvu.js?' . $FilesVersion . '"></SCRIPT>
+<SCRIPT src="http://www.legendbattles.ru/js/nl_calendar.js?' . $FilesVersion . '"></SCRIPT>
 ';
         }
         echo "
-<link rel=\"stylesheet\" type=\"text/css\" href=\"css/social-likes.css?" . $FilesVersion . "\" media=\"screen\" />
-<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/themes/smodal.css\">
-<script type=\"text/javascript\" src=\"js/jquery-1.7.2.min.js?" . $FilesVersion . "\"></script>
-<script type=\"text/javascript\" src=\"js/social-likes.js?" . $FilesVersion . "\"></script>
-<SCRIPT src=\"./js/pinfo_v02.js?" . $FilesVersion . "\"></SCRIPT> 
-<SCRIPT src=\"./js/t_v01.js?" . $FilesVersion . "\"></SCRIPT> 
-<SCRIPT src=\"./js/stooltip.js?" . $FilesVersion . "\"></SCRIPT>
-<SCRIPT src=\"./js/jquery-1.7.2.min.js?" . $FilesVersion . "\"></SCRIPT>
-<SCRIPT src=\"./js/jquery.autocomplete.js?" . $FilesVersion . "\"></SCRIPT>
-<script type=\"text/javascript\" src=\"../rating_sys/jquery.cookies.js\"></script>
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.legendbattles.ru/css/social-likes.css?" . $FilesVersion . "\" media=\"screen\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.legendbattles.ru/css/themes/smodal.css\">
+<script type=\"text/javascript\" src=\"http://www.legendbattles.ru/js/jquery-1.7.2.min.js?" . $FilesVersion . "\"></script>
+<script type=\"text/javascript\" src=\"http://www.legendbattles.ru/js/social-likes.js?" . $FilesVersion . "\"></script>
+<SCRIPT src=\"http://www.legendbattles.ru/js/pinfo_v02.js?" . $FilesVersion . "\"></SCRIPT> 
+<SCRIPT src=\"http://www.legendbattles.ru/js/t_v01.js?" . $FilesVersion . "\"></SCRIPT> 
+<SCRIPT src=\"http://www.legendbattles.ru/js/stooltip.js?" . $FilesVersion . "\"></SCRIPT>
+<SCRIPT src=\"http://www.legendbattles.ru/js/jquery-1.7.2.min.js?" . $FilesVersion . "\"></SCRIPT>
+<SCRIPT src=\"http://www.legendbattles.ru/js/jquery.autocomplete.js?" . $FilesVersion . "\"></SCRIPT>
+<script type=\"text/javascript\" src=\"http://www.legendbattles.ru/js/jquery.cookie.js\"></script>
 ";
         echo '
-<LINK href="/css/stl.css" rel="STYLESHEET" type="text/css">
+<LINK href="http://www.legendbattles.ru/css/stl.css" rel="STYLESHEET" type="text/css">
 <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
 ';
         if (accesses($WatchUser['id'], 'pvu')) {
             echo '<script type="text/javascript" src="/js/jquery.form.js"></script>';
             echo '
-<link rel="stylesheet" type="text/css" href="/css/themes/smodal.css">
-<script type="text/javascript" src="../js/jquery.smodal.js"></script>
-<script type="text/javascript" src="../js/jquery.game.js"></script>';
+<link rel="stylesheet" type="text/css" href="http://www.legendbattles.ru/css/themes/smodal.css">
+<script type="text/javascript" src="http://www.legendbattles.ru/js/jquery.smodal.js"></script>
+<script type="text/javascript" src="http://www.legendbattles.ru/js/jquery.game.js"></script>';
         }
 
         $rt = ($pers['rating_1'] * 1 + $pers['rating_2'] * 2 + $pers['rating_3'] * 3 + $pers['rating_4'] * 4 + $pers['rating_5'] * 5) / ($pers['rating_1'] + $pers['rating_2'] + $pers['rating_3'] + $pers['rating_4'] + $pers['rating_5']);
         ?>
-        <link href="../rating_sys/css/rating.css" rel="stylesheet" type="text/css">
+        <link href="http://www.legendbattles.ru/rating_sys/css/rating.css" rel="stylesheet" type="text/css">
 
         <script type="text/javascript">
             $(document).ready(function () {
-                total_reiting = <?=round($rt, 1);?>;
+                total_reiting = <?
+                $res = round($rt, 1);
+                if (!is_nan($res))
+                    echo $res;
+                else
+                    echo 0;
+                ?>;
                 id_arc = '<? echo htmlspecialchars($pers['login'])?>';
                 id_brc = '<?=$_SESSION['user']['login']?>';
                 var star_widht = total_reiting * 17;
                 $('#raiting_votes').width(star_widht);
                 $('#raiting_info b').append('<font color=#d77d31>' + total_reiting + '</font>');
-                he_voted = $.cookies.get('article_' + id_arc + '_' + id_brc); // проверяем есть ли кука?
+                //     he_voted = $.cookie.get('article_' + id_arc + '_' + id_brc); // проверяем есть ли кука?
 //he_voted = null;
+                he_voted = null;
                 if (he_voted == null) {
                     $('#raiting').hover(function () {
                             $('#raiting_votes, #raiting_hover').toggle();
@@ -243,7 +250,7 @@ if (!empty($pers['id']) and !empty($pers['login'])) {
                                 $("#raiting_info b").html(data);
                                 $('#raiting_votes').width((total_reiting + user_votes) * 17 / 2);
                                 $('#raiting_info b, #raiting_info img').toggle();
-                                $.cookies.set('article_' + id_arc + '_' + id_brc, 123, {hoursToLive: 48}); // создаем куку
+                                //              $.cookie.set('article_' + id_arc + '_' + id_brc, 123, {hoursToLive: 48}); // создаем куку
                                 $("#raiting").unbind();
                                 $('#raiting_hover').hide();
                             }
@@ -296,7 +303,7 @@ showRadialBackground = true;
 parent.window.opener.parent.frames[\'main_top\'].location = \'/main.php\';
 parent.window.opener.parent.frames[\'ch_list\'].location = \'/ch.php?lo=1\';
 </script>';
-            mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `loc`='" . mysqli_real_escape_string($pers['loc']) . "',`pos`='" . $pers['pos'] . "' WHERE `id`='" . $WatchUser['id'] . "'");
+            mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `loc`='" . mysqli_real_escape_string($GLOBALS['db_link'], $pers['loc']) . "',`pos`='" . $pers['pos'] . "' WHERE `id`='" . $WatchUser['id'] . "'");
         }
         echo '
 <style>
@@ -554,7 +561,7 @@ var effects = [";
                 $pers['lastip'] = '0.0.0.0';
             }
             if ($WatchUser['login'] == 'Админ' or $WatchUser['login'] == 'Администрация' or $WatchUser['login'] == 'alexs' or $WatchUser['clan_id'] == 'Life') {
-                echo "var info = ['" . $pers['name'] . "','" . $pers['country'] . "','" . $pers['city'] . "'," . (($pers['sex'] == 'male') ? '0' : '1') . ",'" . $pers['url'] . "','<a href=mailto:" . $pers['email'] . ">" . $pers['email'] . "</a>','" . $pers['bday'] . "','" . $pers['icq'] . "','" . $pers['id'] . "','" . (($pers['ip'] != $pers['lastip']) ? '<a href="http://ip2geolocation.com/?ip=' . $pers['lastip'] . '" target="_blank">' . $pers['lastip'] . '</a> > <a href="http://ip2geolocation.com/?ip=' . $pers['ip'] . '" target="_blank">' . $pers['ip'] . '</a>' : '<a href="http://ip2geolocation.com/?ip=' . $pers['ip'] . '" target="_blank">' . $pers['ip'] . '</a>') . "','" . date("d.m.Y H:i:s", $pers['last'] ? $pers['last'] : 0) . "',[" . $pers['id'] . ",0,'123'],'" . lr($pers['nv'], 2) . "','" . round($pers['baks'], 2) . " <img src=img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд>',1,'" . $pers['bprise'] . "'];\n";
+                echo "var info = ['" . $pers['name'] . "','" . $pers['country'] . "','" . $pers['city'] . "'," . (($pers['sex'] == 'male') ? '0' : '1') . ",'" . $pers['url'] . "','<a href=mailto:" . $pers['email'] . ">" . $pers['email'] . "</a>','" . $pers['bday'] . "','" . $pers['icq'] . "','" . $pers['id'] . "','" . (($pers['ip'] != $pers['lastip']) ? '<a href="http://ip2geolocation.com/?ip=' . $pers['lastip'] . '" target="_blank">' . $pers['lastip'] . '</a> > <a href="http://ip2geolocation.com/?ip=' . $pers['ip'] . '" target="_blank">' . $pers['ip'] . '</a>' : '<a href="http://ip2geolocation.com/?ip=' . $pers['ip'] . '" target="_blank">' . $pers['ip'] . '</a>') . "','" . date("d.m.Y H:i:s", $pers['last'] ? $pers['last'] : 0) . "',[" . $pers['id'] . ",0,'123'],'" . lr($pers['nv'], 2) . "','" . round($pers['baks'], 2) . " <img src=http://www.legendbattles.ru/img/razdor/emerald.png width=14 height=14 valign=middle title=Изумруд>',1,'" . $pers['bprise'] . "'];\n";
             } else {
                 echo "var info = ['" . $pers['name'] . "','" . $pers['country'] . "','" . $pers['city'] . "'," . (($pers['sex'] == 'male') ? '0' : '1') . ",'" . $pers['url'] . "','<a href=mailto:" . $pers['email'] . ">" . $pers['email'] . "</a>','" . $pers['bday'] . "','" . $pers['icq'] . "','" . $pers['id'] . "','" . (($pers['ip'] != $pers['lastip']) ? '<a href="http://ip2geolocation.com/?ip=' . $pers['lastip'] . '" target="_blank">' . $pers['lastip'] . '</a> > <a href="http://ip2geolocation.com/?ip=' . $pers['ip'] . '" target="_blank">' . $pers['ip'] . '</a>' : '<a href="http://ip2geolocation.com/?ip=' . $pers['ip'] . '" target="_blank">' . $pers['ip'] . '</a>') . "','" . date("d.m.Y H:i:s", $pers['last'] ? $pers['last'] : 0) . "',[" . $pers['id'] . ",0,'123'],'" . lr($pers['nv'], 2) . "','недоступно','недоступно','" . $pers['bprise'] . "'];\n";
             }
@@ -578,16 +585,16 @@ var effects = [";
 <SCRIPT language=\"JavaScript\"> 
 view_pinfo_bottom();
 </SCRIPT> 
-<script type=\"text/javascript\" src=\"/js/canvas.js?" . $FilesVersion . "\"></script>
+<script type=\"text/javascript\" src=\"http://www.legendbattles.ru/js/canvas.js?" . $FilesVersion . "\"></script>
 <div id='basic-modal-content'>
 </div>
 </body> 
 </html>";
     }
     if ($_GET['watch_menu'] == 'yes' and accesses($WatchUser['id'], 'pvu')) {
-        echo '<HEAD><LINK href="./css/game.css?' . $FilesVersion . '" rel=STYLESHEET type=text/css><LINK href="./ch/chat.css?' . $FilesVersion . '" rel=STYLESHEET type=text/css><meta content="text/html; charset=utf-8" http-equiv=Content-type><META Http-Equiv=Cache-Control Content=no-cache><meta http-equiv=PRAGMA content=NO-CACHE><META Http-Equiv=Expires Content=0><SCRIPT src="/js/ajax.js?' . $FilesVersion . '"></SCRIPT>
-<SCRIPT src="./js/pvu_menu.js?' . $FilesVersion . '"></SCRIPT>
-</HEAD><body bgcolor=#ffffff topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0 link=#336699 alink=#336699 vlink=#336699><table cellpadding=4 cellspacing=0 border=0 width=100%><tr><td bgcolor=#FCFAF3 align=center><font class=nickname><b>Панель Представителей Власти</b>' . ($_GET['popup'] ? '' : ' <a href="javascript:ShowHide_wtch()" id="wtch">[Показать]</a>') . '</font></td></tr></table><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#Ffffff><img src=img/image/1x1.gif width=1 height=1></td></tr><tr><td bgcolor=#B9A05C><img src=img/image/1x1.gif width=1 height=1></td></tr><tr><td bgcolor=#F3ECD7><img src=img/image/1x1.gif width=1 height=2></td></tr></table>
+        echo '<HEAD><LINK =href"http://www.legendbattles.ru/css/game.css?' . $FilesVersion . '" rel=STYLESHEET type=text/css><LINK href="http://www.legendbattles.ru/ch/chat.css?' . $FilesVersion . '" rel=STYLESHEET type=text/css><meta content="text/html; charset=utf-8" http-equiv=Content-type><META Http-Equiv=Cache-Control Content=no-cache><meta http-equiv=PRAGMA content=NO-CACHE><META Http-Equiv=Expires Content=0><SCRIPT src="http://www.legendbattles.ru/js/ajax.js?' . $FilesVersion . '"></SCRIPT>
+<SCRIPT src="http://www.legendbattles.ru/js/pvu_menu.js?' . $FilesVersion . '"></SCRIPT>
+</HEAD><body bgcolor=#ffffff topmargin=0 bottommargin=0 marginwidth=0 marginheight=0 leftmargin=0 rightmargin=0 link=#336699 alink=#336699 vlink=#336699><table cellpadding=4 cellspacing=0 border=0 width=100%><tr><td bgcolor=#FCFAF3 align=center><font class=nickname><b>Панель Представителей Власти</b>' . ($_GET['popup'] ? '' : ' <a href="javascript:ShowHide_wtch()" id="wtch">[Показать]</a>') . '</font></td></tr></table><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor=#Ffffff><img src=http://www.legendbattles.ru/img/image/1x1.gif width=1 height=1></td></tr><tr><td bgcolor=#B9A05C><img src=http://www.legendbattles.ru/img/image/1x1.gif width=1 height=1></td></tr><tr><td bgcolor=#F3ECD7><img src=http://www.legendbattles.ru/img/image/1x1.gif width=1 height=2></td></tr></table>
 <div align="center">';
         include(DROOT . "/includes/functions/watchers.php");
         echo '</div>
@@ -616,4 +623,5 @@ view_pinfo_bottom();
     }
 
 }
+echo 13456789;
 ?>

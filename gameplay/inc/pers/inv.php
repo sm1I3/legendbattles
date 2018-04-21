@@ -21,100 +21,124 @@ if($_GET['all']==1){
 }
 ?>
 <tr><td align="center">
-<table cellpadding=0 cellspacing=0 border=0 width=100%>
-    <tr></tr>
-    <td align="center"><a href="/main.php?all=1"><img src="img/image/gameplay/invent/0.gif" width="44" height="53"
-                                                      title="Все вещи" class="cath" border="0"/></a><a
-                href="/main.php?invf=w70"><img src="img/image/gameplay/invent/6.gif" width="41" height="53"
-                                               title="Эликсиры и мази" class="cath" border="0"/></a><a
-                href="/main.php?invf=w66"><img src="img/image/gameplay/invent/1.gif" width="41" height="53"
-                                               title="Алхимия" class="cath" border="0"/></a><a
-                href="/main.php?invf=w69"><img src="img/image/gameplay/invent/2.gif" width="41" height="53"
-                                               title="Рыбалка" class="cath" border="0"/></a><a
-                href="/main.php?invf=w71"><img src="img/image/gameplay/invent/3.gif" width="41" height="53" title="руны"
-                                               class="cath" border="0"/></a><a href="/main.php?invf=w68"><img
-                    src="img/image/gameplay/invent/4.gif" width="41" height="53" title="Лес" class="cath"
-                    border="0"/></a><a href="/main.php?invf=5"><img src="img/image/gameplay/invent/5.gif" width="41"
-                                                                    height="53" title="Магия" class="cath" border="0"/></a><a
-                href="/main.php?invf=7"><img src="img/image/gameplay/invent/7.gif" width="41" height="53"
-                                             title="Журнал заданий" border="0"/></a><a href="main.php?invf=w60"><img
-                    src=img/image/gameplay/invent/23.gif width=41 height=53 title="Квестовые предметы" border="0"></a><a
-                href="main.php?invf=w61"><img src=img/image/gameplay/invent/8.gif width=41 height=53 title="Приманки"
-                                              border="0"></a><a href="main.php?invf=w29"><img
-                    src=img/image/gameplay/shops/svit.gif width=41 height=53 title="Свитки" border="0"></a><a
-                href="main.php?invf=w30"><img src=img/image/gameplay/invent/10.gif width=41 height=53 title="Лицензии"
-                                              border="0"></a><a href="main.php?invf=w62"><img
-                    src=img/image/gameplay/invent/db.gif width=41 height=53 title="Сундуки" border="0"></a></td>
-</table>
-    </td>
-</tr>
-    <tr>
-        <td><img src=img/image/1x1.gif width=1 height=4></td>
-    </tr>
-    <tr>
-        <td align="center"><a href="main.php?invf=w4"><img src=img/image/gameplay/invent/cat/0.gif width=44 height=53
-                                                           title="Ножи" class=cath border=0></a><a
-                    href="main.php?invf=w1"><img src=img/image/gameplay/invent/cat/1.gif width=41 height=53 title="Мечи"
-                                                 class=cath border=0></a><a href="main.php?invf=w2"><img
-                        src=img/image/gameplay/invent/cat/2.gif width=41 height=53 title="Топоры" class=cath
-                        border=0></a><a href="main.php?invf=w3"><img src=img/image/gameplay/invent/cat/3.gif width=41
-                                                                     height=53 title="Дробящие" class=cath border=0></a><a
-                    href="main.php?invf=w6"><img src=img/image/gameplay/invent/cat/4.gif width=41 height=53
-                                                 title="Алебарды и двуручное" class=cath border=0></a><a
-                    href="main.php?invf=w5"><img src=img/image/gameplay/shop/missle.gif width=41 height=53 title="Копья"
-                                                 class=cath border=0></a><a href="main.php?invf=w7"><img
-                        src=img/image/gameplay/invent/cat/6.gif width=41 height=53 title="Посохи" class=cath
-                        border=0></a><a href="main.php?invf=w20"><img src=img/image/gameplay/invent/cat/7.gif width=41
-                                                                      height=53 title="Щиты" class=cath border=0></a><a
-                    href="main.php?invf=w18"><img src=img/image/gameplay/invent/cat/10.gif width=41 height=53
-                                                  title="Кольчуги" class=cath border=0></a><a
-                    href="main.php?invf=w19"><img src=img/image/gameplay/invent/cat/11.gif width=41 height=53
-                                                  title="Доспехи" class=cath border=0></a><a
-                    href="main.php?invf=w23"><img src=img/image/gameplay/invent/cat/8.gif width=41 height=53
-                                                  title="Шлемы" class=cath border=0></a><a href="main.php?invf=w21"><img
-                        src=img/image/gameplay/invent/cat/14.gif width=41 height=53 title="Сапоги" class=cath border=0></a><a
-                    href="main.php?invf=w21"><img src=img/image/gameplay/invent/cat/mgb.gif width=41 height=53
-                                                  title="Магические книги" class=cath border=0></a></td>
-    </tr>
-    <tr>
-        <td><img src=img/image/1x1.gif width=1 height=4></td>
-    </tr>
-    <tr>
-        <td align="center"><a href="main.php?invf=w26"><img src=img/image/gameplay/invent/cat/9.gif width=44 height=53
-                                                            title="Пояса" class=cath border=0></a><a
-                    href="main.php?invf=w24"><img src=img/image/gameplay/invent/cat/12.gif width=41 height=53
-                                                  title="Перчатки" class=cath border=0></a><a
-                    href="main.php?invf=w80"><img src=img/image/gameplay/invent/cat/13.gif width=41 height=53
-                                                  title="Клан татем" class=cath border=0></a><a
-                    href="main.php?invf=w25"><img src=img/image/gameplay/invent/cat/15.gif width=41 height=53
-                                                  title="Кулоны" class=cath border=0></a><a
-                    href="main.php?invf=w22"><img src=img/image/gameplay/invent/cat/16.gif width=41 height=53
-                                                  title="Кольца" class=cath border=0></a><a
-                    href="main.php?invf=w28"><img src=img/image/gameplay/invent/cat/17.gif width=41 height=53
-                                                  title="Наплечники" class=cath border=0></a><a
-                    href="main.php?invf=w90"><img src=img/image/gameplay/shop/knee_guard.gif width=41 height=53
-                                                  title="Поножи" class=cath border=0></a><a href="main.php?invf=w0"><img
-                        src=img/image/gameplay/invent/cat/21.gif width=41 height=53 title="Зелья" class=cath
-                        border=0></a><a href="main.php?invf=w0"><img src=img/image/gameplay/invent/cat/inv_set.gif
-                                                                     width=41 height=53 title="Сеты" class=cath
-                                                                     border=0></a><a
-                    href="main.php?soc=<? if ($opt[0] == 0) echo 1; else echo 0; ?>"><img
-                        src=img/image/gameplay/invent/cat/b1.gif width=41 height=53
-                        title="Полная / сокращенная информация" class=cath border=0></a><a
-                    href="main.php?sort=<? if ($opt[1] == 0) echo 1; else echo 0; ?>"><img
-                        src=img/image/gameplay/invent/cat/b2.gif width=41 height=53 title="Сортировка по категориям"
-                        class=cath border=0></a><a href="main.php?all=1"><img src=img/image/gameplay/invent/cat/b3.gif
-                                                                              width=41 height=53 title="Сбросить фильтр"
-                                                                              class=cath border=0></a><a
-                    href="main.php?post_id=57&act=3&vcode=<?= scode() ?>"><img src=img/image/gameplay/invent/cat/b0.gif
-                                                                               width=41 height=53 title="Снять все вещи"
-                                                                               class=cath border=0/></a></td>
-    </tr>
-<table width="100%">
-</table></tr>
-</tr><tr><td><img src=img/image/1x1.gif width=1 height=4></td></tr>
+        <table cellpadding=0 cellspacing=0 border=0 width=100%>
+            <tr></tr>
+            <td align="center"><a href="/main.php?all=1"><img src="img/image/gameplay/invent/0.gif" width="44"
+                                                              height="53"
+                                                              title="Все вещи" class="cath" border="0"/></a><a
+                        href="/main.php?invf=w70"><img src="img/image/gameplay/invent/6.gif" width="41" height="53"
+                                                       title="Эликсиры и мази" class="cath" border="0"/></a><a
+                        href="/main.php?invf=w66"><img src="img/image/gameplay/invent/1.gif" width="41" height="53"
+                                                       title="Алхимия" class="cath" border="0"/></a><a
+                        href="/main.php?invf=w69"><img src="img/image/gameplay/invent/2.gif" width="41" height="53"
+                                                       title="Рыбалка" class="cath" border="0"/></a><a
+                        href="/main.php?invf=w71"><img src="img/image/gameplay/invent/3.gif" width="41" height="53"
+                                                       title="руны"
+                                                       class="cath" border="0"/></a><a href="/main.php?invf=w68"><img
+                            src="img/image/gameplay/invent/4.gif" width="41" height="53" title="Лес" class="cath"
+                            border="0"/></a><a href="/main.php?invf=5"><img src="img/image/gameplay/invent/5.gif"
+                                                                            width="41"
+                                                                            height="53" title="Магия" class="cath"
+                                                                            border="0"/></a><a
+                        href="/main.php?invf=7"><img src="img/image/gameplay/invent/7.gif" width="41" height="53"
+                                                     title="Журнал заданий" border="0"/></a><a href="main.php?invf=w60"><img
+                            src=img/image/gameplay/invent/23.gif width=41 height=53 title="Квестовые предметы"
+                            border="0"></a><a
+                        href="main.php?invf=w61"><img src=img/image/gameplay/invent/8.gif width=41 height=53
+                                                      title="Приманки"
+                                                      border="0"></a><a href="main.php?invf=w29"><img
+                            src=img/image/gameplay/shops/svit.gif width=41 height=53 title="Свитки" border="0"></a><a
+                        href="main.php?invf=w30"><img src=img/image/gameplay/invent/10.gif width=41 height=53
+                                                      title="Лицензии"
+                                                      border="0"></a><a href="main.php?invf=w62"><img
+                            src=img/image/gameplay/invent/db.gif width=41 height=53 title="Сундуки" border="0"></a></td>
+            </tr></td></tr>
+            <tr>
+                <td><img src=img/image/1x1.gif width=1 height=4></td>
+            </tr>
+            <tr>
+                <td align="center"><a href="main.php?invf=w4"><img src=img/image/gameplay/invent/cat/0.gif width=44
+                                                                   height=53
+                                                                   title="Ножи" class=cath border=0></a><a
+                            href="main.php?invf=w1"><img src=img/image/gameplay/invent/cat/1.gif width=41 height=53
+                                                         title="Мечи"
+                                                         class=cath border=0></a><a href="main.php?invf=w2"><img
+                                src=img/image/gameplay/invent/cat/2.gif width=41 height=53 title="Топоры" class=cath
+                                border=0></a><a href="main.php?invf=w3"><img src=img/image/gameplay/invent/cat/3.gif
+                                                                             width=41
+                                                                             height=53 title="Дробящие" class=cath
+                                                                             border=0></a><a
+                            href="main.php?invf=w6"><img src=img/image/gameplay/invent/cat/4.gif width=41 height=53
+                                                         title="Алебарды и двуручное" class=cath border=0></a><a
+                            href="main.php?invf=w5"><img src=img/image/gameplay/shop/missle.gif width=41 height=53
+                                                         title="Копья"
+                                                         class=cath border=0></a><a href="main.php?invf=w7"><img
+                                src=img/image/gameplay/invent/cat/6.gif width=41 height=53 title="Посохи" class=cath
+                                border=0></a><a href="main.php?invf=w20"><img src=img/image/gameplay/invent/cat/7.gif
+                                                                              width=41
+                                                                              height=53 title="Щиты" class=cath
+                                                                              border=0></a><a
+                            href="main.php?invf=w18"><img src=img/image/gameplay/invent/cat/10.gif width=41 height=53
+                                                          title="Кольчуги" class=cath border=0></a><a
+                            href="main.php?invf=w19"><img src=img/image/gameplay/invent/cat/11.gif width=41 height=53
+                                                          title="Доспехи" class=cath border=0></a><a
+                            href="main.php?invf=w23"><img src=img/image/gameplay/invent/cat/8.gif width=41 height=53
+                                                          title="Шлемы" class=cath border=0></a><a
+                            href="main.php?invf=w21"><img
+                                src=img/image/gameplay/invent/cat/14.gif width=41 height=53 title="Сапоги" class=cath
+                                border=0></a><a
+                            href="main.php?invf=w21"><img src=img/image/gameplay/invent/cat/mgb.gif width=41 height=53
+                                                          title="Магические книги" class=cath border=0></a></td>
+            </tr>
+            <tr>
+                <td><img src=img/image/1x1.gif width=1 height=4></td>
+            </tr>
+            <tr>
+                <td align="center"><a href="main.php?invf=w26"><img src=img/image/gameplay/invent/cat/9.gif width=44
+                                                                    height=53
+                                                                    title="Пояса" class=cath border=0></a><a
+                            href="main.php?invf=w24"><img src=img/image/gameplay/invent/cat/12.gif width=41 height=53
+                                                          title="Перчатки" class=cath border=0></a><a
+                            href="main.php?invf=w80"><img src=img/image/gameplay/invent/cat/13.gif width=41 height=53
+                                                          title="Клан татем" class=cath border=0></a><a
+                            href="main.php?invf=w25"><img src=img/image/gameplay/invent/cat/15.gif width=41 height=53
+                                                          title="Кулоны" class=cath border=0></a><a
+                            href="main.php?invf=w22"><img src=img/image/gameplay/invent/cat/16.gif width=41 height=53
+                                                          title="Кольца" class=cath border=0></a><a
+                            href="main.php?invf=w28"><img src=img/image/gameplay/invent/cat/17.gif width=41 height=53
+                                                          title="Наплечники" class=cath border=0></a><a
+                            href="main.php?invf=w90"><img src=img/image/gameplay/shop/knee_guard.gif width=41 height=53
+                                                          title="Поножи" class=cath border=0></a><a
+                            href="main.php?invf=w0"><img
+                                src=img/image/gameplay/invent/cat/21.gif width=41 height=53 title="Зелья" class=cath
+                                border=0></a><a href="main.php?invf=w0"><img
+                                src=img/image/gameplay/invent/cat/inv_set.gif
+                                width=41 height=53 title="Сеты" class=cath
+                                border=0></a><a
+                            href="main.php?soc=<? if ($opt[0] == 0) echo 1; else echo 0; ?>"><img
+                                src=img/image/gameplay/invent/cat/b1.gif width=41 height=53
+                                title="Полная / сокращенная информация" class=cath border=0></a><a
+                            href="main.php?sort=<? if ($opt[1] == 0) echo 1; else echo 0; ?>"><img
+                                src=img/image/gameplay/invent/cat/b2.gif width=41 height=53
+                                title="Сортировка по категориям"
+                                class=cath border=0></a><a href="main.php?all=1"><img
+                                src=img/image/gameplay/invent/cat/b3.gif
+                                width=41 height=53 title="Сбросить фильтр"
+                                class=cath border=0></a><a
+                            href="main.php?post_id=57&act=3&vcode=<?= scode() ?>"><img
+                                src=img/image/gameplay/invent/cat/b0.gif
+                                width=41 height=53 title="Снять все вещи"
+                                class=cath border=0/></a></td>
+                </td>
+                <table width="100%">
+                    </td></tr>
+                    </tr>
+                    <tr>
+                        <td><img src=img/image/1x1.gif width=1 height=4></td>
+                    </tr>
 
-<tr><td width=100%>
+                    <tr>
+                        <td width=100%>
 
 <?
 if($_SESSION['user']['inv']!=''){$sq="and `type`='".$_SESSION['user']['inv']."'";}else{$sq='';}
