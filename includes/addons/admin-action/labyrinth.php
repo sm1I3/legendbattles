@@ -6,7 +6,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/gameplay/inc/bbcodes.inc.php");
 
 $pers = player();
 
-list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 
 if($_GET['create']=='yes'){
 	mysqli_query($GLOBALS['db_link'],"INSERT INTO `labyrinth` (`x`,`y`) VALUES ('".$pers['x']."','".$pers['y']."');");
@@ -19,7 +19,7 @@ if($_GET['delete']=='yes'){
 if(!empty($_GET['gox']) and !empty($_GET['goy'])){
 	mysqli_query($GLOBALS['db_link'],"UPDATE user SET `pos`='".intval($_GET['gox'])."_".intval($_GET['goy'])."' WHERE `id`='".$pers['id']."'");
 	$pers['pos'] = intval($_GET['gox'])."_".intval($_GET['goy']);
-	list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+    list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 }
 if(!empty($_POST['formname'])){
 	switch($_POST['formname']){
@@ -137,7 +137,7 @@ if($HisLoc['L_img'] == 4 or $HisLoc['L_img'] == 5){
 </td></tr><tr><td align="center"><form method="POST" action="labyrinth.php"><select name="params"><option>- - -</option><option value=0' . (($HisLoc['L_view'] == '0') ? ' selected' : '') . '>Золотой</option><option value=1' . (($HisLoc['L_view'] == '1') ? ' selected' : '') . '>Бронз.</option><option value=2' . (($HisLoc['L_view'] == '2') ? ' selected' : '') . '>Сереб.</option><option value=3' . (($HisLoc['L_view'] == '3') ? ' selected' : '') . '>NPC (синий)</option></select><input type="submit" value="Ok" /><input type="hidden" name="formname" value="color" /></form></td></tr></table><br />';
 }
 if($HisLoc['L_img'] == 3 or $HisLoc['L_img'] == 8 or $HisLoc['L_img'] == 9){
-	list($dTo['x'],$dTo['y']) = explode('_', $HisLoc['d_to']);
+    list($dTo['y'], $dTo['x']) = explode('_', $HisLoc['d_to']);
     echo '<table cellpadding=0 cellspacing=0 border=1 align=center width="100%"><tr><td align="center">Телепорт или Механизм</td></tr><tr><td align="center"><form method="POST" action="labyrinth.php">X: <input type="text" name="tp_x" value="' . $dTo['x'] . '"><br />Y: <input type="text" name="tp_y" value="' . $dTo['y'] . '"><br /><input type="submit" value="Ok" /><input type="hidden" name="formname" value="portal" /></form></td></tr></table>';
 }
 echo'</td></tr></table></body>

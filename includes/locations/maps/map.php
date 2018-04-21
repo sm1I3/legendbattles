@@ -89,7 +89,7 @@ if(!empty($pers['bless'])){
 }
 //для приманок
 $it=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `invent`.`pl_id`='".$pers['id']."' AND `items`.`acte`='BotNapForm' LIMIT 1;"));
-list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 /////////////////
 if($pers['fcolor_time']>time() or $pers['fcolor_time']==0){
 	$nickclr = $pers['fcolor'];

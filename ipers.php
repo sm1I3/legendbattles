@@ -89,7 +89,7 @@ if (!empty($pers['id']) and !empty($pers['login'])) {
         return (($ch < 10) ? "0" . $ch : $ch) . ":" . (($min < 10) ? "0" . $min : $min) . ":" . (($sec < 10) ? "0" . $sec : $sec);
     }
 
-    list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+    list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
     if ($pers['loc'] != '28') {
         $location = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `loc`,`room`,`city` FROM `loc` WHERE `id`='" . $pers['loc'] . "' LIMIT 1;"));
     } elseif ($pers['loc'] == '28') {
@@ -352,7 +352,7 @@ var presents = [";
         echo "];
 var hpmp = [" . floor($pers['hp']) . "," . $pers['hp_all'] . "," . floor($pers['mp']) . "," . $pers['mp_all'] . "," . $ust . "];
 var params = [['" . $pers['login'] . "'," . $pers['sklon'] . ",'" . (($pers['clan_id'] == 'chaos' or $pers['clan_id'] == 'none') ? 'none' : $pers['clan_gif']) . "','" . $pers['level'] . "/" . $pers['u_lvl'] . "','" . $pers['obraz'] . "','" . $location['city'] . "@" . (($location['room']) ? $location['room'] : $location['loc']) . (($WatchUser['login'] == 'Администрация') ? '<br />(<a href="?p=' . $_GET["p"] . '&no_watch=yes&admin_move=yes"><font color="red">' . $pers['x'] . ':' . $pers['y'] . '</font></a>)' : '') . "'," . (($pers['last'] < time() - 300) ? '0' : (($pers['invisible'] > time()) ? '0' : '1')) . "," . $pers['battle'] . ",'" . (($pers['clan_id'] == 'chaos') ? '' : $pers['clan']) . "','" . $pers['clan_d'] . "','Барус','" . date("d.m.Y", $pers['bdaypers']) . "','" . $pers['semija'] . "'],[['Сила'," . ($perk['7'] ? $pers['sila'] + 2 : $pers['sila']) . "," . $nst['30'] . "],['Ловкость'," . ($perk['9'] ? $pers['lovk'] + 2 : $pers['lovk']) . "," . $nst['31'] . "],['Везение'," . ($perk['10'] ? $pers['uda4a'] + 2 : $pers['uda4a']) . "," . $nst['32'] . "],['Разум'," . ($perk['11'] ? $pers['znan'] + 2 : $pers['znan']) . "," . $nst['34'] . "],['Здоровье'," . ($perk['8'] ? $pers['zdorov'] + 2 : $pers['zdorov']) . "," . $nst['33'] . "],['Сноровка'," . $pers['mudr'] . ",0]],[['Класс брони'," . ($perk['32'] ? $nst['9'] + 30 : $nst['9']) . "],['Уловка'," . ($perk['19'] ? $nst['5'] + 30 : $nst['5']) . "],['Точность'," . ($perk['0'] ? $nst['6'] + 30 : $nst['6']) . "],['Сокрушение'," . ($perk['5'] ? $nst['7'] + 30 : $nst['7']) . "],['Стойкость'," . ($perk['15'] ? $nst['8'] + 30 : $nst['8']) . "],['Пробой брони'," . $nst['10'] . "]]];\n";
-        $slot = mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `pl_id`='" . addslashes($pers['id']) . "' and `used`='1' ORDER BY `invent`.`curslot`;");
+        $slot = mysqli_query($GLOBALS['db_link'], "SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `pl_id`='" . addslashes($pers['id']) . "' AND `used`='1' ORDER BY `invent`.`curslot`;");
         while ($row = mysqli_fetch_assoc($slot)) {
             if ($row['grav']) {
                 $row['name'] = $row['name'] . " (" . $row['grav'] . ")";

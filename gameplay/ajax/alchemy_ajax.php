@@ -51,7 +51,7 @@ case 1:
         $trvtimer2 = 15;
     }
 	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `lastbattle`='".(time()+120)."',`wait_prof`='".(time()+$trvtimer[2])."' WHERE `id`='".$pers['id']."' LIMIT 1;");
-	list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+    list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 	$grasssql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature_grass` WHERE `x`='".$pers['x']."' AND `y`='".$pers['y']."';");
     if (mysqli_num_rows($grasssql) < 1) {
         $error = "Вы осмотрелись вокруг в поисках травы, но ничего не нашли.";
@@ -82,8 +82,8 @@ break;
 case 2:
 	//$tst = $pers['wait_prof']-time()-2;
 	$tst=0;
-	if($tst<=0){	
-		list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+	if($tst<=0){
+        list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 		$serp=mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],'SELECT `invent`.*, `items`.* FROM `items` INNER JOIN `invent` ON `items`.`id` = `invent`.`protype` WHERE `pl_id`="'.$pers['id'].'" AND `items`.`type`="w66" AND `items`.`slot`="3" AND `invent`.`used`="1" LIMIT 1;'));
 		$grasssql=mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature_grass` WHERE `x`='".$pers['x']."' AND `y`='".$pers['y']."';");
         if (mysqli_num_rows($grasssql) < 1 and mysqli_num_rows($serp) < 1) {

@@ -304,7 +304,7 @@ function locations_clan($loc,$pos){
 		return $location['city']." [".(($location['room'])?$location['room']:$location['loc'])."]";
 	}
 	else{
-		list($x, $y) = explode('_', $pos);
+        list($y, $x) = explode('_', $pos);
 		$location = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x`='".$x."' and `y`='".$y."' LIMIT 1;"));
         return $location['city'] . " [" . (($location['name']) ? $location['name'] : 'неизвестно') . "]";
 	}	

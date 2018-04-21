@@ -3,7 +3,6 @@
 $plstt = allparam($player);
 $post_id = $post_id ?? varcheck($_POST['post_id']) ?? varcheck($_GET['post_id']) ?? '';
 $act = $act ?? varcheck($_POST['act']) ?? varcheck($_GET['act']) ?? '';
-die('test=' . $post_id);
 settype($post_id, "integer");
 
 if (isset($_POST['opass']) and isset($_POST['npass']) and isset($_POST['vpass']) and $_POST['post_id'] == 49) {

@@ -15,7 +15,7 @@ if (isset($_GET['upgrade'])) {
         if ($player['nv'] >= $GetPrice) {
             mysqli_query($GLOBALS['db_link'], "UPDATE `forts` SET `" . $_GET['upgrade'] . "`='" . ($GetCapacity[1] + 1) . "/" . ($GetCapacity[1] + 1) . "' WHERE `id`='" . $Fort['id'] . "'");
             mysqli_query($GLOBALS['db_link'], "UPDATE `user` SET `nv`=`nv`-'" . $GetPrice . "' WHERE `id`='" . $player['id'] . "'");
-            list($player['x'], $player['y']) = explode('_', $player['pos']);
+            list($player['y'], $player['x']) = explode('_', $player['pos']);
             $Fort = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `forts` WHERE `x`='" . $player['x'] . "' and `y`='" . $player['y'] . "'"));
 
         }

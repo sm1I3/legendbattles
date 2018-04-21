@@ -46,7 +46,7 @@
                     $z = ",";
                 }
                 // карта
-                list($p['fight_x'], $p['fight_y']) = explode('_', $p['pos_fight']);
+                list($p['fight_y'], $p['fight_x']) = explode('_', $p['pos_fight']);
                 if ($p['invisible'] < time()) {
                     $team1 .= $z . "[$p[type],\"$p[login]\",$p[level],$p[sklon],\"$p[clan_gif]\",$p[hp],$p[hp_all],$p[id],$p[fight_x],$p[fight_y],$p[id]]";
                 } else {
@@ -67,7 +67,7 @@
                     $z2 = ",";
                 }
                 // карта
-                list($p['fight_x'], $p['fight_y']) = explode('_', $p['pos_fight']);
+                list($p['fight_y'], $p['fight_x']) = explode('_', $p['pos_fight']);
                 if ($p['invisible'] < time()) {
                     $team2 .= $z2 . "[$p[type],\"$p[login]\",$p[level],$p[sklon],\"$p[clan_gif]\",$p[hp],$p[hp_all],$p[id],$p[fight_x],$p[fight_y],$p[id]]";
                 } else {
@@ -132,7 +132,7 @@
     $expp = exp_level($player['level']);
     $naemnik = explode("|", $player['naemnik']);
     $naimbut = ($naemnik[1] < time() ? 1 : 0);
-    list($player['fight_x'], $player['fight_y']) = explode('_', $player['pos_fight']);
+    list($player['fight_y'], $player['fight_x']) = explode('_', $player['pos_fight']);
     ?>
     var naemnik = <?=$naimbut?>;
     var fight_ty = [<?=$fight?>,<?=$bat;?>,<?=$ty;?>, "<?=$end?>", "<?=$vc?>", "<?=$expp['ex']?>", "<?=$player['battle'];?>"];

@@ -271,7 +271,7 @@ $params = $tmparams[0];
         </div>
     </div>
     <?
-    list($uronMin, $uronMax) = explode("-", $plst[1]);
+    list($uronMax, $uronMin) = explode("-", $plst[1]);
     ?>
     <div class="module modif">
         <div class="header">
@@ -365,7 +365,7 @@ $params = $tmparams[0];
         </div>
     </div>
     <?
-    list($uronMin, $uronMax) = explode("-", $plst[1]);
+    list($uronMax, $uronMin) = explode("-", $plst[1]);
     if ($player['damage_mods']) {
         ?>
         <div class="module mag">
@@ -379,7 +379,7 @@ $params = $tmparams[0];
                 foreach ($dmgm as $val) {
                     $dmod = explode("@", $val);
                     if ($dmod[0] != '' and $dmod[1] != '') {
-                        list($ModMin, $ModMax) = explode("-", $dmod[1]);
+                        list($ModMax, $ModMin) = explode("-", $dmod[1]);
                         if (round($ModMax, 0) > 0) {
                             echo '<div>' . $dmodarr[$dmod[0]] . ' : <span class="cnt">' . round($ModMin, 0) . '-' . round($ModMax, 0) . '</span></div>';
                         }
@@ -390,7 +390,7 @@ $params = $tmparams[0];
         </div>
     <? } ?>
     <?
-    list($uronMin, $uronMax) = explode("-", $plst[1]);
+    list($uronMax, $uronMin) = explode("-", $plst[1]);
     ?>
     <div class="module modif">
         <div class="header">

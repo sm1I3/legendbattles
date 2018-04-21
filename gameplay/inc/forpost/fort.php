@@ -1,5 +1,5 @@
 <?php
-list($player['x'], $player['y']) = explode('_', $player['pos']);
+list($player['y'], $player['x']) = explode('_', $player['pos']);
 $Fort = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT * FROM `forts` WHERE `x`='" . $player['x'] . "' and `y`='" . $player['y'] . "'"));
 if (!isset($_GET['addid'])) {
     $_GET['addid'] = 1;

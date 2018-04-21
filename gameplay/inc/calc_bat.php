@@ -67,8 +67,8 @@ if ($enemy == '3') {
             $go_no_p .= $p['pos_fight'] . "|";
         }
     }
-    list($player['xf'], $player['yf']) = explode('_', $player['pos_fight']);
-    list($tg['x'], $tg['y']) = explode('_', $tg['pos_fight']);
+    list($player['yf'], $player['xf']) = explode('_', $player['pos_fight']);
+    list($tg['y'], $tg['x']) = explode('_', $tg['pos_fight']);
     $r = round(sqrt(sqr($tg["x"] - $player["xf"]) + sqr($tg["y"] - $player["yf"])));
     if ($r > 1) {
         $lg = 90;

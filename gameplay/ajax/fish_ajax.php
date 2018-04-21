@@ -64,7 +64,7 @@ if ($pers['id']) {
 
     switch (intval($_GET['act'])) {
         case 1:
-            list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+            list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
             if ($pers['login'] == 'Администрация' or $pers['login'] == 'm0ne') {
                 $timer = 20;
             }
@@ -113,7 +113,7 @@ if ($pers['id']) {
         case 2:
             $tst = $pers['wait_prof'] - time() - 2;
             if ($tst <= 0) {
-                list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+                list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
                 $grasssql = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `nature_fish` WHERE `x`='" . $pers['x'] . "' AND `y`='" . $pers['y'] . "';");
                 if (mysqli_num_rows($grasssql) < 1) {
                     $error = "<font class=proce>Тут рыбы нет, или уровень вашего навыка недостаточен для ловли рыбы в этом месте.</font>";

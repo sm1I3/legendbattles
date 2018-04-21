@@ -1,6 +1,6 @@
 <?php
 if(accesses($pers['id'],'out')){
-list($pers['x'], $pers['y']) = explode('_', $pers['pos']);
+    list($pers['y'], $pers['x']) = explode('_', $pers['pos']);
 if($_GET['x']!='' and $_GET['y']!=''){
 	mysqli_query($GLOBALS['db_link'],"UPDATE `user` SET `pos`='".$_GET['x']."_".$_GET['y']."' WHERE `id`='".$pers['id']."'");
 	$pers['x']=$_GET['x'];
@@ -246,7 +246,7 @@ echo substr($map,0,strlen($map)-1);
               <a href="javascript:TeleTo();" id="TeleTo_text">Телепорт:
 	  <?php 
 	  if($loc_editor['tele_coord']){
-		  list($tele['x'], $tele['y']) = explode('_', $loc_editor['tele_coord']);
+          list($tele['y'], $tele['x']) = explode('_', $loc_editor['tele_coord']);
 		  $locname = mysqli_fetch_array(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `nature` WHERE `x`='".$tele['x']."' AND `y`='".$tele['y']."' LIMIT 1;"));
 		  echo '<br>'.$locname['city'].'<br>['.($locname['name']?$locname['name']:'').']';
 	  }else{

@@ -988,7 +988,7 @@ function locations($loc, $pos)
         $count = mysqli_num_rows(mysqli_query($GLOBALS['db_link'], "SELECT user.id, user.loc FROM user WHERE last >$time AND loc = '$loc'"));
     }
     if ($loc == 28) {
-        list($pers['x'], $pers['y']) = explode('_', $pos);
+        list($pers['y'], $pers['x']) = explode('_', $pos);
         $rooms = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'], "SELECT `city`,`name` FROM `nature` WHERE `x`='" . $pers['x'] . "' AND `y`='" . $pers['y'] . "' LIMIT 1;"));
         $rooms['city'] = $rooms['city'] ? $rooms['city'] : 'Земли Баруса';
         if ($rooms['name'] != "") {
@@ -2864,7 +2864,7 @@ function affect($aff, $var, $travm = NULL)
     $affect = explode("|", $aff);
 
     foreach ($affect as $val) {
-        list($row['f_params'], $row['time'], $row['eff_id']) = explode('@', $val);
+        list($row['eff_id'], $row['time'], $row['f_params']) = explode('@', $val);
 
         $TimeOr = $row['time'];
 
@@ -4040,7 +4040,7 @@ function logovo_nap($player, $bot_id, $bot_kolvo)
 
 function BotAttack($player)
 {
-    list($player['x'], $player['y']) = explode('_', $player['pos']);
+    list($player['y'], $player['x']) = explode('_', $player['pos']);
     $query = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `nature_bots` WHERE `x`='" . $player['x'] . "' AND `y`='" . $player['y'] . "'");
     if (mysqli_num_rows($query) > 0) {
         $botxy = mysqli_fetch_assoc($query);
@@ -4265,7 +4265,7 @@ function BotAttackPod($player, $id)
 function BotNapAttack($player, $ItemID)
 {
     $sk = 'kgTvx2WrEZ';
-    list($player['x'], $player['y']) = explode('_', $player['pos']);
+    list($player['y'], $player['x']) = explode('_', $player['pos']);
     $query = mysqli_query($GLOBALS['db_link'], "SELECT * FROM `nature_bots` WHERE `x`='" . $player['x'] . "' AND `y`='" . $player['y'] . "'");
     if (mysqli_num_rows($query) > 0) {
         $botxy = mysqli_fetch_assoc($query);

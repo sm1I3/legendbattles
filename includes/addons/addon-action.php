@@ -111,7 +111,7 @@ if($_GET['act'] and $player['sklon']!=0 and $player['sklon']!=''){
 	if($_POST['tologin']){
 	$val_tologin=varcheck($_POST['tologin']);
 		$target = mysqli_fetch_assoc(mysqli_query($GLOBALS['db_link'],"SELECT * FROM `user` WHERE `login`='".$val_tologin."' LIMIT 1;"));
-		list($nowa[1], $nowa[2]) = explode('@', $player['sklon_abil']);
+        list($nowa[2], $nowa[1]) = explode('@', $player['sklon_abil']);
 		if($target['login'] and $target['id']){
 			if(rand(0,100)<80){
 				switch(intval($_GET['act'])){
@@ -220,7 +220,7 @@ if($player['sklon']!=0 and $player['sklon']!=''){
     if ($player['login'] == 'Администрация') {
         $player['sklon'] = 5;
     }
-		list($nowa[1], $nowa[2]) = explode('@', $player['sklon_abil']);
+    list($nowa[2], $nowa[1]) = explode('@', $player['sklon_abil']);
 		switch($player['sklon']){
             case 5: //свет
 				echo '

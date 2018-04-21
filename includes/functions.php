@@ -174,7 +174,7 @@ function effects($aff,$var){
 	/* Effects Show */
 	$aff = explode("|",$aff);
 	foreach($aff as $val){
-		list($row['f_params'], $row['time'], $row['eff_id']) = explode('@', $val);
+        list($row['eff_id'], $row['time'], $row['f_params']) = explode('@', $val);
 	
 		$EffArray[$row['eff_id']] += 1;
 
